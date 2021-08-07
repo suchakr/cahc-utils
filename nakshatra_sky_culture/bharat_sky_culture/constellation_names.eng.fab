@@ -1,0 +1,67 @@
+# Note from the user guide at https://launchpadlibrarian.net/330148407/stellarium_user_guide-0.16.0-1.pdf:
+#
+# The native constellations are listed in constellation_names.eng.fab. It consists of 3 simple
+# columns: Abbreviation(or just a serial number), native name, and english translation. The writing
+# _("name") allows automatic translation of the English strings to other languages. These strings
+# will be used as constellation labels.
+# The first column (abbreviation) in the Western sky culture provides the canonical 3-letter
+# abbreviation for constellations as used by the International Astronomical Union. Such abbreviations
+# may not be available for the skyculture you are working with, so you must invent your own. These
+# abbreviations are used as keys in the other files, so they must be unique within your skyculture. It
+# is not necessary to have 3-letter keys.
+# The keys can be displayed on screen when labels are requested in the Starlore GUI (section
+# 4.4.5). If you want to prevent certain abbreviations from being displayed, let them start with a
+# dot. See the effect in the Western (H.A.Rey) skyculture: In Abbreviated mode, only the official
+# abbreviations are displayed. In Native mode, the second column of constellation_names.eng.fab
+# is shown. Only with setting Translated , the text translated from the text shown in the third column
+# is shown. If your skyculture is a variant of the Western skyculture, please use the canonical Latin
+# names, they have all been translated already.
+# If your skyculture is not a variant of the generally known Western skyculture, please include an
+# English translation to the name given in the native language. Else translators will not be able to
+# translate the name
+
+# We use IAST transliteration for unambious transliteration of devanAgarI using latin alphabets, while using phonetically more intuitive equivalents in suggested translations.
+
+## We've referred to highly regarded sanskrit to sanskrit dictionaries kalpadruma and vAchaspatyam for etymologies below.
+
+# TRANSLATORS: Horse headed twin son of The Sun
+N01	"Aśvinī"		_("अश्विनी 1")
+# TRANSLATORS: Bearer of life
+N02	"Bharanī"		_("भरणी 2")
+# TRANSLATORS: kartiikeya - Son of Lord Shiva
+N03	"Kṛittikā"		_("कृत्तिका 3")
+# TRANSLATORS: Deer avatar of Uṣa or Dwan
+N04	"Rohiṇī"		_("रोहिणी 4")
+# TRANSLATORS: Deer avatar of King Prajapati
+N05	"Mṛgaśirā"		_("मृगशीर्षा 5")
+# TRANSLATORS: Rudra, Lord Shiva
+N06	"Ārdrā"			_("आर्द्रा 6")
+N07	"Punarvasu"		_("पुनर्वसू 7")
+N08	"Puṣyā"			_("पुष्या 8")
+N09	"Aśleṣā"		_("आश्लेषा 9")
+N10	"Maghā"			_("मघा" 10)
+# TRANSLATORS: phālgun - Red
+N11	"Pūrba phālgunī"	_("पूर्वफल्गुनी 11")
+# TRANSLATORS: phālgun - Red
+N12	"Uttara phālgunī"	_("उत्तरफल्गुनी 12")
+N13	"Hasta"			_("हस्ता 13")
+N14	"Chitrā"		_("चित्रा 14")
+N15	"Svātī"			_("स्वाती 15")
+# TRANSLATORS: One of the best friend of Radha
+N16	"Viśākhā"		_("विशाखा 16")
+# TRANSLATORS: Radha - companion of Lord Krishna
+N17	"Anurādhā"		_("अनुराधा 17")
+N18	"Jyeṣṭhā"		_("ज्येष्ठा 18")
+# TRANSLATORS: Origin
+N19	"Mulā"			_("मूला 19")
+# TRANSLATORS: āṣāṛā - Roar
+N20	"Pūrba āṣāṛā"		_("पूर्व्वाषाढा 20")
+# TRANSLATORS: āṣāṛā - Roar
+N21	"Uttara āṣāṛā"		_("उत्तराषाढा 21")
+N22	"Śrabaṇā"		_("श्रवणा 22")
+N23	"Dhaniṣṭhā"		_("धनिष्ठा 23")
+N24	"Śatabhiṣā"		_("शतभिषक् 24")
+N25	"Pūrba bhādrapada"	_("पूर्वभाद्रपदा 25")
+N26	"Uttara bhādrapada"	_("उत्तरभाद्रपदा 26")
+N27	"Revatī"		_("रेवती 27")
+N28	"Abhijit"		_("अभिजित् ∆")

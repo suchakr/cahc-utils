@@ -1,0 +1,84 @@
+nid,nnid,tag,gname,sname,hip,naks,enaks,daivata
+N01-Ash,1,rep,β Ari,Sheratan,HIP 8903,अश्विनी,Aśvayuk,Aśvini
+N01-Ash,1,other,α Ari,Hamal,HIP 9884,अश्विनी,Aśvayuk,Aśvini
+N01-Ash,1,other,γ Ari,Mesarthim,HIP 8832,अश्विनी,Aśvayuk,Aśvini
+N02-Bha,2,rep,* 41 Ari,Bharani,HIP 13209,भरणी,Bharaṇī,Yama
+N02-Bha,2,other,* 39 Ari,39Ari,HIP 13061,भरणी,Bharaṇī,Yama
+N02-Bha,2,other,* 35 Ari,Barani II,HIP 12719,भरणी,Bharaṇī,Yama
+N03-Kri,3,rep,η Tau,Alcyone,HIP 17702,क्रित्तिका,Kṛttikā, Agni
+N03-Kri,3,other,* 17 Tau,Electra,HIP 17499,क्रित्तिका,Kṛttikā, Agni
+N03-Kri,3,other,* 19 Tau,Taygeta,HIP 17531,क्रित्तिका,Kṛttikā, Agni
+N03-Kri,3,other,* 20 Tau,Maia,HIP 17573,क्रित्तिका,Kṛttikā, Agni
+N03-Kri,3,other,* 23 Tau,Merope,HIP 17608,क्रित्तिका,Kṛttikā, Agni
+N03-Kri,3,other,* 27 Tau,Atlas,HIP 17847,क्रित्तिका,Kṛttikā, Agni
+N04-Roh,4,rep,α Tau,Aldebaran,HIP 21421,रोहिणी,Rohiṇī,Prajāpati
+N04-Roh,4,other,γ Tau,Prima Hyadum,HIP 20205,रोहिणी,Rohiṇī,Prajāpati
+N04-Roh,4,other,δ Tau,Secunda Hyadum,HIP 20455,रोहिणी,Rohiṇī,Prajāpati
+N04-Roh,4,other,ε Tau,Ain,HIP 20889,रोहिणी,Rohiṇī,Prajāpati
+N04-Roh,4,other,θ2 Tau,Chamukuy,HIP 20894,रोहिणी,Rohiṇī,Prajāpati
+N05-Mrg,5,rep,λ Ori,Meissa(Heka),HIP 26207,मृगशीर्ष,Mṛgaśira,Soma
+N05-Mrg,5,other,γ Ori,Bellatrix,HIP 25336,मृगशीर्ष,Mṛgaśira,Soma
+N05-Mrg,5,other,α Ori,Betelgeuse,HIP 27989,मृगशीर्ष,Mṛgaśira,Soma
+N06-Ard,6,rep,γ Gem,Alhena(Almeisan),HIP 31681,आर्द्रा,Ārdrā,Rudra
+N07-Pun,7,rep,β Gem,Pollux,HIP 37826,पुनर्वसू,Punarvasu,Aditi
+N07-Pun,7,other,α Gem,Castor,HIP 36850,पुनर्वसू,Punarvasu,Aditi
+N08-Pus,8,rep,δ Cnc,Asellus Australis,HIP 42911,पुष्य,Puṣya,Bṛhaspati
+N09-Asl,9,rep,ζ Hya,Minazal V,HIP 43813,आश्लेषा,Āśleṣā,Sarpa
+N09-Asl,9,other,δ Hya,Minazal I,HIP 42313,आश्लेषा,Āśleṣā,Sarpa
+N09-Asl,9,other,ε Hya,Ashlesha,HIP 43109,आश्लेषा,Āśleṣā,Sarpa
+N09-Asl,9,other,η Hya,Minazal II,HIP 42799,आश्लेषा,Āśleṣā,Sarpa
+N09-Asl,9,other,ρ Hya,Minazal IV,HIP 43234,आश्लेषा,Āśleṣā,Sarpa
+N09-Asl,9,other,σ Hya,Minchir,HIP 42402,आश्लेषा,Āśleṣā,Sarpa
+N10-Mag,10,rep,ζ Leo,Adhafera,HIP 50335,मघा,Maghā,Pitṛ
+N10-Mag,10,other,α Leo,Regulus,HIP 49669,मघा,Maghā,Pitṛ
+N10-Mag,10,other,γ Leo,Algieba,HIP 50583,मघा,Maghā,Pitṛ
+N10-Mag,10,other,ε Leo,Algenubi,HIP 47908,मघा,Maghā,Pitṛ
+N10-Mag,10,other,η Leo,Al Jabah,HIP 49583,मघा,Maghā,Pitṛ
+N10-Mag,10,other,μ Leo,Rasalas,HIP 48455,मघा,Maghā,Pitṛ
+N11-PPal,11,rep,δ Leo,Zosma,HIP 54872,पूर्वफल्गुनी,P Phalgunī,Bhaga
+N11-PPal,11,other,θ Leo,Chertan,HIP 54879,पूर्वफल्गुनी,P Phalgunī,Bhaga
+N12-UPal,12,rep,β Leo,Denebola,HIP 57632,उत्तरफल्गुनी,U Phalgunī,Aryaman
+N12-UPal,12,other,* 93 Leo,93Leo,HIP 57565,उत्तरफल्गुनी,U Phalgunī,Aryaman
+N13-Has,13,rep,δ Crv,Algorab,HIP 60965,हस्त,Hasta,Savitṛ
+N13-Has,13,other,α Crv,Alchiba,HIP 59199,हस्त,Hasta,Savitṛ
+N13-Has,13,other,β Crv,Kraz,HIP 61359,हस्त,Hasta,Savitṛ
+N13-Has,13,other,γ Crv,Gienah,HIP 59803,हस्त,Hasta,Savitṛ
+N13-Has,13,other,ε Crv,Minkar,HIP 59316,हस्त,Hasta,Savitṛ
+N14-Chi,14,rep,α Vir,Spica,HIP 65474,चित्रा,Citrā,Tvaṣṭṛ
+N15-Swa,15,rep,α Boo,Arcturus,HIP 69673,स्वाती,Svātī,Vāyu
+N16-Vis,16,rep,α2 Lib,Zubenelgenubi,HIP 72622,विशाखे,Viśākhā,Indrāgnī
+N16-Vis,16,other,α1 Lib,Zubenelgenubi II,HIP 72603,विशाखे,Viśākhā,Indrāgnī
+N17-Anu,17,rep,δ Sco,Dschubba,HIP 78401,अनूराधा,Anūrādhā,Mitra
+N17-Anu,17,other,β1 Sco,Acrab,HIP 78820,अनूराधा,Anūrādhā,Mitra
+N17-Anu,17,other,π Sco,Fang,HIP 78265,अनूराधा,Anūrādhā,Mitra
+N17-Anu,17,other,ω1 Sco,Jabhat Acrabi I,HIP 78933,अनूराधा,Anūrādhā,Mitra
+N18-Jye,18,rep,ε Sco,Larawag,HIP 82396,ज्येष्ठा,Jyeṣṭhā,Indra
+N18-Jye,18,other,α Sco,Antares,HIP 80763,ज्येष्ठा,Jyeṣṭhā,Indra
+N18-Jye,18,other,σ Sco,Alniyat,HIP 80112,ज्येष्ठा,Jyeṣṭhā,Indra
+N19-Mul,19,rep,κ Sco,Mula,HIP 86670,मूल,Mūla, Nirṛti
+N19-Mul,19,other,ζ2 Sco,zet2Sco,HIP 82729,मूल,Mūla, Nirṛti
+N19-Mul,19,other,θ Sco,Sargas,HIP 86228,मूल,Mūla, Nirṛti
+N19-Mul,19,other,ι1 Sco,Girtab,HIP 87073,मूल,Mūla, Nirṛti
+N19-Mul,19,other,λ Sco,Shaula,HIP 85927,मूल,Mūla, Nirṛti
+N19-Mul,19,other,ν Sco,Lesath,HIP 85696,मूल,Mūla, Nirṛti
+N20-PAsh,20,rep,λ Sgr,Kaus Borealis,HIP 90496,पूर्वाषाढा,P Aṣāḍhā,Ap
+N20-PAsh,20,other,γ Sgr,Alnasl,HIP 88635,पूर्वाषाढा,P Aṣāḍhā,Ap
+N20-PAsh,20,other,δ Sgr,Kaus Media,HIP 89931,पूर्वाषाढा,P Aṣāḍhā,Ap
+N20-PAsh,20,other,ε Sgr,Kaus Australis,HIP 90185,पूर्वाषाढा,P Aṣāḍhā,Ap
+N21-UAsh,21,rep,τ Sgr,Namalsadirah II,HIP 93864,उत्तराषाढा,U Aṣāḍhā,Viśvedevā
+N21-UAsh,21,other,ζ Sgr,Ascella,HIP 93506,उत्तराषाढा,U Aṣāḍhā,Viśvedevā
+N21-UAsh,21,other,σ Sgr,Nunki,HIP 92855,उत्तराषाढा,U Aṣāḍhā,Viśvedevā
+N21-UAsh,21,other,φ Sgr,Namalsadirah I,HIP 92041,उत्तराषाढा,U Aṣāḍhā,Viśvedevā
+N22-Shr,22,rep,α Aql,Altair,HIP 97649,श्रवण,Śravaṇa,Viṣṇu
+N22-Shr,22,other,β Aql,Alshain,HIP 98036,श्रवण,Śravaṇa,Viṣṇu
+N22-Shr,22,other,γ Aql,Tarazed,HIP 97278,श्रवण,Śravaṇa,Viṣṇu
+N23-Dha,23,rep,β Del,Rotanev,HIP 101769,धनिष्ठा,Dhaniṣṭhā,Vasu
+N23-Dha,23,other,α Del,Sualocin,HIP 101958,धनिष्ठा,Dhaniṣṭhā,Vasu
+N23-Dha,23,other,γ2 Del,Al Salib,HIP 102532,धनिष्ठा,Dhaniṣṭhā,Vasu
+N23-Dha,23,other,δ Del,Al Ukud,HIP 102281,धनिष्ठा,Dhaniṣṭhā,Vasu
+N24-Sha,24,rep,λ Aqr,Hydor,HIP 112961,शतभिषक्,Śatabhiṣak,Varuṇa
+N25-PBha,25,rep,α Peg,Markab,HIP 113963,पूर्वाभाद्रपदा,P Proṣṭapada,Aja
+N25-PBha,25,other,β Peg,Scheat,HIP 113881,पूर्वाभाद्रपदा,P Proṣṭapada,Aja
+N26-UBha,26,rep,λ Peg,Sadalnazi,HIP 112440,उत्तराभाद्रपदा,U Proṣṭapada,Ahirbudhnya
+N26-UBha,26,other,γ Peg,Algenib,HIP 1067,उत्तराभाद्रपदा,U Proṣṭapada,Ahirbudhnya
+N27-Rev,27,rep,ε Psc,epsPsc,HIP 4906,रेवती,Revatī,Pūṣan

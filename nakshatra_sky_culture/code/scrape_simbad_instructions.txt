@@ -1,0 +1,251 @@
+http://www-kpno.kpno.noao.edu/Info/Caches/Catalogs/BSC5/catalog5.html
+
+http://simbad.u-strasbg.fr/simbad/sim-tap
+-- Display basic data about objects contained in a given circle and whose mag B < 9.0.
+SELECT basic.OID
+  , V
+  , RA 
+  , DEC
+  , main_id AS "Main identifier"
+  , otype_longname
+--  , V as mag
+--  , oidbibref
+  -- , allfluxes.oidref
+-- , Title
+FROM basic 
+  , allfluxes
+--  , otypedef
+--  , has_ref
+--  , ref
+where 
+  V < 6
+  and ( dec > -30 and dec < 30 )
+--  and ( basic.otype = otypedef.otype )
+--  and sp_bibcode = bibcode
+and allfluxes.oidref = basic.oid
+--  and has_ref.oidref = basic.oid
+--  and has_ref.oidbibref = ref.oidbib
+-- WHERE filter = 'B'
+      -- AND flux < 9.0
+      -- AND CONTAINS(POINT('ICRS', RA, DEC), CIRCLE('ICRS', 10, 5, 1)) = 1
+ORDER BY RA;
+
+  -- JOIN allfluxes ON allfluxes.oidref = basic.oid 
+  -- JOIN has_ref on has_ref.oidref = basic.oid 
+  -- JOIN ref on has_ref.oidbibref = ref.oidbib
+       --,Title
+--       ,coo_bibcode AS "BiblioReference",
+--       nbref AS "NbReferences",
+--       plx_value as "Parallax",
+--       rvz_radvel as "Radial velocity",
+--       galdim_majaxis,
+--       galdim_minaxis,
+--       galdim_angle AS "Galaxy ellipse angle"
+
+
+http://simbad.u-strasbg.fr/simbad/sim-tap
+SELECT basic.OID top 100
+  , V
+  , RA 
+  , DEC
+  , main_id AS "Main identifier"
+  , ids
+FROM basic 
+  , allfluxes
+  , ids
+
+where 
+  V < 6
+  and ( dec > -30 and dec < 30 )
+  and allfluxes.oidref = basic.oid
+  and ids.oidref = basic.oid
+  -- and (ident.id like '%NAME%' or ident.id like '%HIP%')
+order by
+  V
+
+
+
+SELECT basic.OID
+  , V
+  , RA 
+  , DEC
+  , main_id AS "Main identifier"
+  , ids
+
+FROM basic 
+  , allfluxes
+  , ids
+
+where 
+  V < 6
+  and ( dec > -40 and dec < 40 )
+  and allfluxes.oidref = basic.oid
+  and ids.oidref = basic.oid
+  and (
+ ids like '%Hamal%'
+ or ids like '%Bharani%'
+ or ids like '%Alcyone%'
+ or ids like '%Aldebaran%'
+ or ids like '%Meissa%'
+ or ids like '%Betelgeuse%'
+ or ids like '%Pollux%'
+ or ids like '%Asellus Australis%'
+ or ids like '%Minazal%'
+ or ids like '%Regulus%'
+ or ids like '%Zosma%'
+ or ids like '%Denebola%'
+ or ids like '%Algorab%'
+ or ids like '%Spica%'
+ or ids like '%Arcturus%'
+ or ids like '%Zubenelgenubi%'
+ or ids like '%Dschubba%'
+ or ids like '%Antares%'
+ or ids like '%Shaula%'
+ or ids like '%Kaus Australis%'
+ or ids like '%Nunki%'
+ or ids like '%Altair%'
+ or ids like '%Sualocin%'
+ or ids like '%Sadachbia%'
+ or ids like '%Markab%'
+ or ids like '%Alpheratz%'
+ or ids like '%Alrescha%'
+ or ids like '%Vega%'
+    
+ or ids like '%HIP   9884%'
+ or ids like '%HIP  13209%'
+ or ids like '%HIP  17702%'
+ or ids like '%HIP  21421%'
+ or ids like '%HIP  26207%'
+ or ids like '%HIP  27989%'
+ or ids like '%HIP  37826%'
+ or ids like '%HIP  42911%'
+ or ids like '%HIP  43813%'
+ or ids like '%HIP  49669%'
+ or ids like '%HIP  54872%'
+ or ids like '%HIP  57632%'
+ or ids like '%HIP  60965%'
+ or ids like '%HIP  65474%'
+ or ids like '%HIP  69673%'
+ or ids like '%HIP  72622%'
+ or ids like '%HIP  78401%'
+ or ids like '%HIP  80763%'
+ or ids like '%HIP  85927%'
+ or ids like '%HIP  90185%'
+ or ids like '%HIP  92855%'
+ or ids like '%HIP  97649%'
+ or ids like '%HIP 101958%'
+ or ids like '%HIP 110395%'
+ or ids like '%HIP 113963%'
+ or ids like '%HIP    677%'
+ or ids like '%HIP   9487%'
+ or ids like '%HIP  91262%'
+ 
+ 
+  )
+order by RA
+
+
+
+
+SELECT basic.OID
+  , main_id 
+  , V 
+  , RA 
+  , DEC
+  , ids
+FROM basic 
+  , allfluxes
+  , ids
+where 
+  1=1
+  --and V < 6
+  --and ( dec > -40 and dec < 40 )
+  and allfluxes.oidref = basic.oid
+  and ids.oidref = basic.oid
+  and (
+    1 =0 
+    or main_id like '*  17 Tau'
+    or main_id like '* q Tau'
+    or main_id like '*  20 Tau'
+    or main_id like '*  23 Tau'
+    or main_id like '*  27 Tau'
+    or main_id like '*  28 Tau'
+    or main_id like '*  31 Ari'
+    or main_id like '*  35 Ari'
+    or main_id like '*  41 Ari'
+    or main_id like '*  93 Leo'
+    or main_id like '* alf And'
+    or main_id like '* alf Aql'
+    or main_id like '* alf Ari'
+    or main_id like '* alf Boo'
+    or main_id like '* alf Crv'
+    or main_id like '* alf Del'
+    or main_id like '* alf Gem'
+    or main_id like '* alf Leo'
+    or main_id like '* alf Lib'
+    or main_id like '* alf Lyr'
+    or main_id like '* alf Ori'
+    or main_id like '* alf Peg'
+    or main_id like '* alf Psc'
+    or main_id like '* alf Sco'
+    or main_id like '* alf Tau'
+    or main_id like '* alf Vir'
+    or main_id like '* bet Aql'
+    or main_id like '* bet Ari'
+    or main_id like '* bet Crv'
+    or main_id like '* bet Del'
+    or main_id like '* bet Gem'
+    or main_id like '* bet Leo'
+    or main_id like '* bet Peg'
+    or main_id like '* bet Sco'
+    or main_id like '* del Cnc'
+    or main_id like '* del Crv'
+    or main_id like '* del Del'
+    or main_id like '* del Hya'
+    or main_id like '* del Leo'
+    or main_id like '* del Sco'
+    or main_id like '* del Sgr'
+    or main_id like '* del Tau'
+    or main_id like '* eps Crv'
+    or main_id like '* eps Del'
+    or main_id like '* eps Hya'
+    or main_id like '* eps Leo'
+    or main_id like '* eps01 Lyr'
+    or main_id like '* eps Sgr'
+    or main_id like '* eps Tau'
+    or main_id like '* eta Hya'
+    or main_id like '* eta Leo'
+    or main_id like '* eta Tau'
+    or main_id like '* gam Aql'
+    or main_id like '* gam Aqr'
+    or main_id like '* gam Crv'
+    or main_id like '* gam Del'
+    or main_id like '* gam Leo'
+    or main_id like '* gam Ori'
+    or main_id like '* gam Peg'
+    or main_id like '* gam02 Sgr'
+    or main_id like '* gam Tau'
+    or main_id like '* kap Aqr'
+    or main_id like '* lam Aqr'
+    or main_id like '* lam Ori'
+    or main_id like '* lam Sco'
+    or main_id like '* lam Sgr'
+    or main_id like '* mu. Leo'
+    or main_id like '* ome Sco'
+    or main_id like '* phi01 Ori'
+    or main_id like '* phi Sgr'
+    or main_id like '* pi. Sco'
+    or main_id like '* rho Hya'
+    or main_id like '* sig Hya'
+    or main_id like '* sig Sgr'
+    or main_id like '* tau Sgr'
+    or main_id like '* tet Leo'
+    or main_id like '* tet Sco'
+    or main_id like '* tet02 Tau'
+    or main_id like '* zet Hya'
+    or main_id like '* zet Leo'
+    or main_id like '* zet01 Lyr'
+    or main_id like '* zet Sgr'
+)
+order by main_id
+

@@ -1,0 +1,27 @@
+Scraped Data , Code to generate bharat_sky_culture files for stellarium and some videos/png
+Has useful info, need to be better organized.
+
+## Different versions of Indic Skyculture - can be dropped in /Applications/Stellarium.app/Contents/Resources/skycultures
+bharat_sky_culture
+vedic_sky_culture
+vvasuki_sky_culture
+
+# Contains a perl script to generate constellations.fab with 27 nakshatras
+code
+├── make_constellationship_fab.pl 
+└── scrape_simbad_instructions.txt
+
+# contains various scrapes for 27 nakshatras abd 82 taras - needs to be harmonized to one easy to reason csv
+data
+├── 82n.csv
+├── 82taras_of_nakshatras.csv
+├── bright_star_catalog.csv
+├── pt_nakshatra_info.csv
+├── stars_mag6_within_30_declination.csv
+└── yoga_taras.csv
+
+# some animations
+movie
+
+# stellarium snapshot of 27 nakshatras based on bharat_sky_culture
+nakshatra_pngs

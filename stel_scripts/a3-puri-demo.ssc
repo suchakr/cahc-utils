@@ -1,0 +1,43 @@
+MarkerMgr.deleteAllMarkers()
+LabelMgr.deleteAllLabels();
+
+LandscapeMgr.setFlagAtmosphere(false);
+core.setObserverLocation("Puri, India", "Earth");
+//
+core.selectObjectByName("Moon", pointer = true);
+StelMovementMgr.setFlagTracking(true);
+StelMovementMgr.zoomTo(2, 1);
+
+for (var i = 0; i < 1; i++) {
+
+  LabelMgr.deleteAllLabels();
+  core.wait(1);
+  label = LabelMgr.labelScreen("Any guesses? - 16-Feb-1980 @ Puri ", 600, 200, false, 25, "#aa0000");
+  LabelMgr.setLabelShow(label, true);
+  core.wait(10);
+
+  LabelMgr.deleteAllLabels();
+  core.wait(1);
+  label = LabelMgr.labelScreen("Total Solar Eclipse - 16-Feb-1980 @ Puri ", 600, 200, false, 25, "#aa0000");
+  LabelMgr.setLabelShow(label, true);
+  core.wait(3);
+
+  core.setDate("1980-02-16T14:30:00", "local");
+  core.wait(3);
+  core.setTimeRate(600);
+  core.wait(20);
+  core.setTimeRate(0);
+  core.wait(2);
+
+  LabelMgr.deleteAllLabels();
+  core.wait(1);
+  label = LabelMgr.labelScreen("Lunar Eclipse on 28- Jul-2018, Puri ", 600, 200, false, 25, "#aa0000");
+  LabelMgr.setLabelShow(label, true);
+
+  core.setDate("2018-07-28T00:00:00", "local");
+  core.wait(3);
+  core.setTimeRate(600);
+  core.wait(25);
+  core.setTimeRate(0);
+  core.wait(2);
+}

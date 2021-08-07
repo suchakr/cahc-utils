@@ -1,0 +1,20 @@
+//core.setObserverLocation( -74.00, 40.71, 0, 1, "MyLocation, MyCountry", "");
+core.setObserverLocation (74.5511, 26.4897, 0, name="Pushkar" );
+core.setDate("2020-11-11T04:30:00", "utc");
+core.selectObjectByName("Moon", true);
+core.wait(1);
+LabelMgr.deleteAllLabels();
+MoonData = core.getObjectInfo("Moon");
+MoonRA = MoonData["ra"];
+MoonAlt = MoonData["altitude"];
+MoonAz = MoonData["azimuth"];
+MoonVmag = MoonData["vmag"];
+core.wait(1);
+
+//CustomObjectMgr.addCustomObjectAltAzi(".", MoonAlt, Moonazimuth, true)
+
+label = LabelMgr.labelScreen("RA = " + MoonRA + ", Altitude = " + MoonAlt + ", Magnitude = " + MoonVmag, 20, 20, false, 30, "#aa0000");
+LabelMgr.setLabelShow(label, true);
+core.debug("RA = " + MoonRA + ", Altitude = " + MoonAlt + ", Magnitude = " + MoonVmag);
+for ( k in MoonData)
+  core.debug( [k, MoonData[k]].join('\r'));

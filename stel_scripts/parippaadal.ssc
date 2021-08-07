@@ -1,0 +1,73 @@
+function say(x) { core.debug(x) }
+function hour() { return core.getDate("local").match(/T(\d+)/)[1]*1+0; }
+function minute() { return core.getDate("local").match(/T\d+.(\d+)/)[1]*1+0; }
+
+function tagObject(objid, tag, slice) {
+  core.wait(0.2);
+  var obj = core.getObjectInfo(objid, true);
+  alt = obj["altitude"]; az = obj["azimuth"]; ra = obj["ra"]; dec = obj["dec"];
+  tag = tag + Math.round(obj[slice])%360;
+  CustomObjectMgr.addCustomObjectAltAzi(tag, alt, az, true)
+  return tag;
+}
+commentary = { 
+  0 : "mars, jupiter,  saturn visible",
+  3 : "venus, mars, jupiter visible" ,
+  4 : "krittika near zenith; saturn sets; venus rises" ,
+  5 : "agastya visible @ 7alt; sun @ -7alt " ,
+  6 : "sunrise" ,
+  8 : "mercury rises ; not visible" ,
+  //10: "agastya at 27 peak alt; not visible",
+  14: "lunar eclipse starts; moon yet to rise",
+  17: "saturn rises ; not visible",
+  18: "moon rise with eclipse",
+  19: "sun sets; saturn and mercury visible",
+  20: "moon at alt ~20 as eclipse ends"
+};
+
+CustomObjectMgr.removeCustomObjects();
+core.setObserverLocation(78.1198, 9.9252, 0, name = "Madurai");
+core.setDate("0017-07-27T00:00:00", "local");
+LabelMgr.deleteAllLabels();
+msg= "Validating Paripaadal-11 for Jun-27-0017",
+label = LabelMgr.labelScreen( msg, 2000, 200, false, 20, "#00aaaa");
+LabelMgr.setLabelShow(label, true);
+
+//core.setDate("0017-07-27T14:15:00", "utc");
+HipAgastya = "HIP 30438";
+HipAlcyone = "HIP 17702";
+Almost00 = "HIP 7987";
+core.wait(5)
+
+var objs = []; ev=0;
+for (i = 0; i < 24; i++) {
+  for (x in objs) { CustomObjectMgr.removeCustomObject(objs[x]); } 
+  objs=[]
+  o = tagObject(HipAgastya, "agastya alt:", "altitude"); objs.push(o)
+  o = tagObject("Moon", "moonx10 alt:", "altitude"); objs.push(o)
+  o = tagObject(HipAlcyone, "krittika alt:", "altitude"); objs.push(o)
+  if (i == 0) {
+    tagObject(Almost00, "~0:", "elong")
+    tagObject("Venus", "venus long:", "elong")
+    tagObject("Mercury", "mercury long:", "elong")
+    tagObject("Saturn", "saturn long:", "elong")
+    tagObject("Jupiter", "jupiter long:", "elong")
+    tagObject("Mars", "mars long:", "elong")
+    tagObject("Sun", "sun long:", "elong")
+  }
+  h = hour()
+  m = minute()
+  c = commentary[h]
+  if (!c) c = "~~~~~~~~"
+  if (c && m==0) { 
+    ev++
+    say( h + ':' + c);
+    label = LabelMgr.labelScreen( '@' + h +': ' + c, 2050, 200+40*ev, false, 15, "#aaaa00");
+    LabelMgr.setLabelShow(label, true);
+    core.wait(5)
+  }
+  core.wait(2 + (i==0 ?0:0))
+  core.setDate("+30 minutes")
+}
+
+//for ( k in agastya) core.debug( [k, agastya[k]].join(' -- '))

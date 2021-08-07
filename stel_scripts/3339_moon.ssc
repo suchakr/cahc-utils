@@ -1,0 +1,58 @@
+//core.setObserverLocation( -74.00, 40.71, 0, 1, "MyLocation, MyCountry", "");
+CustomObjectMgr.removeCustomObjects()
+LabelMgr.deleteAllLabels();
+//core.setMountMode("azimuthal");core.wait(.1);
+//core.clear("natural");core.wait(.1);
+STEP = 1
+core.setObserverLocation(74.5511, 26.4897, 0, name = "Pushkar");
+core.setDate("2018-11-11T10:05:00", "local");
+core.setDate("2033-05-12T13:38:07", "local");
+core.setDate("2033-05-14T11:11:11", "local");
+for ( _s = 0; _s < STEP ; _s++)  core.setDate("- 1.034 days"); 
+core.wait(0.05)
+
+core.selectObjectByName("Moon", true);  core.wait(0.05)
+
+prev_phase = MoonData["phase"]
+prev_paksha = ''
+
+//for ( k in MoonData) core.debug( [k, MoonData[k]].join(' : '));
+
+
+if (1)
+for (d = 0; d < 7000; d += STEP) {
+  for ( _s = 0; _s < STEP ; _s++)  core.setDate("+ 1.034 days"); 
+  core.wait(0.05)
+  dj = core.getJDay()
+  dt = core.getDate("local")
+  MoonData = core.getObjectInfo("Moon");
+  core.wait(0.05);
+
+  //MoonRA = MoonData["ra"];
+  //MoonAlt = MoonData["altitude"];
+  MoonAz = MoonData["azimuth"];
+  //MoonVmag = MoonData["vmag"];
+  MoonPhase = MoonData["phase"]
+
+  paksha = MoonPhase > prev_phase ? "Shukla" : "Krishna"
+  core.debug([dt, dj, MoonAz, prev_phase , MoonPhase, paksha].join("\t"));
+
+  if ( prev_paksha != paksha) {
+    LabelMgr.deleteAllLabels();
+    label = LabelMgr.labelScreen([(d/700).toFixed(2)+'%',paksha,d,dt /*, prev_phase, MoonPhase, dt*/ ].join("~~"), 650, 600, false, 20, "#aa0000");
+    LabelMgr.setLabelShow(label, true);
+    prev_paksha = paksha
+    core.wait(0.1)
+  }
+  prev_phase = MoonPhase
+
+}
+
+//CustomObjectMgr.addCustomObjectAltAzi(".", MoonAlt, Moonazimuth, true)
+/*
+label = LabelMgr.labelScreen("RA = " + MoonRA + ", Altitude = " + MoonAlt + ", Magnitude = " + MoonVmag, 20, 20, false, 30, "#aa0000");
+LabelMgr.setLabelShow(label, true);
+core.debug("RA = " + MoonRA + ", Altitude = " + MoonAlt + ", Magnitude = " + MoonVmag);
+for ( k in MoonData)
+  core.debug( [k, MoonData[k]].join('\r'));
+  */

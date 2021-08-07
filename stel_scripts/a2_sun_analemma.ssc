@@ -1,0 +1,124 @@
+function tr(str) { return core.translate(str); }
+
+MarkerMgr.deleteAllMarkers()
+// core.setObserverLocation( "Bengaluru, India", "Earth");
+core.wait(.1);
+
+// core.setMountMode("azimuthal");core.wait(.1);
+core.clear("natural"); core.wait(.1);
+
+
+LabelMgr.deleteAllLabels();
+
+ConstellationMgr.setFlagArt(false);
+ConstellationMgr.setFlagBoundaries(false);
+ConstellationMgr.setFlagLines(false);
+ConstellationMgr.setFlagLabels(false);
+
+GridLinesMgr.setFlagEquatorGrid(false);
+GridLinesMgr.setFlagAzimuthalGrid(false);
+GridLinesMgr.setFlagEclipticLine(false);
+GridLinesMgr.setFlagEquatorLine(false);
+GridLinesMgr.setFlagHorizonLine(true);
+
+
+StelMovementMgr.setFlagTracking(true);
+
+core.setGuiVisible(true);
+
+NebulaMgr.setFlagHints(false);
+
+StelSkyDrawer.setFlagStarMagnitudeLimit(true);
+StelSkyDrawer.setFlagNebulaMagnitudeLimit(true);
+StelSkyDrawer.setCustomStarMagnitudeLimit(4.5);
+StelSkyDrawer.setCustomNebulaMagnitudeLimit(4.5);
+
+// StarMgr.setLabelsAmount(2);
+// StarMgr.setFlagLabels(true);
+
+SolarSystem.setLabelsAmount(4);
+SolarSystem.setFlagLabels(false);
+
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagFog(false);
+
+
+
+// core.selectObjectByName("Sun", true); core.wait(.1);
+
+core.selectObjectByName("Sun", true);
+StelMovementMgr.setFlagTracking(true);
+// StelMovementMgr.autoZoomIn(3);
+// core.wait(5);
+StelMovementMgr.zoomTo(80, 1);
+core.wait(2);
+// GridLinesMgr.setFlagAzimuthalGrid(true);
+// GridLinesMgr.setFlagMeridianLine(true);
+// StelMovementMgr.zoomTo(200, 3);
+// core.wait(5);
+
+//MarkerMgr.deleteAllMarkers()
+// label2 = LabelMgr.labelScreen( " Summer Solstice" ,800, 750, true, 30, "#00ffff");
+
+for (locn = 0; locn < 3; locn++) {
+	var color;
+	if (locn == 0) {
+		color = '#00ffff';
+		core.setObserverLocation("Ujjain, India", "Earth");
+		core.setDate("2018-10-14T06:15:00", "local");
+	}
+	if (locn == 1) {
+		color = '#ffff00';
+		core.setObserverLocation("Singapore, Singapore", "Earth");
+		// core.setObserverLocation(0, 40, 1, 1, .1, "Earth");
+		core.setDate("2018-10-14T06:15:00", "local");
+	}
+	if (locn == 2) {
+		color = '#ff00ff';
+		core.setObserverLocation("Windhoek, Namibia", "Earth");
+		// core.setObserverLocation(0, 40, 1, 1, .1, "Earth");
+		core.setDate("2018-10-14T06:15:00", "local");
+	}
+	var labelWinter = false
+	var labelSummer = false
+	var eq1 = false
+	var eq2 = false
+	var azs = []
+	for (i = 0; i < 60; i++) {
+		var week = i + 1;
+		core.setDate("+1 week");
+		var info = core.getObjectInfo("Sun");
+		var az = info.azimuth;
+		azs.push(az)
+		var alt = info.altitude;
+		_eq1 =  (Math.round(info.elong) < 180) && (Math.round(info.elong) > 175) 
+		_eq2 =  (Math.round(info.elong) > 355) || (Math.round(info.elong) < 0)
+		_sl1 =  (Math.round(info.elong) < 90) && (Math.round(info.elong) > 80) 
+		_sl2 =  (Math.round(info.elong) < 270) && (Math.round(info.elong) > 260) 
+		eq1 = eq1 || _eq1
+		eq2 = eq2 || _eq2
+		MarkerMgr.markerHorizon(az, alt, true, "gear", color, 5 + ((_eq1 || _eq2 || _sl1 || _sl2) ? 10 : 0));
+		l = azs.length
+		labelWeek = LabelMgr.labelScreen(
+			[
+				tr("Week")+" " + week 
+				// , Math.round(info.elong) , Math.round(info.elat)
+				// , _eq1, _eq2
+				// , eq1, eq2
+				// // ,l, azs[l-1] , azs[l-2], azs[l-3]
+				// ,l, (azs[l-1] > azs[l-2])
+			].join(" - ")  
+			,280, 260, false, 20, color);
+		LabelMgr.setLabelShow(labelWeek, true);
+		core.wait(.20);
+		LabelMgr.setLabelShow(labelWeek, false);
+		// if ((azs.length >2)  && (azs[l-2] > azs[l-1]) && (azs[l-2] > azs[l-3]) && !labelWinter) {
+		// 	labelWinter = LabelMgr.labelHorizon(tr("Near winter solstice"), az, alt + 5, true, 14, color);
+		// }
+		// if ((azs.length >2)  && (azs[l-2] < azs[l-1]) && (azs[l-2] < azs[l-3]) && !labelSummer) {
+		// 	labelSummer = LabelMgr.labelHorizon(tr("Near summer solstice"), az, alt + 5, true, 14, color);
+		// }
+	}
+	core.wait(3)
+}

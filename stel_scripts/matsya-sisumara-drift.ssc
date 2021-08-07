@@ -1,0 +1,53 @@
+include("nakshatras.inc");
+
+MarkerMgr.deleteAllMarkers()
+LabelMgr.deleteAllLabels();
+{
+  core.setObserverLocation("Kurukshetra, India", "Earth");
+  var label=LabelMgr.labelScreen(["Kurukshetra, India"].join("-"), 700, 200, true, 20, "#00F0FF");
+  //core.wait(1); LabelMgr.deleteLabel(label); core.wait(1);
+}
+function to_hexa(d) { 
+	hd='0123456789ABCDEF'
+	return [hd[Math.floor(d/16)] , hd[(d%16)]].join('') 
+};
+var tk = new TimeKeeper()
+var tk2 = new TimeKeeper()
+
+var $JD_BCE_2500 = 808297.5364471667
+//$JD_0 - 1500*365.25 + 6.5/24
+
+for ( var n = -10 ;  n <= 44; n++)  {
+   core.output( "nid ======== " + n + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
+   core.wait(.1)
+   tk2 = new TimeKeeper()
+   var jd = $JD_BCE_2500 + n*365.25*100 - 6.5/24
+   JD(jd) 
+   oi=core.getObjectInfo("HIP11767") // track modern dhruva
+   W(.1)
+//    ddump(oi, true)
+   az = oi.azimuth
+   alt = oi.altitude
+   elon = oi.elong
+   lon = Math.ceil(255*elon/90)
+   lon_color = '#' + to_hexa(Math.ceil(lon)) + '0F0F' 
+   say([elon, lon ,lon_color].join(" -- "))
+//    MarkerMgr.markerHorizon(az, alt, true, "circle", lon_color , 4 );
+
+   oi=core.getObjectInfo("HIP68756") // track modern dhruva
+   W(.1)
+//    ddump(oi, true)
+   az = oi.azimuth
+   alt = oi.altitude
+   elon = oi.elong
+   lon = Math.ceil(255*(90-elon)/90)
+   lon_color = '#OF' + to_hexa(Math.ceil(lon)) + '0F' 
+   say([elon, lon ,lon_color].join(" ** "))
+//    MarkerMgr.markerHorizon(az, alt, true, "circle", lon_color , 4 );
+//    MarkerMgr.markerHorizon(az, alt, true, "circle", '#F0FF0F', 4 );
+//    say([az, alt].join(" = "))
+   // GetP27LatLong($JD_0 - (2500 -n*50 -1)*365.25, 0, 1)
+   //GetNaksLatLonSimple ($N27Feb24, $JD_0 - (1400 -n*10 -1)*365.25)
+   //GetNaksLatLonSimple($NAbhyankar, $JD_0 - (2500 -n*50 -1)*365.25+3/(24*60) -9/(24*60*60))
+   // GetNaksLatLonSimple($NAbhyankar, $JD_BCE_2500 + n*50 *365.25)
+}

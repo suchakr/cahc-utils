@@ -1,0 +1,56 @@
+मात्रा rules for ऋग्वेदमन्त्राः
+
+This is how swaras (pitches) are indicated
+
+low pitch व॒,
+medium pitch व,
+high pitch व॑
+
+Rules
+
+एकमात्राक्षराणि - ग्नि, पु॒, हि॑, स्य॑, व, त्वि, त्न॒, त॑
+All short vowels, viz. अ, इ, उ, ऋ
+All consonants with short vowels (ह्रस्वक्षराणि) in any pitch - low pitch (पु॒), medium pitch (व) or high pitch (हि॑)
+Provided there is no double consonant/संयुक्ताक्षरं after it.
+
+द्विमात्राक्षराणि - has 2 types
+Low & medium pitch long vowel letters (दीर्घाक्षराणि) - ळे, रो, तं, दे॒, हो, धा, मम्
+Low & medium pitch short vowel letters (ह्रस्वक्षराणि) but with a double consonant (संयुक्ताक्षं) next to it - अ॒, य॒, ज्ञ, मृ॒, र
+Single । and double stops ॥ (विरामः)
+
+त्रिमात्राक्षराणि - none in this example
+Will add this logic later as they are rarer occurances
+
+चतुर्मात्राक्षराणि - मी॑, ज॑म्, ता॑
+All high pitch long vowels (दीर्घस्वरितम्)
+
+Example RV 1-1-1
+
+अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म् । होता॑रं रत्न॒धात॑मम् ॥
+
+अक्षरा	मात्रा
+अ॒	2
+ग्नि	1
+मी	4
+ळे	2
+पु	1
+रो	2
+हि॑	1
+तं	2
+य॒ज्ञ	2
+स्य॑	1
+दे॒	2
+व	1
+मृ॒	2
+त्वि	1
+ज॑म्	4
+।	2
+हो	2
+ता॑	4
+रं	2
+र	2
+त्न॒	1
+धा	2
+त॑	1
+मम्	2
+॥	1

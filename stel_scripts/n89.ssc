@@ -1,0 +1,7 @@
+// utility to get lat long ra dec of 89 taras for -1440, -500 +500
+// for Suds
+include("nakshatras.inc");
+
+GetN89LatLong($JD_0 - 3400*365, 1000, 3)
+GetN89LatLong($JD_0 - 2500*365, 1000, 3)
+GetN89LatLong($JD_0 - 1500*365, 1000, 3)

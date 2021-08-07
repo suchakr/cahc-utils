@@ -1,0 +1,248 @@
+// Stellarium Script to generate DB of Nakshatras properties 
+//   at Pushkar
+//   from 1200-12-21 to -3200-12-21 in 100 year steps 
+
+// To Run.  
+// 1. Open Stellarium.  
+// 2. Press F12 to open Script window
+// 3. Select and copy all of the program( Ctl-A , Ctl-C )
+// 4. In Stellarium Script Tab of script window, paste the program ( Ctl-V)
+// 5. Press the Run button ( top right)
+// 6. Check the Output tab
+// 7. Select all contents of Output tab and copy ( Rt Click SelectALL and Copy)
+// 8. Paste output in a text editor
+// 9. Substitute __NL__ with newlines  ( \n or \r)
+
+//------------------------------------------------------------------------------------
+//some configs
+var TEST_RUN = false;
+var ALL_ATTRS = false;
+var WAITEVERY = 10;
+
+var DESIRED_ATTRS ={
+  'above-horizon':1,
+  'ra':1,
+  'dec':1,
+  'raJ2000':1,
+  'decJ2000':1,
+  'glat':1,
+  'glong':1,
+  'sglat':1,
+  'sglong':1,
+  'elatJ2000':1,
+  'elongJ2000':1,
+  'elat':1,
+  'elong':1,
+  'altitude':1,
+  'azimuth':1,
+
+  'name':0,
+  'localized-name':0,
+  'rise':0,
+  'set':0,
+  'rise-dhr':0,
+  'set-dhr':0,
+  'absolute-mag':0,
+  'altitude-geometric':0,
+  'azimuth-geometric':0,
+  'bV':0,
+  'distance-ly':0,
+  'found':0,
+  'parallax':0,
+  'size':0,
+  'size-dd':0,
+  'size-deg':0,
+  'size-dms':0,
+  'spectral-class':0,
+  'star-type':0,
+  'transit':0,
+  'transit-dhr':0,
+  'type':0,
+  'variable-star':0,
+  'vmag':0,
+  'vmage':0,
+} 
+;
+
+//------------------------------------------------------------------------------------
+//For efficient output - accumulate info and core.output in batches
+var CACHE = [];
+function flushCache() {
+      if (0 && TEST_RUN)
+        for (l in CACHE) core.output(CACHE[l]); // super slow, for small CACHE only as when in TEST_RUN
+      else {
+        core.output(CACHE.join("\n"));  // fast .. post porcess ouput s/__NL__\s*/\n/g 
+        core.wait(2);
+      }
+      CACHE = [];
+}
+function dumpObj(tag, o) {
+  var attr_num = 0;
+  for (k in  ALL_ATTRS ? o : DESIRED_ATTRS ) { 
+  //for (k in DESIRED_ATTRS ) {}
+    if ( ALL_ATTRS || ( k in DESIRED_ATTRS && DESIRED_ATTRS[k])) {
+      ++attr_num;
+      var attr_str = 'A' + (attr_num <= 9 ? '0' : '') + attr_num + '_' + k;
+      var val = o[k];
+      if ( val === true || val == 'true' ) val = 1;
+      if ( val === false || val == 'false' ) val = 0;
+      CACHE.push ( [ "__NL__" , tag, attr_str, val].join("\t"));
+    }
+    if (CACHE.length > 10000) {
+      flushCache();
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------
+// Some utils
+function toDMS(v) {
+  var deg = Math.floor(v); v -= deg;
+  v *= 60; var min = Math.floor(v); v -= min;
+  v *= 60; var sec = Math.floor(v); 
+  return deg +'°' + min +"'" + sec + '"';
+}
+//core.output(toDMS(1 + 30/60 + 12/3600));
+
+function toHMS(v) { // todo
+  core.output(v);
+  var hr = Math.floor(v*24/360); v -= hr*360/24;
+  core.output(v);
+  var min = Math.floor(v*12/60); v -= min*60/12;
+  core.output(v);
+  var sec = Math.floor(v*12/60); 
+  return hr +'h ' + min +"m " + sec + 's ';
+}
+
+function y4 (y) {
+  neg = ''; pad = '';
+  if ( y < 0) { y=-y; neg = '-' ;}
+  if ( y <= 9 ) { pad = '000' }
+  else if ( y <= 99 ) { pad = '00'}
+  else if ( y <=  999) { pad = "0" }
+  else pad ='';
+  return neg + pad + y;
+}
+//core.output(toHMS(186.866))
+//core.output(toHMS((2 + 34/60 + 56/3600)*360/24 )
+
+/*
+v = (h + m/60 +s/3600)*360/24
+h = int(v*24/360)
+v -= h;
+v = (m/60 +s/3600)*360/24
+m = v*24/6 - s/60
+*/
+
+//------------------------------------------------------------------------------------
+// Main flow
+
+//  The  नक्षत्रम्,राशिः,Star mapping provided by Sudarshan
+//  The HIPId added by Sunder
+
+core.resetOutput();
+var NAKSHATRA_LIST = [  
+//'#,नक्षत्रम्,राशिः,Star,HIPId',
+'N01,अश्विनी,मेषः,Hamal,9884,Ashwini',
+'N02,भरणी,मेषः,Bharani,13209,Bharani',
+'N03,कृत्तिका,वृषभः,Alcyone,17702,Krittika',
+'N04,रोहिणी,वृषभः,Aldebaran,21421,Rohini',
+'N05,मृगशीर्षा,मिथुनः,Meissa,26207,Mrigashirisham',
+'N06,आर्द्रा,मिथुनः,Betelgeuse,27989,Thiruvadarai',
+'N07,पुनर्वसू (द्वि),मिथुनः,Pollux,37826,Punarpasu',
+'N08,पुष्या;तिष्या,कर्कः,Asellus Australis,42911,Pushyam',
+//'N09,आश्लेषा,कर्कः,Minchir,42402,Ayilyam',
+'N09,आश्लेषा,कर्कः,Minazal V,43813,Ayilyam',
+'N10,मघा,सिंहः,Regulus,49669,Makam',
+'N11,पूर्वफल्गुनी,सिंहः,Zozma,54872,Pooram',
+//'N12,उत्तरफल्गुनी,कन्या,Zozma,54872,Uttiram',
+'N12,उत्तरफल्गुनी,कन्या,Cheratan,54879,Uttiram',
+'N13,हस्ता,कन्या,Algorab,60965,Hastam',
+'N14,चित्रा,कन्या,Spica,65474,Chitrai',
+'N15,स्वाती,तुला,Arcturus,69673,Swati',
+'N16,विशाखा,तुला,Zubenelgenubi,72603,Vishakam',
+'N17,अनुराधा,वृश्चिका,Dschubba,78401,Anusham',
+'N18,ज्येष्ठा,वृश्चिका,Antares,80763,Kettai',
+'N19,मूला,धनुः,Shaula,85927,Moolam',
+'N20,पूर्व्वाषाढा,धनुः,Kaus Australis,90185,Pooradam',
+'N21,उत्तराषाढा,धनुः,Nunki,92855,Uttiradam',
+'N22,श्रवणा,मकरः,Altair,97649,Thiruvonam',
+//'N23,धनिष्ठा,मकरः,Fomalhaut,113368,Avittam',
+'N23,धनिष्ठा,मकरः,Sualocin,101958,Avittam',
+'N24,शतभिषक्,कुम्भः,Situla,111710,Shatayam',
+'N25,पूर्वभाद्रपदा,कुम्भः,Markab,113963,Poorattadi',
+'N26,उत्तरभाद्रपदा,मीना,Alpheratz,677,Uttiratadi',
+'N27,रेवती,मीना,Alrischa,9487,Revati',
+'N28,अभिजित्,मकरः,Vega,91262,Abhijit',
+'N29,उत्तरा,,Denebola,57632,Uttara',
+];
+
+var nakshatras =[];
+for ( i in NAKSHATRA_LIST) {
+  var items = NAKSHATRA_LIST[i].split(/,/);
+  var nid = items[0];
+  var tara = items[1];
+  var rasi = items[2];
+  var star = items[3];
+  var hip= items[4];
+  var naks = items[5];
+
+  nakshatras.push( { nid:nid, tara: tara, rasi: rasi, star: star, hip:hip, naks:naks } );
+}
+
+//core.saveOutputAs("/Users/sunder.chakravarty/stellarium/s27db.txt");  
+//  above does not work sadly - so one has to copy the output buffer
+
+core.setObserverLocation (74.5511, 26.4897, 0, name="Pushkar" );
+locationMap=core.getObserverLocationInfo();
+//dumpObj("Locn", locationMap);
+WAITEVERY = WAITEVERY < 1 ? 1 : WAITEVERY;
+
+{
+  var label=LabelMgr.labelScreen(['Starting', 'now....'].join("-"), 900, 200, true, 30, "#00F0FF");
+  core.wait(1);
+  LabelMgr.deleteLabel(label);
+  core.wait(1);
+}
+
+var iter=0;
+for ( n in nakshatras) {
+  if ( TEST_RUN && n > 2) break;
+  var nid  = nakshatras[n].nid;
+  if (!( nid == 'N15')) continue;
+  var star  = nakshatras[n].star; //west
+  var tara = nakshatras[n].tara;  //sanskrit devnagari
+  var naks = nakshatras[n].naks;  //tamil roman
+  var hip  = nakshatras[n].hip;
+
+  var year = 1300;
+  var dateStr = year+"-12-21T23:59:59";
+  core.setDate( dateStr, "utc");
+  //for (yyyy = 12-12; yyyy > -36-12; yyyy -= 1 ) {}
+  for (yyyy = 0; yyyy > -2400; yyyy -= 1 ) {
+    core.setDate( y4(year +1*(yyyy-1)) + "-12-21T23:59:59", "utc");
+    var date = core.getDate("utc");
+    var hip_id = "HIP " + hip;
+    //core.setDate("-100 years");
+    core.selectObjectByName(hip_id);
+    core.wait(0.5);
+    obj=core.getObjectInfo(hip_id);
+    var info = [Date(), ++iter, nid, star, naks,date ].join(" @ ");
+    var label=LabelMgr.labelScreen(info, 200, 100, true, 20, "#00F0FF");
+    if ( yyyy == 0 ) core.debug(info);
+    if ( (yyyy % 10) == 0 ) core.debug(info);
+    var year_num=date.match(/^\-?\d+/)
+
+    //dumpObj( [nid, [nid,naks].join("-"), [nid,star].join("-"), hip, date ].join("\t"), obj);
+    //dumpObj( [nid, [nid,tara].join("-"), [nid,star].join("-"), [nid,naks].join("-"), [nid,tara,star,hip].join("-"), hip, year_num, date ].join("\t"), obj);
+    dumpObj( [nid, [nid,tara,star,hip].join(" - "), hip, year_num ].join("\t"), obj);
+    if ( (iter % WAITEVERY) == (WAITEVERY-1)) core.wait(1);
+    LabelMgr.deleteLabel(label);
+    if ( TEST_RUN && yyyy < -1 ) break;
+  }
+  core.wait(1);
+}
+
+// flush the CACHE finally for any remaining elements
+flushCache();
+core.saveOutputAs("NaksDump.txt");  

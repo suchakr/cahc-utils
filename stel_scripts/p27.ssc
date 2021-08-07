@@ -1,0 +1,72 @@
+/*
+Dear Sundar,
+I need some data and an  error result on stars as follows. Please see if you have time to spend on this. If you are busy I understand fully and do not hesitate to say so.
+
+1. 27 stars mentioned in column 4 of the attached sheet are considered. 
+  Please make the following changes. 
+  N0.9 aslesha = zeta hydrae. 
+  20. P.ashadha= lambda-sagittari, 
+  21. U.ashadha= tau sagittari
+
+2. Longitudes for 2500BCE are found (stellarium) for all the 27.  [Column 1]
+
+3. Longitudes for every 50 years using the formula  
+    1 degree per 71.6 years. 
+    Or the longitudes can be extracted from Stellarium 
+    till 500 AD at 50 year interval.   Columns [2,3….61]
+
+4. An error column of 27 values are generated for each of the 61 columns
+
+5. Error is the difference between each data and the corresponding longitude 
+   in my PT book
+
+   Figure attached .  
+   For example Ashvini will be 336-40, (=336.666)  
+   bharani=350….,β-delphini=270 etc. all in degrees.
+
+6. There will be 61 error columns, 
+   each with 27 error (e1 to e27) entries.  
+   For each column, 
+   that is at every 50 year interval starting from 2500BCE, 
+   the mean square error is computed; summation on all 27
+  m.s.e= [ Σe­i2]/27
+
+7. There will be 61 numbers chronologically. 
+   A plot of this error vs years is the final result.
+
+If I get a pattern that seem to exist, I like to refine this
+
+All the best
+
+RNI
+*/
+
+include("nakshatras.inc");
+
+core.setObserverLocation("Kurukshetra, India", "Earth");
+
+var tk = new TimeKeeper()
+var tk2 = new TimeKeeper()
+
+var $JD_BCE_500 = $JD_0 - 1500*365.25 + 6.5/24
+var NUMDAYS = 365.25*100  
+var STEP = 7
+for ( var n = 0;  n <= NUMDAYS; n+=STEP)  {
+   if ( (n % (STEP*10)) == 0) {
+   // say( "gid ======== " + n + " of " + NUMDAYS + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds") 
+   var pct = n*100/NUMDAYS
+   core.output( "gid == " + pct.toFixed(2) + "%:" + n + " of " + NUMDAYS + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds") 
+   tk2 = new TimeKeeper()
+   }
+   var printHeader = n == 0
+   GetGruhaLatLonSimple ($GRUHAS_MARS, $JD_BCE_500 + n, printHeader )
+}
+
+// GetGruhasLatLong($JD_0, 5, 365*2/5)
+for ( var n = 0;  n <= 5; n++)  {
+   core.debug( "nid ======== " + n + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
+   core.wait(1)
+   tk2 = new TimeKeeper()
+   // GetP27LatLong($JD_0 - (2500 -n*50 -1)*365.25, 0, 1)
+   GetNaksLatLonSimple ($N27Feb24, $JD_0 - (1400 -n*10 -1)*365.25)
+}

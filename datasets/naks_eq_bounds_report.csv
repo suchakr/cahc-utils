@@ -1,0 +1,28 @@
+#,nid,nakshatra,rep_star,vis_start_epoch,vis_end_epoch,left_bound,right_bound,num_stars_in_naks,stars_in_naks,daivata
+1,N01-Ash,Aśvayuk,β Ari,-2100,-1200,350.0,336.67,3,α Ari;β Ari;γ Ari,Aśvini
+2,N02-Bha,Bharaṇī,* 41 Ari,-2200,-1250,3.33,350.0,3,* 31 Ari;* 35 Ari;* 41 Ari,Yama
+3,N03-Kri,Kṛttikā,η Tau,-2050,-1150,16.67,3.33,6,* 17 Tau;* 19 Tau;* 20 Tau;* 23 Tau;* 27 Tau;η Tau, Agni
+4,N04-Roh,Rohiṇī,α Tau,-1800,-900,30.0,16.67,5,α Tau;γ Tau;δ Tau;ε Tau;θ2 Tau,Prajāpati
+5,N05-Mrg,Mṛgaśira,λ Ori,-1850,-950,43.33,30.0,3,α Ori;γ Ori;λ Ori,Soma
+6,N06-Ard,Ārdrā,γ Gem,-2000,-1100,56.67,43.33,1,γ Gem,Rudra
+7,N07-Pun,Punarvasu,β Gem,-2100,-1200,70.0,56.67,2,α Gem;β Gem,Aditi
+8,N08-Pus,Puṣya,δ Cnc,-2200,-1300,83.33,70.0,1,δ Cnc,Bṛhaspati
+9,N09-Asl,Āśleṣā,ζ Hya,-1700,-750,96.67,83.33,6,δ Hya;ε Hya;ζ Hya;η Hya;ρ Hya;σ Hya,Sarpa
+10,N10-Mag,Maghā,ζ Leo,-1650,-750,110.0,96.67,6,α Leo;γ Leo;ε Leo;ζ Leo;η Leo;μ Leo,Pitṛ
+11,N11-PPal,P Phalgunī,δ Leo,-1650,-750,123.33,110.0,2,δ Leo;θ Leo,Bhaga
+12,N12-UPal,U Phalgunī,β Leo,-1500,-550,136.67,123.33,2,* 93 Leo;β Leo,Aryaman
+13,N13-Has,Hasta,δ Crv,-2100,-1150,150.0,136.67,5,α Crv;β Crv;γ Crv;δ Crv;ε Crv,Savitṛ
+14,N14-Chi,Citrā,α Vir,-1850,-950,163.33,150.0,1,α Vir,Tvaṣṭṛ
+15,N15-Swa,Svātī,α Boo,-900,0,176.67,163.33,1,α Boo,Vāyu
+16,N16-Vis,Viśākhā,α2 Lib,-1450,-550,190.0,176.67,2,α1 Lib;α2 Lib,Indrāgnī
+17,N17-Anu,Anūrādhā,δ Sco,-1750,-850,203.33,190.0,4,β1 Sco;δ Sco;π Sco;ω1 Sco,Mitra
+18,N18-Jye,Jyeṣṭhā,ε Sco,-1750,-850,216.67,203.33,3,α Sco;ε Sco;σ Sco,Indra
+19,N19-Mul,Mūla,κ Sco,-1550,-650,230.0,216.67,6,ζ2 Sco;θ Sco;ι1 Sco;κ Sco;λ Sco;ν Sco, Nirṛti
+20,N20-PAsh,P Aṣāḍhā,λ Sgr,-1300,-400,243.33,230.0,4,γ Sgr;δ Sgr;ε Sgr;λ Sgr,Ap
+21,N21-UAsh,U Aṣāḍhā,τ Sgr,-950,-50,256.67,243.33,4,ζ Sgr;σ Sgr;τ Sgr;φ Sgr,Viśvedevā
+22,N22-Shr,Śravaṇa,α Aql,-1200,-300,270.0,256.67,3,α Aql;β Aql;γ Aql,Viṣṇu
+23,N23-Dha,Dhaniṣṭhā,β Del,-1300,-400,283.33,270.0,4,α Del;β Del;γ2 Del;δ Del,Vasu
+24,N24-Sha,Śatabhiṣak,λ Aqr,-2200,-1250,296.67,283.33,1,λ Aqr,Varuṇa
+25,N25-PBha,P Proṣṭapada,α Peg,-2100,-1150,310.0,296.67,2,α Peg;β Peg,Aja
+26,N26-UBha,U Proṣṭapada,λ Peg,-1100,-150,323.33,310.0,2,γ Peg;λ Peg,Ahirbudhnya
+27,N27-Rev,Revatī,ε Psc,-1900,-950,336.67,323.33,1,ε Psc,Pūṣan

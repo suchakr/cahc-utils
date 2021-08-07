@@ -1,0 +1,91 @@
+nid,naks,gname,sname,hip
+N03-Kri,क्रित्तिकाः,* eta Tau,Alcyone,HIP 17702
+N03-Kri,क्रित्तिकाः,* 17 Tau,Electra,HIP 17499
+N03-Kri,क्रित्तिकाः,* 19 Tau,Taygeta,HIP 17531
+N03-Kri,क्रित्तिकाः,* 20 Tau,Maia,HIP 17573
+N03-Kri,क्रित्तिकाः,* 23 Tau,Merope,HIP 17608
+N03-Kri,क्रित्तिकाः,* 27 Tau,Atlas,HIP 17847
+N04-Roh,रोहिणी,* alf Tau,Aldebaran,HIP 21421
+N04-Roh,रोहिणी,* gam Tau,Prima Hyadum,HIP 20205
+N04-Roh,रोहिणी,* del Tau,Secunda Hyadum,HIP 20455
+N04-Roh,रोहिणी,* eps Tau,Ain,HIP 20889
+N04-Roh,रोहिणी,* tet2 Tau,Chamukuy,HIP 20894
+N06-Mrg,मृगशीर्षः,* alf Ori,Betelgeuse,HIP 27989
+N05-Mrg,मृगशीर्षः,* gam Ori,Bellatrix,HIP 25336
+N05-Mrg,मृगशीर्षः,* lam Ori,Heka,HIP 26207
+N06-Ard,आर्द्रा,* gam Gem,Alhena,HIP 31681
+N07-Pun,पुनर्वसू,* bet Gem,Pollux,HIP 37826
+N07-Pun,पुनर्वसू,* alf Gem,Castor,HIP 36850
+N08-Pus,पुष्यः,* del Cnc,Asellus Australis,HIP 42911
+N09-Asl,आश्लेषः,* del Hya,Minazal I,HIP 42313
+N09-Asl,आश्लेषः,* sig Hya,Minchir,HIP 42402
+N09-Asl,आश्लेषः,* eta Hya,Minazal II,HIP 42799
+N09-Asl,आश्लेषः,* eps Hya,Ashlesha,HIP 43109
+N09-Asl,आश्लेषः,* rho Hya,Minazal IV,HIP 43234
+N09-Asl,आश्लेषः,* zet Hya,Minazal V,HIP 43813
+N10-Mag,मघाः,* alf Leo,Regulus,HIP 49669
+N10-Mag,मघाः,* eps Leo,Algenubi,HIP 47908
+N10-Mag,मघाः,* mu Leo,Rasalas,HIP 48455
+N10-Mag,मघाः,* eta Leo,Al Jabah,HIP 49583
+N10-Mag,मघाः,* zet Leo,Adhafera,HIP 50335
+N10-Mag,मघाः,* gam Leo,Algieba,HIP 50583
+N11-PPal,पूर्वफल्गुनी,* del Leo,Zosma,HIP 54872
+N11-PPal,पूर्वफल्गुनी,* tet Leo,Chertan,HIP 54879
+N12-UPal,उत्तरफल्गुनी,* bet Leo,Denebola,HIP 57632
+N12-UPal,उत्तरफल्गुनी,* 93 Leo,93Leo,HIP 57565
+N13-Has,हस्तः,* del Crv,Algorab,HIP 60965
+N13-Has,हस्तः,* alf Crv,Alchiba,HIP 59199
+N13-Has,हस्तः,* eps Crv,Minkar,HIP 59316
+N13-Has,हस्तः,* gam Crv,Gienah,HIP 59803
+N13-Has,हस्तः,* bet Crv,Kraz,HIP 61359
+N14-Chi,चित्रा,* alf Vir,Spica,HIP 65474
+N15-Swa,स्वाती,* alf Boo,Arcturus,HIP 69673
+N16-Vis,विशाखे,* alf2 Lib,Zubenelgenubi,HIP 72622
+N16-Vis,विशाखे,* bet Lib,Zubeneschamali,HIP 74785
+N17-Anu,अनूराधा,* del Sco,Dschubba,HIP 78401
+N17-Anu,अनूराधा,* pi Sco,Fang,HIP 78265
+N17-Anu,अनूराधा,* bet Sco,Acrab,HIP 78820
+N17-Anu,अनूराधा,* ome1 Sco,Jabhat Acrabi I,HIP 78933
+N18-Jye,ज्येष्ठा,* alf Sco,Antares,HIP 80763
+N18-Jye,ज्येष्ठा,* eps Sco,Larawag,HIP 82396
+N18-Jye,ज्येष्ठा,* sig Sco,Alniyat,HIP 80112
+N18-Jye,ज्येष्ठा,* tau Sco,Alniyat II,HIP 81266
+N19-Mul,मूलं,* lam Sco,Shaula,HIP 85927
+N19-Mul,मूलं,* tet Sco,Sargas,HIP 86228
+N19-Mul,मूलं,* nu Sco,Lesath,HIP 85696
+N19-Mul,मूलं,* zet2 Sco,zet2Sco,HIP 82729
+N19-Mul,मूलं,* iot1 Sco,Girtab,HIP 87073
+N19-Mul,मूलं,* kap Sco,Mula,HIP 86670
+N20-PAsh,पूर्वाषाढा,* eps Sgr,Kaus Australis,HIP 90185
+N20-PAsh,पूर्वाषाढा,* gam Sgr,Alnasl,HIP 88635
+N20-PAsh,पूर्वाषाढा,* del Sgr,Kaus Media,HIP 89931
+N20-PAsh,पूर्वाषाढा,* lam Sgr,Kaus Borealis,HIP 90496
+N21-UAsh,उत्तराषाढा,* sig Sgr,Nunki,HIP 92855
+N21-UAsh,उत्तराषाढा,* phi Sgr,Namalsadirah I,HIP 92041
+N21-UAsh,उत्तराषाढा,* zet Sgr,Ascella,HIP 93506
+N21-UAsh,उत्तराषाढा,* tau Sgr,Namalsadirah II,HIP 93864
+N28-Abh,Abh,* alf Lyr,Vega,HIP 91262
+N28-Abh,Abh,* eps1 Lyr,Double Double I,HIP 91919
+N28-Abh,Abh,* zet1 Lyr,Nasr Alwaki,HIP 91971
+N22-Shr,श्रवणः,* alf Aql,Altair,HIP 97649
+N22-Shr,श्रवणः,* gam Aql,Tarazed,HIP 97278
+N22-Shr,श्रवणः,* bet Aql,Alshain,HIP 98036
+N23-Dha,धनिष्ठा,* alf Del,Sualocin,HIP 101958
+N23-Dha,धनिष्ठा,* eps Del,Aldulfin,HIP 101421
+N23-Dha,धनिष्ठा,* bet Del,Rotanev,HIP 101769
+N23-Dha,धनिष्ठा,* del Del,Al Ukud,HIP 102281
+N23-Dha,धनिष्ठा,* gam2 Del,Al Salib,HIP 102532
+N24-Sha,शतभिषक्,* lam Aqr,Hydor,HIP 112961
+N25-PBha,पूर्वाभाद्रपदा,* alf Peg,Markab,HIP 113963
+N25-PBha,पूर्वाभाद्रपदा,* bet Peg,Scheat,HIP 113881
+N26-UBha,उत्तराभाद्रपदा,* alf And,Alpheratz,HIP 677
+N26-UBha,उत्तराभाद्रपदा,* gam Peg,Algenib,HIP 1067
+N26-UBha,उत्तराभाद्रपदा,* lam Peg,Sadalnazi,HIP 112440
+N27-Rev,रेवती,* alf Psc,Alrescha,HIP 9487
+N27-Rev,रेवती,* eps Psc,epsPsc,HIP 4906
+N01-Ash,अश्विनी,* alf Ari,Hamal,HIP 9884
+N01-Ash,अश्विनी,* bet Ari,Sheratan,HIP 8903
+N01-Ash,अश्विनी,* gam Ari,Mesarthim,HIP 8832
+N02-Bha,भरणी,* 41 Ari,Bharani,HIP 13209
+N02-Bha,भरणी,* 31 Ari,31Ari,HIP 12153
+N02-Bha,भरणी,* 35 Ari,Barani II,HIP 12719

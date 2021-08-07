@@ -1,0 +1,34 @@
+# TRANSLATORS: Ram
+hide_R01	_("Meṣa")
+# TRANSLATORS: Bull
+hide_R02	_("Bṛṣa")
+# TRANSLATORS: Twin
+hide_R03	_("Mithuna")
+# TRANSLATORS: Crab
+hide_R04	_("Karkata")
+# TRANSLATORS: Lion
+hide_R05	_("Simha")
+# TRANSLATORS: Virgin
+hide_R06	_("Kanyā")
+# TRANSLATORS: Balance
+hide_R07	_("Tulā")
+# TRANSLATORS: Scorpion
+hide_R08	_("Bṛścika")
+# TRANSLATORS: Archer
+hide_R09	_("Dhanuṣ")
+# TRANSLATORS: Crocodile
+hide_R10	_("Makara")
+# TRANSLATORS: Potter
+hide_R11	_("Kumbha")
+# TRANSLATORS: Fishes
+hide_R12	_("Mīna")
+# TRANSLATORS: Hunter
+hide_C01	_("Kālapuruṣa")
+# TRANSLATORS: Hunter's Dog
+hide_C02	_("Bṛihat śvan")
+# TRANSLATORS: The Seven Sage
+hide_C03	_("Saptarṣi")
+C03	_("सप्तऋषि")
+# TRANSLATORS: Acquatic Creature 
+hide_C04 _("Śiśumāra") 
+C04 _("शिशुमारा")

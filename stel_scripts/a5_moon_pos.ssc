@@ -1,0 +1,75 @@
+NUM_DAYS = 60
+HOUR_STEPS = 2
+SAVE_TO = "a5_MoonPos.csv"
+core.setDate("499-02-17T31:02:00", "local");
+core.setObserverLocation(74.5511, 26.4897, 0, name = "Pushkar");
+//--------------------------------------
+//core.setDate("-3102-02-17T00:00:00", "local");
+core.output ( ["Time", "Visibility", "Illumination", "Phase"].join(","))
+STEPS = NUM_DAYS*24/HOUR_STEPS
+for ( _s = 0; _s < STEPS ; _s++) {
+  var t =  core.getDate("local")
+  MoonData = core.getObjectInfo("Moon", true);
+  core.wait(0.3)
+  var str = [ 
+    t, 
+    MoonData['above-horizon'] , 
+    MoonData['illumination'] ,
+    MoonData['phase'] ,
+  ].join(",")
+  core.output(str)
+  core.setDate("+" + HOUR_STEPS + "hours")
+}  
+core.saveOutputAs(SAVE_TO);
+
+
+//for ( k in MoonData) core.debug( [k, MoonData[k]].join(' : '))
+
+/*
+script:  "[object Object]"
+script:  "above-horizon : false"
+script:  "altitude : -73.66525209535813"
+script:  "altitude-geometric : -73.66525209535813"
+script:  "azimuth : 322.7474126801629"
+script:  "azimuth-geometric : 322.7474126801629"
+script:  "dec : -13.159844799239277"
+script:  "decJ2000 : -13.012794319322103"
+script:  "distance : 0.002712491273923601"
+script:  "elat : 1.359038526969908"
+script:  "elatJ2000 : 1.3604838513833237"
+script:  "elong : 218.85450436137523"
+script:  "elongJ2000 : 218.38961207286076"
+script:  "elongation : 2.8973083293582302"
+script:  "elongation-deg : +166.0035°"
+script:  "elongation-dms : +166°00'13\""
+script:  "found : true"
+script:  "glat : 43.781668790982295"
+script:  "glong : -24.360224097352486"
+script:  "heliocentric-velocity : [0.0137006, -0.0110083, 4.89592e-05]"
+script:  "illumination : 98.52335453033447"
+script:  "localized-name : चन्द्र"
+script:  "name : Moon"
+script:  "phase : 0.9852335453033447"
+script:  "phase-angle : 0.24363667519540672"
+script:  "phase-angle-deg : +13.9594°"
+script:  "phase-angle-dms : +13°57'34\""
+script:  "ra : -143.08418344726658"
+script:  "raJ2000 : -143.53673811466564"
+script:  "rise : 17h29m"
+script:  "rise-dhr : 17.494964599609375"
+script:  "scale : 1"
+script:  "set : 4h31m"
+script:  "set-dhr : 4.526359558105469"
+script:  "sglat : 17.525260283776646"
+script:  "sglong : 135.96853312897545"
+script:  "size : 0.008563146957128384"
+script:  "size-dd : 0.49063217999374975"
+script:  "size-deg : +0.49063°"
+script:  "size-dms : +0°29'26.28\""
+script:  "transit : 23h00m"
+script:  "transit-dhr : 23.010662078857422"
+script:  "type : moon"
+script:  "velocity : [0.000368668, -0.000432702, 4.88521e-05]"
+script:  "vmag : -12.086931228637695"
+script:  "vmage : -12.086931228637695"
+*/

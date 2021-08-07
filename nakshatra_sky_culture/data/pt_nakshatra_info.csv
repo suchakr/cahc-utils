@@ -1,0 +1,29 @@
+Num,Asterism,YogaTaraName,YoraTaraID,YogaTaraHIP,PT,AVP,BS,PTBookTaras
+N01,अश्विनी,Hamal,alpha Ari,9884,2,2,3,Hamal-alpha Ari;beta Ari
+N02,भरणी,Bharani,41 Ari,13209,3,3,3,Bharani-41 Ari;31 Ari;35  Ari
+N03,कृत्तिका,Alcyone,eta Tau,17702,7,7,7,Alcyone-eta Tau;Taygeta-19 Tau;Maia -20 Tau;Atlas -27 Tarui;Merope -23 Tau;Electra -17 Tau;Pleione -28 Tau
+N04,रोहिणी,Aldebaran,alpha Tau,21421,5,1,5,Aldebaran-alpha Tau;epsilon Tau;delta1 Tau;gamma Tau;theta2 Tau
+N05,मृगशीर्षा,Meissa,lambda Ori,26207,3,3,3,Meissa-lambda Ori;phi Ori;gamma Ori
+N06,आर्द्रा,Betelgeuse,alpha Ori,27989,1,1,1,Betelgeuse-alpha Ori
+N07,पुनर्वसू,Pollux,alpha Gem,37826,2,2,5,Pollux-beta Gem;Castor-alpha Gem
+N08,पुष्या,Asellus Australis,delta Cnc,42911,1,1,3,Asellus Australis-delta Cnc
+N09,आश्लेषा,Minazal,delta Hyd,43813,6,6,6,Minazal-delta Hyd;Hydrobius-zeta Hyd;Ashlesha -epsilon Hyd;sigma Hyd;rho  Hyd;eta Hyd
+N10,मघा,Regulus,alpha Leo,49669,6,6,5,Regulus-alpha Leo;eta Leo;gamma Leo;zeta Leo;mu Leo;epsilon Leo
+N11,पूर्वफल्गुनी,Zosma,delta Leo,54872,2,2,8,Zosma-delta Leo;theta Leo
+N12,उत्तरफल्गुनी,Denebola,beta Leo,57632,2,2,2,Denebola-beta Leo;93 Leo
+N13,हस्ता,Algorab,delta Crv,60965,5,5,5,Algorab-delta Crv;alpha Crv;beta Crv;gamma Crv;epsilon Crv
+N14,चित्रा,Spica,alpha Vir,65474,1,1,1,Spica-alpha Vir
+N15,स्वाती,Arcturus,alpha Boo,69673,1,1,1,Arcturus-alpha Boo
+N16,विशाखा,Zubenelgenubi,alpha Lib,72622,1,1,1,Zubenelgenubi-alpha Lib
+N17,अनुराधा,Dschubba,delta Sco,78401,4,4,4,Dschubba-del Sco;beta Sco;pi Sco;omega Sco
+N18,ज्येष्ठा,Antares,alpha Sco,80763,3,1,3,Antares-alp Sco
+N19,मूला,Shaula,lambda Sco,85927,2,7,11,Shaula-lambda Sco;Sargas-theta Sco
+N20,पूर्व्वाषाढा,Kaus Australis,epsilon Sgr,90185,4,4,2,Kaus Australis-epsilon Sgr;lambda Sgr;delta Sgr;gamma Sgr
+N21,उत्तराषाढा,Nunki,sigma Sgr,92855,4,4,8,Nunki-sigma Sgr;phi Sgr;zeta Sgr;tau Sgr
+N22,श्रवणा,Altair,alpha Aql,97649,3,3,3,Altair-alpha Aql;beta Aql;gamma Aql
+N23,धनिष्ठा,Sualocin,alpha Del,101958,5,5,5,Sualocin-alpha Del;beta Del;delta Del;gamma Del;epsilon Del
+N24,शतभिषक्,Sadachbia,gamma Aqr,110395,1,1,100,Sadachbia-gamma Aqr;Situla-kappa Aqr;lambda Aqr
+N25,पूर्वभाद्रपदा,Markab,alpha Peg,113963,2,2,2,Markab-alpha Peg;beta Peg
+N26,उत्तरभाद्रपदा,Alpheratz,alpha And,677,2,2,8,Alpheratz-alpha And;gamma Peg
+N27,रेवती,Alrescha,alpha Psc,9487,1,1,32,Alrescha-alpha Psc
+N28,अभिजित्,Vega,alpha Lyr,91262,3,1,,Vega-alpha Lyr;epsilon Lyr;zeta Lyr

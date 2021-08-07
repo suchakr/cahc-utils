@@ -1,0 +1,82 @@
+
+include("nakshatras.inc");
+
+var tk = new TimeKeeper()
+var tk2 = new TimeKeeper()
+
+
+JD( BCE(1401)+.5 )
+
+var z  = 0
+say(  ['dt' , 'phase' , 'lon', 'lat', 'ra', 'dec', 'sz'].join("\t" ) ) 
+for ( var z = 0;  z <= 12*24 ;  )  {
+   //warn( "nid ======== " + z + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
+   
+
+   // GetP27LatLong($JD_0 - (2500 -n*50 -1)*365.25, 0, 1)
+   //GetNaksLatLonSimple ($N12, $JD_0 - (2500 -n*50 -1)*365.25)
+   // GetNaksLatLonSimple ($N12, $JD_0 - (700 -n*10 -1)*365.25)
+   //GetNaksLatLonSimple ($N_VGJ, $JD_0 - (1500 -n*500 -1)*365.25)
+
+  oi = getOI("moon")
+  ph = oi.phase
+  var n = (1 - ph)*14.5
+  if ( ph >= 0.99 ) {
+     z++
+     say(  [DT() , ph , oi.elong, oi.elat, oi.ra, oi.dec, oi['size-dd']].join("\t" ) ) 
+     W(1)
+     n = 14.5
+     warn( "nid ======== " + z + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
+     tk2 = new TimeKeeper()
+     if ( z %12 == 0)  {  n = 14.5 + 0*21*365.25 ;  warn("========") ; say("n==========")}
+  }
+  JD( JD() + n )
+  W(.5)
+  
+//ddump(oi, true)
+
+}
+
+
+//ddump(core.getObjectInfo('α Sco'))
+
+var n86 = [
+["17 Tau","19 Tau","20 Tau","23 Tau","η Tau","27 Tau",],
+["γ Tau","δ1 Tau","θ2 Tau","ε Tau","α Tau",],
+["γ Ori","λ Ori","φ1 Ori",],
+["γ Gem",],
+["α Gem","β Gem",],
+["δ Cnc",],
+["δ Hya","σ Hya","η Hya","ε Hya","ρ Hya","ζ Hya",],
+["ε Leo","μ Leo","ζ Leo","η Leo","γ1 Leo","α Leo",],
+["δ Leo","θ Leo",],
+["93 Leo","β Leo",],
+["γ Crv","ε Crv","α Crv","δ Crv","β Crv",],
+["α Vir",],
+["α Boo",],
+["α2 Lib","β Lib",],
+["δ Sco","π Sco","β1 Sco","ω1 Sco",],
+["σ Sco","α Sco","ε Sco",],
+["ν Sco","ζ2 Sco","λ Sco","θ Sco","κ Sco","ι1 Sco",],
+["γ Sgr","δ Sgr","ε Sgr","λ Sgr",],
+["φ Sgr","σ Sgr","ζ Sgr","τ Sgr",],
+["γ Aql","α Aql","β Aql",],
+["β Del","α Del","δ Del","γ2 Del",],
+["λ Aqr",],
+["α Peg","β Peg",],
+["λ Peg","γ Peg","α And",],
+["ε Psc",],
+["γ Ari","β Ari","α Ari",],
+["31 Ari","35 Ari","41 Ari",],
+
+]
+
+/*
+var seq=0
+for ( var nn = 0; nn <= n86.length; nn++) {
+  for ( var n = 0 ; n < n86[nn].length; n++) { 
+  var oi  = core.getObjectInfo( n86[nn][n] ); W(.3)
+  say (  [++seq,  nn+1 ,  n86[nn][n] , oi.elong].join("\t") )
+}}
+
+*/

@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import numpy as np
 import re
@@ -5,6 +6,7 @@ import time
 import random
 from synthesizer import Player, Synthesizer, Waveform
 
+#%%
 #================================================================
 # Frequency ratios of 12 notes
 # sa r1 r2 r3 g3 m1 m2 pa d1 d2 d3 n3 Sa
@@ -27,6 +29,7 @@ NOTES = {
 }
 NOTES.update({n.upper() : 2*NOTES[n] for n in NOTES })
 
+#%%
 #===================================================================
 # some typical notes strings
 SARGAM  = list('srgmpdn') 
@@ -54,6 +57,7 @@ STANAS_AA = [ _stanas(x) for x in range(1,73)]  # array of arrays
 STANAS_AH = [ { x[0]: x for  x in  xs } for xs in STANAS_AA ] # array of hashes
 STANAS_DF = pd.DataFrame(STANAS_AH)[SARGAM] # data frame
 
+#%%
 #================================================================
 # This plays a note
 _player = Player()
@@ -76,7 +80,7 @@ def wnote_to_next_onf (wn):
     next_n = WNOTE[ (ix+1) % len(WNOTE)] 
     (next_o, next_n, (2**next_o) * WNFF[next_n])
 
-def wnote_play (wnotes=[list('FaFd'], base=220, speed=0.3, verbose=False):
+def wnote_play (wnotes=[list('FaFd')], base=220, speed=0.3, verbose=False):
     chord= [  base*wnote_to_onf(wn)[-1] for wn in wnotes ]
     _player.play_wave(_synthesizer.generate_chord(chord, speed))
 
@@ -387,7 +391,7 @@ def do_chamattu_play (verbose=False) :
     play_song(SONGS[0][2], mk=15, speed=0.4, verbose=verbose)
     print ("===================")
 
-
+#%%
 if __name__ == '__main__' :
     time.sleep(2)  # to start recording utility
     #do_play_all_songs()

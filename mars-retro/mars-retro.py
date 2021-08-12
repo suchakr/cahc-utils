@@ -11,13 +11,11 @@ mr = pd.read_csv("../datasets/mars-retro.txt", sep="\t").drop(columns=['hhmm'])
 mr.date = pd.to_datetime(mr.date)
 mr = mr.set_index('date')
 mr
-
-# %%
 ax = mr.plot()
-ax.grid()
+_= ax.grid()
 # %%
 
-mr.plot(kind='scatter', x="lon", y="lat")
+_ = mr.plot(kind='scatter', x="lon", y="lat")
 
 # %%
 f=0
@@ -27,9 +25,9 @@ for d ,l in zip(mr.lon.diff() , mr.lon) :
   ans.append( l + f*360)
 
 mr['lona'] = ans
-mr[300:450].plot(kind='scatter', x="lona", y="lat", marker='.')
+_ = mr[300:450].plot(kind='scatter', x="lona", y="lat", marker='.')
 # %%
-mr[450:500].plot(kind='scatter', x="lona", y="lat", marker='.')
+_ = mr[450:500].plot(kind='scatter', x="lona", y="lat", marker='.')
 
 # %%
 mr['ldiff'] = mr.lon.diff()
@@ -43,8 +41,6 @@ idx[idxd>1].shape
 #%%
 fig, axs = plt.subplots(3,7, figsize=(25,16))
 fig.tight_layout(pad=3.0)
-
-
 for span,ax in zip(idx[idxd>1], axs.flatten()) :
   mrx = mr[span-50:span+50]
   mrx.plot(ax=ax, kind='scatter', 
@@ -53,7 +49,7 @@ for span,ax in zip(idx[idxd>1], axs.flatten()) :
   title=re.sub(".\d\d\s00:00:00","",str(mrx.index[0]))) 
   ax.set_xlabel("")
   # ax.set_xticklabels([ t.get_text() for t in ax.get_xticklabels()])
-  print([ int(t%360) for t in ax.get_xticks()])
-  ax.set_xticklabels([ int(t%360) for t in ax.get_xticks()])
+  # print([ int(t%360) for t in ax.get_xticks()])
+  _ = ax.set_xticklabels([ int(t%360) for t in ax.get_xticks()])
 
 # %%

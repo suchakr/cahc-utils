@@ -1,6 +1,6 @@
 # Distribution of eclipse frequency
 #%%
-from numpy.lib.index_tricks import ndenumerate
+rom numpy.lib.index_tricks import ndenumerate
 from numpy.random import sample
 import pandas as pd
 import numpy as np

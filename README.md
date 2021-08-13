@@ -6,13 +6,8 @@
 
 ## datasets
 
-- Area to hold inoput and out csvs across all CAHC projects
+- Area to hold input and out csvs across all CAHC projects
 - Data is scattered now, overtime all data will should move here
-
-## detect_silence
-
-- Placeholder project to detect silence in audio streams
-- May be useful to index/split/chink audio files
 
 ## lagadha
 
@@ -27,11 +22,6 @@
 - Some analytics darsha-poornamasa
 - eclipses in jaipur/delhi/kuru area areoun 1400bce
 - utilities to plot lunar standstill`
-
-## moon_rohini
-
-- data to help analyse proximity of moon with nakshatras
-- moon is said to be closest to rohini
   
 ## music
 

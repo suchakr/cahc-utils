@@ -34,7 +34,7 @@ Given a sequence of notes and melakarta number, this utility will play the seque
   ffmpeg -i kg.smallish.mp3 -af 'volume=0.5' loud.mp3
 
 ### add text to jpg 
-  fmpeg -i kovida.jpg -vf "drawtext=text='10':fontcolor=blue:fontsize=150:x=950:y=200:" k10.jpg
+ ifmpeg -i kovida.jpg -vf "drawtext=text='10':fontcolor=blue:fontsize=150:x=950:y=200:" k10.jpg
 
 ### picture + sound 
   ffmpeg -i ep1.png -i ep1.wav ep1.flv

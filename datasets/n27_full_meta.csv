@@ -1,0 +1,28 @@
+,nnid,nid,naks,enaks,daivata,marga,veethi,shape,vgj_cnt,vgj_stars,proxy,sname,hip,abh_stars,lon,span,lon_ue,span_ue
+0,1,N01-Ash,अश्विनी,Aśvayuk,Aśvini,Madhyama,Go,Horseneck,3,"(α,β,γ) Ari",β Ari,Sheratan,HIP 8903,β Ari,0.0,13.329999999999984,0.0,13.334000000000003
+1,2,N02-Bha,भरणी,Bharaṇī,Yama,Uttara,Naga,Bhaga (Perineum),3,"(35,39,41) Ari",* 41 Ari,Bharani,HIP 13209,41 Ari,13.329999999999984,13.340000000000002,13.334000000000003,6.665999999999997
+2,3,N03-Kri,क्रित्तिका,Kṛttikā, Agni,Uttara,Naga,Knife/Cleaver,6,"(17,19,20,23,27,η) Tau",η Tau,Alcyone,HIP 17702,η Tau,26.670000000000016,13.329999999999998,20.0,13.334000000000003
+3,4,N04-Roh,रोहिणी,Rohiṇī,Prajāpati,Uttara,Gaja,Cart,5,"(α,γ,λ) Ori",α Tau,Aldebaran,HIP  21421,α Tau,40.0,13.329999999999998,33.334,20.0
+4,5,N05-Mrg,मृगशीर्ष,Mṛgaśira,Soma,Uttara,Gaja,Deer’s Head,3,(γ) Gem,λ Ori,Meissa(Heka),HIP  26207,λ Ori,53.329999999999984,13.340000000000003,53.334,13.332999999999998
+5,6,N06-Ard,आर्द्रा,Ārdrā,Rudra,Uttara,Gaja,Bāhuḥ (Arm)/Red Dot,1,"(α,γ,δ1,ε,θ2) Tau",γ Gem,Alhena(Almeisan),HIP 31681,γ Gem,66.67000000000002,13.329999999999998,66.66700000000003,6.667000000000002
+6,7,N07-Pun,पुनर्वसू,Punarvasu,Aditi,Uttara,Airavati,Balance,2,"(α,β) Gem",β Gem,Pollux,HIP  37826,β Gem,80.0,13.329999999999998,73.334,20.0
+7,8,N08-Pus,पुष्य,Puṣya,Bṛhaspati,Uttara,Airavati,Śarāva (Pot-lid),1,(δ) Cnc,δ Cnc,Asellus Australis,HIP  42911,δ Cnc,93.32999999999998,13.340000000000003,93.334,13.332999999999998
+8,9,N09-Asl,आश्लेषा,Āśleṣā,Sarpa,Uttara,Airavati,Snake Head/Flag,6,"(δ,ε,ζ,η,ρ,σ) Hya",ζ Hya,Minazal V,HIP 43813,ζ Hya,106.67000000000002,13.329999999999998,106.667,6.667000000000002
+9,10,N10-Mag,मघा,Maghā,Pitṛ,Uttara,Airavati,Enclosure,6,"(α,γ1,ε,ζ,η,μ) Leo",ζ Leo,Adhafera,HIP 50335,α Leo,120.0,13.329999999999998,113.334,13.332999999999998
+10,11,N11-PPal,पूर्वफल्गुनी,P Phalgunī,Bhaga,Madhyama,Arshabi,Half-chair,2,"(δ,θ) Leo",δ Leo,Zosma,HIP  54872,δ Leo,133.32999999999998,13.33999999999999,126.667,13.332999999999998
+11,12,N12-UPal,उत्तरफल्गुनी,U Phalgunī,Aryaman,Madhyama,Arshabi,Half-chair,2,"(93,β) Leo",β Leo,Denebola,HIP  57632,β Leo,146.67,13.330000000000013,140.0,20.0
+12,13,N13-Has,हस्त,Hasta,Savitṛ,Dakshina,Mrga,Hasta (hand),5,"(α,β,γ,δ,ε) Crv",δ Crv,Algorab,HIP  60965,γ Crv,160.0,13.330000000000013,160.0,13.334000000000003
+13,14,N14-Chi,चित्रा,Citrā,Tvaṣṭṛ,Dakshina,Mrga,Madhupuṣpa (Flower),1,(α) Vir,α Vir,Spica,HIP  65474,α Vir,173.33,13.339999999999975,173.334,13.332999999999998
+14,15,N15-Swa,स्वाती,Svātī,Vāyu,Uttara,Naga,Kīlaka (Wedge),1,(α) Boo,α Boo,Arcturus,HIP  69673,α Boo,186.67,13.330000000000013,186.667,6.667000000000002
+15,16,N16-Vis,विशाखे,Viśākhā,Indrāgnī,Dakshina,Ajaavika,Divider Rope,2,"(α1,α2) Lib",α2 Lib,Zubenelgenubi,HIP 72622,α Lib,200.0,13.330000000000013,193.334,20.0
+16,17,N17-Anu,अनूराधा,Anūrādhā,Mitra,Dakshina,Ajaavika,Necklace,4,"(β1,δ,π,ω1) Sco",δ Sco,Dschubba,HIP  78401,δ Sco,213.33,13.339999999999975,213.334,13.332999999999998
+17,18,N18-Jye,ज्येष्ठा,Jyeṣṭhā,Indra,Dakshina,Vaishvaanari,Elephant Tusk,3,"(α,ε,σ,(τ)) Sco",ε Sco,Larawag,HIP  82396,α Sco,226.67,13.330000000000013,226.667,6.667000000000002
+18,19,N19-Mul,मूल,Mūla, Nirṛti,Dakshina,Vaishvaanari,"Root/Scorpion Tail""",6,"(ζ2,θ,ι1,κ,λ,ν) Sco",κ Sco,Mula,HIP  86670,λ Sco,240.0,13.330000000000013,233.334,13.332999999999998
+19,20,N20-PAsh,पूर्वाषाढा,P Aṣāḍhā,Ap,Dakshina,Vaishvaanari,Gajavikrama (Elephant Step),4,"(γ,δ,ε,λ) Sgr",λ Sgr,Kaus Borealis,HIP 90496,δ Sgr,253.33,13.340000000000003,246.667,13.332999999999998
+20,21,N21-UAsh,उत्तराषाढा,U Aṣāḍhā,Viśvedevā,Dakshina,Vaishvaanari,Siṁhaniṣadya (Lion seat),4,"(ζ,σ,τ,φ) Sgr",τ Sgr,Namalsadirah II,HIP  93864,σ Sgr,266.67,13.329999999999984,260.0,20.0
+21,22,N22-Shr,श्रवण,Śravaṇa,Viṣṇu,Madhyama,Jaradgavi,Ear/Yavamadhya (Barleyseed),3,"(α,β,γ) Aql",α Aql,Altair,HIP  97649,β Del,280.0,13.329999999999984,280.0,13.334000000000003
+22,23,N23-Dha,धनिष्ठा,Dhaniṣṭhā,Vasu,Madhyama,Jaradgavi,Śakuni-pañjara (Bird cage),4,"(α,β,γ2,δ) Del",β Del,Rotanev,HIP 101769,β Aqr,293.33,13.340000000000032,293.334,13.33299999999997
+23,24,N24-Sha,शतभिषक्,Śatabhiṣak,Varuṇa,Madhyama,Jaradgavi,Puṣpopacāra (Flower Boquet),1,(λ) Aqr,λ Aqr,Hydor,HIP 112961,α PsA,306.67,13.329999999999984,306.667,6.66700000000003
+24,25,N25-PBha,पूर्वाभाद्रपदा,P Proṣṭapada,Aja,Madhyama,Go,Cow’s Foot,2,"(α,β) Peg",α Peg,Markab,HIP 113963,α Peg,320.0,13.329999999999984,313.334,13.33299999999997
+25,26,N26-UBha,उत्तराभाद्रपदा,U Proṣṭapada,Ahirbudhnya,Madhyama,Go,Cow’s Foot,2,"(γ,λ) Peg",λ Peg,Sadalnazi,HIP 112440,λ Peg,333.33,13.340000000000032,326.667,20.0
+26,27,N27-Rev,रेवती,Revatī,Pūṣan,Madhyama,Go,Boat2,1,"(ε,(α,ζ)) Psc",ε Psc,epsPsc,HIP 4906,ζ Psc (α And),346.67,13.33,346.667,13.33

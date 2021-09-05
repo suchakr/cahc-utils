@@ -2,6 +2,8 @@
 **/.DS_Store
 **/err*
 **/_*
+**/~*
+**/~planetplot
 **/*mp4
 **/*mp3
 **/*ogg
@@ -27,7 +29,6 @@
 **/9.*
 **/10.*
 **/_*/*
-**/~*
 **/.ipynb_checkpoints
 nakshatra_sky_culture/bharat_sky_culture/bharat
 stel_scripts/.Rapp.history

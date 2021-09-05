@@ -284,7 +284,7 @@ plot_eclipse_charts()
 #         Feb 21  22:09 T   Mar  1  03:02     Mar  9  06:58 n   Mar 16  14:46    
 
 #%%
-zz=moon_phases_df[['stel_dt', 'phase', 'gr']].apply(
+zz=cooked_moon_phases_df[['stel_dt', 'phase', 'gr']].apply(
 	lambda x: f"['{x.stel_dt}',{x.phase:>3},\'{x.gr if len(str(x.gr))==1 else '-'}\']",
 	axis=1)
 s=",\n".join(zz)
@@ -360,15 +360,15 @@ class FitAstroStelJD :
 
 
 	def fit_astro_to_stel_poly():
-		pdf = patched_samples_from_stellarium()
+		pdf = FitAstroStelJD.patched_samples_from_stellarium()
 		# display(pdf)
 		coeff = np.polyfit(pdf.astro_jd, pdf.stel_jd,8)
 		polyfn = np.poly1d(coeff)
 		return (coeff, polyfn)
 
 	def test():
-		coeff, fn = fit_astro_to_stel_poly()
-		pdf = patched_samples_from_stellarium()
+		coeff, fn = FitAstroStelJD.fit_astro_to_stel_poly(
+		pdf = FitAstroStelJD.patched_samples_from_stellarium()
 		for a, s , d in zip(pdf.astro_jd,pdf.stel_jd, pdf.dt):
 			s1 = fn(a)
 			print(f"{d}, {a}, {s:.2f}, {s1:.2f}, {s-s1:.2f}")

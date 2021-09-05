@@ -1,8 +1,10 @@
 **/__pycache__
 **/.DS_Store
 **/err*
-**/_*
+/* **/_* */
+**/_zap*
 **/~*
+**/*_zap*
 **/~planetplot
 **/*mp4
 **/*mp3

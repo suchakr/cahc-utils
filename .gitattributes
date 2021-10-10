@@ -1,3 +1,4 @@
 datasets/moon-planet-pos-bce2000-to-bce0100.csv filter=lfs diff=lfs merge=lfs -text
 datasets/moon-phases-scrape-cooked.csv filter=lfs diff=lfs merge=lfs -text
 datasets/moon-phases-js-array.ssc filter=lfs diff=lfs merge=lfs -text
+moon*csv filter=lfs diff=lfs merge=lfs -text

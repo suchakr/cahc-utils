@@ -56,9 +56,10 @@ def get_full_moon_planet_pos(force=False) -> pd.DataFrame:
 		for i, (start, stop) in enumerate(slices):
 			ans = pd.concat([
 				pp.get_planet_pos(jd, dt) 
-				for jd, dt in zip(
+				for jd, dt , phase in zip(
 					bce_full_moons_df.stel_jd[start:stop]
 					, bce_full_moons_df.stel_dt[start:stop]
+					, bce_full_moons_df.phase[start:stop]
 					) 
 			])
 			acc.append(ans)
@@ -69,6 +70,62 @@ def get_full_moon_planet_pos(force=False) -> pd.DataFrame:
 		acc_df.to_csv('../datasets/full-moon-planet-pos-bce2000-to-bce0100.csv')
 		return acc_df
 
+#%%
+
+def get_moon_planet_pos(force=False) -> pd.DataFrame:
+	"""
+	Get the planet positions/distance for all planets at full moon for years from -1999 to -100
+		jd		date			elong		elati		r		geo_r		geoc_x		geoc_y		geoc_z		phase  gr
+	Jupiter	9.909295e+05	-01999-01-07T00:24:00	289.178995	-1.028499	4.993017	5.919687	1.944425	-5.590225	-0.106257	-0.5  
+	Mars	9.909295e+05	-01999-01-07T00:24:00	256.276168	-0.826578	1.391493	2.329699	-0.552646	-2.262952	-0.033608	-0.5
+	Mercury	9.909295e+05	-01999-01-07T00:24:00	272.915735	-1.900560	0.378695	1.362881	0.069288	-1.360368	-0.045200	-0.5
+	Moon	9.909295e+05	-01999-01-07T00:24:00	177.319963	5.041963	60.099824	60.099824	-59.727728	4.203308	5.188405	-0.5
+	Saturn	9.909295e+05	-01999-01-07T00:24:00	90.081351	0.583402	9.345761	8.356267	-0.011864	8.355825	0.085084	-0.5
+	"""
+	try :
+		if force : raise FileNotFoundError
+		return pd.read_csv('../datasets/moon-planet-pos-bce2000-to-bce0100.csv')
+	except Exception as e: # FileNotFoundError:
+		print(e , "Trying to Regenerate")
+		pp = PP.PlanetPos()
+		moon_df = pd.read_csv('../datasets/moon-phases-scrape-cooked.csv')
+		# moon_df = moon_df[  [ bool(re.match("^.199[89]",x)) for x in moon_df.dt] ] 
+		moon_df.stel_jd = moon_df.stel_dt.apply(toStelJD)
+		bce_moons_df = moon_df[
+			# (moon_df.phase > 0.5) & 
+			(moon_df.astro_jd < (PP.JD_2000 - 2000*365.25)) 
+			].sort_values(by='stel_jd')
+		nelems = bce_moons_df.shape[0]
+		slices = [(x, min(x+1000,nelems)) for x in range(0,nelems,1000)]
+		ts = time()
+		acc=[]
+		rows = 0
+		def ppx(jd,dt,phase,gr) :
+			df = pp.get_planet_pos(jd, dt)
+			df['phase'] = phase
+			df['gr'] = gr
+			return df
+
+		for i, (start, stop) in enumerate(slices[:]):
+			ans = pd.concat([
+				ppx(jd, dt, phase, gr)
+				# pp.get_planet_pos(jd, dt)
+				for jd, dt, phase, gr in zip(
+					bce_moons_df.stel_jd[start:stop]
+					, bce_moons_df.stel_dt[start:stop]
+					, bce_moons_df.phase[start:stop]
+					, bce_moons_df.gr[start:stop]
+					) 
+			])
+			acc.append(ans)
+			rows += ans.shape[0]
+			print(f'{i}/{len(slices)} - {rows} - {time()-ts : .3f}')
+			#
+		acc_df = pd.concat(acc)
+		acc_df.to_csv('../datasets/moon-planet-pos-bce2000-to-bce0100.csv')
+		return acc_df
+
+# get_moon_planet_pos() #force=0)
 # %%
 def plot_full_moon_distance_hist_by_naks(
 	from_year=-1999 ,
@@ -205,7 +262,9 @@ def super_moon_histogram_by_epoch ():
 
 # %%
 if __name__ == "__main__":
-	super_moon_histogram_by_epoch()
+	print (__package__)
+	# get_moon_planet_pos ()
+	# super_moon_histogram_by_epoch()
 
 # def _plot_fm_hist_by_naks(fm_pvt, ax=None, markersize=10, maasa_threshold=8) -> None:
 # 	"""

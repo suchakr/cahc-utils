@@ -189,7 +189,7 @@ def _do_plot_bounded(plt_df, title, ofs, sizes) :
 
   ax.set_ylim(-1, 30)
   ax.set_yticks(range(-1,31,1))
-  ax.set_yticklabels( [ str(x) for x in range(-1,28,)], rotation=0)
+  ax.set_yticklabels( [ str(x) for x in range(-1,31,)], rotation=0)
   ax.grid(which='major', linestyle='-', linewidth='0.5', color='gray')
   # ax.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
   ax.yaxis.set_tick_params(labelsize=13)
@@ -525,6 +525,7 @@ def make_naks_bounds_report(n_df):
     'daivata',
   ])
 
+#%%
 def plot_vgj_seasons ():
   VGJSeasons = '''
   श्रविष्ठादीनि चत्वारि पौष्णार्धञ्च दिवाकरः । वर्धयन् सरसस्तिक्तं मासौ तपति शैशिरे ॥   
@@ -533,6 +534,7 @@ def plot_vgj_seasons ():
   सावित्रान्तानि विचरन् सार्पार्धाद्यानि भास्करः । वार्षिकौ तपते मासौ रसमम्लं विवर्धयन् ॥    
   चित्रादीन्यथ चत्वारि ज्येष्ठार्धञ्च दिवाकरः । शारदौ लवणाख्यं च तपत्याप्याययन् रसम् ॥                   
   ज्येष्ठार्धादीनि चत्वारि वैष्णवान्तानि भास्करः । हेमन्ते तपते मासौ मधुरं वर्धयन् रसम् ॥ 
+  (Ādityacāra; v. 47, 48, 52, 53, 54, 55)
   '''
 
   fig, ax = plt.subplots(subplot_kw={'projection': 'polar'},figsize=(8,8))
@@ -540,6 +542,7 @@ def plot_vgj_seasons ():
   ax.set_theta_direction(-1)
   naks = [ re.sub(r"^N...","",x) for x in  n27_lon_divisions.index]
   angles = [ x/1000 for x in range(0, 360000, 13333)]
+  angles = angles[:len(naks)]
   # ax.set_rlabel_position(-32.5)  # Move radial labels away from plotted line
   lines, labels = plt.thetagrids(angles, naks) 
   ax.grid(not False)
@@ -564,21 +567,33 @@ def plot_vgj_seasons ():
   delta = np.pi/27
   seasons = [ 'śiśira', 'vāsanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta',]
 
-  for s in range(-1,7) :
-    S = 2*np.pi/6
+  for s in range(-1,5) :
+    S = 2*np.pi/6 
     L = 8
-    _angles = [ x-delta for x in [s*S, s*S, s*S+S] ]
+    _angles = [ x-1*delta for x in [s*S, s*S, (s*S+S)] ]
+    if s==0 : _angles[2] = _angles[2] - delta/4 # रोहिण्यन्तानि
+    if s==1 : _angles[1] = _angles[1] + delta/4 # सौम्याद्यानि
+
+    if s==2 : _angles[2] = _angles[2] - delta/4 # सावित्रान्तानि
+    if s==3 : _angles[1] = _angles[1] + delta/4 # चित्रादीन्य
+
+    if s==4 : _angles[2] = _angles[2] - delta/4 # वैष्णवान्तानि
+    if s==-1 : _angles[1] = _angles[1] + delta/4 # श्रविष्ठादीनि
+    # print([ x*180/np.pi for x in _angles])
     _vertex = [0,L,L]
-    plt.plot(_angles, _vertex, 'b', lw=2, alpha=.2)
+    plt.plot(_angles, _vertex, 'b', lw=0, alpha=.2)
     plt.fill(_angles, _vertex,  alpha=.1) 
-    if (s > 0 ) :
+    if (s > -2 ) :
       season = seasons[(s+1)%len(seasons)]
       L=len(season)
-      plt.text(_angles[1] + 2.7/L, L*.72 ,season)
+      plt.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
 
-  plt.title("Vṛddha-Gārgīya Jyotiṣa Seasons", fontsize=15)
+  plt.title(" Ādityacāra: v. 47, 48, 52, 53, 54, 55\n(Vṛddha-Gārgīya Jyotiṣa Seasons)", fontsize=15)
   plt.show();
-  # print(VGJSeasons)
+  print(VGJSeasons)
+
+# plot_vgj_seasons()
+#%%
 
 def plot_mbounds(inm12, tag) :
   m12 = mbounded(inm12)
@@ -625,7 +640,6 @@ def prev_plot_mbe2_83() :
   ax.grid(True)
 
 #%%
-
 def plot_mbe2_83(n_df, n_df2 = None, only_abhyankar_27=False) :
   n83_err = naks_lon_err (load_naks_data("../datasets/n83_base_Feb24_bce2500_to_ce0500.tsv"))
   # n83_err = naks_lon_err (load_naks_data("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv"))
@@ -748,9 +762,9 @@ def plot_mbe2_83(n_df, n_df2 = None, only_abhyankar_27=False) :
 # plot_mbe2_83(n27Feb24)
 # plot_mbe2_83(n27Feb24, n27Feb24_abhyankar, only_abhyankar_27=False)
 # plot_mbe2_83(n27Feb24_abhyankar, only_abhyankar_27=True)
+
 #%%
-#%%
-def plot_n83_ll() :
+def plot_n83_ll(yrs=[-500]) :
   n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
   n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
@@ -761,8 +775,8 @@ def plot_n83_ll() :
   n83a['ra_adj'] = n83a.ra - n83a.ra.min()
   n83a['lon'] = (n83a.lon-330) % 360
 
-  # for yr in  [-1500, -500] :
-  for yr in  [-500] :
+  # yrs = [-500] if rni_only else [-1500,-500]
+  for yr in  yrs :
     n83 = n83a[ n83a.year ==  yr]#[ ['gname', 'lon']]
     c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
     # n27lbls  = [re.sub('N\d\d\-','', f'{k}:{v}') for k,v in n83.nid.value_counts().sort_index().items()]
@@ -778,8 +792,9 @@ def plot_n83_ll() :
     n27_mean_lon  = n27_mean.reset_index().sort_values(by=['lon']).lon 
     n27_mean_lat  = n27_mean.reset_index().sort_values(by=['lon']).lat
     # n27_mean_ra  = n27_mean.reset_index().sort_values(by=['ra']).ra 
-    # n27_mean_dec  = n27_mean.reset_index().sort_values(by=['ra']).dec 
-    n83.at[403, 'lon'] = 359 # 408 UBha	उत्तराभाद्रपदा	γ Peg 4.512 => 359 for visual simplicity hack
+    # n27_mean_dec  = n27_mean.reset_index().sort_values(by=['ra']).dec
+    if ( yr == -500 +10000): # 10k to mask the hack
+      n83.at[403, 'lon'] = 359 # 408 UBha	उत्तराभाद्रपदा	γ Peg 4.512 => 359 for visual simplicity hack
     # display(n83.sort_values(by='lon').head())
 
     yspan = np.linspace(-40,40,9) 
@@ -821,7 +836,10 @@ def plot_n83_ll() :
     ax.set_xlabel( '', fontsize=20, rotation=0)
     ax.annotate( 'longitude'.upper(), (3.5, -33 ), fontsize=22, color='black', va='center', ha='left', rotation=0)
     ax.annotate( 'latitude'.upper(), (4.6, -15 ), fontsize=22, color='black', va='bottom', ha='center', rotation=90)
-    ax.annotate("ṛtusvabhāva".upper(), (220, 25), fontsize=30, color='red', ha='left')
+    if ( yr == -500):
+      ax.annotate(f"ṛtusvabhāva\n({yr})".upper(), (220, 20), fontsize=30, color='red', ha='left')
+    if ( yr == -1500):
+      ax.annotate(f"Year\n({yr})".upper(), (220, 20), fontsize=30, color='red', ha='left')
     # ax.set_xticklabels( ['%.2f'%x for x in xspan], fontsize=20, rotation=90)
     # ax.set_xticklabels( ["%02d°%02d'"% (math.floor(x), math.floor(60*(x-math.floor(x))) ) for x in xspan], fontsize=20, rotation=90)
     ax.set_xticklabels( ["%0d°"% ((math.floor(x)+330)%360) for x in xspan], fontsize=25, rotation=0)
@@ -889,16 +907,17 @@ def plot_n83_ll() :
       smooth_fn = interp1d(m.lon, m.lat, kind='cubic')
       smooth_x = np.arange(m.lon.min(), m.lon.max(), 30)
       smooth_y = smooth_fn(smooth_x)
-      # ax.plot( smooth_x, smooth_y, linewidth=0, color='gray', marker='$\odot$', markersize=30)
+      ax.plot( smooth_x, smooth_y, linewidth=1, color='gray', marker='$\odot$', markersize=.30)
       ax.plot( m.lon, m.lat, linewidth=0, color='gray', marker='$\odot$', markersize=30)
 
     ax.set_xlim(xmin=0, xmax=360)
     ax.set_ylim(ymin=-34, ymax=38)
     ax.grid(True)
-    return ax
+    # return ax
 
-axis = plot_n83_ll()
+# plot_n83_ll()
 # axis.get_figure().savefig("../_info/fig4.png")
+#%%
 
 def plot_n83_rd() :
   n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
@@ -993,105 +1012,124 @@ def plot_n83_rd() :
     ax.grid(True)
 
 # plot_n83_rd()
-
 #%%
-n27_lon_divisions = make_n27_lon_divisions()
-bright6Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
-bright6Lbls = [ re.sub("^N\d\d.","", x) for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
-#dhanishtha, revati, rohini, mrgashira, ashlesha, hasta, chitra, jyeshtha, shravana.
-bright9Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(dha|rev|roh|mrg|asl|has|chi|jye|shr).*$', x,re.IGNORECASE) ]
-bright9Lbls = [ re.sub("^N\d\d.","", x) for x in bright9Naks ]
+def fig1(): return plot_mbe2_83(n27Feb24, n27Feb24_abhyankar)
+def fig2(): return plot_smooth_mbe2(n27Feb24_sensitivity, n27Feb24_abhyankar, tag="Sensitivity - Shr(β Del) Dha(β Aqr)")
+def fig3(): return plot_n83_ll()  
 
-# This TSH has incorrect ASHadas .. no need to patch as below
-# patch Feb24 which had wrong ASH with Feb20 info which has correct ASH - from stell
-n27Feb24 = load_naks_data("../datasets/n27_base_Feb24_bce2500_to_ce0500.tsv")
-n27Feb24 = naks_lon_err(n27Feb24)
-n27Feb20_delta  = load_naks_data("../datasets/n27_delta_Feb20_bce2500_to_ce0500.tsv")
-n27Feb20_delta = naks_lon_err(n27Feb20_delta)
-ash_patch = n27Feb20_delta[ [('20' in x) or ('21' in x) for x in n27Feb20_delta.nid ]]
-n27Feb24_nonash = n27Feb24[ [not(('20' in x) or ('21' in x)) for x in n27Feb24.nid ]]
-n27Feb24Patched = pd.concat( [n27Feb24_nonash, ash_patch])
-n27Feb24 = n27Feb24Patched.sort_values(['nid', 'year'])
-
-# Generate table for the IJHS paoer
-naks_eq_bounds_report = make_naks_bounds_report(n27Feb24)
-# naks_eq_bounds_report.to_csv("../datasets/naks_eq_bounds_report.csv", index=None)
-# naks_eq_bounds_report
-
-# patch Shr and Dha for sensitivity plots
-n27Feb24_shr_dha_delta  = load_naks_data("../datasets/n27_delta_shr_dha_bce2500_to_ce0500.tsv")
-n27Feb24_shr_dha_delta = naks_lon_err(n27Feb24_shr_dha_delta )
-n27Feb24_non_shr_dha = n27Feb24[ [not(('Shr' in x) or ('Dha' in x)) for x in n27Feb24.nid ]]
-n27Feb24_sensitivity = pd.concat([ n27Feb24_non_shr_dha, n27Feb24_shr_dha_delta])
-n27Feb24_sensitivity = n27Feb24_sensitivity.sort_values(['nid', 'year'])
-
-n27Feb24zoom = load_naks_data("../datasets/n27_base_Feb24_bce1400_to_bce0900_zoom.tsv")
-n27Feb24zoom = naks_lon_err(n27Feb24zoom)
-
-m12 = load_naks_data("../datasets/m12_base_mar20_bce2500_to_ce0500.tsv")
-zm12 = load_naks_data('../datasets/m12_base_mar20_bce0700_to_ce0000_zoom.tsv')
-#%%
-
-# patch Abhyankar nakshatras
-# var $NAbhyankar = [
-#   "N10-Mag	मघाः	α Leo	Regulus	HIP 49669",
-#   "N13-Has	हस्तः	γ Crv	Gienan	HIP  59803",
-#   "N18-Jye	ज्येष्ठा	α Sco	Antares	HIP  80763",
-#   "N19-Mul	मूलं	λ Sco	Shaula	HIP  85927",
-#   "N20-PAsh	पूर्वाषाढा	δ Sgr	Kaus Media	HIP 89931",
-#   "N21-UAsh	उत्तराषाढा	σ Sgr	Nunki	HIP 92855",	
-
-#   //"N22-Shr	धनिष्ठा	β Del	Rotanev	HIP 101769",  // Included in NSensitivity
-#   //"N23-Dha	धनिष्ठा	β Aqr	Sadalsuud	HIP 106278",
-
-#   "N24-Sha	शतभिषक्	α PsA	Fomalhaut	HIP 113368",
-#   "N27-Rev	रेवती	ζ Psc	Revati	HIP 5737",
-# ]
-# */
-n27Feb24_abhyankar_delta = load_naks_data("../datasets/n27_delta_abhyankar_bce2500_to_ce0500.tsv")
-n27Feb24_abhyankar_delta = naks_lon_err(n27Feb24_abhyankar_delta)
-n27Feb24_non_abhyankar = n27Feb24[ [not(
-  ('Mag' in x) or ('Has' in x) or ('Jye' in x) or ('Mul' in x) 
-  or ('PAsh' in x) or ('UAsh' in x) or ('Shr' in x) or ('Dha' in x)
-  or ('Sha' in x) or ('Rev' in x)
-  ) for x in n27Feb24.nid ]]
-n27Feb24_abhyankar = pd.concat([ n27Feb24_non_abhyankar, n27Feb24_shr_dha_delta, n27Feb24_abhyankar_delta])
-n27Feb24_abhyankar = n27Feb24_abhyankar.sort_values(['nid', 'year'])
-
-#%%
-
-#%%
 def rni_paper_plots() :
   # ĀDITYACĀRA and ṚTUSVABHĀVA plots
-  plot_mbe2_83(n27Feb24)
+  # plot_mbe2_83(n27Feb24) 
+  fig1() ; fig2() ; fig3()
+  # plot_mbe2_83(n27Feb24_abhyankar)
   # plot_smooth_mbe2(n27Feb24, "Base - Minima around 1200 BCE")
   # plot_smooth_mbe2(n27Feb24_sensitivity, "Sensitivity - Shr(β Del) Dha(β Aqr)- clip")
-  plot_smooth_mbe2(n27Feb24_sensitivity, tag="Sensitivity - Shr(β Del) Dha(β Aqr)")
-  plot_n83_ll()  
-  # do_bounded_plot(n27Feb24," All 27") #("Feb24-Set")
+
 #%%
 def all_plots() :
-  rni_paper_plots()
+  print("Plots for Transit of sun through the seasonal nakṣatra cycle in the Vṛddha-Gārgīya Jyotiṣa")
+  print("Indian Journal of History of Science, 56.3(2021)")
+  rni_paper_plots(); plt.show()
+
+  print("Other Plots")
+  plot_n83_ll(yrs=[-1500])
+  plot_n83_rd()
   do_bounded_plot(n27Feb24, "All 27")
   plot_vgj_seasons()
-# #%%
-# rni_paper_plots()
-# %%
-all_plots()
+  print("End Other Plots")
+
 #%%
-rni_paper_plots()
+n27_lon_divisions = None
+bright6Naks = None
+bright6Lbls = None
+bright9Naks = None
+bright9Lbls = None
+n27Feb24 = None
+n27Feb24_sensitivity = None
+n27Feb24_abhyankar = None
+naks_eq_bounds_report = None
+m12 = None
+
+def init_globals () :
+  global n27_lon_divisions
+  global bright6Naks
+  global bright6Lbls
+  global bright9Naks
+  global bright9Lbls
+  global n27Feb24
+  global n27Feb24_sensitivity
+  global n27Feb24_abhyankar
+  global naks_eq_bounds_report
+  global m12
+
+  if n27_lon_divisions is not None : return
+
+  n27_lon_divisions = make_n27_lon_divisions()
+  bright6Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
+  bright6Lbls = [ re.sub("^N\d\d.","", x) for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
+  #dhanishtha, revati, rohini, mrgashira, ashlesha, hasta, chitra, jyeshtha, shravana.
+  bright9Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(dha|rev|roh|mrg|asl|has|chi|jye|shr).*$', x,re.IGNORECASE) ]
+  bright9Lbls = [ re.sub("^N\d\d.","", x) for x in bright9Naks ]
+
+  # This TSH has incorrect ASHadas .. no need to patch as below
+  # patch Feb24 which had wrong ASH with Feb20 info which has correct ASH - from stell
+  n27Feb24 = load_naks_data("../datasets/n27_base_Feb24_bce2500_to_ce0500.tsv")
+  n27Feb24 = naks_lon_err(n27Feb24)
+  n27Feb20_delta  = load_naks_data("../datasets/n27_delta_Feb20_bce2500_to_ce0500.tsv")
+  n27Feb20_delta = naks_lon_err(n27Feb20_delta)
+  ash_patch = n27Feb20_delta[ [('20' in x) or ('21' in x) for x in n27Feb20_delta.nid ]]
+  n27Feb24_nonash = n27Feb24[ [not(('20' in x) or ('21' in x)) for x in n27Feb24.nid ]]
+  n27Feb24Patched = pd.concat( [n27Feb24_nonash, ash_patch])
+  n27Feb24 = n27Feb24Patched.sort_values(['nid', 'year'])
+
+  # Generate table for the IJHS paoer
+  naks_eq_bounds_report = make_naks_bounds_report(n27Feb24)
+  # naks_eq_bounds_report.to_csv("../datasets/naks_eq_bounds_report.csv", index=None)
+  # naks_eq_bounds_report
+
+  # patch Shr and Dha for sensitivity plots
+  n27Feb24_shr_dha_delta  = load_naks_data("../datasets/n27_delta_shr_dha_bce2500_to_ce0500.tsv")
+  n27Feb24_shr_dha_delta = naks_lon_err(n27Feb24_shr_dha_delta )
+  n27Feb24_non_shr_dha = n27Feb24[ [not(('Shr' in x) or ('Dha' in x)) for x in n27Feb24.nid ]]
+  n27Feb24_sensitivity = pd.concat([ n27Feb24_non_shr_dha, n27Feb24_shr_dha_delta])
+  n27Feb24_sensitivity = n27Feb24_sensitivity.sort_values(['nid', 'year'])
+
+  # n27Feb24zoom = load_naks_data("../datasets/n27_base_Feb24_bce1400_to_bce0900_zoom.tsv")
+  # n27Feb24zoom = naks_lon_err(n27Feb24zoom)
+
+  m12 = load_naks_data("../datasets/m12_base_mar20_bce2500_to_ce0500.tsv")
+  # zm12 = load_naks_data('../datasets/m12_base_mar20_bce0700_to_ce0000_zoom.tsv')
+
+  # patch Abhyankar nakshatras
+  # var $NAbhyankar = [
+  #   "N10-Mag	मघाः	α Leo	Regulus	HIP 49669",
+  #   "N13-Has	हस्तः	γ Crv	Gienan	HIP  59803",
+  #   "N18-Jye	ज्येष्ठा	α Sco	Antares	HIP  80763",
+  #   "N19-Mul	मूलं	λ Sco	Shaula	HIP  85927",
+  #   "N20-PAsh	पूर्वाषाढा	δ Sgr	Kaus Media	HIP 89931",
+  #   "N21-UAsh	उत्तराषाढा	σ Sgr	Nunki	HIP 92855",	
+
+  #   //"N22-Shr	धनिष्ठा	β Del	Rotanev	HIP 101769",  // Included in NSensitivity
+  #   //"N23-Dha	धनिष्ठा	β Aqr	Sadalsuud	HIP 106278",
+
+  #   "N24-Sha	शतभिषक्	α PsA	Fomalhaut	HIP 113368",
+  #   "N27-Rev	रेवती	ζ Psc	Revati	HIP 5737",
+  # ]
+  # */
+  n27Feb24_abhyankar_delta = load_naks_data("../datasets/n27_delta_abhyankar_bce2500_to_ce0500.tsv")
+  n27Feb24_abhyankar_delta = naks_lon_err(n27Feb24_abhyankar_delta)
+  n27Feb24_non_abhyankar = n27Feb24[ [not(
+    ('Mag' in x) or ('Has' in x) or ('Jye' in x) or ('Mul' in x) 
+    or ('PAsh' in x) or ('UAsh' in x) or ('Shr' in x) or ('Dha' in x)
+    or ('Sha' in x) or ('Rev' in x)
+    ) for x in n27Feb24.nid ]]
+  n27Feb24_abhyankar = pd.concat([ n27Feb24_non_abhyankar, n27Feb24_shr_dha_delta, n27Feb24_abhyankar_delta])
+  n27Feb24_abhyankar = n27Feb24_abhyankar.sort_values(['nid', 'year'])
+
 
 # %%
-plot_mbe2_83(n27Feb24)
-# %%
-plot_mbe2_83(n27Feb24, n27Feb24_abhyankar)
-plot_mbe2_83(n27Feb24_abhyankar)
+#### NON CORE STUFF
 
-
-# %%
-plot_smooth_mbe2(n27Feb24_sensitivity, tag="Sensitivity - Shr(β Del) Dha(β Aqr)")
-# %%
-# naks_eq_bounds_report
 def spot_check():
   rni = n27Feb24[ 
     ( n27Feb24.year < 10000) 
@@ -1131,40 +1169,30 @@ def spot_check():
   ) + abh.sample(10).sort_values(['nid','gname','year']).apply(lambda x: x.tolist(), axis=1).tolist(
   ) + abh[abh.nid.apply(lambda x: bool(re.match("^.*(2\d).*$",str(x))))].sample(10).sort_values(['nid','gname','year']).apply(lambda x: x.tolist(), axis=1).tolist(  
   )
-  display(ans)
-
-spot_check()
-
-# display ( rni.set_index(['nid']) , sens.set_index(['nid']) )
-# %%
-naks_divisions  = n27_lon_divisions[['r_eq', 'l_eq', 'r_eq1', 'l_eq1']].rename(
-  columns={'r_eq':'Ādityacāra_lo', 'l_eq':'Ādityacāra_hi', 'r_eq1':'Ṛtusvabhāva_lo', 'l_eq1':'Ṛtusvabhāva_hi'}
-)
-naks_divisions
-
-# %%
-proxy_stars = pd.merge (
-  pd.merge (
-  rni[['nid', 'gname']].drop_duplicates(), #.set_index('nid'),
-  sens[['nid', 'gname']].drop_duplicates(), #.set_index('nid'), 
-  how='left', on='nid'
-),
-  abh[['nid', 'gname']].drop_duplicates(), #.set_index('nid'),
-  how='left', on='nid'
-).rename(columns={'gname_x':'rni_proxy', 'gname_y':'sens_proxy', 'gname':'abh_yoga'})
-
-# %%
-display (
-  "Naks Span", naks_divisions,
-  "================",
-  "ProxyStars", proxy_stars , 
-  "================",
-  "Seasonal 9", bright9Naks , 
+  
+  naks_divisions  = n27_lon_divisions[['r_eq', 'l_eq', 'r_eq1', 'l_eq1']].rename(
+    columns={'r_eq':'Ādityacāra_lo', 'l_eq':'Ādityacāra_hi', 'r_eq1':'Ṛtusvabhāva_lo', 'l_eq1':'Ṛtusvabhāva_hi'}
   )
 
-# %%
-def verify_plot(rni,abh,sens, seasonal=[]):
+  proxy_stars = pd.merge (
+    pd.merge (
+    rni[['nid', 'gname']].drop_duplicates(), #.set_index('nid'),
+    sens[['nid', 'gname']].drop_duplicates(), #.set_index('nid'), 
+    how='left', on='nid'
+  ),
+    abh[['nid', 'gname']].drop_duplicates(), #.set_index('nid'),
+    how='left', on='nid'
+  ).rename(columns={'gname_x':'rni_proxy', 'gname_y':'sens_proxy', 'gname':'abh_yoga'})
 
+  display (
+    "Naks Span", naks_divisions,
+    "================",
+    "ProxyStars", proxy_stars , 
+    "================",
+    "Seasonal 9", bright9Naks , 
+    )
+
+def _verify_plot(rni,abh,sens, seasonal=[]):
   if seasonal :
     # print ( "Seasonal", len(seasonal), seasonal )
     rni = rni[ [n in seasonal for n in rni.nid] ]
@@ -1205,49 +1233,37 @@ def verify_plot(rni,abh,sens, seasonal=[]):
     fontsize=8
   )
   #plt.show()
-#verify_plot(rni,abh,sens)
-#verify_plot(rni,abh,sens, seasonal=bright9Naks[:])
-for ss in range(1,9):
-  verify_plot(rni,abh,sens, seasonal=bright9Naks[ss-1:ss])
-verify_plot(rni,abh,sens, seasonal=bright9Naks[:])
-plt.show()
 
-# %%
-print ("****************************************************")
-for ss in range(1,9):
-  naks_9 = rni[['nid']].drop_duplicates().sample(9).sort_values(['nid'])['nid'].tolist()
+def verify_plot():
+  rni = n27Feb24[ 
+    ( n27Feb24.year < 10000) 
+    ][
+      ['nid','gname', 'year', 'lon', 'err_lon_bounds_eq']
+      ].sort_values(['nid', 'year'])
+
+  sens = n27Feb24_sensitivity [ 
+    ( n27Feb24_sensitivity.year < 10000) 
+    ][
+      ['nid','gname', 'year', 'lon', 'err_lon_bounds_eq']
+      ].sort_values(['nid', 'year'])
+
+  abh = n27Feb24_abhyankar [ 
+    ( n27Feb24_abhyankar.year < 10000) 
+    ][
+      ['nid','gname', 'year', 'lon', 'err_lon_bounds_eq']
+      ].sort_values(['nid', 'year'])
   for ss in range(1,9):
-    verify_plot(rni,abh,sens, seasonal=naks_9[ss-1:ss])
-  verify_plot(rni,abh,sens, seasonal=naks_9[:])
-  plt.show()
-
-
-# %%
-
-# import numpy as np
-# import matplotlib.pyplot as plt
-  
-  
-# setting the axes
-# projection as polar
-plt.axes(projection='polar')
-  
-# setting the length
-# and number of petals
-a = 1
-n = 6
-  
-# creating an array
-# containing the radian values
-rads = np.arange(0, 2 * np.pi, 0.001) 
-  
-# plotting the rose
-for rad in rads:
-    r = a * np.cos(n*rad)
-    plt.polar(rad, r, 'g.')
-   
-# display the polar plot
-plt.show()
-# %%
+    naks_9 = rni[['nid']].drop_duplicates().sample(9).sort_values(['nid'])['nid'].tolist()
+    for ss in range(1,9):
+      _verify_plot(rni,abh,sens, seasonal=naks_9[ss-1:ss])
+    _verify_plot(rni,abh,sens, seasonal=naks_9[:])
+    plt.show()
 
 # %%
+if __name__ == "__main__":
+  init_globals()
+  all_plots()
+  print ("****************************************************")
+  spot_check()
+  print ("****************************************************")
+  verify_plot()

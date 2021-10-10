@@ -126,9 +126,9 @@ class PlanetPos:
 		"""For the given julian day(jd) returns a dataframe with postions of 5 gruhas(mercury,venus,mars,jupiter,saturn,sun+,moon)"""
 		if not isot:
 			isot = Time(jd, format='jd').isot
-			#Need a Stelllarium utility to convert from JD to isot
-			#As the input jd is stell normalized, we need to convert it to the normal jd
-			# The Astropy Tiem cals date string is shifted by a varaible valude depending of jd
+			# Need a Stelllarium utility to convert from JD to isot
+			# As the input jd is stell normalized, we need to convert it to the normal jd
+			# The Astropy Time cals date string is shifted by a varaible value depending of jd
 			# Stellarium/stellarium/src/core/StelUtils.cpp getDateFromJulianDay function to be ported to python
 		T = (jd - JD_2000)  # /36525
 		# print(jd, isot)

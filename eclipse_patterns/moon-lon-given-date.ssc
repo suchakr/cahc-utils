@@ -1,3 +1,4 @@
+// Stellarium script to get moon longitudes and stellarium jd (sjd) for given dates
 include("nakshatras.inc");
 // MOON_PHASES
 include("moon-phases-js-array.inc");
@@ -13,7 +14,7 @@ core.setObserverLocation(0,45,0,"GMT-ish")
 
 // say(DT()) ; say(JD())
 
-//samples - fetched from pythin script - goal is to compute sjd column
+//samples - fetched from python script - goal is to compute sjd column
 say("num_moons = " + MOON_PHASES.length)
 full_moons = MOON_PHASES.filter( function(x,i) { return x[1]> 0.55} )
 num_full_moons = full_moons.length

@@ -1,8 +1,6 @@
 #%%
 from IPython.core.display import display_latex
 from IPython.display import display
-import math
-from astropy.coordinates.representation import PhysicsSphericalRepresentation
 import pandas as pd
 import numpy as np
 from astropy.time import Time
@@ -110,12 +108,20 @@ class NaksUtils:
 		try :
 			if force : raise FileNotFoundError
 			self.df = pd.read_csv('../datasets/n27_full_meta.csv')
+			self.df28 = pd.read_csv('../datasets/n28_full_meta.csv')
 			return
 		except :
 			print('No data file found. Regenerating...')
-			pass
+			self.df = self._regenerate_df()
+			self.df28 = self._regenerate_df28()
 
-		
+
+	def _regenerate_df28(self):
+		'''Need to make this better'''
+		return pd.read_csv('../datasets/n28_full_meta.csv')
+
+	def _regenerate_df(self):
+		'''Combine various pieces of n27'''
 		df1 = pd.read_csv("../datasets/n27_limited_meta.csv")
 		df2 = pd.read_csv("../datasets/n27.csv")
 		df3 = pd.read_csv("../datasets/naks-marga-veethi.tsv", sep="\t")
@@ -177,14 +183,18 @@ class NaksUtils:
 			LON_UE, SPAN_UE,
 		]]
 		self.df = df
-		self.df.to_csv("../datasets/n27_full_meta.csv")
+		# self.df.to_csv("../datasets/n27_full_meta.csv")
+		return df
 
 
 
 def _main():
 	pd.options.display.float_format = '{:.2f}'.format
 	nu = NaksUtils()
-	display(nu.df)
+	# display(nu.df)
+	# display(nu.df28[['nid', 'scp_muhurta']][21:])
+	# display(nu.df28[['nid', 'scp_muhurta']][:21])
+	display(nu.df28.scp_muhurta.sum() , nu.df28.scp_ahoratra.sum())
 
 
 if __name__ == "__main__" :
@@ -207,4 +217,4 @@ def _print_align(df):
 def rotate(s, n):
 	return s.shift(-n)
 
-
+# %%

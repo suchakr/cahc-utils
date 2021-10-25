@@ -35,17 +35,22 @@ Output
 from IPython.display import display
 import math
 import pandas as pd
+import numpy as np
 from astropy.time import Time
 import re
 from io import StringIO
+import time
+import NaksUtils as nu
 # import numpy as np
 # import datetime
 # import time
 
 JD_2000 = 2451543.5
 JD_BCE_3000_JAN_1   = 625332.5  # -3000-01-01T00:00:00.000
+JD_BCE_1000_JAN_1  = JD_BCE_3000_JAN_1 + 365.25*2000 - 15 # 1355817.50	-1000-01-01T00:00:00.000
 JD_JEPPY_KALI_YUGA  = 588465.5  # -3101-01-23T00:00:00.000  ( +25 gets to KY 17/Feb/-3101 )
 JD_JEPPY_OFFSET     = 2415020   # 1899-12-31T12:00:00.000
+JD_PER_MUHURTA = 1/30
 
 ##  Vector shorthands for sin, cos, tan ...
 _cos = lambda x: x.apply (lambda y: math.cos(y*math.pi/180))
@@ -91,7 +96,7 @@ def solve_E(M, e):
 		delta_M = M - (E_ - e_deg*_sin(E_))
 		delta_E = delta_M/(1 - e*_cos(E_))
 		if (delta_E.abs() < TOLERANCE).all():
-			## print(f'converged after {n} iterations')
+			# print(f'converged after {n} iterations')
 			break
 		E_ = E_ + delta_E
 	return E_
@@ -109,11 +114,14 @@ Venus,48.0052,+1.6021302244,76.6799,+2.46590E-5,0.723330,0,0.006773,-1.302E-9,3.
 
 class PlanetPos:
 	"""Class to compute planet position given JD"""
-	def __init__(self):
-		""" No parameters needed. Initializes with in build STJARMHIMLEN_PARAMS"""
+	def __init__(self, slice=[]):
+		""" Initializes with in built STJARMHIMLEN_PARAMS
+			slice is a list of planets to use, e.g. ['Sun', 'Moon', 'Venus']
+			empty list means use all planets
+		"""
 		stj_params_str = '\n'.join([ x for x in  STJARMHIMLEN_PARAMS.split("\n") if len(x) ])
-		PP2 = pd.read_csv(StringIO(stj_params_str), sep=',', comment='#').set_index('planet')	
-		# PP2 = pd.read_csv('./planet_params_stjarmhimlen.csv').set_index('planet')
+		PP2 = pd.read_csv(StringIO(stj_params_str), sep=',', comment='#').set_index('planet')
+		PP2 = PP2.loc[slice] if slice else PP2
 		PP2['L'] = PP2['M'] + PP2['w'] + PP2['N']
 		PP2['L_d'] = PP2['M_d'] + PP2['w_d'] + PP2['N_d']
 		PP2_Rate = PP2.loc[:, ['a_d', 'e_d', 'i_d', 'L_d', 'M_d', 'N_d' , 'w_d'] ]
@@ -121,6 +129,7 @@ class PlanetPos:
 		self.PP2 = PP2
 		self.PP2_Rate = PP2_Rate
 		self.PP2_Base = PP2_Base
+		self.sun_moon_df_csv = None 
 
 	def get_planet_pos(self, jd=JD_BCE_3000_JAN_1, isot=None) :
 		"""For the given julian day(jd) returns a dataframe with postions of 5 gruhas(mercury,venus,mars,jupiter,saturn,sun+,moon)"""
@@ -221,7 +230,8 @@ class PlanetPos:
 		geoc_r.Moon = geoc_r.Moon + geoc_r.Sun
 		geoc_r.Sun
 
-		ans = pd.DataFrame({
+		# ans = pd.DataFrame({ })
+		ans = {
 			'jd': ecl_long.apply(lambda v: jd), 
 			'date': ecl_long.apply(lambda v: isot), 
 			'elong': ecl_long, 
@@ -231,7 +241,8 @@ class PlanetPos:
 			'geoc_x': geoc_x, 
 			'geoc_y': geoc_y, 
 			'geoc_z': geoc_z, 
-		})
+		}
+		ans = pd.DataFrame(ans)
 
 		return ans
 
@@ -241,8 +252,60 @@ class PlanetPos:
 		pp = PlanetPos()
 		sf = pd.options.display.float_format
 		pd.options.display.float_format = '{:.2f}'.format
-		display(pp.get_planet_pos(JD_BCE_3000_JAN_1))
+		display(pp.get_planet_pos(JD_BCE_1000_JAN_1))
 		pd.options.display.float_format = sf
+
+	def get_sun_moon_pos(self, jd=JD_BCE_1000_JAN_1, num_events=1, step=JD_PER_MUHURTA, force=False): 
+		isot = Time(jd, format='jd').isot
+		isot = re.sub('T.*', '', isot)
+		# l = len(str(num_events) // 3)
+		# scale = { 0: '', 1: 'k', 2: 'M', 3: 'G' }[l]
+		# fn = f"../datasets/moon_sun_lat_lon_from_{isot}_for_{num_events // (10**l)}{scale}_samples_of_{step:.2f}_day_steps.csv"
+		ans = []
+		start_time = time.time()
+		sample_points = np.arange(jd, jd+num_events*step, step)
+		num_sample_points = len(sample_points)
+		# print(sample_points[0], Time(sample_points[0], format='jd').isot)
+		# print(num_events, num_sample_points)
+		# print(sample_points[-1], Time(sample_points[-1], format='jd').isot)
+		# print("=============")
+		# return
+
+
+		fn = f"../datasets/~sun_moon_lat_lon/from_{isot}_for_{int(num_sample_points)}_samples_of_{step:.2f}_day_steps.csv"
+		try :
+			if force: raise Exception("Force rebuild")
+			self.moon_df = pd.read_csv(fn)
+			return self.moon_df
+		except Exception as e:
+			print(f"{fn} not found, generating it")
+			pass
+
+		"""Computes and returns the moon position dataframe"""
+		'''		jd		date				elong		elati		r
+			Moon	1.355818e+06	-1000-01-01T00:00:00.000	274.965549	4.989153	62.769629
+			Moon	1.355818e+06	-1000-01-01T00:48:00.000	275.374368	4.990378	62.753770
+			Moon	1.355818e+06	-1000-01-01T01:36:00.000	275.783382	4.991344	62.737774
+			Moon	1.355818e+06	-1000-01-01T02:24:00.000	276.192590	4.992050	62.721642
+			Moon	1.355818e+06	-1000-01-01T03:12:00.000	276.601993	4.992497	62.705376
+			'''
+		print(f'Start {time.time()-start_time :.2f} seconds : 0 of {num_sample_points}')
+		for _jd , idx in zip(sample_points, range(num_sample_points)):
+			# pp.get_planet_pos(float(x.jd) + offset ).loc['Moon', 'elong'], 
+			xdf = self.get_planet_pos(_jd) 
+			# .loc[ 'Moon', 'elong', 'elati', 'r', 'geo_r', 'geoc_x', 'geoc_y', 'geoc_z' ]
+			if (idx % 1000 == 0):	
+				# print('Moon: {}/{}'.format(idx, num_sample_points))
+				print(f'{time.time()-start_time:.2f} seconds : {idx} of {num_sample_points}')
+
+			# ans.append(xdf)
+			ans.append(xdf.loc[ ['Moon', 'Sun'] , ['jd', 'date', 'elong', 'elati', 'r'] ])
+		print(f'Finally {time.time()-start_time :.2f} seconds : all of {num_sample_points}')
+		# self.moon_df = pd.DataFrame(ans)
+		moon_df = pd.concat(ans)
+		moon_df.date = self.moon_df.date.apply(lambda v: re.sub(':\d\d\.\d\d\d$', '', v))
+		moon_df.to_csv(fn, float_format='%.3f')
+		return moon_df
 
 	def sanity_check_with_stellarium():
 		"""Plots the diff between computed and stellarium pre-scraped longitidues"""
@@ -323,7 +386,51 @@ class PlanetPos:
 		ax.set_title('Moon Longitudes - Compute vs Scrape', fontsize=20)
 		return ans
 
+	def get_sun_moon_pos_by_years(self, jd_start= JD_BCE_1000_JAN_1, num_years=20, jd_step=1/6):
+		pp = self 
+		# display(pp.PP2)
+		days_per_year =365 
+		start_time = time.time()
+		dfs=[]
+		dt0 = Time(jd_start, format='jd', scale='utc').isot
+		dt0 = re.sub('T.*', '', dt0)
+		fn = f'../datasets/sun_moon_pos_{dt0}_for_{num_years:d}_years_in_{jd_step:.3f}_jd_steps.csv'
+		self.sun_moon_df_csv = fn
+		try:
+			# 1/0
+			mdf = pd.read_csv(fn, index_col=0)
+			print(f'loaded {fn}')
+			return mdf
+		except:
+			print(f'could not load {fn} .. attempting rebuild')
+			pass
+		
+		for idx, yr in enumerate(range(num_years)):
+			jd = jd_start + yr * days_per_year 
+			dt = Time(jd, format='jd', scale='utc').isot
+			print (f'{idx:4d} {int(-start_time+time.time()):6d} secs,  {jd:0.3f} {dt}\n=================\n' )
+			mdf = pp.get_sun_moon_pos(
+				jd=JD_BCE_1000_JAN_1 + (yr*days_per_year), 
+				num_events=days_per_year/jd_step, 
+				step=jd_step, 
+				force=False)
+			dfs.append(mdf)
+		mdf = pd.concat(dfs).reset_index()
+		mdf = pd.pivot_table(mdf, index=['jd'], columns=['planet'], values=['elong', 'elati', 'r'])
+		mdf.columns = ["_".join(a) for a in mdf.columns.to_flat_index()]
+		mdf = mdf.drop(columns=['elati_Sun', 'r_Sun']).sort_index(ascending=True)
+		mdf['sun_moon_angle'] = (-mdf.elong_Moon + mdf.elong_Sun)%360
+
+		mdf.to_csv(fn,float_format='%0.3f')
+		return mdf
 
 #%%
 if __name__ == '__main__':
-	sdf = PlanetPos.sanity_check_with_stellarium()
+	pd.set_option('display.float_format', '{:.2f}'.format)	
+	pp = PlanetPos( slice=['Sun', 'Moon'])
+	mdf = pp.get_sun_moon_pos_by_years(num_years=100)
+	display(pp.sun_moon_df_csv, mdf)
+	mdf.iloc[0:1000,].reset_index().plot.scatter(x='jd', y='sun_moon_angle')
+	# sdf = PlanetPos.sanity_check_with_stellarium()
+
+# %%

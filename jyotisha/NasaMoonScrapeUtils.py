@@ -5,9 +5,8 @@ import math
 import pandas as pd
 import numpy as np
 from astropy.time import Time
-from pandas.core.reshape.tile import cut
 import PlanetPos as PP
-from JdUtils import stelAltJD
+from JdUtils import toStelJD
 from time import time
 import re
 import NaksUtils
@@ -17,12 +16,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 #%%
-def toStelJD(datestr:str) -> float:
-	"""Convert a date string to a JD"""
-	(y,m,d,hh,mm,ss) =  re.match("([\-]?\d+).(\d+).(\d+).(\d+).(\d+).(\d+)",datestr).groups()
-	(y,m,d,hh,mm,ss) = (int(y),int(m),int(d),int(hh),int(mm),int(ss))
-	return stelAltJD(y,m,d,hh,mm,ss)
-
 def get_full_moon_planet_pos(force=False) -> pd.DataFrame:
 	"""
 	Get the planet positions/distance for all planets at full moon for years from -1999 to -100
@@ -259,12 +252,14 @@ def super_moon_histogram_by_epoch ():
 	# plot_full_moon_distance_hist_by_naks(from_year=-1999, num_years=1000, chunks=20, maasa_threshold=10, 
 	# 					cuts=1, cut_to_plot=0,  title_tag='Full Moon') 
 
-
 # %%
+
 if __name__ == "__main__":
 	print (__package__)
 	# get_moon_planet_pos ()
 	# super_moon_histogram_by_epoch()
+
+#%%
 
 # def _plot_fm_hist_by_naks(fm_pvt, ax=None, markersize=10, maasa_threshold=8) -> None:
 # 	"""

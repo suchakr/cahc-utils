@@ -33,7 +33,7 @@ def julianJD(Y, M, D, H=23, MM=59, S=59) :
 	"""
 	return (367 * Y - (7 * (Y + 5001 + (M - 9)/7))/4 + (275 * M)/9 + D + 1729777) + H/24 + MM/(24*60)  + S/(24*60*60)
 
-def _stelAltJD(y,  m,  d,  h=23,  mm=59, s=59) :
+def _stelJD(y,  m,  d,  h=23,  mm=59, s=59) :
 	""" 
 	Code from Stellarium - alternate JD  ( algo2 really, algo1 has QT dependency not easy in Python)
 
@@ -51,14 +51,14 @@ def _stelAltJD(y,  m,  d,  h=23,  mm=59, s=59) :
 	rjd += 0.5;
 	return rjd;
 
-def stelAltJD(y,  m,  d, h=23,  mm=59, sec=59) :
+def stelJD(y,  m,  d, h=23,  mm=59, sec=59) :
 	"""
-	The JD number of this maches with Stellarium's JD number.
-	Deltas from comparing _stelAltJD o/p with Stellarium interactive
-	The added delta gets the same result as seem in Stellarium
+	The JD number of this matches with Stellarium's JD number compared to AstroPy's JD number.
+	  Deltas from comparing _stelAltJD o/p with Stellarium interactive
+	  The added delta gets the same result as seem in Stellarium
 	"""
 	# h, mm, s = 12,0,0  # validated for these hour,minute,sec values
-	s = _stelAltJD(y,  m,  d,  h,  mm, sec)
+	s = _stelJD(y,  m,  d,  h,  mm, sec)
 	(y,  m,  d,  h,  mm, sec)	=  (int(x) for x in (y,  m,  d,  h,  mm, sec))
 	delta = 100000000*1
 	if s< 2299148.5 : delta = 12 # Before including 1582-10-04 
@@ -80,6 +80,12 @@ def stelAltJD(y,  m,  d, h=23,  mm=59, sec=59) :
 	elif s >= 2378555.5 : delta = 0 # After including 1800-03-01
 	if delta > 100: print ("Invalid Date maybe? " , y,m,d,h,mm,sec,s, delta)
 	return (s + delta)
+
+def toStelJD(datestr:str) -> float:
+	"""Convert a date string to a JD"""
+	(y,m,d,hh,mm,ss) =  re.match("([\-]?\d+).(\d+).(\d+).(\d+).(\d+).(\d+)",datestr).groups()
+	(y,m,d,hh,mm,ss) = (int(y),int(m),int(d),int(hh),int(mm),int(ss))
+	return stelJD(y,m,d,hh,mm,ss)
 
 def find_and_check_date_range_and_delta_params_fo_stel_alt():
 	"""
@@ -104,7 +110,7 @@ def find_and_check_date_range_and_delta_params_fo_stel_alt():
 		, gregJD(y,m,d)
 		, julianJD(y,m,d)
 		, Time(f'{y:04d}-{m:02d}-{d:02d}T23:59:59' if y>=0 else f'{y:06d}-{m:02d}-{d:02d}T23:59:59').jd
-		, stelAltJD(y,m,d)
+		, stelJD(y,m,d)
 	] for y,m,d in [ # carefully selected dates 
 		(-4712,1,1),  
 		# (-1952,5,17), 

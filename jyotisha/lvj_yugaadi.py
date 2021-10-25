@@ -16,7 +16,7 @@ import numpy as np
 from astropy.time import Time
 from pandas.core.reshape.tile import cut
 import PlanetPos as PP
-from JdUtils import stelAltJD
+from JdUtils import stelJD
 from time import time
 import re
 import NaksUtils
@@ -119,9 +119,9 @@ smq = SunMoonQuadrants()
 lvj_zero_jd, lvj_zero_dt  = smq.amavasya_at_uttarayana().index[2]
 #%%
 tz=Time(lvj_zero_dt)
-lvj_zero_jd, lvj_zero_dt , tz.jd , stelAltJD(-1238,1,2,1,0)
+lvj_zero_jd, lvj_zero_dt , tz.jd , stelJD(-1238,1,2,1,0)
 #%%
-bce600 = stelAltJD(-600,1,1,0,0)
+bce600 = stelJD(-600,1,1,0,0)
 pp = PP.PlanetPos()
 t0 = time()
 mdf = pd.DataFrame()

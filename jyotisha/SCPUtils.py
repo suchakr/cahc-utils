@@ -79,21 +79,25 @@ class SCPUtils :
 					return nid 
 		return None
 
-	def plot_moon_cycle(self, num_years=1):
+	def plot_moon_cycle(self, num_years=1, offset_years=0, ax=None) :
 		slice = 6*30
-		fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(10,10))
+		if not ax:
+			fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(10,10))
 		ax.set_theta_zero_location('N', offset=8)
 		ax.set_theta_direction(-1)
 		# offsets = df28.scp_muhurta 
 		# angles = ((df28.scp_muhurta.cumsum() - offsets )* 360/df28.scp_muhurta.sum())
 		angles = self.df28.scp_lon_lo
 		labels = [ f"{n}\n({(a-8)%360:.0f}°)" for n,a in zip(self.df28.nid , angles)]
-		plt.thetagrids(angles, labels=labels)
+		# plt.thetagrids(angles, labels=labels)
+		ax.set_thetagrids(angles, labels=labels)
 		# colors = ['r', 'g', 'b', 'orange', 'c', 'm']
 		colors = ['r', 'g', 'b', 'brown', 'm', 'black']
 		mdf = self.mdf
-		slices = range(0, min(slice*12*num_years +slice*2,mdf.shape[0]), slice)
+		slice_offset = int(slice * offset_years*12)
+		slices = range(0 + slice_offset , min( int(slice*12*num_years) +slice*2 + slice_offset, mdf.shape[0]), slice)
 		for slice_idx, slice_start in enumerate(slices) :
+
 			degrees = mdf.iloc[slice_start:slice_start+slice+1].elong_Moon
 			radius = mdf.iloc[slice_start:slice_start+slice+1].r_Moon
 			phase = mdf.iloc[slice_start:slice_start+slice+1].sun_moon_angle
@@ -141,8 +145,8 @@ class SCPUtils :
 		# ax.set_rlabel_position(-0)  # Move radial labels away from plotted line
 		ax.grid(True, color='#DDE', linestyle='-', linewidth=1)
 
-		ax.set_title(f"Moon plot for {num_years} years of 62, 30 day months from -1000\n poornima in bold , amavasya in gray, each color is a year\n overlaid on unequal nakshatras \n polar plot - angle is longitude, radius is moon distance in earth-moon units ", va='bottom')
-		plt.show()
+		ax.set_title(f"Moon plot for ~{num_years} years - {len(slices)}, 30 day months from {-1000+offset_years*1.0 :.1f}\n poornima in bold , amavasya in gray, each color is a year\n overlaid on unequal nakshatras \n polar plot - angle is longitude, radius is moon distance in earth-moon units ", va='bottom')
+		#plt.show()
 
 
 
@@ -166,13 +170,13 @@ if __name__ == '__main__' :
 	# SCPUtils.TestSCP()
 	su = SCPUtils()
 	su.plot_moon_hist()
+	su.plot_moon_cycle(num_years=1)
 
 
 #%%
 # %%
-# plot histogram of mdf
 
 # %%
-mdf.iloc[:1000].sun_moon_angle.plot(kind='line', alpha=0.8, figsize=(10,5))
+# su.mdf.iloc[:1000].sun_moon_angle.plot(kind='line', alpha=0.8, figsize=(10,5))
 
 

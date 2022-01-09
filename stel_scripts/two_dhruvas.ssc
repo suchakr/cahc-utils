@@ -1,0 +1,47 @@
+include("nakshatras.inc");
+
+core.setObserverLocation("Ujjain, India", "Earth");
+MarkerMgr.deleteAllMarkers()
+LabelMgr.deleteAllLabels()
+
+lbl1 = LabelMgr.labelScreen( "The Two Dhruvas ", 1200, 200, true,50, "#FF00FF")
+W(5)
+
+while(true) {
+
+JD(2459581.151747)
+LabelMgr.deleteLabel(lbl)
+lbl = LabelMgr.labelScreen( "Modern Sky ( 2022  CE) ", 1200, 1700, true,40, "#FF0000")
+LabelMgr.setLabelShow(lbl, true)
+CustomObjectMgr.removeCustomObjects()
+thuban = getOI("HIP 68756"); W(.5)
+polaris = getOI("HIP 11767"); W(.5)
+CustomObjectMgr.removeCustomObjects()
+CustomObjectMgr.addCustomObjectRaDec("Arvacheena-Dhruva-What-we-see", polaris.ra, polaris.dec, true);
+W(10)
+
+JD(2093248.249189)
+LabelMgr.deleteLabel(lbl)
+lbl = LabelMgr.labelScreen( "Less Ancient Sky (1019 CE) ", 1200, 1700, true,40, "#FFFF00")
+LabelMgr.setLabelShow(lbl, true)
+CustomObjectMgr.removeCustomObjects()
+thuban = getOI("HIP 68756"); W(.5)
+polaris = getOI("HIP 11767"); W(.5)
+CustomObjectMgr.addCustomObjectRaDec("Arvacheena-Dhruva-What-al-biruni-saw", polaris.ra, polaris.dec, true);
+W(3)
+CustomObjectMgr.addCustomObjectRaDec("Praacheena-AbhayaDhruva-what-pundits-knew", thuban.ra, thuban.dec, true);
+W(10)
+
+
+
+JD(983619.040856)
+LabelMgr.deleteLabel(lbl)
+lbl = LabelMgr.labelScreen( "Ancient Sky ( -2019 BCE) ", 1200, 1700, true,40, "#00FFFF")
+LabelMgr.setLabelShow(lbl, true)
+CustomObjectMgr.removeCustomObjects()
+thuban = getOI("HIP 68756"); W(.5)
+polaris = getOI("HIP 11767"); W(.5)
+CustomObjectMgr.addCustomObjectRaDec("Praacheena-AbhayaDhruva-what-ancients-saw", thuban.ra, thuban.dec, true);
+CustomObjectMgr.addCustomObjectRaDec("", polaris.ra, polaris.dec, true);
+W(10)
+}

@@ -109,6 +109,7 @@ class NaksUtils:
 			if force : raise FileNotFoundError
 			self.df = pd.read_csv('../datasets/n27_full_meta.csv')
 			self.df28 = pd.read_csv('../datasets/n28_full_meta.csv')
+			self.df28_good = pd.read_csv('../datasets/n28_good_meta.csv')
 			return
 		except :
 			print('No data file found. Regenerating...')
@@ -195,6 +196,7 @@ def _main():
 	# display(nu.df28[['nid', 'scp_muhurta']][21:])
 	# display(nu.df28[['nid', 'scp_muhurta']][:21])
 	display(nu.df28.scp_muhurta.sum() , nu.df28.scp_ahoratra.sum())
+	display(nu.df28_good.scp_muhurta.sum() , nu.df28_good.columns)
 
 
 if __name__ == "__main__" :

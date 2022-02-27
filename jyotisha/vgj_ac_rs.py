@@ -8,6 +8,10 @@ import matplotlib as mpl
 import math
 from matplotlib import colors
 from scipy.interpolate import interp1d
+from scipy import stats
+import NasaMoonScrapeUtils as nmsu
+import NaksUtils as nsu
+
 
 #%%
 def make_n27_lon_divisions() :
@@ -917,21 +921,144 @@ def plot_n83_ll(yrs=[-500]) :
 
 # plot_n83_ll()
 # axis.get_figure().savefig("../_info/fig4.png")
+
+
+
+#%%
+# def ll_to_rd ( lat, lon, obl = 23.439281):
+#   '''
+#   Declination δ=arcsin(cosε×sinβ+sinε×cosβ×sinλ)
+#   Right ascension α=arctan((cosε×sinλ−sinε×tanβ)/cosλ)
+#                   α=atan2(cosβsinλcosε−sinβsinε,cosβcosλ) ( better)
+#   Where
+#   β = ecliptic geocentric latitude
+#   λ = ecliptic geocentric longitude
+#   ε = obliquity of the ecliptic
+#   '''
+#   R = np.pi/180
+#   lat = lat * R
+#   lon = lon * R
+#   obl = obl * R
+
+#   s,c, si, at2 = np.sin, np.cos, np.arcsin, np.arctan2
+#   decl = si(c(obl)*s(lat) + s(obl)*c(lat)*s(lon))
+#   ra = at2(c(lat)*s(lon)*c(obl) - s(lat)*s(obl), c(lat)*c(lon))
+#   return lat/R, lon/R, ra/R, decl/R
+
+# def test_ll_to_rd():
+#   display (
+#     pd.DataFrame([ ll_to_rd(0,lon) for lon in range(0,361,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2),
+#     pd.DataFrame([ ll_to_rd(lon,0) for lon in range(-90,91,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2)
+#   )
+
+# test_ll_to_rd()
+
 #%%
 
-def plot_n83_rd() :
+def get_fm_df():
+  df = nmsu.get_full_moon_planet_pos()
+  df = df[df.planet == 'Moon']
+  df = df.reset_index().drop(['index' , 'geo_r', 'geoc_x', 'geoc_y', 'geoc_z' , 'planet'], axis=1)
+# #year	mm	phase	lon	lat	ra	dec	sz
+  df = df.assign (
+    year = lambda x: x.date.apply( lambda e: int(re.sub("......T.*", "" , e)))
+    , mm =  lambda x: x.date.apply( lambda e: int([x for x in e.split("-") if len(x) >0][1]))
+    # , phase =  lambda x: x.jd.apply( lambda e: .99)
+    , lon = lambda x: x.elong
+    , lat = lambda x: x.elati
+  
+  ).drop( columns = ['elong', 'elati',])
+  nu =  nsu.NaksUtils()
+  ra_decl = df.apply(lambda x: nu.ll_to_rd(x.lat, x.lon), axis=1)
+  df = df.assign (
+    ra = ra_decl.apply(lambda x: x[2]),
+    dec = ra_decl.apply(lambda x: x[3]),
+    dist = lambda x: x.r,
+    sz = lambda x: x.dist/x.dist.mean()
+  )
+  return df.drop( columns = ['r'])
+
+
+# fm_df = get_fm_df()
+# fm_df
+
+#%%
+def n83_drift_rate(n83a = None ):
+  if n83a is None:
+    n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+
+  ans =[]
+  # for n, _df in n83a[(n83a.gname == "ω1 Sco") | (n83a.gname  =="* 17 Tau")][['gname', 'lat', 'lon' , 'ra', 'dec']].groupby('gname') :
+  for n, _df in n83a[['gname', 'lat', 'lon' , 'ra', 'dec']].groupby('gname') :
+    # display(_df)
+    _df = (_df.set_index('gname').diff()).dropna()#.applymap(lambda x: x)
+    # display(_df, pd.DataFrame(stats.zscore(_df)))
+    _df = _df[(np.abs(stats.zscore(_df)) < 2).all(axis=1)] # remove outliers
+    ans.append(_df)
+    # display(_df)
+  drifts = pd.concat(ans).groupby('gname').mean()
+  drifts.rename( columns = { c : f"{c}_drift_per_500_years"  for c in drifts.columns}, inplace=True)
+  return drifts
+
+# ans = n83_drift_rate()
+# display(ans.sort_values(by =['gname']) , ans.describe())
+
+#%%
+def get_year_n83(yr=-2500, n83a=None, n83_drifts=None) :
+  if n83a is None:
+    n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+
+  if n83_drifts is None:
+    n83_drifts = n83_drift_rate(n83a)
+
+  years = n83a.year.unique()
+  if yr in years: return n83a[n83a.year == yr]
+  min_year = n83a.year.min()
+  min_jd = n83a.jd.min()
+  delta = yr - min_year
+  base_df = n83a[n83a.year == min_year]
+  ans = base_df.assign(
+    year = lambda x: yr
+    , date = lambda x: f"{yr}-12-31T06:00:00"
+    , jd = lambda x: min_jd + delta*365.25
+    , lon = lambda x: x.lon + x.gname.apply(lambda y: n83_drifts.loc[y, 'lon_drift_per_500_years'])*delta/500
+    , lat = lambda x: x.lat + x.gname.apply(lambda y: n83_drifts.loc[y, 'lat_drift_per_500_years'])*delta/500
+    , ra = lambda x: x.ra + x.gname.apply(lambda y: n83_drifts.loc[y, 'ra_drift_per_500_years'])*delta/500
+    , dec = lambda x: x.dec + x.gname.apply(lambda y: n83_drifts.loc[y, 'dec_drift_per_500_years'])*delta/500
+  )
+
+  return ans
+
+def test_get_year_n83(yr=-2500):
   n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
   n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
+  n83_drifts = n83_drift_rate(n83a)
+  return get_year_n83(yr, n83a, n83_drifts)
+
+# test_get_year_n83(yr=-2570)
+
+#%%
+
+
+#%%
+
+def plot_n83_rd(yrs=[-1500]) :
+  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
+  n83_drifts = n83_drift_rate(n83a)
+  # n83a = pd.merge(n83a, n83_drifts, on='gname', how='left')
 
   def numof(n): return int(re.sub("\D","", n)); 
   # def clrof(n): z=numof(n); return((z%2)*z/cnt,((z+1)%2)*z/cnt,((z+2)%2)*z/cnt)
   mcolors = [ x for x in colors.XKCD_COLORS.values() if '3' in x]
-  n83a['ra_adj'] = [ 360+x if x<0 else x  for x in  n83a.ra] 
 
   # for yr in  [-1500, -500] :
-  for yr in  [-1500] :
-    n83 = n83a[ n83a.year ==  yr]#[ ['gname', 'lon']]
+  for yr in  yrs :
+    # n83 = n83a[ n83a.year ==  yr]#[ ['gname', 'lon']]
+    n83 = get_year_n83(yr, n83a, n83_drifts)
+    n83['ra_adj'] = [ 360+x if x<0 else x  for x in  n83.ra] 
     c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
     # n27lbls  = [re.sub('N\d\d\-','', f'{k}:{v}') for k,v in n83.nid.value_counts().sort_index().items()]
     n27_mean = n83.groupby(by='nid').agg( {
@@ -968,13 +1095,14 @@ def plot_n83_rd() :
 
 
     ax.plot( [ x for x in xspan], [ 0 for x in xspan] )
-    ax.set_title(f'VGJ - 83 Taras - 27 Nakshatras\n RA Declination Plot for year {yr}', fontsize=30)
+    # ax.set_title(f'VGJ - 83 Taras - 27 Nakshatras\n RA Declination Plot for year {yr}', fontsize=30)
+    ax.set_title(f'RA Declination Plot for year {yr}', fontsize=20)
     ax.set_xticks( [ x for x in xspan] )
     ax.set_xlabel( 'ra', fontsize=20, rotation=0)
     # ax.set_xticklabels( ['%.2f'%x for x in xspan], fontsize=20, rotation=90)
-    ax.set_xticklabels( ["%02d°%02d'"% (math.floor(x), math.floor(60*(x-math.floor(x))) ) for x in xspan+ 0*n83a.ra.min()], fontsize=20, rotation=90)
+    ax.set_xticklabels( ["%02d°\n%02d'"% (math.floor(x), math.floor(60*(x-math.floor(x))) ) for x in xspan+ 0*n83a.ra.min()], fontsize=15, rotation=00)
     ax.set_yticks( [ x for x in yspan] )
-    ax.set_ylabel( 'declination', fontsize=20, rotation=90)
+    ax.set_ylabel( 'declination', fontsize=15, rotation=90)
     ax.set_yticklabels( ['%d'%int(x) for x in yspan], fontsize=20, rotation=0)
     # for x, l  in zip( xspan[0:27] + (xspan[1]-xspan[0])/2 , n27lbls) :
     for x, y, l, n  in zip( n27_mean_ra, n27_mean_dec, n27_mean_lbls, range(n27_mean_ra.shape[0])) :
@@ -988,13 +1116,15 @@ def plot_n83_rd() :
     smooth_y = smooth_fn(smooth_x)
     ax.plot( smooth_x, smooth_y, linewidth=2, color='olive')
 
-    if (yr == -1500) :
-      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+    if True or (yr == -1500) :
+      # moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = get_fm_df()
       moon_df['ra_adj'] = [ 360+x if x<0 else x  for x in  moon_df.ra] 
       moon_df = moon_df[moon_df.sz.diff() != 0] #drop noise
       for nmoon in range(0,1) :
         # m = moon_df[moon_df.year == moon_df.year.unique()[nmoon]] 
-        m = moon_df[moon_df.year == -1399] 
+        # m = moon_df[moon_df.year == -1399] 
+        m = moon_df[moon_df.year == yr] 
         smooth_fn = interp1d(m.ra_adj, m['dec'], kind='cubic')
         smooth_x = np.arange(m.ra_adj.min(), m['dec'].max(), 30)
         smooth_y = smooth_fn(smooth_x)
@@ -1011,7 +1141,8 @@ def plot_n83_rd() :
 
     ax.grid(True)
 
-# plot_n83_rd()
+# plot_n83_rd(yrs=list(range( -500,-2000,-500)))
+
 #%%
 def fig1(): return plot_mbe2_83(n27Feb24, n27Feb24_abhyankar)
 def fig2(): return plot_smooth_mbe2(n27Feb24_sensitivity, n27Feb24_abhyankar, tag="Sensitivity - Shr(β Del) Dha(β Aqr)")

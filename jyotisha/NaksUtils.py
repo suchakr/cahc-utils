@@ -104,6 +104,33 @@ class NaksUtils:
 		'Boat2',
 		]
 
+	def ll_to_rd (cls, lat, lon, obl = 23.439281):
+		'''
+		Declination δ=arcsin(cosε×sinβ+sinε×cosβ×sinλ)
+		Right ascension α=arctan((cosε×sinλ−sinε×tanβ)/cosλ)
+				α=atan2(cosβsinλcosε−sinβsinε,cosβcosλ) ( better)
+		Where
+		β = ecliptic geocentric latitude
+		λ = ecliptic geocentric longitude
+		ε = obliquity of the ecliptic
+		'''
+		R = np.pi/180
+		lat = lat * R
+		lon = lon * R
+		obl = obl * R
+
+		s,c, si, at2 = np.sin, np.cos, np.arcsin, np.arctan2
+		decl = si(c(obl)*s(lat) + s(obl)*c(lat)*s(lon))
+		ra = at2(c(lat)*s(lon)*c(obl) - s(lat)*s(obl), c(lat)*c(lon))
+		return lat/R, lon/R, ra/R, decl/R
+
+	def test_ll_to_rd( cls ):
+		display (
+		pd.DataFrame([ cls.ll_to_rd(0,lon) for lon in range(0,361,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2),
+		pd.DataFrame([ cls.ll_to_rd(lon,0) for lon in range(-90,91,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2)
+		)
+
+
 	def __init__(self, force=False):
 		try :
 			if force : raise FileNotFoundError
@@ -197,6 +224,7 @@ def _main():
 	# display(nu.df28[['nid', 'scp_muhurta']][:21])
 	display(nu.df28.scp_muhurta.sum() , nu.df28.scp_ahoratra.sum())
 	display(nu.df28_good.scp_muhurta.sum() , nu.df28_good.columns)
+	nu.test_ll_to_rd()
 
 
 if __name__ == "__main__" :

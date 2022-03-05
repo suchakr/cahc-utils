@@ -1,0 +1,42 @@
+include("nakshatras.inc");
+JD($JD_0 - 365.25 * 1000)
+//function r(x) { return  Math.round(x*100)/100 }
+function r(x) { return Math.round(100 * x) / 100 }
+
+for (yr = -2500; yr < 2500; yr += 500) {
+    for (n = 0; n < $NAKSHATRAS.length; n++) {
+        JD($JD_0 + 365.25 * yr)
+
+        az = 0; alt = 0;
+        for (t = 0; t < 3; t++) {
+            naks = $NAKSHATRAS[n];
+            oi = getOI(naks.hip)
+            alt = oi.altitude
+            az = oi.azimuth
+            //ddump ( { naks : naks.naks , alt: r(alt) , az: r(az), dt:DT() })
+            //dump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+            alt = (az > 180) ? 180 - alt : alt
+            delta = (-alt / 360)
+
+            JD(JD() + delta); W(0.2)
+            oi = getOI(naks.hip)
+            alt = oi.altitude
+            az = oi.azimuth
+            //ddump(oi['altitude-geometric'],"pretty")
+            //ddump(oi,"pretty")
+            W(.3)
+            //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+            if (Math.abs(alt) < 1) { break; }
+        }
+        //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+
+        //say("=====")
+        if ((n == 0) && (yr == -2500)) {
+            say(['az', 'alt', 'naks', 'yr', "\t", 'JD', "\t", 'DT'].join("\t"))
+        }
+        say([r(az), r(alt), naks.naks, yr, "\t", r(JD()), "\t", DT()].join("\t"))
+
+    }
+}
+
+

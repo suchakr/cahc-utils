@@ -246,6 +246,29 @@ function warn(x) { core.output('' + x) }
 function W(x) { if (!x) x = 0.1; core.wait(x) }
 function JD(x) { if (x) { core.setJDay(x); W() } return core.getJDay() }
 function DT(x) { if (x) { core.setDate(x); W() } return core.getDate("local") }
+var $WRITE_X = 100
+var $WRITE_Y = 80
+function hexof(d) { return '01234567890ABCDEF'[d%16] }
+function cls() { LabelMgr.deleteAllLabels(); $WRITE_Y=80}
+function writes(t,color, size) { // write to screen
+  if (!size) size=10
+  if (!color) color= '#CCC' + hexof($WRITE_Y) + hexof($WRITE_Y) + hexof($WRITE_Y) //+ hexof($WRITE_X) + 'FF' 
+  var id = LabelMgr.labelScreen(t, $WRITE_X, $WRITE_Y, false, size , color);
+  LabelMgr.setLabelShow(id, true);
+  $WRITE_Y += (size+2) 
+  core.wait(2)
+}
+var $TITLE_X = 400
+var $TITLE_Y = 70 
+function titles(t,color, size) { // title to screen
+  if (!size) size=25
+  if (!color) color= '#ABC' + hexof($TITLE_Y) + hexof($TITLE_Y) + hexof($TITLE_Y) //+ hexof($WRITE_X) + 'FF' 
+  var id = LabelMgr.labelScreen(t, $TITLE_X, $TITLE_Y, false, size , color);
+  LabelMgr.setLabelShow(id, true);
+  $TITLE_Y += (size+2) 
+  core.wait(2)
+}
+var id = LabelMgr.labelScreen("Tour of 27 Nakshatras", 500, 500, false, 30)
 
 function TimeKeeper() {
    this.start = (new Date()).getTime()

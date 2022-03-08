@@ -1,0 +1,53 @@
+include("nakshatras.inc");
+
+// grab lat and lon for ash=0 and bha=0 epoch of the 28 nakshatras
+
+naks = [
+        'N01-Ash', 'N02-Bha', 'N03-Kri', 'N04-Roh', 'N05-Mrg', 'N06-Ard', 'N07-Pun', 
+        'N08-Pus', 'N09-Asl', 'N10-Mag', 'N11-PPal', 'N12-UPal', 'N13-Has', 'N14-Chi',
+        'N15-Swa', 'N16-Vis', 'N17-Anu', 'N18-Jye', 'N19-Mul', 'N20-PAsh', 'N21-UAsh', 
+        'N22-Abi', 'N23-Shr', 'N24-Dha', 'N25-Sha', 'N26-PBha', 'N27-UBha', 'N28-Rev']
+
+
+JD(1558814.557361); W(.5) // -1479 when bha=0
+hips = ['HIP 8903', 'HIP 13209', 'HIP 17702', 'HIP  21421', 'HIP  26207',
+        'HIP 31681', 'HIP  37826', 'HIP  42911', 'HIP 43813', 'HIP 50335',
+        'HIP  54872', 'HIP  57632', 'HIP  60965', 'HIP  65474',
+        'HIP  69673', 'HIP 72622', 'HIP  78401', 'HIP  82396',
+        'HIP  86670', 'HIP 90496', 'HIP  93864', 'HIP 91262', 'HIP  97649',
+        'HIP 101769', 'HIP 112961', 'HIP 113963', 'HIP 112440', 'HIP 4906'];
+
+ans = []
+var i = 0;
+for (i = 0; i < hips.length; i++) {
+        var o = hips[i]
+        var oi = getOI(o); W(.5)
+        //say( o +", "  + oi.elong)
+        ans.push([naks[i], o, oi.elong, oi.elat])
+}
+hip0445 = ans
+
+
+JD(1180937.539294); W(.5) // -445 when ash=0
+hips = ['HIP 8903', 'HIP 13209', 'HIP 17702', 'HIP  21421', 'HIP  26207',
+        'HIP 31681', 'HIP  37826', 'HIP  42911', 'HIP 43813', 'HIP 50335',
+        'HIP  54872', 'HIP  57632', 'HIP  60965', 'HIP  65474',
+        'HIP  69673', 'HIP 72622', 'HIP  78401', 'HIP  82396',
+        'HIP  86670', 'HIP 90496', 'HIP  93864', 'HIP 91262', 'HIP  97649',
+        'HIP 101769', 'HIP 112961', 'HIP 113963', 'HIP 112440', 'HIP 4906'];
+
+ans = []
+var i = 0;
+for (i = 0; i < hips.length; i++) {
+        var o = hips[i]
+        var oi = getOI(o); W(.5)
+        //say( o +", "  + oi.elong)
+        ans.push([naks[i], o, oi.elong, oi.elat])
+}
+hip1479 = ans
+
+
+ddump({ 
+        'hip0445': hip0445, 
+        'hip1479': hip1479 
+}, 'pretty')

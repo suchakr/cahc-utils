@@ -1,0 +1,49 @@
+include("nakshatras.inc");
+function r(x) { return Math.round(100 * x) / 100 }
+
+core.setObserverLocation("Ujjain, India", "Earth");
+MarkerMgr.deleteAllMarkers()
+LabelMgr.deleteAllLabels()
+
+
+JD_JYESTA_EAST = 959084.52012 // -2087-10-31  05:32:03
+JD_ROHINI_EAST = 958911.49373 // -2081-05-11 04:54:04
+JD_ROHINI_DELTA = (1324166.48887 - JD_ROHINI_EAST)
+JD_JYESTA_DELTA = (1324340.52498 - JD_JYESTA_EAST)
+
+INFO = [
+    { nid: 3, baseJD: JD_ROHINI_EAST, deltaJD: JD_ROHINI_DELTA },
+    { nid: 17, baseJD: JD_JYESTA_EAST, deltaJD: JD_JYESTA_DELTA }
+]
+
+say(["naks", "naks_az", "naks_alt", "sun_az", "sun_alt", "jd", "dt"].join("\t"))
+
+
+
+for (n = 0; n < INFO.length; n++) {
+
+    baseJD = INFO[n].baseJD
+    deltaJD = INFO[n].deltaJD
+
+
+    nid = INFO[n].nid
+    for (i = -2; i <= 2; i++) {
+        JD(baseJD + i * deltaJD + 4.5 / 360)
+        naks = $NAKSHATRAS[nid]
+        //ddump(rohini, "pretty")
+        naks_info = getOI(naks.hip)
+        sun_info = getOI("Sun")
+        core.selectObjectByName(naks.hip)
+        core.moveToSelectedObject(1)
+        //ddump({ 
+        //"naks" :  naks.naks ,"dt" : DT(), // jd: JD(), 
+        //"az" : r(naks_info.azimuth) , "alt" : r(naks_info.altitude) , "sun_az" : r(sun_info.azimuth) , "sun_alt" : r(sun_info.altitude) 
+        //} , "pretty")
+
+        W(1)
+
+
+        say([naks.naks, r(naks_info.azimuth), r(naks_info.altitude), r(sun_info.azimuth), r(sun_info.altitude), r(JD()), DT()].join("\t"))
+    }
+}
+//core.goHome()

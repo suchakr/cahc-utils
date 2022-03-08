@@ -1,0 +1,32 @@
+REPORT-SAHA-LAHIRI (1955)
+=========================
+Nakṣatra      |ConstituentStars         |YogaTara
+==============|=========================|=========
+Kṛttikā       |(17,19,20,23,27,η) Tau   |η Tau
+Rohiṇī        |(α,γ,δ,ε,θ) Tau          |α Tau
+Mṛgaśira      |(λ,θ1,θ2) Ori            |λ Ori
+Ārdrā         |(α) Ori                  |α Ori
+Punarvasu     |(α,β) Gem                |β Gem
+Puṣya         |(γ,δ,θ) Cnc              |δ Cnc
+Āśleṣā        |(δ,ε,ζ,η,ρ,σ) Hya        |α Cnc
+Maghā         |(α,γ,ε,ζ,η,μ) Leo        |α Leo
+P Phalgunī    |(δ,θ) Leo                |δ Leo
+U Phalgunī    |(93,β) Leo               |β Leo
+Hasta         |(α,β,γ,δ,ε) Crv          |δ Crv
+Citrā         |(α) Vir                  |α Vir
+Svātī         |(α) Boo                  |α Boo
+Viśākhā       |(α,β,θ,γ) Lib            |α Lib
+Anūrādhā      |(β1,δ,π) Sco             |δ Sco
+Jyeṣṭhā       |(α,σ,τ) Sco              |α Sco
+Mūla          |(λ,ν) Sco                |λ Sco
+P Aṣāḍhā      |(δ,ε) Sgr                |δ Sgr
+U Aṣāḍhā      |(ζ,σ,τ,θ) Sgr            |σ Sgr
+Abhijit       |(α,ε,ζ) Lyr              |α Lyr
+Śravaṇa       |(α,β,γ) Aql              |α Aql
+Dhaniṣṭhā     |(α,β,γ,δ) Del            |β Del
+Śatabhiṣak    |(λ) Aqr + 100            |λ Aqr
+P Proṣṭapada  |(α,β) Peg                |α Peg
+U Proṣṭapada  |(γ) Peg (α) And          |γ Peg
+Revatī        |(ζ) Psc + 31             |ζ Psc
+Aśvayuk       |(β,γ) Ari                |β Ari
+Bharaṇī       |(35,39,41) Ari           |41 Ari

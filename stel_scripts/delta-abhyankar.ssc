@@ -1,0 +1,23 @@
+// Stellarium script to get the current coordinates of the Abhyankar's taras
+include("nakshatras.inc");
+
+core.setObserverLocation("Kurukshetra, India", "Earth");
+
+var tk = new TimeKeeper()
+var tk2 = new TimeKeeper()
+
+var $JD_BCE_2500 = 808297.5364471667
+//$JD_0 - 1500*365.25 + 6.5/24
+
+for ( var n = -10 ;  n <= 61; n++)  {
+   core.output( "nid ======== " + n + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
+   core.wait(1)
+   tk2 = new TimeKeeper()
+   var jd = $JD_BCE_2500 + n*365.25 + 6.5/24
+   JD(jd) 
+   // GetP27LatLong($JD_0 - (2500 -n*50 -1)*365.25, 0, 1)
+   //GetNaksLatLonSimple ($N27Feb24, $JD_0 - (1400 -n*10 -1)*365.25)
+   //GetNaksLatLonSimple($NAbhyankar, $JD_0 - (2500 -n*50 -1)*365.25+3/(24*60) -9/(24*60*60))
+   // GetNaksLatLonSimple($NAbhyankar, $JD_BCE_2500 + n*50 *365.25)
+}
+

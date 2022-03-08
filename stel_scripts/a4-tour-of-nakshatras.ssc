@@ -3,6 +3,11 @@ var m2h = mid2hid();
 var n28 = _n28();
 //core.clear("starchart");
 LabelMgr.deleteAllLabels();
+MarkerMgr.deleteAllMarkers()
+// core.setObserverLocation( "Bengaluru, India", "Earth");
+core.wait(.1);
+
+LabelMgr.deleteAllLabels();
 CustomObjectMgr.removeCustomObjects();
 GridLinesMgr.setFlagEquatorGrid(false);
 ConstellationMgr.setFlagArt(false);

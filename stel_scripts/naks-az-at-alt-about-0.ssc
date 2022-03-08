@@ -1,42 +1,68 @@
 include("nakshatras.inc");
-JD($JD_0 - 365.25 * 1000)
+//core.setObserverLocation("कुरु, India", "Earth");
+core.setObserverLocation (76+52/60+47.99/3600, 29+57/60+36/3600,1,"कुरुक्षेत्र", "Earth")
+JD($JD_0 - 365.25*1000)
 //function r(x) { return  Math.round(x*100)/100 }
 function r(x) { return Math.round(100 * x) / 100 }
 
-for (yr = -2500; yr < 2500; yr += 500) {
-    for (n = 0; n < $NAKSHATRAS.length; n++) {
-        JD($JD_0 + 365.25 * yr)
+//ans= GetNaksLatLonSimple ($N27Feb24)
+//ddump($N27, "pretty")
+//ddump(ans, "pretty")
 
-        az = 0; alt = 0;
-        for (t = 0; t < 3; t++) {
-            naks = $NAKSHATRAS[n];
-            oi = getOI(naks.hip)
-            alt = oi.altitude
-            az = oi.azimuth
-            //ddump ( { naks : naks.naks , alt: r(alt) , az: r(az), dt:DT() })
-            //dump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
-            alt = (az > 180) ? 180 - alt : alt
-            delta = (-alt / 360)
+  var $naks_map = $N27Feb24
+  .map(function (v) { return v.split("\t") })
+  .map(function (v) {
+    var h = {}
+    v.map(function (e, i) {
+      h[header_naks[i]] = e //.replace(/HIP\s+/,'')
+    })
+    return h
+  }).map(function (v) {
+    v.hip = v.hip.replace(/\s*\D+\s*$/, '')
+    return v
+  })
 
-            JD(JD() + delta); W(0.2)
-            oi = getOI(naks.hip)
-            alt = oi.altitude
-            az = oi.azimuth
-            //ddump(oi['altitude-geometric'],"pretty")
-            //ddump(oi,"pretty")
-            W(.3)
-            //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
-            if (Math.abs(alt) < 1) { break; }
-        }
-        //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+//ddump($naks_map, "pretty")
+//ddump($NAKSHATRAS, "pretty")
 
-        //say("=====")
-        if ((n == 0) && (yr == -2500)) {
-            say(['az', 'alt', 'naks', 'yr', "\t", 'JD', "\t", 'DT'].join("\t"))
-        }
-        say([r(az), r(alt), naks.naks, yr, "\t", r(JD()), "\t", DT()].join("\t"))
 
-    }
+for ( yr = -2500; yr <= -2500; yr+= 500) {
+break;
+//$naks_map =  $NAKSHATRAS
+for ( n= 0 ; n < $naks_map.length ; n++ ) {
+
+    JD($JD_0 + 365.25*yr)
+
+    az = 0; alt = 0;
+    for ( t = 0; t < 3 ; t++) {
+    naks = $naks_map[n];
+    oi = getOI(naks.hip)
+    alt = oi.altitude
+    az = oi.azimuth
+    //ddump ( { naks : naks.naks , alt: r(alt) , az: r(az), dt:DT() })
+    //dump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+    alt = (az>180)?180-alt:alt
+    delta = (-alt/360)
+    
+    JD( JD()+delta); W(0.2)
+    oi = getOI(naks.hip)
+    alt = oi.altitude
+    az = oi.azimuth
+    //ddump(oi['altitude-geometric'],"pretty")
+    //ddump(oi,"pretty")
+    W(.3)
+    //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+    if ( Math.abs(alt) <  1) { break;}
+   }
+    //ddump ( {  alt: r(alt) , az: r(az), dt:DT() , naks:naks.naks })
+    
+    //say("=====")
+    if ( (n == 0) && (yr == -2500)) {
+    say (['naks', 'gname', 'yr', 'az', 'alt',  'JD',  'DT' ].join("\t"))
+	}
+    say ([naks.nid, naks.gname, yr, r(az), r(alt),   r(JD()), DT() ].join("\t"))
+     
+}
 }
 
 

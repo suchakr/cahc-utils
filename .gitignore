@@ -7,11 +7,15 @@
 **/*_zap*
 **/~planetplot
 **/*mp4
+!**/nakshatra_sky_culture/**/*mp4
 **/*mp3
 **/*ogg
 **/*mov
+!**/nakshatra_sky_culture/**/*mov
 **/*xcf
+!**/nakshatra_sky_culture/**/*xcf
 **/*png
+!**/nakshatra_sky_culture/**/*png
 **/*.tgz
 **/*.gz
 **/*.zip

@@ -6,3 +6,4 @@ moon*csv filter=lfs diff=lfs merge=lfs -text
 nakshatra_sky_culture/movie/media.io_n27.mp4 filter=lfs diff=lfs merge=lfs -text
 nakshatra_sky_culture/movie/n27.mp4 filter=lfs diff=lfs merge=lfs -text
 nakshatra_sky_culture/movie/n27.smallish.mov filter=lfs diff=lfs merge=lfs -text
+play/chunav-phalguni-2022/chunav-early-2022.pickle filter=lfs diff=lfs merge=lfs -text

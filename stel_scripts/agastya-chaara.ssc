@@ -1,0 +1,161 @@
+include("nakshatras.inc");
+function r(x) { return Math.round(100 * x) / 100 }
+function r3(x) { return Math.round(1000 * x) / 1000 }
+//core.setObserverLocation(76 + 52 / 60 + 47.99 / 3600, 29 + 57 / 60 + 36 / 3600, 1, "कुरुक्षेत्र", "Earth")
+core.setObserverLocation(75 + 46 / 60 + 35.14 / 3600, 23 + 10 / 60 + 56.60 / 3600, 1, "उज्जैन`", "Earth")
+//  Aaswayuja maasa ( Isu) => Sun near chitra 180 deg
+//  Agastya First Visibility
+//  Jupiter in East
+//  panchataraka in the west
+//  Shukla Paksha moon
+/*
+इति गार्गीये ज्योतिषशास्त्रे आदित्यचारः समाप्तः ॥
+विप्रं प्रेम्लां दिशं याम्यां नाशायाश्रमजघ्नुषा । रुक्षतोयाश्रतश्चारं शृण्वागस्त्यस्य तस्य तु ॥			1346
+नार्कं ग्रहर्क्षसंयोगैश्चरितस्तस्य विद्यते । सो ऽद्विषष्ठजले प्राप्यमासानुदयते सदा ॥				1347
+पुष्योद्गारिण्ययामार्गे खं जरीटकदर्शने । उदयत्यश्वयुक् शुक्ले कुर्वाणो निर्विषं जलम् ॥			1348
+शङ्खकुंदेन्दुगोक्षीरमृणालरजतप्रभः । शस्तस्यादुदितो ऽगस्त्यः सोषम्य बहुवर्षदः ॥			1349
+वैश्वानरास्थप्रतिमो मांसशोणितकर्दमैः । रणैर्भयैश्च विविधैः किंचिच्छेषयते प्रजाम् ॥			1350
+तारा वैडूर्यशङ्काशे शाण्डिली दक्षिणे पथि । स्थूलतेजोमयिरक्ता पूर्वतो ऽङ्गिरसः सुतः ॥			1351
+सूक्ष्मा पश्चिमतश्चापि सुबाला नाम तारकाः । उपयैरावणपदं सुसूक्ष्माः पञ्चतारकाः ॥			1352
+दृष्टपूर्वेण शाण्दिल्यक्षेमादामन्दवर्षकृत् । पश्चाच्च बहुवर्षी स्यात् सस्यसम्पत्करश्च सः ॥			1353
+तेजोवतीमतिक्रामेत् सुवर्णो वामहाग्रहः । मूलानां वैशसं कुर्यात् सुबला विषये ऽपि वा ॥			1354
+विचरन् नातिचारः स्याद्गच्छेद्गजपथादथ । ऊर्धघोरमनादेश्य अनावृष्टिभयं भवेत् ॥			1355
+नीचोदितश्चरं नंचेद्व्याध्यनावृष्टिशस्त्रकृत् । उदयाक्षिप्रमारोहेद्धान्यार्घः स्यात् तदा महान् ॥			1356
+दृष्टोद्यायो (ऽ)शिशुं हन्या द्वितीये तत् सुभिक्षकृत् । तृतीये गोपशुग्न स्याच्चतुर्थे शूद्रपीडिनः ॥				1357
+पञ्चमे स्युरुजास्तीव्राः षष्ठे हन्यात् तपस्विनः । सप्तमे प्रबलाश्चौराः सौषम्यं कुरुते ऽष्टमे ॥			1358
+नवमे रोहिते सस्यं नृपाणां दशमे जयः । एकासशे कालचरा हन्यान्नाविकशिल्पिकान् ॥				1359
+द्वादशे स्यादनावृष्टिभयं विन्द्यात् त्रयोदशे । चतुर्दशे विनश्यन्ति राष्ट्राणि नृपपीडया ॥				1360
+परमश्रूयते तस्य पौर्णमास्यां प्रशस्यते । चारमेवमगस्त्यस्य लक्ष्य ब्रूयाच्छुभाशुभम् ॥			1361
+अगस्त्यचारः ॥
+*/
+
+fv_agastya = // from PVIS for Ujjain
+[
+    "-00600-08-14T04:48", "-00588-08-14T04:48", "-00576-08-14T04:48", "-00564-08-14T04:47", "-00552-08-14T04:47", "-00540-08-14T04:47",
+    "-00528-08-14T04:47", "-00516-08-14T04:47", "-00504-08-14T04:47", "-00492-08-14T04:46", "-00480-08-14T04:46", "-00468-08-14T04:46",
+    "-00456-08-14T04:46", "-00444-08-14T04:46", "-00432-08-14T04:46", "-00420-08-14T04:45", "-00408-08-14T04:45", "-00396-08-14T04:45",
+    "-00384-08-14T04:45", "-00372-08-13T04:49", "-00360-08-13T04:49", "-00348-08-13T04:48", "-00336-08-13T04:48", "-00324-08-13T04:48",
+    "-00312-08-13T04:48", "-00300-08-13T04:48", "-00288-08-13T04:48", "-00276-08-13T04:47", "-00264-08-13T04:47", "-00252-08-13T04:47",
+    "-00240-08-13T04:47", "-00228-08-13T04:47", "-00216-08-13T04:47", "-00204-08-13T04:47", "-00192-08-13T04:46", "-00180-08-13T04:46",
+    "-00168-08-13T04:46", "-00156-08-13T04:46", "-00144-08-13T04:46", "-00132-08-13T04:46", "-00120-08-13T04:46", "-00108-08-12T04:49",
+    "-96-08-12T04:49", "-84-08-12T04:49", "-72-08-12T04:49", "-60-08-12T04:49", "-48-08-12T04:49", "-36-08-12T04:48", "-24-08-12T04:48",
+    "-12-08-12T04:48", "0-08-12T04:48", "12-08-12T04:48", "24-08-12T04:48", "36-08-12T04:48", "48-08-12T04:48", "60-08-12T04:47",
+    "72-08-12T04:47", "84-08-12T04:47", "96-08-12T04:47", "108-08-12T04:47", "120-08-12T04:47", "132-08-12T04:47", "144-08-12T04:46",
+    "156-08-11T04:50", "168-08-11T04:50", "180-08-11T04:50", "192-08-11T04:50", "204-08-11T04:50", "216-08-11T04:50", "228-08-11T04:49",
+]
+
+
+    
+
+MarkerMgr.deleteAllMarkers()
+LabelMgr.deleteAllLabels()
+
+var $naks_map = $N27Feb24
+    .map(function (v) { return v.split("\t") })
+    .map(function (v) {
+        var h = {}
+        v.map(function (e, i) {
+            h[header_naks[i]] = e //.replace(/HIP\s+/,'')
+        })
+        return h
+    }).map(function (v, i) {
+        v.hip = v.hip.replace(/\s*\D+\s*$/, '')
+        MarkerMgr.markerObject(v.hip, true, "circle")
+        return v
+    })
+
+
+header = 'nid naks gname alt az lon lat salt saz slon vis1 year day jd dt secs'
+header = 'epoch slon saz salt jlon jaz jalt alon aaz aalt arise aset mlon maz malt mrise mset mphase1 mphase2 paksha jd dt'
+say(header.split(/\s+/).join("\t"))
+warn(header.split(/\s+/).join("\t"))
+AGASTYA = CANOPUS = 'α Car'
+
+GMTFIX = (5 + (7 / 60)) / 24
+PAUSE = .2
+
+var tk = new TimeKeeper()
+
+fv_agastya.forEach ( function (v,i) { 
+	DT(v+":00","local") ; 
+	// ddump ( [i,v+":00" , DT()] )  ;
+    sun = getOI('Sun'); W(PAUSE)
+    jup = getOI('Jupiter'); W(PAUSE)
+    aga = getOI(CANOPUS); W(PAUSE)
+    moon = getOI('Moon'); W(PAUSE)
+    dt = DT()
+    jd = JD
+    JD(jd+.5) 
+    moon2 = getOI('Moon'); W(PAUSE)
+    paksha = (moon2.phase - moon.phase)
+    paksha = (paksha < 0)? -1 : (paksha >0) ? 1 : 0
+    epoch = v.replace(/......\T.*/g, '')*1
+
+    info = [
+        epoch,
+        r(sun.elong), r(sun.azimuth), r(sun.altitude),
+        r(jup.elong), r(jup.azimuth), r(jup.altitude),
+        r(aga.elong), r(aga.azimuth), r(aga.altitude), r(aga['rise-dhr']), r(aga['set-dhr']),
+        r(moon.elong), r(moon.azimuth), r(moon.altitude), r(moon['rise-dhr']), r(moon['set-dhr']), r(moon.phase), r(moon2.phase), paksha,
+        r(jd), "'"+dt
+    ]
+
+    say(info.join("\t"))
+    W(.3)
+    // if (days % 90 == 0) {
+    //     warn(info.join("\t"))
+    // }
+} )
+
+
+for (epoch = -600; epoch <= -1100; epoch += 25) { break;
+    dt_base = epoch + '-01-01T00:00:00'
+    DT(dt_base)
+    jd_base = JD()
+
+
+
+    sun = getOI('Sun'); W(PAUSE)
+    delta_season = Math.round(365.25 * (180 - sun.elong) / 360, 0)
+    for (days = 3; days <= 4; days += 3) {
+        jd_sun_at_180 = jd_base + delta_season + days //+3  // magic 3
+        JD(jd_sun_at_180)
+        sun = getOI('Sun'); W(PAUSE)
+        jd_sun_rise_at_180 = jd_sun_at_180 - GMTFIX + sun['rise-dhr'] / 24
+        JD(jd_sun_rise_at_180)
+        sun = getOI('Sun'); W(PAUSE)
+        jup = getOI('Jupiter'); W(PAUSE)
+        aga = getOI(CANOPUS); W(PAUSE)
+        moon = getOI('Moon'); W(PAUSE)
+        dt = DT()
+        JD(jd_sun_rise_at_180+.5) 
+        moon2 = getOI('Moon'); W(PAUSE)
+        paksha = (moon2.phase - moon.phase)
+        paksha = (paksha < 0)? -1 : (paksha >0) ? 1 : 0
+
+        info = [
+            epoch,
+            r(sun.elong), r(sun.azimuth), r(sun.altitude),
+            r(sun.elong), r(jup.azimuth), r(jup.altitude),
+            r(aga.elong), r(aga.azimuth), r(aga.altitude), r(aga['rise-dhr']), r(aga['set-dhr']),
+            r(moon.elong), r(moon.azimuth), r(moon.altitude), r(moon['rise-dhr']), r(moon['set-dhr']), r(moon.phase), r(moon2.phase), paksha,
+            r(jd_sun_rise_at_180), "'"+dt
+        ]
+
+        say(info.join("\t"))
+        if (days % 90 == 0) {
+            warn(info.join("\t"))
+        }
+    }
+    //say("####################" + tk.secElapsed() + ' sec')
+
+    // $naks_map.map(function (v, i) {
+    //     oi = getOI(v.hip)
+    //     $naks_map[i].base_elong = oi.elong
+    //     $naks_map[i].base_elat = oi.elat
+    //     return v
+    // })
+
+    W(1)
+}
+

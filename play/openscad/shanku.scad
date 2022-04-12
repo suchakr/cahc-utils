@@ -12,6 +12,7 @@ DA=$t*12*30;
 ALT = 360*(DA % 30)/30;
 DECL = sin(360*(DA-(DA%30))/(12*30))*DECL23;
 
+
 //DECL = 23-(DA-(DA%30))/30
 MONTHS = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
 MAASAS = [ "Chaitra", "Baisakhi", "Jyaistha", "Asadha", "Sravana", "Bhadra", "Asvina", "Kartika", "Agrahayana", "Pausa", "Magha", "Phalguna" ];

@@ -1,49 +1,84 @@
 include("nakshatras.inc");
 function r(x) { return Math.round(100 * x) / 100 }
+function r3(x) { return Math.round(1000 * x) / 1000 }
+core.setObserverLocation(76 + 52 / 60 + 47.99 / 3600, 29 + 57 / 60 + 36 / 3600, 1, "कुरुक्षेत्र", "Earth")
+// BHA_FISRT_VISIBILITY_1500BCE = 1173273.52758 // -1500-04-01T05:47:13
 
-core.setObserverLocation("Ujjain, India", "Earth");
 MarkerMgr.deleteAllMarkers()
 LabelMgr.deleteAllLabels()
 
+var $naks_map = $N27Feb24
+.map(function (v) { return v.split("\t") })
+.map(function (v) {
+    var h = {}
+    v.map(function (e, i) {
+        h[header_naks[i]] = e //.replace(/HIP\s+/,'')
+    })
+    return h
+}).map(function (v, i) {
+    v.hip = v.hip.replace(/\s*\D+\s*$/, '')
+    MarkerMgr.markerObject(v.hip, true, "circle")
+    return v
+})
 
-JD_JYESTA_EAST = 959084.52012 // -2087-10-31  05:32:03
-JD_ROHINI_EAST = 958911.49373 // -2081-05-11 04:54:04
-JD_ROHINI_DELTA = (1324166.48887 - JD_ROHINI_EAST)
-JD_JYESTA_DELTA = (1324340.52498 - JD_JYESTA_EAST)
+header = 'nid naks gname alt az lon lat salt saz slon vis1 year day jd dt secs'
+say(header.split(/\s+/).join("\t"))
+warn(header.split(/\s+/).join("\t"))
 
-INFO = [
-    { nid: 3, baseJD: JD_ROHINI_EAST, deltaJD: JD_ROHINI_DELTA },
-    { nid: 17, baseJD: JD_JYESTA_EAST, deltaJD: JD_JYESTA_DELTA }
-]
+var tk = new TimeKeeper()
+for (epoch = -1500; epoch <= -500; epoch += 250) {
+    dt_base = epoch + '-01-01T00:00:00'
+    DT(dt_base)
+    jd_base = JD()
+    warn(['# ' + tk.secElapsed() + ' sec', epoch, r(jd_base), DT()].join("\t"))
 
-say(["naks", "naks_az", "naks_alt", "sun_az", "sun_alt", "jd", "dt"].join("\t"))
+    $naks_map.map(function (v, i) {
+        oi = getOI(v.hip)
+        $naks_map[i].base_elong = oi.elong
+        $naks_map[i].base_elat = oi.elat
+        return v
+    })
 
+    for (d = 0; d < 366; d += 5) {
+        JD(jd_base + d)
+        sun = getOI('Sun')
+        GMTFIX = (5 + (7 / 60)) / 24
+        sun_rise = sun['rise-dhr']
+        sun_long = sun['elong']
+        sun_alt = sun['altitude']
+        sun_az = sun['azimuth']
 
+        jd_adj = jd_base + d - GMTFIX + sun_rise / 24 - 13 / 360
+        JD(jd_adj); W(2)
+        dt_adj = DT()
+        // yr = dt_adj.replace(/^(.?\d+)-\d+-\d+T\d+:\d+:\d+$/, '$1')
+        yr = dt_adj.replace(/^(.?\d+).*/, '$1')
 
-for (n = 0; n < INFO.length; n++) {
+        sun = getOI('Sun')
 
-    baseJD = INFO[n].baseJD
-    deltaJD = INFO[n].deltaJD
+        naks_map = []
+        for (i = 0; i < $naks_map.length; i++) {
+            v = $naks_map[i]
+            sun_to_naks_gap = (-v.base_elong + sun_long) % 360
+            naks_to_sun_gap = -sun_to_naks_gap % 360
 
+            if (sun_to_naks_gap > 20 || sun_to_naks_gap < 0) continue;
 
-    nid = INFO[n].nid
-    for (i = -2; i <= 2; i++) {
-        JD(baseJD + i * deltaJD + 4.5 / 360)
-        naks = $NAKSHATRAS[nid]
-        //ddump(rohini, "pretty")
-        naks_info = getOI(naks.hip)
-        sun_info = getOI("Sun")
-        core.selectObjectByName(naks.hip)
-        core.moveToSelectedObject(1)
-        //ddump({ 
-        //"naks" :  naks.naks ,"dt" : DT(), // jd: JD(), 
-        //"az" : r(naks_info.azimuth) , "alt" : r(naks_info.altitude) , "sun_az" : r(sun_info.azimuth) , "sun_alt" : r(sun_info.altitude) 
-        //} , "pretty")
+            oi = getOI(v.hip); W(.35)
+            _alt = oi.altitude
+            _az = oi.azimuth
+            rise_b4_sun_rise = (_alt > 0 & _alt < 10 & _az < 180)
+            info = [
+                v.nid.replace(/N01/,"N901"), v.nid.replace(/^.*\-/,""),  v.gname,
+                r(oi.altitude), r(oi.azimuth), r(oi.elong), r(oi.elat),
+                r(sun.altitude), r(sun.azimuth), r(sun.elong), rise_b4_sun_rise,
+                yr, d + 1, r3(jd_adj), dt_adj, tk.secElapsed()]
+            say(info.join("\t"))
+            if (rise_b4_sun_rise) {
+                warn(info.join("\t"))
+            }
 
-        W(1)
-
-
-        say([naks.naks, r(naks_info.azimuth), r(naks_info.altitude), r(sun_info.azimuth), r(sun_info.altitude), r(JD()), DT()].join("\t"))
+        }
     }
 }
-//core.goHome()
+

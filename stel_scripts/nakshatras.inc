@@ -259,14 +259,18 @@ function writes(t,color, size) { // write to screen
   core.wait(2)
 }
 var $TITLE_X = 400
-var $TITLE_Y = 70 
-function titles(t,color, size) { // title to screen
+var $TITLE_Y = 200 
+function titles(t,color, size, wait) { // title to screen
   if (!size) size=25
-  if (!color) color= '#ABC' + hexof($TITLE_Y) + hexof($TITLE_Y) + hexof($TITLE_Y) //+ hexof($WRITE_X) + 'FF' 
-  var id = LabelMgr.labelScreen(t, $TITLE_X, $TITLE_Y, false, size , color);
+  var x=$TITLE_X
+  var y=$TITLE_Y
+  if (!color) color= '#ABC' + hexof(y) + hexof(y) + hexof(y) //+ hexof($WRITE_X) + 'FF' 
+  var id = LabelMgr.labelScreen(t, x, y, false, size , color);
   LabelMgr.setLabelShow(id, true);
   $TITLE_Y += (size+2) 
-  core.wait(2)
+  if(!wait) wait=.5
+  core.wait(wait)
+  return id
 }
 var id = LabelMgr.labelScreen("Tour of 27 Nakshatras", 500, 500, false, 30)
 
@@ -757,7 +761,8 @@ var $N83 = [ //VGJ
   "N01-Ash	अश्विनी	α Ari	Hamal	HIP 9884",
   "N01-Ash	अश्विनी	γ Ari	Mesarthim	HIP 8832",
   "N02-Bha	भरणी	* 41 Ari	Bharani	HIP 13209",
-  "N02-Bha	भरणी	* 31 Ari	31Ari	HIP 12153",
+  // "N02-Bha	भरणी	* 31 Ari	31Ari	HIP 12153",
+  "N02-Bha	भरणी	* 39 Ari	39Ari	HIP 13061",
   "N02-Bha	भरणी	* 35 Ari	Barani II	HIP 12719",
   "N03-Kri	क्रित्तिका	η Tau	Alcyone	HIP 17702",
   "N03-Kri	क्रित्तिका	* 17 Tau	Electra	HIP 17499",
@@ -767,7 +772,7 @@ var $N83 = [ //VGJ
   "N03-Kri	क्रित्तिका	* 27 Tau	Atlas	HIP 17847",
   "N04-Roh	रोहिणी	α Tau	Aldebaran	HIP 21421",
   "N04-Roh	रोहिणी	γ Tau	Prima Hyadum	HIP 20205",
-  "N04-Roh	रोहिणी	δ Tau	Secunda Hyadum	HIP 20455",
+  "N04-Roh	रोहिणी	δ1 Tau	Secunda Hyadum	HIP 20455",
   "N04-Roh	रोहिणी	ε Tau	Ain	HIP 20889",
   "N04-Roh	रोहिणी	θ2 Tau	Chamukuy	HIP 20894",
   "N05-Mrg	मृगशीर्ष	λ Ori	Meissa(Heka)	HIP 26207",

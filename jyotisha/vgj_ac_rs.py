@@ -11,6 +11,8 @@ from scipy.interpolate import interp1d
 from scipy import stats
 import NasaMoonScrapeUtils as nmsu
 import NaksUtils as nsu
+import PlanetPos as PP
+import JdUtils as ju
 
 
 #%%
@@ -922,36 +924,483 @@ def plot_n83_ll(yrs=[-500]) :
 # plot_n83_ll()
 # axis.get_figure().savefig("../_info/fig4.png")
 
+#%%
+def mars_df(start=None, numdays=None) :
+  bce501 = ju.julianJD(-590, 6, 1)
+  start = start or bce501
+  numdays = numdays or 365*2
+  
+  pp = PP.PlanetPos()
+  mars_sun = pd.concat([pp.get_planet_pos(jd=j+bce501).loc[['Mars', 'Sun']] for j in range(0, numdays, 1)])
+  mars = mars_sun.loc[['Mars']]
+  sun = mars_sun.loc[['Sun']]
+  # display(mars.shape, sun.shape, sun)
 
+  nu = nsu.NaksUtils()
+  ra_decl = mars.apply( lambda x : pd.Series(nu.ll_to_rd(x.elati, x.elong)[-2:]), axis=1)
+  ra_decl.columns = ['ra', 'decl']
+  # display(ra_decl, ra_decl.describe())
+
+  mars['year'] = mars.date.apply(lambda x: -int(x.split("-")[1]))
+  lon_factor = (mars.elong.diff().apply(lambda x: 0 if x > -300 else 1).cumsum()-1)*360
+  ra_factor = lon_factor #(ra_decl.ra.diff().apply(lambda x: 0 if x > -300 else 1).cumsum()-1)*360
+  mars['lon'] = mars.elong + lon_factor
+  mars['_raf'] = ra_factor
+  mars['_ra'] = ra_decl.ra #+ ra_factor
+  mars['ra'] = ra_decl.ra + ra_factor
+
+  mars['lat'] = mars.elati
+  mars['decl'] = ra_decl.decl
+  mars['sun_elong'] = list(sun.elong)
+  # mars['tag'] = mars.elong.diff().apply(lambda x: 1 if x < -300 else 0).cumsum()
+  mars['tag'] = (mars.elong - mars.sun_elong).abs().apply(lambda x: x if x<=180 else 360-x)
+  mars= mars.reset_index()[['jd', 'date', 'year', 'lon', 'lat', '_raf', '_ra', 'ra' , 'decl' , 'elong', 'tag', 'sun_elong']]
+
+  display(mars)
+  return mars
+
+# mars_501_2yrs = mars_df()
+# mars_501_4yrs = mars_df(numdays=365*15)
+mars_501_4yrs = mars_df(numdays=365*15)
+#
+#%%
+axm = mars_501_4yrs.plot.scatter(x="lon", y="lat",  
+  # c="tag", cmap="RdPu", 
+  s=mars_501_4yrs.tag.apply(lambda x: 10 if x<=20 else 30),
+  c=mars_501_4yrs.tag.apply(lambda x: 'red' if x<=20 else 'blue'),
+  alpha=0.5, 
+  figsize=(25,8)
+  )
+axm.grid(True)
+
+axm = mars_501_4yrs.plot.scatter(x="lon", y="decl",  
+  # c="tag", cmap="RdPu", 
+  s=mars_501_4yrs.tag.apply(lambda x: 10 if x<=20 else 30),
+  c=mars_501_4yrs.tag.apply(lambda x: 'red' if x<=20 else 'blue'),
+  alpha=0.5, 
+  figsize=(25,8),
+  ax=axm,
+  secondary_y=True
+  )
+axm.grid(True)
 
 #%%
-# def ll_to_rd ( lat, lon, obl = 23.439281):
-#   '''
-#   Declination δ=arcsin(cosε×sinβ+sinε×cosβ×sinλ)
-#   Right ascension α=arctan((cosε×sinλ−sinε×tanβ)/cosλ)
-#                   α=atan2(cosβsinλcosε−sinβsinε,cosβcosλ) ( better)
-#   Where
-#   β = ecliptic geocentric latitude
-#   λ = ecliptic geocentric longitude
-#   ε = obliquity of the ecliptic
-#   '''
-#   R = np.pi/180
-#   lat = lat * R
-#   lon = lon * R
-#   obl = obl * R
+def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
+  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
 
-#   s,c, si, at2 = np.sin, np.cos, np.arcsin, np.arctan2
-#   decl = si(c(obl)*s(lat) + s(obl)*c(lat)*s(lon))
-#   ra = at2(c(lat)*s(lon)*c(obl) - s(lat)*s(obl), c(lat)*c(lon))
-#   return lat/R, lon/R, ra/R, decl/R
+  START_LON = 210
+  nu = nsu.NaksUtils()
+  def numof(n): return int(re.sub("\D","", n)); 
+  # def clrof(n): z=numof(n); return((z%2)*z/cnt,((z+1)%2)*z/cnt,((z+2)%2)*z/cnt)
+  mcolors = [ x for x in colors.XKCD_COLORS.values() if '3' in x]
+  n83a['ra_adj'] = n83a.ra - n83a.ra.min()
+  n83a['lon'] = (n83a.lon-START_LON) % 360
 
-# def test_ll_to_rd():
-#   display (
-#     pd.DataFrame([ ll_to_rd(0,lon) for lon in range(0,361,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2),
-#     pd.DataFrame([ ll_to_rd(lon,0) for lon in range(-90,91,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2)
-#   )
+  # yrs = [-500] if rni_only else [-1500,-500]
+  for yr in  yrs :
+    n83 = n83a[ n83a.year ==  yr]#[ ['gname', 'lon']]
+    ra_decl = n83.apply( lambda x : pd.Series(nu.ll_to_rd(x.lat, x.lon)[-2:]), axis=1)
+    ra_decl.columns = ['ra', 'decl']
+    n83.ra = ra_decl.ra
+    n83['decl'] = ra_decl.decl
+    n83_copy = n83.copy()
+    n83_copy['lon'] = n83_copy.lon + 360
+    n83_copy['ra'] = n83_copy.ra + 360
+    n83_copy['nid'] = n83_copy.nid.apply(lambda x: x +'_1')
+    n83 = n83.append(n83_copy)
+    # display(n83.shape, n83.head(), n83.tail())
+    # return
+    c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
+    # n27lbls  = [re.sub('N\d\d\-','', f'{k}:{v}') for k,v in n83.nid.value_counts().sort_index().items()]
+    n27_mean = n83.groupby(by='nid').agg( {
+      'lon': np.median, 
+      'lat': np.median, 
+      'ra': np.median, 
+      'dec': np.median, 
+      'nid': len
+      }).rename( columns={'nid': 'cnt'} )
+    n27_mean_lbls  = n27_mean.reset_index().sort_values(by=['lon']).apply( 
+      lambda x: re.sub('N\d\d\-','', f'{x.nid}:{x.cnt}'), axis =1)
+    n27_mean_lon  = n27_mean.reset_index().sort_values(by=['lon']).lon 
+    n27_mean_lat  = n27_mean.reset_index().sort_values(by=['lon']).lat
+    # display(n27_mean.sort_values(by=['lon']).reset_index().head(30))
+    # n27_mean_ra  = n27_mean.reset_index().sort_values(by=['ra']).ra 
+    # n27_mean_dec  = n27_mean.reset_index().sort_values(by=['ra']).dec
+    if ( yr == -500 +10000): # 10k to mask the hack
+      n83.at[403, 'lon'] = 359 # 408 UBha	उत्तराभाद्रपदा	γ Peg 4.512 => 359 for visual simplicity hack
+    # display(n83.sort_values(by='lon').head())
 
-# test_ll_to_rd()
+    yspan = np.linspace(-40,40,9) 
+    xspan = np.linspace(0,360*2,13)
+    ax = n83.plot.scatter(x="lon", y="lat", c=c, 
+      s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 2.5**x.right), 
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 25*x.right), 
+      # figsize=(60,10)
+      figsize=(30,10)
+
+    )
+
+    #ayana_lbls = ['visuvat', 'd-ayana', 'visuvat', 'u-ayana']
+    #for ayana, l in zip( np.linspace(0,360,5), ayana_lbls) :
+    #  ax.plot( [ ayana for x in yspan[:2]], [ x for x in yspan[:2]], linestyle="-", linewidth=4 )
+    #  ax.annotate( l, (ayana, yspan[:2].mean() ), fontsize=20, color='black', va='center', ha='center', rotation=0)
+
+    loukika_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
+    vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+    loukika_maasa_lbls = loukika_maasa_lbls[8:] + loukika_maasa_lbls[:8]
+    vedic_maasa_lbls  = vedic_maasa_lbls[8:] + vedic_maasa_lbls[:8]
+
+    for lon, l , v in zip( np.linspace(0,360*2,2*12+1), loukika_maasa_lbls+loukika_maasa_lbls, vedic_maasa_lbls+vedic_maasa_lbls) :
+      ax.plot( [ lon for x in yspan[:4]], [ x for x in yspan[:4]], linestyle="-", linewidth=0 )
+      _yr = lon//360
+      lon = (lon+15)%(360*2)
+      # ax.annotate( v.upper() if _yr==0 else v.lower(), (30* lon//30, yspan[2:4].mean()-8 ), fontsize=20, color='blue' if _yr==0 else 'black', va='top', ha='center', rotation=0)
+      # ax.annotate( l.upper() if _yr==0 else l.lower(), (30 *lon//30, yspan[2:4].mean()-12 ), fontsize=20, color='black' if _yr==0 else 'blue', va='top', ha='center', rotation=0)
+
+
+    rtu_lbls = ['vasanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta', 'śiśira']
+    for rtu,l in zip((np.linspace(0,360*2,6*2+1)- START_LON) , rtu_lbls+rtu_lbls) :
+      _yr = rtu//360
+      rtu = (rtu+0)%(360*2)
+      ax.plot( [ rtu-30 for x in yspan[-2:]], [ x for x in yspan[-2:]], linestyle="-.", linewidth=4 )
+      ax.plot( [ rtu+30 for x in yspan[-2:]], [ x for x in yspan[-2:]], linestyle="-.", linewidth=4 )
+      ax.annotate( l.upper() if _yr==0 else l.lower(), (rtu + 0*30, yspan[-2:].mean() ), fontsize=20, color='black' if _yr==0 else 'blue', va='center', ha='center', rotation=0)
+
+    ax.plot( [ x for x in xspan], [ 0 for x in xspan] )
+    # ax.set_title(f'VGJ - 83 Taras - 27 Nakshatras - Rtu - Ayana\n Longitude Latitude Plot for year {yr}', fontsize=30)
+    ax.set_xticks( [ x for x in xspan] )
+    # ax.set_xlabel( 'longitude', fontsize=20, rotation=0)
+    ax.set_xlabel( '', fontsize=20, rotation=0)
+    ax.annotate( 'longitude'.upper(), (40, -33 ), fontsize=22, color='black', va='center', ha='left', rotation=0)
+    ax.annotate( 'latitude'.upper(), (4.6, 5 ), fontsize=22, color='black', va='bottom', ha='center', rotation=90)
+    # if ( yr == -500):
+      # ax.annotate(f"ṛtusvabhāva\n({yr})".upper(), (220, 20), fontsize=30, color='red', ha='left')
+    # if ( yr == -1500):
+      # ax.annotate(f"Year\n({yr})".upper(), (220, 20), fontsize=30, color='red', ha='left')
+    # ax.set_xticklabels( ['%.2f'%x for x in xspan], fontsize=20, rotation=90)
+    # ax.set_xticklabels( ["%02d°%02d'"% (math.floor(x), math.floor(60*(x-math.floor(x))) ) for x in xspan], fontsize=20, rotation=90)
+    ax.set_xticklabels( ["%0d°"% ((math.floor(x)+ START_LON)%360) for x in xspan], fontsize=25, rotation=0)
+    ax.set_yticks( [ x for x in yspan] )
+    ax.set_ylabel( '', fontsize=20, rotation=90)
+    ax.set_yticklabels( ['%d°'%int(x) if -40 <=x <=40 else '' for x in yspan], fontsize=25, rotation=0)
+    # for x, l  in zip( xspan[0:27] + (xspan[1]-xspan[0])/2 , n27lbls) :
+    for x, y, l, n  in zip( n27_mean_lon, n27_mean_lat, n27_mean_lbls, range(n27_mean_lon.shape[0])) :
+      xdelta = 0
+      ydelta = 0
+      xdelta = -5 if 'Pus' in l else xdelta 
+      xdelta = +5 if 'Asl' in l else xdelta
+      xdelta = 5 if 'UPal' in l else xdelta 
+      xdelta = 178 if 'UBha' in l else xdelta 
+      xdelta = -8 if 'PBha' in l else xdelta 
+
+      ydelta = 0 if 'Ash' in l else ydelta
+      ydelta = 0 if 'Bha' in l else ydelta
+      ydelta = 0 if 'Kri' in l else ydelta
+      ydelta = 20 if 'Roh' in l else ydelta
+      ydelta = 20 if 'Mrg' in l else ydelta
+      ydelta = 20 if 'Ard' in l else ydelta
+      ydelta = 0 if 'Pun' in l else ydelta
+      ydelta = 5 if 'Pus' in l else ydelta
+      ydelta = 18 if 'Asl' in l else ydelta
+      ydelta = 0 if 'Mag' in l else ydelta
+      ydelta = -20 if 'PPal' in l else ydelta
+      ydelta = -20 if 'UPal' in l else ydelta
+      ydelta = 25 if 'Has' in l else ydelta
+      ydelta = +5 if 'Chi' in l else ydelta
+      ydelta = -20 if 'Swa' in l else ydelta
+      ydelta = 20 if 'Anu' in l else ydelta
+      ydelta = 20 if 'Mul' in l else ydelta
+      ydelta = 25 if 'PAsh' in l else ydelta
+      ydelta = 20 if 'UAsh' in l else ydelta
+      ydelta = -20 if 'Shr' in l else ydelta
+      ydelta = -20 if 'Dha' in l else ydelta
+      ydelta = 5 if 'Sha' in l else ydelta
+      ydelta = -20 if 'PBha' in l else ydelta
+      ydelta =  -10 if 'UBha' in l else ydelta
+      ydelta = -2 if 'Rev' in l else ydelta
+
+      sname = "Kṛt Roh Mṛg Ārd Pun Puṣ Āśl Mag PPha UPha Has Cit Svā Viś Anū Jye Mūl PAṣā UAṣā Śra Śrv Śat PPro UPro Rev Aśv Bha".split(" ")
+      ename = "Kri Roh Mrg Ard Pun PuS Asl Mag PPal UPal Has Chi Swa Vis Anu Jye Mul PAsh UAsh Śhr Dha Sha PBha UBha Rev Ash Bha".split(" ")
+
+      _yr = n//27
+      for e ,s in zip ( ename, sname) :
+        l = l.replace(e,s)
+
+      # l = l.replace("Dha:", 'Shrvst:')
+      ax.annotate( re.sub("_1","",re.sub(":.*","",l)), (x + xdelta , y + (-1 if y<0 else 1 ) *10 + ydelta), fontsize=20, color='purple' if _yr==0 else "magenta", va='center', ha='center', rotation=90)
+
+    # patch swati for smoothening purpose
+    # n27_mean_lon[24] =  n27_mean_lon[24] + 10
+    # n27_mean_lon[24+27] =  n27_mean_lon[24+27] + 10
+    n27_mean_lon[22] +=  0
+    n27_mean_lon[23] +=  0
+    n27_mean_lon[24] +=  0 
+
+
+    smooth_fn = interp1d(n27_mean_lon, n27_mean_lat, kind='linear')
+    smooth_x = np.arange(n27_mean_lon.min(), n27_mean_lon.max(), 1)
+    smooth_y = smooth_fn(smooth_x)
+    ax.plot( smooth_x, smooth_y, linewidth=1, color='olive', linestyle=":")
+
+    if (yr == -1500) :
+      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = moon_df[moon_df.sz.diff() != 0]
+      # print(yr)
+      m = moon_df[moon_df.year == moon_df.year.unique()[0]] 
+      smooth_fn = interp1d(m.lon, m.lat, kind='cubic')
+      smooth_x = np.arange(m.lon.min(), m.lon.max(), 30)
+      smooth_y = smooth_fn(smooth_x)
+      ax.plot( smooth_x, smooth_y, linewidth=1, color='gray', marker='$\odot$', markersize=.30)
+      ax.plot( m.lon, m.lat, linewidth=0, color='gray', marker='$\odot$', markersize=30)
+
+    ax.set_xlim(xmin=0, xmax=360*2)
+    ax.set_ylim(ymin=-34, ymax=38)
+
+    ax.set_xticks( [ x for x in xspan] ) 
+
+    mars = mars_501_4yrs.copy()
+    mars.lon = mars.lon - 210*3
+    mars = mars[(mars.lon >= 0) & (mars.lon <= 360*2)]
+    # display(mars.describe())
+    mars.plot.scatter(x="lon", y="lat", 
+      s=mars.tag.apply(lambda x: 10 if x<=20 else 30),
+      c=mars.tag.apply(lambda x: 'red' if x<=20 else 'blue'),
+      alpha=0.95, ax=ax)
+    # mars.plot.scatter(x="lon", xy="lat", s=mars.tag.apply(lambda x: 20*(x//40)+10),  c="tag", cmap="RdPu", alpha=0.95, ax=ax)
+    ax.set_xlabel("")
+    ax.set_ylabel("")
+    ax.grid(True)
+
+
+    return ax
+
+axx=plot_n83_ll_with_mars_overlay()
+# axis.get_figure().savefig("../_info/fig4.png")
+
+#%%
+def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
+  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
+
+  START_LON = 210
+  nu = nsu.NaksUtils()
+  def numof(n): return int(re.sub("\D","", n)); 
+  # def clrof(n): z=numof(n); return((z%2)*z/cnt,((z+1)%2)*z/cnt,((z+2)%2)*z/cnt)
+  mcolors = [ x for x in colors.XKCD_COLORS.values() if '3' in x]
+  n83a['ra_adj'] = n83a.ra - n83a.ra.min()
+  n83a['lon'] = (n83a.lon-START_LON) % 360
+
+  # yrs = [-500] if rni_only else [-1500,-500]
+  for yr in  yrs :
+    n83 = n83a[ n83a.year ==  yr]#[ ['gname', 'lon']]
+    ra_decl = n83.apply( lambda x : pd.Series(nu.ll_to_rd(x.lat, x.lon)[-2:]), axis=1)
+    ra_decl.columns = ['ra', 'decl']
+    n83.ra = ra_decl.ra.apply( lambda x: x + (360 if x < 0 else 0))
+    n83['decl'] = ra_decl.decl
+    n83_copy = n83.copy()
+    n83_copy['lon'] = n83_copy.lon + 360
+    n83_copy['ra'] = n83_copy.ra + 360
+    n83_copy['nid'] = n83_copy.nid.apply(lambda x: x +'_1')
+    n83 = n83.append(n83_copy)
+    # display(n83.shape, n83.head(), n83.tail())
+    # return
+    c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
+    # n27lbls  = [re.sub('N\d\d\-','', f'{k}:{v}') for k,v in n83.nid.value_counts().sort_index().items()]
+    n27_mean = n83.groupby(by='nid').agg( {
+      'lon': np.median, 
+      'lat': np.median, 
+      'ra': np.median, 
+      'dec': np.median, 
+      'nid': len
+      }).rename( columns={'nid': 'cnt'} )
+    n27_mean_lbls  = n27_mean.reset_index().sort_values(by=['lon']).apply( 
+      lambda x: re.sub('N\d\d\-','', f'{x.nid}:{x.cnt}'), axis =1)
+    n27_mean_lon  = n27_mean.reset_index().sort_values(by=['lon']).lon 
+    n27_mean_lat  = n27_mean.reset_index().sort_values(by=['lon']).lat
+    n27_mean_ra  = n27_mean.reset_index().sort_values(by=['ra']).ra 
+    n27_mean_dec  = n27_mean.reset_index().sort_values(by=['ra']).dec
+    if ( yr == -500 +10000): # 10k to mask the hack
+      n83.at[403, 'lon'] = 359 # 408 UBha	उत्तराभाद्रपदा	γ Peg 4.512 => 359 for visual simplicity hack
+    # display(n83.sort_values(by='lon').head())
+
+    yspan = np.linspace(-60,70,14) 
+    xspan = np.linspace(0,360*2,25)
+    ax = n83.plot.scatter(x="ra", y="decl", c=c, 
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
+      # figsize=(60,10)
+      figsize=(30,10)
+
+    )
+    # display(n83.head(43), n83.tail(43), n83.describe())
+
+    if False : # maasa names
+      loukika_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
+      vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+      loukika_maasa_lbls = loukika_maasa_lbls[8:] + loukika_maasa_lbls[:8]
+      vedic_maasa_lbls  = vedic_maasa_lbls[8:] + vedic_maasa_lbls[:8]
+
+      for lon, l , v in zip( np.linspace(0,360*2,2*12+1), loukika_maasa_lbls+loukika_maasa_lbls, vedic_maasa_lbls+vedic_maasa_lbls) :
+        ax.plot( [ lon for x in yspan[:4]], [ x for x in yspan[:4]], linestyle="-", linewidth=0 )
+        _yr = lon//360
+        lon = (lon+15)%(360*2)
+        # ax.annotate( v.upper() if _yr==0 else v.lower(), (30* lon//30, yspan[2:4].mean()-8 ), fontsize=20, color='blue' if _yr==0 else 'black', va='top', ha='center', rotation=0)
+        # ax.annotate( l.upper() if _yr==0 else l.lower(), (30 *lon//30, yspan[2:4].mean()-12 ), fontsize=20, color='black' if _yr==0 else 'blue', va='top', ha='center', rotation=0)
+        1
+
+    rtu_lbls = ['vasanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta', 'śiśira']
+    for rtu,l in zip((np.linspace(0,360*2,6*2+1)- START_LON) , rtu_lbls+rtu_lbls) :
+      _yr = rtu//360
+      rtu = (rtu+0)%(360*2)
+      ax.plot( [ rtu-30 for x in yspan[-2:]+10], [ x for x in yspan[-2:]+10+5], linestyle="-", linewidth=4 )
+      ax.plot( [ rtu+30 for x in yspan[-2:]+10], [ x for x in yspan[-2:]+10+5], linestyle="-", linewidth=4 )
+      ax.annotate( l.upper() if _yr==0 else l.lower(), (rtu + 0*30, yspan[-2:].mean()+10+5 ), fontsize=20, color='black' if _yr==0 else 'blue', va='center', ha='center', rotation=0)
+
+
+    ax.plot( [ x for x in xspan], [ 0 for x in xspan] )
+    ax.annotate( 'ra'.upper(), (-20, -50 ), fontsize=22, color='black', va='center', ha='left', rotation=0)
+    ax.annotate( 'declination'.upper(), (-20, -40 ), fontsize=22, color='black', va='bottom', ha='center', rotation=90)
+    # ax.set_title(f'VGJ - 83 Taras - 27 Nakshatras - Rtu - Ayana\n Longitude Latitude Plot for year {yr}', fontsize=30)
+    ax.set_xticks( [ x for x in xspan] )
+    # ax.set_xlabel( 'longitude', fontsize=20, rotation=0)
+    ax.set_xlabel( '', fontsize=20, rotation=0)
+    ax.set_xticklabels( 
+        ["%0d°"%((x+START_LON)%360)  for x in (xspan)%360], 
+        fontsize=20, 
+        rotation=90)
+    # return
+    # ax.set_xticklabels( ["%0d°"% ((math.floor(x)+ START_LON)%360) for x in xspan], fontsize=25, rotation=0)
+    ax.set_yticks( [ x for x in yspan] )
+    ax.set_ylabel( '', fontsize=20, rotation=90)
+    ax.set_yticklabels( ['%d°'%int(x) if -40 <=x <=80 else '' for x in yspan], fontsize=25, rotation=0)
+
+    # return
+
+    # for x, l  in zip( xspan[0:27] + (xspan[1]-xspan[0])/2 , n27lbls) :
+    for x, y, l, n  in zip( n27_mean_ra, n27_mean_dec, n27_mean_lbls, range(n27_mean_lon.shape[0])) :
+      # break
+      xdelta = 0
+      # ydelta = 0
+      xdelta = -3 if 'Kri' in l else xdelta 
+      xdelta = -3 if 'Pus' in l else xdelta 
+      xdelta = +3 if 'Asl' in l else xdelta
+      xdelta = -5 if 'Has' in l else xdelta 
+      xdelta = 1 if 'UBha' in l else xdelta 
+      xdelta = -1 if 'PBha' in l else xdelta 
+
+      # ydelta = 0 if 'Ash' in l else ydelta
+      # ydelta = 0 if 'Bha' in l else ydelta
+      # ydelta = 0 if 'Kri' in l else ydelta
+      # ydelta = 20 if 'Roh' in l else ydelta
+      # ydelta = 20 if 'Mrg' in l else ydelta
+      # ydelta = 20 if 'Ard' in l else ydelta
+      # ydelta = 0 if 'Pun' in l else ydelta
+      # ydelta = 5 if 'Pus' in l else ydelta
+      # ydelta = 18 if 'Asl' in l else ydelta
+      # ydelta = 0 if 'Mag' in l else ydelta
+      # ydelta = -20 if 'PPal' in l else ydelta
+      # ydelta = -20 if 'UPal' in l else ydelta
+      # ydelta = 25 if 'Has' in l else ydelta
+      # ydelta = +5 if 'Chi' in l else ydelta
+      # ydelta = -20 if 'Swa' in l else ydelta
+      # ydelta = 20 if 'Anu' in l else ydelta
+      # ydelta = 20 if 'Mul' in l else ydelta
+      # ydelta = 25 if 'PAsh' in l else ydelta
+      # ydelta = 20 if 'UAsh' in l else ydelta
+      # ydelta = -20 if 'Shr' in l else ydelta
+      # ydelta = -20 if 'Dha' in l else ydelta
+      # ydelta = 5 if 'Sha' in l else ydelta
+      # ydelta = -20 if 'PBha' in l else ydelta
+      # ydelta =  -10 if 'UBha' in l else ydelta
+      # ydelta = -2 if 'Rev' in l else ydelta
+
+      sname = "Kṛt Roh Mṛg Ārd Pun Puṣ Āśl Mag PPha UPha Has Cit Svā Viś Anū Jye Mūl PAṣā UAṣā Śra Śrv Śat PPro UPro Rev Aśv Bha".split(" ")
+      ename = "Kri Roh Mrg Ard Pun PuS Asl Mag PPal UPal Has Chi Swa Vis Anu Jye Mul PAsh UAsh Śhr Dha Sha PBha UBha Rev Ash Bha".split(" ")
+
+      _yr = n//27
+      for e ,s in zip ( ename, sname) :
+        l = l.replace(e,s)
+
+      # l = l.replace("Dha:", 'Shrvst:')
+      ax.plot( 
+        [x, x], 
+        [-50,60], 
+        linestyle=":",
+        color='purple' if _yr==0 else "magenta", alpha=0.2)
+
+      l1 = re.sub("_1","",re.sub(":.*","",l))
+      ax.annotate( 
+        # f'{l1}:{x:.0f}°',
+        re.sub("_1","",re.sub(":.*","",l)), 
+        # (x + xdelta , y + (-1 if y<0 else 1 ) *10 + ydelta), 
+        (x +xdelta , -50+50+65 if n%2==0 else 65), 
+        fontsize=20-20+13, color='purple' if _yr==0 else "magenta", 
+        va='center', ha='center', rotation=90)
+
+    # for x, y, l, n  in zip( n27_mean_ra, n27_mean_dec, n27_mean_lbls, range(n27_mean_ra.shape[0])) :
+    #   ax.annotate( l, (x, y + (-1 if yr<0 else 1 ) * (10 if abs(yr)<24 else -10) ), fontsize=20, color='purple', va='center', ha='center', rotation=90)
+
+    # patch swati for smoothening purpose
+    # n27_mean_lon[24] =  n27_mean_lon[24] + 10
+    # n27_mean_lon[24+27] =  n27_mean_lon[24+27] + 10
+
+    smooth_fn = interp1d(n83.ra, n83.decl, kind='cubic')
+    smooth_x = np.arange(n83.ra.min(), n83.ra.max(), 1)
+    smooth_y = smooth_fn(smooth_x)
+    smooth_y1 = [x if x<=60 else 60 for x in smooth_y]
+    smooth_y1 = [x if x>=-40 else -40 for x in smooth_y1]
+    ax.plot( smooth_x, smooth_y1, linewidth=1, color='olive', linestyle=":")
+
+    if (yr == -1500) :
+      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = moon_df[moon_df.sz.diff() != 0]
+      # print(yr)
+      m = moon_df[moon_df.year == moon_df.year.unique()[0]] 
+      smooth_fn = interp1d(m.lon, m.lat, kind='cubic')
+      smooth_x = np.arange(m.lon.min(), m.lon.max(), 30)
+      smooth_y = smooth_fn(smooth_x)
+      ax.plot( smooth_x, smooth_y, linewidth=1, color='gray', marker='$\odot$', markersize=.30)
+      ax.plot( m.lon, m.lat, linewidth=0, color='gray', marker='$\odot$', markersize=30)
+
+    mars = mars_501_4yrs.copy()
+    mars.lon = mars.lon - START_LON*3
+    mars = mars[(mars.lon >= 0) & (mars.lon <= 360*2)]
+    daynums = (mars.jd  - mars.jd.iloc[0])
+    mars.plot.scatter(x="lon", y="decl", 
+      s=mars.tag.apply(lambda x: 1 if x<=20 else 1),
+      c=mars.tag.apply(lambda x: 'red' if x<=20 else 'blue'),
+      alpha=0.95, ax=ax)
+
+
+    # mars = mars_501_4yrs.copy()
+    # mars.ra = mars.ra - START_LON*3
+    # mars = mars[(mars.ra >= 0) & (mars.ra <= 360*2)]
+    # daynums = (mars.jd  - mars.jd.iloc[0])
+    # mars.plot.scatter(x="ra", y="decl", 
+    #   s=mars.tag.apply(lambda x: 1 if x<=20 else 1),
+    #   c=mars.tag.apply(lambda x: 'red' if x<=20 else 'blue'),
+    #   alpha=0.95, ax=ax)
+
+
+    # mars.plot.scatter(x="lon", xy="lat", s=mars.tag.apply(lambda x: 20*(x//40)+10),  c="tag", cmap="RdPu", alpha=0.95, ax=ax)
+    for daynum,lon in zip(daynums.apply(int), mars.lon) :
+      if daynum in [0, 220,270,220+120, 540, 585, 765,990,990+120, 1230] :
+        ax.annotate( 
+        f'day {daynum}', (lon, -40), 
+        fontsize=15, 
+        color='red' if daynum in [220,220+120,990,990+120] else 'blue' if daynum in [585,765] else 'black',
+        va='center', ha= 'center' if daynum>0 else 'left', rotation=90)
+    ax.set_xlabel("")
+    ax.set_ylabel("")
+
+
+    return ax
+
+axx=plot_n83_rd_with_mars_overlay()
+# axis.get_figure().savefig("../_info/fig4.png")
 
 #%%
 
@@ -1141,7 +1590,8 @@ def plot_n83_rd(yrs=[-1500]) :
 
     ax.grid(True)
 
-# plot_n83_rd(yrs=list(range( -500,-2000,-500)))
+plot_n83_rd(yrs=list(range( -500,-2000,-500)))
+
 
 #%%
 def fig1(): return plot_mbe2_83(n27Feb24, n27Feb24_abhyankar)

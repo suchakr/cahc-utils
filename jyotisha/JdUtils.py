@@ -5,8 +5,28 @@ import math
 import pandas as pd
 import numpy as np
 from astropy.time import Time
+from astropy.coordinates import EarthLocation,SkyCoord
+from astropy import units as u
+from astropy.coordinates import AltAz
 from time import time
 import re
+
+#%%
+from collections import namedtuple
+FewLatLong = {
+	'kuru' : { 'lat': 29.96, 'lon': 76.87 },
+	'kurukshetra' : { 'lat': 29.96, 'lon': 76.87 },
+	'ujjain' : { 'lat': 23.22, 'lon': 75.78 },
+	'bangalore' : { 'lat': 12.97, 'lon': 77.59 },
+	'chennai' : { 'lat': 13.08, 'lon': 80.27 },
+	'pushkar' : { 'lat': 27.32, 'lon': 78.04 },
+}
+observing_location = EarthLocation(lat='52.2532', lon='351.63910339111703', height=100*u.m)  
+observing_time = Time('-02017-02-05T20:12:18')  
+aa = AltAz(location=observing_location, obstime=observing_time)
+# coord = SkyCoord('4h42m', '-38d6m50.8s')
+coord = SkyCoord(ra=10.625, dec=41.2, frame='icrs', unit='deg')
+coord.transform_to(aa)
 
 #%%
 def gregJD(Y, M, D, H=23, MM=59, S=59) :

@@ -253,6 +253,27 @@ def super_moon_histogram_by_epoch ():
 	# 					cuts=1, cut_to_plot=0,  title_tag='Full Moon') 
 
 # %%
+#%%
+def get_moon_for_one_month(jd=PP.JD_BCE_1000_JAN_1, ndays=31):
+	pp = PP.PlanetPos()
+	dfs = [pp.get_planet_pos(jd+n).reset_index() for n in range(ndays)]
+	moons = [ fd[fd.planet == 'Moon'] for fd in dfs]
+	suns = [ fd[fd.planet == 'Sun'] for fd in dfs]
+
+
+	moons = pd.concat(moons)[['jd', 'date', 'elati', 'elong' ,'r']]
+	suns = pd.concat(suns)[['jd', 'date', 'elong']]
+	moons['sun_elong'] = suns.elong.values
+	moons['phase'] = (suns.elong.values - moons.elong.values) %360
+	moons['phase'] = moons.phase.apply(lambda x: x if x < 180 else x-360)
+	moons['paksha'] = moons.phase.apply(lambda x: 'krishna' if x >0 else 'shukla')
+
+	return  moons
+
+get_moon_for_one_month(jd=PP.JD_BCE_1000_JAN_1-365.25*1000)
+
+
+#%%
 
 if __name__ == "__main__":
 	print (__package__)

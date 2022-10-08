@@ -1,10 +1,15 @@
 #%%
+import imp
 import pandas as pd
 import numpy as np
 import re
 import time
 import random
 from synthesizer import Player, Synthesizer, Waveform
+from IPython.display import display
+import matplotlib.pyplot as plt
+import librosa as lr
+import librosa.display as ld
 
 #%%
 #================================================================
@@ -13,19 +18,19 @@ from synthesizer import Player, Synthesizer, Waveform
 #       g1 g2                n1 n2
 #
 NOTES = {
-     's0'  : 01.0/01.0 , 's'  : 01.0/01.0
+     's0'  : 1.0/1.0 , 's'  : 1.0/1.0
     ,'r1'  : 16.0/15.0 
-    ,'r2'  : 09.0/08.0 ,'g1'  : 09.0/08.0 
-    ,'r3'  : 06.0/05.0 ,'g2'  : 06.0/05.0 
-    ,'g3'  : 05.0/04.0
-    ,'m1'  : 04.0/03.0 
+    ,'r2'  : 9.0/8.0 ,'g1'  : 9.0/8.0 
+    ,'r3'  : 6.0/5.0 ,'g2'  : 6.0/5.0 
+    ,'g3'  : 5.0/4.0
+    ,'m1'  : 4.0/3.0 
     ,'m2'  : 17.0/12.0
-    ,'p'   : 03.0/02.0
-    ,'p0'  : 03.0/02.0
-    ,'d1'  : 08.0/05.0 
-    ,'d2'  : 05.0/03.0 ,'n1'  : 05.0/03.0 
-    ,'d3'  : 09.0/05.0 ,'n2'  : 09.0/05.0 
-    ,'n3'  : 15.0/08.0
+    ,'p'   : 3.0/2.0
+    ,'p0'  : 3.0/2.0
+    ,'d1'  : 8.0/5.0 
+    ,'d2'  : 5.0/3.0 ,'n1'  : 5.0/3.0 
+    ,'d3'  : 9.0/5.0 ,'n2'  : 9.0/5.0 
+    ,'n3'  : 15.0/8.0
 }
 NOTES.update({n.upper() : 2*NOTES[n] for n in NOTES })
 
@@ -72,13 +77,13 @@ WNFF  = { x:-1+2.0**1+WNOTE.index(x)/12 for x in list(WNOTE) }
 def wnote_norm(x)  :  return (0,x[0]) if x[0]  not in '0123456789' else (int(x[0]), x[1])
 def wnote_to_onf(x) :  o,n = wnote_norm(x); return (o, n, (2**o) * WNFF[n])
 
-def wnote_to_next_onf (wn):
-    o,n = wnote_norm(x)
-    ix = WNOTE.index(n)
-    next_ix = ix + 1
-    next_o = n + nix // len(WNOTE)
-    next_n = WNOTE[ (ix+1) % len(WNOTE)] 
-    (next_o, next_n, (2**next_o) * WNFF[next_n])
+# def wnote_to_next_onf (wn):
+#     o,n = wnote_norm(x)
+#     ix = WNOTE.index(n)
+#     next_ix = ix + 1
+#     next_o = n + nix // len(WNOTE)
+#     next_n = WNOTE[ (ix+1) % len(WNOTE)] 
+#     (next_o, next_n, (2**next_o) * WNFF[next_n])
 
 def wnote_play (wnotes=[list('FaFd')], base=220, speed=0.3, verbose=False):
     chord= [  base*wnote_to_onf(wn)[-1] for wn in wnotes ]
@@ -253,6 +258,14 @@ SONGS = [
             '''
     ],
 
+        [ # geetham 3
+        'k2'  
+        ,15
+        , ''' 
+            dSS dp mp ddp mm p,
+            '''
+        ],
+
     [ # geetham 3
         'kereya'  
         ,15
@@ -350,6 +363,27 @@ SONGS = [
             g,g, r,,, s,,, ,,,,
             '''
     ],
+
+   [ # aalapana "concept of sruti, svara and raga of classical music in Sanskrit text - paper
+        'sadji'
+        ,15
+        ,'''
+            S2      S2      S2      S2      P2      N2D2    P2     D2N2            
+            2S      2S      2S      2S      2P      2N2D    2P      2D2N            
+            '''        
+            # 2R      2G2M    2G      2G      2S      2R2G    2D2S    2D                      
+            # 2R2G    2S      2R      2G      2S      2S      2S      2S                      
+            # 2D      2D      2N      2N3s    2N2D    2P      3s      3s                      
+            # 2N      2D      2P      2D2N    2R      2G      2S      2G                      
+            # 2S      1d      1d1n    1p      2S      2S      2S      2S                      
+            # 2S      2S      2G      2S      2M      2P      2M      2M                      
+            # 2S      2G      2M      2D2N    2N2D    2P      2G      2R2G                    
+            # 2G      2G      2G      2G      2S      2S      2S      2S                      
+            # 2D      2S      2R      2G2R    2S      2M      2M      2M                      
+            # 2D      2N      2P      2D2N    2R      2G      2R      2S                      
+            # 2R2G    2S      2R      2G      2S      2S      2S      2S   
+        # '''
+    ],
 ]
 SONG_COLS = [ 'name', 'mk', 'song' ]
 SONGS_DF=pd.DataFrame (SONGS, columns=SONG_COLS)
@@ -370,7 +404,8 @@ def do_play_named_songs ( names ) :
     filt = [pd.Series([x2 in x for x2 in names]).any() for x in  SONGS_DF.name]
     print(SONGS_DF[ filt ].name)
     song_df = SONGS_DF[ filt ]
-    _ = song_df.apply ( lambda x: play_song( x.song, mk=x.mk, speed=.3 ) , axis=1)
+    display(song_df)
+    _ = song_df.apply ( lambda x: play_song( x.song, mk=x.mk, speed=.4 , verbose=True ) , axis=1)
 
 
 def do_chamattu_play (verbose=False) :
@@ -398,3 +433,51 @@ if __name__ == '__main__' :
     #do_jittered_play_all_songs()
     #do_improvise()
     do_play_named_songs(['kereya', 'ninnu'])
+
+#%%
+# given an mp3 file, find the frequency histogram of the song
+
+def get_freq_hist (mp3_file) :
+    y, sr = lr.load(mp3_file)
+    return lr.feature.mfcc(y=y, sr=sr, n_mfcc=13), y, sr
+
+# plot the histogram of the song
+def plot_freq_hist (mp3_file) :
+
+    y, sr = lr.load(mp3_file)
+    mfcc = lr.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+    plt.figure(figsize=(10, 4))
+    plt.imshow(mfcc.T, origin='lower', aspect='auto', interpolation='nearest')
+    plt.show()
+    return mfcc ,y ,sr
+
+
+#%%
+from glob import glob
+mp3s=glob('../datasets/*.mp3')
+mfcc, y, sr = plot_freq_hist(mp3s[0])
+# %%
+pd.DataFrame([[1,2,3],[4,5,6]])#.apply(lambda x: x.mean(), axis=1)
+# %%
+pd.DataFrame(mfcc)
+
+# %%
+import librosa.display 
+chroma = lr.feature.chroma_cqt(y=y, sr=sr)
+fig, ax = plt.subplots(figsize=(10, 4))
+img = ld.specshow(chroma, y_axis='chroma_c', x_axis='time', ax=ax, Sa=5, mela=22)
+ax.set(title='Chromagram demonstration')
+fig.colorbar(img, ax=ax)
+# %%
+D = librosa.stft(y, n_fft=2048, hop_length=512)
+s = D**2
+D.shape, s.shape
+
+# %%
+chroma = librosa.feature.chroma_stft(S=s, sr=sr)
+chroma.shape
+chroma
+
+# %%
+lr.time_to_frames(y, sr=sr).shape
+# %%

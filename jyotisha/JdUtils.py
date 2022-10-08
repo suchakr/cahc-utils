@@ -1,5 +1,6 @@
 """Convert Date to Julian Day number """
 #%%
+from calendar import month_abbr
 from IPython.display import display
 import math
 import pandas as pd
@@ -21,6 +22,11 @@ FewLatLong = {
 	'chennai' : { 'lat': 13.08, 'lon': 80.27 },
 	'pushkar' : { 'lat': 27.32, 'lon': 78.04 },
 }
+
+mmm_names = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
+MMM2IDX = { v:k+1 for k,v in enumerate(mmm_names)}
+IDX2MMM = { k+1:v for k,v in enumerate(mmm_names)}
+
 observing_location = EarthLocation(lat='52.2532', lon='351.63910339111703', height=100*u.m)  
 observing_time = Time('-02017-02-05T20:12:18')  
 aa = AltAz(location=observing_location, obstime=observing_time)

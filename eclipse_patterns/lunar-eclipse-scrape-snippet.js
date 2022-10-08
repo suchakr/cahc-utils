@@ -23,7 +23,7 @@
 // })
 
 
-// // https://eclipse.gsfc.nasa.gov/JLEX/JLEX-AS.html:w
+// // https://eclipse.gsfc.nasa.gov/JLEX/JLEX-AS.html
 // // Latitude:        9° 54' 00" N
 // // Longitude:        78° 66' 00" E
 // // Altitude:        0m

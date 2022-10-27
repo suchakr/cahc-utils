@@ -533,9 +533,27 @@ def make_naks_bounds_report(n_df):
     'stars_in_naks',
     'daivata',
   ])
+#%%
+
+def get_n83_naks_df(yr=-1500) :
+  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
+  n83a['ra_adj'] = n83a.ra - n83a.ra.min()
+  # n83a['lon'] = (n83a.lon-330) % 360
+  ans = n83a[n83a.year == (yr if yr in n83a.year.unique() else -1500)]
+  return ans
+
+n83_naks_df = get_n83_naks_df()
+bright6Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
+bright6Lbls = [ re.sub("^N\d\d.","", x) for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
+#dhanishtha, revati, rohini, mrgashira, ashlesha, hasta, chitra, jyeshtha, shravana.
+bright9Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(dha|rev|roh|mrg|asl|has|chi|jye|shr).*$', x,re.IGNORECASE) ]
+bright9Lbls = [ re.sub("^N\d\d.","", x) for x in bright9Naks ]
+
 
 #%%
-def plot_vgj_seasons ():
+def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True):
   VGJSeasons = '''
   श्रविष्ठादीनि चत्वारि पौष्णार्धञ्च दिवाकरः । वर्धयन् सरसस्तिक्तं मासौ तपति शैशिरे ॥   
   रोहिण्यन्तानि विचरन् पौष्णार्धाद्याच्च भानुमान् । मासौ तपति वासन्तौ कषायं वर्धयन् रसम् ॥          
@@ -546,18 +564,41 @@ def plot_vgj_seasons ():
   (Ādityacāra; v. 47, 48, 52, 53, 54, 55)
   '''
 
+  # title =  f"{year}" if  None else title
+
+  n83_df_bce = pd.concat([get_n83_naks_df(yr=year) for year in years])
+  n83_df_agg = n83_df_bce.groupby('nid').mean().assign( enaks= lambda x : [ y[4:] for y in x.index.values])
+  n83_df_cnt = n83_df_bce.groupby('nid').count().assign( cnt= lambda x : x.lon//len(years))[['cnt']]
+  # naks_cnt_lbl = n83_df_agg.apply( lambda x: f'{x.enaks}\n{x.lon:.0f}°\n#{n83_df_cnt.loc[x.name].cnt}', axis=1)
+  naks_cnt_lbl = n83_df_agg.apply( lambda x: f'{x.enaks}\n#{n83_df_cnt.loc[x.name].cnt}', axis=1)
   fig, ax = plt.subplots(subplot_kw={'projection': 'polar'},figsize=(8,8))
-  ax.set_theta_zero_location('E', offset=2*int(360/27))
+  #ax.set_theta_zero_location('E', offset=2*int(360/27))
+  north_angle =  int ( n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0]
+  - n83_df_agg[n83_df_agg.enaks == 'Ash'].lon.values[0] )
+  display(north_angle)
+  ax.set_theta_zero_location('N', offset=0*north_angle-346+269+13.3-1)
+  # ax.set_theta_zero_location('N', offset=n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0])
   ax.set_theta_direction(-1)
-  naks = [ re.sub(r"^N...","",x) for x in  n27_lon_divisions.index]
+  # naks = [ re.sub(r"^N...","",x) for x in  n27_lon_divisions.index]
   angles = [ x/1000 for x in range(0, 360000, 13333)]
-  angles = angles[:len(naks)]
+  enaks = n83_df_agg.enaks
+  angles = n83_df_agg.lon if not equal_naks else angles
+  angles = angles[:len(enaks)]
   # ax.set_rlabel_position(-32.5)  # Move radial labels away from plotted line
-  lines, labels = plt.thetagrids(angles, naks) 
+  lines, labels = plt.thetagrids(angles, naks_cnt_lbl) 
   ax.grid(not False)
 
-  angles = np.linspace(0,359.99,num=54)
-  cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
+  # angles = np.linspace(0,359.99,num=54)
+  # cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
+
+  for naks, _df in n83_df_bce.groupby( 'nid' ):
+    # print (naks)
+    ax.scatter( 
+      [ (x-13.33*0)*np.pi/180 for x in _df.groupby('gname').mean().lon], 
+      [7.7 + x/20 for x in _df.groupby('gname').mean().lat],
+      s=100, #if 'Ash' == enaks else 100, 
+      alpha=0.5, zorder=1 
+    )
 
   # for f,m in zip(range(0,6), list('o*^pds')) :
   #   ang=angles[cidx==f]
@@ -571,10 +612,11 @@ def plot_vgj_seasons ():
   #     cmap='rainbow', 
   #     marker=m,
   #     alpha=0.75)
+
   ax.set_rticks([])  # Less radial ticks
 
   delta = np.pi/27
-  seasons = [ 'śiśira', 'vāsanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta',]
+  seasons = [ 'śiśira', 'vasanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta',]
 
   for s in range(-1,5) :
     S = 2*np.pi/6 
@@ -597,29 +639,29 @@ def plot_vgj_seasons ():
       L=len(season)
       plt.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
 
-  plt.title(" Ādityacāra: v. 47, 48, 52, 53, 54, 55\n(Vṛddha-Gārgīya Jyotiṣa Seasons)", fontsize=15)
+  title =  "Ādityacāra: v. 47, 48, 52, 53, 54, 55\n(Vṛddha-Gārgīya Jyotiṣa Seasons)" if title is None else f"{n83_df_agg.year.values[0]}"
+  # plt.title(title)
   plt.show();
-  print(VGJSeasons)
+  # print(VGJSeasons)
 
+if __name__ == '__main__' :
+  plot_vgj_seasons(years=[-1500, -1000], equal_naks=not False, title="")
+  plot_vgj_seasons(years=[-1500], equal_naks=not False, title="")
 
+      # n83_1500_bce = n83_naks_df[n83_naks_df.year == -1500]#.iloc[4:14]
+
+      # # display(n83_1500_bce)
+      # lines, labels = plt.thetagrids(angles, naks, size=15) 
+      # # plt.scatter( [ x*np.pi/180 for x in angles], [9.9 for x in angles])
+      # for _, _df in n83_1500_bce.groupby('naks'):
+      #   ax.scatter( 
+      #     [ (x-13.33)*np.pi/180 for x in _df.lon], 
+      #     [7.7 + x/20 for x in _df.lat]
+      #   )
 # plot_vgj_seasons()
 #%%
 #%%
-def get_n83_naks_df(yr=-1500) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
-  n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
-  n83a['ra_adj'] = n83a.ra - n83a.ra.min()
-  n83a['lon'] = (n83a.lon-330) % 360
-  ans = n83a[n83a.year == (yr if yr in n83a.year.unique() else -1500)]
-  return ans
 
-n83_naks_df = get_n83_naks_df()
-bright6Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
-bright6Lbls = [ re.sub("^N\d\d.","", x) for x in n27_lon_divisions.index if re.match('^.*(03|04|10|14|16|18).*$', x) ]
-#dhanishtha, revati, rohini, mrgashira, ashlesha, hasta, chitra, jyeshtha, shravana.
-bright9Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(dha|rev|roh|mrg|asl|has|chi|jye|shr).*$', x,re.IGNORECASE) ]
-bright9Lbls = [ re.sub("^N\d\d.","", x) for x in bright9Naks ]
 
 
 def plot_mbounds(inm12, tag) :
@@ -785,9 +827,9 @@ def plot_mbe2_83(n_df, n_df2 = None, only_abhyankar_27=False) :
   ax.set_ylim(ymin=0, ymax=30-15)
   ax.set_xlim(xmin=-2500, xmax=500)
 
-#plot_mbe2_83(n27Feb24)
 # plot_mbe2_83(n27Feb24)
-# plot_mbe2_83(n27Feb24, n27Feb24_abhyankar, only_abhyankar_27=False)
+# plot_mbe2_83(n27Feb24)
+plot_mbe2_83(n27Feb24, n27Feb24_abhyankar, only_abhyankar_27=False)
 # plot_mbe2_83(n27Feb24_abhyankar, only_abhyankar_27=True)
 
 #%%
@@ -945,13 +987,15 @@ def plot_n83_ll(yrs=[-500]) :
 # plot_n83_ll()
 # axis.get_figure().savefig("../_info/fig4.png")
 #%%
-class Venus_Pentagram(object):
-  def __init__(self, gruha="venus", year=1200):
+class Graha_Kolam(object):  # formerly Venus_Pentagram 
+  def __init__(self, gruha="venus", corners_per_year=5, num_years=2, year=1200):
     self.gruha = gruha
+    self.corners_per_year = corners_per_year
+    self.num_years = num_years
     self.pvis_dump = f'../datasets/{gruha}-pvis-dump-{year:04d}bce.tsv'
     self.visibility = f'../datasets/{gruha}-visibility-{year:04d}bce.tsv'
 
-  def make_venus_visibility_df_from_pvis_dump(self) :  # convert RNI's pvis html to dataframe
+  def make_gruha_visibility_df_from_pvis_dump(self) :  # convert RNI's pvis html to dataframe
     try:
       return pd.read_csv(self.visibility, sep="\t")
     except Exception as e:
@@ -974,14 +1018,17 @@ class Venus_Pentagram(object):
       gridspec_kw={'hspace':.3, 'wspace':.3, 'height_ratios':[1,1], 'width_ratios':[1,1],}, 
       )
 
-    vns = self.make_venus_visibility_df_from_pvis_dump()
+    grh = self.make_gruha_visibility_df_from_pvis_dump()
+    self.grh = grh
     slices = [
       'morning_first_visibility', 'evening_first_visibility'
       , 'morning_last_visibility', 'evening_last_visibility'
+      , 'last_visibility', 'first_visibility'
+      , 'acronychal_rising', 'cosmical_setting', 'acronychal_setting', 'cosmical_rising'
       ]
 
-    for i, slice in enumerate(slices) :
-      vns_slice= vns[vns.event == slice].reset_index().drop(columns=['index']).assign(
+    for i, slice in enumerate([ x for x in slices if x in grh.event.unique()]) :
+      grh_slice= grh[grh.event == slice].reset_index().drop(columns=['index']).assign(
         day_num = lambda x: x.jd.diff().fillna(0).cumsum().astype(int)
       )
       ax = axs[i%2, i//2]  # type: ignore
@@ -1010,28 +1057,30 @@ class Venus_Pentagram(object):
       ax.grid(not False, color='blue', linestyle=':', linewidth=.2, alpha=.92)
 
       colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'black']
-      vns_slice = vns_slice.head(1+5*2)
-      for cycle in range(0,len(vns_slice)//5):
-        vns_mfv1 = vns_slice.iloc[0+cycle*5:6+cycle*5] # what is mfv1? .. sunder, code properly
-        vns_angles = [ x*np.pi/180 for x in vns_mfv1.obj_lon]
-        vns_radii = [8 for x in vns_mfv1.sun_lon]
+      corners_per_year = self.corners_per_year
+      num_years = self.num_years
+      grh_slice = grh_slice.head(1+corners_per_year*num_years)
+      for cycle in range(0,len(grh_slice)//corners_per_year):
+        grh_mfv1 = grh_slice.iloc[0+cycle*corners_per_year:1+(1+cycle)*corners_per_year] # what is mfv1? .. sunder, code properly
+        grh_angles = [ x*np.pi/180 for x in grh_mfv1.obj_lon]
+        grh_radii = [8 for x in grh_mfv1.sun_lon]
 
         ax.plot( 
-          vns_angles, 
-          vns_radii,
+          grh_angles, 
+          grh_radii,
           # marker='*',
           color=colors[ cycle % len(colors)],
           alpha=0.5, 
-          linewidth=2 if cycle==0 else 2,
+          linewidth=5 if cycle==0 else 2,
           ls='-' if cycle==0 else ':',
 
           )
 
-        ax.scatter(vns_angles[0:1]*1, [8.8], s=2000*0 if cycle==0 else 0, 
+        ax.scatter(grh_angles[0:1]*1, [8.8], s=2000*0 if cycle==0 else 0, 
           color='purple', alpha=.8, marker=f'$start$', zorder=-1000)
         
         for x in range(1,4):
-          for angle, dt, seq in zip ( vns_angles[:-1], vns_mfv1.date.values[:-1], range(0, len(vns_angles[:-1]))):  # type: ignore
+          for angle, dt, seq in zip ( grh_angles[:-1], grh_mfv1.date.values[:-1], range(0, len(grh_angles[:-1]))):  # type: ignore
             dt1 = dt.split("-")[x:x+1][0]
             ax.scatter(
               angle, [8-1.5*x], 
@@ -1046,8 +1095,8 @@ class Venus_Pentagram(object):
               alpha=.2, marker=f'$({seq+1}{"" if seq==0 else ""})$')
 
       max_dt, min_dt = (
-        vns_slice[vns_slice.jd == vns_slice.jd.max()].date.values[0], 
-        vns_slice[vns_slice.jd == vns_slice.jd.min()].date.values[0]
+        grh_slice[grh_slice.jd == grh_slice.jd.max()].date.values[0], 
+        grh_slice[grh_slice.jd == grh_slice.jd.min()].date.values[0]
         )
       ax.set_title(f"\n{slice} \nfrom {min_dt} to {max_dt}", fontsize=15, color='blue')
       # ax.set_title(f"\n{slice} \nfrom {vns_slice.year.min()} to {vns_slice.year.max()}", fontsize=15, color='blue')
@@ -1055,9 +1104,10 @@ class Venus_Pentagram(object):
     plt.suptitle(f"{self.gruha.capitalize()}", fontsize=25)
     
 if __name__ == "__main__":
-  Venus_Pentagram(year=1200).plot() 
-  Venus_Pentagram(year=400).plot() 
-  # Venus_Pentagram(gruha="mercury",year=400).plot() 
+  # Gruha_Kolam(year=1200).plot() 
+  # Gruha_Kolam(year=400).plot() 
+  # Gruha_Kolam(gruha="mercury",corners_per_year=7, num_years=40, year=400).plot() 
+  Graha_Kolam(gruha="mars",corners_per_year=8, num_years=40, year=400).plot() 
 #%%
 
 #%%
@@ -1084,7 +1134,7 @@ def make_gruha_visibility_df (
   for gn, visibility_threshold in zip ( gruha_names, visibility_thresholds) :
     gruha = gruhas.loc[gn].copy()
     ra_decl = gruha.apply( lambda x : pd.Series(nu.ll_to_rd(x.elati, x.elong)[-2:]), axis=1)
-    ra_decl.columns = ['ra', 'decl']
+    ra_decl.columns = ['ra', 'decl']  # type: ignore
     gruha['year'] = gruha.date.apply(lambda x: -int(x.split("-")[1]))
     lon_factor = (gruha.elong.diff().apply(lambda x: 0 if x > -300 else 1).cumsum()-1)*360
     gruha['lon'] = gruha.elong + lon_factor
@@ -1263,9 +1313,34 @@ def plot_gruha_elongation_and_visibility ():
     [mercury_1299_15yrs, venus_1299_15yrs, mars_1299_15yrs],
     [2,7,10]
   ):
-    _gr_df = gr_df.head(num_years*365).tail(num_years*365-100)
+    _gr_df = gr_df.head(num_years*365).tail(num_years*365-100).copy()
     _gr_df =_gr_df.assign( day_num = lambda x: x.day_num - _gr_df.day_num.min() )
     plot_gruha_elongation(_gr_df, f"{gr}, {_gr_df.year.min()} to {_gr_df.year.max()}\n")
+
+    fn = f"../datasets/{gr.lower()}-events.tsv"
+
+    print ("Writing to file", fn)
+    _df = gr_df[
+      gr_df.key_events.apply(len)>2
+    ][
+      re.split("\s+","day_num	date	year	sun_elong	elong	lat	ra	decl	key_events")
+    ].reset_index(drop=True)
+    _df.index += 1 
+    _df.index.name = 'seq'
+    _df.date = _df.date.apply(lambda x: re.sub(r'T.*', r'', x))
+    _df.to_csv(fn, sep="\t", float_format='%.2f')
+
+    fn_slice = f"../datasets/{gr.lower()}-slice-events~.tsv"
+    # print ("Writing to file", fn_slice)
+    _df = _gr_df[
+      _gr_df.key_events.apply(len)>2
+    ][
+      re.split("\s+","day_num	date	year	sun_elong	elong	lat	ra	decl	key_events")
+    ].reset_index(drop=True)
+    _df.index += 1
+    _df.index.name = 'seq'
+    _df.date = _df.date.apply(lambda x: re.sub(r'T.*', r'', x))
+    _df.to_csv(fn_slice, sep="\t", float_format='%.2f')
 
 if __name__ == '__main__': 
   plot_gruha_elongation_and_visibility()
@@ -2193,7 +2268,7 @@ def rni_paper_plots() :
   # plot_smooth_mbe2(n27Feb24_sensitivity, "Sensitivity - Shr(β Del) Dha(β Aqr)- clip")
 
 # if __name__ == '__main__' :
-  # rni_paper_plots()
+#   rni_paper_plots()
 
 #%%
 def all_plots() :

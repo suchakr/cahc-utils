@@ -1,32 +1,32 @@
-BOOK-VGJ-RNI
+                  PT-VGJ-RNI
 =============
-Nakṣatra      |ConstituentStars         |ProxyStar 
-==============|=========================|=========
-Kṛttikā       |(17,19,20,23,27,η) Tau   |η Tau
-Rohiṇī        |(α,γ,δ1,ε,θ2) Tau        |α Tau
-Mṛgaśira      |(α,γ,λ) Ori              |λ Ori
-Ārdrā         |(γ) Gem                  |γ Gem
-Punarvasu     |(α,β) Gem                |β Gem
-Puṣya         |(δ) Cnc                  |δ Cnc
-Āśleṣā        |(δ,ε,ζ,η,ρ,σ) Hya        |ζ Hya
-Maghā         |(α,γ1,ε,ζ,η,μ) Leo       |ζ Leo
-P Phalgunī    |(δ,θ) Leo                |δ Leo
-U Phalgunī    |(93,β) Leo               |β Leo
-Hasta         |(α,β,γ,δ,ε) Crv          |δ Crv
-Citrā         |(α) Vir                  |α Vir
-Svātī         |(α) Boo                  |α Boo
-Viśākhā       |(α1,α2) Lib              |α1 Lib
-Anūrādhā      |(β1,δ,π,ω1) Sco          |δ Sco
-Jyeṣṭhā       |(α,ε,σ,(τ)) Sco          |ε Sco
-Mūla          |(λ,ν,ζ2,θ,ι1,κ) Sco      |κ Sco
-P Aṣāḍhā      |(δ,ε,γ,λ) Sgr            |λ Sgr
-U Aṣāḍhā      |(ζ,σ,τ,φ) Sgr            |τ Sgr
-Abhijit       |(?) Vega                 |α Lyr
-Śravaṇa       |(α,β,γ) Aql              |α Aql
-Dhaniṣṭhā     |(α,β,γ2,δ) Del           |β Del
-Śatabhiṣak    |(λ) Aqr                  |λ Aqr
-P Proṣṭapada  |(α,β) Peg                |α Peg
-U Proṣṭapada  |(γ,λ) Peg                |λ Peg
-Revatī        |(ε,(α,ζ)) Psc            |ε Psc
-Aśvayuk       |(α,β,γ) Ari              |β Ari
-Bharaṇī       |(35,39,41) Ari           |41 Ari
+   Nakṣatra      |ConstituentStar          |ProxyStar 
+   ==============|=========================|=========
+ 1 Kṛttikā       |(17,19,20,23,27,η) Tau   |η Tau
+ 2 Rohiṇī        |(α,γ,δ1,ε,θ2) Tau        |α Tau
+ 3 Mṛgaśira      |(α,γ,λ) Ori              |λ Ori
+ 4 Ārdrā         |(γ) Gem                  |γ Gem
+ 5 Punarvasu     |(α,β) Gem                |β Gem
+ 6 Puṣya         |(δ) Cnc                  |δ Cnc
+ 7 Āśleṣā        |(δ,ε,ζ,η,ρ,σ) Hya        |ζ Hya
+ 8 Maghā         |(α,γ1,ε,ζ,η,μ) Leo       |ζ Leo
+ 9 P Phalgunī    |(δ,θ) Leo                |δ Leo
+10 U Phalgunī    |(93,β) Leo               |β Leo
+11 Hasta         |(α,β,γ,δ,ε) Crv          |δ Crv
+12 Citrā         |(α) Vir                  |α Vir
+13 Svātī         |(α) Boo                  |α Boo
+14 Viśākhā       |(α1,α2) Lib              |α1 Lib
+15 Anūrādhā      |(β1,δ,π,ω1) Sco          |δ Sco
+16 Jyeṣṭhā       |(α,ε,σ,(τ)) Sco          |ε Sco
+17 Mūla          |(λ,ν,ζ2,θ,ι1,κ) Sco      |κ Sco
+18 P Aṣāḍhā      |(δ,ε,γ,λ) Sgr            |λ Sgr
+19 U Aṣāḍhā      |(ζ,σ,τ,φ) Sgr            |τ Sgr
+20 Abhijit       |(?) Vega                 |α Lyr
+21 Śravaṇa       |(α,β,γ) Aql              |α Aql
+22 Dhaniṣṭhā     |(α,β,γ2,δ) Del           |β Del
+23 Śatabhiṣak    |(λ) Aqr                  |λ Aqr
+24 P Proṣṭapada  |(α,β) Peg                |α Peg
+25 U Proṣṭapada  |(γ) Peg, (α) And         |γ Peg
+26 Revatī        |(ε,(α,ζ)) Psc            |ε Psc
+27 Aśvayuk       |(α,β,γ) Ari              |β Ari
+28 Bharaṇī       |(35,39,41) Ari           |41 Ari

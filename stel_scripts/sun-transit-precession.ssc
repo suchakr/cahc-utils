@@ -1,0 +1,26 @@
+// script to mark the precession transit for teh bihs ayana talk
+include ("nakshatras.inc");
+
+var wt=3;
+cls(); 
+$TITLE_X=20 ; $TITLE_Y=20; titles("Precession of the Equinoxes" , "#22FFFF", 30,6)
+$TITLE_X=390 ; $TITLE_Y=400; titles("O" , "#FF0000", 140,1)
+$TITLE_X=450 ; $TITLE_Y=490; titles("north pole" , "#FF0000", 30,.3)
+
+$TITLE_X=1000 ; $TITLE_Y=650; titles("O" , "#FF00FF", 140,1)
+$TITLE_X=1000+60 ; $TITLE_Y=650-60; titles("equinox" , "#FF00FF", 30,.3)
+W(5)
+
+
+
+
+
+var equinox_naks = ["uPro" , "Rev" , "Ash", "Bha" , "Kri" , "Roh"]
+var pole_star = ["Polaris", "-", "-", "-", "-", "Thuban"]
+
+
+$WRITE_X=1100; $WRITE_Y=700
+for ( i=0; i <6; i++) {
+JD(2451623.54433 + 0*2459659.54328  -i*365242 - i*2*0); //if ( i==0) W(5)
+writes("Year " + DT().replace(/......T.*/,"") + ":" + equinox_naks[i]  + ",   | (" + pole_star[i] + ")", "#FF00FF", 25)
+W(wt); 

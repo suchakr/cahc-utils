@@ -1124,3 +1124,27 @@ var $PLANET_INFO_TEMPLATE = {
 
 //   $NAKSHATRAS.push({ nid: nid, tara: tara, rasi: rasi, star: star, hip: hip, naks: naks });
 // }
+
+function naks_array(n) {
+  return n.map(
+    function (x) {
+      return (x.split("\n")[0]).split("\t")
+    })
+}
+
+var $N83A = naks_array($N83)
+function RND(n, d) {
+  // if (d == undefined) d = 2
+  return Math.round(n * Math.pow(10, d)) / Math.pow(10, d)
+  // return Math.round(n,d)
+}
+function R2(n) { return RND(n, 2) }
+
+// say("Here is the array of arrays of the Naksatra data")
+
+function diff_angle(a, b) {
+  var d = b-a;
+  if (d < -180) d += 360;
+  if (d > 180) d -= 360;
+  return d;
+}

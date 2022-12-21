@@ -33,6 +33,12 @@ aa = AltAz(location=observing_location, obstime=observing_time)
 # coord = SkyCoord('4h42m', '-38d6m50.8s')
 coord = SkyCoord(ra=10.625, dec=41.2, frame='icrs', unit='deg')
 coord.transform_to(aa)
+#%%
+def diff_angle(a, b) :
+  d = b-a
+  if d < -180: d += 360
+  if d > 180: d -= 360
+  return d
 
 #%%
 def gregJD(Y, M, D, H=23, MM=59, S=59) :

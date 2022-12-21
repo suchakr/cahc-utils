@@ -55,19 +55,16 @@ module dial(base_height=1.5, base_radius=16, tilt=12, scalexy=1) {
 
 
 for ( alt=[10:10:40] ) {
-translate ([20*(alt)/5,0,0])
+translate ([20*(alt-10)/5,0,0])
 dial(base_height=1.5, base_radius=16, tilt=90-alt, scalexy=1);
 }
-
-
-
 
 
 
 module needle() {
     color("olive")
     translate([0,0,base_height])
-    cylinder(h=10, r1=1, r2=.5);
+    cylinder(h=30, r1=1, r2=.5);
 }
 
  

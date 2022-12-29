@@ -1,0 +1,37 @@
+// script to track Thuban circumpolarity by epoch by latitude 
+include("nakshatras.inc");
+// var THUBAN = '11 Dra'
+var THUBAN = 'HIP 68756'
+var wt = .3;
+var cities = [ 'Madurai', 'Ujjain', 'Kurukshetra', 'Srinagar']
+var latitudes = [9.92, 23.18, 29.97, 34.09]
+var longitudes = [78.12, 75.77, 76.78, 74.81]
+// var lats = [10, 20, 30, 40] //, 50, 60, 70, 80, 90]
+cls();
+//$WRITE_Y -=50
+titles("Thuban circumpolarity by epoch by latitude", "#F1F2F3", 40, 1)
+
+for (var ky = -80; ky <= 40; ky++) {
+    var jd = RND($JD_0 + ky * 365.2524 * 50,0) + 6/24
+    JD(jd); W(1)
+    var dt = DT()
+    var year = dt.replace(/......T.*/, "")
+    var epoch = 50*(year<0 ? Math.ceil(year/50) : Math.floor(year/50))
+    for (var i = 0; i < cities.length; i++) {
+    // for (i = 0; i < lats.length; i++) { core.setObserverLocation(77, lats[i], 0); W(2) }
+        core.setObserverLocation(longitudes[i], latitudes[i], 0, cities[i]); W(2)
+        var abhaya_dhruva = getOI(THUBAN); W(.2)
+        var lat = R2(abhaya_dhruva.elat)
+        var lon = R2(abhaya_dhruva.elong)
+        var ra = R2(abhaya_dhruva.ra)
+        var decl = R2(abhaya_dhruva.dec)
+        var rise = R2(abhaya_dhruva['rise-dhr'] || -1)
+        var msg =  [epoch, latitudes[i] + "°", lat, lon, ra, decl, rise , cities[i], year, dt, R2(jd) ].join("\t")
+        $WRITE_X = 100 ; $WRITE_Y = 100 + i * 10 + (ky+5) *60
+        writes(msg, "#CCCCCC", 10)
+        say(msg)
+        if ( i == 0) { 
+            // ddump(abhaya_dhruva, "pretty") 
+        }
+    }
+}

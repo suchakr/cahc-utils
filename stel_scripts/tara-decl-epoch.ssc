@@ -1,0 +1,47 @@
+// script to track declination of a tara by epoch by latitude
+include("nakshatras.inc");
+// var THUBAN = '11 Dra'
+var THUBAN = 'HIP 68756'
+// var shishumaara4 = [ 'HIP 68756', 'HIP 75458', 'HIP 78257', 'HIP 80331' ]
+var taras = ['11 Dra', '12 Dra', '13 Dra', '14 Dra', '79 UMa', '80 UMa']
+var tara_names = ['dhruva', 'mārīca', 'mahendra', 'agni', 'vaśiṣṭha', 'arundhatī ']
+var wt = .3;
+var cities = ['Madurai', 'Ujjain', 'Kurukshetra', 'Srinagar']
+var latitudes = [9.92, 23.18, 29.97, 34.09]
+var longitudes = [78.12, 75.77, 76.78, 74.81]
+cls();
+//$WRITE_Y -=50
+titles("Tara Decl by epoch", "#F1F2F3", 40, 1)
+
+for (var cidx = 0; cidx < 1; cidx++) {
+    core.setObserverLocation(longitudes[cidx], latitudes[cidx], 0, cities[cidx]); W(2)
+    for (var ky = -80; ky <= 40; ky++) {
+        var jd = RND($JD_0 + ky * 365.2524 * 50, 0) + 6 / 24
+        JD(jd); W(.5)
+        var dt = DT()
+        var year = dt.replace(/......T.*/, "")
+        var epoch = 50 * (year < 0 ? Math.ceil(year / 50) : Math.floor(year / 50))
+        for (var tidx = 0; tidx < taras.length; tidx++) {
+            var tara = getOI(taras[tidx]); W(.2)
+            var lat = R2(tara.elat)
+            var lon = R2(tara.elong)
+            var ra = R2(tara.ra)
+            var decl = R2(tara.dec)
+            var geo_lat = R2(90 - decl)
+            var rise = R2(tara['rise-dhr'] || -1)
+            var head = ['epoch', "tara_name", "decl", "geo_lat", "rise",
+                "lat", "lon", "ra",
+                "city_lat°", "city_lat",
+                "city", "year", "dt", "jd"].join("\t")
+            var msg = [epoch, tara_names[tidx], decl, geo_lat, rise,
+                lat, lon, ra,
+                latitudes[cidx] + "°", latitudes[cidx],
+                cities[cidx], year, dt, R2(jd)].join("\t")
+            $WRITE_X = 100; $WRITE_Y = 100 + tidx * 10*0 + ((ky + 80)/5) * 9
+            if (cidx == 0 && ky==-80 && tidx == 0) { say(head) }
+            if (cidx >= 0 && ky%5==0 && tidx == 0) { writes(msg, "#CCCCCC", 10) }
+            say(msg)
+            // if (i == 0) { // ddump(abhaya_dhruva, "pretty") }
+        }
+    }
+}

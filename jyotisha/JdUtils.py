@@ -115,7 +115,7 @@ def stelJD(y,  m,  d, h=23,  mm=59, sec=59) :
 
 def toStelJD(datestr:str) -> float:
 	"""Convert a date string to a JD"""
-	(y,m,d,hh,mm,ss) =  re.match("([\-]?\d+).(\d+).(\d+).(\d+).(\d+).(\d+)",datestr).groups()
+	(y,m,d,hh,mm,ss) =  re.match("([\-\+]?\d+).(\d+).(\d+).(\d+).(\d+).(\d+)",datestr).groups()
 	(y,m,d,hh,mm,ss) = (int(y),int(m),int(d),int(hh),int(mm),int(ss))
 	return stelJD(y,m,d,hh,mm,ss)
 

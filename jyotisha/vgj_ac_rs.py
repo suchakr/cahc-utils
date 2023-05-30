@@ -591,7 +591,7 @@ def smart_mean(x):
   return ans
 
 #%%
-def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=False, season_gap=False, savefig=False) :
+def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=False, season_gap=False, savefig=False, bare_template=False) :
   VGJSeasons = '''
   श्रविष्ठादीनि चत्वारि पौष्णार्धञ्च दिवाकरः । वर्धयन् सरसस्तिक्तं मासौ तपति शैशिरे ॥   
   रोहिण्यन्तानि विचरन् पौष्णार्धाद्याच्च भानुमान् । मासौ तपति वासन्तौ कषायं वर्धयन् रसम् ॥          
@@ -601,7 +601,6 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   ज्येष्ठार्धादीनि चत्वारि वैष्णवान्तानि भास्करः । हेमन्ते तपते मासौ मधुरं वर्धयन् रसम् ॥ 
   (Ādityacāra; v. 47, 48, 52, 53, 54, 55)
   '''
-
   n83_df_bce = pd.concat([get_n83_naks_df(yr=year) for year in years])
 
   n83_df_agg = n83_df_bce.groupby(['nid']).mean().assign( enaks= lambda x : [ y[4:] for y in x.index.values]).sort_values(['nid','year', 'lon','lat'])
@@ -622,24 +621,31 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   # ax.set_theta_zero_location('N', offset=n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0])
   ax.set_theta_direction(-1)
   # naks = [ re.sub(r"^N...","",x) for x in  n27_lon_divisions.index]
-
   n83_df_agg_chi = n83_df_agg['N14-Chi':].append(n83_df_agg[:'N13-Has'])
   # display(n83_df_agg_chi.shape, n83_df_agg_chi.head(2), n83_df_agg_chi.tail(2))
   angles = [ x/1000 for x in range(0, 360000, 13333)]
   # enaks = n83_df_agg_chi.enaks
   # naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'{x.enaks}\n{x.lon:.0f}°\n#{n83_df_cnt.loc[x.name].cnt}', axis=1)
   chi_lon = n83_df_agg_chi[n83_df_agg_chi.enaks == 'Chi'].lon.values[0]
-  angles = n83_df_agg_chi.lon if not equal_naks else (np.array(angles[:-1]) + chi_lon)%360
-  n83_df_agg_chi['angles'] = angles
+  angles = n83_df_agg_chi.lon if not equal_naks else (np.array(angles[:-1]) + chi_lon)%360 +2
+  n83_df_agg_chi['angles'] = angles 
   # naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'{x.enaks}\n{x.lon:.0f}°', axis=1)
-  naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'{x.enaks}\n{x.angles:.0f}°', axis=1)
+  # naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'{x.enaks} {x.angles:.0f}°', axis=1)
+  naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'{x.enaks}', axis=1)
+  # naks_cnt_lbl = n83_df_agg_chi.apply( lambda x: f'', axis=1)
   # display(n83_df_agg)
   # angles = angles[:len(enaks)]
   # ax.set_rlabel_position(-32.5)  # Move radial labels away from plotted line
-  lines, labels = plt.thetagrids(angles, naks_cnt_lbl, fontweight= 'bold' , fontsize=10, color='gray') 
+  lines, labels = plt.thetagrids(angles+1.2, naks_cnt_lbl.apply(lambda x : ""), fontweight= 'bold' , fontsize=10, color='gray') 
   # draw radial lines from 2 units of origin to 20 units of origin
+  pd.DataFrame( {'a': (angles-6.5)*np.pi/180  , 'lbl': naks_cnt_lbl }).apply( 
+    lambda x : ax.text(x.a, 9.7, x.lbl if not bare_template else '', fontsize=10, ha='center', va='center', alpha=.8),
+    axis=1
+  )
+
   ax.set_rgrids(np.arange(10, 20, 2), angle=0, weight= 'bold' )
   ax.grid(True)
+  
 
   # angles = np.linspace(0,359.99,num=54)
   # cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
@@ -648,6 +654,7 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   ix =0
   for naks, _df in n83_df_bce.groupby( 'nid' ) : 
     _df = _df.copy().sort_values(['year', 'lon', 'lat'])
+    if bare_template: break
     ax.scatter( 
     # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )], 
       [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )], 
@@ -712,27 +719,31 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
 
     _vertex = [0,L,L]
     _angles = [ x-4.5*delta for x in _angles]
-    ax.plot(_angles, _vertex, 'b', lw=0, alpha=.2)
-    ax.fill(_angles, _vertex,  alpha=.1, color=season_colors[s%len(season_colors)]) 
+    if True or not bare_template:
+      ax.plot(_angles, _vertex, 'b', lw=0, alpha=.2)
+      ax.fill(_angles, _vertex,  alpha=.1, color=season_colors[s%len(season_colors)]) 
     if (s > -2 ) :
       season = seasons[(s+1)%len(seasons)]
       # print([ x*180/np.pi for x in _angles], season)
       L=len(season)
-      ax.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
+      if not bare_template:
+        ax.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
 
     # four solar quarters 
     for i in range(4) : ax.plot([0, 90*i*np.pi/180], [0, 7.9], 'maroon', lw=1, alpha=.2)
 
     # 10 day ticks
     if day_ticks:
-      for i in range(0+1, 366+1,1) :
-        a = (i-1)*2*np.pi/365
+      for i in range(0+1, 367+1,1) :
+        a = (i-1)*2*(np.pi/366) + np.pi
         a += 1.5*np.pi
-        ax.plot([a, a], [8, 8.5 if i%10 else 8.8 ], 'gray' if i%10 else 'red', lw=1, alpha=.1 if i%5 else .3)
+        ax.plot([a, a], [8, 8.5 if i%10 else 8.8  ], 'gray' if ((i%10) or (i==1)) else 'red', lw=1, alpha=.1 if i%5 else .3)
         if i==1 : 
-          ax.text(a, 8.7, f'{i}(366)', fontsize=9, ha='center', va='center', alpha=.5)
+          # ax.text(a, 8.9, f'{i}\n(367)', fontsize=9, ha='center', va='center', alpha=.5)
+          ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
         if i%10 == 0 : 
           ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
+        
 
     # # 10 day ticks
     # if day_ticks:
@@ -763,11 +774,18 @@ def plot_adityachaara_seasons() :
 
 if __name__ == '__main__' :
   # plot_adityachaara_seasons()
-  # plot_vgj_seasons(years=[-1000, -500], equal_naks=not False, title="", day_ticks=False, savefig=not True )
-  for y in range(8) :
-    yr = 1000 - 500*y
-    plot_vgj_seasons(years=[yr], equal_naks=not False, title="", day_ticks=not False, savefig=True )
-    plot_vgj_seasons(years=[yr, yr-500], equal_naks=not False, title="", day_ticks=not False, savefig=True )
+  yrs = [-2000]*1 + [-1500]*9 # 1550
+  yrs = [-2000]*2 + [-1500]*5 # 1643
+  yrs = [-2000]*1 + [-1500]*7 # 1625
+  yrs=  [-2000]*107 + [-1500]*250 # 1650
+  plot_vgj_seasons(years=yrs, 
+                   bare_template=not True, 
+                   equal_naks=not False, title="", day_ticks=not False, savefig=not True )
+  for y in range(8-4) :
+    continue
+    yr = (1000 -500) - 500*y
+    plot_vgj_seasons(years=[yr], equal_naks=not False, title="", day_ticks=False, savefig=True )
+    # plot_vgj_seasons(years=[yr, yr-500], equal_naks=not False, title="", day_ticks=not False, savefig=True )
   # plot_vgj_seasons(years=[-2000], equal_naks=not False, title="")
   # plot_vgj_seasons(years=[-2000, -1500], equal_naks=not False, title="")
   # plot_vgj_seasons(years=[-1500], equal_naks=not False, title="")
@@ -2604,5 +2622,147 @@ if __name__ == "__main__":
   spot_check()
   print ("****************************************************")
   verify_plot()
+
+# %%
+def plot_naks_dial () :
+  fig, ax = plt.subplots(subplot_kw={'projection': 'polar'},figsize=(10,10))
+  ax.set_theta_zero_location('S', offset=0)#-1*int(360/27))
+
+  ax.set_theta_direction(-1)
+
+  angles = [ (360/366)*x/100 for x in range(0+100, 36600, int(36600/27)) ]
+  # ax.set_rlabel_position(-32.5)  # Move radial labels away from plotted line
+  lines, labels = plt.thetagrids(angles, [f"{x:.0f}" for x in angles], fontweight= 'bold' , fontsize=10, color='gray') 
+  # draw radial lines from 2 units of origin to 20 units of origin
+  # pd.DataFrame( {'a': (angles-6.5)*np.pi/180  , 'lbl': naks_cnt_lbl }).apply( 
+  #   lambda x : ax.text(x.a, 9.7, x.lbl if not bare_template else '', fontsize=10, ha='center', va='center', alpha=.8),
+  #   axis=1
+  # )
+
+  ax.set_rgrids(np.arange(10, 20, 12))
+  ax.grid(True)
+  return
+
+plot_naks_dial()
+#%%
+#%%
+  # angles = np.linspace(0,359.99,num=54)
+  # cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
+  colors = ['red','blue','green','purple', 'olive', 'magenta' ,'orange',] #['gray','brown','cyan']
+
+  ix =0
+  for naks, _df in n83_df_bce.groupby( 'nid' ) : 
+    _df = _df.copy().sort_values(['year', 'lon', 'lat'])
+    if bare_template: break
+    ax.scatter( 
+    # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )], 
+      [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )], 
+      [6.1 + x/20 for x in _df.groupby('gname').mean().lat],
+      s=150 ,#if 'Ash' in naks else 60, 
+      # marker=f'${naks[4:6]}:{(_df.lon.median() if "N02-Bha"==naks else _df.lon.median() ):.0f}°$',
+      alpha=0.5, zorder=2,
+      c=colors[ix%len(colors)],
+    )
+
+  # for naks, _df in n83_df_bce.groupby( 'nid' ) : 
+    # if naks not in ['N25-PBha', 'N26-UBha'] : continue
+    # display (_df)
+    ax.scatter( 
+      # [ (x+13.33*1.4)*np.pi/180 for x in _df.groupby('gname').mean().lon], 
+  # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )][0:1], 
+      [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )][0:1], 
+      # [7.3 + 0*x/20 for x in _df.groupby('gname').mean().lat][0:1],
+      [7.3 - (3 if ('Asl' in naks)else 2 if ('Chi' in naks) else 1.5 if ('Bha' in naks)  else .5 if ('Shr' in naks) else 0)][0:1],
+      s=2600, #if 'Ash' in naks else 100, 
+      # marker=f'${naks[4:6]}:{(_df.lon.median() if "N02-Bha"==naks else _df.lon.median() ):.0f}°$',
+      marker=f'${naks[4:6]}:{smart_mean(_df.groupby("gname").lon.apply(smart_mean) ):.0f}°$',
+      # marker=f'${naks[4:6]}:{(_df.lon.median() ):.0f}°$',
+      alpha=1, zorder=1,
+      c=colors[ix%len(colors)],
+    )
+    # if ( 'N01-Ash' in naks) : print (f'{yr:4.0f} {naks} :   {smart_mean(_df.groupby("gname").lon.apply(smart_mean) )} {_df.lon.to_list()}')
+    ix+=1
+
+  # for f,m in zip(range(0,6), list('o*^pds')) :
+  #   ang=angles[cidx==f]
+  #   cdx=cidx[cidx==f]
+
+  #   c = ax.scatter(
+  #     [x*np.pi/180 for x in ang], 
+  #     [3+f%2 for x in ang], 
+  #     c=[f for x in cdx], 
+  #     s=[50*(1+0*f%2 ) + 0*25*cdx for x in ang], 
+  #     cmap='rainbow', 
+  #     marker=m,
+  #     alpha=0.75)
+
+  ax.set_rticks([8], labels=[''] )  # Less radial ticks
+
+  delta = np.pi/27
+  seasons = [ 'śiśira', 'vasanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta',]
+  season_colors = [ 'cyan', 'red', 'green', 'orange', 'blue', 'maroon',]
+  for s in range(-1,5) :
+    S = 2*np.pi/6 
+    L = 8
+    _angles = [ x-1*delta*0 for x in [s*S, s*S, (s*S+S)] ]
+    # print([ x*180/np.pi for x in _angles])
+    if season_gap:
+      if s==0 : _angles[2] = _angles[2] - delta/4 # रोहिण्यन्तानि
+      if s==1 : _angles[1] = _angles[1] + delta/4 # सौम्याद्यानि
+
+      if s==2 : _angles[2] = _angles[2] - delta/4 # सावित्रान्तानि
+      if s==3 : _angles[1] = _angles[1] + delta/4 # चित्रादीन्य
+
+      if s==4 : _angles[2] = _angles[2] - delta/4 # वैष्णवान्तानि
+      if s==-1 : _angles[1] = _angles[1] + delta/4 # श्रविष्ठादीनि
+
+    _vertex = [0,L,L]
+    _angles = [ x-4.5*delta for x in _angles]
+    if True or not bare_template:
+      ax.plot(_angles, _vertex, 'b', lw=0, alpha=.2)
+      ax.fill(_angles, _vertex,  alpha=.1, color=season_colors[s%len(season_colors)]) 
+    if (s > -2 ) :
+      season = seasons[(s+1)%len(seasons)]
+      # print([ x*180/np.pi for x in _angles], season)
+      L=len(season)
+      if not bare_template:
+        ax.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
+
+    # four solar quarters 
+    for i in range(4) : ax.plot([0, 90*i*np.pi/180], [0, 7.9], 'maroon', lw=1, alpha=.2)
+
+    # 10 day ticks
+    if day_ticks:
+      for i in range(0+1, 367+1,1) :
+        a = (i-1)*2*(np.pi/366) + np.pi
+        a += 1.5*np.pi
+        ax.plot([a, a], [8, 8.5 if i%10 else 8.8  ], 'gray' if ((i%10) or (i==1)) else 'red', lw=1, alpha=.1 if i%5 else .3)
+        if i==1 : 
+          # ax.text(a, 8.9, f'{i}\n(367)', fontsize=9, ha='center', va='center', alpha=.5)
+          ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
+        if i%10 == 0 : 
+          ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
+        
+
+    # # 10 day ticks
+    # if day_ticks:
+    #   for i in range(0, 366,1) :
+    #     a = i*2*np.pi/365
+    #     ax.plot([a, a], [8, 8.5 if i%10 else 8.8 ], 'gray' if i%10 else 'red', lw=1, alpha=.1 if i%5 else .3)
+    #     if i%10 == 0 : 
+    #       ax.text(a, 8.9, f' {1+(i//10)*10}', fontsize=9, ha='center', va='center', alpha=.5)
+
+  title =  f"Year {n83_df_agg.year.values.mean():.0f}" if not title else title
+  # title =  f"Year {yr:.0f}" if not title else title
+  ax.set_title(title, y=1.05, fontdict={'fontweight':'bold', 'fontsize':16, 'color':'gray'})
+  ax.set_facecolor('white')
+  # save the figure as a png
+  if savefig :
+    # fn = f"./images/naks{-366 if day_ticks else ''}-chakra-{yrnum:02d}-{yr:04.0f}.png"
+    # fn = f"./images/naks-366/ticks-{yrnum:02d}-{yr:04.0f}.png" if day_ticks else f"./images/naks-366/noticks-{yrnum:02d}-{yr:04.0f}.png"
+    fn = f"./images/naks-366/ticks-{yrnum:02d}-{yr:04.0f}.jpg" if day_ticks else f"./images/naks-366/noticks-{yrnum:02d}-{yr:04.0f}.jpg"
+    print(f"Saving {fn}")
+    plt.savefig(fn)
+
 
 # %%

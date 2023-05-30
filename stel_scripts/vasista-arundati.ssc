@@ -1,0 +1,83 @@
+// script to track declination of a Arundati and Vasista by epoch by latitude
+include("nakshatras.inc");
+// var THUBAN = '11 Dra'
+var THUBAN = 'HIP 68756'
+// var shishumaara4 = [ 'HIP 68756', 'HIP 75458', 'HIP 78257', 'HIP 80331' ]
+var taras = ['79 UMa', '80 UMa']
+var tara_names = ['vaśiṣṭha', 'arundhatī ']
+var wt = .3;
+var cities = ['Kurukshetra']
+var latitudes = [29.97]
+var longitudes = [76.78]
+cls(); MarkerMgr.deleteAllMarkers();
+$TITLE_X += 500
+$WRITE_X = 100
+$WRITE_Y += 90
+titles("vaśiṣṭaḥ arundhatī by epoch", "#F1F2F3", 30, 1)
+var sayhead = 1;
+
+c= Math.cos ; s= Math.sin ; ac= Math.acos ; r= Math.sqrt ;d= Math.PI/180; D= 180/Math.PI; //R2= function(x){return Math.round(x*100)/100}
+
+// generrate list of colors for markers in html hex format
+var html_colors = []
+for (var i = 0; i < 360; i += 360 / 16) {
+    var r = Math.round(255 * (1 + c(i * d)) / 2)
+    var g = Math.round(255 * (1 + c((i + 120) * d)) / 2)
+    var b = Math.round(255 * (1 + c((i + 240) * d)) / 2)
+    html_colors.push("#" + r.toString(16) + g.toString(16) + b.toString(16))
+}
+// ddump(html_colors, "pretty")
+
+// hex code for twenty well known html colors excludes black and grays
+var html_colors1 = ["#0000FF", "#00FF00", "#00FFFF", "#FF0000", "#FF00FF", "#FFFF00", "#FFFFFF", "#C0C0C0", "#808080", "#800000", "#800080", "#808000", "#008000", "#008080", "#000080"]
+
+var kol=0;
+for (var cidx = 0; cidx < 1; cidx++) {
+    core.setObserverLocation(longitudes[cidx], latitudes[cidx], 0, cities[cidx]); W(2)
+    for (var ky = -100 + 100; ky <= 20 + 100; ky += 10) {
+        var jd = RND($JD_0 + (ky - 100) * 365.2524 * 100, 0) + 6 / 24
+        JD(jd); W(.5)
+        var dt = DT()
+        var year = dt.replace(/......T.*/, "")
+        var epoch = 50 * (year < 0 ? Math.ceil(year / 50) : Math.floor(year / 50))
+        var taras_info = []
+        for (var tidx = 0; tidx < taras.length; tidx++) {
+            var tara = getOI(taras[tidx]); W(.2)
+            taras_info.push(tara)
+            // MarkerMgr.markerObject(tara.name, true, tidx==0?"circle":"gear" , html_colors[ky % html_colors.length].toUpperCase())
+            MarkerMgr.markerObject(tara.name, true, tidx==0?"circle":"gear" , html_colors1[kol+2].toUpperCase())
+        }
+        var ra0 = R2(taras_info[0].ra); var decl0 = R2(taras_info[0].dec)
+        var ra1 = R2(taras_info[1].ra); var decl1 = R2(taras_info[1].dec)
+        var va_gap = R2(ac(c(decl0*d)*c(decl1*d)*c((ra1-ra0)*d) + s(decl0*d)*s(decl1*d))*D*60)
+        var ra_diff = R2(ra1-ra0)
+        var ra_gap = R2((ra1-ra0)*c(decl0*d)*60)
+
+        var head = ['year', "raV°", "declV°", "raA°", "declA°" , 'ra_diff°', "ra_gap'", "angular_gap'", ].join("      \t")
+        if (ky==0) { say(head); writes(head, "#CCCCCC", .1); $WRITE_Y += 10 }
+        var msg = [year, ra0, decl0, ra1, decl1, ra_diff, ra_gap, va_gap, ].join("       \t")
+        // writes(head, "#CCCCCC", .1)
+        $WRITE_Y += 10; //+ tidx * 10*0 + 0*((ky + 80)/5) * 9
+        writes(msg, html_colors1[kol+2], .1)
+        say(msg)
+        kol++;
+    }
+}
+// ```
+// Starting script at Fri Jan 6 01:46:52 2023
+// year      	raV°      	declV°      	raA°      	declA°      	ra_diff°      	ra_gap'      	angular_gap'
+// -10001       	-31.05       	48.01       	-31.09       	48.21       	-0.04       	-1.61       	12.11
+// -9001       	-21.77       	53.15       	-21.83       	53.35       	-0.06       	-2.16       	12.19
+// -8001       	-11.86       	58.64       	-11.96       	58.84       	-0.1       	-3.12       	12.4
+// -7001       	-0.66       	64.34       	-0.8       	64.54       	-0.14       	-3.64       	12.54
+// -6001       	13.15       	70.04       	13       	70.24       	-0.15       	-3.07       	12.38
+// -5001       	32.64       	75.33       	32.53       	75.53       	-0.11       	-1.67       	12.11
+// -4001       	63.97       	79.2       	64.18       	79.4       	0.21       	2.36       	12.23
+// -3001       	107.25       	79.68       	108.01       	79.83       	0.76       	8.17       	12.11
+// -2001       	142.03       	76.42       	142.8       	76.51       	0.77       	10.85       	12.09
+// -1001       	163.65       	71.4       	164.25       	71.45       	0.6       	11.48       	11.85
+// -0001       	178.61       	65.85       	179.08       	65.9       	0.47       	11.54       	11.91
+// 1000       	-169.48       	60.28       	-169.1       	60.33       	0.38       	11.3       	11.69
+// 2000       	-159.02       	54.92       	-158.7       	54.98       	0.32       	11.03       	11.6
+// Script finished at Fri Jan 6 01:47:36 2023
+// ```

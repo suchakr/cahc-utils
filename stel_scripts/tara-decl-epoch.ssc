@@ -1,10 +1,83 @@
 // script to track declination of a tara by epoch by latitude
 include("nakshatras.inc");
-// var THUBAN = '11 Dra'
+
+// Br Pu 1.23  https://sa.wikisource.org/wiki/ब्रह्माण्डपुराणम्/पूर्वभागः/अध्यायः_२३ 
+// यतो ज्योतींषि वहते प्रवहस्तेन स स्मृतः ।। २३.९८ ।।
+// एवं ध्रुवनिबद्धोऽसौ सर्पते ज्योतिषां गणः ।।
+// सैष तारामयो ज्ञेयः शिशुमारो ध्रुवो दिवि ।। २३.९९ ।।
+// यदह्ना कुरुते पापं दृष्ट्वा तन्निशि मुञ्चते ।।
+// यावत्यश्चैव तारास्ताः शिशुमाराश्रिता दिवि ।। २३.१०० ।।
+// तावंत्येव तु वर्षाणि जीवताभ्यधिकानि तु ।।
+// साकारः शिशुमारश्च विज्ञेयः प्रविभागशः ।। २३.१०१ ।।
+// औत्तानपादस्तस्याथ विज्ञेयो ह्युत्तरो हनुः ।।
+// यज्ञः परस्तु विज्ञेयो धर्मो मूर्द्धानमाश्रितः ।। २३.१०२ ।।
+// हृदि नारायणः साध्यो ह्यश्विनौ पूर्वपादयोः ।।
+// वरुणश्चार्यमा चैव पश्चिमे तस्य सक्थिनी ।। २३.१०३ ।।
+// शिश्नं संवत्सरस्तस्य मित्रोऽपानं समाश्रितः ।।
+// पुच्छेऽग्निश्च महेंद्रश्च मारीचः कश्यपो ध्रुवः ।। २३.१०४ ।।
+// तारकाः शिशुमारस्य नास्तं यांति चतुष्टयम् ।।
+// नक्षत्रचन्द्रसूर्याश्च ग्रहास्तारागणैः सह ।। २३.१०५ ।।
+
+// Br Pu 1.23  https://sa.wikisource.org/wiki/ब्रह्माण्डपुराणम्/पूर्वभागः/अध्यायः_२३  ( from RNI Dhruva Paper)
+// औत्तानपादस्तस्याथ विज्ञेयो ह्युत्तरो हनुः ।।   Uttanapaada  upper jaw (??)
+// यज्ञः परस्तु विज्ञेयो धर्मो मूर्द्धानमाश्रितः ।। २३.१०२ ।।   Yajan-kratu(γ,33 Dra) Lower jaw , Dharma(β,23 Dra) head
+// हृदि नारायणः साध्यो ह्यश्विनौ पूर्वपादयोः ।। Narayana(δ,57 Dra)  heart, two Ashwins - fore legs (δ,32 and ν1,24 Dra)
+// वरुणश्चार्यमा चैव पश्चिमे तस्य सक्थिनी ।। २३.१०३ ।।  Varuna and Aryama are  thighs ( τ,60 & ε,63 hind legs)
+// तारकाः शिशुमारस्य नास्तं यांति चतुष्टयम् ।।
+// नक्षत्रचन्द्रसूर्याश्च ग्रहास्तारागणैः सह ।। २३.१०५ ।।
+// पुच्छेऽग्निश्च महेंद्रश्च मारीचः कश्यपो ध्रुवः ।। २३.१०४ ।।  Tail has Agni( η,14 Dra) , Mahendra (θ,13 Dra), Marici-Kashyapa(ι, 12 Dra)  ,  Dhruva ( α,11 Dra)  ,   Suniti? (I,10 Dra)
+// शिश्नं संवत्सरस्तस्य मित्रोऽपानं समाश्रितः ।।  Samvatsara(ζ,22 Dra)  genital, Mitra (χ,44 Dra) seat
+
 var THUBAN = 'HIP 68756'
 // var shishumaara4 = [ 'HIP 68756', 'HIP 75458', 'HIP 78257', 'HIP 80331' ]
-var taras = ['11 Dra', '12 Dra', '13 Dra', '14 Dra', '79 UMa', '80 UMa']
-var tara_names = ['dhruva', 'mārīca', 'mahendra', 'agni', 'vaśiṣṭha', 'arundhatī ']
+var taras = ['10 Dra', '11 Dra', '12 Dra', '13 Dra', '14 Dra', '22 Dra' , '79 UMa', '80 UMa']
+var tara_names = ['sunīti', 'dhruva', 'mārīca', 'mahendra', 'agni', 'samvatsara', 'vaśiṣṭha', 'arundhatī ']
+var draco_stars = [ 
+ [10, 'i Dra', 'i Dra', 'i Dra', 'sunīti', 'tail']
+,[11, 'α Dra', 'Alpha Dra', 'Thuban', 'dhruva', 'tail']
+,[23, 'β Dra', 'Beta Dra', 'Rastaban', 'uttanapāda', 'upper jaw']
+,[33, 'γ Dra', 'Gamma Dra', 'Eltanin', 'yajñah', 'lower jaw']
+,[57, 'δ Dra', 'Delta Dra', 'Altais', 'ashvin1?', 'fore-leg1?']
+,[58, 'π Dra', 'Pi Dra', 'Tais I', 'ashvin2?', 'fore-leg2?']
+,[63, 'ε Dra', 'Epsilon Dra', 'Tyl', 'aryama?', 'thighs?']
+,[22, 'ζ Dra', 'Zeta Dra', 'Aldhibah', 'samvatsara?', 'genital?']
+,[14, 'η Dra', 'Eta Dra', 'Aldhibain', 'agni', 'tail']
+,[13, 'θ Dra', 'Theta Dra', 'Theta Dra', 'mahendra', 'tail']
+,[12, 'ι Dra', 'Iota Dra', 'Edasich', 'mārīca', 'tail']
+,[24, 'ν1 Dra', 'Nu1 Dra', 'Kuma', '' , 'head']
+,[32, 'ξ Dra', 'Xi Dra', 'Grumium', 'heart']
+,[60, 'τ Dra', 'Tau Dra', 'Athafi II', 'varuna?', 'thighs?']
+,[44, 'χ Dra', 'Chi Dra', 'Alahakan', 'mitra?', 'seat?']
+// ,[ 5, 'κ Dra', 'Kappa Dra', 'Kappa Dra'] beyond abhaya
+// ,[1, 'λ Dra', 'Lambda Dra', 'Lambda Dra'] beyond abhaya
+,[21, 'μ Dra', 'Mu Dra', 'Alrakis', '?', 'outside-head?']
+,[47, 'ο Dra', 'Omicron Dra', 'Omicron Dra', '?', 'outside-neck?']
+,[67, 'ρ Dra', 'Rho Dra', 'Tais II', '?' , 'near ε.?']
+,[61, 'σ Dra', 'Sigma Dra', 'Sigma Dra' , '?', 'near ε.?']
+,[96, 'υ Dra', 'Upsilon Dra', 'Upsilon Dra']
+,[97, 'φ Dra', 'Phi Dra', 'Phi Dra']
+,[98, 'ψ Dra', 'Psi Dra', 'Psi Dra']
+,[99, 'ω Dra', 'Omega Dra', 'Omega Dra']
+]
+
+
+
+,['β Dra', 'Beta Dra', 'Rastaban']
+,['γ Dra', 'Gamma Dra', 'Eltanin']
+,['δ Dra', 'Delta Dra', 'Giansar']
+,['ε Dra', 'Epsilon Dra', 'Alrakis']
+,['ζ Dra', 'Zeta Dra', 'Zeta Dra']
+,['ν Dra', 'Nu Dra', 'Nu Dra']
+,['ξ Dra', 'Xi Dra', 'Grumium']
+,['τ Dra', 'Tau Dra', 'Tau Dra']
+,['υ Dra', 'Upsilon Dra', 'Upsilon Dra']
+,['φ Dra', 'Phi Dra', 'Phi Dra']
+,['ψ Dra', 'Psi Dra', 'Psi Dra']
+,['ω Dra', 'Omega Dra', 'Omega Dra']
+
+]
+  
+
 var wt = .3;
 var cities = ['Madurai', 'Ujjain', 'Kurukshetra', 'Srinagar']
 var latitudes = [9.92, 23.18, 29.97, 34.09]

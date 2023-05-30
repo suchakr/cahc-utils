@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from astropy.time import Time
 from time import time
+import math
 import re
 
 class NaksUtils:
@@ -114,6 +115,8 @@ class NaksUtils:
 		λ = ecliptic geocentric longitude
 		ε = obliquity of the ecliptic
 		'''
+		lat -= 180 if lat>180 else 0
+		lon -= 180 if lon>180 else 0
 		R = np.pi/180
 		lat = lat * R
 		lon = lon * R
@@ -127,8 +130,65 @@ class NaksUtils:
 	def test_ll_to_rd( cls ):
 		display (
 		pd.DataFrame([ cls.ll_to_rd(0,lon) for lon in range(0,361,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2),
-		pd.DataFrame([ cls.ll_to_rd(lon,0) for lon in range(-90,91,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2)
+		pd.DataFrame([ cls.ll_to_rd(lat,0) for lat in range(-90,91,45)], columns=['lat', 'lon', 'ra', 'decl']).applymap(lambda x: x).style.set_precision(2)
 		)
+
+	def rd_to_ll (cls, ra, decl, obl = 23.439281):
+		'''
+		Where
+		β = ecliptic geocentric latitude
+		λ = ecliptic geocentric longitude
+		ε = obliquity of the ecliptic
+		δ = declination
+		α = right ascension
+
+		Lat sin(β) = sin(δ) cos(ε) - cos(δ) sin(ε) sin(α) 
+		Lon cos(λ) cos(β) = cos(α) cos(δ)
+		'''
+		R = np.pi/180
+		ra = ra * R
+		decl = decl * R
+		obl = obl * R
+
+		s,c, si, at2, ac = np.sin, np.cos, np.arcsin, np.arctan2, np.arccos
+		lat = si(s(decl)*c(obl) - c(decl)*s(obl)*s(ra))
+		lon = 0 if (-1e-4<=c(lat)<=1e-4) else ac(c(ra)*c(decl)/c(lat)) 
+		if ( ra > np.pi and ra < 2*np.pi ):
+			lon = 2*np.pi - lon
+		if math.isnan(lon):
+			lon = 0
+
+		return  ra/R, decl/R, lat/R, lon/R
+	
+
+	def test_ll_to_rd2( cls ):
+		df = pd.concat ( [
+			pd.DataFrame([ cls.rd_to_ll(ra,dec) for dec in range(0,361,55) for ra in range(0,361,55)], columns=[ 'ra', 'decl', 'lat', 'lon']).applymap(lambda x: x),
+		]).reset_index(drop=True)
+
+		dx = df.apply(lambda x: pd.Series(cls.ll_to_rd(x.lat,x.lon)), axis=1)
+		dx.columns = ['lat1', 'lon1', 'ra1', 'decl1']
+		# display(df.join(dx).style.set_precision(2))
+		dy = df.join(dx)#.applymap(lambda x: int(x*10)).astype(int)
+		dy = dy.assign (
+			# sum1 = lambda y: y.apply (lambda x :pd.Series( [
+			# 	(1000*abs(x.ra-x.ra))%(360*1000-10)/1000 #< 1e-1
+			# 	,(1000*abs(x.decl1-x.decl))%(360*1000-10)/1000 #< 1e-1
+			# 	,(1000*abs(x.lat1-x.lat))%(360*1000-10)/1000 #< 1e-1
+			# 	,(1000*abs(x.lon1-x.lon))%(360*1000-10)/1000 #< 1e-1
+			# 	]).sum() , axis=1),
+			check1 = lambda y: y.apply (lambda x :pd.Series( [
+				(1000*abs(x.ra-x.ra))%(360*1000-10)/1000 < 1e-1
+				,(1000*abs(x.decl1-x.decl))%(360*1000-10)/1000 < 1e-1
+				,(1000*abs(x.lat1-x.lat))%(360*1000-10)/1000 < 1e-1
+				,(1000*abs(x.lon1-x.lon))%(360*1000-10)/1000 < 1e-1
+				]).sum()==4, axis=1),
+		)
+		display(dy.shape, dy[dy.check1==False].shape, dy.sample(10))
+		display(dy[dy.check1==False].style.set_caption('Failed Test'))
+		
+
+
 
 
 	def __init__(self, force=False):
@@ -222,9 +282,14 @@ def _main():
 	# display(nu.df)
 	# display(nu.df28[['nid', 'scp_muhurta']][21:])
 	# display(nu.df28[['nid', 'scp_muhurta']][:21])
-	display(nu.df28.scp_muhurta.sum() , nu.df28.scp_ahoratra.sum())
-	display(nu.df28_good.scp_muhurta.sum() , nu.df28_good.columns)
-	nu.test_ll_to_rd()
+	# display(nu.df28.scp_muhurta.sum() , nu.df28.scp_ahoratra.sum())
+	# display(nu.df28_good.scp_muhurta.sum() , nu.df28_good.columns)
+	# nu.test_ll_to_rd()
+	nu.test_ll_to_rd2()
+	print(nu.rd_to_ll (ra=-17.73, decl=-7.52, obl = 23.439281))
+	print(nu.rd_to_ll (ra=-17.73+360, decl=-7.52, obl = 23.439281))
+	print(nu.rd_to_ll (ra=-17.73+360, decl=-7.52+360, obl = 23.439281))
+	print(nu.rd_to_ll (ra=-17.73, decl=-7.52+360, obl = 23.439281))
 
 
 if __name__ == "__main__" :

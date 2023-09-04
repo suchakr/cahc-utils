@@ -381,9 +381,9 @@ BP MAU Agreement | **BP equinoctial FM** at ¼ kṛittikā and ¾ viṣakhā  ar
 1300 | - | - | Sun @ śraviṣṭhādi (β Del) **LVJ**  | |
 
 
-![](./ndial_kuru_01_-2400.png)
-![](./ndial_kuru_08_-1700.png)
-![](./ndial_kuru_12_-1300.png)
+![](./ndial_kuru_01_-2400.jpeg)
+![](./ndial_kuru_08_-1700.jpeg)
+![](./ndial_kuru_12_-1300.jpeg)
 
 
 

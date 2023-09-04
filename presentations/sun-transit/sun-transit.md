@@ -1,9 +1,8 @@
 ---
 marp: true
-# theme: base-theme
 theme: gaia
 paginate: true
-style : section.lead  { text-align: center; color:navy} pre { opacity:.7; } h2  { margin-top:-40px!important; margin-left: -50px; margin-top:-50px; margin-bottom:-20px} ul li { font-size: 22px; margin-left: -60px; color:blue}  ul li  li { font-size: 22px; margin-left: -25px; color:navy} h3  { margin-left: -50px; } 
+style:  section.lead  { text-align: center; color:navy} pre { opacity:.7; } h2  { margin-top:-40px!important; margin-left: -50px; margin-top:-50px; margin-bottom:-20px} ul li { font-size: 22px; margin-left: -60px; color:blue}  ul li  li { font-size: 22px; margin-left: -25px; color:navy} h3  { margin-left: -50px; } 
 
 # header: 'CAHC: Sun Transit'
 --- 

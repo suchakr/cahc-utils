@@ -287,6 +287,7 @@ def countMatras(input_mantra = few_rv_mantras):
   try:
     for verse in splitStringAtViramas(input_mantra):
       fpt = firstPass(verse)
+      fpt = [x for x in fpt if x != "err"]
       ans.append(computeDurations(fpt, verse))
     return ans
   except:

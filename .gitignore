@@ -43,3 +43,26 @@ stel_scripts/.Rapp.history
 **/**~.*
 **/.*swp
 **/.sw?
+**/node_modules
+**/package-lock.json
+**/package.json
+learn/python/llm/.envrc
+learn/python/llm/.env
+**/.chainlit*
+**/*.o
+**/*.so
+**/*.a
+**/*.dll
+**/*.dylib
+**/*.exe
+**/a.out
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/*.whl
+**/*.egg-info
+**/__pycache__
+**/.DS_Store
+**/err*
+/* **/_* */
+**/*dSYM/*

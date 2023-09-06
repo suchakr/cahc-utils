@@ -126,14 +126,16 @@ D|  **Vedic texts** and some of the **Purāṇas**  do contain source material f
 ---
 <style scoped>
     em { background: cyan; }
-    strong { color: blue; }
-    tr { font-size:15px }
-    section { column-count: 2; column-gap: 10px;   }
+    strong { font-size: 20px; margin-left: -30px;  }
+    tr { font-size:14.5px }
+    table { margin-bottom: -45px; xwidth: 70%; margin-top:0px ;}
+    h3 { font-size:28px; margin-bottom: -35px;  }
+    /* section { column-count: 2; column-gap: 35px;   } */
 
 
 </style>
 
-#### Other Purāṇa verses on equinoctial full moon - similar context + some differences
+### Other Purāṇa verses on equinoctial full moon - similar context + some differences
 
 **brahmānda purāṇa**
 ||
@@ -146,7 +148,6 @@ D|  **Vedic texts** and some of the **Purāṇas**  do contain source material f
 *विषुवं तं* विजानीयादेवमाहुर्महर्षयः ॥ १,२१.१४७ ॥
 सूर्येण विषुवं विद्या त्कालं सोमेन लक्षयेत् । समा रात्रिरहश्चैव यदा तद्विषुवं भवेत् ॥ १,२१.१४८ ॥
 तदा दानानि देयानि पितृभ्यो *विषुवेषु च* । ब्राह्मणेभ्यो विशेषेण मुखमेतत्तु दैवतम् ॥ १,२१.१४९ ॥
-
 
 **vāyu purāṇa**
 ||

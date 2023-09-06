@@ -347,7 +347,7 @@ BP MAU Agreement | **BP equinoctial FM** at ¼ kṛittikā and ¾ viṣakhā  ar
 <style scoped>
     h3 { font-size: 30px; text-align: center;  }
 </style>
-### Seasonal Nakṣatra Cycle Animation from 2400 BCE to 1000 BCE
+### [Seasonal Nakṣatra Cycle Animation from 2400 BCE to 1000 BCE](https://raw.githubusercontent.com/suchakr/cahc-utils/sunder_experiments/presentations/equinoctial-full-moon/ndial_1.gif)
 
 ![bg fit](./ndial_1.gif)
 

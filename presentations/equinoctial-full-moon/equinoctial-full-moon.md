@@ -107,7 +107,7 @@ D|  **Vedic texts** and some of the **Purāṇas**  do contain source material f
 | हरिताश्च हया दिव्यास्तस्य युक्ता महारथे । अनुलिप्ता इवाभान्ति पद्मरक्तैर्गभस्तिभिः ॥
 | The divine yellow horses, yoked to his great chariot, shine like covered with the lotus-red rays.
 | मेषान्ते च तुलान्ते च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहो रात्रिश्च तावती ॥
-| The hours of the day and night are reckoned as ten and five muhūrtas from the rising of the sun at the end of meshā and tulā 
+| The hours of the day and night are each reckoned as ten and five muhūrtas from the rising of the sun at the end of meshā and tulā
 | कृत्तिकानां यदा सूर्यः प्रथमांशगतो भवेत् । विशाखानां तदा ज्ञेयश्चतुर्थांश निशाकरः ॥ *(more specific)*
 | When the *sun is in the first part of kṛttikā*, know the *moon is in the fourth part of viśākhā*
 | विशाखानां यदा सूर्यश्चरतेंशं तृतीयकम् । तदा चन्द्रं विजानीयात्कृत्तिकाशिरसि स्थितम् ॥ *(less specific)*
@@ -142,11 +142,11 @@ D|  **Vedic texts** and some of the **Purāṇas**  do contain source material f
 |--|
 यत्तद्वै पूर्वतः शृङ्गं तदर्कः प्रतिपद्यते । शरद्वसंतयोर्मध्ये मध्यमां गतिमास्थितः ॥ १,२१.१४२ ॥
 अतस्तुल्यमहोरात्रं करोति तिमिरा पहः । हरिताश्च हया दिव्यास्तस्य युक्ता महारथे । अनुलिप्ता इवाभान्ति पद्मरक्तैर्गभस्तिभिः ॥ १,२१.१४३ ॥
-*मेषति च तुलान्ते* च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहो रात्रिश्च तावती ॥ १,२१.१४४ ॥
+*मेषान्ते च तुलान्ते* च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहो रात्रिश्च तावती ॥ १,२१.१४४ ॥
 कृत्तिकानां यदा सूर्यः प्रथमां शगतो भवेत् । विशाखानां तदा ज्ञेयश्चतुर्थांश निशाकरः ॥ १,२१.१४५ ॥
 विशाखानां यदा सूर्यश्चरतेंशं तृतीयकम् । तदा चन्द्रं विजानीयात्कृत्तिकाशिरसि स्थितम् ॥ १,२१.१४६ ॥
 *विषुवं तं* विजानीयादेवमाहुर्महर्षयः ॥ १,२१.१४७ ॥
-सूर्येण विषुवं विद्या त्कालं सोमेन लक्षयेत् । समा रात्रिरहश्चैव यदा तद्विषुवं भवेत् ॥ १,२१.१४८ ॥
+सूर्येण विषुवं विद्यात्कालं सोमेन लक्षयेत् । समा रात्रिरहश्चैव यदा तद्विषुवं भवेत् ॥ १,२१.१४८ ॥
 तदा दानानि देयानि पितृभ्यो *विषुवेषु च* । ब्राह्मणेभ्यो विशेषेण मुखमेतत्तु दैवतम् ॥ १,२१.१४९ ॥
 
 **vāyu purāṇa**
@@ -235,7 +235,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
 | Sun and Time are contemporaries
 |यन्निमेषादि कालात्संभृतं द्वादशात्मकं वत्सरम् ।
 | वत्सरः(year) has 12 parts and <br> is filled with time units starting with निमेषा(eye wink)
-|एतस्याग्नेयमर्धमर्घं वारुणम् ।
+|एतस्याग्नेयमर्धमर्धं वारुणम् ।
 | Year's first half is आग्नेयः(Āgneya) and <br>the second half is वारुणः(Varuṇa)
 |*मघाद्यं श्रविष्ठार्धमाग्नेयं* क्रमेणोत्क्रमेण सार्पाद्यं श्रविष्ठार्धान्तं सौम्यम् ।  
 | *Āgneya - from मघादि (Maghā start) to श्रविष्ठार्धः(half of Śraviṣṭhā)* <br> Varuṇa - from सार्पादि(Sārpā start) to श्रविष्ठार्धान्तः(end of half of Śraviṣṭhā) in counter order

@@ -1,0 +1,146 @@
+digraph a {
+    node [fontname="Sanskrit 2003"; fontsize=16; fontcolor=navy; shape=box;]
+    edge [arrowhead=none; color=gray; fontcolor=gray; fontsize=13; ]
+    concentrate=true
+    overlap=false
+    // beautify=true
+    subgraph cluster_kss {
+        node [fontcolor=grey; shape=box]
+        धूर्जटिः -> "पुष्पदन्तं\nगुणोत्तमः" -> वररुचिः -> काणभूतिः ->गुणाढ्यः-> सातवाहनः -> विद्याधरकथाद्भुदम्;
+        color=lightgrey;
+        style=filled;
+    }
+
+    subgraph cluster_sridutta {
+        style=filled; 
+        fillcolor=honeydew;
+        यज्ञसेन -> मालव [label="राजा"]
+        यज्ञसेन -> कालनेमि,विगतभयः [label="पुत्रः"]
+        कालनेमि,विगतभयः ->देवशर्मा [label="गुरुः"]
+        देवशर्मा -> पुत्रि१,पुत्रि२ 
+        कालनेमिः ->पुत्रि१ [label="पत्नी"]
+        विगतभयः ->पुत्रि२ [label="पत्नी"]
+        पुत्रि१->श्रीदत्तः [label="पुत्रः"]
+        वललभशक्तिः->विक्रमशक्तिः [label="पुत्रः"]
+        श्रीदत्तः-> { विक्रमशक्तिः, बाहुशालीः,वज्ममुष्टिः, महाबलः, व्याध्रभटः, उपेन्द्रबलः, निष्ठुरकः} [label="बन्घुः"]
+    }
+
+    subgraph cluster_शतानीक_core_family {
+        style=filled; fillcolor=azure
+
+        शाण्डिल्यः , "अर्जुनः\nअभिमन्य्‌\nपरीक्षितः\nजनमेजयः", भूः [shape=box fontcolor=gray;]
+        "वत्सः\nकौशाम्बी" , अयोध्या [fillcolor=blanchedalmond style=filled]
+        edge [arrowhead=none; color=blue fontcolor=cornflowerblue]
+        भूः -> शतानीकः  [label="कलत्रं" dir=back]
+        विष्णुमती -> शतानीकः  [label="राज्ञी" dir=back]    ;
+        {विष्णुमती , शतानीकः} -> सहस्रानीकः  [arrowhead=normal]
+        "वत्सः\nकौशाम्बी" -> शतानीकः [label=राजा dir=back ]
+        // भूः -> रत्नाननि;
+
+        मृगावती -> सहस्रानीकः  [label="पत्नी" dir=back]
+        { सहस्रानीकः , मृगावती } -> उदयनः [arrowhead=normal]
+        // सहस्रानीकः -> उदयनः [arrowhead=normal]
+        // मृगावती -> उदयनः [arrowhead=normal]
+        विष्णुमती  -> शाण्डिल्यः [label="मन्त्रपूतं\nचरुं" labeldistance=.5] 
+        
+       "अर्जुनः\nअभिमन्य्‌\nपरीक्षितः\nजनमेजयः" -> शतानीकः  [label="पूर्वजाः" dir=back]
+       {rank = same; भूः; विष्णुमती; शतानीकः; }
+    //    {rank = same; मृगावती; सहस्रानीकः; शबरः}
+       {rank = same;  
+        "अर्जुनः\nअभिमन्य्‌\nपरीक्षितः\nजनमेजयः"; "वत्सः\nकौशाम्बी"; शाण्डिल्यः; }
+
+    // }
+    // subgraph cluster_indra {
+        // node [shape=box; style=filled; fillcolor=none; fontcolor=cornflowerblue];
+        edge [color=lightgrey; arrowhead=none; ]
+        // edge [constraint=false];
+        node [shape=box; color=gray; fontcolor=cornflowerblue;]
+        // style=filled; 
+        // fillcolor=ivory;
+        अलम्बुषा -> मृगावती [label="पुनर्जन्म"]
+        जमदग्निः -> उदयनः [label="गुरः" color=blue fontcolor=gray]
+        जमदग्निः -> मृगावती [label="आश्रमः"]
+        // शबरः -> सहस्रानीकः [label="कटकः"]
+        शबरः -> {  सहस्रानीकः शतानीकः } [label="कटकः"]
+
+        तिलोत्तमा -> सहस्रानीकः [label="वियोग\nश्राप"]
+          
+        शक्रः ->  मातलिः [label="दूतः"; arrowhead=none]
+        विधूमः -> शक्रः [label="वसु";  arrowhead=none]
+        ब्रह्म -> {शक्रः ,  विधूमः }  [ arrowhead=none]
+        // {rank=same; शक्रः  विधूमः}
+        // मातलिः -> शतानीकः
+        { विधूमः } -> सहस्रानीकः [label="पुनर्जन्म"]
+        { मातलिः } -> सहस्रानीकः [label="पुनर्जन्म"]
+        मृगावती ->  उदयपर्वतः [label="पक्ष्यापहरण्\nविहारस्थलम्"]
+
+        कृतवर्मा -> मृगावती [label="पुत्रि"] 
+        अयोध्या -> कृतवर्मा  [label="शाशकः" color=blue fontcolor=blue] 
+        
+       {rank = same; मृगावती; सहस्रानीकः; शबरः}
+
+        उदयनः -> सर्पः [label="मोचयति"]
+        सर्पः -> वसुनेमिः
+        वसुनेमिः -> उदयनः [label="वीणा"]
+        {rank=same;  सर्पः वसुनेमिः}
+        उदयनः  [shape=box3d; color=red; fontcolor=red;]
+        मृगावती , सहस्रानीकः [shape=box3d; color=coral; fontcolor=coral;]
+        विष्णुमती , शतानीकः  [shape=box3d; color="#da93a1"; fontcolor="#da93a1";]
+    // }
+    subgraph cluster_support {
+        edge [color=lightgrey;arrowhead=none;]
+        style=filled
+        fillcolor=lightgoldenrodyellow
+        cluster=true
+        सुप्रतीकाभिधानः;
+        शतानीकः -> युगंधरायः [label="मन्त्रिः"];
+        शतानीकः -> सुप्रतीकाभिधानः [label="मुख्यसेनापति"];
+        युगंधरायः -> यौगन्धरायणः [label="पुत्रः"]
+        सुप्रतीकाभिधानः -> रुमण्वान्‌ [label="पुत्रः"]
+        विदूषकः -> वसन्‍तकः [label="पुत्रः"]
+        शतानीकः -> विदूषकः [label="बन्धुः"]
+        सहस्रानीकः -> { यौगन्धरायणः रुमण्वान्‌  वसन्‍तकः} [label="बन्धुः" color=lightblue fontcolor=lightblue]
+    } }
+
+
+    subgraph {
+        node [shape=box; color=gray; fontcolor=gray;]
+        // मृगावती ->  उदयपर्वतः [label="पक्ष्यापहरण्\nविहारस्थलम्"]
+        // उदयनः -> सर्पः [label="मोचयति"]
+        // सर्पः -> वसुनेमिः
+        // वसुनेमिः -> उदयनः [label="वीणा"]
+        // {rank=same;  सर्पः वसुनेमिः}
+        // सङ्गतः -> सहस्रानीकः [label="कथा"]
+    }
+
+
+}
+
+// ( विद्याधरकथाद्भुदम् )
+//     ( सातवाहन/ गुणाढ्य/ काणभूति/ वररुचि /पुष्पदन्तं गुणोत्तम / धूर्जटेः )
+
+// ( वत्स/कौशाम्बी राज्यम् ) 
+//     ( राजा शतानीक : जनमेजय/परीक्षित/अभिमन्य्‌/अर्जुन )
+//         ( कलत्रं भूः)
+//         ( राज्ञी विष्णुमती)
+
+// शाण्डिल्यः
+
+//     विद्याधरकथाद्भुदम्
+//         सातवाहनः
+//         गुणाढ्यः
+//         काणभूतिः
+//         वररुचिः
+//         पुष्पदन्तं गुणोत्तमः
+//         धूर्जटेः
+    
+//     राज्यम्: वत्सः/कौशाम्बी 
+//         राजा: शतानीकः
+//             पूर्वजाः
+//                 जनमेजयः
+//                 परीक्षितः
+//                 अभिमन्य्‌
+//                 अर्जुनः
+//         कलत्रं: भूः
+//         राज्ञी: विष्णुमती
+//              पुत्रः सहस्रानीकः

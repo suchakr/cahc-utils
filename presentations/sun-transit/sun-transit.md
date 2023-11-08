@@ -2,7 +2,7 @@
 marp: true
 theme: gaia
 paginate: true
-style:  section.lead  { text-align: center; color:navy} pre { opacity:.7; } h2  { margin-top:-40px!important; margin-left: -50px; margin-top:-50px; margin-bottom:-20px} ul li { font-size: 22px; margin-left: -60px; color:blue}  ul li  li { font-size: 22px; margin-left: -25px; color:navy} h3  { margin-left: -50px; } 
+style: section.lead  { text-align: center; color:navy} pre { opacity:.7; } h2  { margin-top:-40px!important; margin-left: -50px; margin-top:-50px; margin-bottom:-20px} ul li { font-size: 22px; margin-left: -60px; color:blue}  ul li  li { font-size: 22px; margin-left: -25px; color:navy} h3  { margin-left: -50px; } 
 
 # header: 'CAHC: Sun Transit'
 --- 
@@ -415,4 +415,41 @@ Fitting Stars to Nakshatras
 
 Diff of Nakṣatra-s list
 ![img width:1200](sun-transit-naks-list-compare.png)
+
+---
+<style scoped>
+	h2 { margin-bottom:20px;}
+	{ background: silver}
+	{
+    height: 400vh!important; }
+
+	table {margin-left: -20px; margin-bottom:0px}
+	th { background: lightgray}
+	ul li { font-size: 20px; margin-left: -65px; color:blue}
+	ul li  li { font-size: 20px; margin-left: -25px; color: black }
+	tr>:nth-child(1) { font-size: 25px; width: px; color:navy; display:show}
+	tr>:nth-child(2) { color:green; font-size: 25px; }
+	tr>:nth-child(3) { color:purple; font-size: 25px; }
+	tr>:nth-child(4) { color:blue; font-size: 26px; }
+	tr>:nth-child(5) { color:maroon; font-size: 22px; }
+ 	section table em  {  background-color: lightgreen}
+ 	section table em strong { background-color: #eebbee}
+
+	/* Hide the first column of the first table */
+
+</style>
+
+##### Śraviṣṭhādi Epoch: Parāśara and Vṛddhagarga (c 1400-1300 BCE)
+
+Both PT and VGJ describe the transit of Sun through the 6 seasons of the year in terms of the same 9 seasonal nakṣatra-s.  The start of winter is aligned with Śraviṣṭhādi  and each season spans 4½ nakṣatra-s.
+
+
+|Verse|From|To|Ṛtu|Span|
+|:---|:---:|:---:|:---:|:--:|
+*श्रविष्ठादीनि* चत्वारि ***पौष्णार्धञ्च*** दिवाकरः  ।<br>  वर्धयन् सरसस्तिक्तं मासौ तपति **शैशिरे**  ॥ 47 | श्रविष्ठा begin | रेवती mid | शिशिर | 270°-330° |
+***रोहिण्यन्तानि*** विचरन् *पौष्णार्धाद्याच्च* भानुमान् ।<br> मासौ तपति **वासन्तौ** कषायं वर्धयन् रसम्॥ 48 | रेवती mid | रोहिणी end | वसन्त|330°-30°|
+***सार्पार्धान्तानि*** विचरन् *सौम्याद्यानि* तु भानुमान् ।<br> **ग्रैष्मिकौ** तपते मासौ कटुकं वर्धयन् रसम्॥ 52 | मृगशिरा begin | आश्लेषा mid | ग्रीष्म| 30°-90°|
+***सावित्रान्तानि*** विचरन् *सार्पार्धाद्यानि* भास्करः ।<br> **वार्षिकौ** तपते मासौ रसमम्लं विवर्धयन्॥ 53 |आश्लेषा mid | हस्ता end | वर्षा| 90°-150°|
+*चित्रादीन्यथ* चत्वारि ***ज्येष्ठार्धञ्च*** दिवाकरः।<br> **शारदौ** लवणाख्यं च तपत्याप्याययन् रसम्॥ 54 | चित्रा begin | ज्येष्ठा mid | शरद्|150°-210°|
+*ज्येष्ठार्धादीनि* चत्वारि ***वैष्णवान्तानि*** भास्करः ।<br> **हेमन्ते** तपते मासौ मधुरं वर्धयन् रसम् ॥ 55 | ज्येष्ठा mid | श्रवण end | हेमन्त|210°-270°|
 

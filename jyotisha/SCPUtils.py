@@ -24,7 +24,8 @@ class SCPUtils :
 		offsets = df28.scp_muhurta
 		angles = ((df28.scp_muhurta.cumsum() - offsets )* 360/df28.scp_muhurta.sum()) # ashvini at 0
 		angles = (angles - 8) %360
-		angles = [  (lo,hi)  for lo, hi in zip(angles , angles[1:].append(angles[:1])) ]
+		# angles = [  (lo,hi)  for lo, hi in zip(angles , angles[1:].append(angles[:1])) ]
+		angles = [  (lo,hi)  for lo, hi in zip(angles , angles.shift(-1)) ]
 		df28['scp_lon_lo'] = [ x[0] for x in angles]
 		df28['scp_lon_hi'] = [ x[1] for x in angles]
 		self.df28 = df28

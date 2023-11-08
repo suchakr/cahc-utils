@@ -123,7 +123,7 @@ def get_moon_planet_pos(force=False) -> pd.DataFrame:
 def plot_full_moon_distance_hist_by_naks(
 	from_year=-1999 ,
 	num_years=2000, 
-	chunks=4, 
+	chunks=10, 
 	maasa_threshold=8, 
 	cuts=5,
 	cut_to_plot=0,
@@ -170,11 +170,13 @@ def plot_full_moon_distance_hist_by_naks(
 		msg = f'{re.sub("T.*","",min_dt)} to {re.sub("T.*","",max_dt)}'
 		ax = fm_df.r.hist(width=0.3, bins=cuts, alpha=0.5, figsize=(6,4))
 		ax.set_title(f"Histogram of Full Moons by Earth-Moon Distance\n{msg}") 
-		plt.show()
+		# plt.show()
+
+
 
 	gap = (max_jd - min_jd)/chunks
 	trend =[]
-	for step in range (1,chunks+1)  :
+	for step in range (1,chunks+1)  : 
 		fm_filt = fm_df[[ ( (min_jd +(step-1)*gap) <= j <= (min_jd +(step-0)*gap) ) for j in fm_df.jd]].sort_values(by='jd')
 		# display(fm_filt.describe(exclude=[np.number]))
 		fm_pvt = pd.crosstab(fm_filt.naks, fm_filt.moon_dist)
@@ -192,6 +194,8 @@ def plot_full_moon_distance_hist_by_naks(
 		trend.append([ fm_filt.iloc[fm_filt.shape[0]//2,:].date, step, mean_all_naks, mean_maasa_naks, mean_not_maasa_naks, num_maasas_above_mean_all, num_not_maasas_above_mean_all, match_metric])
 
 		if num_maasas_above_mean_all < maasa_threshold: continue
+
+		continue
 
 		ax = fm_pvt[[cut_to_plot]].plot.bar(stacked=True, figsize=(8,3), legend=False)
 		ax.plot(fm_pvt.index, [mean_all_naks]*len(fm_pvt), '--', color='red')
@@ -213,18 +217,27 @@ def plot_full_moon_distance_hist_by_naks(
 		# msg = f'{re.sub("T.*","",min_dt)} to {re.sub("T.*","",max_dt)} NaksMean {mean1:.2f} , MaasaMean {mean2:.2f}\n{num_maasas_above_mean1} maasa nakshatras have higher frequency than mean nakshatra'
 		msg = f'{re.sub("T.*","",min_dt)} to {re.sub("T.*","",max_dt)}\n{num_maasas_above_mean_all} maasa nakshatras have higher frequency than mean nakshatra'
 		ax.set_title(f'Histogram of {title_tag} by Naksatra \n {msg}', fontsize=10, color='blue')
-		plt.show()
-	trend = pd.DataFrame(trend, columns=['date', 'step',  'mean_all_naks', 'mean_maasa_naks', 'mean_not_maasa_naks', 'num_maasas_above_mean_all', 'num_not_maasas_above_mean_all', 'match_metric'])
-	trend['date'] = trend.date.apply(lambda x: re.sub("......T.*","",x))
-	ax = trend.plot(x='date', y=["match_metric"], figsize=(8,3), legend=False, rot=90, kind='bar')
-	# create second y-axis
-	ax2 = ax.twinx()
-	trend.plot(x='date', y=["num_maasas_above_mean_all"], figsize=(8,3), legend=False, rot=90, kind='line', ax=ax2, ls=':', color='red')
+		# plt.show()
 
-	display(trend)	
+	if  not False :
+		trend = pd.DataFrame(trend, columns=['date', 'step',  'mean_all_naks', 'mean_maasa_naks', 'mean_not_maasa_naks', 'num_maasas_above_mean_all', 'num_not_maasas_above_mean_all', 'match_metric'])
+		trend['date'] = trend.date.apply(lambda x: re.sub("......T.*","",x))
+		ax = trend.plot(x='date', y=["num_maasas_above_mean_all" , "num_not_maasas_above_mean_all"], figsize=(10,3), legend=False, rot=90, kind='bar', stacked=True, color=['green', 'red'])
+		ax.set_title(f'Degree of Alignment - Full moon Naḳshatras with Māsa names', fontsize=10, color='blue')
+
+	# ax = trend.plot(x='date', y=["match_metric"], figsize=(8,3), legend=False, rot=90, kind='bar')
+	# # create second y-axis
+	# ax2 = ax.twinx()
+	# ax = trend.plot(x='date', y=["num_maasas_above_mean_all" , "num_not_maasas_above_mean_all"], figsize=(8,3), legend=False, rot=90, kind='bar', ax=ax2, color=['green', 'red'])
+
+	plt.show()
+
+	# display(trend)
+	1
 	# ax.set_title(f'Histogram of Full Moon by Nasksatra \n { re.sub("T.*","",min_dt)} to {re.sub("T.*","",max_dt)}', fontsize=20, color='blue')
 
-# %%
+
+# !%%
 def plot_moon_gruha_long_diff_hist():
 	fm_df = get_full_moon_planet_pos(force=not True)
 	fm_pvt = fm_df.pivot_table(index=['date', 'jd'], columns='planet', values='elong', aggfunc=np.mean).reset_index()
@@ -236,7 +249,7 @@ def plot_moon_gruha_long_diff_hist():
 		ax.set_title(f"Spread of \n{p} - Moon LongDiff\n at Full Moon")
 	plt.show()
 
-# %%
+# !%%
 
 def super_moon_histogram_by_epoch ():
 	# plot_moon_gruha_long_diff_hist()
@@ -244,13 +257,15 @@ def super_moon_histogram_by_epoch ():
 		from_year=-1999, 
 		num_years=1000, 
 		chunks=20, 
-		maasa_threshold=10, 
+		maasa_threshold=11, 
 		cuts=7, 
 		cut_to_plot=0,  
 		title_tag='Super Moon') 
 		
 	# plot_full_moon_distance_hist_by_naks(from_year=-1999, num_years=1000, chunks=20, maasa_threshold=10, 
 	# 					cuts=1, cut_to_plot=0,  title_tag='Full Moon') 
+
+super_moon_histogram_by_epoch()
 
 # %%
 #%%

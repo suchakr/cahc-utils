@@ -180,7 +180,7 @@ D|  **Vedic texts** and some of the **Purāṇas**  do contain source material f
 
 ||
 |--|
-Per nidāna sūtra 5.12 <br> &nbsp; &bull; Sun spends *13 and 5/9 days eqaully* with each naḳsatra  <br> &nbsp; &bull; The sun completes one trip through the 27 nakṣatras in 366 days
+Per nidāna sūtra 5.12 <br> &nbsp; &bull; Sun spends *13 and 5/9 days equally* with each naḳsatra  <br> &nbsp; &bull; The sun completes one trip through the 27 nakṣatras in 366 days
 We model each naḳsatra sector equally to be 1/27th part of the naḳshtra circle  *366 days = 360°*
 The **BP** verses specify the spring and autumnal equinoctial full moons using Kṛttikā and Viśākhā nakṣatras. This information enables us to date the verses.
 We collect FM longitudes that occur near the equinoxes from 2400BCE to 0BCE.<br> There are about 7 such events a century for each equinox

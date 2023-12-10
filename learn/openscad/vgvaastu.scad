@@ -25,7 +25,7 @@ new_layout = [ for (idx = [0: len(layout)]) let (elem=layout[idx])
     ]
 ];
 
-echo(new_layout[0:3])
+// echo(new_layout[0:3])
 
 
 for (elem = new_layout) {

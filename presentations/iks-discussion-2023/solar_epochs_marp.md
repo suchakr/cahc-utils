@@ -299,9 +299,9 @@ The direction of precession is opposite to the direction of the  sun's annual tr
     img { filter: invert(100%); transform: scale(0.30);  transform-origin: 0 0; }
 </style>
 
-## Animation of precession over 5000 years
+## [Animation of precession over 5000 years](https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-precession.gif)
 
-![](../sun-transit/sun-transit-precession.gif)
+![](https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-precession.gif)
 
 ---
 <style scoped>
@@ -423,7 +423,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
 ### Inference
 |||
 |--|--|
-**1980-1610 BCE** | The *visible Kṛttikā & Viśākhā* are *contained in their respective sectors* 
+**1980-1610 BCE** | The *visible Kṛttikā & Viśākhā* are *contained in their respective sectors.*  **1800 BCE**  is the mid
 **1700-1610 BCE** | The equinoctial *FM  at ¾ viṣākhā sector is nearest to visible viśākhā* 
 **Maghādi scheme** | The Maghādi scheme of MAU is consistent with the equinoctial full moon scheme of BP
 
@@ -432,7 +432,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
 <style scoped>
     p, li{font-size: 20px; margin-left: -20px;}
     em { background-color: rgba(255,0,0,0.1); }
-    img { filter: invert(10%);  width: 60%; position: absolute;; transform: translate(55%, -50%); z-index: -1;  border: px solid black; }
+    img { filter: invert(10%);  width: 60%; position: absolute;; transform: translate(55%, -53%); z-index: -1;  border: px solid black; }
 </style>
 
 ## Nakṣatra Chart 1700BCE  - MAU/BP Maghādi epoch
@@ -444,7 +444,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
 - *aligns with maghādi of MAU*
   - when maghādi (SS 1) is at 
     - start of dakṣiṇāyana
-- *around 1700 BCE*
+- *best aligns around <br>1800-1700 BCE*
 
 <!-- Computatonally, the alignment is found to be
   - when the visible kṛttikā and viśākhā are 
@@ -492,7 +492,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
 
 The PT book of RNI dates the same observations using a visibility of 6 bright stars within their respective ṛtus. The *earlier method* using visibility of 6 bright stars(⭐️) in their stated seasons yields **1350-1130 BCE**.  An **improved dating** best fits these three - 9 circled seasonals nakṣatra-s , 27 proxy stars, and  83 constituent stars for their stated seasons/sectors. This yields **50 years around 1250 BCE** - a finer window. -->
 
-![](../sun-transit/sun-transit-adityacara-seasons.png)
+![](./sun-transit-adityacara-seasons.png)
 
 ---
 
@@ -507,7 +507,7 @@ The PT book of RNI dates the same observations using a visibility of 6 bright st
     li { font-size:16px; margin-left: -20px ; width: 300px}
 </style>
 
-![](../sun-transit/sun-transit-adityacara-charts.png)
+![](./sun-transit-adityacara-charts.png)
 <!-- - From the text 
 	- *nakṣatra-s* are equally spaced at 13.33° - given seasons are of equal of 4½ *nakṣatra-s*
 	- शिशिर start is sun with श्रविष्ठादि taken as 270°
@@ -544,9 +544,11 @@ $$ -->
 
 ---
 
-## The Bharaṇyādi/Vasanta epoch - <br> VGJ/59 Ṛtusvabhāva
+<!-- ## The Bharaṇyādi/Vasanta epoch - <br> VGJ/59 Ṛtusvabhāva -->
+## The Śravaṇādi epoch  VGJ/59 Ṛtusvabhāva
 
 <style scoped>
+    h2 { margin-bottom: 30px; }
     table { margin-left: -25px; font-size: 15px; }
     table td:nth-child(2) { width: 10px; }
     table td:nth-child(3) { width: 10px; }
@@ -556,7 +558,7 @@ $$ -->
     li { font-size:19px; margin-left: -30px ; width: 300px}
 </style>
 
-![](../sun-transit/sun-transit-rtusvabhava-charts.png)
+![](./sun-transit-rtusvabhava-charts-rni.png)
 
 - Describes Sun's path through
 	- 12  *vaidika* and equivalent *laukika* months and  12  *nakṣatra-s* for each of these months - ~30° apart
@@ -591,8 +593,8 @@ $$ -->
 |Epoch|Scheme|Start|Season|
 |--|--|--|--|
 earlier | **2 Ayana/6 Ṛtu** based sun transit   |
-1700 BCE | **MAU/BP**  Equinoctial full moon scheme | Maghādi |dakṣināyaṇa 
-1250 BCE  | **VGJ/ādityacāra** anda **PT**  with *4½ nakṣatra-s* per season | Śraviṣṭhādi |uttarāyaṇa
+1800 BCE | **MAU/BP**  Equinoctial full moon scheme | Maghādi |dakṣināyaṇa 
+1300 BCE  | **VGJ/ādityacāra** anda **PT**  with *4½ nakṣatra-s* per season | Śraviṣṭhādi |uttarāyaṇa
 500 BCE  | **VGJ/ṛtusvabhāva**  with *12 solar months* | Bharaṇyādi| vasanta
 
 **Solar zodiac** is certainly part of original Indian knowledge - that has been recorded and evolved over time.

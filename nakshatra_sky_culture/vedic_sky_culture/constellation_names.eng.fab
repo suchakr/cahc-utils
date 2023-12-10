@@ -84,6 +84,6 @@ N28	"Abhijit"		_("अभिजित्")
 
 Shim	"Shiṁśumāra"	_("शिशुमारः")
 Matsya	"Matsya"	_("मत्स्यः")
-vgjnorth "vgjnorth" _("उत्तरः")
+## vgjnorth "vgjnorth" _("उत्तरः")
 #Shim	"Shiṁśumāra"	_("Dolphin")
 #Matsya	"Matsya"	_("Fish")

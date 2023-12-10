@@ -265,7 +265,7 @@ def super_moon_histogram_by_epoch ():
 	# plot_full_moon_distance_hist_by_naks(from_year=-1999, num_years=1000, chunks=20, maasa_threshold=10, 
 	# 					cuts=1, cut_to_plot=0,  title_tag='Full Moon') 
 
-super_moon_histogram_by_epoch()
+# super_moon_histogram_by_epoch()
 
 # %%
 #%%
@@ -285,7 +285,7 @@ def get_moon_for_one_month(jd=PP.JD_BCE_1000_JAN_1, ndays=31):
 
 	return  moons
 
-get_moon_for_one_month(jd=PP.JD_BCE_1000_JAN_1-365.25*1000)
+# get_moon_for_one_month(jd=PP.JD_BCE_1000_JAN_1-365.25*1000)
 
 
 #%%

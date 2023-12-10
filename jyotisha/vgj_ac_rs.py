@@ -602,8 +602,14 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   (Ādityacāra; v. 47, 48, 52, 53, 54, 55)
   '''
   n83_df_bce = pd.concat([get_n83_naks_df(yr=year) for year in years])
+  # display(n83_df_bce)
+  n83_df_agg = n83_df_bce.copy()
+  columns_to_drop = ['naks', 'gname', 'date']
+  for column in columns_to_drop:
+    if column in n83_df_agg.columns:
+        n83_df_agg = n83_df_agg.drop(column, axis=1)
 
-  n83_df_agg = n83_df_bce.groupby(['nid']).mean().assign( enaks= lambda x : [ y[4:] for y in x.index.values]).sort_values(['nid','year', 'lon','lat'])
+  n83_df_agg = n83_df_agg.groupby(['nid']).mean().assign( enaks= lambda x : [ y[4:] for y in x.index.values]).sort_values(['nid','year', 'lon','lat'])
   yr = n83_df_agg.year.values.mean()
   yrnum = (1000 - int(yr))//250
   # n83_df_agg = n83_df_bce.groupby('nid').agg(smart_mean).assign( enaks= lambda x : [ y[4:] for y in x.index.values])
@@ -621,7 +627,8 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   # ax.set_theta_zero_location('N', offset=n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0])
   ax.set_theta_direction(-1)
   # naks = [ re.sub(r"^N...","",x) for x in  n27_lon_divisions.index]
-  n83_df_agg_chi = n83_df_agg['N14-Chi':].append(n83_df_agg[:'N13-Has'])
+  # n83_df_agg_chi = n83_df_agg['N14-Chi':].append(n83_df_agg[:'N13-Has'])
+  n83_df_agg_chi = pd.concat([n83_df_agg['N14-Chi':],n83_df_agg[:'N13-Has']])
   # display(n83_df_agg_chi.shape, n83_df_agg_chi.head(2), n83_df_agg_chi.tail(2))
   angles = [ x/1000 for x in range(0, 360000, 13333)]
   # enaks = n83_df_agg_chi.enaks
@@ -654,6 +661,7 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   ix =0
   for naks, _df in n83_df_bce.groupby( 'nid' ) : 
     _df = _df.copy().sort_values(['year', 'lon', 'lat'])
+    _df = _df[['gname', 'year', 'lon', 'lat']]
     if bare_template: break
     ax.scatter( 
     # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )], 
@@ -781,10 +789,10 @@ if __name__ == '__main__' :
   plot_vgj_seasons(years=yrs, 
                    bare_template=not True, 
                    equal_naks=not False, title="", day_ticks=not False, savefig=not True )
-  for y in range(8-4) :
-    continue
+  for y in range(8-2) :
+    # continue
     yr = (1000 -500) - 500*y
-    plot_vgj_seasons(years=[yr], equal_naks=not False, title="", day_ticks=False, savefig=True )
+    plot_vgj_seasons(years=[yr], equal_naks=not False, title="", day_ticks=False, savefig=not True )
     # plot_vgj_seasons(years=[yr, yr-500], equal_naks=not False, title="", day_ticks=not False, savefig=True )
   # plot_vgj_seasons(years=[-2000], equal_naks=not False, title="")
   # plot_vgj_seasons(years=[-2000, -1500], equal_naks=not False, title="")
@@ -808,6 +816,7 @@ if __name__ == '__main__' :
       #   )
 # plot_vgj_seasons()
 #%%
+
 #%%
 
 
@@ -1017,7 +1026,8 @@ def plot_n83_ll(yrs=[-500]) :
     yspan = np.linspace(-40,40,9) 
     xspan = np.linspace(0,360,13)
     ax = n83.plot.scatter(x="lon", y="lat", c=c, 
-      s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
+      s = 100,
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
       # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 2.5**x.right), 
       # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 25*x.right), 
       figsize=(25,10)
@@ -1030,7 +1040,7 @@ def plot_n83_ll(yrs=[-500]) :
     #  ax.annotate( l, (ayana, yspan[:2].mean() ), fontsize=20, color='black', va='center', ha='center', rotation=0)
 
     louaki_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
-    vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+    vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣa ūrja sahas sahasya tapas tapasya".split(" ")
     for lon, l , v in zip( np.linspace(0,360,13), louaki_maasa_lbls, vedic_maasa_lbls) :
       ax.plot( [ lon for x in yspan[:4]], [ x for x in yspan[:4]], linestyle="-", linewidth=0 )
       lon = (lon+15)%360
@@ -1195,7 +1205,7 @@ class Graha_Kolam(object):  # formerly Venus_Pentagram
           [ (x-13.33)*np.pi/180 for x in _df.lon], 
           [7.7 + x/20 for x in _df.lat]
         )
-      ax.set_rticks([10], alpha =.91)  # Less radial ticks
+      # ax.set_rticks([10], alpha =.91)  # Less radial ticks
       ax.set_rlim(0,10)
       ax.set_yticklabels([], size=10)
       ax.set_xticklabels(ax.get_xticklabels(), size=13)
@@ -1254,8 +1264,9 @@ class Graha_Kolam(object):  # formerly Venus_Pentagram
 if __name__ == "__main__":
   # Gruha_Kolam(year=1200).plot() 
   # Gruha_Kolam(year=400).plot() 
-  # Gruha_Kolam(gruha="mercury",corners_per_year=7, num_years=40, year=400).plot() 
+  # Graha_Kolam(gruha="mercury",corners_per_year=7, num_years=40, year=400).plot() 
   Graha_Kolam(gruha="mars",corners_per_year=8, num_years=40, year=400).plot() 
+  Graha_Kolam(gruha="venus",corners_per_year=8, num_years=40, year=400).plot() 
 #%%
 
 #%%
@@ -1518,7 +1529,8 @@ def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
     n83_copy['lon'] = n83_copy.lon + 360
     n83_copy['ra'] = n83_copy.ra + 360
     n83_copy['nid'] = n83_copy.nid.apply(lambda x: x +'_1')
-    n83 = n83.append(n83_copy)
+    # n83 = n83.append(n83_copy)
+    n83 = pd.concat([n83, n83_copy])
     # display(n83.shape, n83.head(), n83.tail())
     # return
     c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
@@ -1544,7 +1556,8 @@ def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
     yspan = np.linspace(-40,40,9) 
     xspan = np.linspace(0,360*2,13)
     ax = n83.plot.scatter(x="lon", y="lat", c=c, 
-      s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
+      s=100,
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 100), 
       # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 2.5**x.right), 
       # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 25*x.right), 
       # figsize=(60,10)
@@ -1558,7 +1571,7 @@ def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
     #  ax.annotate( l, (ayana, yspan[:2].mean() ), fontsize=20, color='black', va='center', ha='center', rotation=0)
 
     loukika_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
-    vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+    vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣa ūrja sahas sahasya tapas tapasya".split(" ")
     loukika_maasa_lbls = loukika_maasa_lbls[8:] + loukika_maasa_lbls[:8]
     vedic_maasa_lbls  = vedic_maasa_lbls[8:] + vedic_maasa_lbls[:8]
 
@@ -1720,7 +1733,8 @@ def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
     n83_copy['lon'] = n83_copy.lon + 360
     n83_copy['ra'] = n83_copy.ra + 360
     n83_copy['nid'] = n83_copy.nid.apply(lambda x: x +'_1')
-    n83 = n83.append(n83_copy)
+    # n83 = n83.append(n83_copy)
+    n83 = pd.concat([n83,n83_copy])
     # display(n83.shape, n83.head(), n83.tail())
     # return
     c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
@@ -1755,7 +1769,7 @@ def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
 
     if False : # maasa names
       loukika_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
-      vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+      vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣa ūrja sahas sahasya tapas tapasya".split(" ")
       loukika_maasa_lbls = loukika_maasa_lbls[8:] + loukika_maasa_lbls[:8]
       vedic_maasa_lbls  = vedic_maasa_lbls[8:] + vedic_maasa_lbls[:8]
 
@@ -2032,7 +2046,8 @@ def plot_n83_rd_with_moon_overlay(yrs=[-500]) :
     n83_copy['lon'] = n83_copy.lon + 360
     n83_copy['ra'] = n83_copy.ra + 360
     n83_copy['nid'] = n83_copy.nid.apply(lambda x: x +'_1')
-    n83 = n83.append(n83_copy)
+    # n83 = n83.append(n83_copy)
+    n83 = pd.concat([n83,n83_copy])
     # display(n83.shape, n83.head(), n83.tail())
     # return
     c=[ mcolors[numof(x)*66 % len(mcolors) ]for x in n83.nid ]
@@ -2067,7 +2082,7 @@ def plot_n83_rd_with_moon_overlay(yrs=[-500]) :
 
     if False : # maasa names
       loukika_maasa_lbls = "caitra vaiśākha jyeṣṭha āṣāḍha śrāvaṇa bhādra\npada āśvayuja kārtika mārga\nśira pauṣa māgha phālguna".split(" ")
-      vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣu ūrja sahas sahasya tapas tapasya".split(" ")
+      vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣa ūrja sahas sahasya tapas tapasya".split(" ")
       loukika_maasa_lbls = loukika_maasa_lbls[8:] + loukika_maasa_lbls[:8]
       vedic_maasa_lbls  = vedic_maasa_lbls[8:] + vedic_maasa_lbls[:8]
 
@@ -2307,7 +2322,7 @@ def plot_n83_rd(yrs=[-1500], moon_overlay='fullmoon') :
     yspan = np.linspace(-60,60,15) 
     xspan = np.linspace(0,360,28)
     ax = n83.plot.scatter(x="ra_adj", y="dec", c=c, 
-      s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 2.5**x.right), 
+      # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 2.5**x.right), 
       # s=pd.cut(n83.mag.max()-n83.mag+1,5).apply(lambda x: 25*x.right), 
       figsize=(24,10))
 
@@ -2643,9 +2658,11 @@ def plot_naks_dial () :
   ax.grid(True)
   return
 
-plot_naks_dial()
+if __name__ == "__main__":
+  plot_naks_dial()
 #%%
 #%%
+def zzz_plot_n83_rd_with_moon_overlay(yr=-1500, bare_template=False, season_gap=False) :
   # angles = np.linspace(0,359.99,num=54)
   # cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
   colors = ['red','blue','green','purple', 'olive', 'magenta' ,'orange',] #['gray','brown','cyan']

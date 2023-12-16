@@ -553,6 +553,7 @@ bright9Naks = [ x for x in n27_lon_divisions.index if re.match('^.*(dha|rev|roh|
 bright9Lbls = [ re.sub("^N\d\d.","", x) for x in bright9Naks ]
 
 
+
 #%%
 # rotate a dataframe by 1 row
 def rotate_df(df, n=1):
@@ -591,7 +592,60 @@ def smart_mean(x):
   return ans
 
 #%%
-def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=False, season_gap=False, savefig=False, bare_template=False) :
+
+def weights_of_two_numbers_so_weighted_average_yields_numbers_in_between(n1=2500, n2=500,step=50,scan=55) :
+  return pd.DataFrame([ ( p1, p2 , np.average([n1,n2], weights=[p1,p2]) )for p1 in range(1,scan) for p2 in range(1,scan)]
+      ).sort_values([2,0,1]
+      ).assign (z = lambda x : x[2].diff()).fillna(999
+      ).where ( lambda x: x.z !=0).dropna(
+      ).where(lambda x: x[2].apply(int).apply(lambda k: k%step == 0)).dropna(
+      ).assign(z2 = lambda x: x[2].diff().fillna(50)).astype(int)[[0,1,2]
+      ].sort_values([2], ascending=False
+      ).drop_duplicates(subset=[2]).sort_values([2,0,1], ascending=False).values.tolist()
+
+def synth_weighted_array(yr=-1800) :
+  lu =  {
+    #yr: (n1 y1 n2 y2) => yr = mean ([y1]*n1, [y2]*n2)
+    -2500: (1, -2500, 0, -2000),
+    -2400: (4, -2500, 1, -2000),
+    -2300: (3, -2500, 2, -2000),
+    -2200: (2, -2500, 3, -2000),
+    -2100: (1, -2500, 4, -2000),
+    -2000: (1, -2000, 0, -1500),
+    -1900: (4, -2000, 1, -1500),
+    -1700: (2, -2000, 3, -1500),
+    -1800: (3, -2000, 2, -1500),
+    -1600: (1, -2000, 4, -1500),
+    -1500: (1, -1500, 0, -1000),
+    -1400: (4, -1500, 1, -1000),
+    -1300: (3, -1500, 2, -1000),
+    -1200: (2, -1500, 3, -1000),
+    -1100: (1, -1500, 4, -1000),
+    -1000: (1, -1000, 0, -500),
+    -900: (4, -1000, 1, -500),
+    -800: (3, -1000, 2, -500),
+    -700: (2, -1000, 3, -500),
+    -600: (1, -1000, 4, -500),
+    -500: (1, -500, 0, 0),
+    -400: (4, -500, 1, 0),
+    -300: (3, -500, 2, 0),
+    -200: (2, -500, 3, 0),
+    -100: (1, -500, 4, 0),
+    0: (1, 0, 0, 500),
+    100: (4, 0, 1, 500),
+    200: (3, 0, 2, 500),
+    300: (2, 0, 3, 500),
+    400: (1, 0, 4, 500),
+  }
+  yr = yr if yr in lu else -1800 # defaults to -1800
+
+  n1, y1, n2, y2 = lu[yr]
+  return [y1]*n1 + [y2]*n2
+
+# synth_weighted_array(yr=-1900)
+
+#%%
+def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, tick_mode='deg', season_gap=False, savefig=False, bare_template=False) :
   VGJSeasons = '''
   श्रविष्ठादीनि चत्वारि पौष्णार्धञ्च दिवाकरः । वर्धयन् सरसस्तिक्तं मासौ तपति शैशिरे ॥   
   रोहिण्यन्तानि विचरन् पौष्णार्धाद्याच्च भानुमान् । मासौ तपति वासन्तौ कषायं वर्धयन् रसम् ॥          
@@ -601,8 +655,15 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   ज्येष्ठार्धादीनि चत्वारि वैष्णवान्तानि भास्करः । हेमन्ते तपते मासौ मधुरं वर्धयन् रसम् ॥ 
   (Ādityacāra; v. 47, 48, 52, 53, 54, 55)
   '''
+  # if years is not a list (scalar) make it a list by calling synth_weighted_array a
+  if not isinstance(years, list) : years = synth_weighted_array(years)
+
   n83_df_bce = pd.concat([get_n83_naks_df(yr=year) for year in years])
-  # display(n83_df_bce)
+  # display(n83_df_bce.head(2))
+  # drop  rows where nid is N23-Dha as N23-Srvs is also added to the dataset 
+  n83_df_bce = n83_df_bce[n83_df_bce.nid != 'N23-Dha']
+  # display(n83_df_bce.jd.unique())
+  # display(n83_df_bce.assign(zz=lambda x: x.ra-x.ra.min()).style.format(precision=2))
   n83_df_agg = n83_df_bce.copy()
   columns_to_drop = ['naks', 'gname', 'date']
   for column in columns_to_drop:
@@ -611,16 +672,16 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
 
   n83_df_agg = n83_df_agg.groupby(['nid']).mean().assign( enaks= lambda x : [ y[4:] for y in x.index.values]).sort_values(['nid','year', 'lon','lat'])
   yr = n83_df_agg.year.values.mean()
-  yrnum = (1000 - int(yr))//250
+  yrnum = (1000 - int(yr))//50
   # n83_df_agg = n83_df_bce.groupby('nid').agg(smart_mean).assign( enaks= lambda x : [ y[4:] for y in x.index.values])
   n83_df_cnt = n83_df_bce.groupby('nid').count().assign( cnt= lambda x : x.lon//len(years))[['cnt']]
   naks_cnt_lbl = n83_df_agg.apply( lambda x: f'{x.enaks}\n#{n83_df_cnt.loc[x.name].cnt}', axis=1)
   fig, ax = plt.subplots(subplot_kw={'projection': 'polar'},figsize=(10,10))
   #ax.set_theta_zero_location('E', offset=2*int(360/27))
-  north_angle =  int ( 
-      n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0]
-    - 0*n83_df_agg[n83_df_agg.enaks == 'Ash'].lon.values[0] 
-  )
+  # north_angle =  int ( 
+  #     n83_df_agg[n83_df_agg.enaks == 'Dha'].lon.values[0]
+  #   - 0*n83_df_agg[n83_df_agg.enaks == 'Ash'].lon.values[0] 
+  # )
   # display(n83_df_agg.year.values[0], north_angle, n83_df_agg[n83_df_agg.enaks == 'Dha'])
   #ax.set_theta_zero_location('N', offset=0*north_angle-346+269+13.3-1)
   # ax.set_theta_zero_location('N', offset=north_angle)
@@ -643,26 +704,43 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   # display(n83_df_agg)
   # angles = angles[:len(enaks)]
   # ax.set_rlabel_position(-32.5)  # Move radial labels away from plotted line
-  lines, labels = plt.thetagrids(angles+1.2, naks_cnt_lbl.apply(lambda x : ""), fontweight= 'bold' , fontsize=10, color='gray') 
+  lines, labels = plt.thetagrids((angles+1.2)%360, naks_cnt_lbl.apply(lambda x : ""), fontweight= 'bold' , fontsize=10, color='gray') 
   # draw radial lines from 2 units of origin to 20 units of origin
-  pd.DataFrame( {'a': (angles-6.5)*np.pi/180  , 'lbl': naks_cnt_lbl }).apply( 
-    lambda x : ax.text(x.a, 9.7, x.lbl if not bare_template else '', fontsize=10, ha='center', va='center', alpha=.8),
+  colors = ['red','blue','green','purple', 'olive', 'magenta' ,'orange',] #['gray','brown','cyan']
+  pd.DataFrame( {'a': (angles-6.5)*np.pi/180  , 'lbl': naks_cnt_lbl, }).assign (
+    adeg = lambda x : x.a*180/np.pi%360,
+    # rot1 = lambda x : (-x.a*180/np.pi)%270,
+    rot1 = lambda x : (-x.adeg)%270,
+    rot = lambda x :  x.rot1 + x.adeg.apply( lambda y : 90 if y > 270 else 0),
+    posn = lambda x : [ (13+x)%27 for x in range(len(x.a))],
+    near_cardinal = lambda x : [ min(((x % 90) ) , ((-x % 90)  )) for x in x.adeg  ],
+    ).apply( 
+    lambda x : ax.text(x.a, 9.7, 
+                       (x.lbl.upper() if x.near_cardinal < 10 else x.lbl.lower()).upper() if not bare_template else '', 
+                      #  f'{x.lbl}\n{x.adeg:.0f}\n{x.rot1:.0f}\n{x.rot:.0f}',
+                      #  f'{x.lbl}\n{x.posn}',
+                       fontsize=15 + ( 10 if x.near_cardinal < 10 else 0) , 
+                       fontweight='bold' if x.near_cardinal < 10 else 'normal',
+                       ha='center', va='center', alpha=.8, 
+                       rotation=x.rot,
+                       color= colors[x.posn%len(colors)] if not bare_template else 'black',
+                       ),
     axis=1
   )
 
-  ax.set_rgrids(np.arange(10, 20, 2), angle=0, weight= 'bold' )
+  # ax.set_rgrids(np.arange(10, 20, 2), angle=0, weight= 'bold' )
   ax.grid(True)
   
 
   # angles = np.linspace(0,359.99,num=54)
   # cidx = np.roll(np.array([ math.floor(x/(4.5*360/27)) for x in angles]),-1)
-  colors = ['red','blue','green','purple', 'olive', 'magenta' ,'orange',] #['gray','brown','cyan']
 
   ix =0
-  for naks, _df in n83_df_bce.groupby( 'nid' ) : 
+  for naks, _df in n83_df_bce.groupby( 'nid' ) :
     _df = _df.copy().sort_values(['year', 'lon', 'lat'])
     _df = _df[['gname', 'year', 'lon', 'lat']]
     if bare_template: break
+    # plot the taras of the nakshatra
     ax.scatter( 
     # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )], 
       [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )], 
@@ -673,19 +751,18 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
       c=colors[ix%len(colors)],
     )
 
-  # for naks, _df in n83_df_bce.groupby( 'nid' ) : 
-    # if naks not in ['N25-PBha', 'N26-UBha'] : continue
-    # display (_df)
+    rads=[ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )][0:1]
+    # rads=[ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(min) )][0:1]
+    degs = [ x*180/np.pi for x in rads]
+    near_cardinal_deg = [ min(((x % 90) ) , ((-x % 90)  )) for x in degs  ][0]
+    near_cardinal = near_cardinal_deg<7
     ax.scatter( 
-      # [ (x+13.33*1.4)*np.pi/180 for x in _df.groupby('gname').mean().lon], 
-  # [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').min().lon if 'N02-Bha'==naks else  _df.groupby('gname').mean().lon )][0:1], 
-      [ (x+13.33*1.6*0)*np.pi/180 for x in ( _df.groupby('gname').lon.apply(smart_mean) )][0:1], 
-      # [7.3 + 0*x/20 for x in _df.groupby('gname').mean().lat][0:1],
-      [7.3 - (3 if ('Asl' in naks)else 2 if ('Chi' in naks) else 1.5 if ('Bha' in naks)  else .5 if ('Shr' in naks) else 0)][0:1],
-      s=2600, #if 'Ash' in naks else 100, 
-      # marker=f'${naks[4:6]}:{(_df.lon.median() if "N02-Bha"==naks else _df.lon.median() ):.0f}°$',
-      marker=f'${naks[4:6]}:{smart_mean(_df.groupby("gname").lon.apply(smart_mean) ):.0f}°$',
-      # marker=f'${naks[4:6]}:{(_df.lon.median() ):.0f}°$',
+      rads,
+      6.3 + ix%2,
+      s=800*0, #if 'Ash' in naks else 100, 
+      marker=f'${naks[4:6]}:{smart_mean(_df.groupby("gname").lon.apply(smart_mean) ):.0f}°$' 
+            if (False and near_cardinal) else f'${(naks[4:7]).lower()}$'
+            ,
       alpha=1, zorder=1,
       c=colors[ix%len(colors)],
     )
@@ -710,9 +787,11 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
   delta = np.pi/27
   seasons = [ 'śiśira', 'vasanta', 'grīṣma',  'varṣā', 'śarat', 'hemanta',]
   season_colors = [ 'cyan', 'red', 'green', 'orange', 'blue', 'maroon',]
+  # let season_text_colors be contrasting to season_color
+  season_text_colors = [ 'black', 'blue','black', 'blue', 'black', 'blue',]
+
   for s in range(-1,5) :
     S = 2*np.pi/6 
-    L = 8
     _angles = [ x-1*delta*0 for x in [s*S, s*S, (s*S+S)] ]
     # print([ x*180/np.pi for x in _angles])
     if season_gap:
@@ -725,6 +804,7 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
       if s==4 : _angles[2] = _angles[2] - delta/4 # वैष्णवान्तानि
       if s==-1 : _angles[1] = _angles[1] + delta/4 # श्रविष्ठादीनि
 
+    L = 8
     _vertex = [0,L,L]
     _angles = [ x-4.5*delta for x in _angles]
     if True or not bare_template:
@@ -733,93 +813,113 @@ def plot_vgj_seasons (title = None, years=[-1500], equal_naks=True, day_ticks=Fa
     if (s > -2 ) :
       season = seasons[(s+1)%len(seasons)]
       # print([ x*180/np.pi for x in _angles], season)
-      L=len(season)
+      # L=len(season)
       if not bare_template:
-        ax.text(_angles[1] + 2.7/L, L*.72 ,season , fontsize=12, ha='center', va='center')
+        # ax.text(_angles[1] + 2.7/L, L*.52 ,season , fontsize=12, ha='center', va='center')
+        ax.text(_angles[1] + 30*np.pi/180, L*.52 ,season.upper() , fontsize=15, ha='center', va='center',
+                rotation=-(_angles[2]+_angles[2])*180/np.pi/2- 90/2 -30/2,
+                color=season_text_colors[(s+1)%len(season_colors)],
+                alpha=.75,
+        )
+
+  vedic_maasa_lbls =  "madhu mādhava śuci śukra nabhaḥ nabhasya iṣa ūrja sahas sahasya tapas tapasya".split(" ")
+  for s in range(-1,12-1) :
+    L = 8
+    S = 2*np.pi/12 
+    _angles = [ x for x in [s*S, s*S, (s*S+S)] ]
+    vedic_maasa = vedic_maasa_lbls[(s+1)%len(vedic_maasa_lbls)]
+    if not bare_template:
+      ax.text(_angles[1] + 20*np.pi/180, L*.38 ,vedic_maasa.lower() , 
+              fontsize=12, ha='center', va='center',
+              rotation=-(_angles[2]+_angles[2])*180/np.pi/2 + 1*30/2 ,
+              color=season_text_colors[((s+1)//2)%len(season_colors)],
+              alpha=.75,
+              fontfamily='monospace',
+      )
 
     # four solar quarters 
     for i in range(4) : ax.plot([0, 90*i*np.pi/180], [0, 7.9], 'maroon', lw=1, alpha=.2)
 
     # 10 day ticks
-    if day_ticks:
-      for i in range(0+1, 367+1,1) :
-        a = (i-1)*2*(np.pi/366) + np.pi
+    tick_mode = 'day' if 'day' in tick_mode else 'deg' if 'deg' in tick_mode else 'day' if bool(tick_mode) else None
+    num_ticks = 366 if tick_mode == 'day' else 360 if tick_mode == 'deg' else 0
+    tick_ofs = 1 if tick_mode == 'day' else 0 
+    if tick_mode:
+      for i in range(0+tick_ofs, num_ticks+1+tick_ofs,1) :
+        # a = (i-1)*2*(np.pi/num_ticks) + np.pi
+        a = (i-tick_ofs)*2*(np.pi/num_ticks) + np.pi
         a += 1.5*np.pi
-        ax.plot([a, a], [8, 8.5 if i%10 else 8.8  ], 'gray' if ((i%10) or (i==1)) else 'red', lw=1, alpha=.1 if i%5 else .3)
-        if i==1 : 
-          # ax.text(a, 8.9, f'{i}\n(367)', fontsize=9, ha='center', va='center', alpha=.5)
-          ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
-        if i%10 == 0 : 
-          ax.text(a, 8.9, f'{i}', fontsize=9, ha='center', va='center', alpha=.5)
+        # if i==tick_ofs : ax.text(a, 8.9, f'{i}', fontsize=12, ha='center', va='center', alpha=.5)
+        tick_marks_day = [1,10, 30, 61, 92, 122, 152, 184, 214, 244, 275, 305, 335, 360 ]
+        tick_marks_deg = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330 ]
+        tick_marks = tick_marks_day if tick_mode == 'day' else tick_marks_deg #if tick_mode == 'deg' else []
+        deg = '°' if tick_mode == 'deg' else ''
+        if i in tick_marks :
+          mark = i if tick_mode == 'day' else (i+90)%360 
+          ax.text(a, 8.95, f'{mark}{deg}', fontsize=12, 
+                  ha='center', va='center', alpha=.35,
+                  rotation=90-(a*180/np.pi)%180
+          )
+        ax.plot([a, a], [8, 8.5 if i%10 else 8.8  ], 'gray' if ((i%10) or (i==1)) else 'red', lw=1, alpha=.05 if i%5 else .3)
         
-
-    # # 10 day ticks
-    # if day_ticks:
-    #   for i in range(0, 366,1) :
-    #     a = i*2*np.pi/365
-    #     ax.plot([a, a], [8, 8.5 if i%10 else 8.8 ], 'gray' if i%10 else 'red', lw=1, alpha=.1 if i%5 else .3)
-    #     if i%10 == 0 : 
-    #       ax.text(a, 8.9, f' {1+(i//10)*10}', fontsize=9, ha='center', va='center', alpha=.5)
-
-  title =  f"Year {n83_df_agg.year.values.mean():.0f}" if not title else title
+  # title =  f"Year {n83_df_agg.year.values.mean():.0f}" if not title else title
   # title =  f"Year {yr:.0f}" if not title else title
-  ax.set_title(title, y=1.05, fontdict={'fontweight':'bold', 'fontsize':16, 'color':'gray'})
+  yyyy = int(n83_df_agg.year.values.mean())
+  gyans = { 
+    # -2100 : "VGJ 11 Ādityacāra/Lagaha",
+    -1800 : "Brāhmanda Purāṇa 1.21.141/MAU",
+    -1300 : "VGJ 11 Ādityacāra/Lagaha",
+    -500 : "VGJ 59 Ṛtusvabhāva",
+  }
+
+  gyan = f" {gyans[yyyy]}" if yyyy in gyans else ""
+  if gyan :
+    ax.text(-np.pi/2, 11, f"{gyan}", fontsize=20, ha='center', va='center', alpha=.8, color='blue', 
+            fontfamily='monospace', fontweight='bold', rotation=0) 
+
+  caption = f"The drift of seasonal nakṣatras - at about one nakṣatra/millenia.\nA celestial clock driven by the precession of the equinoxes." if not bare_template else ""
+  ax.text(np.pi/2+ 0*np.pi/30, 11.2, caption, fontsize=13, ha='center', va='center', alpha=.5, color='blue', 
+          fontfamily='monospace', fontweight='bold', rotation=0 ) 
+
+  title =  f"{abs(yyyy)} {'BCE' if yyyy<0 else 'CE'}" if not title else title
+  ax.set_title(title, y=1.12, fontdict={'fontweight':'bold', 'fontsize':20, 'color':'gray'})
   ax.set_facecolor('white')
+  # draw the ecliptic - latitude 0
+  theta = np.linspace(0, 2*np.pi, 60)
+  ax.plot(theta, [6.1]*len(theta), '--', lw=1, color='gray', alpha=.5)
+
   # save the figure as a png
   if savefig :
-    # fn = f"./images/naks{-366 if day_ticks else ''}-chakra-{yrnum:02d}-{yr:04.0f}.png"
-    # fn = f"./images/naks-366/ticks-{yrnum:02d}-{yr:04.0f}.png" if day_ticks else f"./images/naks-366/noticks-{yrnum:02d}-{yr:04.0f}.png"
-    fn = f"./images/naks-366/ticks-{yrnum:02d}-{yr:04.0f}.jpg" if day_ticks else f"./images/naks-366/noticks-{yrnum:02d}-{yr:04.0f}.jpg"
+    fn = f"./images/naks-366/ticks-{tick_mode}-{yrnum:04d}-{yr:04.0f}.jpg" if tick_mode else f"./images/naks-366/noticks-{yrnum:04d}-{yr:04.0f}.jpg"
     print(f"Saving {fn}")
     plt.savefig(fn)
 
 
 def plot_adityachaara_seasons() :
     title =  "Vṛddha-Gārgīya Jyotiṣa Seasons in Ādityacāra: v. 47, 48, 52, 53, 54, 55\nYear - 1250BCE"
-    plot_vgj_seasons(years=[-1500,-1000], equal_naks=True, title=title, day_ticks=True, season_gap=True, savefig=False)
+    plot_vgj_seasons(years=[-1500,-1000], equal_naks=True, title=title, tick_mode='day', season_gap=True, savefig=False)
 
   # print(VGJSeasons)
 
 if __name__ == '__main__' :
-  # plot_adityachaara_seasons()
-  yrs = [-2000]*1 + [-1500]*9 # 1550
-  yrs = [-2000]*2 + [-1500]*5 # 1643
-  yrs = [-2000]*1 + [-1500]*7 # 1625
-  yrs=  [-2000]*107 + [-1500]*250 # 1650
-  plot_vgj_seasons(years=yrs, 
-                   bare_template=not True, 
-                   equal_naks=not False, title="", day_ticks=not False, savefig=not True )
-  for y in range(8-2) :
-    # continue
-    yr = (1000 -500) - 500*y
-    plot_vgj_seasons(years=[yr], equal_naks=not False, title="", day_ticks=False, savefig=not True )
-    # plot_vgj_seasons(years=[yr, yr-500], equal_naks=not False, title="", day_ticks=not False, savefig=True )
-  # plot_vgj_seasons(years=[-2000], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-2000, -1500], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-1500], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-1500, -1000], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-1000], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-1000, -500], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-500], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[-500,0], equal_naks=not False, title="")
-  # plot_vgj_seasons(years=[0], equal_naks=not False, title="")
+  for yr in range(-2500, 401, 100) :
+    plot_vgj_seasons(years=yr, equal_naks=not False, title="", tick_mode='day', savefig=True )
+    plot_vgj_seasons(years=yr, equal_naks=not False, title="", tick_mode='deg', savefig=True )
 
-      # n83_1500_bce = n83_naks_df[n83_naks_df.year == -1500]#.iloc[4:14]
-
-      # # display(n83_1500_bce)
-      # lines, labels = plt.thetagrids(angles, naks, size=15) 
-      # # plt.scatter( [ x*np.pi/180 for x in angles], [9.9 for x in angles])
-      # for _, _df in n83_1500_bce.groupby('naks'):
-      #   ax.scatter( 
-      #     [ (x-13.33)*np.pi/180 for x in _df.lon], 
-      #     [7.7 + x/20 for x in _df.lat]
-      #   )
-# plot_vgj_seasons()
+  wts_fn = weights_of_two_numbers_so_weighted_average_yields_numbers_in_between
+  for n1 in range(-2500, 1, 500) :
+    continue
+    n2 = n1 + 500
+    wts = wts_fn(n1,n2,step=100)
+    wts += [ [1,0,n1] ] #[ [0,1,n2] ]
+    wts = sorted(wts, key=lambda x: x[2])#[-2:]
+    for w1, w2 , _ in wts :
+      yr = [n1]*w1 + [n2]*w2
+      plot_vgj_seasons(years=yr, equal_naks=not False, title="", tick_mode='day', savefig=True )
+      plot_vgj_seasons(years=yr, equal_naks=not False, title="", tick_mode='deg', savefig=True )
+      # break
+    # break
 #%%
-
-#%%
-
-
 
 def plot_mbounds(inm12, tag) :
   m12 = mbounded(inm12)

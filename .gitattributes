@@ -3,3 +3,8 @@ datasets/moon-phases-scrape-cooked.csv filter=lfs diff=lfs merge=lfs -text
 datasets/moon-phases-js-array.ssc filter=lfs diff=lfs merge=lfs -text
 datasets/sun_moon_pos_-1000-01-01_for_100_years_in_0.167_jd_steps.csv filter=lfs diff=lfs merge=lfs -text
 moon*csv filter=lfs diff=lfs merge=lfs -text
+nakshatra_sky_culture/movie/media.io_n27.mp4 filter=lfs diff=lfs merge=lfs -text
+nakshatra_sky_culture/movie/n27.mp4 filter=lfs diff=lfs merge=lfs -text
+nakshatra_sky_culture/movie/n27.smallish.mov filter=lfs diff=lfs merge=lfs -text
+play/chunav-phalguni-2022/chunav-early-2022.pickle filter=lfs diff=lfs merge=lfs -text
+**/*pdf filter=lfs diff=lfs merge=lfs -text

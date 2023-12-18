@@ -245,7 +245,7 @@ function say(x) { core.debug('' + x) }
 function warn(x) { core.output('' + x) }
 function W(x) { if (!x) x = 0.1; core.wait(x) }
 function JD(x) { if (x) { core.setJDay(x); W() } return core.getJDay() }
-function DT(x) { if (x) { core.setDate(x); W() } return core.getDate("local") }
+function DT(x, tzin, tzout) { if (x) { core.setDate(x,tzin?tzin:"utc" ); W() } return core.getDate(tzout?tzout:"local") }
 var $WRITE_X = 100
 var $WRITE_Y = 80
 function hexof(d) { return '01234567890ABCDEF'[d%16] }
@@ -259,14 +259,18 @@ function writes(t,color, size) { // write to screen
   core.wait(2)
 }
 var $TITLE_X = 400
-var $TITLE_Y = 70 
-function titles(t,color, size) { // title to screen
+var $TITLE_Y = 200 
+function titles(t,color, size, wait) { // title to screen
   if (!size) size=25
-  if (!color) color= '#ABC' + hexof($TITLE_Y) + hexof($TITLE_Y) + hexof($TITLE_Y) //+ hexof($WRITE_X) + 'FF' 
-  var id = LabelMgr.labelScreen(t, $TITLE_X, $TITLE_Y, false, size , color);
+  var x=$TITLE_X
+  var y=$TITLE_Y
+  if (!color) color= '#ABC' + hexof(y) + hexof(y) + hexof(y) //+ hexof($WRITE_X) + 'FF' 
+  var id = LabelMgr.labelScreen(t, x, y, false, size , color);
   LabelMgr.setLabelShow(id, true);
   $TITLE_Y += (size+2) 
-  core.wait(2)
+  if(!wait) wait=.5
+  core.wait(wait)
+  return id
 }
 var id = LabelMgr.labelScreen("Tour of 27 Nakshatras", 500, 500, false, 30)
 
@@ -526,7 +530,8 @@ var $N27Feb20 = [
   "N23-Dha	धनिष्ठा	β Del	Rotanev	HIP 101769",
   "N24-Sha	शतभिषक्	λ Aqr	Hydor	HIP 112961",
   "N25-PBha	पूर्वाभाद्रपदा	α Peg	Markab	HIP 113963",
-  "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  // "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  "N26-UBha	उत्तराभाद्रपदा	γ Peg	Algenib	HIP 1067",
   "N27-Rev	रेवती	ξ Psc	xiPsc	HIP   8833",
   // "N27-Rev	रेवती	ε Psc	epsPsc	HIP 4906",
 ]
@@ -637,7 +642,8 @@ var $N27Feb24 = [  // base set
   "N23-Dha	धनिष्ठा	β Del	Rotanev	HIP 101769",
   "N24-Sha	शतभिषक्	λ Aqr	Hydor	HIP 112961",
   "N25-PBha	पूर्वाभाद्रपदा	α Peg	Markab	HIP 113963",
-  "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  // "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  "N26-UBha	उत्तराभाद्रपदा	γ Peg	Algenib	HIP 1067",
   "N27-Rev	रेवती	ε Psc	epsPsc	HIP 4906",
 ]
 
@@ -723,7 +729,7 @@ var $N90 = [
   "N25-PBha	पूर्वाभाद्रपदा	* bet Peg	Scheat	HIP 113881",
   "N26-UBha	उत्तराभाद्रपदा	* alf And	Alpheratz	HIP 677",
   "N26-UBha	उत्तराभाद्रपदा	* gam Peg	Algenib	HIP 1067",
-  "N26-UBha	उत्तराभाद्रपदा	* lam Peg	Sadalnazi	HIP 112440",
+  // "N26-UBha	उत्तराभाद्रपदा	* lam Peg	Sadalnazi	HIP 112440",
   "N27-Rev	रेवती	* alf Psc	Alrescha	HIP 9487",
   "N27-Rev	रेवती	* eps Psc	epsPsc	HIP 4906",
   "N01-Ash	अश्विनी	* alf Ari	Hamal	HIP 9884",
@@ -755,7 +761,8 @@ var $N83 = [ //VGJ
   "N01-Ash	अश्विनी	α Ari	Hamal	HIP 9884",
   "N01-Ash	अश्विनी	γ Ari	Mesarthim	HIP 8832",
   "N02-Bha	भरणी	* 41 Ari	Bharani	HIP 13209",
-  "N02-Bha	भरणी	* 31 Ari	31Ari	HIP 12153",
+  // "N02-Bha	भरणी	* 31 Ari	31Ari	HIP 12153",
+  "N02-Bha	भरणी	* 39 Ari	39Ari	HIP 13061",
   "N02-Bha	भरणी	* 35 Ari	Barani II	HIP 12719",
   "N03-Kri	क्रित्तिका	η Tau	Alcyone	HIP 17702",
   "N03-Kri	क्रित्तिका	* 17 Tau	Electra	HIP 17499",
@@ -765,7 +772,7 @@ var $N83 = [ //VGJ
   "N03-Kri	क्रित्तिका	* 27 Tau	Atlas	HIP 17847",
   "N04-Roh	रोहिणी	α Tau	Aldebaran	HIP 21421",
   "N04-Roh	रोहिणी	γ Tau	Prima Hyadum	HIP 20205",
-  "N04-Roh	रोहिणी	δ Tau	Secunda Hyadum	HIP 20455",
+  "N04-Roh	रोहिणी	δ1 Tau	Secunda Hyadum	HIP 20455",
   "N04-Roh	रोहिणी	ε Tau	Ain	HIP 20889",
   "N04-Roh	रोहिणी	θ2 Tau	Chamukuy	HIP 20894",
   "N05-Mrg	मृगशीर्ष	λ Ori	Meissa(Heka)	HIP 26207",
@@ -831,7 +838,8 @@ var $N83 = [ //VGJ
   "N24-Sha	शतभिषक्	λ Aqr	Hydor	HIP 112961",
   "N25-PBha	पूर्वाभाद्रपदा	α Peg	Markab	HIP 113963",
   "N25-PBha	पूर्वाभाद्रपदा	β Peg	Scheat	HIP 113881",
-  "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  // "N26-UBha	उत्तराभाद्रपदा	λ Peg	Sadalnazi	HIP 112440",
+  "N26-UBha	उत्तराभाद्रपदा	α And	Alpheratz	HIP 677",
   "N26-UBha	उत्तराभाद्रपदा	γ Peg	Algenib	HIP 1067",
   "N27-Rev	रेवती	ε Psc	epsPsc	HIP 4906"
 ]
@@ -1116,3 +1124,27 @@ var $PLANET_INFO_TEMPLATE = {
 
 //   $NAKSHATRAS.push({ nid: nid, tara: tara, rasi: rasi, star: star, hip: hip, naks: naks });
 // }
+
+function naks_array(n) {
+  return n.map(
+    function (x) {
+      return (x.split("\n")[0]).split("\t")
+    })
+}
+
+var $N83A = naks_array($N83)
+function RND(n, d) {
+  // if (d == undefined) d = 2
+  return Math.round(n * Math.pow(10, d)) / Math.pow(10, d)
+  // return Math.round(n,d)
+}
+function R2(n) { return RND(n, 2) }
+
+// say("Here is the array of arrays of the Naksatra data")
+
+function diff_angle(a, b) {
+  var d = b-a;
+  if (d < -180) d += 360;
+  if (d > 180) d -= 360;
+  return d;
+}

@@ -1,0 +1,101 @@
+jd	date	yr	season	rtu	eqnx	sun_lon	sun_naks	moon_lon	moon_naks	moon_phase	moon_sun_diff	sun_न	moon_न	sm_naks	kv_pair
+808128.18	-2500-06-24	-2500	2	R2-grīṣma	False	89.11	N10-Mag/α Leo	269.06	N24-Sha/λ Aqr	1	179	N10-Mag	N24-Sha	N10-Mag-N24-Sha	False
+808157.57	-2500-07-24	-2500	3	R3-varṣā	False	117.87	N12-UPal/β Leo	297.99	N25-PBha/β Peg	1	180	N12-UPal	N25-PBha	N12-UPal-N25-PBha	False
+808187.04	-2500-08-22	-2500	3	R3-varṣā	False	147.24	N15-Swa/α Boo	327.33	N01-Ash/γ Ari	1	180	N15-Swa	N01-Ash	N15-Swa-N01-Ash	False
+808216.60	-2500-09-21	-2500	4	R4-śarat	True	177.18	N17-Anu/δ Sco	356.77	N03-Kri/* 17 Tau	1	179	N17-Anu	N03-Kri	N17-Anu-N03-Kri	False
+808246.34	-2500-10-20	-2500	4	R4-śarat	False	207.57	N20-PAsh/γ Sgr	27.39	N05-Mrg/α Ori	1	-180	N20-PAsh	N05-Mrg	N20-PAsh-N05-Mrg	False
+808276.17	-2500-11-19	-2500	5	R5-hemanta	False	238.02	N22-Shr/α Aql	58.21	N07-Pun/β Gem	1	-179	N22-Shr	N07-Pun	N22-Shr-N07-Pun	False
+808306.00	-2500-12-19	-2500	5	R5-hemanta	False	268.18	N23-Dha/γ2 Del	88.75	N10-Mag/α Leo	1	-179	N23-Dha	N10-Mag	N23-Dha-N10-Mag	False
+808335.61	-2499-01-18	-2499	6	R6-śiśira	False	297.61	N25-PBha/β Peg	116.88	N12-UPal/β Leo	1	-180	N25-PBha	N12-UPal	N25-PBha-N12-UPal	False
+808365.29	-2499-02-16	-2499	6	R6-śiśira	False	326.58	N01-Ash/γ Ari	146.51	N15-Swa/α Boo	1	-180	N01-Ash	N15-Swa	N01-Ash-N15-Swa	False
+808394.84	-2499-03-18	-2499	1	R1-vasanta	False	354.96	N03-Kri/* 17 Tau	175.30	N17-Anu/δ Sco	1	-179	N03-Kri	N17-Anu	N03-Kri-N17-Anu	False
+808424.23	-2499-04-16	-2499	1	R1-vasanta	False	22.93	N05-Mrg/λ Ori	202.93	N19-Mul/θ Sco	1	180	N05-Mrg	N19-Mul	N05-Mrg-N19-Mul	False
+808453.59	-2499-05-16	-2499	2	R2-grīṣma	False	50.85	N07-Pun/β Gem	231.01	N22-Shr/α Aql	1	180	N07-Pun	N22-Shr	N07-Pun-N22-Shr	False
+808482.86	-2499-06-14	-2499	2	R2-grīṣma	False	78.90	N10-Mag/ε Leo	258.49	N23-Dha/γ2 Del	1	179	N10-Mag	N23-Dha	N10-Mag-N23-Dha	False
+808512.21	-2499-07-13	-2499	3	R3-varṣā	False	107.43	N12-UPal/* 93 Leo	287.38	N25-PBha/α Peg	1	179	N12-UPal	N25-PBha	N12-UPal-N25-PBha	False
+808541.61	-2499-08-12	-2499	3	R3-varṣā	False	136.54	N13-Has/β Crv	316.87	N27-Rev/ε Psc	1	180	N13-Has	N27-Rev	N13-Has-N27-Rev	False
+808571.04	-2499-09-10	-2499	4	R4-śarat	False	166.20	N16-Vis/α2 Lib	346.16	N02-Bha/* 39 Ari	1	179	N16-Vis	N02-Bha	N16-Vis-N02-Bha	False
+808600.59	-2499-10-10	-2499	4	R4-śarat	False	196.32	N19-Mul/ζ2 Sco	16.14	N05-Mrg/γ Ori	1	-180	N19-Mul	N05-Mrg	N19-Mul-N05-Mrg	False
+808630.24	-2499-11-08	-2499	5	R5-hemanta	False	226.64	N21-UAsh/τ Sgr	46.66	N07-Pun/α Gem	1	-179	N21-UAsh	N07-Pun	N21-UAsh-N07-Pun	False
+808659.99	-2499-12-08	-2499	5	R5-hemanta	False	256.85	N23-Dha/δ Del	77.35	N10-Mag/ε Leo	1	-179	N23-Dha	N10-Mag	N23-Dha-N10-Mag	False
+808689.60	-2498-01-07	-2498	6	R6-śiśira	False	286.49	N25-PBha/α Peg	105.73	N12-UPal/* 93 Leo	1	-180	N25-PBha	N12-UPal	N25-PBha-N12-UPal	False
+808719.36	-2498-02-05	-2498	6	R6-śiśira	False	315.73	N27-Rev/ε Psc	135.49	N13-Has/β Crv	1	-180	N27-Rev	N13-Has	N27-Rev-N13-Has	False
+808749.07	-2498-03-07	-2498	1	R1-vasanta	False	344.43	N02-Bha/* 35 Ari	164.79	N16-Vis/α2 Lib	1	-179	N02-Bha	N16-Vis	N02-Bha-N16-Vis	False
+808778.58	-2498-04-06	-2498	1	R1-vasanta	False	12.58	N04-Roh/α Tau	192.06	N18-Jye/ε Sco	1	179	N04-Roh	N18-Jye	N04-Roh-N18-Jye	False
+808808.12	-2498-05-05	-2498	2	R2-grīṣma	False	40.65	N06-Ard/γ Gem	220.76	N21-UAsh/σ Sgr	1	180	N06-Ard	N21-UAsh	N06-Ard-N21-UAsh	False
+808837.52	-2498-06-04	-2498	2	R2-grīṣma	False	68.71	N09-Asl/σ Hya	248.69	N23-Dha/β Del	1	179	N09-Asl	N23-Dha	N09-Asl-N23-Dha	False
+808866.87	-2498-07-03	-2498	3	R3-varṣā	False	97.09	N11-PPal/δ Leo	276.85	N24-Sha/λ Aqr	1	179	N11-PPal	N24-Sha	N11-PPal-N24-Sha	False
+808896.27	-2498-08-01	-2498	3	R3-varṣā	False	126.00	N13-Has/γ Crv	306.01	N26-UBha/γ Peg	1	180	N13-Has	N26-UBha	N13-Has-N26-UBha	False
+808925.71	-2498-08-31	-2498	4	R4-śarat	False	155.49	N16-Vis/α1 Lib	335.97	N01-Ash/α Ari	1	180	N16-Vis	N01-Ash	N16-Vis-N01-Ash	False
+808955.12	-2498-09-29	-2498	4	R4-śarat	False	185.37	N18-Jye/σ Sco	5.28	N04-Roh/θ2 Tau	1	-180	N18-Jye	N04-Roh	N18-Jye-N04-Roh	False
+808984.63	-2498-10-29	-2498	5	R5-hemanta	False	215.55	N20-PAsh/λ Sgr	35.64	N06-Ard/γ Gem	1	-179	N20-PAsh	N06-Ard	N20-PAsh-N06-Ard	False
+809014.17	-2498-11-27	-2498	5	R5-hemanta	False	245.67	N22-Shr/β Aql	65.71	N08-Pus/δ Cnc	1	-179	N22-Shr	N08-Pus	N22-Shr-N08-Pus	False
+809043.81	-2498-12-27	-2498	6	R6-śiśira	False	275.51	N24-Sha/λ Aqr	96.11	N11-PPal/δ Leo	1	-179	N24-Sha	N11-PPal	N24-Sha-N11-PPal	False
+809073.38	-2497-01-25	-2497	6	R6-śiśira	False	304.77	N26-UBha/γ Peg	124.52	N13-Has/γ Crv	1	-180	N26-UBha	N13-Has	N26-UBha-N13-Has	False
+809103.10	-2497-02-24	-2497	1	R1-vasanta	False	333.65	N01-Ash/α Ari	153.99	N16-Vis/α1 Lib	1	-179	N01-Ash	N16-Vis	N01-Ash-N16-Vis	False
+809132.82	-2497-03-26	-2497	1	R1-vasanta	True	2.11	N04-Roh/γ Tau	183.10	N17-Anu/ω1 Sco	1	180	N04-Roh	N17-Anu	N04-Roh-N17-Anu	False
+809162.33	-2497-04-24	-2497	2	R2-grīṣma	False	30.16	N05-Mrg/α Ori	210.00	N20-PAsh/γ Sgr	1	179	N05-Mrg	N20-PAsh	N05-Mrg-N20-PAsh	False
+809191.94	-2497-05-24	-2497	2	R2-grīṣma	False	58.35	N07-Pun/β Gem	238.80	N22-Shr/α Aql	1	180	N07-Pun	N22-Shr	N07-Pun-N22-Shr	False
+809221.39	-2497-06-22	-2497	2	R2-grīṣma	False	86.67	N10-Mag/γ Leo	266.55	N23-Dha/γ2 Del	1	179	N10-Mag	N23-Dha	N10-Mag-N23-Dha	False
+809250.87	-2497-07-22	-2497	3	R3-varṣā	False	115.48	N12-UPal/β Leo	295.50	N25-PBha/β Peg	1	180	N12-UPal	N25-PBha	N12-UPal-N25-PBha	False
+809280.33	-2497-08-20	-2497	3	R3-varṣā	False	144.80	N15-Swa/α Boo	324.84	N01-Ash/γ Ari	1	180	N15-Swa	N01-Ash	N15-Swa-N01-Ash	False
+809309.75	-2497-09-19	-2497	4	R4-śarat	False	174.55	N17-Anu/δ Sco	354.05	N03-Kri/* 17 Tau	1	179	N17-Anu	N03-Kri	N17-Anu-N03-Kri	False
+809339.23	-2497-10-18	-2497	4	R4-śarat	False	204.66	N19-Mul/κ Sco	24.64	N05-Mrg/α Ori	1	-180	N19-Mul	N05-Mrg	N19-Mul-N05-Mrg	False
+809368.71	-2497-11-17	-2497	5	R5-hemanta	False	234.78	N22-Shr/α Aql	55.18	N07-Pun/β Gem	1	-179	N22-Shr	N07-Pun	N22-Shr-N07-Pun	False
+809398.15	-2497-12-16	-2497	5	R5-hemanta	False	264.59	N23-Dha/γ2 Del	84.58	N10-Mag/ζ Leo	1	-180	N23-Dha	N10-Mag	N23-Dha-N10-Mag	False
+809427.64	-2496-01-15	-2496	6	R6-śiśira	False	293.96	N25-PBha/α Peg	113.73	N12-UPal/β Leo	1	-180	N25-PBha	N12-UPal	N25-PBha-N12-UPal	False
+809457.20	-2496-02-13	-2496	6	R6-śiśira	False	322.88	N27-Rev/ε Psc	142.95	N15-Swa/α Boo	1	-179	N27-Rev	N15-Swa	N27-Rev-N15-Swa	False
+809486.84	-2496-03-14	-2496	1	R1-vasanta	False	351.40	N02-Bha/* 39 Ari	172.20	N17-Anu/δ Sco	1	-179	N02-Bha	N17-Anu	N02-Bha-N17-Anu	False
+809516.36	-2496-04-12	-2496	1	R1-vasanta	False	19.51	N05-Mrg/γ Ori	199.28	N19-Mul/ν Sco	1	179	N05-Mrg	N19-Mul	N05-Mrg-N19-Mul	False
+809546.04	-2496-05-12	-2496	2	R2-grīṣma	False	47.72	N07-Pun/α Gem	228.20	N21-UAsh/τ Sgr	1	180	N07-Pun	N21-UAsh	N07-Pun-N21-UAsh	False
+809575.56	-2496-06-11	-2496	2	R2-grīṣma	False	75.98	N10-Mag/ε Leo	255.35	N23-Dha/α Del	1	179	N10-Mag	N23-Dha	N10-Mag-N23-Dha	False
+809605.23	-2496-07-10	-2496	3	R3-varṣā	False	104.78	N12-UPal/* 93 Leo	284.81	N24-Sha/λ Aqr	1	180	N12-UPal	N24-Sha	N12-UPal-N24-Sha	False
+809634.78	-2496-08-09	-2496	3	R3-varṣā	False	133.99	N13-Has/β Crv	313.48	N26-UBha/α And	1	179	N13-Has	N26-UBha	N13-Has-N26-UBha	False
+809664.37	-2496-09-07	-2496	4	R4-śarat	False	163.77	N16-Vis/α2 Lib	343.76	N02-Bha/* 35 Ari	1	179	N16-Vis	N02-Bha	N16-Vis-N02-Bha	False
+809693.86	-2496-10-07	-2496	4	R4-śarat	False	193.80	N18-Jye/ε Sco	13.54	N05-Mrg/γ Ori	1	-180	N18-Jye	N05-Mrg	N18-Jye-N05-Mrg	False
+809723.34	-2496-11-05	-2496	5	R5-hemanta	False	223.96	N21-UAsh/τ Sgr	44.05	N07-Pun/α Gem	1	-179	N21-UAsh	N07-Pun	N21-UAsh-N07-Pun	False
+809752.73	-2496-12-05	-2496	5	R5-hemanta	False	253.83	N23-Dha/β Del	73.28	N09-Asl/ζ Hya	1	-180	N23-Dha	N09-Asl	N23-Dha-N09-Asl	False
+809782.18	-2495-01-03	-2495	6	R6-śiśira	False	283.37	N24-Sha/λ Aqr	103.33	N11-PPal/θ Leo	1	-180	N24-Sha	N11-PPal	N24-Sha-N11-PPal	False
+809811.61	-2495-02-02	-2495	6	R6-śiśira	False	312.35	N26-UBha/α And	132.38	N13-Has/δ Crv	1	-179	N26-UBha	N13-Has	N26-UBha-N13-Has	False
+809841.05	-2495-03-03	-2495	1	R1-vasanta	False	340.83	N02-Bha/* 35 Ari	160.97	N16-Vis/α1 Lib	1	-179	N02-Bha	N16-Vis	N02-Bha-N16-Vis	False
+809870.49	-2495-04-01	-2495	1	R1-vasanta	False	8.95	N04-Roh/α Tau	188.65	N18-Jye/α Sco	1	179	N04-Roh	N18-Jye	N04-Roh-N18-Jye	False
+809900.07	-2495-05-01	-2495	2	R2-grīṣma	False	37.06	N06-Ard/γ Gem	217.40	N21-UAsh/φ Sgr	1	180	N06-Ard	N21-UAsh	N06-Ard-N21-UAsh	False
+809929.57	-2495-05-31	-2495	2	R2-grīṣma	False	65.20	N08-Pus/δ Cnc	244.48	N22-Shr/β Aql	1	179	N08-Pus	N22-Shr	N08-Pus-N22-Shr	False
+809959.30	-2495-06-29	-2495	3	R3-varṣā	False	93.88	N11-PPal/δ Leo	273.76	N24-Sha/λ Aqr	1	179	N11-PPal	N24-Sha	N11-PPal-N24-Sha	False
+809989.06	-2495-07-29	-2495	3	R3-varṣā	False	123.09	N13-Has/γ Crv	303.49	N26-UBha/γ Peg	1	180	N13-Has	N26-UBha	N13-Has-N26-UBha	False
+810018.66	-2495-08-28	-2495	4	R4-śarat	False	152.69	N16-Vis/α1 Lib	332.04	N01-Ash/β Ari	1	179	N16-Vis	N01-Ash	N16-Vis-N01-Ash	False
+810048.35	-2495-09-26	-2495	4	R4-śarat	True	182.83	N17-Anu/ω1 Sco	2.75	N04-Roh/γ Tau	1	-180	N17-Anu	N04-Roh	N17-Anu-N04-Roh	False
+810077.92	-2495-10-26	-2495	5	R5-hemanta	False	213.06	N20-PAsh/ε Sgr	33.02	N06-Ard/γ Gem	1	-180	N20-PAsh	N06-Ard	N20-PAsh-N06-Ard	False
+810107.43	-2495-11-24	-2495	5	R5-hemanta	False	243.16	N22-Shr/β Aql	63.28	N08-Pus/δ Cnc	1	-179	N22-Shr	N08-Pus	N22-Shr-N08-Pus	False
+810136.83	-2495-12-24	-2495	6	R6-śiśira	False	272.80	N24-Sha/λ Aqr	92.37	N10-Mag/α Leo	1	-180	N24-Sha	N10-Mag	N24-Sha-N10-Mag	False
+810166.24	-2494-01-22	-2494	6	R6-śiśira	False	301.96	N25-PBha/β Peg	121.96	N13-Has/γ Crv	1	-180	N25-PBha	N13-Has	N25-PBha-N13-Has	False
+810195.61	-2494-02-21	-2494	1	R1-vasanta	False	330.55	N01-Ash/γ Ari	150.81	N15-Swa/α Boo	1	-179	N01-Ash	N15-Swa	N01-Ash-N15-Swa	False
+810224.93	-2494-03-22	-2494	1	R1-vasanta	True	358.67	N03-Kri/* 27 Tau	178.64	N17-Anu/δ Sco	1	-180	N03-Kri	N17-Anu	N03-Kri-N17-Anu	False
+810254.31	-2494-04-20	-2494	1	R1-vasanta	False	26.61	N05-Mrg/α Ori	206.57	N19-Mul/ι1 Sco	1	179	N05-Mrg	N19-Mul	N05-Mrg-N19-Mul	False
+810283.82	-2494-05-20	-2494	2	R2-grīṣma	False	54.69	N07-Pun/β Gem	235.29	N22-Shr/α Aql	1	180	N07-Pun	N22-Shr	N07-Pun-N22-Shr	False
+810313.33	-2494-06-18	-2494	2	R2-grīṣma	False	83.01	N10-Mag/ζ Leo	262.85	N23-Dha/γ2 Del	1	179	N10-Mag	N23-Dha	N10-Mag-N23-Dha	False
+810343.07	-2494-07-18	-2494	3	R3-varṣā	False	112.00	N12-UPal/β Leo	292.43	N25-PBha/α Peg	1	180	N12-UPal	N25-PBha	N12-UPal-N25-PBha	False
+810372.86	-2494-08-17	-2494	3	R3-varṣā	False	141.59	N14-Chi/α Vir	322.48	N27-Rev/ε Psc	1	180	N14-Chi	N27-Rev	N14-Chi-N27-Rev	False
+810402.50	-2494-09-16	-2494	4	R4-śarat	False	171.52	N16-Vis/α2 Lib	351.02	N02-Bha/* 39 Ari	1	179	N16-Vis	N02-Bha	N16-Vis-N02-Bha	False
+810432.27	-2494-10-15	-2494	4	R4-śarat	False	201.91	N19-Mul/ν Sco	21.88	N05-Mrg/λ Ori	1	-180	N19-Mul	N05-Mrg	N19-Mul-N05-Mrg	False
+810461.94	-2494-11-14	-2494	5	R5-hemanta	False	232.24	N22-Shr/α Aql	52.44	N07-Pun/β Gem	1	-179	N22-Shr	N07-Pun	N22-Shr-N07-Pun	False
+810491.48	-2494-12-13	-2494	5	R5-hemanta	False	262.17	N23-Dha/γ2 Del	82.18	N10-Mag/μ Leo	1	-179	N23-Dha	N10-Mag	N23-Dha-N10-Mag	False
+810520.92	-2493-01-12	-2493	6	R6-śiśira	False	291.55	N25-PBha/α Peg	111.31	N12-UPal/β Leo	1	-180	N25-PBha	N12-UPal	N25-PBha-N12-UPal	False
+810550.29	-2493-02-10	-2493	6	R6-śiśira	False	320.33	N27-Rev/ε Psc	140.37	N14-Chi/α Vir	1	-179	N27-Rev	N14-Chi	N27-Rev-N14-Chi	False
+810579.62	-2493-03-12	-2493	1	R1-vasanta	False	348.58	N02-Bha/* 39 Ari	169.00	N16-Vis/α2 Lib	1	-179	N02-Bha	N16-Vis	N02-Bha-N16-Vis	False
+810608.86	-2493-04-10	-2493	1	R1-vasanta	False	16.45	N05-Mrg/γ Ori	196.18	N19-Mul/ζ2 Sco	1	179	N05-Mrg	N19-Mul	N05-Mrg-N19-Mul	False
+810638.20	-2493-05-09	-2493	2	R2-grīṣma	False	44.33	N07-Pun/α Gem	224.33	N21-UAsh/τ Sgr	1	179	N07-Pun	N21-UAsh	N07-Pun-N21-UAsh	False
+810667.59	-2493-06-08	-2493	2	R2-grīṣma	False	72.43	N09-Asl/ζ Hya	252.21	N23-Dha/β Del	1	179	N09-Asl	N23-Dha	N09-Asl-N23-Dha	False
+810697.15	-2493-07-07	-2493	3	R3-varṣā	False	101.05	N11-PPal/θ Leo	281.20	N24-Sha/λ Aqr	1	180	N11-PPal	N24-Sha	N11-PPal-N24-Sha	False
+810726.85	-2493-08-06	-2493	3	R3-varṣā	False	130.34	N13-Has/α Crv	311.16	N26-UBha/α And	1	180	N13-Has	N26-UBha	N13-Has-N26-UBha	False
+810756.47	-2493-09-04	-2493	4	R4-śarat	False	160.09	N16-Vis/α1 Lib	339.59	N01-Ash/α Ari	1	179	N16-Vis	N01-Ash	N16-Vis-N01-Ash	False
+810786.31	-2493-10-04	-2493	4	R4-śarat	False	190.46	N18-Jye/α Sco	10.31	N04-Roh/α Tau	1	-180	N18-Jye	N04-Roh	N18-Jye-N04-Roh	False
+810816.15	-2493-11-03	-2493	5	R5-hemanta	False	220.98	N21-UAsh/ζ Sgr	41.18	N06-Ard/γ Gem	1	-179	N21-UAsh	N06-Ard	N21-UAsh-N06-Ard	False
+810845.90	-2493-12-03	-2493	5	R5-hemanta	False	251.25	N23-Dha/β Del	71.72	N09-Asl/ρ Hya	1	-179	N23-Dha	N09-Asl	N23-Dha-N09-Asl	False
+810875.46	-2492-01-01	-2492	6	R6-śiśira	False	280.93	N24-Sha/λ Aqr	100.79	N11-PPal/θ Leo	1	-180	N24-Sha	N11-PPal	N24-Sha-N11-PPal	False
+810904.94	-2492-01-31	-2492	6	R6-śiśira	False	310.00	N26-UBha/α And	129.92	N13-Has/ε Crv	1	-180	N26-UBha	N13-Has	N26-UBha-N13-Has	False
+810934.30	-2492-02-29	-2492	1	R1-vasanta	False	338.46	N01-Ash/α Ari	158.50	N16-Vis/α1 Lib	1	-179	N01-Ash	N16-Vis	N01-Ash-N16-Vis	False
+810963.62	-2492-03-30	-2492	1	R1-vasanta	False	6.48	N04-Roh/ε Tau	186.89	N18-Jye/α Sco	1	180	N04-Roh	N18-Jye	N04-Roh-N18-Jye	False
+810992.84	-2492-04-28	-2492	2	R2-grīṣma	False	34.25	N06-Ard/γ Gem	213.84	N20-PAsh/λ Sgr	1	179	N06-Ard	N20-PAsh	N06-Ard-N20-PAsh	False
+811022.17	-2492-05-27	-2492	2	R2-grīṣma	False	62.20	N08-Pus/δ Cnc	242.15	N22-Shr/β Aql	1	179	N08-Pus	N22-Shr	N08-Pus-N22-Shr	False
+811051.54	-2492-06-26	-2492	3	R3-varṣā	False	90.49	N10-Mag/α Leo	270.52	N24-Sha/λ Aqr	1	180	N10-Mag	N24-Sha	N10-Mag-N24-Sha	False

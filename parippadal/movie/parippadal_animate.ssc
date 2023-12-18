@@ -62,7 +62,7 @@ for (i = 0; i < 24; i++) {
   if (c && m==0) { 
     ev++
     say( h + ':' + c);
-    label = LabelMgr.labelScreen( '@' + h +': ' + c, 2050, 200+40*ev, false, 15, "#aaaa00");
+    label = LabelMgr.labelScreen( '@' + h +': ' + c, 850, 200+40*ev, false, 15, "#aaaa00");
     LabelMgr.setLabelShow(label, true);
     core.wait(5)
   }

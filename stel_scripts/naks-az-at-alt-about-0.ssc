@@ -27,7 +27,6 @@ function r(x) { return Math.round(100 * x) / 100 }
 
 
 for ( yr = -2500; yr <= -2500; yr+= 500) {
-break;
 //$naks_map =  $NAKSHATRAS
 for ( n= 0 ; n < $naks_map.length ; n++ ) {
 

@@ -1,0 +1,30 @@
+// script to mark the sun transit for teh bihs ayana talk
+include ("nakshatras.inc");
+var wt=3;
+cls(); 
+//$WRITE_Y -=50
+titles("Suns's annual  swing" , "#F1F2F3", 40,5)
+//$WRITE_Y +=2*50
+for ( i=0; i <5; i++) {
+JD(2459569.57712); //if ( i==0) W(5)
+$WRITE_X=900;
+writes("Uttarayana Starts" + " " +DT().replace(/T.*/,""), "#CCCCCC", 20)
+W(wt); 
+
+JD(2459659.54101); 
+$WRITE_X=600;
+cls();writes("Vernal Equinox" + " " +DT().replace(/T.*/,""), "#CCCCCC", 20)
+W(wt)
+
+JD(2459751.49934); 
+$WRITE_X=200;
+cls(); writes("Dakshinaya Starts"+ " " +DT().replace(/T.*/,""), "#CCCCCC", 20)
+W(wt)
+
+JD(2459843.52990+2); 
+$WRITE_X=600;
+cls();writes("Autumn Equinox" + " " +DT().replace(/T.*/,""), "#CCCCCC", 20)
+W(wt)
+
+cls()
+}

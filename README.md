@@ -84,6 +84,8 @@
   - explore moon's motion among the nakṣataras
   - sisuāra circumpolarity
 
+![](jyotisha/images/ayana-chalana.gif)
+
 <video  controls autoplay loop>
     <source src="https://raw.githubusercontent.com/suchakr/cahc-utils/sunder_experiments/jyotisha/images/ayana-chalana.mp4" type="video/mp4">
     Your browser does not support the video tag.

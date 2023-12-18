@@ -1,49 +1,137 @@
 include("nakshatras.inc");
 function r(x) { return Math.round(100 * x) / 100 }
+function r3(x) { return Math.round(1000 * x) / 1000 }
+core.setObserverLocation(76 + 52 / 60 + 47.99 / 3600, 29 + 57 / 60 + 36 / 3600, 1, "कुरुक्षेत्र", "Earth")
+// BHA_FISRT_VISIBILITY_1500BCE = 1173273.52758 // -1500-04-01T05:47:13
 
-core.setObserverLocation("Ujjain, India", "Earth");
 MarkerMgr.deleteAllMarkers()
 LabelMgr.deleteAllLabels()
 
+var $naks_map = $N83 // $N27Feb24
+    .map(function (v) { return v.split("\t") })
+    .map(function (v, i) {
+        var h = {}
+        h['idx'] = i + 1
+        v.map(function (e, i) {
+            h[header_naks[i]] = e //.replace(/HIP\s+/,'')
+        })
+        return h
+    }).map(function (v, i) {
+        v.hip = v.hip.replace(/\s*\D+\s*$/, '')
+        MarkerMgr.markerObject(v.hip, true, "circle")
+        return v
+    }).filter(function (v, i) {
+       //return v.nid.match(/N05/) ? (1 == 1) : (1 == 0)
+       return 1==1
+    })
 
-JD_JYESTA_EAST = 959084.52012 // -2087-10-31  05:32:03
-JD_ROHINI_EAST = 958911.49373 // -2081-05-11 04:54:04
-JD_ROHINI_DELTA = (1324166.48887 - JD_ROHINI_EAST)
-JD_JYESTA_DELTA = (1324340.52498 - JD_JYESTA_EAST)
+//warn (ddump($naks_map), "pretty")
 
-INFO = [
-    { nid: 3, baseJD: JD_ROHINI_EAST, deltaJD: JD_ROHINI_DELTA },
-    { nid: 17, baseJD: JD_JYESTA_EAST, deltaJD: JD_JYESTA_DELTA }
-]
+header = 'idx nid naks gname alt az lon lat salt saz slon vis1 year day jd dt secs'
+say(header.split(/\s+/).join("\t"))
+warn(header.split(/\s+/).join("\t"))
+GMTFIX = (5 + (7 / 60)) / 24
 
-say(["naks", "naks_az", "naks_alt", "sun_az", "sun_alt", "jd", "dt"].join("\t"))
+// hack for full screen
+$G_X = $TITLE_X
+$G_Y = $TITLE_Y
+function reset_titles() {
+    $TITLE_X = 0.2*$G_X
+    $TITLE_Y = 3.5*$G_Y
+    LabelMgr.deleteAllLabels()
+}
 
+// for ( var m =0 ; m < 20; m++) {
+//   titles("Message1", "#AA00BB", 5,.01)
+// }
 
+var tk = new TimeKeeper();
+function num_elems(x) { var ans = 0; for ( k in x) { ans = ans+1}; return ' @'+ans }
+var seen = {};
 
-for (n = 0; n < INFO.length; n++) {
+for (epoch = -500; epoch <= -500; epoch += 500) {
+    // seen[epoch] = seen[epoch] || {}
+    seen[epoch] = {}
+    function seen_elems() { return num_elems(seen[epoch]) }
+    dt_base = epoch + '-01-01T00:00:00'
+    DT(dt_base)
+    jd_base = JD()
+    warn(['# ' + tk.secElapsed() + ' sec', epoch, r(jd_base), DT()].join("\t"))
 
-    baseJD = INFO[n].baseJD
-    deltaJD = INFO[n].deltaJD
+    $naks_map.map(function (v, i) {
+        //	 if ( !v.naks.match(/^N02/))  return;
+        oi = getOI(v.hip)
+        $naks_map[i].base_elong = oi.elong
+        $naks_map[i].base_elat = oi.elat
+        $naks_map[i].nid = v.nid
+        $naks_map[i].hip = v.hip
+        return v
+    })
+    // ddump($naks_map, "pretty"); break
 
+    var d = 0;
+    while( d < 366) {
+        JD(jd_base + d)
+        sun = getOI('Sun'); W(.15)
+        sun_rise = sun['rise-dhr']
+        sun_long = sun['elong']
+        sun_alt = sun['altitude']
+        sun_az = sun['azimuth']
 
-    nid = INFO[n].nid
-    for (i = -2; i <= 2; i++) {
-        JD(baseJD + i * deltaJD + 4.5 / 360)
-        naks = $NAKSHATRAS[nid]
-        //ddump(rohini, "pretty")
-        naks_info = getOI(naks.hip)
-        sun_info = getOI("Sun")
-        core.selectObjectByName(naks.hip)
-        core.moveToSelectedObject(1)
-        //ddump({ 
-        //"naks" :  naks.naks ,"dt" : DT(), // jd: JD(), 
-        //"az" : r(naks_info.azimuth) , "alt" : r(naks_info.altitude) , "sun_az" : r(sun_info.azimuth) , "sun_alt" : r(sun_info.altitude) 
-        //} , "pretty")
+        jd_adj = jd_base + d - GMTFIX + sun_rise / 24 - 13 / 360
+        JD(jd_adj); W(0.15)
+        dt_adj = DT()
+        // yr = dt_adj.replace(/^(.?\d+)-\d+-\d+T\d+:\d+:\d+$/, '$1')
+        yr = dt_adj.replace(/^(.?\d+).*/, '$1')
 
-        W(1)
+        sun = getOI('Sun'); W(0.15)
+        reset_titles()
+        // say(["***" , epoch, d, i, tk.secElapsed(), seen_elems()].join("-")) ; ddump(seen,"pretty"); core.exit()
 
+        // naks_map = []
+        any_found = false
+        for (i = 0; i < $naks_map.length; i++) {
+            v = $naks_map[i]
+            if (v.hip in seen[epoch]) { 
+                // ddump([ v.hip , seen_elems() ], "pretty")
+                // titles([v.nid + v.hip, epoch, d, i, tk.secElapsed(), seen_elems()].join("-"), "#FF0000", 5, .01)
+                continue
+            }
+            naks_long = v.base_elong
+            // naks_ahead_1 = (naks_long > sun_long) && (naks_long - sun_long < 22)
+            // naks_ahead_2 = (naks_long < sun_long) && (naks_long < 11) && ((sun_long + naks_long)%360  > 360-11) 
+            // sun_to_naks_gap = (360 - sun_long + naks_long)%360
+            // sun_to_naks_gap = (sun_long - naks_long) % 360
+            // sun_to_naks_gap += (sun_to_naks_gap < -340) ? 360 : 0
+            // naks_to_sun_gap = -sun_to_naks_gap % 360
+            // say([r3(jd_adj), r(sun_to_naks_gap), r(v.base_elong), r(sun_long), sun_to_naks_gap > 22, sun_to_naks_gap < 0].join("\t"))
+            // if (sun_to_naks_gap > 22 || sun_to_naks_gap < 0) continue;
+            // say([v.nid,  dt_adj, naks_ahead_1,naks_ahead_2].join("\t"))
+            naks_ahead_1 = 0 < (naks_long - sun_long) < 22
+            naks_ahead_2 = 0 < (naks_long+360 - sun_long) < 22
+            if (! (naks_ahead_1 || naks_ahead_2)){ continue}
+            $TITLE_X =  (1+Math.floor(i/20))*0.27*$G_X
+            $TITLE_Y =  i%20==0?3.5*$G_Y:$TITLE_Y
+            if (i%10 == 0) titles([v.nid+v.hip, yr+'#'+d, '{' + i + ":" + tk.secElapsed() +'}' ,seen_elems()].join("-"), "#AA00BB", 5, .01)
 
-        say([naks.naks, r(naks_info.azimuth), r(naks_info.altitude), r(sun_info.azimuth), r(sun_info.altitude), r(JD()), DT()].join("\t"))
+            oi = getOI(v.hip); W(.15)
+            _alt = oi.altitude
+            _az = oi.azimuth
+            rise_b4_sun_rise = (_alt > 0 & _alt < 15 & _az < 180)
+            info = [v.idx,
+            v.nid.replace(/N01/, "N901"), v.nid.replace(/^.*\-/, ""), v.gname,
+            r(oi.altitude), r(oi.azimuth), r(oi.elong), r(oi.elat),
+            r(sun.altitude), r(sun.azimuth), r(sun.elong), rise_b4_sun_rise,
+                yr, d + 1, r3(jd_adj), dt_adj, tk.secElapsed(), v.hip]
+            say(info.join("\t"))
+            if (rise_b4_sun_rise) {
+                any_found = true
+                seen[epoch][v.hip] = 1
+                warn(info.join("\t"))
+            }
+        }
+        d+=1 + (any_found?0*12:0)
+        W(.1)
     }
 }
-//core.goHome()
+

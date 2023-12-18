@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;background-color:initial;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNNDAgNzBIMjBWNTBtMjAgMEwyMCA3MG00MC00MGgyMHYyMG0tMjAgMCAyMC0yMCIgY2xhc3M9ImEiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgeD0iMTAiIHk9IjIwIiBjbGFzcz0iYSIgcng9IjUuNjciLz48cGF0aCBkPSJNMjAgNTBoMjB2MjBtLTIwIDAgMjAtMjBtNDAgMEg2MFYzMG0yMCAwTDYwIDUwIiBjbGFzcz0iYSIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODBNNTIgOTBWMTAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:#0000 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTIgNTBoODAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}@keyframes __bespoke_marp_transition_reduced_outgoing__{0%{opacity:1}to{opacity:0}}@keyframes __bespoke_marp_transition_reduced_incoming__{0%{mix-blend-mode:plus-lighter;opacity:0}to{mix-blend-mode:plus-lighter;opacity:1}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{::view-transition-group(*){animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-timing-function:ease}::view-transition-new(*),::view-transition-old(*){animation-delay:0s;animation-direction:var(--marp-bespoke-transition-animation-direction,normal);animation-duration:var(--marp-bespoke-transition-animation-duration,.5s);animation-fill-mode:both;animation-name:var(--marp-bespoke-transition-animation-name,var(--marp-bespoke-transition-animation-name-fallback,__bespoke_marp_transition_no_animation__));mix-blend-mode:normal}::view-transition-old(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_outgoing__;animation-timing-function:ease}::view-transition-new(*){--marp-bespoke-transition-animation-name-fallback:__bespoke_marp_transition_reduced_incoming__;animation-timing-function:ease}::view-transition-new(root),::view-transition-old(root){animation-timing-function:linear}::view-transition-new(__bespoke_marp_transition_osc__),::view-transition-old(__bespoke_marp_transition_osc__){animation-duration:0s!important;animation-name:__bespoke_marp_transition_osc__!important}::view-transition-new(__bespoke_marp_transition_osc__){opacity:0!important}.bespoke-marp-transition-warming-up::view-transition-group(*),.bespoke-marp-transition-warming-up::view-transition-new(*),.bespoke-marp-transition-warming-up::view-transition-old(*){animation-play-state:paused!important}body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide:not(.bespoke-marp-active) *{view-transition-name:none!important}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}}@media screen and (prefers-reduced-motion:reduce){svg.bespoke-marp-slide *{view-transition-name:none!important}}@media screen{[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{inset:0;position:absolute}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{view-transition-name:__bespoke_marp_transition_osc__;background:#000000a6;border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:#0000}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:#0000;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{display:block;inset:0;position:absolute}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:#000000a6;border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:#eeeeee80 #0000;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:#0000}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:#eeeeee80;border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>@charset "UTF-8";@import "https://fonts.bunny.net/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap";div#\:\$p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#\:\$p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#\:\$p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#\:\$p>svg>foreignObject>section :is(h1,marp-h1){font-size:2em;margin:0.67em 0}div#\:\$p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#\:\$p>svg>foreignObject>section{page-break-before:always;break-before:page}div#\:\$p>svg>foreignObject>section,div#\:\$p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#\:\$p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}div#\:\$p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+/*!
+ * Marp / Marpit Gaia theme.
+ *
+ * @theme gaia
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#\:\$p>svg>foreignObject>section :is(pre,marp-pre) code.hljs{display:block;overflow-x:auto;padding:1em}div#\:\$p>svg>foreignObject>section code.hljs{padding:3px 5px}div#\:\$p>svg>foreignObject>section .hljs{background:#000;color:#f8f8f8}div#\:\$p>svg>foreignObject>section .hljs-comment,div#\:\$p>svg>foreignObject>section .hljs-quote{color:#aeaeae;font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-keyword,div#\:\$p>svg>foreignObject>section .hljs-selector-tag,div#\:\$p>svg>foreignObject>section .hljs-type{color:#e28964}div#\:\$p>svg>foreignObject>section .hljs-string{color:#65b042}div#\:\$p>svg>foreignObject>section .hljs-subst{color:#daefa3}div#\:\$p>svg>foreignObject>section .hljs-link,div#\:\$p>svg>foreignObject>section .hljs-regexp{color:#e9c062}div#\:\$p>svg>foreignObject>section .hljs-name,div#\:\$p>svg>foreignObject>section .hljs-section,div#\:\$p>svg>foreignObject>section .hljs-tag,div#\:\$p>svg>foreignObject>section .hljs-title{color:#89bdff}div#\:\$p>svg>foreignObject>section .hljs-class .hljs-title,div#\:\$p>svg>foreignObject>section .hljs-doctag,div#\:\$p>svg>foreignObject>section .hljs-title.class_{text-decoration:underline}div#\:\$p>svg>foreignObject>section .hljs-bullet,div#\:\$p>svg>foreignObject>section .hljs-number,div#\:\$p>svg>foreignObject>section .hljs-symbol{color:#3387cc}div#\:\$p>svg>foreignObject>section .hljs-params,div#\:\$p>svg>foreignObject>section .hljs-template-variable,div#\:\$p>svg>foreignObject>section .hljs-variable{color:#3e87e3}div#\:\$p>svg>foreignObject>section .hljs-attribute{color:#cda869}div#\:\$p>svg>foreignObject>section .hljs-meta{color:#8996a8}div#\:\$p>svg>foreignObject>section .hljs-formula{background-color:#0e2231;color:#f8f8f8;font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-addition{background-color:#253b22;color:#f8f8f8}div#\:\$p>svg>foreignObject>section .hljs-deletion{background-color:#420e09;color:#f8f8f8}div#\:\$p>svg>foreignObject>section .hljs-selector-class{color:#9b703f}div#\:\$p>svg>foreignObject>section .hljs-selector-id{color:#8b98ab}div#\:\$p>svg>foreignObject>section .hljs-emphasis{font-style:italic}div#\:\$p>svg>foreignObject>section .hljs-strong{font-weight:700}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1),div#\:\$p>svg>foreignObject>section :is(h2,marp-h2),div#\:\$p>svg>foreignObject>section :is(h3,marp-h3),div#\:\$p>svg>foreignObject>section :is(h4,marp-h4),div#\:\$p>svg>foreignObject>section :is(h5,marp-h5),div#\:\$p>svg>foreignObject>section :is(h6,marp-h6){margin:.5em 0 0}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1) strong,div#\:\$p>svg>foreignObject>section :is(h2,marp-h2) strong,div#\:\$p>svg>foreignObject>section :is(h3,marp-h3) strong,div#\:\$p>svg>foreignObject>section :is(h4,marp-h4) strong,div#\:\$p>svg>foreignObject>section :is(h5,marp-h5) strong,div#\:\$p>svg>foreignObject>section :is(h6,marp-h6) strong{font-weight:inherit}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1)::part(auto-scaling),div#\:\$p>svg>foreignObject>section :is(h2,marp-h2)::part(auto-scaling),div#\:\$p>svg>foreignObject>section :is(h3,marp-h3)::part(auto-scaling),div#\:\$p>svg>foreignObject>section :is(h4,marp-h4)::part(auto-scaling),div#\:\$p>svg>foreignObject>section :is(h5,marp-h5)::part(auto-scaling),div#\:\$p>svg>foreignObject>section :is(h6,marp-h6)::part(auto-scaling){max-height:580px}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1){font-size:1.8em}div#\:\$p>svg>foreignObject>section :is(h2,marp-h2){font-size:1.5em}div#\:\$p>svg>foreignObject>section :is(h3,marp-h3){font-size:1.3em}div#\:\$p>svg>foreignObject>section :is(h4,marp-h4){font-size:1.1em}div#\:\$p>svg>foreignObject>section :is(h5,marp-h5){font-size:1em}div#\:\$p>svg>foreignObject>section :is(h6,marp-h6){font-size:.9em}div#\:\$p>svg>foreignObject>section blockquote,div#\:\$p>svg>foreignObject>section p{margin:1em 0 0}div#\:\$p>svg>foreignObject>section ol>li,div#\:\$p>svg>foreignObject>section ul>li{margin:.3em 0 0}div#\:\$p>svg>foreignObject>section ol>li>p,div#\:\$p>svg>foreignObject>section ul>li>p{margin:.6em 0 0}div#\:\$p>svg>foreignObject>section code{display:inline-block;font-family:Roboto Mono,monospace;font-size:.8em;letter-spacing:0;margin:-.1em .15em;padding:.1em .2em;vertical-align:baseline}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){display:block;margin:1em 0 0;overflow:visible}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre) code{box-sizing:border-box;font-size:.7em;margin:0;min-width:100%;padding:.5em}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre)::part(auto-scaling){max-height:calc(580px - 1em)}div#\:\$p>svg>foreignObject>section blockquote{margin:1em 0 0;padding:0 1em;position:relative}div#\:\$p>svg>foreignObject>section blockquote:after,div#\:\$p>svg>foreignObject>section blockquote:before{content:"“";display:block;font-family:Times New Roman,serif;font-weight:700;position:absolute}div#\:\$p>svg>foreignObject>section blockquote:before{left:0;top:0}div#\:\$p>svg>foreignObject>section blockquote:after{bottom:0;right:0;transform:rotate(180deg)}div#\:\$p>svg>foreignObject>section blockquote>:first-child{margin-top:0}div#\:\$p>svg>foreignObject>section mark{background:transparent}div#\:\$p>svg>foreignObject>section table{border-collapse:collapse;border-spacing:0;margin:1em 0 0}div#\:\$p>svg>foreignObject>section table td,div#\:\$p>svg>foreignObject>section table th{border-style:solid;border-width:1px;padding:.2em .4em}div#\:\$p>svg>foreignObject>section footer,div#\:\$p>svg>foreignObject>section header,div#\:\$p>svg>foreignObject>section:after{box-sizing:border-box;font-size:66%;height:70px;line-height:50px;overflow:hidden;padding:10px 25px;position:absolute}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:66%}div#\:\$p>svg>foreignObject>section header{top:0}div#\:\$p>svg>foreignObject>section footer,div#\:\$p>svg>foreignObject>section header{left:0;right:0}div#\:\$p>svg>foreignObject>section footer{bottom:0}div#\:\$p>svg>foreignObject>section{word-wrap:break-word;--color-background:#fff8e1;--color-background-stripe:rgba(69,90,100,.1);--color-foreground:#455a64;--color-dimmed:#6a7a7d;--color-highlight:#0288d1;background-color:var(--color-background);background-image:linear-gradient(135deg,hsla(0,0%,53%,0),hsla(0,0%,53%,.02) 50%,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.05));color:var(--color-foreground);font-family:Lato,Avenir Next,Avenir,Trebuchet MS,Segoe UI,sans-serif;font-size:35px;height:720px;letter-spacing:1.25px;line-height:1.35;padding:70px;width:1280px}div#\:\$p>svg>foreignObject>section{--marpit-root-font-size:35px}div#\:\$p>svg>foreignObject>section:after{bottom:0;font-size:80%;right:0}div#\:\$p>svg>foreignObject>section:after{--marpit-root-font-size:80%}div#\:\$p>svg>foreignObject>section a,div#\:\$p>svg>foreignObject>section mark{color:var(--color-highlight)}div#\:\$p>svg>foreignObject>section code{background:var(--color-dimmed);color:var(--color-background)}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1) strong,div#\:\$p>svg>foreignObject>section :is(h2,marp-h2) strong,div#\:\$p>svg>foreignObject>section :is(h3,marp-h3) strong,div#\:\$p>svg>foreignObject>section :is(h4,marp-h4) strong,div#\:\$p>svg>foreignObject>section :is(h5,marp-h5) strong,div#\:\$p>svg>foreignObject>section :is(h6,marp-h6) strong{color:var(--color-highlight)}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){background:var(--color-foreground)}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre)>code{background:transparent}div#\:\$p>svg>foreignObject>section blockquote:after,div#\:\$p>svg>foreignObject>section blockquote:before,div#\:\$p>svg>foreignObject>section footer,div#\:\$p>svg>foreignObject>section header,div#\:\$p>svg>foreignObject>section section:after{color:var(--color-dimmed)}div#\:\$p>svg>foreignObject>section table td,div#\:\$p>svg>foreignObject>section table th{border-color:var(--color-foreground)}div#\:\$p>svg>foreignObject>section table thead th{background:var(--color-foreground);color:var(--color-background)}div#\:\$p>svg>foreignObject>section table tbody>tr:nth-child(odd) td,div#\:\$p>svg>foreignObject>section table tbody>tr:nth-child(odd) th{background:var(--color-background-stripe,transparent)}div#\:\$p>svg>foreignObject>section>:first-child,div#\:\$p>svg>foreignObject>section>header:first-child+*{margin-top:0}div#\:\$p>svg>foreignObject>section:where(.invert){--color-background:#455a64;--color-background-stripe:rgba(255,248,225,.1);--color-foreground:#fff8e1;--color-dimmed:#dad8c8;--color-highlight:#81d4fa}div#\:\$p>svg>foreignObject>section:where(.gaia){--color-background:#0288d1;--color-background-stripe:rgba(255,248,225,.1);--color-foreground:#fff8e1;--color-dimmed:#cce2de;--color-highlight:#81d4fa}div#\:\$p>svg>foreignObject>section:where(.lead){display:flex;flex-flow:column nowrap;justify-content:center}div#\:\$p>svg>foreignObject>section:where(.lead) :is(h1,marp-h1),div#\:\$p>svg>foreignObject>section:where(.lead) :is(h2,marp-h2),div#\:\$p>svg>foreignObject>section:where(.lead) :is(h3,marp-h3),div#\:\$p>svg>foreignObject>section:where(.lead) :is(h4,marp-h4),div#\:\$p>svg>foreignObject>section:where(.lead) :is(h5,marp-h5),div#\:\$p>svg>foreignObject>section:where(.lead) :is(h6,marp-h6){text-align:center}div#\:\$p>svg>foreignObject>section:where(.lead) p{text-align:center}div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h1,marp-h1),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h2,marp-h2),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h3,marp-h3),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h4,marp-h4),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h5,marp-h5),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>:is(h6,marp-h6),div#\:\$p>svg>foreignObject>section:where(.lead) blockquote>p{text-align:left}div#\:\$p>svg>foreignObject>section:where(.lead) ol>li>p,div#\:\$p>svg>foreignObject>section:where(.lead) ul>li>p{text-align:left}div#\:\$p>svg>foreignObject>section:where(.lead) table{margin-left:auto;margin-right:auto}div#\:\$p>svg>foreignObject>section.lead{text-align:center;color:navy}div#\:\$p>svg>foreignObject>section :is(pre,marp-pre){opacity:.7}div#\:\$p>svg>foreignObject>section :is(h1,marp-h1),div#\:\$p>svg>foreignObject>section :is(h2,marp-h2),div#\:\$p>svg>foreignObject>section :is(h3,marp-h3){color:blue;margin-top:-60px!important}div#\:\$p>svg>foreignObject>section li,div#\:\$p>svg>foreignObject>section ul{font-size:25px;margin-left:-600px;xcolor:blue}div#\:\$p>svg>foreignObject>section li:nth-child(odd){background:#E8E8E8}div#\:\$p>svg>foreignObject>section li:nth-child(2n){background:#F8F8F8}div#\:\$p>svg>foreignObject>section th{display:none}div#\:\$p>svg>foreignObject>section table{margin-top:-1px}div#\:\$p>svg>foreignObject>section footer{text-align:center;margin-bottom:-25px;color:silver;font-size:16px}div#\:\$p>svg>foreignObject>section tr:nth-child(odd){background:#E8E8E8}div#\:\$p>svg>foreignObject>section tr:nth-child(2n){background:#F8F8F8}div#\:\$p>svg>foreignObject>section :is(h3,marp-h3){break-before:column;column-span:all;margin-bottom:-1px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-v2pDlz2G] tr *{font-size:25px;font-family:monospace}div#\:\$p>svg>foreignObject>section[data-marpit-scope-v2pDlz2G] tr div#\:\$p>svg>foreignObject>section section{--marpit-root-font-size:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-v2pDlz2G] td:first-child{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-v2pDlz2G] td em{font-size:18px;font-family:monospace;color:gray;float:right}div#\:\$p>svg>foreignObject>section[data-marpit-scope-ueSCxLFS] tr *{font-size:26px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-ueSCxLFS] tr div#\:\$p>svg>foreignObject>section section{--marpit-root-font-size:26px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr{font-size:21px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(odd){font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(2n) td{padding-left:50px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(7) em{background:yellow}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(8) em{background:yellow}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(9) em{background:orange}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(10) em:first-child{background:yellow}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XRrwWUZP] tr:nth-child(10) em:nth-child(2){background:orange}div#\:\$p>svg>foreignObject>section[data-marpit-scope-wwjnqSOA] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-wwjnqSOA] strong{font-size:20px;margin-left:-30px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-wwjnqSOA] tr{font-size:14.5px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-wwjnqSOA] table{margin-bottom:-45px;xwidth:70%;margin-top:0px }div#\:\$p>svg>foreignObject>section[data-marpit-scope-wwjnqSOA] :is(h3,marp-h3){font-size:28px;margin-bottom:-35px}
+/* section { column-count: 2; column-gap: 35px;   } */div#\:\$p>svg>foreignObject>section[data-marpit-scope-Sh4zuaGr] tr{font-size:22px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-Sh4zuaGr] table:nth-child(4){width:100%;border:5px solid gray}div#\:\$p>svg>foreignObject>section[data-marpit-scope-Sh4zuaGr] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-fRX3plwT] :is(h3,marp-h3){font-size:40px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-fRX3plwT] img{scale:.85;margin-top:-70px;margin-bottom:-35px;border:1px solid gray ;margin-left:-40px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-fRX3plwT] td{font-size:17px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-fRX3plwT] table{margin-top:-10px;width:100%}div#\:\$p>svg>foreignObject>section[data-marpit-scope-fRX3plwT] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] tr *{font-size:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] tr div#\:\$p>svg>foreignObject>section section{--marpit-root-font-size:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] tr:nth-child(odd){font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] tr:nth-child(2n) td{padding-left:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-XZp6qsAp] tr strong{font-style:normal;font-family:monospace;font-size:20px;float:left;color:gray}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] tr *{font-size:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] tr div#\:\$p>svg>foreignObject>section section{--marpit-root-font-size:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] tr:nth-child(odd){font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] tr:nth-child(2n) td{padding-left:25px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] :is(h3,marp-h3) em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-V0VYHt41] tr em{font-style:normal;font-family:monospace;font-size:20px;float:right;color:gray}div#\:\$p>svg>foreignObject>section[data-marpit-scope-dbg8CFmK] :is(h3,marp-h3){break-before:column;column-span:all;font-size:40px;margin-bottom:10px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-dbg8CFmK] td{font-size:28px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-dbg8CFmK] td:first-child{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-dbg8CFmK] em{float:right;font-size:22px;color:darkblue;text-align:right}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] img{scale:.25;top:-845px;position:fixed;margin-left:-1270px;border:1px solid black}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] table{margin-top:-35px;width:50%;float:left}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] td{font-size:20px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] td:first-child{font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] tr:nth-child(8){background:yellow}div#\:\$p>svg>foreignObject>section[data-marpit-scope-6mYw19vf] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] :is(h3,marp-h3){break-before:column;column-span:all;font-size:22px;text-align:center}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] table{margin-bottom:-52px;width:106%;margin-left:-20px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] tr:first-child{text-align:center;font-weight:bold}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] td{font-size:16px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] em{background:cyan}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] strong{font-weight:normal;background:yellow}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] img{height:250px;width:500px;margin-left:-20px;margin-top:20px;z-index:2;margin-bottom:-80px;border:1px solid black}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] img:nth-child(3){float:left;position:fixed;left:580px;top:268px ;height:340px;width:700px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-5j1Nf8VG] footer{margin-right:-450px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-JRxm7R7v] :is(h3,marp-h3){font-size:30px;text-align:center}div#\:\$p>svg>foreignObject>section[data-marpit-scope-7ac2lxzN] tr *{font-size:21px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-7ac2lxzN] tr div#\:\$p>svg>foreignObject>section section{--marpit-root-font-size:21px}div#\:\$p>svg>foreignObject>section[data-marpit-scope-7ac2lxzN] strong{float:right;font-size:20px}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=content],div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#\:\$p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#\:\$p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="1" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h2 id="equinoctial-full-moon-of-brahm%C4%81%E1%B9%87%E1%B8%8Da-pur%C4%81%E1%B9%87a-and-the-solar-nak%E1%B9%A3atra-zodiac-starting-from-the-summer-solstice">Equinoctial Full Moon of Brahmāṇḍa Purāṇa and the solar nakṣatra zodiac starting from the summer solstice</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>R. N. Iyengar &amp; Sunder Chakravarty
+CAHC , Jain University, Bangalore
+</code></pre>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-marpit-scope-v2pDlz2G="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="2" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="abbreviations">Abbreviations</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:right">BP</td>
+<td style="text-align:left">Brahmāṇḍa Purāṇa</td>
+</tr>
+<tr>
+<td style="text-align:right">LVJ</td>
+<td style="text-align:left">Lāgdha Vedāṅga Jyotiṣa</td>
+</tr>
+<tr>
+<td style="text-align:right">MAU</td>
+<td style="text-align:left">Maitrāyṇīya Āraṇyaka Upaniṣat <em>of yajurveda</em></td>
+</tr>
+<tr>
+<td style="text-align:right">NS</td>
+<td style="text-align:left">Nidāna Sūtra  <em>an ancillary Brāhmaṇa text (anubrāhmaṇaṁ) of the Sāmaveda</em></td>
+</tr>
+<tr>
+<td style="text-align:right">RV</td>
+<td style="text-align:left">Ṛgveda</td>
+</tr>
+<tr>
+<td style="text-align:right">TB</td>
+<td style="text-align:left">Taittirīya Brāhmaṇa</td>
+</tr>
+<tr>
+<td style="text-align:right"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:right">AE</td>
+<td style="text-align:left">Autumn Equinox <em>mid of śarat</em></td>
+</tr>
+<tr>
+<td style="text-align:right">FM</td>
+<td style="text-align:left">Full Moon <em>implies Equinoctial Full Moon in this paper</em></td>
+</tr>
+<tr>
+<td style="text-align:right">SE</td>
+<td style="text-align:left">Spring Equinox <em>mid of vasanta</em></td>
+</tr>
+<tr>
+<td style="text-align:right">SS</td>
+<td style="text-align:left">Summer Solstice <em>MAU year start</em></td>
+</tr>
+<tr>
+<td style="text-align:right">WS</td>
+<td style="text-align:left">Winter Solstice <em>LVJ year start</em></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-marpit-scope-ueSCxLFS="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="3" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="gist">Gist</h3>
+<h4 id="given">Given</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><strong>BP</strong> verses specifies the spring and autumnal <strong>equinoctial full moons</strong> using <em>Kṛttikā and Viśākhā nakṣatras</em></td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">The <strong>MAU</strong> verses specifies the <strong>Maghādi</strong>  scheme - <em>the start nakṣatra Maghā heralds the summer solstice</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="we-show">We show</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left"><strong>BP equinoctial FM</strong> observations are <strong>consistent</strong> with the <strong>solsticial Māghadi of MAU</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left"><em>MAU/BP summer solstice(SS) Māghadi</em> scheme is a <strong>precusor</strong> to <em>LVJ winter solstice(WS) Śraviṣṭhādi</em> scheme</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">BP <strong>equinoctial FM</strong> verses date to 1700-1600 BCE</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left"><strong>Vedic texts</strong> and some of the <strong>Purāṇas</strong>  do contain source material for mapping the <strong>history of Indian astronomy and mathematics</strong> before the advent of siddhānta astronomy in the early centuries of the Common Era.</td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-marpit-scope-XRrwWUZP="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="4" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="brahm%C4%81%E1%B9%87%E1%B8%8Da-pur%C4%81%E1%B9%87a-bp-21143-149"><a href="https://raw.githubusercontent.com/cahcblr/sanchaya/main/Puranani/brahmanda%20purana.txt">Brahmāṇḍa Purāṇa <em>BP 21.143-149</em></a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>शरद्वसंतयोर्मध्ये मध्यमां गतिमास्थितः । अतस्तुल्यमहोरात्रं करोति तिमिरापहः ॥</td>
+</tr>
+<tr>
+<td>In <em>mid autumn and spring</em> having attained moderate pace, <em>the sun</em>, remover of darkness, therefore <em>makes day and night equal</em>.</td>
+</tr>
+<tr>
+<td>हरिताश्च हया दिव्यास्तस्य युक्ता महारथे । अनुलिप्ता इवाभान्ति पद्मरक्तैर्गभस्तिभिः ॥</td>
+</tr>
+<tr>
+<td>The divine yellow horses, yoked to his great chariot, shine like covered with the lotus-red rays.</td>
+</tr>
+<tr>
+<td>मेषान्ते च तुलान्ते च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहो रात्रिश्च तावती ॥</td>
+</tr>
+<tr>
+<td>The hours of the day and night are reckoned as ten and five muhūrtas from the rising of the sun at the end of meshā and tulā</td>
+</tr>
+<tr>
+<td>कृत्तिकानां यदा सूर्यः प्रथमांशगतो भवेत् । विशाखानां तदा ज्ञेयश्चतुर्थांश निशाकरः ॥ <em>(more specific)</em></td>
+</tr>
+<tr>
+<td>When the <em>sun is in the first part of kṛttikā</em>, know the <em>moon is in the fourth part of viśākhā</em></td>
+</tr>
+<tr>
+<td>विशाखानां यदा सूर्यश्चरतेंशं तृतीयकम् । तदा चन्द्रं विजानीयात्कृत्तिकाशिरसि स्थितम् ॥ <em>(less specific)</em></td>
+</tr>
+<tr>
+<td>When the <em>sun is in the third part of viśākhā</em>, know the <em>moon is in the head of kṛttikā</em></td>
+</tr>
+<tr>
+<td>विषुवं तं विजानीयादेवमाहुर्महर्षयः । सूर्येण विषुवं विद्यात्कालं सोमेन लक्षयेत् ॥</td>
+</tr>
+<tr>
+<td>It is then understood to be equinox - so say the maharishis. Equinox is known through the sun and time by the moon</td>
+</tr>
+<tr>
+<td>समा रात्रिरहश्चैव यदा तद्विषुवं भवेत् । तदा दानानि देयानि पितृभ्यो विषुवेषु च ॥</td>
+</tr>
+<tr>
+<td><em>When equinox occurs, night and day are equal</em>. Then during equinoxes offerings are made to piṭṛs</td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="5" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;bp-%E0%A5%A8%E0%A5%A7-%E0%A5%A7%E0%A5%AA%E0%A5%A8-%E0%A5%A7%E0%A5%AA%E0%A5%AF-devanaagari.jpeg&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="5" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;" data-marpit-advanced-background="content">
+<h3 id="brahm%C4%81%E1%B9%87%E1%B8%8Da-pur%C4%81%E1%B9%87a-bp-%E0%A5%A8%E0%A5%A7%E0%A5%A7%E0%A5%AA%E0%A5%A8-%E0%A5%A7%E0%A5%AA%E0%A5%AF"><a href="https://archive.org/details/BrahmandaMahapuranEdByDr.KVSharmaKrishnaDasAcademy/page/n158/mode/1up">Brahmāṇḍa Purāṇa <em>BP २१.१४२-१४९</em></a></h3>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="5" data-marpit-pagination-total="15" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-marpit-scope-wwjnqSOA="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="6" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="other-pur%C4%81%E1%B9%87a-verses-on-equinoctial-full-moon---similar-context--some-differences">Other Purāṇa verses on equinoctial full moon - similar context + some differences</h3>
+<p><strong>brahmānda purāṇa</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>यत्तद्वै पूर्वतः शृङ्गं तदर्कः प्रतिपद्यते । शरद्वसंतयोर्मध्ये मध्यमां गतिमास्थितः ॥ १,२१.१४२ ॥</td>
+</tr>
+<tr>
+<td>अतस्तुल्यमहोरात्रं करोति तिमिरा पहः । हरिताश्च हया दिव्यास्तस्य युक्ता महारथे । अनुलिप्ता इवाभान्ति पद्मरक्तैर्गभस्तिभिः ॥ १,२१.१४३ ॥</td>
+</tr>
+<tr>
+<td><em>मेषति च तुलान्ते</em> च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहो रात्रिश्च तावती ॥ १,२१.१४४ ॥</td>
+</tr>
+<tr>
+<td>कृत्तिकानां यदा सूर्यः प्रथमां शगतो भवेत् । विशाखानां तदा ज्ञेयश्चतुर्थांश निशाकरः ॥ १,२१.१४५ ॥</td>
+</tr>
+<tr>
+<td>विशाखानां यदा सूर्यश्चरतेंशं तृतीयकम् । तदा चन्द्रं विजानीयात्कृत्तिकाशिरसि स्थितम् ॥ १,२१.१४६ ॥</td>
+</tr>
+<tr>
+<td><em>विषुवं तं</em> विजानीयादेवमाहुर्महर्षयः ॥ १,२१.१४७ ॥</td>
+</tr>
+<tr>
+<td>सूर्येण विषुवं विद्या त्कालं सोमेन लक्षयेत् । समा रात्रिरहश्चैव यदा तद्विषुवं भवेत् ॥ १,२१.१४८ ॥</td>
+</tr>
+<tr>
+<td>तदा दानानि देयानि पितृभ्यो <em>विषुवेषु च</em> । ब्राह्मणेभ्यो विशेषेण मुखमेतत्तु दैवतम् ॥ १,२१.१४९ ॥</td>
+</tr>
+</tbody>
+</table>
+<p><strong>vāyu purāṇa</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>शरद्वसन्तयोर्मध्ये मध्यमां गतिमास्थितः। अहस्तुल्यामथो रात्रिं करोति तिमिरापहः ॥193॥</td>
+</tr>
+<tr>
+<td>हरिताश्च हया दिव्यास्ते नियुक्ता महारथे। अनुलिप्ता इवाभान्ति पझरक्तैर्गभस्तिभिः ॥194॥</td>
+</tr>
+<tr>
+<td><em>मेषान्ते च तुलान्ते</em> च भास्करोदयतः स्मृताः । मुहूर्त्ता दश पञ्चैव अहोरात्रिश्च तावती ॥195॥</td>
+</tr>
+<tr>
+<td>कृत्तिकानां यदा सूर्यः प्रथमांशगतो भवेत् । विशाखानां तथा ज्ञेयश्चतुर्थांशे निशाकरः॥ 50.196॥</td>
+</tr>
+<tr>
+<td>विशाखायां यदा सूर्य श्च्रतेंऽशं तृतीयकम्। तदा चन्द्रं विजानीयात् कृत्तिकाशिरसि स्थितम् ॥197॥</td>
+</tr>
+<tr>
+<td><em>विषुवन्तं</em> तदा विद्यादेवमाहुर्महर्षयः। सूर्येण विषुवं विद्यात् कालं सोमेन लक्षयेत् ॥198॥</td>
+</tr>
+<tr>
+<td>समा रात्रिरहश्चैव यदा तद्विषुवद्भवेत्। तदा दानानि देयानि पितृभ्यो <em>विषुवत्यपि</em>। ब्राह्मणेभ्यो विशेषेण मुखमेतत्तु दैवतम् ॥199॥</td>
+</tr>
+</tbody>
+</table>
+<p><strong>viṣṇu purāṇa</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>शरद्वसंतयोर्मध्ये तद्भानुः प्रतिपद्यते  । <em>मेषादौ च तुलादौ</em> च मैत्रेय विषुवं स्मृतम्  ॥ २,८.७४ ॥</td>
+</tr>
+<tr>
+<td>तदा तुल्यमहोरात्रं करोति तिमिरापहः  । दशपञ्च मुहूर्तं वै तदेतदुभयं स्मृतम्  ॥ २,८.७५ ॥</td>
+</tr>
+<tr>
+<td>प्रथमे कृत्तिकाभागे यदा भास्वांस्तदा शशी  । विशाखानां चतुर्थेऽंशे मुने तिष्ठत्यसंशयम्  ॥ २,८.७६ ॥</td>
+</tr>
+<tr>
+<td>विशाखानां यदा सूर्यश्चरत्यंशं तृतीयकम । तदा चन्द्रं विजानीयात्कृत्तिकाशिरसि स्थितम्  ॥ २,८.७७ ॥</td>
+</tr>
+<tr>
+<td>तदैव विषुवाख्योऽयं कालः पुण्योऽभिधीयते  । तदा दानादि देयानि <em>देवेभ्यः प्रयतात्मभिः</em>  ॥ २,८.७८ ॥</td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-marpit-scope-Sh4zuaGr="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="7" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="exploring-the-bp-verses">Exploring the BP verses</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per nidāna sūtra 5.12 <br />   • Sun spends <em>13 and 5/9 days eqaully</em> with each naḳsatra  <br />   • The sun completes one trip through the 27 nakṣatras in 366 days</td>
+</tr>
+<tr>
+<td>We model each naḳsatra sector equally to be 1/27th part of the naḳshtra circle  <em>366 days = 360°</em></td>
+</tr>
+<tr>
+<td>The <strong>BP</strong> verses specify the spring and autumnal equinoctial full moons using Kṛttikā and Viśākhā nakṣatras. This information enables us to date the verses.</td>
+</tr>
+<tr>
+<td>We collect FM longitudes that occur near the equinoxes from 2400BCE to 0BCE.<br /> There are about 7 such events a century for each equinox</td>
+</tr>
+<tr>
+<td>We mark the <strong>Kṛttikā and Viśākhā sectors</strong> such that equinoxes are at ¼ kṛttikā and ¾ viśākhā.</td>
+</tr>
+<tr>
+<td>We collect the <strong>visible Kṛttikā(η Tau) and Viśākhā(α Lib)</strong> longitudes adjusted for precession from 2400BCE to 0BCE.</td>
+</tr>
+<tr>
+<td>The references to Meṣa and Tulā are anachronistic, possibly a later interpolation, and are not used in the analysis.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="the-findings">The Findings</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>• 1980-1610 BCE</strong> : The <em>visible Kṛttikā &amp; Viśākhā</em> are <em>contained in their respective sectors</em></td>
+</tr>
+<tr>
+<td><strong>• 1700-1610 BCE</strong> : The equinoctial <em>FM  at ¾ viṣākhā sector is nearest to visible viśākhā</em></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-marpit-scope-fRX3plwT="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="8" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="dates-of-equinoctial-full-moons-in-bp---1700-1610-bce">Dates of Equinoctial Full Moons in BP - <em>~1700-1610 BCE</em></h3>
+
+<p><img src="bp-equinoctial-full-moon-better.jpeg" alt="" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Axes</td>
+<td style="text-align:left">BCE years on the x-axis and longitudes/nakṣatra sectors on the y-axis</td>
+</tr>
+<tr>
+<td style="text-align:right">Green Dots</td>
+<td style="text-align:left"><strong>Equinoctial Full Moons</strong></td>
+</tr>
+<tr>
+<td style="text-align:right">Red Sector</td>
+<td style="text-align:left">Extent of <strong>Kṛttikā sector</strong> containing SE <em>(Sun at 0°)</em> in its 1st amśa</td>
+</tr>
+<tr>
+<td style="text-align:right">Blue Sector</td>
+<td style="text-align:left">Extent of <strong>Viśākhā sector</strong> containing AE <em>(Sun at 180°)</em> in its 3rd amśa</td>
+</tr>
+<tr>
+<td style="text-align:right">Sloping Red/Blue</td>
+<td style="text-align:left"><strong>Visible Kṛttikā/Viśākhā longitudes</strong> adjusted for <em>precession</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Light Gray Band</td>
+<td style="text-align:left">Epoch for  <strong>visible Kṛttikā/Viśākhā</strong> are in <strong>their respective sectors</strong> ~<em>1980-1610 BCE</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Dark Gray Band</td>
+<td style="text-align:left">Epoch for <strong>AE FM at 4th amśa of Viśākhā closest to visble Viśākhā</strong> ~<em>1700-1610 BCE</em></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-scope-XZp6qsAp="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="9" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="maitr%C4%81ya%E1%B9%87%C4%ABya-%C4%81ra%E1%B9%87yaka-upani%E1%B9%A3at-mau-614"><a href="https://github.com/cahcblr/sanchaya/blob/647880cd98978d739d122a9a6b7069a4d56c6f3d/Vedic%20texts/YV/MAU-text.txt#L2">Maitrāyaṇīya Āraṇyaka Upaniṣat <em>MAU 6.14</em></a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>सूर्यो योनिः कालस्य तस्य एतद्रूपं ।</td>
+</tr>
+<tr>
+<td>Sun and Time are contemporaries</td>
+</tr>
+<tr>
+<td>यन्निमेषादि कालात्संभृतं द्वादशात्मकं वत्सरम् ।</td>
+</tr>
+<tr>
+<td>वत्सरः(year) has 12 parts and <br /> is filled with time units starting with निमेषा(eye wink)</td>
+</tr>
+<tr>
+<td>एतस्याग्नेयमर्धमर्घं वारुणम् ।</td>
+</tr>
+<tr>
+<td>Year's first half is आग्नेयः(Āgneya) and <br />the second half is वारुणः(Varuṇa)</td>
+</tr>
+<tr>
+<td><em>मघाद्यं श्रविष्ठार्धमाग्नेयं</em> क्रमेणोत्क्रमेण सार्पाद्यं श्रविष्ठार्धान्तं सौम्यम् ।</td>
+</tr>
+<tr>
+<td><em>Āgneya - from मघादि (Maghā start) to श्रविष्ठार्धः(half of Śraviṣṭhā)</em> <br /> Varuṇa - from सार्पादि(Sārpā start) to श्रविष्ठार्धान्तः(end of half of Śraviṣṭhā) in counter order</td>
+</tr>
+<tr>
+<td>तत्र एकमात्मनो <em>नवांशकं</em> सचारकविधम् ।</td>
+</tr>
+<tr>
+<td>In each part, the Sun traverses 9 amṣa( portions) in order <strong>9 amṣa(portion) for each of the 12 year parts implies each nākshatra has 4 amṣa</strong></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-marpit-scope-V0VYHt41="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="10" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="nid%C4%81nas%C5%ABtra-ns-512"><a href="https://archive.org/details/in.ernet.dli.2015.408135/page/n173/mode/2up?view=theater">Nidānasūtra  <em>NS 5.12</em></a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>स एष नाक्षत्रः आदित्यसंवत्सरो । <em>सः एषः नाक्षत्रः आदित्यसंवत्सरः ।</em></td>
+</tr>
+<tr>
+<td>This is the nakṣatra year of the sun</td>
+</tr>
+<tr>
+<td>आदित्यः खलु शश्वदेतावद्भिरहोभिर्नक्षत्राणि समवैति । <em>आदित्यः खलु शश्वत्  एतावत्भिः अहोर्भिः नक्षात्राणि समवैति ।</em></td>
+</tr>
+<tr>
+<td>The sun, indeed, with these many days, stays with each nakṣatras</td>
+</tr>
+<tr>
+<td>त्रयोदशाहं त्रयोदशाहमेकैकं नक्षत्रमुपतिष्ठति। <em>त्रयोदशाहं त्रयोदशाहम  एकैकं नक्षत्रम् उपतिष्ठति ।</em></td>
+</tr>
+<tr>
+<td>The sun spends <strong>13 days</strong> with each nakṣatra</td>
+</tr>
+<tr>
+<td>अहस्तृतीयं च नवधा कृतयोरहोरात्रयोर्द्वे द्वे कले चेति संवत्सराः। <em>अहः तृतीयं च नवधा कृतयोः अहोरात्रयोः  द्वे द्वे कले चेति संवत्सराः ।</em></td>
+</tr>
+<tr>
+<td>अहोरात्रि/3 + (2* अहः +  2* रात्रि)/9 =  <strong>5 अहोरात्रि/9</strong>  <em>13 and 5/9 days with each nakṣatra</em></td>
+</tr>
+<tr>
+<td>ताश्चत्वारिंशच्चतुःपञ्चाशतं कलाः। <em>ताः चत्वारिंशत् चतुःपञ्चाशतं कलाः ।</em></td>
+</tr>
+<tr>
+<td>???? Those are 40 and/times 54 kalās</td>
+</tr>
+<tr>
+<td>ते षण्णववर्गाःसषट्षष्टित्रिशतः ॥ <em>ते षट् नव वर्गाः सः षट्षष्टिः त्रिशतः ॥</em></td>
+</tr>
+<tr>
+<td>???? These are 6*9 vargās and 366</td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-scope-dbg8CFmK="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="11" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="magh%C4%81---summer-solstice-nak%E1%B9%A3atra-with-6-stars">Maghā - Summer Solstice Nakṣatra with 6 stars</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">MAU</td>
+<td>First nakṣatra of the Āgneya half of the year</td>
+</tr>
+<tr>
+<td style="text-align:right">TB 3.1.4</td>
+<td>मघाभ्यः पुरोडाशं षट्कपालम्  <em>6 bowls indicating the 6 stars of the asterism</em></td>
+</tr>
+<tr>
+<td style="text-align:right">RV 1.7.3</td>
+<td>इन्द्रो  दीर्घाय चक्षस आ  सूर्यं  रोहयद्दिवि ।<br /> वि गोभिः अद्रिमैरयत्  <em>Indra raised the sun for a long time.<br /> Heralding summer solstice</em></td>
+</tr>
+<tr>
+<td style="text-align:right">RV 10.23.2</td>
+<td>इन्द्रो  मघैः मघवान् वृत्रहा  अभुवत्  <em>Lord of dark clouds Indra killed Vṛtta.</em> <em>Indra released water from the dark clouds hailing varśa ṛtu</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Sūrya candra<br />prajñapti</td>
+<td>Visible nakṣatra maghā made up of six stars  identified as the group Leo(α,ζ,μ,γ,η,ε).</td>
+</tr>
+<tr>
+<td style="text-align:right">Summer Solstice visibility</td>
+<td>α Leo (maghānta) at 2350BCE ±100<br /> ε Leo (maghādi) at 1800BCE  ±100 <em>If a star has +5° alt <br />when Sun is at -8° alt <br />it is taken as visible</em></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-scope-6mYw19vf="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="12" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="bp-inherits-the-magh%C4%81di-scheme-of-mau">BP inherits the Maghādi scheme of MAU</h3>
+<p><img src="./mau-magha-scheme.jpeg" alt="" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Chart</td>
+<td style="text-align:left">Nakṣatra sectors, Visible nakṣatras, Seasons, Equioctial FM vs day(sunrise) count for <em>1700BCE</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Dial</td>
+<td style="text-align:left">Represents one journey of sun through the 27 nakṣatras - <em>366 days</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Seasons</td>
+<td style="text-align:left">6 seasons each of <em>61 days</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Nakṣatra Sectors</td>
+<td style="text-align:left">The dial has 27 nakṣatra sectors, each of <em>13 and 5/9 days</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Visible Nakṣatras</td>
+<td style="text-align:left">Cardinal (magha, viśākhā, śraviṣṭa and kṛittikā)  highlighted red inside the dial</td>
+</tr>
+<tr>
+<td style="text-align:right">Maghā</td>
+<td style="text-align:left"><strong>Summer solstice</strong> nakṣatra spans day 1 to 14 starting with <strong>ε Leo</strong> being <strong>SS point on day 1</strong> - good candidate for <em>maghādi</em></td>
+</tr>
+<tr>
+<td style="text-align:right">Śraviṣṭā</td>
+<td style="text-align:left"><strong>Winter solstice</strong> nakṣatra spans day 176 to 189 starting with <strong>β Aqr</strong> begin the <strong>WS point on day 183</strong> - good candidate for <em>śraviṣṭhārdha</em></td>
+</tr>
+<tr>
+<td style="text-align:right">BP MAU Agreement</td>
+<td style="text-align:left"><strong>BP equinoctial FM</strong> at ¼ kṛittikā and ¾ viṣakhā  are <strong>consistent</strong> with the <strong>solsticial Māghadi of MAU</strong></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-scope-5j1Nf8VG="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="13" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="evolution-of-the-seasonal-nak%E1%B9%A3atra-cyclebrevolution-from-the-magh%C4%81di-scheme-of-mau-to-the-%C5%9Bravi%E1%B9%A3%E1%B9%ADh%C4%81rdha-scheme-of-lvj">Evolution of The Seasonal Nakṣatra Cycle<br />evolution from the <em>maghādi</em> scheme of MAU to the <em>śraviṣṭhārdha</em> scheme of LVJ</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">bce</td>
+<td style="text-align:left">दक्षिणायन/SS</td>
+<td style="text-align:left">शरत्/AE</td>
+<td style="text-align:left">उत्तरायण/WS</td>
+<td style="text-align:left">वसन्त/SE</td>
+</tr>
+<tr>
+<td style="text-align:right">2400</td>
+<td style="text-align:left">Sun @ maghānta (α Leo) <strong>MAU early</strong></td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">Sun@visibleKṛittikā</td>
+</tr>
+<tr>
+<td style="text-align:right">1700</td>
+<td style="text-align:left">Sun @ maghādi (ε Leo) <strong>MAU</strong></td>
+<td style="text-align:left">FullMoon@ ¾viṣakhā<br />Sun@ ¼ kṛittikā <em>BP</em></td>
+<td style="text-align:left">Sun @ śraviṣṭhārdha (β Sgr)</td>
+<td style="text-align:left">FullMoon@ headKṛittikā<br />Sun@ ¾ viṣakhā <em>BP</em></td>
+</tr>
+<tr>
+<td style="text-align:right">1300</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">Sun @ śraviṣṭhādi (β Del) <strong>LVJ</strong></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><img src="./ndial_kuru_01_-2400.jpeg" alt="" /><br />
+<img src="./ndial_kuru_08_-1700.jpeg" alt="" /><br />
+<img src="./ndial_kuru_12_-1300.jpeg" alt="" /></p>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-marpit-scope-JRxm7R7v="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="14" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;./ndial_1.gif&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="14" data-marpit-scope-JRxm7R7v="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="14" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;" data-marpit-advanced-background="content">
+<h3 id="seasonal-nak%E1%B9%A3atra-cycle-animation-from-2400-bce-to-1000-bce"><a href="https://raw.githubusercontent.com/suchakr/cahc-utils/sunder_experiments/presentations/equinoctial-full-moon/ndial_1.gif">Seasonal Nakṣatra Cycle Animation from 2400 BCE to 1000 BCE</a></h3>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-marpit-scope-JRxm7R7v="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="14" data-marpit-pagination-total="15" style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-marpit-scope-7ac2lxzN="" data-paginate="true" data-background-color="#fff" data-footer="Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore" data-theme="gaia" data-style="section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+" data-marpit-pagination="15" data-marpit-pagination-total="15" style="--paginate:true;--background-color:#fff;--footer:Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore;--theme:gaia;--style:section.lead { text-align: center; color:navy}  
+pre { opacity:.7; }
+h1 , h2 , h3 { color:blue; margin-top: -60px!important;} 
+ul, li { font-size: 25px; margin-left: -600px; xcolor:blue}  
+li:nth-child(odd) { background: #E8E8E8; } li:nth-child(even) { background: #F8F8F8; }
+th { display: none; }
+table { margin-top: -1px; }
+footer{ text-align: center;  margin-bottom: -25px; color: silver; font-size: 16px  }
+tr:nth-child(odd) { background: #E8E8E8;   }
+tr:nth-child(even) { background: #F8F8F8;  }
+h3 { break-before: column;  column-span: all;  margin-bottom: -1px; }
+;background-color:#fff;background-image:none;">
+<h3 id="references">References</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">#</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td><strong>Abhyankar, K. D. (1991)</strong><a href="https://github.com/suchakr/cahc-utils/blob/main/papers/naks/naks-1991-abyn-misidentified-naks.pdf">Misidentification of some Indian nakṣatras. Indian Journal of History of Science, 26(1), 1–10.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td><strong>Das P. (2018)</strong> <a href="https://tulsibooks.com/product/bhagavata-cosmology-vedic-alternative-to-modern-cosmology/">Bhāgavata Cosmology; Vedic Alternative to Modern Cosmology, Tulsi Books, Mumbai.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td><strong>Gondalekhar, P. (2013)</strong> <a href="https://www.amazon.in/Time-Keepers-Vedas-History-Calendar/dp/8173049696">The time keepers of the Vedas. Manohar. [ISBN 978-81-7304-969- 9].</a></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><strong>Iyengar, R. N. (2013)</strong> <a href="https://www.amazon.in/Time-Keepers-Vedas-History-Calendar/dp/8173049696">Parāśara Tantra (Ed. Trans &amp; Notes). Jain University Press. [ISBN 978-81-9209-924-8].</a></td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td><strong>Iyengar R.N. (2016)</strong> Astronomy in Vedic texts,(Book Chapter pp.107-169).<br />History of Indian Astronomy A Handbook, (Ed. K.Ramsubramanian, A.Sule &amp;M. Vahia)<br /> Publn. by IITB and TIFR, Mumbai.</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td><strong>Iyengar R.N. and <br />Chakravarty, S (2021)</strong> <a href="https://github.com/suchakr/cahc-utils/blob/main/papers/vgj/vgj-2022-01-rni-sc-sun-transit.pdf">Transit of sun through the seasonal nakṣatra cycle in the Vṛddha‐Gārgīya Jyotiṣa, Indian Journal of History of Science 56:159–170.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td><strong>Koch D. (2014)</strong> <a href="https://www.gilgamesh.ch/KochMahabharata6x9_V1.00.pdf">Astronomical dating of the Mahābhārata war. Erlenbach, Switzerland</a></td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td><strong>Sastry T. S. K. (1984)</strong> <a href="https://github.com/suchakr/cahc-utils/blob/main/papers/lvj/lvj-1984-kuppanna.pdf">Vedāṅga Jyotiṣa of Lagadha. Indian Journal of History of Science, 19 (4), l–74.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td><strong>Sengupta, P. C. (1947)</strong> <a href="https://indianculture.gov.in/ebooks/ancient-indian-chronology-illustrating-some-most-important-astronomical-methods">Ancient Indian Chronology. Univ. of Calcutta.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td><strong>Srinivas M.D. (2019)</strong> <a href="https://www.researchgate.net/profile/M-Srinivas/publication/336438227_The_Untapped_Wealth_of_Manuscripts_on_Indian_Astronomy_and_Mathematics/links/602b2bd94585158939a94482/">The Untapped Wealth of Manuscripts on Indian Astronomy and Mathematics Indian Journal of History of Science, 54.3, 243-268.</a></td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td><strong>Thompson R. L. (2007)</strong> <a href="https://www.motilalbanarsidass.com/products/the-cosmology-of-the-bhagavata-purana-mysteries-of-the-sacred-universe">The Cosmology of the Bhāgavata Purāṇa (Indian Edn.) Motilal Banarsidass, Delhi.</a></td>
+</tr>
+</tbody>
+</table>
+<footer>Equinoctial Full Moons in BP, CAHC , Jain University, Bangalore</footer>
+</section>
+<script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver(((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()}))}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var t,s,o,r,a;this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=null!==(t=this.shadowRoot.querySelector(`div[${e}]`))&&void 0!==t?t:void 0;const l=this.svg;this.svg=null!==(o=null===(s=this.wrapper)||void 0===s?void 0:s.querySelector(`svg[${i}]`))&&void 0!==o?o:void 0,this.svg!==l&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=null!==(a=null===(r=this.svg)||void 0===r?void 0:r.querySelector(`span[${n}]`))&&void 0!==a?a:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame((()=>{t.style.display=""})))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){var t,e,i,n,s,o,r;let a=Math.ceil(null!==(e=null===(t=this.containerSize)||void 0===t?void 0:t.width)&&void 0!==e?e:0);const l=Math.ceil(null!==(n=null===(i=this.containerSize)||void 0===i?void 0:i.height)&&void 0!==n?n:0);void 0!==this.dataset.downscaleOnly&&(a=Math.max(a,null!==(o=null===(s=this.wrapperSize)||void 0===s?void 0:s.width)&&void 0!==o?o:0));const c=null===(r=this.svg)||void 0===r?void 0:r.querySelector(":scope > foreignObject");if(null==c||c.setAttribute("width",`${a}`),null==c||c.setAttribute("height",`${l}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${a} ${l}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=a<=0||l<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const o=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const t=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:n}=this.dataset;if(void 0!==n){e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===n?"data-downscale-only":""}>${e}</marp-auto-scaling>`}this.shadowRoot.innerHTML=t+e}};let r;const a=Symbol();let l;const c="marpitSVGPolyfill:setZoomFactor,",d=Symbol(),g=Symbol();const h=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[u]:[],i={then:e=>(t?(async()=>{if(void 0===l){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise((t=>{i.addEventListener("load",(()=>t()))}));i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),l=e.getImageData(5,5,1,1).data[3]<128}return l})().then((t=>{null==e||e(t?[u]:[])})):null==e||e([]),i)};return Object.assign(e,i)};let p,m;function u(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",(({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(c)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(m=i)}}catch(t){console.error(t)}})));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,s,o,r;t.style.transform||(t.style.transform="translateZ(0)");const a=i||m||t.currentScale||1;p!==a&&(p=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(r=null===(o=n.y)||void 0===o?void 0:o.baseVal.value)&&void 0!==r?r:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}})),!1!==n&&Array.from(e.querySelectorAll("iframe"),(({contentWindow:t})=>{null==t||t.postMessage(`${c}${n}`,"null"===window.origin?"*":window.origin)}))}function v({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[d])return t[d];let e=!0;const i=()=>{e=!1,delete t[d]};Object.defineProperty(t,d,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await h()}finally{s=!0}})();const o=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(o)};return o(),i}(e);return t?(i(),()=>{}):i}p=1,m=void 0;const b=Symbol(),w=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,a=t[n].proto();null!=r||(r=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),r&&a!==HTMLElement?i||customElements.define(s,o(a,{style:t[n].style}),{extends:n}):(i||customElements.define(s,o(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach((t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)})))}window[a]=!0})(e),e[b])return e[b];const i=v({target:e}),n=()=>{i(),delete e[b]},l=Object.assign(n,{cleanup:n,update:()=>w(e)});return Object.defineProperty(e,b,{configurable:!0,value:l}),l},y=document.currentScript;w(y?y.getRootNode():document)}();
+</script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="1" tabindex="0"><p>AB - Aitareya Brāhmaṇa
+PT - Pārashara Tantra, RV - Ṛgveda
+TS - Taittirīya Saṃhitā, 
+VGJ - Vṛddha-Gārgīya Jyotiṣa
+VP - Viṣṇu Purāṇa
+ŚB - Śatapatha Brāhmaṇa</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@3.2.0/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,(function(e){return"SCRIPT"!==e.nodeName})),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter((function(e){return e!==t}))},l=function(e,t){return(i[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach((function(e){e(u)})),n||c(0),u}},n=e(t);const r=document.body,o=(...e)=>history.replaceState(...e),i="presenter",a="next",s=["",i,a],l="bespoke-marp-",c=`data-${l}`,d=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},u=()=>r.dataset.bespokeView,f=e=>new URLSearchParams(location.search).get(e),m=(e,t={})=>{var n;const r={location,setter:o,...t},i=new URLSearchParams(r.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?i.set(t,n):i.delete(t)}try{r.setter({...null!==(n=window.history.state)&&void 0!==n?n:{}},"",d(i,r.location))}catch(e){console.error(e)}},g=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})(),p=e=>{try{return localStorage.getItem(e)}catch(e){return null}},v=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch(e){return!1}},h=e=>{try{return localStorage.removeItem(e),!0}catch(e){return!1}},y=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},b=e=>{e.parent.classList.add(`${l}parent`),e.slides.forEach((e=>e.classList.add(`${l}slide`))),e.on("activate",(t=>{const n=`${l}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach((e=>{e.classList.remove(n),y(e,!0)})),o.add(n),y(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}}))},w=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${c}fragment`,(i?"":"in")+"active");const a=`${c}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)}))})),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",(({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}})),e.on("prev",(({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)})),o(0,0)},x=document,k=()=>!(!x.fullscreenEnabled&&!x.webkitFullscreenEnabled),$=()=>!(!x.fullscreenElement&&!x.webkitFullscreenElement),E=e=>{e.fullscreen=()=>{k()&&(async()=>{return $()?null===(e=x.exitFullscreen||x.webkitExitFullscreen)||void 0===e?void 0:e.call(x):((e=x.body)=>{var t;return null===(t=e.requestFullscreen||e.webkitRequestFullscreen)||void 0===t?void 0:t.call(e)})();var e})()},document.addEventListener("keydown",(t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!k()||(e.fullscreen(),t.preventDefault())}))},L=`${l}inactive`,S=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout((()=>{r.add(L),o()}),e),r.contains(L)&&(r.remove(L),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},P=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],_=e=>{e.parent.addEventListener("keydown",(e=>{if(!e.target)return;const t=e.target;(P.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()}))},T=e=>{window.addEventListener("load",(()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${c}load`,e?"":"hideable")}}))},I=({interval:e=250}={})=>t=>{document.addEventListener("keydown",(e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()}));let n,r,o=0;t.parent.addEventListener("wheel",(i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),(null==e?void 0:e.parentElement)&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout((()=>{n=0}),e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())}))},M=(e=`.${l}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${c}osc=${JSON.stringify(e)}]`).forEach(n)};return k()||n("fullscreen",(e=>e.style.display="none")),g||n("presenter",(e=>{e.disabled=!0,e.title="Presenter view is disabled due to restricted localStorage."})),e=>{t.addEventListener("click",(t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?null==e||e.fullscreen():"presenter"===n&&e.openPresenterView()}})),e.parent.appendChild(t),e.on("activate",(({index:t})=>{n("page",(n=>n.textContent=`Page ${t+1} of ${e.slides.length}`))})),e.on("fragment",(({index:t,fragments:r,fragmentIndex:o})=>{n("prev",(e=>e.disabled=0===t&&0===o)),n("next",(n=>n.disabled=t===e.slides.length-1&&o===r.length-1))})),e.on("marp-active",(()=>y(t,!1))),e.on("marp-inactive",(()=>y(t,!0))),k()&&(e=>{for(const t of["","webkit"])x.addEventListener(t+"fullscreenchange",e)})((()=>n("fullscreen",(e=>e.classList.toggle("exit",k()&&$())))))}},O=e=>{window.addEventListener("message",(t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}}))};var A=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];let C=e=>String(e).replace(/[&<>"']/g,(e=>`&${D[e]};`)),D={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},N="dangerouslySetInnerHTML",B={className:"class",htmlFor:"for"},q={};function K(e,t){let n=[],r="";t=t||{};for(let e=arguments.length;e-- >2;)n.push(arguments[e]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(let e in t)!1!==t[e]&&null!=t[e]&&e!==N&&(r+=` ${B[e]?B[e]:C(e)}="${C(t[e])}"`);r+=">"}if(-1===A.indexOf(e)){if(t[N])r+=t[N].__html;else for(;n.length;){let e=n.pop();if(e)if(e.pop)for(let t=e.length;t--;)n.push(e[t]);else r+=!0===q[e]?e:C(e)}r+=e?`</${e}>`:""}return q[r]=!0,r}const j=({children:e})=>K(null,null,...e),F=`${l}presenter-`,V={container:`${F}container`,dragbar:`${F}dragbar-container`,next:`${F}next`,nextContainer:`${F}next-container`,noteContainer:`${F}note-container`,noteWrapper:`${F}note-wrapper`,noteButtons:`${F}note-buttons`,infoContainer:`${F}info-container`,infoPage:`${F}info-page`,infoPageText:`${F}info-page-text`,infoPagePrev:`${F}info-page-prev`,infoPageNext:`${F}info-page-next`,noteButtonsBigger:`${F}note-bigger`,noteButtonsSmaller:`${F}note-smaller`,infoTime:`${F}info-time`,infoTimer:`${F}info-timer`},U=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=V.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",K(j,null,K("div",{class:V.nextContainer},K("iframe",{class:V.next,src:"?view=next"})),K("div",{class:V.dragbar}),K("div",{class:V.noteContainer},K("div",{class:V.noteWrapper}),K("div",{class:V.noteButtons},K("button",{class:V.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),K("button",{class:V.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),K("div",{class:V.infoContainer},K("div",{class:V.infoPage},K("button",{class:V.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),K("span",{class:V.infoPageText}),K("button",{class:V.infoPageNext,tabindex:"-1",title:"Next"},"Next")),K("time",{class:V.infoTime,title:"Current time"}),K("time",{class:V.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(V.dragbar).addEventListener("mousedown",(()=>{t=!0,r(V.dragbar).classList.add("active")})),window.addEventListener("mouseup",(()=>{t=!1,r(V.dragbar).classList.remove("active")})),window.addEventListener("mousemove",(e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(V.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)})),r(V.nextContainer).addEventListener("click",(()=>e.next()));const n=r(V.next),o=(i=n,(e,t)=>{var n;return null===(n=i.contentWindow)||void 0===n?void 0:n.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin)});var i;n.addEventListener("load",(()=>{r(V.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",(({index:e,fragmentIndex:t})=>o(e,t)))}));const a=document.querySelectorAll(".bespoke-marp-note");a.forEach((e=>{e.addEventListener("keydown",(e=>e.stopPropagation())),r(V.noteWrapper).appendChild(e)})),e.on("activate",(()=>a.forEach((t=>t.classList.toggle("active",t.dataset.index==e.slide())))));let s=0;const l=e=>{s=Math.max(-5,s+e),r(V.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(V.noteButtonsBigger),f=r(V.noteButtonsSmaller);u.addEventListener("click",(()=>{u.blur(),c()})),f.addEventListener("click",(()=>{f.blur(),d()})),document.addEventListener("keydown",(e=>{"+"===e.key&&c(),"-"===e.key&&d()}),!0),e.on("activate",(({index:t})=>{r(V.infoPageText).textContent=`${t+1} / ${e.slides.length}`}));const m=r(V.infoPagePrev),g=r(V.infoPageNext);m.addEventListener("click",(t=>{m.blur(),e.prev({fragment:!t.shiftKey})})),g.addEventListener("click",(t=>{g.blur(),e.next({fragment:!t.shiftKey})})),e.on("fragment",(({index:t,fragments:n,fragmentIndex:r})=>{m.disabled=0===t&&0===r,g.disabled=t===e.slides.length-1&&r===n.length-1}));let p=new Date;const v=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-p.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(V.infoTime).textContent=e.toLocaleTimeString(),r(V.infoTimer).textContent=`${a}:${i}:${o}`};v(),setInterval(v,250),r(V.infoTimer).addEventListener("click",(()=>{p=new Date}))})(e)},X=e=>{if(!(e=>e.syncKey&&"string"==typeof e.syncKey)(e))throw new Error("The current instance of Bespoke.js is invalid for Marp bespoke presenter plugin.");Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:H},presenterUrl:{enumerable:!0,get:R}}),g&&document.addEventListener("keydown",(t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())}))};function H(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,F+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function R(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),d(e)}const W=e=>{const t=u();return t===a&&e.appendChild(document.createElement("span")),{"":X,[i]:U,[a]:O}[t]},J=e=>{e.on("activate",(t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach((n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"}))}))},Y=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},z=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?Y(f("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{var t,r;if(location.hash){const[o]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(o))return(null!==(t=Y(o))&&void 0!==t?t:1)-1;const i=document.getElementById(o)||document.querySelector(`a[name="${CSS.escape(o)}"]`);if(i){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(i)){const t=null===(r=e.fragments)||void 0===r?void 0:r[o],a=i.closest("[data-marpit-fragment]");if(t&&a){const e=t.indexOf(a);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",(({index:e,fragmentIndex:r})=>{n||m({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})})),setTimeout((()=>{o(),window.addEventListener("hashchange",(()=>r((()=>{o({fragment:!1}),m({f:void 0})})))),window.addEventListener("popstate",(()=>{n||r((()=>o()))})),n=!1}),0)}},G=(e={})=>{var t;const n=e.key||(null===(t=window.history.state)||void 0===t?void 0:t.marpBespokeSyncKey)||Math.random().toString(36).slice(2),r=`bespoke-marp-sync-${n}`;var i;i={marpBespokeSyncKey:n},m({},{setter:(e,...t)=>o({...e,...i},...t)});const a=()=>{const e=p(r);return e?JSON.parse(e):Object.create(null)},s=e=>{const t=a(),n={...t,...e(t)};return v(r,JSON.stringify(n)),n},l=()=>{window.removeEventListener("pageshow",l),s((e=>({reference:(e.reference||0)+1})))};return e=>{l(),Object.defineProperty(e,"syncKey",{value:n,enumerable:!0});let t=!0;setTimeout((()=>{e.on("fragment",(e=>{t&&s((()=>({index:e.index,fragmentIndex:e.fragmentIndex})))}))}),0),window.addEventListener("storage",(n=>{if(n.key===r&&n.oldValue&&n.newValue){const r=JSON.parse(n.oldValue),o=JSON.parse(n.newValue);if(r.index!==o.index||r.fragmentIndex!==o.fragmentIndex)try{t=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{t=!0}}}));const o=()=>{const{reference:e}=a();void 0===e||e<=1?h(r):s((()=>({reference:e-1})))};window.addEventListener("pagehide",(e=>{e.persisted&&window.addEventListener("pageshow",l),o()})),e.on("destroy",o)}},{PI:Q,abs:Z,sqrt:ee,atan2:te}=Math,ne={passive:!0},re=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",(({touches:e})=>{r=1===e.length?i(e[0]):void 0}),ne),o.addEventListener("touchmove",(e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=ee(Z(n)**2+Z(o)**2),r.radian=te(n,o)}else r=void 0})),o.addEventListener("touchend",(o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+Q)%(2*Q)-Q;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}}),ne)},oe=new Map;oe.clear(),oe.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const ie={both:"",outgoing:"outgoing-",incoming:"incoming-"},ae={forward:"",backward:"-backward"},se=e=>`--marp-bespoke-transition-animation-${e}`,le=e=>`--marp-transition-${e}`,ce=se("name"),de=se("duration"),ue=e=>new Promise((t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",(()=>o(n))),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(le("duration"));i&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame((()=>{e.style.animationPlayState="running",requestAnimationFrame((()=>t(void 0)))}))})(r,o)})),fe=async e=>oe.has(e)?oe.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(ie))for(const[i,a]of Object.entries(ae)){const s=`marp-${o}transition${a}-${e}`;n.push(ue(s).then((e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0})))}return Promise.all(n).then((()=>t))})(e).then((t=>(oe.set(e,t),t))),me=e=>Object.values(e).flatMap(Object.values).every((e=>!e)),ge=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[ce]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[se("direction")]="reverse"),e}})();return!o&&n?ge(e,{type:t,backward:!1}):o||{[ce]:"__bespoke_marp_transition_no_animation__"}},pe=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch(e){}},ve="_tSId",he="_tA",ye="bespoke-marp-transition-warming-up",be=window.matchMedia("(prefers-reduced-motion: reduce)"),we="__bespoke_marp_transition_reduced_outgoing__",xe="__bespoke_marp_transition_reduced_incoming__",ke={forward:{both:void 0,incoming:{name:xe},outgoing:{name:we}},backward:{both:void 0,incoming:{name:xe},outgoing:{name:we}}},$e=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{const t=[...new Set(e).values()];return Promise.all(t.map((e=>fe(e)))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap((e=>[e.dataset.transition,e.dataset.transitionBack].flatMap((e=>{const t=pe(e);return[null==t?void 0:t.name,(null==t?void 0:t.builtinFallback)?`__builtin__${t.name}`:void 0]})).filter((e=>!!e))))).then((()=>{document.querySelectorAll("style").forEach((e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,(e=>e.slice(0,-1)+"!important"+e.slice(-1)))}))}));const r=(n,{back:r,cond:o})=>i=>{var a;const s=t();if(s)return!!i[he]||!("object"!=typeof s||(s.skipTransition(),!i.forSync));if(!o(i))return!0;const l=e.slides[e.slide()],c=()=>{var e;return null!==(e=i.back)&&void 0!==e?e:r},d="data-transition"+(c()?"-back":""),u=l.querySelector(`section[${d}]`);if(!u)return!0;const f=pe(null!==(a=u.getAttribute(d))&&void 0!==a?a:void 0);return!f||((async(e,{builtinFallback:t=!0}={})=>{let n=await fe(e);if(me(n)){if(!t)return;return n=await fe(`__builtin__${e}`),me(n)?void 0:n}return n})(f.name,{builtinFallback:f.builtinFallback}).then((e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;be.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=ke);const o=document.getElementById(ve);o&&o.remove();const a=document.createElement("style");a.id=ve,document.head.appendChild(a),((e,t)=>{const n=[`:root{${le("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{var n,o,i;const a=(null===(n=e[t].both)||void 0===n?void 0:n.defaultDuration)||(null===(o=e[t].outgoing)||void 0===o?void 0:o.defaultDuration)||(null===(i=e[t].incoming)||void 0===i?void 0:i.defaultDuration);return"forward"===t?a:a||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${de}:${o};}`);const i=e=>Object.entries(e).map((([e,t])=>`${e}:${t};`)).join("");return n.push(`::view-transition-old(root){${i(ge(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(ge(e,{...t,type:"incoming"}))}}`),n})(r,{backward:c(),duration:f.duration}).forEach((e=>{var t;return null===(t=a.sheet)||void 0===t?void 0:t.insertRule(e)}));const s=document.documentElement.classList;s.add(ye);let l=!1;const d=()=>{l||(n(i),l=!0,s.remove(ye))},u=()=>{t(!1),a.remove(),s.remove(ye)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(u)}catch(e){console.error(e),d(),u()}})),!1)};e.on("prev",r((t=>e.prev({...t,[he]:!0})),{back:!0,cond:e=>{var t;return e.index>0&&!((null===(t=e.fragment)||void 0===t||t)&&n.fragmentIndex>0)}})),e.on("next",r((t=>e.next({...t,[he]:!0})),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout((()=>{e.on("slide",r((t=>e.slide(t.index,{...t,[he]:!0})),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))}),0),e.on("fragment",(e=>{n=e}))};let Ee;const Le=()=>(void 0===Ee&&(Ee="wakeLock"in navigator&&navigator.wakeLock),Ee),Se=async()=>{const e=Le();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Pe=async()=>{if(!Le())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&Se()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await Se(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=f("view");r.dataset.bespokeView=e===a||e===i?e:""})();const t=(e=>{const t=f(e);return m({[e]:void 0}),t})("sync")||void 0;n.from(e,((...e)=>{const t=s.findIndex((e=>u()===e));return e.map((([e,n])=>e[t]&&n)).filter((e=>e))})([[1,1,0],G({key:t})],[[1,1,1],W(e)],[[1,1,0],_],[[1,1,1],b],[[1,0,0],S()],[[1,1,1],T],[[1,1,1],z({history:!1})],[[1,1,0],I()],[[1,1,0],E],[[1,0,0],J],[[1,1,0],re()],[[1,0,0],M()],[[1,0,0],$e],[[1,1,1],w],[[1,1,0],Pe]))})()}();</script></body></html>

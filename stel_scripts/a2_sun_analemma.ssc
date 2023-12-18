@@ -1,3 +1,4 @@
+include("nakshatras.inc");
 function tr(str) { return core.translate(str); }
 
 MarkerMgr.deleteAllMarkers()

@@ -6,9 +6,11 @@
 **/~*
 **/*~
 **/*_zap*
+**/zap*
 **/~planetplot
 **/*mp4
 !**/nakshatra_sky_culture/**/*mp4
+!**/images/*mp4
 **/*mp3
 **/*ogg
 **/*mov

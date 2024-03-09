@@ -55,11 +55,11 @@ h2 { margin-top: -50px; margin-bottom: -10px;  }
 
 |view of sunrise | surise location|sunrise (day) count|
 |--|:--:|:--:|
-|![](./swing-01-ss.jpg)| north east|1|
-|![](./swing-02-ae.jpg) | true east|92|
-|![](./swing-03-ws.jpg) | south east|183|
-|![](./swing-04-se.jpg) | true east|274|
-|![](./swing-01-ss.jpg) | north east|367 <br><br> 1 of next cycle|
+|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-01-ss.jpg)| north east|1|
+|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-02-ae.jpg) | true east|92|
+|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-03-ws.jpg) | south east|183|
+|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-04-se.jpg) | true east|274|
+|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-01-ss.jpg) | north east|367 <br><br> 1 of next cycle|
 
 - The sunrise horizon point moves from north east to south east and back to same north east point after 366 sunrises - a solar year.
 - The north east to south east journey is called **dakṣiṇāyana** and the reverse is  **uttarāyaṇa**
@@ -81,7 +81,7 @@ h2 { margin-top: -50px; margin-bottom: -10px;  }
 
 ## Nakṣatra solar zodiac
 
-![bg fit width 100%](./sun-moon-season-precession-dial.jpg)
+![bg fit width 100%](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/sun-moon-season-precession-dial.jpg)
 ![bg fit width 90%](https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-nakshatra-table.png)
 
 - The **Sun** completes one circuit in **366 days** in **clockwise** direction<br><br>
@@ -249,7 +249,7 @@ $FMJD$ is Julian Day number of Full Moon
 
 ## Computing the information of BP
 
-![](bp-bar-chart-fm-efm-kv.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/bp-bar-chart-fm-efm-kv.jpg)
 
 - Get full moon timeseries from 2400BCE to 800BCE. There are about *1237 FM per century - the top chart* <br><br><br>
 - The series is then filtered for *Equinoctial Full Moons - the mid chart*<br><br><br><br><br>
@@ -275,7 +275,7 @@ $$+ \frac{1}{538841}T^3 - \frac{1}{65194000}T^4 + \frac{\sum l}{1{,}000{,}000}$$
 
 ||
 |--|
-![](bp-equinoctial-full-moon-better.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/bp-equinoctial-full-moon-better.jpg)
 
 |||
 |--:|:--|
@@ -320,7 +320,7 @@ Dark Gray Band| Epoch for **AE FM at 4th amśa of Viśākhā closest to visble V
     - nearest to visible viśākhā -->z
   
 
-![](daynum-dial-season-fm-1700-bce.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/daynum-dial-season-fm-1700-bce.jpg)
 
 ---
 
@@ -409,7 +409,7 @@ $$ -->
     li:nth-child(3) li:nth-child(2) { color: blue; }
 </style>
 
-![](./sun-transit-rtusvabhava-charts-rni.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/sun-transit-rtusvabhava-charts-rni.jpg)
 
 - Ṛtusvabhāva dates to **~500 BCE**
 <br>
@@ -516,15 +516,15 @@ td:nth-child(5) { width: 30%; } */
 
 |day num | ṛtu | ayana | equinox/ solstice | sunrise image as seen by an observer |
 |--:|---|---|---|:---|
-|1| varṣā start | **dakṣiṇāyana start** | summer solstice | ![](swing-01-ss.jpg) <br>sun rises north east
+|1| varṣā start | **dakṣiṇāyana start** | summer solstice | ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-01-ss.jpg) <br>sun rises north east
 |62| śarad start| dakṣiṇāyana | - | -
-|92 |śarad mid | **viṣuvat** | autumn equinox | ![](swing-02-ae.jpg)  <br> sun rises true east
+|92 |śarad mid | **viṣuvat** | autumn equinox | ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-02-ae.jpg)  <br> sun rises true east
 |123 | hemanta start  | dakṣiṇāyana | - |
-|183<br>184 | śiśira start  | **dakṣiṇāyana end**<br> **uttarāyaṇa start**| winter solstice | ![](swing-03-ws.jpg) <br> sun rises south east
+|183<br>184 | śiśira start  | **dakṣiṇāyana end**<br> **uttarāyaṇa start**| winter solstice | ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-03-ws.jpg) <br> sun rises south east
 |245 | vasanta start | uttarāyaṇa | - | -
-|274 | vasanta mid | **viṣuvat** | spring equinox |  ![](swing-04-se.jpg) <br> sun rises true east
+|274 | vasanta mid | **viṣuvat** | spring equinox |  ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-04-se.jpg) <br> sun rises true east
 |306 | grīṣma start | uttarāyaṇa | - | -
-|366 | grīṣma-end | **uttarāyaṇa end**<br>**dakṣiṇāyana start**  | summer solstice | ![](swing-01-ss.jpg)  <br> sun rises north east
+|366 | grīṣma-end | **uttarāyaṇa end**<br>**dakṣiṇāyana start**  | summer solstice | ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/swing-01-ss.jpg)  <br> sun rises north east
 
 
 ---
@@ -642,7 +642,7 @@ There are texts that associate specific nakṣatras with the ṛtus - seasonal n
 ## Nakṣatra-s starting from Maghā at day 1
 
 
-![](daynum-dial-season-1700-bce.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/daynum-dial-season-1700-bce.jpg)
 
 <!-- |#|nakṣatra | day span | number of stars | cumulative stars |
 |-:|---:|:---:|:---|--|
@@ -696,7 +696,7 @@ Over 100's of years,
 
 ## Precession and its effects
 
-![](sun-moon-season-precession-dial.jpg)
+![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/sun-moon-season-precession-dial.jpg)
 We see the start of Maghā nakṣatra on day 1 of dakṣiṇāyana in the chart above. This is true for a certain epoch. After about a 1000 years, the start of Maghā nakṣatra will be on day 14 of dakṣiṇāyana. Equivalently day 1 of dakṣiṇāyana will move to Āśleṣā start. 
 
 *The precession is a slow process and takes about 25,800 years to complete one cycle. That is the sunrise point will return to the same nakṣatra/star for the same ṛtu after **25,800 years.***
@@ -735,7 +735,7 @@ The direction of precession is opposite to the direction of the  sun's annual tr
 
 |||
 |:---:|:--:|
-|Present Day <br> ![](prec-01-2000-ce.jpg) | 5000 years ago <br> ![](prec-06-3000-bce.jpg)|
+|Present Day <br> ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/prec-01-2000-ce.jpg) | 5000 years ago <br> ![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/prec-06-3000-bce.jpg)|
 
 
 ---

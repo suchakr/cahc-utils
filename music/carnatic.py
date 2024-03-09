@@ -10,6 +10,7 @@ from IPython.display import display
 import matplotlib.pyplot as plt
 import librosa as lr
 import librosa.display as ld
+import pyaudio
 
 #%%
 #================================================================
@@ -431,8 +432,8 @@ if __name__ == '__main__' :
     time.sleep(2)  # to start recording utility
     #do_play_all_songs()
     #do_jittered_play_all_songs()
-    #do_improvise()
-    do_play_named_songs(['kereya', 'ninnu'])
+    do_improvise()
+    # do_play_named_songs(['kereya', 'ninnu'])
 
 #%%
 # given an mp3 file, find the frequency histogram of the song

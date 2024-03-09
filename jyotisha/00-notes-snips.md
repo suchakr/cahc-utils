@@ -78,3 +78,286 @@ sanchaya/Puranani/vishnu puranam.txt:
 27|अश्वयुजौ नक्षत्रं| अश्विनौ देवता
 28|भरणीर्नक्षत्रं | यमो देवता
 29|ब्राह्मणो नक्षत्रं | सोमो देवता 
+
+## कटपयादि संख्याः
+
+<div id="katapayadi">
+
+<style>
+  #katapayadi sup {color: rgb(255,0,255); }
+  #katapayadi td:nth-child(1) {text-align: right;}
+  #katapayadi td:nth-child(odd) {background-color: rgb(.9,.9,.9,.05);}
+  #katapayadi th:nth-child(odd) {background-color: rgb(.9,.9,.9,.1);}
+  #katapayadi td sup:nth-child() {font-family: monospace; font-size: 110%;}
+  #katapayadi table  { font-family: monospace; }
+  #katapayadi #aryadiv th { boder-bottom: 1px solid rgb(0,0,0); }
+  #katapayadi td:nth-child(9) sup { color:red; opacity:1; font-size: 105%; } 
+  #katapayadi td em:first-of-type { color:rgb(255,0,0);  font-size: 110%;}
+  #katapayadi td em { color:rgb(255,0,255); }
+  #katapayadi th { border-bottom: 1px solid rgb(0,0,0); border-top: 1px solid rgb(0,0,0); }
+
+  #katapayadi #jyatable td:nth-child(10) { color:rgb(255,0,255)  ; }
+  #katapayadi #jyatable td:nth-child(11) { color:blue  }
+  #katapayadi #jyatable td:nth-child(12) { color:blue; opacity: 0.5;  }
+  #katapayadi #jyatable td:nth-child(10)::first-letter { font-size: 120%; padding-right:1px; color:red ;}
+
+  /* side by side divs */
+  #katapayadi #kdiv1 { float: left; width: 50%;}
+  #katapayadi #kdiv2 { float: left; width: 30%; display: block; margin-right: 20%; }
+  #katapayadi h4 { float:left; width: 50%; margin-left: 26%; color: rgb(5,0,255); margin-bottom: 0px;  margin-top: -20px; }
+
+  #katapayadi #aryaenc h4 {  color: rgb(5,0,255); margin-top: -10px; }
+  #katapayadi #aryaexample h4 { color: rgb(5,0,255); margin-top: 0px; width:100%;  margin-left: 20%; } 
+  #katapayadi #aryaexample { width: 100%;  }
+
+</style>
+
+
+
+<div id=kdiv1>
+
+#### Encoding
+|||1|2|3|4|5|6|7|8|9|0|
+--|--|---|---|---|---|---|---|---|---|---|---|
+**क**|10|क|ख|ग|घ|ङ|च|छ|ज|झ|ञ|
+**ट**|10|ट|ठ|ड|ढ|ण|त|थ|द|ध|न|
+**प**|05|प|फ|ब|भ|म|
+**य**|09|य|र|ल|व|श|ष|स|ह|ळ
+
+</div>
+
+<div id=kdiv2>
+
+#### Examples
+word|split<sup>score</sup>|read<sup>score</sup><br> in reverse</sup>|
+--|--|---|
+रामः | रा<sup>2</sup> मः<sup>5</sup> | 52
+श्यामः | श्  या<sup>1</sup> मः<sup>5</sup> | 51
+सीता | सी<sup>7</sup> ता<sup>6</sup> | 67
+श्रीरामः | श् री<sup>2</sup> रा<sup>2</sup> मः<sup>5</sup> | 522
+गोविन्दः | ग<sup>3</sup> व<sup>4</sup> न्द<sup>8</sup> | 843
+
+</div>
+
+## Āryabhaṭa's numerical notation
+
+<div id=aryaenc>
+
+#### Encoding
+
+|||||
+|---|---:|:---:|:--|
+वर्गीय-वयञ्जनानि<br>Varga Consonants|क् ख् ग् घ् ङ् <br> च् छ् ज् झ् ञ् <br> ट् ठ् ड् ढ् ण् <br> त् थ् द् ध् न् <br> प् फ् ब् भ् म्| weight| 1 - 5 <br> 6 - 10 <br> 11 - 15 <br> 16 - 20 <br> 20 - 25  |
+अवर्गीय-वयञ्जनानि<br>Avarga Consonants|य् र् ल् व् श् ष् स् ह् | weight |  30 to 100 in steps of 10 |
+स्वराः<br>Vowels|अ इ उ ऋ ऌ ए ओ ऐ औ <br> | 10<sup>exponent</sup>| 10<sup>0</sup> to 10<sup>16</sup> in steps of 10<sup>2</sup> |
+वर्गीय-अक्षराणि<br>Varga Sound|Varga followed by a Vowel | Value| (weight of Varga) * 10<sup>(exponent of vowel)</sup> |
+अवर्गीय-अक्षराणि<br>Avarga Sound |Avarga followed by a Vowel | Value| (weight of Avarga) * 10<sup>(exponent of vowel) + 1</sup>  |
+पदः<br>Word|Sequence of sounds | Value| Sum of the each sound Values |
+
+</div>
+
+<div id=aryaexample>
+
+#### Examples
+||||
+--|--:|---:|
+रामः | (र अ) (म ः) | (40 &times; 10<sup>0+1</sup>) + (25)  = 425 |
+श्यामः | (श्) (य् आ) (म ः) | (70) + (30  &times; 10<sup>0+1</sup>) + (25)  = 395|
+सीता | (स् ई) (त् आ) | (90 &times; 10<sup>1+1</sup>) + (16 &times; 10<sup>0</sup>)  = 9006 |
+श्रीरामः | (श्) (र्  ई) (र् आ) (म ः) | (70) (40 &times; 10<sup>1+1</sup>) + (40 &times; 10<sup>0+1</sup>) + (25)  = 535 |
+गोविन्दः| (ग् ओ) (व् इ) (न्) (द  ः) | (3 &times; 10<sup>12+0</sup>) + (60 &times; 10<sup>3+1</sup>) + (20) + (18)  = 3000,000,060,038 |
+</div>
+
+
+
+## माधवार्यभटयोः ज्यासारणी ( Mādhava's and Āryabhaṭa's Sine Table)
+
+
+||
+|:--|
+| **RSin(N) = 3438 * sin(N * 225')**
+| ~3438 ( 3437.75 ) is radius of cricle with circumference 21600:%
+| 21600 = 360° * 60'  = number of minutes in a circle
+| 225' = 1/24 of a quarter of a circle ; π/4/24 = π/96 radians
+| Mādhava shows RSin(N) values for N = 1 to 24 in verse encoded in _K_*atapayadi* 
+| Āryabhaṭa shows δRSin(N) values for N = 1 to 24 in verse in Āryabhaṭa's numerical notation
+
+
+<div id=jyatable>
+
+<style>
+  #jyatable td:nth-child(13) 
+  , #jyatable td:nth-child(14) 
+  , #jyatable td:nth-child(15) 
+  , #jyatable td:nth-child(16) 
+  { font-size: 100%; color:blue; }
+
+  #jyatable th:nth-child(13) 
+  , #jyatable th:nth-child(14) 
+  , #jyatable th:nth-child(15) 
+  , #jyatable th:nth-child(16) 
+  { font-size: 100%; color:blue; }
+
+
+  #jyatable th:nth-child(13) , #jyatable td:nth-child(13) { border-left: 5px solid rgb(0,0,0); }
+  #jyatable th:nth-child(11) , #jyatable td:nth-child(11) { border-left: 5px solid rgb(0,0,0); }
+</style>
+
+|Mādhava|lsb|d1|d2|d3|d4|d5|d6|msb|RSin(N)|N|Arc|Āryabhaṭa|Split|Value|δRSin(N)|RSin(N)
+|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:|:-:|:-:|-:|-:|-:|-:|-:|
+श्रेष्ठं नाम वरिष्ठानाम् | श् रे<sup>2</sup> | ष् ठं<sup>2</sup> | ना<sup>0</sup> | म<sup>5</sup> | व<sup>4</sup> | रि<sup>2</sup> | ष् ठा<sup>2</sup> | नां<sup>0</sup> | 0224'50"22‴| 1 |225'|मखि|म+ख्इ|25+2&times;10<sup>2</sup>  | 225|225'
+हिमाद्रिर्वेदभावनः| हि<sup>8</sup> | मा<sup>5</sup> | द् रि<sup>2</sup> | र् वे<sup>4</sup> | न् द<sup>8</sup> | भा<sup>4</sup> | व<sup>4</sup> | नः<sup>0</sup> | 0448'42"58‴| 2 | 450'|भखि  |भ+ख्इ|24+2&times;10<sup>2</sup>  | 224|449'
+तपनो भानु सूक्‍तज्ञः | त<sup>6</sup> | प<sup>1</sup> | न<sup>0</sup> | भा<sup>4</sup> | नु<sup>0</sup> | सू<sup>7</sup> | क्‍ त<sup>6</sup> | ज्ञः<sup>0</sup> | 0670'40"16‴| 3 | 675'|फखि|फ+ख्इ|22+2&times;10<sup>2</sup>  | 222|671'
+मध्यमं विद्धि दोहनम् | म<sup>5</sup> | ध्य<sup>1</sup> | मं<sup>5</sup> | वि<sup>4</sup> | द् धि<sup>9</sup> | दो<sup>9</sup> | ह<sup>8</sup> | नं<sup>0</sup> | 0889'54"15‴| 4 | 900'|धखि|ध+ख्इ|19+2&times;10<sup>2</sup>  | 219|890'
+धिगाज्यो नाशनं कष्टम् | धि<sup>9</sup> | गा<sup>3</sup> | ज्यो<sup>1</sup> | ना<sup>0</sup> | श<sup>5</sup> | नं<sup>0</sup> | क<sup>1</sup> | ष्टं<sup>1</sup> | 1105'01"39‴| 5 | 1125'|णखि|ण+ख्इ|15+2&times;10<sup>2</sup>  | 215|1105'
+छन्न भोगा शयाम्बिका | छ<sup>7</sup> | न्न<sup>0</sup> | भो<sup>4</sup> | गा<sup>3</sup> | श<sup>5</sup> | या<sup>1</sup> | म्बि<sup>3</sup> | का<sup>1</sup> | 1314'34"07‴| 6 | 1350'|ञखि|ञ+ख्इ|10+2&times;10<sup>2</sup>  | 210|1315'
+मृगाहारो नरेशोऽयम् | मृ<sup>5</sup> | गा<sup>3</sup> | हा<sup>8</sup> | रो<sup>2</sup> | न<sup>0</sup> | रे<sup>2</sup> | शो<sup>5</sup> |  यं<sup>1</sup> | 1520'28"35‴| 7 | 1575'|ङखि|ङ+ख्इ|5+2&times;10<sup>2</sup>  | 205|1520'
+वीरो रण जयोत्सुकः | वी<sup>4</sup> | रो<sup>2</sup> | र<sup>2</sup> | ण<sup>5</sup> | ज<sup>8</sup> | यो<sup>1</sup> | त्सु<sup>7</sup> | कः<sup>1</sup> | 1718'52"24‴| 8 | 1800'|हस्झ|ह+स्+झ|100+90+9|199|1719'
+मूलं विशुद्ध नाळस्य | मू<sup>5</sup> | लं<sup>3</sup> | वि<sup>4</sup> | शु<sup>5</sup> | द् ध<sup>9</sup> | ना<sup>0</sup> | ळ<sup>9</sup> | स्य<sup>1</sup> | 1909'54"35‴| 9 | 2025'|स्ककि|स्+क्+क्इ|90+1+1&times;10<sup>2</sup>  | 191|1910'
+गानेषु विरळा नराः | गा<sup>3</sup> | ने<sup>0</sup> | षु<sup>6</sup> | वि<sup>4</sup> | र<sup>2</sup> | ळा<sup>9</sup> | न<sup>0</sup> | राः<sup>2</sup> | 2092'46"03‴| 10  | 2250'|किष्ग|क्इ+ष्+ग्|1&times;10<sup>2</sup>+80+3 | 183|2093'
+अशुद्धि गुप्ता चोरश्रीः | अ<sup>0</sup> | शु<sup>5</sup> | द् धि<sup>9</sup> | गु<sup>3</sup> | प् ता<sup>6</sup> | चो<sup>6</sup> | र<sup>2</sup> | श्रीः<sup>2</sup> | 2266'39"50‴| 11 | 2475'|श्घकि|श्+घ्+क्इ|70+4+1&times;10<sup>2</sup>  | 174|2267'
+शङ्कु कर्णो नगेश्वरः | श<sup>5</sup> | ङ् कु<sup>1</sup> | क<sup>1</sup> | र् णः<sup>5</sup> | न<sup>0</sup> | गे<sup>3</sup> | श् व<sup>4</sup> | रः<sup>2</sup> | 2430'51"15‴| 12  | 2700'|किघ्व|क्इ+घ्+व्|1&times;10<sup>2</sup>+4+60 | 164|2431'
+तनुजो गर्भजो मित्रम् | त<sup>6</sup> | नु<sup>0</sup> | जो<sup>8</sup> | ग<sup>3</sup> | र् भ<sup>4</sup> | जो<sup>8</sup> | मि<sup>5</sup> | त् रं<sup>2</sup> | 2584'38"06‴| 13   | 2925'|घ्लकि|घ्+ल्+क्इ|4+50+1&times;10<sup>2</sup>  | 154|2585'
+श्रीमानत्र सुखी सखे | श् री<sup>2</sup> | मा<sup>5</sup> | न<sup>0</sup> | त् र<sup>2</sup> | सु<sup>7</sup> | खी<sup>2</sup> | स<sup>7</sup> | खे<sup>2</sup> | 2727'20"52‴| 14 | 3150'|किग्र|क्इ+ग्+र्|1&times;10<sup>2</sup>+3+40 | 143|2728'
+शशीरात्रौ हिमाहारः | श<sup>5</sup> | शी<sup>5</sup> | रा<sup>2</sup> | त् र<sup>2</sup> | हि<sup>8</sup> | मा<sup>5</sup> | हा<sup>8</sup> | र<sup>2</sup> | 2858'22"55‴| 15 | 3375'|हक्य|ह+क्+य्|100+1+30 | 131|2859'
+वेगज्ञःपथि सिन्धुरः | वे<sup>4</sup> | ग<sup>3</sup> | ज्ञः<sup>0</sup> | प<sup>1</sup> |थि<sup>7</sup> | सि<sup>7</sup> | न् धु<sup>9</sup> | रः<sup>2</sup> | 2977'10"34‴| 16 | 3600'|धकि|ध+क्इ|19+10&times;<sup>2</sup> | 119|2978'
+छायालयो गजोनीलः | छा<sup>7</sup> | या<sup>1</sup> | ल<sup>3</sup> | यो<sup>1</sup> | ग<sup>3</sup> | जो<sup>8</sup> | नी<sup>0</sup> | लः<sup>3</sup> | 3083'13"17‴| 17 | 3825'|किच|क्इ+च्|1&times;10<sup>2</sup>+6  | 106|3084'
+निर्मलोनास्ति सत्कुले | नि<sup>0</sup> |र् म<sup>5</sup> | लो<sup>3</sup> | ना<sup>0</sup> | स् ति<sup>6</sup> | स<sup>7</sup> |त् कु<sup>1</sup> | ले<sup>3</sup> | 3176'03"50‴| 18 | 4050'|स्ग|स्+ग्|90+3 | 93|3177'
+रात्रौ दर्पणमभ्राङ्गम् | रा<sup>2</sup> | त् रौ<sup>2</sup> | द<sup>8</sup> | प<sup>1</sup> | ण<sup>5</sup> | म<sup>5</sup> | भ् रा<sup>2</sup> | ङ् गं<sup>3</sup> | 3255'18"22‴| 19 | 4275'|झश|झ+श्|9+70 | 79|3256'
+नागस्तुङ्‌ग नखो बली | ना<sup>0</sup> | ग<sup>3</sup> | स् तु<sup>6</sup> | ङ्‌ ग<sup>3</sup> | न<sup>0</sup> | ख<sup>2</sup> | ब<sup>3</sup> | ली<sup>3</sup> | 3321'36"20‴| 20 | 4500'|ङ्व|ङ्+व्|60+5 | 65|3321'
+धीरो युवा कथालोलः | धी<sup>9</sup> | रो<sup>2</sup> | यु<sup>1</sup> | वा<sup>4</sup> | क<sup>1</sup> | था<sup>7</sup> | लो<sup>3</sup> | लः<sup>3</sup> | 3371'41"29‴| 21 | 4725'|क्ल|क्+ल्|1+50 | 51|3372'
+पूज्योनारीजनैर्भगः | पू<sup>1</sup> | ज्यो<sup>1</sup> | ना<sup>0</sup> | री<sup>2</sup> | ज<sup>8</sup> | नै<sup>0</sup> | र् भ<sup>4</sup> | गः<sup>3</sup> | 3408'20"11‴| 22 | 4950'|प्त|प्+त्|30+7| 37|3409'
+कन्यागारे नागवल्ली | क<sup>1</sup> | न्या<sup>1</sup> | गा<sup>3</sup> | रे<sup>2</sup> | ना<sup>0</sup> | ग<sup>3</sup> | व<sup>4</sup> | ल् ली<sup>3</sup> | 3430'23"11‴| 23 | 5175'|फ|फ|22 | 22|3431'
+देवो विश्वस्थली भृगुः | दे<sup>8</sup> | वो<sup>4</sup> | वि<sup>4</sup> | श्व<sup>4</sup> | स् थ<sup>7</sup> | ली<sup>3</sup> | भृ<sup>4</sup> | गुः<sup>3</sup> | 3437'44"48‴| 24 | 5400'|छ|छ|7 | 7|3438'
+</div>
+</div>
+
+## ब्रह्म पुराणम् ३१.१७ - ३१.२७
+
+<style>
+ #brahmapurana31 em:nth-child(odd) { color:red;  font-size: 100%;}
+ #brahmapurana31 strong:nth-child(odd) { color:navy;  font-size: 100%;}
+ #brahmapurana31 strong:nth-child(even) { color:blue;  font-size: 100%;}
+
+ #brahmapurana31 td:nth-child(1) { color:rgb(12,60,255);  font-size: 100%;}
+ #brahmapurana31 td:nth-child(2) { color:rgb(192,60,255);  font-size: 100%;}
+ #brahmapurana31 td:nth-child(3) { color:rgb(192,127,255);  font-size: 100%;}
+ #brahmapurana31 td:nth-child(4) { color:rgb(255,20,127);  font-size: 100%;}
+ #brahmapurana31 td:nth-child(6) { color:rgb(255,200,200);  font-size: 100%;}
+
+ #brahmapurana31 td:nth-child(5) { visibility: hidden; display: none; }
+ #brahmapurana31 th:nth-child(5) { visibility: hidden; display: none; }
+
+ #brahmapurana31 tr:nth-child(9) { font-weight: bold}
+ #brahmapurana31 table:nth-child(1)  tr:nth-child(10) { background-color: rgb(255,255,200); font-weight: bold}
+ #brahmapurana31 table:nth-child(1) tr:nth-child(11) { background-color: rgb(255,255,200); font-weight: bold}
+</style>
+<div id=brahmapurana31>
+
+|||||||
+|:--|-|-|-:|-:|-:|
+इत्येते द्वादशादित्याः पृथक्त्वेन व्यवस्थिताः  ।
+उत्तिष्ठन्ति सदा ह्येते मासैर्द्वादशभिः क्रमात् ॥ ३१.१८ ॥
+**विष्णुस्तपति चैत्रे** तु **वैशाखे चार्यमा** तथा  ।
+**विवस्वाञ्ज्येष्ठमासे** तु **आषाढे चांशुमान्** स्मृतः  ॥ ३१.१९ ॥
+**पर्जन्यः श्रावणे** मासि **वरुणः प्रौष्ठसंज्ञके**  ।
+**इन्द्र आश्वयुजे** मासि **धाता तपति कार्त्तिके**  ॥ ३१.२० ॥
+**मार्गशीर्षे तथा मित्रः** **पौषे पूषा दिवाकरः**  ।
+**माघे भगस्तु** विज्ञेयः **त्वष्टा तपति फाल्गुने**  ॥ ३१.२१ ॥
+...
+**उत्तरोपक्रमेऽर्कस्य वर्धन्ते** रश्मयस्तथा  ॥ ३१.२५ ॥
+**दक्षिणोपक्रमे भूयो ह्रसन्ते** सूर्यरश्मयः  ।
+एवं रश्मिसहस्रं तु सूर्यलोकादनुग्रहम्  ॥ ३१.२६ ॥
+एवं नाम्नां चतुर्विंशदेक एषां प्रकीर्तितः  ।
+विस्तरेण सहस्रं तु पुनरन्यत्प्रकीर्तितम्  ॥ ३१.२७ ॥
+||मासाः|आदित्याः|रश्मिः|=diff|diff|
+*शतैर्द्वादशभि*र्विष्णू रश्मिभिर्दीप्यते सदा  । | chitrā | viṣṇu |1200
+दीप्यते *गोसहस्रेण शतैश्च* त्रिभिरर्यमा  ॥ ३१.२२ ॥ | vaiśākhā |aryamā |1103|1200-1103|97
+*द्विःसप्तकै*र्विवस्वांस्तु ~ |  jyeṣṭhā | vivasvān |1014|1103-1014|89
+  ~ अंशुमान् *पञ्चभिस्त्रिभिः*  । | āṣāḍhā | amśumān |1015|1014-1015|-1
+विवस्वानिव*पर्जन्यो* ~  | śravaṇa | parjanyā |1014|1015-1014|1
+  ~ *वरुण*श्चार्यमा तथा  ॥ ३१.२३ ॥ | prauṣṭha | varuna |1103|1014-1103|-89
+इन्द्रस्तु *द्विगुणैः षड्भिः*  ~  | ashvayujā| indrā |1200|1103-1012|-91
+~  र्धातै*कादशभिः शतैः*  ॥ ३१.२४ ॥| kṛttikā| ghātā |1100|1012-1100|-88
+*सहस्रेण* तु मित्रो वै ~ | mṛgaśirā | mitrā | 1000|1100-1000|-100
+~ पूषा तु *नवभिः शतैः*  । | pūṣā  | pauṣya | 900|1000-900|-100
+*मित्रवद्भ*गवान्  ~  | maghā | bhagā |1000|900-1000|100
+ ~ त्वष्टा *सहस्रेण शतेन* च  । | phalgunī | tvaṣṭā |1100|1000-1100|100
+
+
+## सूर्यस्य रश्मिसहस्राणि
+
+|मासे|अदित्याः|रश्मिसहरैः|
+|:--|:--|:--| 
+|चैत्रे | अंशु | सप्तभिः |
+|वैशाखे | धाता | अष्टभिः |
+|ज्येष्ठे | इंद्रः  | नवभिः |
+|आषाढे | सविता | दशभिः |
+|श्रावणे | विवस्वान्| दशभिः |
+|प्रौष्ठे | भगः  | एकादशभिः |
+|आश्वयुजे | पर्जन्यः | नवभिः |
+|कार्त्तिके | त्वष्टा | सप्तभिः |
+|मार्गशीर्षे | मित्रः | सप्तभिः |
+|पौषे | विष्णुः | षड्भीः |
+|माघे  | वरुणः| पञ्चभिः |
+|फाल्गुने | पूषा  | षड्भिः | 
+|xx | अर्यमा| दशभिः |
+
+### ब्रह्माण्डपुराणम् २४.३३ - २४.४३
+
+      वसंते चैव ग्रीष्मे च शतैः स तपति त्रिभिः ॥
+      वर्षास्वथो शरदि वै चतुर्भिश्च प्रवर्षति ॥ २४.३२ ॥
+      हेमन्ते शिशिरे चैव हिम मुत्सृजते त्रिभिः ॥
+      इंद्रो धाता भगः पूषा मित्रोऽथ वरुणोऽर्यमा ॥ २४.३३ ॥
+      अंशुर्विवस्वास्त्वष्टा च सविता विष्णुरेव च ॥
+      माघमासे तु वरुणः पूषा चैव तु फलाल्गुने ॥ २४.३४ ॥
+      चैत्रे मासि तु देतोंशुर्धाता वैशाखतापनः ॥
+      ज्येष्ठमासे भवेदिंद्रश्चाषाढे सविता रविः ॥ २४.३५ ॥
+      विवस्वाञ्छ्रावणे मासि प्रोष्ठे मासे भागः स्मृतः ॥
+      पर्जन्योऽश्वयुजे मासि त्वष्टा च कार्तिके रविः ॥ २४.३६ ॥
+      मार्गशीर्षे भवेन्मित्रः पौषेविष्णुः सनातनः ॥
+      पंचरश्मिसहस्राणि वरुणस्यार्ककर्मणि ॥ २४.३७ ॥
+      षड्भिः सहस्रैः पूषा तु देवोऽशुसप्तभिस्तथा ॥
+      धाताऽष्टभिः सहस्रैस्तु नवभिस्तु शतक्रतुः ॥ २४.३८ ॥
+      सविता दशभिर्याति यात्येकादशभिर्भगः ॥
+      सप्तभिस्तपते मित्रस्त्वष्टा चैवाष्टभिस्तपेत् ॥ २४.३९ ॥
+      अर्यमा दशभिर्याति पर्जन्यो नवभिस्तपेत् ॥
+      षड्भी रश्मिसहस्रैस्तु विष्णुस्तपति मेदिनीम् ॥ २४.४० ॥
+      वसंते कपिलः सूर्यो ग्रीष्मेऽर्कः कनकप्रभः ॥
+      श्वेतवर्णस्तु वर्षासु पांडुः शरदि भास्करः ॥ २४.४१ ॥
+      हेमन्ते ताम्रवर्णस्तु शैशिरे लोहितो रविः ॥
+      इति वर्णाः समाख्याताः सूर्यस्यर्तुसमुद्भवाः ॥ २४.४२ ॥
+      औषधीषु बलं धत्ते स्वधया च पितृष्वपि ॥
+      सूर्योऽमरेष्वप्यमृतं त्रयं त्रिषु न यच्छति ॥ २४.४३ ॥
+      एवं रश्मिसहस्रं तु सौरं लोकार्थसाधकम् ॥
+
+### कूर्मपुराणम् १,४१.१६ - १,४१.२४
+
+      वसन्ते ग्रैष्मिके चैव शतैः स तपति त्रिभिः  ।
+      शरद्यपि च वर्षासु चतुर्भैः संप्रवर्षति  
+      हेमन्ते शिशिरे चैव हिममुत्सृजति त्रिभिः  ॥ १,४१.१६ ॥
+      वरुणो माघमासे तु सूर्यः पूषा तु फल्गुने  ।
+      चैत्रे मासि भवेदंशो धाता वैशाखतापनः  ॥ १,४१.१७ ॥
+      ज्येष्ठामूले भवेदिन्द्रः आषाढे सविता रविः  ।
+      विवस्वान् श्रावणे मासि प्रौष्ठपद्यां भगः स्मृतः  ॥ १,४१.१८ ॥
+      पर्जन्योऽश्वयुजि त्वष्टाकार्तिके मासि भास्करः  ।
+      मार्गशीर्ष भवेन्मित्रः पौषे विष्णुः सनातनः  ॥ १,४१.१९ ॥
+      पञ्चरश्मिसहस्त्राणि वरुणस्यार्ककर्मणि  ।
+      षड्भिः सहस्त्रैः पूषा तु देवोंशः सप्तभिस्तथा  ॥ १,४१.२० ॥
+      धाताष्टभिः सहस्त्रैस्तु नवभिस्तु शतक्रतुः  ।
+      विवस्वान् दशभिः पाति पात्येकादशभिर्भगः  ॥ १,४१.२१ ॥
+      सप्तभिस्तपते मित्रस्त्वष्टा चैवाष्टभिस्तपेत् ।
+      अर्यमा दशभैः पाति पर्जन्यो नवभिस्तपेत् ।
+      षड्भी रश्मिसहस्त्रैस्तु विष्णुस्तपति विश्वसृक् ॥ १,४१.२२ ॥
+      वसन्ते कपिलः सूर्यो ग्रीष्मे काञ्चनसप्रभः  ।
+      श्वेतो वर्षासु वर्णेन पाण्डुरः शरदि प्रभुः  ।
+      हेमन्ते ताम्रवर्णः स्याच्छिशिरे लोहितो रविः  ॥ १,४१.२३ ॥
+      ओषधीषु बलं धत्ते स्वधामपि पितृष्वथ  ।
+      सूर्योऽमरत्वममृते त्रयं त्रिषु नियच्छति  ॥ १,४१.२४ ॥
+      अन्ये चाष्टौ ग्रहा ज्ञेयाः सूर्येणाधिष्ठिता द्विजाः  ।
+
+
+
+
+
+</div>

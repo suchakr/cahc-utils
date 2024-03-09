@@ -39,7 +39,8 @@ class NaksUtils:
 		'(α,β,γ2,δ) Del',
 		'(λ) Aqr',
 		'(α,β) Peg',
-		'(γ,λ) Peg',
+		# '(γ,λ) Peg',
+		'(γ) Peg (α) And',
 		'(ε,(α,ζ)) Psc',
 	]
 

@@ -1,7 +1,10 @@
 include("nakshatras.inc");
 include("moon_set_events--1300.inc");
-event_jds = MOON_SET_JDS
-cls()
+include("moon_rise_events--1300.inc");
+MODE = "rise" // "set"
+event_jds = MODE == "set" ? MOON_SET_JDS : MOON_RISE_JDS
+
+cls()   
 
 function screenshot(dir, fn) {
     var filename = fn || '000-zap0';
@@ -9,7 +12,7 @@ function screenshot(dir, fn) {
     core.screenshot(
         filename,
         false ,// invert
-        "/Users/sunder/projects/cahc/cahc-utils/stel_scripts/moon-shranga~/-1300" +  (dir ? "/"+dir : ''), // directory
+        "/Users/sunder/projects/cahc/cahc-utils/stel_scripts/moon-shranga~/" + MODE + "/-1300" +  (dir ? "/"+dir : ''), // directory
         true,// overwrite
         "jpg" // format
     )
@@ -36,7 +39,8 @@ W(5);
 
 // iterate over the keys and values of the event_jds object
 for ( key in event_jds) {
-    if (key == "shukla_pratipada") { continue }
+    // if (key == "shukla_pratipada") { continue }
+    if (key !== "poornima") { continue }
     value = event_jds[key]
     for (i = 0; i < value.length; i+=1) {
         JD(value[i]-.75/24)

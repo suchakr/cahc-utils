@@ -74,3 +74,9 @@ presentations/**/media/*
 presentations/2024-03-17-mythic/*gif
 presentations/2024-03-17-mythic/*jpg
 presentations/2024-03-17-mythic/*mp4
+varna-sanyoga/z*md
+**/.checkpoint*
+padacheda/padacheda_output/**
+padacheda/**
+**/varna-sanyoga/llm_pre_processed/**
+**/varna-sanyoga/llm_post_processed/**

@@ -1,0 +1,34 @@
+Sanskrit Text Clustering Analysis Summary
+=============================================
+
+Analysis Date: 2025-07-09 01:21
+Algorithm Used: Hierarchical
+Number of Clusters: 5
+Normalization: StandardScaler
+
+Dataset Overview:
+- Total texts analyzed: 56
+- Literary categories: 1
+- Sanskrit phonemes: 50
+
+Clustering Results:
+- Clusters found: 5
+- Cross-category clusters: 0
+
+
+Cluster Compositions:
+
+Cluster 0 (39 texts):
+  - Kavya: 39 texts (100.0%)
+
+Cluster 1 (14 texts):
+  - Kavya: 14 texts (100.0%)
+
+Cluster 2 (1 texts):
+  - Kavya: 1 texts (100.0%)
+
+Cluster 3 (1 texts):
+  - Kavya: 1 texts (100.0%)
+
+Cluster 4 (1 texts):
+  - Kavya: 1 texts (100.0%)

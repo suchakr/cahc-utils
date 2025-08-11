@@ -105,7 +105,7 @@ def main():
     total_cleaned = 0
     
     for nb_path in notebook_paths:
-        if '.ipynb_checkpoints' in str(nb_path):
+        if '.ipynb_checkpoints' in str(nb_path) or '~' in nb_path.name:
             continue
             
         print(f"\n{'='*60}")

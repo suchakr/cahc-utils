@@ -47,16 +47,14 @@ datasets/
 ```
 
 ## Affected Notebooks
-The following 9 notebooks will have their file paths automatically updated:
+The following 5 active notebooks will have their file paths automatically updated (~ notebooks ignored):
 - `cahc_explore.ipynb` (39MB → ~400KB after cleaning)
-- `cahc_explore_may_2023~.ipynb` (12MB → ~200KB)  
 - `lunar-events-calculator.ipynb` (11MB → ~40KB)
-- `cahc_explore_saved~.ipynb` (9MB → ~150KB)
-- `cahc_explore_saved2~.ipynb` (5.5MB → ~200KB)
 - `vgj_ac_rs.ipynb` (5MB → ~10KB)
 - `gruha_chaara.ipynb` (1MB → ~10KB)
 - `lagadha_units.ipynb` (120KB → ~50KB)
-- `c2~.ipynb` (400KB → ~400KB)
+
+**Note**: Notebooks with `~` suffix are considered backup/old versions and will be ignored during reorganization.
 
 ## Execution Steps
 
@@ -154,7 +152,7 @@ These should be reviewed and moved to appropriate directories after execution.
 5. **Revert Plan**: Can checkout previous commit to undo changes
 
 ## Success Criteria
-- [ ] All 9 notebooks run without path errors
+- [ ] All 5 active notebooks run without path errors (~ notebooks ignored)
 - [ ] Files are logically organized by scientific domain
 - [ ] Notebook sizes reduced by 90%+
 - [ ] Migration documentation complete

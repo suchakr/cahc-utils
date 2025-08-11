@@ -125,7 +125,7 @@ class DatasetReorganizer:
         print("="*60)
         
         for notebook_path in self.jyotisha_dir.rglob('*.ipynb'):
-            if '.ipynb_checkpoints' in str(notebook_path):
+            if '.ipynb_checkpoints' in str(notebook_path) or '~' in notebook_path.name:
                 continue
                 
             self.update_single_notebook(notebook_path, moved_files)

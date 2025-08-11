@@ -1,0 +1,24 @@
+# Main app redirect
+/ /dhaatu-animation.html 200
+
+# Documentation redirects
+/docs /README.md 200
+/readme /README.md 200
+/documentation /README.md 200
+
+# Animation-related redirects
+/animation /dhaatu-animation.html 200
+/app /dhaatu-animation.html 200
+/demo /dhaatu-animation.html 200
+/sutra /sutra-list.html
+/sutras /sutra-list.html
+/gemini /gemini/dhaatu-animation.html
+
+# Legacy file redirects to README
+/animation-prompt.md /README.md 200
+/dhaatu-prompt.md /README.md 200
+/integration-summary.md /README.md 200
+/dhaatu-paatha-notes.md /README.md 200
+
+# Catch-all for unknown URLs
+/* /README.md 404

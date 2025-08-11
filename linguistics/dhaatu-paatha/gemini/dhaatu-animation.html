@@ -1,0 +1,2433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>धातु-पाठ तिङ्न्त Generation Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            flex-direction: column;
+            color: #333;
+            transform-origin: 0 0;
+            transform: scale(0.9);
+            width: 111%;
+            min-height: 111vh;
+        }
+        
+        .header {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .header h1 {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            z-index: 100;
+        }
+        
+        /* Tab Navigation Styles */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .tab-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d3748;
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .tab-icon {
+            font-size: 1.1rem;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .dhatu-selector {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .dhatu-selector label {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .dhatu-selector select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1rem;
+            min-width: 150px;
+        }
+        
+        /* Lakara dropdown with text indicators for better browser support */
+        #lakara-select {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(159, 122, 234, 0.05));
+        }
+        
+        #lakara-select option[value="लट्"],
+        #lakara-select option[value="लङ्"],
+        #lakara-select option[value="लोट्"],
+        #lakara-select option[value="विधिलिङ्"] {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+        
+        #lakara-select option[value="लुट्"],
+        #lakara-select option[value="लृट्"],
+        #lakara-select option[value="लुङ्"],
+        #lakara-select option[value="लृङ्"] {
+            background-color: rgba(159, 122, 234, 0.1);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .animation-speed-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .animation-speed-control label {
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        #speedPreset {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            background: white;
+            color: #2d3748;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+        
+        #speedPreset:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .animation-controls {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 200px;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .control-hint {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        #animationSpeed {
+            width: 150px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        
+        #animationSpeed::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        #animationSpeed::-webkit-slider-thumb:hover {
+            background: #5a67d8;
+            transform: scale(1.1);
+        }
+        
+        #animationSpeed::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+        }
+        
+        .speed-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        
+        #enableSliding {
+            width: 16px;
+            height: 16px;
+            accent-color: #667eea;
+        }
+        
+        .animation-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .step-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.8s ease;
+            position: relative;
+            opacity: 0.3;
+            transform: translateY(20px);
+            will-change: transform, opacity, box-shadow;
+        }
+        
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0) scale(1.05);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            z-index: 10;
+            animation: gentleGlow 2s ease-in-out;
+        }
+        
+        @keyframes gentleGlow {
+            0% {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            }
+            50% {
+                box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4), 
+                           0 0 20px rgba(102, 126, 234, 0.1);
+            }
+            100% {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            }
+        }
+        
+        /* Floating Result Card */
+        .floating-result-card {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, 0) scale(0.8);
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(72, 187, 120, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            text-align: center;
+            min-width: 280px;
+            max-width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .floating-result-card.show {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+            pointer-events: auto;
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translate(-50%, 0) scale(1) translateY(0px);
+            }
+            50% {
+                transform: translate(-50%, 0) scale(1) translateY(-8px);
+            }
+        }
+        
+        .floating-result-card h2 {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .floating-result-card .result-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .floating-result-card .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .floating-result-card .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .floating-result-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        
+        .floating-result-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Mobile-specific active card styling */
+        @media (max-width: 768px) {
+            .step-card.active {
+                transform: scale(1.02);
+                margin-bottom: 1rem;
+            }
+        }
+        
+        .step-card h3 {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .property {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #e2e8f0;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .property.filled {
+            border-left-color: #48bb78;
+            background: #f0fff4;
+            animation: fillIn 0.5s ease-out;
+        }
+        
+        .sutra-element {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+        }
+        
+        .sutra-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        
+        .sutra-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            border-left: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        .sutra-element.filled {
+            opacity: 1;
+            transform: translateY(0);
+            border-color: #667eea;
+            animation: sutraGlow 0.5s ease-out;
+        }
+        
+        .sutra-element.it-rules {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            border-color: #ed8936;
+        }
+        
+        .sutra-element.pada-rules {
+            background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+            border-color: #38b2ac;
+        }
+        
+        .sutra-element.vikarana-rules {
+            background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+            border-color: #9f7aea;
+        }
+        
+        .sutra-element.itagama-rules {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            border-color: #f56565;
+        }
+        
+        .formula-part.filled.it-rules {
+            background: rgba(237, 137, 54, 0.3);
+            border-color: #ed8936;
+        }
+        
+        .formula-part.filled.pada-rules {
+            background: rgba(56, 178, 172, 0.3);
+            border-color: #38b2ac;
+        }
+        
+        .formula-part.filled.vikarana-rules {
+            background: rgba(159, 122, 234, 0.3);
+            border-color: #9f7aea;
+        }
+        
+        .formula-part.filled.itagama-rules {
+            background: rgba(245, 101, 101, 0.3);
+            border-color: #f56565;
+        }
+        
+        @keyframes fillIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes sutraGlow {
+            0% {
+                box-shadow: 0 0 0 rgba(102, 126, 234, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 0 rgba(102, 126, 234, 0.5);
+            }
+        }
+        
+        .formula-container {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .formula-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .formula-container.animate::before {
+            left: 100%;
+        }
+        
+        .formula {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .formula-part {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.5s ease;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .formula-part.filled {
+            background: rgba(72, 187, 120, 0.3);
+            border-color: #48bb78;
+            animation: glow 0.5s ease-out;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 0 rgba(72, 187, 120, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(72, 187, 120, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 0 rgba(72, 187, 120, 0.5);
+            }
+        }
+        
+        .result-container {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .result-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .result-container h2 {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sutra-reference {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        .comprehensive-sutras {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        .comprehensive-sutras h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+            font-size: 1.3rem;
+        }
+        
+        .sutra-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .sutra-category {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sutra-category h4 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            font-size: 1rem;
+        }
+        
+        .sutra-category.it-rules h4 {
+            color: #ed8936;
+            border-bottom-color: #ed8936;
+        }
+        
+        .sutra-category.pada-rules h4 {
+            color: #38b2ac;
+            border-bottom-color: #38b2ac;
+        }
+        
+        .sutra-category.itagama-rules h4 {
+            color: #f56565;
+            border-bottom-color: #f56565;
+        }
+        
+        .sutra-category.pratyaya-classification h4 {
+            color: #9f7aea;
+            border-bottom-color: #9f7aea;
+        }
+        
+        .sutra-list-item {
+            padding: 0.6rem;
+            margin: 0.3rem 0;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid rgba(255,255,255,0.1);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        
+        .sutra-list-item.active {
+            opacity: 1;
+            background: rgba(255,255,255,0.1);
+            border-left-color: #48bb78;
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.2);
+            animation: sutraHighlight 0.6s ease-out;
+        }
+        
+        .sutra-list-item.it-rules.active {
+            border-left-color: #ed8936;
+            box-shadow: 0 2px 8px rgba(237, 137, 54, 0.2);
+        }
+        
+        .sutra-list-item.pada-rules.active {
+            border-left-color: #38b2ac;
+            box-shadow: 0 2px 8px rgba(56, 178, 172, 0.2);
+        }
+        
+        .sutra-list-item.itagama-rules.active {
+            border-left-color: #f56565;
+            box-shadow: 0 2px 8px rgba(245, 101, 101, 0.2);
+        }
+        
+        .sutra-list-item.pratyaya-classification.active {
+            border-left-color: #9f7aea;
+            box-shadow: 0 2px 8px rgba(159, 122, 234, 0.2);
+        }
+        
+        .sutra-number {
+            font-weight: 600;
+            color: #a0aec0;
+        }
+        
+        @keyframes sutraHighlight {
+            0% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .process-flow {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-card.active {
+                transform: scale(1.02);
+                margin-bottom: 1rem;
+            }
+            
+            .formula {
+                font-size: 1.2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .tab-navigation {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .tab-btn {
+                justify-content: center;
+            }
+            
+            /* Mobile floating result card positioning */
+            .floating-result-card {
+                top: 10%;
+                padding: 1.5rem;
+                min-width: 260px;
+                max-width: 95vw;
+                max-height: 85vh;
+                font-size: 0.9rem;
+            }
+            
+            .floating-result-card h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .floating-result-card .result-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Sutra Reference Styles */
+        .sutra-reference-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .sutra-stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .stat-label {
+            color: #4a5568;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .sutra-table-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .sutra-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .sutra-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .sutra-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        .sutra-table tr:hover td {
+            background-color: #f8f9ff;
+        }
+        
+        .sutra-table .sutra-number {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1rem;
+            min-width: 80px;
+        }
+        
+        .sutra-table .sutra-text {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 200px;
+            line-height: 1.6;
+        }
+        
+        .sutra-table .application {
+            color: #4a5568;
+            font-style: italic;
+            min-width: 250px;
+            line-height: 1.5;
+        }
+        
+        .sutra-table .function-group {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 0.5rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #8b4513;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+        
+        .sutra-table .function-group.it-sanjnja { 
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
+            color: #2d5a87; 
+        }
+        
+        .sutra-table .function-group.pada-assignment { 
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); 
+            color: #8b4513; 
+        }
+        
+        .sutra-table .function-group.vikarana { 
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); 
+            color: #6b46c1; 
+        }
+        
+        .sutra-table .function-group.pratyaya { 
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); 
+            color: #1e40af; 
+        }
+        
+        .sutra-table .function-group.id-agama { 
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); 
+            color: #be185d; 
+        }
+
+        .result-grid-container {
+            padding: 0.5rem;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        .grid-cell {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .sutra-reference-container {
+                padding: 0 1rem;
+            }
+            
+            .sutra-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .sutra-table th,
+            .sutra-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .sutra-table .sutra-text {
+                font-size: 1rem;
+            }
+            
+            .sutra-table .function-group {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>पाणिनीयधातुपाठस्य तिङ्न्तरूपसिद्धिप्रक्रिया</h1>
+        <!-- <p>Interactive Animation of Sanskrit Verb Generation Process</p> -->
+    </div>
+
+    
+    <!-- Animation Tab Content -->
+    <div class="tab-content active" id="animation-tab">
+        <div class="container">
+            <div class="controls">
+                <div class="dhatu-selector">
+                    <label for="dhatu-select">उपदेश-धातुः</label>
+                    <select id="dhatu-select">
+                        <option value="भू">भू - सत्तायाम् (भ्वादि)</option>
+                        <option value="अदँ">अदँ - भक्षणे (अदादि)</option>
+                        <option value="हुँ">हुँ - दानादनयोः (जुहोत्यादि)</option>
+                        <option value="दिवु">दिवु - क्रीडायाम् (दिवादि)</option>
+                        <option value="षुञ्">षुञ् - अभिषवे (स्वादि)</option>
+                        <option value="तुद्">तुद् - व्यथने (तुदादि)</option>
+                        <option value="रुधिर्">रुधिर् - आवरणे (रुधादि)</option>
+                        <option value="तनुँ">तनुँ - विस्तारे (तनादि)</option>
+                        <option value="क्रीञ्">क्रीञ् - द्रव्यविनिमये (क्र्यादि)</option>
+                        <option value="चुर्">चुर् - स्तेये (चुरादि)</option>
+                        <option value="डुपचँष्">डुपचँष् - पाके (भ्वादि-उभयपद)</option>
+                    </select>
+                    
+                    <label for="lakara-select">लकारः</label>
+                    <select id="lakara-select">
+                        <option value="लट्">🔵 लट् (वर्तमान) - सार्वधातुक</option>
+                        <option value="लङ्">🔵 लङ् (भूत) - सार्वधातुक</option>
+                        <option value="लोट्">🔵 लोट् (आज्ञार्थ) - सार्वधातुक</option>
+                        <option value="विधिलिङ्">🔵 विधिलिङ् (विधि) - सार्वधातुक</option>
+                        <option value="लुट्">🟣 लुट् (भविष्यत्) - आर्धधातुक</option>
+                        <option value="लृट्">🟣 लृट् (भविष्यत्) - आर्धधातुक</option>
+                        <option value="लुङ्">🟣 लुङ् (भूत) - आर्धधातुक</option>
+                        <option value="लृङ्">🟣 लृङ् (भूत/भविष्यत्) - आर्धधातुक</option>
+                    </select>
+                    
+                    <label for="purusa-select" style="display:none;">पुरुषः-वचनम्</label>
+                    <select id="purusa-select" style="display:none;">
+                        <option value="प्रथम-एकवचनम्">प्रथम-एकवचनम्</option>
+                        <option value="प्रथम-द्विवचनम्">प्रथम-द्विवचनम्</option>
+                        <option value="प्रथम-बहुवचनम्">प्रथम-बहुवचनम्</option>
+                        <option value="मध्यम-एकवचनम्">मध्यम-एकवचनम्</option>
+                        <option value="मध्यम-द्विवचनम्">मध्यम-द्विवचनम्</option>
+                        <option value="मध्यम-बहुवचनम्">मध्यम-बहुवचनम्</option>
+                        <option value="उत्तम-एकवचनम्">उत्तम-एकवचनम्</option>
+                        <option value="उत्तम-द्विवचनम्">उत्तम-द्विवचनम्</option>
+                        <option value="उत्तम-बहुवचनम्">उत्तम-बहुवचनम्</option>
+                    </select>
+                    
+                    <div class="animation-speed-control">
+                        <label for="speedPreset">Animation:</label>
+                        <select id="speedPreset">
+                            <option value="none">None</option>
+                            <option value="slow">Slow</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="fast">Fast</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="startAnimation()">प्रक्रिया आरम्भः</button>
+                </div>
+            </div>
+        
+        <!-- Animation Controls -->
+        <div class="animation-controls" style="display: none;">
+            <div class="control-group">
+                <label for="enableSliding">
+                    <input type="checkbox" id="enableSliding" checked>
+                    कार्ड स्लाइडिंग (Card Sliding)
+                </label>
+                <span class="control-hint">Cards move to top when active</span>
+            </div>
+            <div class="control-group">
+                <label for="animationSpeed">गति (Speed): <span id="speedValue">1.0x</span></label>
+                <input type="range" id="animationSpeed" min="0.5" max="3.0" step="0.1" value="1.0">
+                <div class="speed-labels">
+                    <span>धीमा</span>
+                    <span>मध्यम</span>
+                    <span>तीव्र</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="animation-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="process-flow">
+                <div class="step-card" id="step1">
+                    <h3>१. धातु-पाठ-अन्वेषणम्</h3>
+                    <div class="step-content">
+                        <div class="property" id="upadesha">उपदेश-धातुः: <span id="upadesha-val">___</span></div>
+                        <div class="property" id="gana">गणः: <span id="gana-val">___</span></div>
+                        <div class="property" id="artha">अर्थः: <span id="artha-val">___</span></div>
+                        <div class="property" id="svaraguna">स्वर-गुणः: <span id="svaraguna-val">___</span></div>
+                    </div>
+                </div>
+                
+                <div class="step-card" id="step2">
+                    <h3>२. अनुबन्ध-विश्लेषणम्</h3>
+                    <div class="step-content">
+                        <div class="property" id="anubandha">अनुबन्धाः: <span id="anubandha-val">___</span></div>
+                        <div class="property" id="laukika">लौकिक-धातुः: <span id="laukika-val">___</span></div>
+                        <div class="sutra-element it-rules" id="anubandha-sutra">
+                            सूत्रम्: <span id="anubandha-sutra-val">___</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card" id="step3">
+                    <h3>३. इडागम-निर्णयः</h3>
+                    <div class="step-content">
+                        <div class="property" id="pratyaya-classification">प्रत्यय-वर्गीकरणम्: <span id="pratyaya-classification-val">___</span></div>
+                        <div class="property" id="itagama">इडागमः: <span id="itagama-val">___</span></div>
+                        <div class="property" id="itness">इट्त्वम्: <span id="itness-val">___</span></div>
+                        <div class="sutra-element itagama-rules" id="itagama-sutra">
+                            सूत्रम्: <span id="itagama-sutra-val">___</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card" id="step4">
+                    <h3>४. पद-निर्णयः</h3>
+                    <div class="step-content">
+                        <div class="property" id="pada">पदम्: <span id="pada-val">___</span></div>
+                        <div class="property" id="pada-sutra">सूत्रम्: <span id="pada-sutra-val">___</span></div>
+                        <div class="sutra-element pada-rules" id="pada-detailed-sutra">
+                            सूत्रम्: <span id="pada-detailed-sutra-val">___</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card" id="step5">
+                    <h3>५. विकरण-निर्णयः</h3>
+                    <div class="step-content">
+                        <div class="property" id="vikarana">विकरणः: <span id="vikarana-val">___</span></div>
+                        <div class="property" id="vikarana-sutra">सूत्रम्: <span id="vikarana-sutra-val">___</span></div>
+                        <div class="sutra-element vikarana-rules" id="vikarana-detailed-sutra">
+                            सूत्रम्: <span id="vikarana-detailed-sutra-val">___</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card" id="step6">
+                    <h3>६. तिङ्-प्रत्यय-योजनम्</h3>
+                    <div class="step-content">
+                        <div class="property" id="purusa">पुरुषः-वचनम्: <span id="purusa-val">___</span></div>
+                        <div class="property" id="ting-parasmai" style="display: none;">प��स्मैपदम्-प्रत्ययः: <span id="ting-parasmai-val">___</span></div>
+                        <div class="property" id="ting-atmane" style="display: none;">आत्मनेपदम्-प्रत्ययः: <span id="ting-atmane-val">___</span></div>
+                        <div class="property" id="ting" style="display: none;">तिङ्-प्रत्ययः: <span id="ting-val">___</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formula-container" id="formulaContainer">
+                <div class="formula" id="formula-main">
+                    <div class="formula-part" id="dhatu-part">धातुः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="id-part">इत्?</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="vikarana-part">विकरणः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="ting-part">तिङ्</div>
+                    <div class="formula-part">=</div>
+                    <div class="formula-part" id="result-part">
+                        <div class="result-grid-container">
+                            <div class="result-grid" id="result-grid-main">
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula" id="formula-parasmai" style="display: none; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem;">
+                    <div style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 0.5rem;">परस्मैपदम्:</div>
+                    <div class="formula-part" id="dhatu-part-p">धातुः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="id-part-p">इत्?</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="vikarana-part-p">विकरणः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="ting-part-p">तिङ्</div>
+                    <div class="formula-part">=</div>
+                    <div class="formula-part" id="result-part-p">
+                        <div class="result-grid-container">
+                            <div class="result-grid" id="result-grid-p">
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula" id="formula-atmane" style="display: none; margin-top: 1rem;">
+                    <div style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 0.5rem;">आत्मनेपदम्:</div>
+                    <div class="formula-part" id="dhatu-part-a">धातुः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="id-part-a">इत्?</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="vikarana-part-a">विकरणः</div>
+                    <div class="formula-part">+</div>
+                    <div class="formula-part" id="ting-part-a">तिङ्</div>
+                    <div class="formula-part">=</div>
+                    <div class="formula-part" id="result-part-a">
+                        <div class="result-grid-container">
+                            <div class="result-grid" id="result-grid-a">
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                                <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comprehensive-sutras" id="comprehensiveSutras">
+                <h3>प्रमुख-व्याकरण-सूत्राणि</h3>
+                <div class="sutra-categories">
+                    <div class="sutra-category it-rules">
+                        <h4>इत्-संज्ञा-सूत्राणि</h4>
+                        <div id="it-rules-list">
+                            <div class="sutra-list-item it-rules" data-sutra="1.3.2">
+                                <span class="sutra-number">१.३.२</span> उपदेशेऽजनुनासिक इत्
+                            </div>
+                            <div class="sutra-list-item it-rules" data-sutra="1.3.3">
+                                <span class="sutra-number">१.३.३</span> हलन्त्यम्
+                            </div>
+                            <div class="sutra-list-item it-rules" data-sutra="1.3.5">
+                                <span class="sutra-number">१.३.५</span> आदिर्ञिटुडवः
+                            </div>
+                            <div class="sutra-list-item it-rules" data-sutra="1.3.9">
+                                <span class="sutra-number">१.३.९</span> तस्य लोपः
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sutra-category pada-rules">
+                        <h4>पद-निर्णय-सूत्राणि</h4>
+                        <div id="pada-rules-list">
+                            <div class="sutra-list-item pada-rules" data-sutra="1.3.12">
+                                <span class="sutra-number">१.३.१२</span> अनुदात्तङित आत्मनेपदम्
+                            </div>
+                            <div class="sutra-list-item pada-rules" data-sutra="1.3.72">
+                                <span class="sutra-number">१.३.७२</span> स्वरितञितः कर्त्रभिप्राये क्रियाफले
+                            </div>
+                            <div class="sutra-list-item pada-rules" data-sutra="1.3.78">
+                                <span class="sutra-number">१.३.७८</span> शेषात कर्तरि परस्मैपदम्
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sutra-category itagama-rules">
+                        <h4>इडागम-सूत्राणि</h4>
+                        <div id="itagama-rules-list">
+                            <div class="sutra-list-item itagama-rules" data-sutra="7.2.10">
+                                <span class="sutra-number">७.२.१०</span> एकाच उपदेशेऽनुदात्तात्
+                            </div>
+                            <div class="sutra-list-item itagama-rules" data-sutra="7.2.35">
+                                <span class="sutra-number">७.२.३५</span> आर्धधातुकस्येड् वलादेः
+                            </div>
+                            <div class="sutra-list-item itagama-rules" data-sutra="7.2.44">
+                                <span class="sutra-number">७.२.��४</span> स्वरतिसूतिसूयतिधूञूदितो वा
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sutra-category pratyaya-classification">
+                        <h4>प्रत्यय-वर्गीकरण-सूत्राणि</h4>
+                        <div id="pratyaya-classification-list">
+                            <div class="sutra-list-item pratyaya-classification" data-sutra="3.4.113">
+                                <span class="sutra-number">३.४.११३</span> तिङ्शित्सार्वधातुकम्
+                            </div>
+                            <div class="sutra-list-item pratyaya-classification" data-sutra="3.4.114">
+                                <span class="sutra-number">३.४.११४</span> आर्धधातुकं शेषः
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-container" id="resultContainer">
+                <h2 id="finalResult">___</h2>
+                <div id="resultUbhayapada" style="display: none;">
+                    <div style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 0.5rem;">परस्मैपदम्</div>
+                            <div id="finalResultParasmai" style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.5rem;">___</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 0.5rem;">आत्मनेपदम्</div>
+                            <div id="finalResultAtmane" style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 1.5rem;">___</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sutra-reference" id="sutraRef">
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <strong>प्रयुक्त-मुख्य-सूत्राणि</strong>
+                    </div>
+                    <div id="usedSutrasDisplay" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sutra Reference Tab Content -->
+    <div class="tab-content" id="sutras-tab">
+        <div class="sutra-reference-container">
+            <div class="sutra-stats">
+                <div class="stat-item">
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">Total Sūtras</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Function Groups</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Adhyāyas</div>
+                </div>
+            </div>
+            
+            <div class="sutra-table-container">
+                <table class="sutra-table">
+                    <thead>
+                        <tr>
+                            <th>Sūtra Number</th>
+                            <th>Sūtra Text</th>
+                            <th>Application</th>
+                            <th>Function Group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="sutra-number">1.3.2</td>
+                            <td class="sutra-text">उपदेशेऽजनुनासिक इत्</td>
+                            <td class="application">it-sañjñā for nasalized vowels</td>
+                            <td><span class="function-group it-sanjña">It-Saṃjñā Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.3</td>
+                            <td class="sutra-text">हलन्त्यम्</td>
+                            <td class="application">it-sañjñā for final consonants</td>
+                            <td><span class="function-group it-sanjnja">It-Saṃjñā Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.5</td>
+                            <td class="sutra-text">आदिर्ञिटुडवः</td>
+                            <td class="application">it-sañjñā for initial ñi & ṭu, ḍu</td>
+                            <td><span class="function-group it-sanjnja">It-Saṃjñā Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.9</td>
+                            <td class="sutra-text">तस्य लोपः</td>
+                            <td class="application">Elision of it-sañjñā</td>
+                            <td><span class="function-group it-sanjnja">It-Saṃjñā Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.12</td>
+                            <td class="sutra-text">अनुदात्तङित आत्मनेपदम्</td>
+                            <td class="application">ātmane-pada on anudāta + it</td>
+                            <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.72</td>
+                            <td class="sutra-text">स्वरितज्ञितः कर्त्रभिप्राये क्रियाफले</td>
+                            <td class="application">ubhaya-pada on svarita or jñ+ it</td>
+                            <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">1.3.78</td>
+                            <td class="sutra-text">शेषात कर्तरि परस्मैपदम्</td>
+                            <td class="application">parasmaipada otherwise</td>
+                            <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">2.4.72</td>
+                            <td class="sutra-text">अदिप्रभृतिभ्यः शपः</td>
+                            <td class="application">Assigns śap (lopa) to adādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">2.4.75</td>
+                            <td class="sutra-text">जुहात्यादिभ्यः श्लुः</td>
+                            <td class="application">Assigns ślu to juhotyādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.25</td>
+                            <td class="sutra-text">...चूर्णचुरादिभ्यः णिच्</td>
+                            <td class="application">Assigns ṇic to curādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.68</td>
+                            <td class="sutra-text">कर्तरि शप्</td>
+                            <td class="application">Assigns śap to bhvādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.69</td>
+                            <td class="sutra-text">दिवादिभ्यः श्यन्</td>
+                            <td class="application">Assigns śyan to divādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.73</td>
+                            <td class="sutra-text">स्वादिभ्यः श्नुः</td>
+                            <td class="application">Assigns śnu to svādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.77</td>
+                            <td class="sutra-text">तुदादिभ्यः शः</td>
+                            <td class="application">Assigns śa to tudādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.78</td>
+                            <td class="sutra-text">रुधादिभ्यः श्नम्</td>
+                            <td class="application">Assigns śnam to rudhādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.79</td>
+                            <td class="sutra-text">तनादिकृञ्भ्य उः</td>
+                            <td class="application">Assigns uḥ to tanādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.1.81</td>
+                            <td class="sutra-text">क्र्यादिभ्यः श्ना</td>
+                            <td class="application">Assigns śnā to kryādi-gaṇa</td>
+                            <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.4.113</td>
+                            <td class="sutra-text">तिङ्शित्सार्वधातुकम्</td>
+                            <td class="application">sārvadhātuka-pratyaya on tiṅśit</td>
+                            <td><span class="function-group pratyaya">Pratyaya Classification</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">3.4.114</td>
+                            <td class="sutra-text">आर्धधातुकं शेषः</td>
+                            <td class="application">ārddhadhātuka-pratyaya on not tiṅśit</td>
+                            <td><span class="function-group pratyaya">Pratyaya Classification</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">7.2.10</td>
+                            <td class="sutra-text">एकाच उपदेशेऽनुदात्तात्</td>
+                            <td class="application">iḍ-āgama blocked on single anudāta acaḥ</td>
+                            <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">7.2.35</td>
+                            <td class="sutra-text">आर्धधातुकस्येड् वलादेः</td>
+                            <td class="application">iḍ-āgama before ārdhadhātuka's val</td>
+                            <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sutra-number">7.2.44</td>
+                            <td class="sutra-text">स्वरतिसूतिसूयतिधूञूदितो वा</td>
+                            <td class="application">id-āgama - with or without on ūdit</td>
+                            <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Result Card -->
+    <div class="floating-result-overlay" id="floatingResultOverlay" onclick="closeFloatingResult()"></div>
+    <div class="floating-result-card" id="floatingResultCard">
+        <button class="close-btn" onclick="closeFloatingResult()">×</button>
+        <div class="result-subtitle">🎉 सिद्धम्  🎉</div>
+        <h2 id="floatingResultText"> </h2>
+        <div id="floatingResultUbhayapada" style="display: none;">
+            <div style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem;">परस्मैपदम्</div>
+                    <div id="floatingResultParasmai" class="result-grid-container">
+                        <div class="result-grid">
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.5rem;">आत्मनेपदम्</div>
+                    <div id="floatingResultAtmane" class="result-grid-container">
+                        <div class="result-grid">
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                            <div class="grid-cell">---</div><div class="grid-cell">---</div><div class="grid-cell">---</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="xfooter">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation" style="display: flex; flex-direction: row; gap: 0.5rem; justify-content: center; align-items: center;">
+            <button class="tab-btn active" onclick="switchTab('animation')">
+            <span class="tab-icon">🎬</span>
+            <span class="tab-text">Animation</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('sutras')">
+            <span class="tab-icon">📜</span>
+            <span class="tab-text">Sutra Reference</span>
+            </button>
+        </div>
+    </div>    
+
+    <script>
+        // Sutra collection from dhaatu-paatha-notes.md
+        const sutra_collection = {
+            'it_rules': {
+                '1.3.2': 'उपदेशेऽजनुनासिक इत्',
+                '1.3.3': 'हलन्त्यम्',
+                '1.3.5': 'आदिर्ञिटुडवः',
+                '1.3.9': 'तस्य लोपः'
+            },
+            'padam_rules': {
+                '1.3.12': 'अनुदात्तङित आत्मनेपदम्',
+                '1.3.72': 'स्वरितञितः कर्त्रभिप्राये क्रियाफले',
+                '1.3.78': 'शेषात कर्तरि परस्मैपदम्'
+            },
+            'vikarana_rules': {
+                '2.4.72': 'अदिप्रभृतिभ्यः शपः',
+                '2.4.75': 'जुहात्यादिभ्यः श्लुः',
+                '3.1.25': 'चूर्णचुरादिभ्यः णिच्',
+                '3.1.68': 'कर्तरि शप्',
+                '3.1.69': 'दिवादिभ्यः श्यन्',
+                '3.1.73': 'स्वादिभ्यः श्नुः',
+                '3.1.77': 'तुदादिभ्यः शः',
+                '3.1.78': 'रुधादिभ्यः श्नम्',
+                '3.1.79': 'तनादिकृञ्भ्य उः',
+                '3.1.81': 'क्र्यादिभ्यः श्ना'
+            },
+            'itagama_rules': {
+                '7.2.10': 'एकाच उपदेशेऽनुदात्तात्',
+                '7.2.35': 'आर्धधातुकस्येड् वलादेः',
+                '7.2.44': 'स्वरतिसूतिसूयतिधूञूदितो वा'
+            },
+            'pratyaya_classification': {
+                '3.4.113': 'तिङ्शित्सार्वधातुकम्',
+                '3.4.114': 'आर्धधातुकं शेषः'
+            }
+        };
+
+        // Lakara classification for pratyaya determination
+        const lakara_classification = {
+            'sarvadhatuka': ['लट्', 'लोट्', 'लङ्', 'विधिलिङ्'],
+            'ardhadhatuka': ['लुट्', 'लृट्', 'लुङ्', 'लृङ्']
+        };
+
+        // Comprehensive dhatu derivation data based on dhatu_derivation_snip.prompt
+        // Each entry follows the step-by-step derivation process with explicit sutra references
+        const dhatu_derivation = {
+            'भू': {
+                // given - these are looked up from dhaatu-paatha-lookup - master
+                upadesa: 'भू',
+                gana: 'भ्वादि (१)',
+                artha: 'सत्तायाम्',
+                svaraguna: ['उदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: [], // No anubandha present in 'भू'
+                anubandha: 'none', // No anubandha to be dropped
+                laukika: 'भू',
+
+                // step 2 - itness nirnaya
+                itness_sutras: [], // No specific it-rules apply since no anubandha
+                itness: 'सेट्', // Default for भ्वादि gana
+
+                // step 2a - pratyaya classification (for iḍ-āgama determination)
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'], // तिङ्शित्सार्वधातुकम्, आर्धधातुकं शेषः
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेष���त कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.68'], // कर्तरि शप्
+                vikarana: { 
+                    'लट्': 'अ', 'लुट्': 'तास्', 'लङ्': 'अ', 'लृट्': 'स्य',
+                    'लोट्': 'अ', 'विधिलिङ्': 'अ', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya - defined according to padam
+                tin_endings: 'parasmaipada', // Reference to ting_endings.parasmaipada
+
+                examples: { 
+                    'लट्': 'भवति,भवतः,भवन्ति,भवसि,भवथः,भवथ,भवामि,भवावः,भवामः', 
+                    'लुट्': 'भविता,भवितारौ,भवितारः,भवितासि,भवितास्थः,भवितास्थ,भवितास्मि,भवितास्वः,भवितास्मः', 
+                    'लङ्': 'अभवत्,अभवताम्,अभवन्,अभवः,अभवतम्,अभवत,अभवम्,अभवाव,अभवाम', 
+                    'लृ���्': 'भविष्यति,भविष्यतः,भविष्यन्ति,भविष्यसि,भविष्यथः,भविष्यथ,भविष्यामि,भविष्यावः,भविष्यामः',
+                    'लोट्': 'भवतु,भवताम्,भवन्तु,भव,भवतम्,भवत,भवानि,भवाव,भवाम', 
+                    'विधिलिङ्': 'भवेत्,भवेताम्,भवेयुः,भवेः,भवेतम्,भवेत,भवेयम्,भवेव,भवेम', 
+                    'लुङ्': 'अभूत्,अभूताम्,अभूवन्,अभूः,अभूतम्,अभूत,अभूवम्,अभूव,अभूताम', 
+                    'लृङ्': 'अभविष्यत्,अभविष्यताम्,अभविष्यन्,अभविष्यः,अभविष्यतम्,अभविष्यत,अभविष्यम्,अभविष्याव,अभविष्याम'
+                }
+            },
+
+            'अदँ': {
+                // given
+                upadesa: 'अदँ',
+                gana: 'अदादि (२)',
+                artha: 'भक्षणे',
+                svaraguna: ['अनुदात्तः', 'उदात्तेतः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.2', '1.3.9'], // उपदेशेऽजनुनासिक इत्, तस्य लोपः
+                anubandha: 'अँ',
+                laukika: 'अद्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.10'], // एकाच उपदेशेऽनुदात्तात् (but doesn't apply here)
+                itness: 'अनिट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['2.4.72'], // अदिप्रभृतिभ्यः शपः
+                vikarana: { 
+                    'लट्': '∅', 'लुट्': 'तास्', 'लङ्': '∅', 'लृट्': 'स्य',
+                    'लोट्': '∅', 'विधिलिङ्': '∅', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'अत्ति,अत्तः,अदन्ति,अत्सि,अत्थः,अत्थ,अद्मि,अद्वः,अद्मः',
+                    'लुट्': 'अत्ता,अत्तारौ,अत्तारः,अत्तासि,अत्तास्थः,अत्तास्थ,अत्तास्मि,अत्तास्वः,अत्तास्मः',
+                    'लङ्': 'आदत्,आत्ताम्,आदन्,आदः,आत्तम्,आत्त,आदम्,आद्व,आद्म',
+                    'लृट्': 'अत्स्यति,अत्स्यतः,अत्स्यन्ति,अत्स्यसि,अत्स्यथः,अत्स्यथ,अत्स्यामि,अत्स्यावः,अत्स्यामः',
+                    'लोट्': 'अत्तु,अत्ताम्,अदन्तु,अद्धि,अत्तम्,अत्त,अदानि,अदाव,अदाम',
+                    'विधिलिङ्': 'अद्यात्,अद्याताम्,अद्युः,अद्याः,अद्यातम्,अद्यात,अ��्याम्,अद्याव,अद्याम',
+                    'लुङ्': 'अघसत्,अघसताम्,अघसन्,अघसः,अघसतम्,अघसत,अघसम्,अघसाव,अघसाम',
+                    'लृङ्': 'आत्स्यत्,आत्स्यताम्,आत्स्यन्,आत्स्यः,आत्स्यतम्,आत्स्यत,आत्स्यम्,आत्स्याव,आत्स्याम'
+                }
+            },
+
+            'हुँ': {
+                // given
+                upadesa: 'हुँ',
+                gana: 'जुहोत्यादि (३)',
+                artha: 'दानादनयोः',
+                svaraguna: ['उदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.2', '1.3.9'], // उपदेशेऽजनुनासिक इत्, तस्य लोपः
+                anubandha: 'उँ',
+                laukika: 'हु',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.35'], // आर्धधातुकस्येड् वलादेः (applies for iṭ-āgama)
+                itness: 'सेट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['2.4.75'], // जुहात्यादिभ्यः श्लुः
+                vikarana: { 
+                    'लट्': '∅', 'लुट्': 'तास्', 'लङ्': '∅', 'लृट्': 'स्य',
+                    'लोट्': '∅', 'विधिलिङ्': '∅', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'जुहोति,जुहुतः,जुह्वति,जुहोषि,जुहुथः,जुहुथ,जुहोमि,जुहुवः,जुहुमः',
+                    'लुट्': 'होता,होतारौ,होतारः,होतासि,होतास्थः,होतास्थ,होतास्मि,होतास्वः,होतास्मः',
+                    'लङ्': 'अज��होत्,अजुहुताम्,अजुहवुः,अजुहोः,अजुहुतम्,अजुहुत,अजुहवम्,अजुहुव,अजुहुम',
+                    'लृट्': 'होष्यति,होष्यतः,होष्यन्ति,होष्यसि,होष्यथः,होष्यथ,होष्यमि,होष्यवः,होष्यमः',
+                    'लोट्': 'जुहोतु,जुहुताम्,जुह्वतु,जुहुधि,जुहुतम्,जुहुत,जुहवानि,जुहवाव,जुहवाम',
+                    'विधिलिङ्': 'जुहुयात्,जुहुयाताम्,जुहुयुः,जुहुयाः,जुहुयातम्,जुहुयात,जुहुयाम्,जुहुयाव,जुहुयाम',
+                    'लुङ्': 'अहौषीत्,अहौष्टाम्,अहौषुः,अहौषीः,अहौष्टम्,अहौष्ट,अहौषम्,अहौष्व,अहौष्म',
+                    'लृङ्': 'अहोष्यत्,अहो���्यताम्,अहोष्यन्,अहोष्यः,अहोष्यतम्,अहोष्यत,अहोष्यम्,अहोष्यव,अहोष्यम'
+                }
+            },
+
+            'दिवु': {
+                // given
+                upadesa: 'दिवु',
+                gana: 'दिवादि (४)',
+                artha: 'क्रीडायाम्',
+                svaraguna: ['अनुदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.5', '1.3.9'], // आदिर्ञिटुडवः, तस्य लोपः
+                anubandha: 'उ',
+                laukika: 'दीव्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.35'], // आर्धधातुकस्येड् वलादेः
+                itness: 'सेट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.69'], // दिवादिभ्यः श्यन्
+                vikarana: { 
+                    'लट्': 'य', 'लुट्': 'तास्', 'लङ्': 'य', 'लृट्': 'स्य',
+                    'लोट्': 'य', 'विधिलिङ्': 'य', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'दीव्यति,दीव्यतः,दीव्यन्ति,दीव्यसि,दीव्यथः,दीव्यथ,दीव्यामि,दीव्यावः,दीव्यामः',
+                    'लुट्': 'देवता,देवितारौ,देवितारः,देवतासि,देवतास्थः,देवतास्थ,देवतास्मि,देवतास्वः,देवतास्मः',
+                    'लङ्': 'अदीव्यत्,अदीव्यताम्,अदीव्यन्,अदीव्यः,अदीव्यतम्,अदीव्यत,अदीव्यम्,अदीव्याव,अदीव्याम',
+                    'लृट्': 'देविष्यति,देवि��्यतः,देविष्यन्ति,देविष्यसि,देविष्यथः,देविष्यथ,देविष्यामि,देविष्यावः,देविष्यामः',
+                    'लोट्': 'दीव्यतु,दीव्यताम्,दीव्यन्तु,दीव्य,दीव्यतम्,दीव्यत,दीव्यानि,दीव्याव,दीव्याम',
+                    'विधिलिङ्': 'दीव्येत्,दीव्येताम्,दीव्येयुः,दीव्येः,दीव्येतम्,दीव्येत,दीव्येयम्,दीव्येव,दीव्येम',
+                    'लुङ्': 'अदेवीत्,अदेविष्यताम्,अदेविष्यन्,अदेवीः,अदेविष्टम्,अदेविष्ट,अदेविषम्,अदेविष्व,अदेविष्म',
+                    'लृङ्': 'अदेविष्यत्,अदेविष्यताम्,अदेविष्यन्,अदेविष्यः,अदेविष्यतम्,अदेविष्यत,अदेविष्यम्,अदेविष्याव,अदेविष्याम'
+                }
+            },
+
+            'षुञ्': {
+                // given
+                upadesa: 'षुञ्',
+                gana: 'स्वादि (५)',
+                artha: 'अभिषवे',
+                svaraguna: ['उदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.3', '1.3.5', '1.3.9'], // हलन्त्यम्, आदिर्ञिटुडवः, तस्य लोपः
+                anubandha: 'ञ्',
+                laukika: 'सु',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.35'], // आर्धधातुकस्येड् वलादेः
+                itness: 'सेट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.73'], // स्वादिभ्यः श्नुः
+                vikarana: { 
+                    'लट्': 'नु', 'लुट्': 'तास��', 'लङ्': 'नु', 'लृट्': 'स्य',
+                    'लोट्': 'नु', 'विधिलिङ्': 'नु', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'सुनोति,सुनुतः,सुन्वन्ति,सुनोषि,सुनुथः,सुनुथ,सुनोमि,सुन्वः,सुन्मः',
+                    'लुट्': 'सोता,सोतारौ,सोतारः,सोतासि,सोतास्थः,सोतास्थ,सोतास्मि,सोतास्वः,सोतास्मः',
+                    'लङ्': 'असुनोत्,असुनुताम्,असुन्वन्,असुनोः,असुनुतम्,असुनुत,असुनवम्,असुन्व,असुन्म',
+                    'लृट्': 'सोष्यति,सोष्यतः,सोष्यन्ति,सोष्यसि,सोष्यथः,सोष्यथ,सोष्यमि,सोष्यवः,सोष्यमः',
+                    'लोट्': 'सुनोतु,सुनुताम्,सुन्वन्तु,सुन���,सुनुतम्,सुनुत,सुनवानि,सुनवाव,सुनवाम',
+                    'विधिलिङ्': 'सुनुयात्,सुनुयाताम्,सुनुयुः,सुनुयाः,सुनुयातम्,सुनुयात,सुनुयाम्,सुनुयाव,सुनुयाम',
+                    'लुङ्': 'असावीत्,असाविष्टाम्,असाविषुः,असावीः,असाविष्टम्,असाविष्ट,असाविषम्,असाविष्व,असाविष्म',
+                    'लृङ्': 'असोष्यत्,असोष्यताम्,असोष्यन्,असोष्यः,असोष्यतम्,असोष्यत,असोष्यम्,असोष्यव,असोष्यम'
+                }
+            },
+
+            'तुद्': {
+                // given
+                upadesa: 'तुद्',
+                gana: 'तुदादि (६)',
+                artha: 'व्यथने',
+                svaraguna: ['अनुदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: [], // No anubandha present
+                anubandha: 'none',
+                laukika: 'तुद्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: [], // No iṭ-āgama for तुदादि गण
+                itness: 'अनिट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.77'], // तुदादिभ्यः शः
+                vikarana: { 
+                    'लट्': 'अ', 'लुट्': 'तास्', 'लङ्': 'अ', 'लृट्': 'स्य',
+                    'लोट्': 'अ', 'विधिलिङ्': 'अ', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'तुदति,तुदतः,तुदन्ति,तुदसि,तुदथः,तुदथ,तुदामि,तुदावः,तुदामः',
+                    'लुट्': 'तोत्ता,तोत्तारौ,तोत्तारः,तोत्तासि,तोत्तास्थः,तोत्तास्थ,तोत्तास्मि,तोत्तास्वः,तोत्तास्मः',
+                    'लङ्': 'अतुदत्,अतुदताम्,अतुदन्,अतुदः,अतुदतम्,अतुदत,अतुदम्,अतुदाव,अतुदाम',
+                    'लृट्': 'तोत्स्यति,तोत्स्यतः,तोत्स्यन्ति,तोत्स्यसि,तोत्स्यथः,तोत्स्यथ,तोत���स्यामि,तोत्स्यावः,तोत्स्यामः',
+                    'लोट्': 'तुदतु,तुदताम्,तुदन्तु,तुद,तुदतम्,तुदत,तुदानि,तुदाव,तुदाम',
+                    'विधिलिङ्': 'तुदेत्,तुदेताम्,तुदेयुः,तुदेः,तुदेतम्,तुदेत,तुदेयम्,तुदेव,तुदेम',
+                    'लुङ्': 'अतौत्सीत्,अतौत्ताम्,अतौत्सुः,अतौत्सीः,अतौत्तम्,अतौत्त,अतौत्सम्,अतौत्स्व,अतौत्स्म',
+                    'लृङ्': 'अतोत्स्यत्,अतोत्स्यताम्,अतोत्स्यन्,अतोत्स्यः,अतोत्स्यतम्,अतोत्स्यत,अतोत्स्यम्,अतोत्स्याव,अतोत्स्याम'
+                }
+            },
+
+            'रुधिर्': {
+                // given
+                upadesa: 'रुधिर्',
+                gana: 'रुधादि (७)',
+                artha: 'आवरणे',
+                svaraguna: ['अनुदा���्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.3', '1.3.9'], // हलन्त्यम्, तस्य लोपः
+                anubandha: 'र्',
+                laukika: 'रुध्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: [], // No iṭ-āgama for रुधादि गण
+                itness: 'अनिट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.78'], // रुधादिभ्यः श्नम्
+                vikarana: { 
+                    'लट्': 'न', 'लुट्': 'तास्', 'लङ्': 'न', 'लृट्': 'स्य',
+                    'लोट्': 'न', 'विधिलिङ्': 'न', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'रुणद्धि,रुन्द्धः,रुन्धन्ति,रुणत्सि,रुन्द्धः,रुन्द्ध,रुणध्मि,रुन्ध्वः,रुन्ध्मः',
+                    'लुट्': 'रोद्धा,रोद्धारौ,रोद्धारः,रोद्धासि,रोद्धास्थः,रोद्धास्थ,रोद्धास्मि,रोद्धास्वः,रोद्धास्मः',
+                    'लङ्': 'अरुणत्,अरुन्द्धाम्,अरुन्धन्,अरुणः,अरुन्द्धम्,अरुन्द्ध,अरुणधम्,अरुन्ध्व,अरुन्ध्म',
+                    'लृट्': 'रोत्स्यति,रोत्स्यतः,रोत्स्यन्ति,रोत्स्यसि,रोत्स्यथः,रोत्स्यथ,रोत्स्यामि,रोत्स्यावः,रोत्स्यामः',
+                    'लोट्': 'रुणद्धु,रुन्द्धाम्,रुन्धन्तु,रुन्द्धि,रुन्द्धम्,रुन्द्ध,रुणधानि,रुणधाव,रुणधाम',
+                    'विधिलिङ्': 'रुन्ध्यात्,रुन्ध्याताम्,रुन्ध्युः,रुन्ध्याः,रुन्ध्यातम्,रुन्ध्यात,रुन्ध्याम्,रुन्ध्याव,रुन्ध्याम',
+                    'लुङ्': 'अरौत्सीत्,अरौत्ताम्,अरौत्सुः,अरौत्सीः,अरौत्तम्,अरौत्त,अरौत्सम्,अरौत्स्व,अरौत्स्म',
+                    'लृङ्': 'अरोत्स्यत्,अरोत्स्यताम्,अरोत्स्यन्,अरोत्स्यः,अरोत्स्यतम्,अरोत्स्यत,अरोत्स्यम्,अरोत्स्याव,अरोत्स्याम'
+                }
+            },
+
+            'तनुँ': {
+                // given
+                upadesa: 'तनुँ',
+                gana: 'तनादि (८)',
+                artha: 'विस्तारे',
+                svaraguna: ['अनुदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.2', '1.3.9'], // उपदेशेऽजनुनास���क इत्, तस्य लोपः
+                anubandha: 'उँ',
+                laukika: 'तन्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.35'], // आर्धधातुकस्येड् वलादेः
+                itness: 'सेट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.12'], // अनुदात्तङित आत्मनेपदम्
+                padam: 'उभयपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.79'], // तनादिकृञ्भ्य उः
+                vikarana: { 
+                    'लट्': 'उ', 'लुट्': 'तास्', 'लङ्': 'उ', 'लृट्': 'स्य',
+                    'लोट्': 'उ', 'विधिलिङ्': 'उ', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'ubhayapada', // Both parasmaipada and atmanepada
+
+                examples: { 
+                    'लट्': 'तनोति,तनुतः,तन्वन्ति,तनोषि,त���ुथः,तनुथ,तनोमि,तन्वः,तन्मः/तनुते,तन्वाते,तन्वते,तनुषे,तन्वाथे,तनुध्वे,तन्वे,तन्वहे,तन्महे',
+                    'लुट्': 'तनिता,तनितारौ,तनितारः,तनितासि,तनितास्थः,तनितास्थ,तनितास्मि,तनितास्वः,तनितास्मः/तनिता,तनितारौ,तनितारः,तनितासे,तनितासाथे,तनिताध्वे,तनिताहे,तनितास्वहे,तनितास्महे',
+                    'लङ्': 'अतनोत्,अतनुताम्,अतन्वन्,अतनोः,अतनुतम्,अतनुत,अतन्वम्,अतन्व,अतन्म/अतनुत,अतन्वाताम्,अतन्वत,अतनुथाः,अतन्वाथाम्,अतनुध्वम्,अतन्वि,अतन्वहि,अतन्महि',
+                    'लृट्': 'तनिष्यति,तनिष्यतः,तनिष्यन्ति,तनिष्यसि,तनिष्यथः,तनिष्यथ,तनिष्यामि,तनि��्यावः,तनिष्यामः/तनिष्यते,तनिष्येते,तनिष्यन्ते,तनिष्यसे,तनिष्येथे,तनिष्यध्वे,तनिष्ये,तनिष्यावहे,तनिष्यामहे',
+                    'लोट्': 'तनोतु,तनुताम्,तन्वन्तु,तनु,तनुतम्,तनुत,तनवानि,तनवाव,तनवाम/तनुताम्,तन्वाताम्,तन्वताम्,तनुष्व,तन्वाथाम्,तनुध्वम्,तनवै,तनवावहै,तनवामहै',
+                    'विधिलिङ्': 'तनुयात्,तनुयाताम्,तनुयुः,तनुयाः,तनुयातम्,तनुयात,तनुयाम्,तनुयाव,तनुयाम/तन्वीत,तन्वीयाताम्,तन्वीरन्,तन्वीथाः,तन्वीयाथाम्,तन्वीध्वम्,तन्वीय,तन्वीवहि,तन्वीमहि',
+                    'लुङ्': 'अतानीत्,अतानिष्टाम्,अतानिषुः,अतानीः,अतानिष्टम्,अतानिष्ट,अ���ानिषम्,अतानिष्व,अतानिष्म/अतनिष्ट,अतनिषाताम्,अतनिषत,अतनिष्ठाः,अतनिषाथाम्,अतनिध्वम्,अतनिषि,अतनिष्वहि,अतनिष्महि',
+                    'लृङ्': 'अतनिष्यत्,अतनिष्यताम्,अतनिष्यन्,अतनिष्यः,अतनिष्यतम्,अतनिष्यत,अतनिष्यम्,अतनिष्याव,अतनिष्याम/अतनिष्यत,अतनिष्येताम्,अतनिष्यन्त,अतनिष्यथाः,अतनिष्येथाम्,अतनिष्यध्वम्,अतनिष्ये,अतनिष्यावहि,अतनिष्यामहि'
+                }
+            },
+
+            'क्रीञ्': {
+                // given
+                upadesa: 'क्रीञ्',
+                gana: 'क्र्यादि (९)',
+                artha: 'द्रव्यविनिमये',
+                svaraguna: ['उदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.3', '1.3.5', '1.3.9'], // हलन��त्यम्, आदिर्ञिटुडवः, तस्य लोपः
+                anubandha: 'ञ्',
+                laukika: 'क्री',
+
+                // step 2 - itness nirnaya
+                itness_sutras: ['7.2.35'], // आर्धधातुकस्येड् वलादेः
+                itness: 'सेट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.72'], // स्वरितञितः कर्त्रभिप्राये क्रियाफले
+                padam: 'उभयपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.79'], // तनादिकृञ्भ्य उः
+                vikarana: { 
+                    'लट्': 'आ', 'लुट्': 'तास्', 'लङ्': 'आ', 'लृट्': 'स्य',
+                    'लोट्': 'आ', 'विधिलिङ्': 'आ', 'लुङ्': 'आ', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'ubhayapada', // Both parasmaipada and atmanepada
+
+                examples: { 
+                    'लट्': '���्रीणाति,क्रीणीतः,क्रीणन्ति,क्रीणासि,क्रीणीथः,क्रीणीथ,क्रीणामि,क्रीणीवः,क्रीणीमः/क्रीणीते,क्रीणाते,क्रीणते,क्रीणीषे,क्रीणाथे,क्रीणीध्वे,क्रीणे,क्रीणीवहे,क्रीणीमहे',
+                    'लुट्': 'क्रेता,क्रेतारौ,क्रेतारः,क्रेतासि,क्रेतास्थः,क्रेतास्थ,क्रेतास्मि,क्रेतास्वः,क्रेतास्मः/क्रेता,क्रेतारौ,क्रेतारः,क्रेतासे,क्रेतासाथे,क्रेताध्वे,क्रेताहे,क्रेतास्वहे,क्रेतास्महे',
+                    'लङ्': 'अक्रीणात्,अक्रीणीताम्,अक्रीणन्,अक्रीणाः,अक्रीणीतम्,अक्रीणीत,अक्रीणाम्,अक्रीणीव,अक्रीणीम/अक्रीणीत,अक्रीणाताम्,अक्रीणत,अक्रीणीथाः,अक्रीणाथाम्,अक्रीणीध्वम्,अक्रीणि,अक्रीणीवहि,अक्रीणीमहि',
+                    'लृट्': 'क्रेष्यति,क्रेष्यतः,क्रेष्यन्ति,क्रेष्यसि,क्रेष्यथः,क्रेष्यथ,क्रेष्यामि,क्रेष्यावः,क्रेष्यामः/क्रेष्यते,क्रेष्येते,क्रेष्यन्ते,क्रेष्यसे,क्रेष्येथे,क्रेष्यध्वे,क्रेष्ये,क्रेष्यावहे,क्रेष्यामहे',
+                    'लोट्': 'क्रीणातु,क्रीणीताम्,क्रीणन्तु,क्रीणीहि,क्रीणीतम्,क्रीणीत,क्रीणानि,क्रीणाव,क्रीणाम/क्रीणीताम्,क्रीणाताम्,क्रीणताम्,क्रीणीष्व,क्रीणाथाम्,क्रीणीध्वम्,क्रीणै,क्री��ावहै,क्रीणामहै',
+                    'विधिलिङ्': 'क्रीणीयात्,क्रीणीयाताम्,क्रीणीयुः,क्रीणीयाः,क्रीणीयातम्,क्रीणीयात,क्रीणीयाम्,क्रीणीयाव,क्रीणीयाम/क्रीणीत,क्रीणीयाताम्,क्रीणीरन्,क्रीणीथाः,क्रीणीयाथाम्,क्रीणीध्वम्,क्रीणीय,क्रीणीवहि,क्रीणीमहि',
+                    'लुङ्': 'अक्रैषीत्,अक्रैष्टाम्,अक्रैषुः,अक्रैषीः,अक्रैष्टम्,अक्रैष्ट,अक्रैषम्,अक्रैष्व,अक्रैष्म/अक्रेष्ट,अक्रेषाताम्,अक्रेषत,अक्रेष्ठाः,अक्रेषाथाम्,अक्रेढ्वम्,अक्रेषि,अक्रेष्वहि,अक्रेष्महि',
+                    'लृङ्': 'अक्रेष्यत्,अक्रेष्यताम्,अक्रेष्यन्,अक्रेष्यः,अक्रेष्यतम्,��क्रेष्यत,अक्रेष्यम्,अक्रेष्याव,अक्रेष्याम/अक्रेष्यत,अक्रेष्येताम्,अक्रेष्यन्त,अक्रेष्यथाः,अक्रेष्येथाम्,अक्रेष्यध्वम्,अक्रेष्ये,अक्रेष्यावहि,अक्रेष्यामहि'
+                }
+            },
+
+            'चुर्': {
+                // given
+                upadesa: 'चुर्',
+                gana: 'चुरादि (१०)',
+                artha: 'स्तेये',
+                svaraguna: ['अनुदात्तः'],
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: [], // No anubandha present
+                anubandha: 'none',
+                laukika: 'चुर्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: [], // No iṭ-āgama for चुरादि गण
+                itness: 'अनिट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.78'], // शेषात कर्तरि परस्मैपदम्
+                padam: 'परस्मैपदम्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.25'], // चूर्णचुरादिभ्यः णिच्
+                vikarana: { 
+                    'लट्': 'इ', 'लुट्': 'तास्', 'लङ्': 'इ', 'लृट्': 'स्य',
+                    'लोट्': 'इ', 'विधिलिङ्': 'इ', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'parasmaipada',
+
+                examples: { 
+                    'लट्': 'चोरयति,चोरयतः,चोरयन्ति,चोरयसि,चोरयथः,चोरयथ,चोरयामि,चोरयावः,चोरयामः',
+                    'लुट्': 'चोरयिता,चोरयितारौ,चोरयितारः,चोरयितासि,चोरयितास्थः,चोरयितास्थ,चोरयितास्मि,चोरयितास्वः,चोरयितास्मः',
+                    'लङ्': 'अचोरयत्,अचोरयताम्,अचोरयन्,अचोरयः,अचोरयतम्,अचोरयत,अचोरयम्,अचोरयाव,अचोरयाम',
+                    'लृट्': 'चोरयिष्यति,चोरयिष्यतः,चोरयिष्यन्ति,चोरयिष्यसि,चोरयिष्यथः,चोरयिष्यथ,चोरयिष्यामि,चोरयिष्यावः,चोरयिष्यामः',
+                    'लोट्': 'चोरयतु,चोरयताम्,चोरयन्तु,चोरय,चोरयतम्,चोरयत,चोरयानि,चोरयाव,चोरयाम',
+                    'विधिलिङ्': 'चोरयेत्,चोरयेताम्,चोरयेयुः,चोरयेः,चोरयेतम्,चोरयेत,चोरयेयम्,चोरयेव,चोरयेम',
+                    'लुङ्': 'अचूचुरत्,अचूचुरताम्,अचूचुरन्,अचूचुरः,अचूचुरतम्,अचूचुरत,अचूचुरम्,अचूचुराव,अचूचुराम',
+                    'लृङ्': 'अचोरयिष्यत्,अचोरयिष्यताम्,अचोरयिष्यन्,अचोरयिष्यः,अचोरयिष्यतम्,अच��रयिष्यत,अचोरयिष्यम्,अचोरयिष्याव,अचोरयिष्याम'
+                }
+            },
+
+            'डुपचँष्': {
+                // given
+                upadesa: 'डुपचँष्',
+                gana: 'भ्वादि (१)',
+                artha: 'पाके',
+                svaraguna: ['स्वरितः'], // Assuming svarita for ubhayapada
+
+                // derivations 
+                // Step 1 - anubandha_lopah 
+                anubandha_sutras: ['1.3.5', '1.3.2', '1.3.3', '1.3.9'], // आदिर्ञिटुडवः, उपदेशेऽजनुनासिक इत्, हलन्त्यम्, तस्य लोपः
+                anubandha: 'डु, अँ, ष्',
+                laukika: 'पच्',
+
+                // step 2 - itness nirnaya
+                itness_sutras: [], // No iṭ-āgama
+                itness: 'अनिट्',
+
+                // step 2a - pratyaya classification
+                pratyaya_classification_sutras: ['3.4.113', '3.4.114'],
+
+                // step 3 - padam nirnaya            
+                padam_sutras: ['1.3.72'], // स्वरितञितः कर्त्रभिप्राये क्रियाफले
+                padam: 'उभयप��म्',
+
+                // step 4 - vikarana nirnaya
+                vikarana_sutras: ['3.1.68'], // कर्तरि शप्
+                vikarana: { 
+                    'लट्': 'अ', 'लुट्': 'तास्', 'लङ्': 'अ', 'लृट्': 'स्य',
+                    'लोट्': 'अ', 'विधिलिङ्': 'अ', 'लुङ्': 'स्', 'लृङ्': 'स्य'
+                },
+
+                // step 5 - tin nirnaya
+                tin_endings: 'ubhayapada',
+
+                examples: { 
+                    'लट्': 'पचति,पचतः,पचन्ति,पचसि,पचथः,पचथ,पचामि,पचावः,पचामः/पचते,पचेते,पचन्ते,पचसे,पचेथे,पचध्वे,पचे,पचावहे,पचामहे',
+                    'लुट्': 'पक्ता,पक्तारौ,पक्तारः,पक्तासि,पक्तास्थः,पक्तास्थ,पक्तास्मि,पक्तास्वः,पक्तास्मः/पक्ता,पक्तारौ,पक्तारः,पक्तासे,पक्तासाथे,पक्ताध्वे,पक्ताहे,पक्तास्वहे,पक्तास्महे',
+                    'ल��्': 'अपचत्,अपचताम्,अपचन्,अपचः,अपचतम्,अपचत,अपचम्,अपचाव,अपचाम/अपचत,अपचेताम्,अपचन्त,अपचथाः,अपचेथाम्,अपचध्वम्,अपचे,अपचावहि,अपचामहि',
+                    'लृट्': 'पक्ष्यति,पक्ष्यतः,पक्ष्यन्ति,पक्ष्यसि,पक्ष्यथः,पक्ष्यथ,पक्ष्यामि,पक्ष्यावः,पक्ष्यामः/पक्ष्यते,पक्ष्येते,पक्ष्यन्ते,पक्ष्यसे,पक्ष्येथे,पक्ष्यध्वे,पक्ष्ये,पक्ष्यावहे,पक्ष्यामहे',
+                    'लोट्': 'पचतु,पचताम्,पचन्तु,पच,पचतम्,पचत,पचानि,पचाव,पचाम/पचताम्,पचेताम्,पचन्ताम्,पचस्व,पचेथाम्,पचध्वम्,पचै,पचावहै,पचामहै',
+                    'विधिलिङ्': 'पचेत्,पचेताम्,पचेयुः,पचेः,पचेतम्,पचेत,पचेयम��,पचेव,पचेम/पचेत,पचेयाताम्,पचेरन्,पचेथाः,पचेयाथाम्,पचेध्वम्,पचेय,पचेवहि,पचेमहि',
+                    'लुङ्': 'अपाक्षीत्,अपाक्ताम्,अपाक्षुः,अपाक्षीः,अपाक्तम्,अपाक्त,अपाक्षम्,अपाक्ष्व,अपाक्ष्म/अपक्त,अपक्षाताम्,अपक्षत,अपक्थाः,अपक्षाथाम्,अपग्ध्वम्,अपक्षि,अपक्ष्वहि,अपक्ष्महि',
+                    'लृङ्': 'अपक्ष्यत्,अपक्ष्यताम्,अपक्ष्यन्,अपक्ष्यः,अपक्ष्यताम्,अपक्ष्यताम्,अपक्ष्यम्,अपक्ष्याव,अपक्ष्याम/अपक्ष्यत,अपक्ष्येताम्,अपक्ष्यन्त,अपक्ष्यथाः,अपक्ष्येथाम्,अपक्ष्यध्वम्,अपक्ष्ये,अपक्ष्यावहि,अपक्ष्यामहि'
+                }
+            }
+        };
+
+        const ting_endings = {
+            parasmaipada: {
+                'लट्': ['तिप्', 'तस्', 'झि', 'सिप्', 'थस्', 'थ', 'मिप्', 'वस्', 'मस्'],
+                'लोट्': ['तिप्', 'तस्', 'झि', 'सिप्', 'थस्', 'थ', 'मिप्', 'वस्', 'मस्'],
+                'लङ्': ['तिप्', 'तस्', 'अन्', 'सिप्', 'तम्', 'त', 'अम्', 'व', 'म'],
+                'विधिलिङ्': ['यात्', 'याताम्', 'युस्', 'याः', 'यातम्', 'यात', 'याम्', 'याव', 'याम'],
+                'लुट्': ['ता', 'रौ', 'रः', 'सि', 'स्थः', 'स्थ', 'स्मि', 'स्वः', 'स्मः'],
+                'लृट्': ['स्यति', 'स्यतः', 'स्यन्ति', 'स्यसि', 'स्यथः', 'स्यथ', 'स्यामि', 'स्यावः', 'स्यामः'],
+                'लुङ्': ['त्', 'ताम्', 'अन्', 'स्', 'तम्', 'त', 'अम्', 'व', 'म'],
+                'लृङ्': ['स्यत्', 'स्यताम्', 'स्यन्', 'स्यः', 'स्यतम्', 'स्यत', 'स्यम्', 'स्याव', 'स्याम']
+            },
+            atmanepada: {
+                'लट्': ['ते', 'आते', 'झन्ते', 'से', 'आथे', 'ध्वे', 'ए', 'वहे', 'महे'],
+                'लोट्': ['ताम्', 'आताम्', 'झन्ताम्', 'स्व', 'आथाम्', 'ध्वम्', 'ऐ', 'आवहै', 'ामहै'],
+                'लङ्': ['त', 'आताम्', 'झ', 'थास्', 'आथाम्', 'ध्वम्', 'इ', 'वहि', 'महि'],
+                'विधिलिङ्': ['ईत', 'ईयाताम्', 'ईरन्', 'ईथास्', 'ईयाथाम्', 'ईध्वम्', 'ईय', 'ईवहि', 'ईमहि'],
+                'लुट्': ['ता', 'रौ', 'रः', 'से', 'साथे', 'ध्वे', 'हे', 'स्वहे', 'स्महे'],
+                'लृट्': ['स्यते', 'स्येते', 'स्यन्ते', 'स्यसे', 'स्येथे', 'स्यध्वे', 'स्ये', 'स्यावहे', 'स्यामहे'],
+                'लुङ्': ['त', 'आताम्', 'झ', 'थास्', 'आथाम्', 'ध्वम्', 'इ', 'वहि', 'महि'],
+                'लृङ्': ['स्यत', 'स्येताम्', 'स्यन्त', 'स्यथा��्', 'स्येथाम्', 'स्यध्वम्', 'स्ये', 'स्यावहि', 'स्यामहे']
+            }
+        };
+
+        // Main animation logic
+        const purusaVachanas = [
+            "प्रथम-एकवचनम्", "प्रथम-द्विवचनम्", "प्रथम-बहुवचनम्",
+            "मध्यम-एकवचनम्", "मध्यम-द्विवचनम्", "मध्यम-बहुवचनम्",
+            "उत्तम-एकवचनम्", "उत्तम-द्विवचनम्", "उत्तम-बहुवचनम्"
+        ];
+
+        async function startAnimation() {
+            const dhatu = document.getElementById('dhatu-select').value;
+            const lakara = document.getElementById('lakara-select').value;
+            const data = dhatu_derivation[dhatu];
+
+            if (!data) {
+                alert('धातुः न प्राप्तः!');
+                return;
+            }
+
+            resetUI();
+            const speed = getAnimationSpeed();
+            if (speed === 0) {
+                await displayFinalResultsInstantly(dhatu, lakara, data);
+                return;
+            }
+
+            await animateStep1(dhatu, data);
+            await animateStep2(data);
+            await animateStep3(data, lakara);
+            await animateStep4(data);
+            await animateStep5(data, lakara);
+            await animateStep6(data, "all");
+
+            const allResults = calculateAllTinantams(dhatu, lakara);
+
+            if (data.padam === 'उभयपदम्') {
+                updateGrid('result-grid-p', allResults.parasmai);
+                updateGrid('result-grid-a', allResults.atmane);
+                document.getElementById('formula-main').style.display = 'none';
+                document.getElementById('formula-parasmai').style.display = 'flex';
+                document.getElementById('formula-atmane').style.display = 'flex';
+            } else {
+                updateGrid('result-grid-main', allResults.main);
+                document.getElementById('formula-main').style.display = 'flex';
+                document.getElementById('formula-parasmai').style.display = 'none';
+                document.getElementById('formula-atmane').style.display = 'none';
+            }
+            
+            showFloatingResult(allResults, data.padam);
+        }
+
+        function calculateAllTinantams(dhatu, lakara) {
+            const data = dhatu_derivation[dhatu];
+            const results = { main: [], parasmai: [], atmane: [] };
+            const exampleStr = data.examples[lakara];
+
+            if (!exampleStr) {
+                const emptyResult = Array(9).fill('??');
+                return { main: emptyResult, parasmai: emptyResult, atmane: emptyResult };
+            }
+
+            if (data.padam === 'उभयपदम्') {
+                const [parasmai, atmane] = exampleStr.split('/');
+                results.parasmai = parasmai.split(',');
+                results.atmane = atmane.split(',');
+            } else {
+                results.main = exampleStr.split(',');
+            }
+            return results;
+        }
+
+        function updateGrid(gridId, values) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            const cells = grid.querySelectorAll('.grid-cell');
+            cells.forEach((cell, i) => {
+                cell.textContent = values[i] || '---';
+            });
+        }
+
+        function showFloatingResult(results, padam) {
+            const overlay = document.getElementById('floatingResultOverlay');
+            const card = document.getElementById('floatingResultCard');
+            
+            document.getElementById('floatingResultText').style.display = 'none';
+            document.getElementById('floatingResultUbhayapada').style.display = 'none';
+
+            if (padam === 'उभयपदम्') {
+                updateGrid('floatingResultParasmai .result-grid', results.parasmai);
+                updateGrid('floatingResultAtmane .result-grid', results.atmane);
+                document.getElementById('floatingResultUbhayapada').style.display = 'block';
+            } else {
+                const mainGridContainer = document.getElementById('floatingResultText');
+                mainGridContainer.innerHTML = ''; // Clear previous content
+                const mainGrid = document.createElement('div');
+                mainGrid.className = 'result-grid-container';
+                mainGrid.innerHTML = `<div class="result-grid">
+                    ${results.main.map(v => `<div class="grid-cell">${v}</div>`).join('')}
+                </div>`;
+                mainGridContainer.appendChild(mainGrid);
+                mainGridContainer.style.display = 'block';
+            }
+
+            overlay.classList.add('show');
+            card.classList.add('show');
+        }
+        
+        async function displayFinalResultsInstantly(dhatu, lakara, data) {
+            const allResults = calculateAllTinantams(dhatu, lakara);
+            
+            // Instantly update UI without animations
+            // This part can be expanded to show all steps instantly
+            
+            if (data.padam === 'उभयपदम्') {
+                updateGrid('result-grid-p', allResults.parasmai);
+                updateGrid('result-grid-a', allResults.atmane);
+                document.getElementById('formula-main').style.display = 'none';
+                document.getElementById('formula-parasmai').style.display = 'flex';
+                document.getElementById('formula-atmane').style.display = 'flex';
+            } else {
+                updateGrid('result-grid-main', allResults.main);
+                document.getElementById('formula-main').style.display = 'flex';
+                document.getElementById('formula-parasmai').style.display = 'none';
+                document.getElementById('formula-atmane').style.display = 'none';
+            }
+            showFloatingResult(allResults, data.padam);
+        }
+
+        function getAnimationSpeed() {
+            const preset = document.getElementById('speedPreset').value;
+            switch (preset) {
+                case 'none': return 0;
+                case 'slow': return 0.5;
+                case 'medium': return 1;
+                case 'fast': return 2;
+                default: return 1;
+            }
+        }
+
+        function sleep(ms) {
+            const speed = getAnimationSpeed();
+            if (speed === 0) return Promise.resolve();
+            return new Promise(resolve => setTimeout(resolve, ms / speed));
+        }
+
+        function resetUI() {
+            document.querySelectorAll('.step-card').forEach(card => {
+                card.classList.remove('active');
+                card.querySelectorAll('.property, .sutra-element').forEach(el => {
+                    el.classList.remove('filled');
+                    const valSpan = el.querySelector('span');
+                    if (valSpan) valSpan.textContent = '___';
+                });
+            });
+            document.getElementById('progressFill').style.width = '0%';
+            document.querySelectorAll('.sutra-list-item').forEach(item => item.classList.remove('active'));
+            
+            // Reset formula parts
+            document.querySelectorAll('.formula-part').forEach(part => {
+                part.classList.remove('filled', 'it-rules', 'pada-rules', 'vikarana-rules', 'itagama-rules');
+                if (part.id.includes('result-part')) {
+                    part.querySelectorAll('.grid-cell').forEach(cell => cell.textContent = '---');
+                } else if (part.id.includes('dhatu-part')) {
+                    part.textContent = 'धातुः';
+                } else if (part.id.includes('id-part')) {
+                    part.textContent = 'इत्?';
+                } else if (part.id.includes('vikarana-part')) {
+                    part.textContent = 'विकरणः';
+                } else if (part.id.includes('ting-part')) {
+                    part.textContent = 'तिङ्';
+                }
+            });
+
+            document.getElementById('formula-main').style.display = 'flex';
+            document.getElementById('formula-parasmai').style.display = 'none';
+            document.getElementById('formula-atmane').style.display = 'none';
+        }
+
+        async function animateStep(stepId, progress, contentUpdaters) {
+            const card = document.getElementById(stepId);
+            card.classList.add('active');
+            
+            for (const updater of contentUpdaters) {
+                await sleep(300);
+                const el = document.getElementById(updater.id);
+                el.querySelector('span').textContent = updater.value;
+                el.classList.add('filled');
+                if (updater.sutra) {
+                    highlightSutra(updater.sutra, updater.category);
+                }
+                if (updater.formulaPart) {
+                    updateFormulaPart(updater.formulaPart, updater.value, updater.category);
+                }
+            }
+            
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        function highlightSutra(sutraId, category) {
+            if (!sutraId) return;
+            const sutraEl = document.querySelector(`.sutra-list-item[data-sutra="${sutraId}"]`);
+            if (sutraEl) {
+                sutraEl.classList.add('active');
+                if (category) sutraEl.classList.add(category);
+            }
+        }
+
+        async function animateStep1(dhatu, data) {
+            await animateStep('step1', 16.6, [
+                { id: 'upadesha', value: data.upadesa },
+                { id: 'gana', value: data.gana },
+                { id: 'artha', value: data.artha },
+                { id: 'svaraguna', value: data.svaraguna.join(', ') }
+            ]);
+        }
+
+        async function animateStep2(data) {
+            await animateStep('step2', 33.3, [
+                { id: 'anubandha', value: data.anubandha, sutra: data.anubandha_sutras[0], category: 'it-rules' },
+                { id: 'laukika', value: data.laukika, formulaPart: 'dhatu-part' },
+            ]);
+        }
+
+        async function animateStep3(data, lakara) {
+            const pratyayaType = lakara_classification.sarvadhatuka.includes(lakara) ? 'सार्वधातुक' : 'आर्धधातुक';
+            const itAgama = (pratyayaType === 'आर्धधातुक' && data.itness === 'सेट्') ? 'इट्' : '∅';
+            await animateStep('step3', 50, [
+                { id: 'pratyaya-classification', value: pratyayaType, sutra: data.pratyaya_classification_sutras[0], category: 'pratyaya-classification' },
+                { id: 'itness', value: data.itness },
+                { id: 'itagama', value: itAgama, sutra: data.itness_sutras[0], category: 'itagama-rules', formulaPart: 'id-part' }
+            ]);
+        }
+
+        async function animateStep4(data) {
+            await animateStep('step4', 66.6, [
+                { id: 'pada', value: data.padam, sutra: data.padam_sutras[0], category: 'pada-rules' },
+            ]);
+        }
+
+        async function animateStep5(data, lakara) {
+            await animateStep('step5', 83.3, [
+                { id: 'vikarana', value: data.vikarana[lakara], sutra: data.vikarana_sutras[0], category: 'vikarana-rules', formulaPart: 'vikarana-part' },
+            ]);
+        }
+
+        async function animateStep6(data, purusa) {
+            await animateStep('step6', 100, [
+                { id: 'purusa', value: "All 9 forms" },
+            ]);
+            updateFormulaPart('ting-part', 'तिङ्');
+        }
+
+        function updateFormulaPart(partId, value, category) {
+            const ids = [partId, partId + '-p', partId + '-a'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.textContent = value;
+                    el.classList.add('filled');
+                    if (category) {
+                        el.classList.add(category);
+                    }
+                }
+            });
+        }
+
+        function closeFloatingResult() {
+            document.getElementById('floatingResultOverlay').classList.remove('show');
+            document.getElementById('floatingResultCard').classList.remove('show');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            document.querySelector(`.tab-btn[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            // Any initial setup can go here
+        });
+    </script>
+</body>
+</html>

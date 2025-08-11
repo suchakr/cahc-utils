@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="sa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सन्धर्भगतानां सूत्राणां सूचीः</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Noto Serif', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e8e8e8;
+            vertical-align: top;
+            transition: background-color 0.3s ease;
+        }
+        
+        tr:hover td {
+            background-color: #f8f9ff;
+        }
+        
+        .sutra-number {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1em;
+            min-width: 80px;
+        }
+        
+        .sutra-text {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 200px;
+            line-height: 1.8;
+        }
+        
+        .application {
+            color: #555;
+            font-style: italic;
+            min-width: 250px;
+        }
+        
+        .function-group {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #8b4513;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+        
+        .it-sanjña { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #2d5a87; }
+        .pada-assignment { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #8b4513; }
+        .vikarana { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); color: #6b46c1; }
+        .pratyaya { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); color: #1e40af; }
+        .id-agama { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #be185d; }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .table-container {
+                padding: 15px;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+            
+            .sutra-text {
+                font-size: 1.1em;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>सन्धर्भगतानां सूत्राणां सूचीः</h1>
+            <p>Sūtras from the Presentation</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">21</div>
+                <div class="stat-label">Total Sūtras</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Function Groups</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Adhyāyas</div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sūtra Number</th>
+                        <th>Sūtra Text</th>
+                        <th>Application</th>
+                        <th>Function Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sutra-number">1.3.2</td>
+                        <td class="sutra-text">उपदेशेऽजनुनासिक इत्</td>
+                        <td class="application">it-sañjñā for nasalized vowels</td>
+                        <td><span class="function-group it-sanjña">It-Saṃjñā Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.3</td>
+                        <td class="sutra-text">हलन्त्यम्</td>
+                        <td class="application">it-sañjñā for final consonants</td>
+                        <td><span class="function-group it-sanjña">It-Saṃjñā Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.5</td>
+                        <td class="sutra-text">आदिर्ञिटुडवः</td>
+                        <td class="application">it-sañjñā for initial ñi & ṭu, ḍu</td>
+                        <td><span class="function-group it-sanjña">It-Saṃjñā Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.9</td>
+                        <td class="sutra-text">तस्य लोपः</td>
+                        <td class="application">Elision of it-sañjñā</td>
+                        <td><span class="function-group it-sanjña">It-Saṃjñā Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.12</td>
+                        <td class="sutra-text">अनुदात्तङित आत्मनेपदम्</td>
+                        <td class="application">ātmane-pada on anudāta + it</td>
+                        <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.72</td>
+                        <td class="sutra-text">स्वरितज्ञितः कर्त्रभिप्राये क्रियाफले</td>
+                        <td class="application">ubhaya-pada on svarita or jñ+ it</td>
+                        <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">1.3.78</td>
+                        <td class="sutra-text">शेषात कर्तरि परस्मैपदम्</td>
+                        <td class="application">parasmaipada otherwise</td>
+                        <td><span class="function-group pada-assignment">Pada Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">2.4.72</td>
+                        <td class="sutra-text">अदिप्रभृतिभ्यः शपः</td>
+                        <td class="application">Assigns śap (lopa) to adādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">2.4.75</td>
+                        <td class="sutra-text">जुहात्यादिभ्यः श्लुः</td>
+                        <td class="application">Assigns ślu to juhotyādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.25</td>
+                        <td class="sutra-text">...चूर्णचुरादिभ्यः णिच्</td>
+                        <td class="application">Assigns ṇic to curādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.68</td>
+                        <td class="sutra-text">कर्तरि शप्</td>
+                        <td class="application">Assigns śap to bhvādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.69</td>
+                        <td class="sutra-text">दिवादिभ्यः श्यन्</td>
+                        <td class="application">Assigns śyan to divādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.73</td>
+                        <td class="sutra-text">स्वादिभ्यः श्नुः</td>
+                        <td class="application">Assigns śnu to svādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.77</td>
+                        <td class="sutra-text">तुदादिभ्यः शः</td>
+                        <td class="application">Assigns śa to tudādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.78</td>
+                        <td class="sutra-text">रुधादिभ्यः श्नम्</td>
+                        <td class="application">Assigns śnam to rudhādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.79</td>
+                        <td class="sutra-text">तनादिकृञ्भ्य उः</td>
+                        <td class="application">Assigns uḥ to tanādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.1.81</td>
+                        <td class="sutra-text">क्र्यादिभ्यः श्ना</td>
+                        <td class="application">Assigns śnā to kryādi-gaṇa</td>
+                        <td><span class="function-group vikarana">Vikaraṇa Assignment</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.4.113</td>
+                        <td class="sutra-text">तिङ्शित्सार्वधातुकम्</td>
+                        <td class="application">sārvadhātuka-pratyaya on tiṅśit</td>
+                        <td><span class="function-group pratyaya">Pratyaya Classification</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">3.4.114</td>
+                        <td class="sutra-text">आर्धधातुकं शेषः</td>
+                        <td class="application">ārddhadhātuka-pratyaya on not tiṅśit</td>
+                        <td><span class="function-group pratyaya">Pratyaya Classification</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">7.2.10</td>
+                        <td class="sutra-text">एकाच उपदेशेऽनुदात्तात्</td>
+                        <td class="application">iḍ-āgama blocked on single anudāta acaḥ</td>
+                        <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">7.2.35</td>
+                        <td class="sutra-text">आर्धधातुकस्येड् वलादेः</td>
+                        <td class="application">iḍ-āgama before ārdhadhātuka's val</td>
+                        <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                    </tr>
+                    <tr>
+                        <td class="sutra-number">7.2.44</td>
+                        <td class="sutra-text">स्वरतिसूतिसूयतिधूञूदितो वा</td>
+                        <td class="application">id-āgama - with or without on ūdit</td>
+                        <td><span class="function-group id-agama">Iḍ-āgama Rules</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

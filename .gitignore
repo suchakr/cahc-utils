@@ -27,6 +27,10 @@
 **/*.htm
 **/0*.html
 **/10*.html
+## virtualenvs
+**/.venv/
+**/.venv
+
 **/1.*
 **/2.*
 **/3.*

@@ -84,3 +84,11 @@ padacheda/padacheda_output/**
 padacheda/**
 **/varna-sanyoga/llm_pre_processed/**
 **/varna-sanyoga/llm_post_processed/**
+
+# Ignore large generated/cache CSVs from varna-sanyoga analysis (cache/derived data)
+# These files are large and derived from source texts; keep them out of git history.
+linguistics/varna-sanyoga/*.csv
+linguistics/varna-sanyoga/*_counts.*
+linguistics/varna-sanyoga/*_stacked.*
+linguistics/varna-sanyoga/*.npy
+linguistics/varna-sanyoga/*.npz

@@ -27,6 +27,10 @@
 **/*.htm
 **/0*.html
 **/10*.html
+## virtualenvs
+**/.venv/
+**/.venv
+
 **/1.*
 **/2.*
 **/3.*
@@ -70,3 +74,21 @@ learn/python/llm/.env
 **/*dSYM/*
 **/geckodriver.log
 jyotisha/images/naks-366/*
+presentations/**/media/*
+presentations/2024-03-17-mythic/*gif
+presentations/2024-03-17-mythic/*jpg
+presentations/2024-03-17-mythic/*mp4
+varna-sanyoga/z*md
+**/.checkpoint*
+padacheda/padacheda_output/**
+padacheda/**
+**/varna-sanyoga/llm_pre_processed/**
+**/varna-sanyoga/llm_post_processed/**
+
+# Ignore large generated/cache CSVs from varna-sanyoga analysis (cache/derived data)
+# These files are large and derived from source texts; keep them out of git history.
+linguistics/varna-sanyoga/*.csv
+linguistics/varna-sanyoga/*_counts.*
+linguistics/varna-sanyoga/*_stacked.*
+linguistics/varna-sanyoga/*.npy
+linguistics/varna-sanyoga/*.npz

@@ -30,11 +30,11 @@ def get_full_moon_planet_pos(force=False) -> pd.DataFrame:
 	"""
 	try :
 		if force : raise FileNotFoundError
-		return pd.read_csv('../datasets/full-moon-planet-pos-bce2000-to-bce0100.csv')
+		return pd.read_csv('../datasets/moon_phases/full-moon-planet-pos-bce2000-to-bce0100.csv')
 	except Exception as e: # FileNotFoundError:
 		print(e , "Trying to regenerate")
 		pp = PP.PlanetPos()
-		moon_df = pd.read_csv('../datasets/moon-phases-scrape-cooked.csv')
+		moon_df = pd.read_csv('../datasets/moon_phases/moon-phases-scrape-cooked.csv')
 		# moon_df = moon_df[  [ bool(re.match("^.199[89]",x)) for x in moon_df.dt] ] 
 		moon_df.stel_jd = moon_df.stel_dt.apply(toStelJD)
 		bce_full_moons_df = moon_df[
@@ -60,7 +60,7 @@ def get_full_moon_planet_pos(force=False) -> pd.DataFrame:
 			print(f'{i}/{len(slices)} - {rows} - {time()-ts : .3f}')
 			#
 		acc_df = pd.concat(acc)
-		acc_df.to_csv('../datasets/full-moon-planet-pos-bce2000-to-bce0100.csv')
+		acc_df.to_csv('../datasets/moon_phases/full-moon-planet-pos-bce2000-to-bce0100.csv')
 		return acc_df
 
 #%%
@@ -77,11 +77,11 @@ def get_moon_planet_pos(force=False) -> pd.DataFrame:
 	"""
 	try :
 		if force : raise FileNotFoundError
-		return pd.read_csv('../datasets/moon-planet-pos-bce2000-to-bce0100.csv')
+		return pd.read_csv('../datasets/moon_phases/moon-planet-pos-bce2000-to-bce0100.csv')
 	except Exception as e: # FileNotFoundError:
 		print(e , "Trying to Regenerate")
 		pp = PP.PlanetPos()
-		moon_df = pd.read_csv('../datasets/moon-phases-scrape-cooked.csv')
+		moon_df = pd.read_csv('../datasets/moon_phases/moon-phases-scrape-cooked.csv')
 		# moon_df = moon_df[  [ bool(re.match("^.199[89]",x)) for x in moon_df.dt] ] 
 		moon_df.stel_jd = moon_df.stel_dt.apply(toStelJD)
 		bce_moons_df = moon_df[
@@ -115,7 +115,7 @@ def get_moon_planet_pos(force=False) -> pd.DataFrame:
 			print(f'{i}/{len(slices)} - {rows} - {time()-ts : .3f}')
 			#
 		acc_df = pd.concat(acc)
-		acc_df.to_csv('../datasets/moon-planet-pos-bce2000-to-bce0100.csv')
+		acc_df.to_csv('../datasets/moon_phases/moon-planet-pos-bce2000-to-bce0100.csv')
 		return acc_df
 
 # get_moon_planet_pos() #force=0)

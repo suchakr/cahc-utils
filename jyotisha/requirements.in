@@ -1,0 +1,21 @@
+# requirements.in - unpinned top-level dependencies discovered by scan
+# Run `pip-compile requirements.in` (pip-tools) to generate a pinned requirements.txt
+
+astropy
+pandas
+numpy
+matplotlib
+scipy
+seaborn
+IPython
+ephem
+Pillow
+astroplan
+joblib
+tqdm
+sympy
+swifter
+jupyterlab
+notebook
+ipywidgets
+pip-tools

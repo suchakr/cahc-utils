@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:scrape/scraped/ramayana-iitk-kanda-1to5.txt
 [Saint Narada visits hermitage of Valmiki -- Valmiki queries about a single perfect individual bestowed with all good qualities enumerated by him -- Narada, knower of past, present and future, identifies such a man -- describes virtues, qualities of Sri Rama -- narrates briefly the story of his life.]तपस्स्वाध्यायनिरतं तपस्वी वाग्विदां वरम् ।
 नारदं परिपप्रच्छ वाल्मीकिर्मुनिपुङ्गवम्  #1.1.1@
 
@@ -107852,3 +107853,8 @@ Thus asked by Sri Rama, Hanuman repeated everything spoken by Sita to Rama.
 "Sita though afflicted heard from me that you were also in excessive grief on account of separation from her and from my soothing, auspicious and welcome words, she derived comfort and remained quiet"৷৷इत्यार्षे श्रीमद्रामायणे वाल्मीकीय आदिकाव्ये सुन्दरकाण्डे अष्टषष्टितमस्सर्गः #Thus ends the sixtyeighth sarga of Sundarakanda of the holy Ramayana, the first epic composed by sage Valmiki.
 
 =========================
+========
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb391a58d8701060f0a29891d684657f416867a3a0f7b27c3215ef7cd03de81e
+size 11431424
+>>>>>>>> origin/main:datasets/moon-phases-scrape-cooked.csv

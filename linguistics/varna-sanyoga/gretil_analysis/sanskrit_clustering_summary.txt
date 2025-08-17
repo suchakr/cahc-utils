@@ -1,0 +1,47 @@
+Sanskrit Text Clustering Analysis Summary
+=============================================
+
+Analysis Date: 2025-07-12 03:01
+Algorithm Used: K-Means
+Number of Clusters: 7
+Normalization: Proportional
+
+Dataset Overview:
+- Total texts analyzed: 82
+- Literary categories: 3
+- Sanskrit phonemes: 50
+
+Clustering Results:
+- Clusters found: 7
+- Cross-category clusters: 5
+
+
+Cluster Compositions:
+
+Cluster 0 (4 texts):
+  - Kavya: 2 texts (50.0%)
+  - Alamkara: 1 texts (25.0%)
+  - Astrology, astronomy, mathematics: 1 texts (25.0%)
+
+Cluster 1 (3 texts):
+  - Astrology, astronomy, mathematics: 2 texts (66.7%)
+  - Kavya: 1 texts (33.3%)
+
+Cluster 2 (14 texts):
+  - Kavya: 11 texts (78.6%)
+  - Alamkara: 3 texts (21.4%)
+
+Cluster 3 (27 texts):
+  - Kavya: 19 texts (70.4%)
+  - Alamkara: 8 texts (29.6%)
+
+Cluster 4 (31 texts):
+  - Kavya: 16 texts (51.6%)
+  - Alamkara: 9 texts (29.0%)
+  - Astrology, astronomy, mathematics: 6 texts (19.4%)
+
+Cluster 5 (2 texts):
+  - Astrology, astronomy, mathematics: 2 texts (100.0%)
+
+Cluster 6 (1 texts):
+  - Kavya: 1 texts (100.0%)

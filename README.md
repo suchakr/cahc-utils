@@ -13,9 +13,10 @@ Top-level folders of interest
 - `stel_scripts/` — Stellarium scripts and examples
 - `music/` — small music synthesis utilities
 
+
 How to use
 
-![](jyotisha/images/ayana-chalana.gif)
+![Ayana chalana animation](jyotisha/images/ayana-chalana.gif)
 
 <video  controls autoplay loop>
 	<source src="https://raw.githubusercontent.com/suchakr/cahc-utils/dataset-reorganization-2025-08/jyotisha/images/ayana-chalana.mp4" type="video/mp4">

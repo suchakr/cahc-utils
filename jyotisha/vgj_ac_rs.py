@@ -18,7 +18,7 @@ from IPython.display import display
 
 #%%
 def make_n27_lon_divisions() :
-  lon_divisions = pd.read_csv("../datasets/n27_lon_divisions.csv").set_index('nid')
+  lon_divisions = pd.read_csv("../datasets/nakshatras/n27_lon_divisions.csv").set_index('nid')
   lon_divisions['r_eq'] = np.roll(lon_divisions.Eq,1)
   lon_divisions['l_eq'] = np.roll(lon_divisions.Eq,0)
   lon_divisions['r_ue'] = np.roll(lon_divisions.Ue,1)
@@ -305,7 +305,7 @@ def plot_smooth_mbe2(n_df, n_dfAbh=None, tag="") :
   smooth_df['mbe_all_27'] = smooth_fn(smooth_index)
   smooth_df['mbe_bright_9'] = [ x if x>0 else 0 for x in smooth_fn2(smooth_index)]
   smooth_df.index = smooth_index
-  smooth_df.to_csv(f"../datasets/mbe-{tag}.csv")
+  smooth_df.to_csv(f"../datasets/nakshatras/mbe-{tag}.csv")
   major_xticks=np.arange(smooth_df.index.min(),smooth_df.index.max(), step) 
   major_xticks=np.arange(smooth_df.index.min()*0-2500,smooth_df.index.max()*0+501, step) 
   major_yticks=np.arange(0,36,5) 
@@ -377,7 +377,7 @@ def plot_smooth_mbe2(n_df, n_dfAbh=None, tag="") :
 #%%
 #%%
 def plot_n87():
-  n87 = pd.read_csv("../datasets/n87_bce1400.csv")
+  n87 = pd.read_csv("../datasets/nakshatras/n87_bce1400.csv")
   n87['nnid'] = n87.nid.apply( lambda x: int(re.sub("\D","",x)))
   cnt = n87.nid.unique().shape[0]
   def numof(n): return int(re.sub("\D","", n)); 
@@ -442,7 +442,8 @@ def greekify(s) :
 
 # one time run .. unless bug fixes
 def make_naks_meta():
-  n87 = pd.read_csv("../datasets/n87.csv")[['nid', 'gname', 'sname', 'hip']]
+  # n87 = pd.read_csv("../datasets/nakshatras/n87.csv")[['nid', 'gname', 'sname', 'hip']]
+  n87 = pd.read_csv("../datasets/nakshatras/n90_full_meta.csv")[['nid', 'gname', 'sname', 'hip']]
   n87.hip =n87.hip.apply(
     lambda x: re.sub("HIP\s+","HIP ",x)
   ).apply(
@@ -451,7 +452,7 @@ def make_naks_meta():
     lambda x: re.sub("\s+$","",x)
   )
 
-  n27 = pd.read_csv("../datasets/n27.csv")[['nid', 'gname', 'sname', 'hip']]
+  n27 = pd.read_csv("../datasets/nakshatras/n27.csv")[['nid', 'gname', 'sname', 'hip']]
   n27.hip =n27.hip.apply(
     lambda x: re.sub("HIP\s+","HIP ",x)
   ).apply(
@@ -467,7 +468,7 @@ def make_naks_meta():
   n87['tag'] = 'other'
   nU=pd.concat( [n27, n87])
 
-  naks_meta = pd.read_csv("../datasets/n27_limited_meta.csv").set_index('nid')
+  naks_meta = pd.read_csv("../datasets/nakshatras/n27_limited_meta.csv").set_index('nid')
   nU = nU[['nid', 'gname', 'sname', 'hip', 'tag']].set_index('nid').join(naks_meta)
   nU = nU.dropna()
 
@@ -483,13 +484,17 @@ def make_naks_meta():
   meta_df.nnid= [int(x) for x in meta_df.nnid]
 
   meta_df=meta_df[ ['nnid', 'tag', 'gname', 'sname', 'hip', 'naks', 'enaks', 'daivata'] ]
-  meta_df.to_csv("../datasets/~naks_full_meta.csv")
+  meta_df.to_csv("../datasets/nakshatras/naks_full_meta.csv")
   return meta_df
 
 # make_naks_meta()
 
 def read_naks_meta () :
-  return pd.read_csv("../datasets/n83_full_meta.csv")
+  try :
+    ans = pd.read_csv("../datasets/nakshatras/naks_full_meta.csv")
+  except FileNotFoundError:
+    ans = make_naks_meta()
+  return ans
 
 def bounded_years(n27Date) :
   n27_bounds = bounded(n27Date)[['nid', 'year', 'lon_bounded_eq' ]]
@@ -536,8 +541,8 @@ def make_naks_bounds_report(n_df):
 #%%
 
 def get_n83_naks_df(yr=-1500) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
   n83a['ra_adj'] = n83a.ra - n83a.ra.min()
   # n83a['lon'] = (n83a.lon-330) % 360
@@ -932,8 +937,8 @@ def plot_mbounds(inm12, tag) :
   plt.show();
 
 def prev_plot_mbe2_83() :
-  # n83_err = naks_lon_err (load_naks_data("../datasets/n83_base_Feb24_bce2500_to_ce0500.tsv"))
-  n83_err = naks_lon_err (load_naks_data("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv"))
+  # n83_err = naks_lon_err (load_naks_data("../datasets/nakshatras/n83_base_Feb24_bce2500_to_ce0500.tsv"))
+  n83_err = naks_lon_err (load_naks_data("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv"))
   n83_lon = n83_err[ n83_err.year ==  -1500][ ['gname', 'lon']]
   n83_err = pd.merge ( n83_err , n83_lon , on='gname', how='left')
   n83_err = n83_err[ ['nid', 'gname', 'year', 'lon_x', 'err_lon_bounds_eq' , 'err_lon_bounds_eq1', 'lon_y'] ]
@@ -968,8 +973,8 @@ def prev_plot_mbe2_83() :
 
 #%%
 def plot_mbe2_83(n_df, n_df2 = None, only_abhyankar_27=False) :
-  n83_err = naks_lon_err (load_naks_data("../datasets/n83_base_Feb24_bce2500_to_ce0500.tsv"))
-  # n83_err = naks_lon_err (load_naks_data("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv"))
+  n83_err = naks_lon_err (load_naks_data("../datasets/nakshatras/n83_base_Feb24_bce2500_to_ce0500.tsv"))
+  # n83_err = naks_lon_err (load_naks_data("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv"))
   n83_lon = n83_err[ n83_err.year ==  -1500][ ['gname', 'lon']]
   n83_err = pd.merge ( n83_err , n83_lon , on='gname', how='left')
   n83_err = n83_err[ ['nid', 'gname', 'year', 'lon_x', 'err_lon_bounds_eq' , 'err_lon_bounds_eq1', 'lon_y'] ]
@@ -1099,8 +1104,8 @@ def plot_mbe2_83(n_df, n_df2 = None, only_abhyankar_27=False) :
 
 #%%
 def plot_n83_ll(yrs=[-500]) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
 
   def numof(n): return int(re.sub("\D","", n)); 
@@ -1235,7 +1240,7 @@ def plot_n83_ll(yrs=[-500]) :
     ax.plot( smooth_x, smooth_y, linewidth=2, color='olive')
 
     if (yr == -1500) :
-      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = pd.read_csv("../datasets/moon_phases/full_moon_bce1500.tsv", sep="\t")
       moon_df = moon_df[moon_df.sz.diff() != 0]
       # print(yr)
       m = moon_df[moon_df.year == moon_df.year.unique()[0]] 
@@ -1258,8 +1263,8 @@ class Graha_Kolam(object):  # formerly Venus_Pentagram
     self.gruha = gruha
     self.corners_per_year = corners_per_year
     self.num_years = num_years
-    self.pvis_dump = f'../datasets/{gruha}-pvis-dump-{year:04d}bce.tsv'
-    self.visibility = f'../datasets/{gruha}-visibility-{year:04d}bce.tsv'
+    self.pvis_dump = f'../datasets/planet_positions/{gruha}-pvis-dump-{year:04d}bce.tsv'
+    self.visibility = f'../datasets/planet_positions/{gruha}-visibility-{year:04d}bce.tsv'
 
   def make_gruha_visibility_df_from_pvis_dump(self) :  # convert RNI's pvis html to dataframe
     try:
@@ -1274,7 +1279,7 @@ class Graha_Kolam(object):  # formerly Venus_Pentagram
       vns['jd'] = vns.date.apply(toJD)
       vns = vns[['jd', 'date' , 'year' , 'event', 'sun_lon', 'obj_lon']]
       vns.to_csv(self.visibility, sep="\t", index=False)
-      # vns.to_csv("../datasets/venus-visibility-1200BCE.tsv", sep="\t", index=False)
+      # vns.to_csv("../datasets/nakshatras/venus-visibility-1200BCE.tsv", sep="\t", index=False)
       return vns
 
   def plot(self) :
@@ -1584,7 +1589,7 @@ def plot_gruha_elongation_and_visibility ():
     _gr_df =_gr_df.assign( day_num = lambda x: x.day_num - _gr_df.day_num.min() )
     plot_gruha_elongation(_gr_df, f"{gr}, {_gr_df.year.min()} to {_gr_df.year.max()}\n")
 
-    fn = f"../datasets/{gr.lower()}-events.tsv"
+    fn = f"../datasets/nakshatras/{gr.lower()}-events.tsv"
 
     print ("Writing to file", fn)
     _df = gr_df[
@@ -1597,7 +1602,7 @@ def plot_gruha_elongation_and_visibility ():
     _df.date = _df.date.apply(lambda x: re.sub(r'T.*', r'', x))
     _df.to_csv(fn, sep="\t", float_format='%.2f')
 
-    fn_slice = f"../datasets/{gr.lower()}-slice-events~.tsv"
+    fn_slice = f"../datasets/nakshatras/{gr.lower()}-slice-events~.tsv"
     # print ("Writing to file", fn_slice)
     _df = _gr_df[
       _gr_df.key_events.apply(len)>2
@@ -1614,8 +1619,8 @@ if __name__ == '__main__':
 
 #%%
 def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
 
   START_LON = 270
@@ -1776,7 +1781,7 @@ def plot_n83_ll_with_mars_overlay(yrs=[-500]) :
     ax.plot( smooth_x, smooth_y, linewidth=1, color='olive', linestyle=":")
 
     if (yr == -1500) :
-      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = pd.read_csv("../datasets/moon_phases/full_moon_bce1500.tsv", sep="\t")
       moon_df = moon_df[moon_df.sz.diff() != 0]
       # print(yr)
       m = moon_df[moon_df.year == moon_df.year.unique()[0]] 
@@ -1815,8 +1820,8 @@ if __name__ == "__main__" :
 
 #%%
 def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
 
   START_LON = 210 -210 +270
@@ -1836,7 +1841,7 @@ def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
     # n83['decl'] = ra_decl.decl
     n83.ra = n83.ra.apply( lambda x: x + (360 if x < 0 else 0))
     n83['decl'] = n83['dec'] 
-    n83a.to_csv("../datasets/n83~.tsv", float_format='%.2f')
+    n83a.to_csv("../datasets/nakshatras/n83~.tsv", float_format='%.2f')
     n83_copy = n83.copy()
     n83_copy['lon'] = n83_copy.lon + 360
     n83_copy['ra'] = n83_copy.ra + 360
@@ -1992,7 +1997,7 @@ def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
     
     # return
     if (yr == -1500) :
-      moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      moon_df = pd.read_csv("../datasets/moon_phases/full_moon_bce1500.tsv", sep="\t")
       moon_df = moon_df[moon_df.sz.diff() != 0]
       # print(yr)
       m = moon_df[moon_df.year == moon_df.year.unique()[0]] 
@@ -2015,7 +2020,7 @@ def plot_n83_rd_with_mars_overlay(yrs=[-500]) :
     vakra_spot = mars[mars.lon1diff < -222]
     vakra_dates = ",".join([ re.sub("T.*","", x) for x in vakra_spot.date.values])
 
-    mars.reset_index().to_csv("../datasets/n83-mars~.csv", float_format='%.2f')
+    mars.reset_index().to_csv("../datasets/nakshatras/n83-mars~.csv", float_format='%.2f')
     mars.plot.scatter(x="lon1", y="decl", 
       # s=mars.tag.apply(lambda x: 1 if x<=20 else 1),
       c=mars.gruha_visibility.apply(lambda x: 'red' if x==0 else 'blue' if x >0 else 'green'),
@@ -2128,8 +2133,8 @@ if __name__ == "__main__" :
 
 #%%
 def plot_n83_rd_with_moon_overlay(yrs=[-500]) :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
 
   START_LON = 210 -210 +270
@@ -2149,7 +2154,7 @@ def plot_n83_rd_with_moon_overlay(yrs=[-500]) :
     # n83['decl'] = ra_decl.decl
     n83.ra = n83.ra.apply( lambda x: x + (360 if x < 0 else 0))
     n83['decl'] = n83['dec'] 
-    n83a.to_csv("../datasets/n83~.tsv", float_format='%.2f')
+    n83a.to_csv("../datasets/nakshatras/n83~.tsv", float_format='%.2f')
     n83_copy = n83.copy()
     n83_copy['lon'] = n83_copy.lon + 360
     n83_copy['ra'] = n83_copy.ra + 360
@@ -2299,7 +2304,7 @@ def plot_n83_rd_with_moon_overlay(yrs=[-500]) :
 
     moon_overlay='phase'
     if moon_overlay=='phase'  :
-      # moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      # moon_df = pd.read_csv("../datasets/nakshatras/full_moon_bce1500.tsv", sep="\t")
       # moon_df = get_fm_df()
       moon_df = get_moon_31_df(PP.JD_BCE_1000_JAN_1+(1000+yr)*365.25,ndays=55)
       moon_df['ra_adj'] = [ 360+x if x<0 else x  for x in  moon_df.ra]
@@ -2339,7 +2344,7 @@ if __name__ == "__main__" :
 #%%
 def n83_drift_rate(n83a = None ):
   if n83a is None:
-    n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+    n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
 
   ans =[]
   # for n, _df in n83a[(n83a.gname == "ω1 Sco") | (n83a.gname  =="* 17 Tau")][['gname', 'lat', 'lon' , 'ra', 'dec']].groupby('gname') :
@@ -2360,7 +2365,7 @@ def n83_drift_rate(n83a = None ):
 #%%
 def get_year_n83(yr=-2500, n83a=None, n83_drifts=None) :
   if n83a is None:
-    n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+    n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
 
   if n83_drifts is None:
     n83_drifts = n83_drift_rate(n83a)
@@ -2384,7 +2389,7 @@ def get_year_n83(yr=-2500, n83a=None, n83_drifts=None) :
   return ans
 
 def test_get_year_n83(yr=-2500):
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
   n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
   n83_drifts = n83_drift_rate(n83a)
@@ -2395,8 +2400,8 @@ def test_get_year_n83(yr=-2500):
 #%%
 
 def plot_n83_rd(yrs=[-1500], moon_overlay='fullmoon') :
-  n83a = pd.read_csv("../datasets/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
-  n83_mag = pd.read_csv("../datasets/n83_mag.tsv", sep="\t")[['gname','mag']]
+  n83a = pd.read_csv("../datasets/nakshatras/n83_lat_lon_ra_dec_bce2500_ce1000.tsv", sep="\t")
+  n83_mag = pd.read_csv("../datasets/nakshatras/n83_mag.tsv", sep="\t")[['gname','mag']]
   n83a = pd.merge(n83a, n83_mag, on='gname', how='left')
   n83_drifts = n83_drift_rate(n83a)
   # n83a = pd.merge(n83a, n83_drifts, on='gname', how='left')
@@ -2468,7 +2473,7 @@ def plot_n83_rd(yrs=[-1500], moon_overlay='fullmoon') :
     ax.plot( smooth_x, smooth_y, linewidth=2, color='olive')
 
     if moon_overlay=='fullmoon' : #or (yr == -1500) :
-      # moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      # moon_df = pd.read_csv("../datasets/nakshatras/full_moon_bce1500.tsv", sep="\t")
       moon_df = get_fm_df()
       # moon_df = get_moon_31_df(PP.JD_BCE_1000_JAN_1+(1000+yr)*365.25)
       moon_df['ra_adj'] = [ 360+x if x<0 else x  for x in  moon_df.ra] 
@@ -2492,7 +2497,7 @@ def plot_n83_rd(yrs=[-1500], moon_overlay='fullmoon') :
         )
 
     if moon_overlay=='phase'  :
-      # moon_df = pd.read_csv("../datasets/full_moon_bce1500.tsv", sep="\t")
+      # moon_df = pd.read_csv("../datasets/nakshatras/full_moon_bce1500.tsv", sep="\t")
       # moon_df = get_fm_df()
       moon_df = get_moon_31_df(PP.JD_BCE_1000_JAN_1+(1000+yr)*365.25,ndays=35)
       moon_df['ra_adj'] = [ 360+x if x<0 else x  for x in  moon_df.ra] 
@@ -2570,9 +2575,9 @@ def init_globals () :
 
   # This TSH has incorrect ASHadas .. no need to patch as below
   # patch Feb24 which had wrong ASH with Feb20 info which has correct ASH - from stell
-  n27Feb24 = load_naks_data("../datasets/n27_base_Feb24_bce2500_to_ce0500.tsv")
+  n27Feb24 = load_naks_data("../datasets/nakshatras/n27_base_Feb24_bce2500_to_ce0500.tsv")
   n27Feb24 = naks_lon_err(n27Feb24)
-  n27Feb20_delta  = load_naks_data("../datasets/n27_delta_Feb20_bce2500_to_ce0500.tsv")
+  n27Feb20_delta  = load_naks_data("../datasets/nakshatras/n27_delta_Feb20_bce2500_to_ce0500.tsv")
   n27Feb20_delta = naks_lon_err(n27Feb20_delta)
   ash_patch = n27Feb20_delta[ [('20' in x) or ('21' in x) for x in n27Feb20_delta.nid ]]
   n27Feb24_nonash = n27Feb24[ [not(('20' in x) or ('21' in x)) for x in n27Feb24.nid ]]
@@ -2585,17 +2590,17 @@ def init_globals () :
   # naks_eq_bounds_report
 
   # patch Shr and Dha for sensitivity plots
-  n27Feb24_shr_dha_delta  = load_naks_data("../datasets/n27_delta_shr_dha_bce2500_to_ce0500.tsv")
+  n27Feb24_shr_dha_delta  = load_naks_data("../datasets/nakshatras/n27_delta_shr_dha_bce2500_to_ce0500.tsv")
   n27Feb24_shr_dha_delta = naks_lon_err(n27Feb24_shr_dha_delta )
   n27Feb24_non_shr_dha = n27Feb24[ [not(('Shr' in x) or ('Dha' in x)) for x in n27Feb24.nid ]]
   n27Feb24_sensitivity = pd.concat([ n27Feb24_non_shr_dha, n27Feb24_shr_dha_delta])
   n27Feb24_sensitivity = n27Feb24_sensitivity.sort_values(['nid', 'year'])
 
-  # n27Feb24zoom = load_naks_data("../datasets/n27_base_Feb24_bce1400_to_bce0900_zoom.tsv")
+  # n27Feb24zoom = load_naks_data("../datasets/nakshatras/n27_base_Feb24_bce1400_to_bce0900_zoom.tsv")
   # n27Feb24zoom = naks_lon_err(n27Feb24zoom)
 
-  m12 = load_naks_data("../datasets/m12_base_mar20_bce2500_to_ce0500.tsv")
-  n27Feb24_abhyankar_delta = load_naks_data("../datasets/n27_delta_abhyankar_bce2500_to_ce0500.tsv")
+  m12 = load_naks_data("../datasets/nakshatras/m12_base_mar20_bce2500_to_ce0500.tsv")
+  n27Feb24_abhyankar_delta = load_naks_data("../datasets/nakshatras/n27_delta_abhyankar_bce2500_to_ce0500.tsv")
   n27Feb24_abhyankar_delta = naks_lon_err(n27Feb24_abhyankar_delta)
   n27Feb24_non_abhyankar = n27Feb24[ [not(
     ('Mag' in x) or ('Has' in x) or ('Jye' in x) or ('Mul' in x) 

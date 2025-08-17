@@ -260,7 +260,7 @@ class PlanetPos:
 		isot = re.sub('T.*', '', isot)
 		# l = len(str(num_events) // 3)
 		# scale = { 0: '', 1: 'k', 2: 'M', 3: 'G' }[l]
-		# fn = f"../datasets/moon_sun_lat_lon_from_{isot}_for_{num_events // (10**l)}{scale}_samples_of_{step:.2f}_day_steps.csv"
+		# fn = f"../datasets/moon_phases/moon_sun_lat_lon_from_{isot}_for_{num_events // (10**l)}{scale}_samples_of_{step:.2f}_day_steps.csv"
 		ans = []
 		start_time = time.time()
 		sample_points = np.arange(jd, jd+num_events*step, step)
@@ -272,7 +272,8 @@ class PlanetPos:
 		# return
 
 
-		fn = f"../datasets/~sun_moon_lat_lon/from_{isot}_for_{int(num_sample_points)}_samples_of_{step:.2f}_day_steps.csv"
+		# fn = f"../datasets/moon_phases/sun_moon_lat_lon/from_{isot}_for_{int(num_sample_points)}_samples_of_{step:.2f}_day_steps.csv"
+		fn = f"../datasets/moon_phases/~sun_moon_lat_lon/from_{isot}_for_{int(num_sample_points)}_samples_of_{step:.2f}_day_steps.csv"
 		try :
 			if force: raise Exception("Force rebuild")
 			self.moon_df = pd.read_csv(fn)
@@ -394,7 +395,7 @@ class PlanetPos:
 		dfs=[]
 		dt0 = Time(jd_start, format='jd', scale='utc').isot
 		dt0 = re.sub('T.*', '', dt0)
-		fn = f'../datasets/sun_moon_pos_{dt0}_for_{num_years:d}_years_in_{jd_step:.3f}_jd_steps.csv'
+		fn = f'../datasets/moon_phases/sun_moon_pos_{dt0}_for_{num_years:d}_years_in_{jd_step:.3f}_jd_steps.csv'
 		self.sun_moon_df_csv = fn
 		try:
 			# 1/0

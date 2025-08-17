@@ -195,9 +195,9 @@ class NaksUtils:
 	def __init__(self, force=False):
 		try :
 			if force : raise FileNotFoundError
-			self.df = pd.read_csv('../datasets/n27_full_meta.csv')
-			self.df28 = pd.read_csv('../datasets/n28_full_meta.csv')
-			self.df28_good = pd.read_csv('../datasets/n28_good_meta.csv')
+			self.df = pd.read_csv('../datasets/nakshatras/n27_full_meta.csv')
+			self.df28 = pd.read_csv('../datasets/nakshatras/n28_full_meta.csv')
+			self.df28_good = pd.read_csv('../datasets/nakshatras/n28_good_meta.csv')
 			return
 		except :
 			print('No data file found. Regenerating...')

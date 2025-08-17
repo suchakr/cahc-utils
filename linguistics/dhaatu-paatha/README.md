@@ -1,5 +1,15 @@
 # Sanskrit Verb Generation - Interactive Animation
 
+Short summary
+
+- A self-contained interactive HTML animation that demonstrates Paninian verb derivation (धातु -> तिङन्त). Great for classroom demos and quick exploration of verb formation rules.
+
+Quick start
+
+1. Open `dhaatu-animation.html` in a browser (no server required).
+2. Choose a धातु and a लकार to begin the step-by-step derivation.
+3. Use the Sutra Reference tab to see which सूत्र apply at each step.
+
 ## पाणिनीयधातुपाठस्य सम्प्रयोगबोधनम्
 
 This repository contains an interactive web application that demonstrates the step-by-step generation of Sanskrit verbs (तिङ्न्त forms) using Paninian grammar principles.

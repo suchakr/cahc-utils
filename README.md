@@ -15,6 +15,14 @@ Top-level folders of interest
 
 How to use
 
+![](jyotisha/images/ayana-chalana.gif)
+
+<video  controls autoplay loop>
+	<source src="https://raw.githubusercontent.com/suchakr/cahc-utils/dataset-reorganization-2025-08/jyotisha/images/ayana-chalana.mp4" type="video/mp4">
+	Your browser does not support the video tag.
+</video>
+
+
 1. Browse the folder for a project you care about. Most projects contain a README or a notebook.
 2. For Python projects, create a virtualenv and install the project's `requirements.txt` where present.
 3. Treat this repo as working research artefacts — expect rough edges and local scripts.

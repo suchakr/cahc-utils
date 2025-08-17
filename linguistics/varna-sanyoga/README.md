@@ -1,5 +1,17 @@
 # Sanskrit Varna Sanyoga (Sound Pattern) Analysis
 
+Short summary
+
+- A pipeline to extract phonetic/sound patterns from Sanskrit texts, normalize them, and apply clustering to explore stylistic groupings.
+
+Quick start
+
+1. Create and activate a Python virtual environment.
+2. Install dependencies: `pip install -r requirements.txt` (run inside `linguistics/varna-sanyoga`).
+3. Run `01_llm_pre_process.ipynb` to preprocess source texts and generate `llm_pre_processed/`.
+4. Run `02_varna_sanyoga.ipynb` to extract sounds and produce `msound_raw.csv` and `msound_normalized.csv`.
+5. Run `03_sound_clustering.py` to perform clustering and generate visualizations.
+
 This project analyzes sound patterns in Sanskrit kavyas (literary works) by extracting, processing, and clustering phonetic data to identify natural groupings of texts based on their sound distributions.
 
 ## Project Overview

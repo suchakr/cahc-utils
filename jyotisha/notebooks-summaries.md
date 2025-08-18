@@ -1,120 +1,25 @@
-# Notebook summaries (first markdown cell)
+# Notebook summaries
 
-## .ipynb_checkpoints/c2-checkpoint.ipynb
-
+## CAHC Explorations - nakṣatra , seasonal astronomy, others .. (cahc_explore.ipynb)
 <a class="anchor" id="top_"></a>
-
-
-# Some CAHC Explorations
-- [Moon Longitude and Longitude Diff by sidereal cycle](#m_l_ld)
-- [Moon Longitude by sidereal cycle](#m_l)
-  - [Interpolate the time series mdf](#mdf_interpolate)
-- [Nakshatras Meta Data](#naks_meta_data)
-- [Moon Dwell Time by Nakshatra](#moon_dwell_time_by_nakshatra)
-- [Explore longitude diff at Full Moon between Moon and other Gruhas](#ld_m_g)
-- [Explore Relation of Full Moon to Maasa Names](#fm_mn)
-- [Mars and Moon Parvas](#mm_prv)
-- [Eclipses](#eclipses)
-  - [Lunar Eclipse - Six in a row](#lunar-eclipse-at-jaipur)
-  - [Eclipse Triples](#eclipse-triples-analysis)
-- [Sundial](#sun-dial)
-- [Sisumara Circumpolarity](#sisumara-circumpolarity)
-- [Kausitiki Brahmana Punarvasu](#kb-puanrvasu)
-- [Brahmanda Purana KV](#brahmanda-purana-kv)
-  - [PlanetPos based KV plots](#planetpos-based-kv-plots)
-  - [Astropy based KV plots](#astropy-based-kv-plots)
-  - [Equinoctial Full Moons](#equinoctial-full-moons-for-iks)
-  - [Seasonal Nakṣatras of BP/MAU , VGJ and LVJ](#seasonal-naks-of-bp)
-- [FM/NM Sequence Explorations](#fm-nm-sequence-explorations)
-  - [FM Sequences](#fm-sequences)
-  - [NM Sequences](#nm-sequences)
-- [Nakshatras Heliacal Rising analysis](#nakshatras-heliacal-rising-analysis)
-- [Sunrise azimuths for a year](#sunrise-azimuths-for-a-year)
-- [वायुपुराणम् १.५३](#vayu-puranam)
-  - [Least Errror Fit for Sun+Gruhas with Naks](#least-error-fit)
-  - [Jupiter and Saturn Only](#jupiter-and-saturn-only)
-- [Jyeṣṭhā and Rohiṇi](#jyeshtha-rohini)
-- [Eclipse by Century](#eclipse-by-century)
-- Plots for Mahāsalilam book
-  - [Moon illumination](#moon-illumination)
-  - [Graha Magnitudes](#graha-magnitudes)
-- [Chandra maarga of VGJ](#chandra-maarga-of-vgj)
-- [Moon Rise Set Events](#moon-rise-set-events)
-- [Nālāyira Divya Prabandham](#nalayira-divya-prabandham)
-- [Mārgazhi Thiṇgaḻ](#margazhi-thingal)
-- [Sāvātisampātaṁ](#savatisampatam)
-
-[top](#top_)
-
-## .ipynb_checkpoints/cahc_explore-checkpoint.ipynb
-
-<a class="anchor" id="top_"></a>
-
-
-# Some CAHC Explorations
-- [Moon Longitude and Longitude Diff by sidereal cycle](#m_l_ld)
-- [Moon Longitude by sidereal cycle](#m_l)
-  - [Interpolate the time series mdf](#mdf_interpolate)
-- [Nakshatras Meta Data](#naks_meta_data)
-- [Moon Dwell Time by Nakshatra](#moon_dwell_time_by_nakshatra)
-- [Explore longitude diff at Full Moon between Moon and other Gruhas](#ld_m_g)
-- [Explore Relation of Full Moon to Maasa Names](#fm_mn)
-- [Mars and Moon Parvas](#mm_prv)
-- [Eclipses](#eclipses)
-  - [Lunar Eclipse - Six in a row](#lunar-eclipse-at-jaipur)
-  - [Eclipse Triples](#eclipse-triples-analysis)
-- [Sundial](#sun-dial)
-- [Sisumara Circumpolarity](#sisumara-circumpolarity)
-- [Kausitiki Brahmana Punarvasu](#kb-puanrvasu)
-- [Brahmanda Purana KV](#brahmanda-purana-kv)
-  - [PlanetPos based KV plots](#planetpos-based-kv-plots)
-  - [Astropy based KV plots](#astropy-based-kv-plots)
-  - [Equinoctial Full Moons](#equinoctial-full-moons-for-iks)
-  - [Seasonal Nakṣatras of BP/MAU , VGJ and LVJ](#seasonal-naks-of-bp)
-- [FM/NM Sequence Explorations](#fm-nm-sequence-explorations)
-  - [FM Sequences](#fm-sequences)
-  - [NM Sequences](#nm-sequences)
-- [Nakshatras Heliacal Rising analysis](#nakshatras-heliacal-rising-analysis)
-- [Sunrise azimuths for a year](#sunrise-azimuths-for-a-year)
-- [वायुपुराणम् १.५३](#vayu-puranam)
-  - [Least Errror Fit for Sun+Gruhas with Naks](#least-error-fit)
-  - [Jupiter and Saturn Only](#jupiter-and-saturn-only)
-- [Jyeṣṭhā and Rohiṇi](#jyeshtha-rohini)
-- [Eclipse by Century](#eclipse-by-century)
-- Plots for Mahāsalilam book
-  - [Moon illumination](#moon-illumination)
-  - [Graha Magnitudes](#graha-magnitudes)
-- [Chandra maarga of VGJ](#chandra-maarga-of-vgj)
-- [Moon Rise Set Events](#moon-rise-set-events)
-- [Nālāyira Divya Prabandham](#nalayira-divya-prabandham)
-- [Mārgazhi Thiṇgaḻ](#margazhi-thingal)
-- [Sāvātisampātaṁ](#savatisampatam)
-
-[top](#top_)
-
-## cahc_explore.ipynb
-
-<a class="anchor" id="top_"></a>
-
-# cahc_explore.ipynb — CAHC Explorations (nakṣatra & seasonal astronomy)
 
 This notebook contains exploratory code, data and visualizations for investigating traditional Indian sky-culture concepts (nakṣatras, aditya-cāra/seasonal motion, maasa/rtu patterns and lunar motion) for different historical epochs and geographic locations. It collects nakṣatra metadata, computes/plots nakṣatra and seasonal boundaries for chosen epochs, traces the Moon's path through nakṣatras over time, and inspects circumpolarity (sisuāra) behavior.
 
 This document summarizes what the notebook does, how to run it, and what to look for when interpreting its results.
 
-## High-level goals (what the notebook helps you do)
+### High-level goals (what the notebook helps you do)
 - Load and examine nakṣatra metadata (names, ecliptic ranges, reference stars).
 - Visualize nakṣatra positions overlayed with seasons (rtu / aditya-cāra) for a given epoch and location.
 - Simulate and plot lunar motion among nakṣatras over date ranges.
 - Analyze circumpolarity (stars/nakṣatras that are circumpolar / near-circumpolar) at selected latitudes and epochs.
 - Produce publication-ready plots and simple animations that illustrate seasonal/nakṣatra changes over long timescales (precession / epoch shifts).
 
-## Intended audience
+### Intended audience
 - Historians of astronomy, students of Vedāṅga Jyotiṣa / Lagadha traditions.
 - Researchers who want to compare textual descriptions of nakṣatra/rtu relationships with astronomical reconstructions.
 - Practitioners who want visual/contextual tools for teaching sky-culture.
 
-## TOC
+### TOC
 - [Moon Longitude and Longitude Diff by sidereal cycle](#m_l_ld)
 - [Moon Longitude by sidereal cycle](#m_l)
   - [Interpolate the time series mdf](#mdf_interpolate)
@@ -155,9 +60,7 @@ This document summarizes what the notebook does, how to run it, and what to look
 
 [top](#top_)
 
-## consecutive_fms.ipynb
-
-## Consecutive Full Moon Analysis Notebook
+## Consecutive Full Moon Analysis Notebook (consecutive_fms.ipynb)
 
 This notebook analyzes full moon data, focusing on historical lunar events and their periodicity. It processes a dataset of full moons, extracts relevant features, and performs various analyses to identify patterns and anomalies in the lunar cycle.
 
@@ -176,26 +79,42 @@ This notebook analyzes full moon data, focusing on historical lunar events and t
 - The notebook searches for repeated digits in these blocks (e.g., six consecutive full moons with the same last digit in their JD difference).
 - The analysis aims to find rare or interesting periodicities in the lunar cycle, possibly for calendrical or astronomical significance.
 
-## darsha_poornamasa/lunar_standstills.ipynb
+## Lunar Standstills and Eclipse Analysis (Jaipur, BCE 1400–1500) (lunar_standstills.ipynb)
 
-## Purpose — quick overview
+This notebook analyzes lunar standstills and eclipse patterns over a century in ancient Jaipur, focusing on astronomical cycles and eclipse clustering. It combines historical lunar rise/set data and eclipse records to:
 
-This notebook analyses lunar standstills and eclipse clustering for Jaipur (BCE 1400–1500).
-It expects input CSVs (moon rise/set and eclipse lists) under `../datasets` and produces summary CSVs and plots under `darsha_poornamasa/`.
+- Parse and normalize lunar event data (rise, azimuth, phase, paksha, etc.) for BCE dates using Astropy.
+- Join lunar phase and eclipse datasets to identify eclipse types and their timing.
+- Visualize full moon, new moon, and eclipse events, highlighting their azimuth and phase distributions.
+- Detect and display eclipse tetrads—clusters of four or more lunar eclipses occurring within short intervals.
+- Provide sample tables and plots for eclipse events and tetrads, supporting research into ancient astronomical cycles.
 
-Use this notebook to: parse and normalise BCE moon event data, join eclipse records, visualise azimuth/phase distributions, and detect eclipse tetrads.
+The notebook is designed for historical astronomy research, with robust handling of BCE dates and clear visualizations of lunar phenomena.
 
-## gruha_chaara.ipynb
+## Gruha Chaara — Planet Motion Explorer  (gruha_chaara.ipynb)
 
-## Explore the duration between succesive Planet - Nakshatra interaction
+This notebook is an astronomical research tool that explores planetary motion and visualizes prograde/retrograde behavior for five classical planets: Mercury, Venus, Mars, Jupiter, and Saturn.
 
-## lagadha_units.ipynb
+### Scope and purpose
+- Covered planets: Mercury, Venus, Mars, Jupiter, Saturn.
+- Visual analyses: identify intervals of prograde and retrograde motion, plot apparent motion timelines, and compute summary statistics (durations, frequency, transition dates).
+- Intended audience: researchers using astronomical observations and descriptions from ancient Indic texts; outputs are numerical and visual (not astrological interpretations).
 
-# वेदाङ्गजयोतिषम् - Time units by लगध
+### Quick run notes
+1. Ensure required datasets are available under `../datasets/` or generate positions with the provided utilities in `jyotisha`.
+2. Large date ranges may be slow — use a smaller sample for exploration or pre-compute ephemerides where possible.
+3. Cells marked LONG are optional for quick runs.
 
-## lunar-events-calculator.ipynb
+### Notes
+- This is exploratory code; consider extracting stable functions into `jyotisha/` modules for reproducible research.
 
-# Lunar Events Calculator
+## वेदाङ्गजयोतिषम् — लगधः: Time units and conversions (lagadha_units.ipynb)
+
+This notebook extracts and computes traditional time units described in the Vedāṅga Jyotiṣa (Lagadha) and related texts.
+It encodes slokas as algebraic relations among classical units (पलम्, आढकः, नाडिका, मुहुर्तम्, कला, द्युः, etc.),
+solves the linear system to derive conversion factors, and outputs the results as both fractional ratios and decimal floats.
+
+## Lunar Events Calculator (lunar-events-calculator.ipynb)
 
 An astronomically accurate tool for calculating key lunar events, designed for both modern and historical research. This calculator determines:
 
@@ -205,19 +124,9 @@ An astronomically accurate tool for calculating key lunar events, designed for b
 - Support for BCE dates and ancient calendar studies
 - Visualization-ready outputs for integration with Stellarium
 
----
+## Transit of sun through the seasonal nakṣatra cycle in the Vṛddha-Gārgīya Jyotiṣa  (vgj_ac_rs.ipynb)
 
-**Engineering Improvements:**
+The notebook plots the transit of the sun through the seasonal nakṣatra cycle as described in the Vṛddha-Gārgīya Jyotiṣa. 
 
-- Separation of concerns: calculation, caching, filtering, visualization
-- Hybrid caching: joblib disk cache + lru_cache memory cache
-- Modular, maintainable code structure
-- Robust error handling and graceful BCE date support
-- Clean interface and extensible design
-
-## vgj_ac_rs.ipynb
-
-# Transit of sun through the seasonal nakṣatra cycle in the Vṛddha-Gārgīya Jyotiṣa 
-## [Indian Journal of History of Science, 56.3(2021)](https://insa.nic.in//writereaddata/UpLoadedFiles/IJHS/1.pdf)
-### Supplementary Material
+Some of these plots are included in the Indian Journal of History of Science 56.3 (2021) - [Transit of sun through the seasonal nakṣatra cycle in the  Vṛddha-Gārgīya Jyotiṣa](https://insa.nic.in//writereaddata/UpLoadedFiles/IJHS/1.pdf).
 

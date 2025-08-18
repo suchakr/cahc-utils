@@ -13,6 +13,8 @@ This directory is a research/dev workspace rather than a production package. The
   - `gruha_chaara.ipynb` — domain-specific analysis (motion/house related)
   - `lunar-events-calculator.ipynb` — event calculation examples (uses JD/planet helpers)
   - `darsha_poornamasa/lunar_standstills.ipynb` (occasionally present as `lunar_standstills.ipynb.backup`) — analyses and slides around lunar standstills; contains example CSVs and rise/set tables under `darsha_poornamasa/`
+- Notebook summaries
+  - `notebooks-summaries.md` — extracted first markdown cell from each notebook (a quick reference of notebook descriptions and starting notes)
 - Python helper modules
   - `NasaMoonScrapeUtils.py` — scraping utilities for NASA moon tables / retrievals
   - `NaksUtils.py` — nakshatra / lunar mansion helpers

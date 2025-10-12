@@ -2,6 +2,12 @@
   export let coordinates;
   export let camera = { azimuth: 0, elevation: 0, distance: 0 };
   
+  let isOpen = false;
+  
+  function togglePanel() {
+    isOpen = !isOpen;
+  }
+  
   // Format RA as hours:minutes:seconds
   function formatRA(hours) {
     const h = Math.floor(hours);
@@ -29,7 +35,17 @@
   }
 </script>
 
-<aside class="value-pane">
+<!-- Mobile toggle button -->
+<button class="mobile-toggle" on:click={togglePanel} aria-label="Toggle coordinates">
+  <span class="info-icon">ℹ</span>
+</button>
+
+<!-- Backdrop for mobile -->
+{#if isOpen}
+  <div class="backdrop" on:click={togglePanel}></div>
+{/if}
+
+<aside class="value-pane" class:open={isOpen}>
   <h2>Coordinates</h2>
   
   <section class="equatorial-section">
@@ -159,5 +175,66 @@
   .value {
     color: #fff;
     font-family: 'Courier New', monospace;
+  }
+  
+  /* Mobile toggle button */
+  .mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 100;
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .info-icon {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .backdrop {
+      display: block;
+    }
+    
+    .value-pane {
+      position: fixed;
+      top: 80px;
+      right: -320px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      transition: right 0.3s ease-in-out;
+      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .value-pane.open {
+      right: 20px;
+    }
   }
 </style>

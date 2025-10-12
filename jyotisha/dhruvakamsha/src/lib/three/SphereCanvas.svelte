@@ -88,7 +88,7 @@
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.minDistance = 20;
-    controls.maxDistance = 25;
+    controls.maxDistance = 35
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);

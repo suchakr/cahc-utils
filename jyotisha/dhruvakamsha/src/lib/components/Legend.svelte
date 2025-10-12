@@ -1,4 +1,22 @@
-<aside class="legend-panel">
+<script>
+  let isOpen = false;
+  
+  function togglePanel() {
+    isOpen = !isOpen;
+  }
+</script>
+
+<!-- Mobile toggle button -->
+<button class="mobile-toggle" on:click={togglePanel} aria-label="Toggle legend">
+  <span class="legend-icon">📖</span>
+</button>
+
+<!-- Backdrop for mobile -->
+{#if isOpen}
+  <div class="backdrop" on:click={togglePanel}></div>
+{/if}
+
+<aside class="legend-panel" class:open={isOpen}>
   <h2>Legend</h2>
   
   <section>
@@ -172,5 +190,109 @@
   
   .star-draggable {
     color: var(--color-star);
+  }
+  
+  /* Mobile toggle button */
+  .mobile-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .legend-icon {
+    font-size: 24px;
+  }
+  
+  .backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .backdrop {
+      display: block;
+    }
+    
+    .legend-panel {
+      position: fixed;
+      bottom: -400px;
+      left: 10px;
+      right: 10px;
+      padding: 12px;
+      min-width: auto;
+      max-width: none;
+      max-height: 60vh;
+      overflow-y: auto;
+      font-size: 13px;
+      transition: bottom 0.3s ease-in-out;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .legend-panel.open {
+      bottom: 80px;
+    }
+    
+    h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    
+    .legend-item {
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    
+    .color-swatch {
+      width: 20px;
+      height: 14px;
+    }
+    
+    .marker-icon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .marker-icon.star::before {
+      font-size: 16px;
+    }
+    
+    .marker-icon.diamond {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .marker-icon.circle {
+      width: 16px;
+      height: 16px;
+    }
   }
 </style>

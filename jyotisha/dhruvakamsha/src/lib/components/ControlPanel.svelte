@@ -10,9 +10,29 @@
   export let showLabels;
   export let showPSCircle;
   export let showPPrimeCircle;
+  
+  let isOpen = false;
+  
+  function togglePanel() {
+    isOpen = !isOpen;
+  }
 </script>
 
-<aside class="control-panel">
+<!-- Mobile toggle button -->
+<button class="mobile-toggle" on:click={togglePanel} aria-label="Toggle controls">
+  <span class="hamburger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+
+<!-- Backdrop for mobile -->
+{#if isOpen}
+  <div class="backdrop" on:click={togglePanel}></div>
+{/if}
+
+<aside class="control-panel" class:open={isOpen}>
   <h2>Controls</h2>
   
   <section>
@@ -145,5 +165,75 @@
   
   .polar {
     color: var(--color-polar);
+  }
+  
+  /* Mobile toggle button */
+  .mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 100;
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+  }
+  
+  .hamburger-icon span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    border-radius: 1px;
+    transition: all 0.3s;
+  }
+  
+  .backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .backdrop {
+      display: block;
+    }
+    
+    .control-panel {
+      position: fixed;
+      top: 80px;
+      left: -280px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      transition: left 0.3s ease-in-out;
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .control-panel.open {
+      left: 20px;
+    }
   }
 </style>

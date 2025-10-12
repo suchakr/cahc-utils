@@ -27,4 +27,20 @@
     color: #aaa;
     font-weight: 400;
   }
+  
+  /* Mobile responsive styles */
+  @media (max-width: 768px) {
+    .app-title {
+      padding: 12px 16px;
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin: 0 0 4px 0;
+    }
+    
+    p {
+      font-size: 12px;
+    }
+  }
 </style>

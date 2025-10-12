@@ -82,7 +82,11 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
   scene.add(dragSphere);
   
   function onMouseDown(event) {
-    updateMousePosition(event);
+    // Handle both mouse and touch events
+    const clientX = event.clientX || (event.touches && event.touches[0].clientX);
+    const clientY = event.clientY || (event.touches && event.touches[0].clientY);
+    
+    updateMousePosition(clientX, clientY);
     
     // Check if clicking on star
     raycaster.setFromCamera(mouse, scene.userData.camera);
@@ -92,13 +96,18 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
       isDragging = true;
       onDragStart();
       scene.userData.renderer.domElement.style.cursor = 'grabbing';
+      event.preventDefault(); // Prevent default touch behavior
     }
   }
   
   function onMouseMove(event) {
     if (!isDragging) return;
     
-    updateMousePosition(event);
+    // Handle both mouse and touch events
+    const clientX = event.clientX || (event.touches && event.touches[0].clientX);
+    const clientY = event.clientY || (event.touches && event.touches[0].clientY);
+    
+    updateMousePosition(clientX, clientY);
     
     // Raycast to sphere surface
     raycaster.setFromCamera(mouse, scene.userData.camera);
@@ -118,6 +127,8 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
       star.position.set(normalized.x, normalized.y, normalized.z);
       onDrag(normalized);
     }
+    
+    event.preventDefault(); // Prevent default touch behavior
   }
   
   function onMouseUp() {
@@ -128,10 +139,10 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
     }
   }
   
-  function updateMousePosition(event) {
+  function updateMousePosition(clientX, clientY) {
     const rect = scene.userData.renderer.domElement.getBoundingClientRect();
-    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
   }
   
   // Attach event listeners to renderer's canvas
@@ -140,16 +151,23 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
     scene.userData.camera = camera;
     scene.userData.renderer = renderer;
     
+    // Mouse events
     renderer.domElement.addEventListener('mousedown', onMouseDown);
     renderer.domElement.addEventListener('mousemove', onMouseMove);
     renderer.domElement.addEventListener('mouseup', onMouseUp);
     renderer.domElement.addEventListener('mouseleave', onMouseUp);
     
-    // Hover effect
+    // Touch events for mobile
+    renderer.domElement.addEventListener('touchstart', onMouseDown, { passive: false });
+    renderer.domElement.addEventListener('touchmove', onMouseMove, { passive: false });
+    renderer.domElement.addEventListener('touchend', onMouseUp);
+    renderer.domElement.addEventListener('touchcancel', onMouseUp);
+    
+    // Hover effect (mouse only)
     renderer.domElement.addEventListener('mousemove', (event) => {
       if (isDragging) return;
       
-      updateMousePosition(event);
+      updateMousePosition(event.clientX, event.clientY);
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObject(star);
       

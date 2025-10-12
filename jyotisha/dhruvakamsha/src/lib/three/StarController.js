@@ -66,7 +66,10 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
     '#fef3c7'
   );
   star.add(label); // Attach to star so it moves with it
-  label.position.set(0, 0.5, 0); // Offset above star
+  label.position.set(0, 0.8, 0); // Offset further above star to reduce overlap
+  
+  // Store label reference
+  star.userData.label = label;
   
   // Raycasting for mouse interaction
   const raycaster = new THREE.Raycaster();
@@ -96,8 +99,19 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
       isDragging = true;
       onDragStart();
       scene.userData.renderer.domElement.style.cursor = 'grabbing';
+      label.element.style.cursor = 'grabbing';
       event.preventDefault(); // Prevent default touch behavior
     }
+  }
+  
+  function onLabelMouseDown(event) {
+    // Label was clicked/touched - start dragging
+    isDragging = true;
+    onDragStart();
+    scene.userData.renderer.domElement.style.cursor = 'grabbing';
+    label.element.style.cursor = 'grabbing';
+    event.preventDefault(); // Prevent default and stop propagation
+    event.stopPropagation();
   }
   
   function onMouseMove(event) {
@@ -136,6 +150,7 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
       isDragging = false;
       onDragEnd();
       scene.userData.renderer.domElement.style.cursor = 'default';
+      label.element.style.cursor = 'grab';
     }
   }
   
@@ -162,6 +177,19 @@ export function createStar(scene, onDragStart, onDrag, onDragEnd) {
     renderer.domElement.addEventListener('touchmove', onMouseMove, { passive: false });
     renderer.domElement.addEventListener('touchend', onMouseUp);
     renderer.domElement.addEventListener('touchcancel', onMouseUp);
+    
+    // Label events - make label draggable
+    label.element.style.cursor = 'grab';
+    label.element.style.userSelect = 'none'; // Prevent text selection
+    label.element.addEventListener('mousedown', onLabelMouseDown);
+    label.element.addEventListener('touchstart', onLabelMouseDown, { passive: false });
+    
+    // Hover effect on label (mouse only)
+    label.element.addEventListener('mouseenter', () => {
+      if (!isDragging) {
+        label.element.style.cursor = 'grab';
+      }
+    });
     
     // Hover effect (mouse only)
     renderer.domElement.addEventListener('mousemove', (event) => {

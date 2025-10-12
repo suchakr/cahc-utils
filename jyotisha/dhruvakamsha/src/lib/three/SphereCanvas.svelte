@@ -11,16 +11,22 @@
   import { createArcs, updateArcs } from './ArcRenderer.js';
   import { createLabelRenderer, updateLabelRendererSize } from './LabelRenderer.js';
   import { createGreatCircles, updateGreatCircles } from './GreatCircleRenderer.js';
+  import { createEclipticBand } from '../celestial/eclipticBand.js';
+  import { createNakshatras } from '../celestial/nakshatraRenderer.js';
 
   export let showEquatorialGrid;
   export let showEclipticGrid;
   export let showEquator;
   export let showEcliptic;
+  export let showEclipticBand;
+  export let showNakshatras;
+  export let showMarkers;
   export let showStar;
   export let showEquatorialArcs;
   export let showEclipticArcs;
   export let showPolarArcs;
-  export let showLabels;
+  export let showArcLabels;
+  export let showNakshatraLabels;
   export let showPSCircle;
   export let showPPrimeCircle;
 
@@ -35,6 +41,8 @@
   let star;
   let arcs = {};
   let greatCircles = {};
+  let eclipticBand;
+  let nakshatras;
   let isDragging = false;
   let starPosition = { x: 0, y: 0, z: 0 };
 
@@ -50,6 +58,12 @@
     return () => {
       renderer.dispose();
       controls.dispose();
+      if (eclipticBand && eclipticBand.dispose) {
+        eclipticBand.dispose();
+      }
+      if (nakshatras && nakshatras.dispose) {
+        nakshatras.dispose();
+      }
       if (labelRenderer && labelRenderer.domElement && labelRenderer.domElement.parentNode) {
         labelRenderer.domElement.parentNode.removeChild(labelRenderer.domElement);
       }
@@ -115,6 +129,21 @@
     // Create axes
     axes = createAxes(scene);
     
+    // Create ecliptic band
+    eclipticBand = createEclipticBand(scene, {
+      opacity: 0.15,
+      boundaryOpacity: 0.6,
+      showBand: true,
+      showBoundaries: true
+    });
+    eclipticBand.setVisible(false); // Initially hidden
+    
+    // Create nakshatras (initially hidden)
+    nakshatras = createNakshatras(scene, labelRenderer, {
+      showLines: false,
+      showLabels: false
+    });
+    
     // Create markers
     markers = createMarkers(scene);
     
@@ -161,7 +190,7 @@
     dispatch('coordinateUpdate', coords);
     
     // Update arcs based on new position
-    updateArcs(arcs, starPosition, coords, showEquatorialArcs, showEclipticArcs, showPolarArcs, showLabels);
+    updateArcs(arcs, starPosition, coords, showEquatorialArcs, showEclipticArcs, showPolarArcs, showArcLabels);
     
     // Update great circles based on new position
     updateGreatCircles(greatCircles, starPosition, showPSCircle, showPPrimeCircle);
@@ -204,14 +233,44 @@
   $: if (grids.ecliptic) grids.ecliptic.visible = showEclipticGrid;
   $: if (axes.equator) axes.equator.visible = showEquator;
   $: if (axes.ecliptic) axes.ecliptic.visible = showEcliptic;
-  $: if (star) star.visible = showStar;
+  $: if (eclipticBand) eclipticBand.setVisible(showEclipticBand);
+  // Nakshatra constellation visibility (lines and star dots)
+  $: if (nakshatras && nakshatras.linesGroup && nakshatras.starsGroup) {
+    nakshatras.linesGroup.visible = showNakshatras;
+    nakshatras.starsGroup.visible = showNakshatras;
+  }
+	// Control nakshatra label visibility
+	$: if (nakshatras && nakshatras.labelsGroup && nakshatras.setLabelsVisible) {
+		const shouldShow = showNakshatras && showNakshatraLabels;
+		nakshatras.setLabelsVisible(shouldShow);
+	}
+  $: if (star) {
+    star.visible = showStar;
+    // Control label visibility atomically with star
+    if (star.userData && star.userData.label) {
+      star.userData.label.visible = showStar;
+    }
+  }
+  $: if (markers && markers.eq) {
+    markers.eq.visible = showMarkers;
+    markers.pole.visible = showMarkers;
+    markers.eclipticPole.visible = showMarkers;
+    markers.ashvini.visible = showMarkers;
+    // Marker labels always show when markers show (atomic unit)
+    if (markers.labels) {
+      markers.labels.eq.visible = showMarkers;
+      markers.labels.pole.visible = showMarkers;
+      markers.labels.eclipticPole.visible = showMarkers;
+      markers.labels.ashvini.visible = showMarkers;
+    }
+  }
   $: if (arcs.equatorialGroup) arcs.equatorialGroup.visible = showEquatorialArcs;
   $: if (arcs.eclipticGroup) arcs.eclipticGroup.visible = showEclipticArcs;
   $: if (arcs.polarGroup) arcs.polarGroup.visible = showPolarArcs;
   
   // Update arcs when visibility changes (to add/remove labels)
   $: if (arcs.equatorialGroup && starPosition.x !== 0) {
-    updateArcs(arcs, starPosition, calculateCoordinates(starPosition.x, starPosition.y, starPosition.z), showEquatorialArcs, showEclipticArcs, showPolarArcs, showLabels);
+    updateArcs(arcs, starPosition, calculateCoordinates(starPosition.x, starPosition.y, starPosition.z), showEquatorialArcs, showEclipticArcs, showPolarArcs, showArcLabels);
   }
   
   // Update great circles when visibility changes

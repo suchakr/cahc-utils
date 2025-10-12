@@ -68,6 +68,28 @@
       <span class="legend-text">Polar (Dhruvaka/Vikṣepa)</span>
     </div>
   </section>
+  
+  <section>
+    <h3>Ecliptic Band</h3>
+    <div class="legend-item">
+      <span class="color-swatch ecliptic" style="opacity: 0.3;"></span>
+      <div class="legend-text">
+        ±23.5° band around ecliptic<br>
+        <small style="color: #888;">Represents Sun's yearly path range</small>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <h3>Nakshatras</h3>
+    <div class="legend-item">
+      <span class="color-swatch ecliptic" style="opacity: 0.7; border: 1px dashed #60a5fa; background: transparent;"></span>
+      <div class="legend-text">
+        27 Vedic constellations<br>
+        <small style="color: #888;">With Devanagari labels</small>
+      </div>
+    </div>
+  </section>
 </aside>
 
 <style>
@@ -83,6 +105,13 @@
     max-width: 320px;
     backdrop-filter: blur(10px);
     z-index: 10;
+    /* Desktop: Start collapsed */
+    transform: translateY(calc(100% + 40px));
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .legend-panel.open {
+    transform: translateY(0);
   }
   
   h2 {
@@ -238,7 +267,7 @@
     
     .legend-panel {
       position: fixed;
-      bottom: -400px;
+      bottom: 80px;
       left: 10px;
       right: 10px;
       padding: 12px;
@@ -247,12 +276,13 @@
       max-height: 60vh;
       overflow-y: auto;
       font-size: 13px;
-      transition: bottom 0.3s ease-in-out;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+      /* Override desktop collapsed state */
+      transform: translateY(calc(100% + 100px));
     }
     
     .legend-panel.open {
-      bottom: 80px;
+      transform: translateY(0);
     }
     
     h2 {

@@ -10,11 +10,15 @@
   let showEclipticGrid = false;
   let showEquator = true;
   let showEcliptic = true;
+  let showEclipticBand = false;
+  let showNakshatras = false;
+  let showMarkers = true;
   let showStar = true;
   let showEquatorialArcs = false;
   let showEclipticArcs = false;
   let showPolarArcs = true;
-  let showLabels = true;
+  let showArcLabels = true;
+  let showNakshatraLabels = false;
   let showPSCircle = true;
   let showPPrimeCircle = false;
 
@@ -52,11 +56,15 @@
     {showEclipticGrid}
     {showEquator}
     {showEcliptic}
+    {showEclipticBand}
+    {showNakshatras}
+    {showMarkers}
     {showStar}
     {showEquatorialArcs}
     {showEclipticArcs}
     {showPolarArcs}
-    {showLabels}
+    {showArcLabels}
+    {showNakshatraLabels}
     {showPSCircle}
     {showPPrimeCircle}
     on:coordinateUpdate={handleCoordinateUpdate}
@@ -68,11 +76,15 @@
     bind:showEclipticGrid
     bind:showEquator
     bind:showEcliptic
+    bind:showEclipticBand
+    bind:showNakshatras
+    bind:showMarkers
     bind:showStar
     bind:showEquatorialArcs
     bind:showEclipticArcs
     bind:showPolarArcs
-    bind:showLabels
+    bind:showArcLabels
+    bind:showNakshatraLabels
     bind:showPSCircle
     bind:showPPrimeCircle
   />

@@ -3,11 +3,15 @@
   export let showEclipticGrid;
   export let showEquator;
   export let showEcliptic;
+  export let showEclipticBand;
+  export let showNakshatras;
+  export let showMarkers;
   export let showStar;
   export let showEquatorialArcs;
   export let showEclipticArcs;
   export let showPolarArcs;
-  export let showLabels;
+  export let showArcLabels;
+  export let showNakshatraLabels;
   export let showPSCircle;
   export let showPPrimeCircle;
   
@@ -57,6 +61,14 @@
       <input type="checkbox" bind:checked={showEcliptic} />
       <span class="ecliptic">Ecliptic</span>
     </label>
+    <label>
+      <input type="checkbox" bind:checked={showEclipticBand} />
+      <span class="ecliptic">Ecliptic Band (±23.5°)</span>
+    </label>
+    <label>
+      <input type="checkbox" bind:checked={showNakshatras} />
+      <span class="ecliptic">Nakshatras</span>
+    </label>
   </section>
   
   <section>
@@ -90,12 +102,20 @@
   <section>
     <h3>Display</h3>
     <label>
-      <input type="checkbox" bind:checked={showStar} />
-      <span>Star Position</span>
+      <input type="checkbox" bind:checked={showMarkers} />
+      <span>Markers (P, P′, L, L′)</span>
     </label>
     <label>
-      <input type="checkbox" bind:checked={showLabels} />
-      <span>Labels</span>
+      <input type="checkbox" bind:checked={showStar} />
+      <span>Star Position (S)</span>
+    </label>
+    <label>
+      <input type="checkbox" bind:checked={showArcLabels} />
+      <span>Arc Labels</span>
+    </label>
+    <label>
+      <input type="checkbox" bind:checked={showNakshatraLabels} />
+      <span>Nakshatra Labels</span>
     </label>
   </section>
 </aside>

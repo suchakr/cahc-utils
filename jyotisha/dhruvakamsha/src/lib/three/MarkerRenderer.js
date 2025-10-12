@@ -52,7 +52,7 @@ function createDiamondShape(size) {
 /**
  * Create markers for key celestial points
  * @param {THREE.Scene} scene - Three.js scene
- * @returns {object} Object containing marker meshes
+ * @returns {object} Object containing marker meshes and labels
  */
 export function createMarkers(scene) {
   const eq = createVernalEquinox(scene);
@@ -61,10 +61,16 @@ export function createMarkers(scene) {
   const ashvini = createAshvini(scene);
   
   return {
-    eq,
-    pole,
-    eclipticPole,
-    ashvini
+    eq: eq.marker,
+    pole: pole.marker,
+    eclipticPole: eclipticPole.marker,
+    ashvini: ashvini.marker,
+    labels: {
+      eq: eq.label,
+      pole: pole.label,
+      eclipticPole: eclipticPole.label,
+      ashvini: ashvini.label
+    }
   };
 }
 
@@ -98,7 +104,7 @@ function createVernalEquinox(scene) {
   );
   scene.add(label);
   
-  return marker;
+  return { marker, label };
 }
 
 /**
@@ -131,7 +137,7 @@ function createCelestialPole(scene) {
   );
   scene.add(label);
   
-  return marker;
+  return { marker, label };
 }
 
 /**
@@ -174,7 +180,7 @@ function createEclipticPole(scene) {
   );
   scene.add(label);
   
-  return marker;
+  return { marker, label };
 }
 
 /**
@@ -219,5 +225,5 @@ function createAshvini(scene) {
   );
   scene.add(label);
   
-  return marker;
+  return { marker, label };
 }

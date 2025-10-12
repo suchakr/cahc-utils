@@ -36,13 +36,16 @@ export function createLabel(text, position, color = '#ffffff', className = '') {
   div.style.color = color;
   div.style.fontSize = '16px';
   div.style.fontWeight = '600';
-  div.style.padding = '4px 8px';
+  div.style.padding = '6px 10px'; // Slightly larger for visibility but not too big
   div.style.background = 'rgba(0, 0, 0, 0.7)';
   div.style.borderRadius = '4px';
   div.style.border = `1px solid ${color}`;
   div.style.whiteSpace = 'nowrap';
   div.style.userSelect = 'none';
   div.style.textShadow = '0 0 4px rgba(0,0,0,0.8)';
+  div.style.pointerEvents = 'auto'; // Enable pointer events for this label
+  div.style.cursor = 'grab'; // Set cursor for both desktop and mobile
+  div.style.touchAction = 'none'; // Prevent default touch behaviors like scrolling
   
   const label = new CSS2DObject(div);
   label.position.set(position.x, position.y, position.z);

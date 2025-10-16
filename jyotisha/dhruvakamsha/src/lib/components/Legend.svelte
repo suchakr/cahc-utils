@@ -6,9 +6,10 @@
   }
 </script>
 
-<!-- Mobile toggle button -->
-<button class="mobile-toggle" on:click={togglePanel} aria-label="Toggle legend">
-  <span class="legend-icon">📖</span>
+<!-- Toggle button (both desktop and mobile) -->
+<button class="legend-toggle" on:click={togglePanel} aria-label="Toggle legend">
+  <span class="legend-icon">{isOpen ? '📖' : '📖'}</span>
+  <span class="toggle-text">{isOpen ? 'Hide' : 'Legend'}</span>
 </button>
 
 <!-- Backdrop for mobile -->
@@ -221,9 +222,8 @@
     color: var(--color-star);
   }
   
-  /* Mobile toggle button */
-  .mobile-toggle {
-    display: none;
+  /* Toggle button (desktop and mobile) */
+  .legend-toggle {
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -231,38 +231,61 @@
     background: var(--color-panel-bg);
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    width: 48px;
-    height: 48px;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    padding: 0;
+    padding: 8px 12px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  
+  .legend-toggle:hover {
+    background: rgba(30, 30, 45, 0.95);
+    border-color: var(--color-ecliptic);
   }
   
   .legend-icon {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+  .toggle-text {
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 500;
   }
   
   .backdrop {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9;
   }
   
   /* Mobile responsive styles */
   @media (max-width: 768px) {
-    .mobile-toggle {
-      display: flex;
+    .legend-toggle {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      justify-content: center;
+    }
+    
+    .toggle-text {
+      display: none;
+    }
+    
+    .legend-icon {
+      font-size: 24px;
     }
     
     .backdrop {
       display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9;
     }
     
     .legend-panel {

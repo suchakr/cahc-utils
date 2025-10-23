@@ -5,7 +5,7 @@ include("nakshatras.inc");
 
 MODE = "set" // "rise"
 YEAR = -500
-include("lunar-set-events--0500.inc");
+include("lunar-set-events--0509.inc");
 
 event_jds = MODE == "set" ? MOON_SET_JDS : MOON_RISE_JDS
 
@@ -46,31 +46,58 @@ core.setObserverLocation(  // kuru lat=29.9697*u.deg, lon=76.8786*u.deg
     29.9697, // latitude
     0 // elevation
 )
-$TITLE_X = 200; $TITLE_Y = 100-30;
+$TITLE_X = 200; $TITLE_Y = 100-20;
 titles("Moon Shranga Events - " + MODE + " - 0500")
 W(5)
 cls()
 // Center on the Moon and keep it centered
 core.selectObjectByName("Moon", false);   // Select the Moon (English name; case-sensitive)
 StelMovementMgr.setFlagTracking(true);    // Centers on the selected object
-StelMovementMgr.zoomTo(30, 1);            // Optional: 10° FOV over 1s
+//StelMovementMgr.setFlagTracking(false); 
+//StelMovementMgr.moveToAltAzi(8, 270); 
+//StelMovementMgr.zoomTo(75/2.5, 1);            // Optional: 30° FOV over 1s
+StelMovementMgr.zoomTo(14*3, 5);            // Optional: 30° FOV over 1s
+GridLinesMgr.setFlagAzimuthalGrid(!true);
+//GridLinesMgr.setAzimuthalGridSpacing(10);
+
 
 // iterate over the keys and values of the event_jds object
 for ( key in event_jds) {
-    // if (key == "shukla_pratipada") { continue }
+    if (!( (key == "shukla_pratipada") ||   (key == "purnima") ||   (key == "shukla_dwitiya" ))) { continue }
+    //if (key != "shukla_pratipada") { continue }
     say("key1 = " + key)
     // if ((key !== "purnima") || (key !== "poornima")) { continue } // 
     // if (key !== "shukla_dwitiya") { continue } // process shukla dwitiya only
     say("key2 = " + key)
     value = event_jds[key]
+   
     for (i = 0; i < value.length; i+=1) {
-        JD(value[i]  + ( MODE == "set" ? - 75/24 : 75/24))
+        delta_days = (i>0) ? value[i] - value[i-1] : value[1] -value[0]
+        //time_mark = value[0] + i*29.5
+	  time_mark = value[i]
+        JD(time_mark  + ( MODE == "set" ? - .75/24/2 : .75/24/2))
+
+        sun = getOI("Sun")
+        sun_elong = sun['elong']
+
+	 alt_rate = 15.0  // deg/hour, rough average
+
+	
+        for ( t= 0; t <2 ; t +=1 ) {
         moon = getOI("Moon") ; 
+        moon_alt = moon['altitude'] ;
+        delta_8_deg = moon_alt -8 ;
+	 delta_jd_to_8_deg =  (delta_8_deg / alt_rate) / 24.0 ;
+        JD( JD() + delta_jd_to_8_deg)
+        }
+      
+	
+
         illu = moon['illumination']
         elong = moon['elong']
-        $TITLE_X = 200; $TITLE_Y = 100-230;
+        $TITLE_X = 200; $TITLE_Y = 100-0*1*230-20;
         titles(key); // $TITLE_Y += 5;
-        titles([ DT() , R2(value[i]) , R2(illu)+'%', R2(elong)+'°'  ].join(" ~ "))
+        titles([ DT() , R2(value[i]) , R2(illu)+'%', R2(elong)+'°☾' ,  R2(sun_elong)+'°☀️' , R2(delta_days)  ].join(" ~ "))
         moon = getOI("Moon") ; W(.5)    
         // core.selectObjectByName("Moon");
         // core.centerOnSelectedObject(); W(.5)
@@ -78,7 +105,7 @@ for ( key in event_jds) {
         //say("JD=" + value[i] + "  " + moon['rise'] + "  " + moon['set'] + " " + moon['illumination'])
         //screenshot("moon-cusp-", i+100); W(1)
         ssname = ((i+100+'').match(/.(..)/)[1]);
-        // titles(ssname)
+        titles(ssname)
         screenshot(key, ssname);
         screenshot()
         cls()
@@ -164,3 +191,4 @@ for ( key in event_jds) {
 // "vmag": -10.469693183898926,
 // "vmage": -10.469693183898926
 // }
+

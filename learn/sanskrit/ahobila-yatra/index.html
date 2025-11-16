@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="sa">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>अहोबिलयात्रा</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Tiro Devanagari Sanskrit", serif;
+                line-height: 2;
+                background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+                color: #2c2416;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                background: white;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            header {
+                background: linear-gradient(135deg, #8b4513 0%, #d2691e 100%);
+                color: white;
+                padding: 60px 40px;
+                text-align: center;
+                border-bottom: 4px solid #ffd700;
+            }
+
+            h1 {
+                font-size: 3em;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                letter-spacing: 2px;
+            }
+
+            .subtitle {
+                font-size: 1.2em;
+                opacity: 0.95;
+                font-style: italic;
+            }
+
+            .content {
+                padding: 50px 40px;
+            }
+
+            .text-block {
+                margin-bottom: 40px;
+                font-size: 1.15em;
+                text-align: justify;
+                text-indent: 2em;
+            }
+
+            .image-container {
+                margin: 50px 0;
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            }
+
+            .image-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+                transition: transform 0.3s ease;
+            }
+
+            .image-container:hover img {
+                transform: scale(1.02);
+            }
+
+            .image-caption {
+                text-align: center;
+                font-style: italic;
+                color: #666;
+                margin-top: 5px;
+                font-size: 0.95em;
+            }
+
+            .image-large {
+                margin: 60px 0;
+            }
+
+            .image-medium {
+                margin: 40px auto;
+                max-width: 75%;
+            }
+
+            .image-small {
+                float: right;
+                width: 45%;
+                margin: 10px 0 30px 30px;
+            }
+
+            .image-small-right {
+                float: right;
+                width: 45%;
+                margin: 10px 0 30px 30px;
+            }
+
+            .image-small-left {
+                float: left;
+                width: 45%;
+                margin: 10px 30px 30px 0;
+            }
+
+            .poetry-section {
+                background: #f9f6f2;
+                padding: 30px;
+                margin: 40px 0;
+                border-left: 4px solid #8b4513;
+                border-radius: 4px;
+                font-family: monospace;
+                font-size: 1.1em;
+                line-height: 1.8;
+            }
+
+            .clearfix::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            footer {
+                background: #2c2416;
+                color: white;
+                text-align: center;
+                padding: 30px;
+                font-size: 0.9em;
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    padding: 10px;
+                }
+
+                .content {
+                    padding: 30px 20px;
+                }
+
+                header {
+                    padding: 40px 20px;
+                }
+
+                h1 {
+                    font-size: 2em;
+                }
+
+                .image-small,
+                .image-small-left,
+                .image-medium {
+                    float: none;
+                    width: 100%;
+                    margin: 30px 0;
+                    max-width: 100%;
+                }
+
+                .text-block {
+                    font-size: 1.05em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>अहोबिलयात्रा</h1>
+                <p class="subtitle">नवनृसिंहक्षेत्रदर्शनम्</p>
+            </header>
+
+            <div class="content">
+                <div class="text-block">
+                    मित्राभ्यां भार्यया च सह चालकयुक्तेन भाटकवाहनेन गतसोमवासरे
+                    प्रातःकाले बॆङ्गलूरुनगरादारभ्य सायंकाले अहोबिलं प्राप्तम्
+                    अस्माभिः नवनृसिंहदर्शनाय । उपाहोबिलं कृषकैरर्धमार्गमाक्रम्य
+                    तन्मध्ये यवधान्यानि विकीर्णानि शोषणार्थं । तस्माद्वाहनस्य
+                    गतिर्मन्दा अभवत् ।
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/grains-drying-on-road.jpg"
+                        alt="यवधान्यानि मार्गे शोष्यमाणानि"
+                    />
+                    <p class="image-caption">यवधान्यानि मार्गे शोष्यमाणानि</p>
+                </div>
+
+                <div class="text-block clearfix">
+                    कृषकैरस्माकमुत्साहं दृष्ट्वास्मभ्यं कानिचन धान्यानि दत्तानि
+                    । तानि प्राप्य अहोबिलद्वारे प्रवेशशुल्कं दत्त्वा नगरं
+                    प्रविश्य तत्र पूर्वनिश्चितेन नियमेन मार्गदर्शकं कृष्णममिलाम
+                    । सायंसन्ध्या अभवत् । नवनृसिंहेषु द्वौ समीपस्थौ देवालयौ
+                    त्वरया गच्छाम इत्युक्त्वा तेन वयं देवालयौ प्राप्यामहि ।
+                </div>
+
+                <div class="image-container image-small-left">
+                    <img
+                        src="pics/yoga-narasimha-sculpture.jpg"
+                        alt="योगनृसिंहः"
+                    />
+                    <p class="image-caption">योगनृसिंहः - स्तम्भशिल्पम्</p>
+                </div>
+
+                <div class="text-block">
+                    दक्षिणहस्ते तालमुद्रां वामहस्ते अभयमुद्रां च धारयन्तं
+                    छत्रवटनृसिंहं सङ्गीतप्रियं देवं दृष्ट्वा काचन भक्ता मधुरया
+                    वाण्या सहसागायत् । शान्तमुखो योगानन्दनृसिंहो योगं साधयति ।
+                    समीपे नवग्रहायतनं वर्तते । तत्र एकैकस्य ग्रहस्य नवनृसिंहेषु
+                    एकतम नृसिंहोऽधिपतिरूपेण राजते ।
+                </div>
+
+                <div class="text-block">
+                    रात्रिस्सञ्जाता । कृष्णेन नरहरिवासगृहे संरक्षितकोष्ठं
+                    प्राप्य हस्तं प्रक्षाल्य वयं कृष्णमनुसृत्य नगरमध्यस्थं
+                    लक्षमीनृसिंहदेवालयमगच्छाम । यद्यपि विशालोऽयं देवालयः तथापि
+                    नवस्थलेषु न गण्यते । यतो वैष्णवाळ्वारैः विरचिते
+                    दिव्यप्रबन्धे पूर्वोक्तानि नवस्थलानि एव लभ्यन्ते ।
+                </div>
+
+                <div class="text-block clearfix">
+                    अर्चकाः वाद्येन नैवेद्येन च सह प्रह्लादवरदं
+                    लक्षमीनृसिंहमाराधयन्ति भक्तान् तोषयन्ति च । प्रसादे प्राप्ते
+                    अनेके वानराः प्रसादकणकामिनः प्रादुरभवन् । वानरेषु केचन
+                    साधवोऽन्ये धीराः । साधवो दूरात् पतितस्य प्रसादकणस्य
+                    प्रतीक्षमाणाः । धीराः समीपमागत्य नयनाभ्यां हस्ताभ्यां च
+                    प्रगल्भमभिक्षन्त ।
+                </div>
+
+                <div class="text-block">
+                    भिक्षमाणान् वानरान् अवलोक्य केचित् जना भयाद् वा अनुकम्पया वा
+                    तेभ्यः प्रसादमयच्छन् । देवालये अनेकेषु स्तंभेषु नृसिंहस्य
+                    वृत्तान्तशिल्पानि कल्पितानि । तेषु नरसिंहचेञ्चुपरिणयः
+                    स्तंभजश्च मह्यम् रोचेते । मध्यगगनस्थः कृष्णाष्टमीन्दुः
+                    दक्षिणे गुरुणा वामे पुनर्वसुभ्यां सह मेघान् तीर्त्वा स्वस्य
+                    चन्द्रिकया अस्मिन् प्रह्लादक्षेत्रे अस्मान् आह्लादयति
+                    निद्रां च प्रयच्छति ।
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/narasimha-from-pillar-sculpture.jpg"
+                        alt="नरसिंहचेञ्चुपरिणयः"
+                    />
+                    <p class="image-caption">
+                        स्तम्भजनृसिंहः - देवालयस्तम्भशिल्पम्
+                    </p>
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/narasimha-chenchu-marriage-sculpture.jpg"
+                        alt="उग्रस्तम्भ और जलपात"
+                    />
+                    <p class="image-caption">नरसिंहचेञ्चुपरिणयः</p>
+                </div>
+
+                <div class="text-block">
+                    <div class="image-container image-small-left">
+                        <img
+                            src="pics/decorated-white-cow.jpg"
+                            alt="श्वेतधेनुः देवालये"
+                        />
+                        <p class="image-caption">
+                            पुष्पकुम्कुमघणटादिभिः अलङ्कृता श्वेतधेनुः
+                        </p>
+                    </div>
+                    प्रत्यूषे उत्थाय सुप्रभातसेवार्थं पुनः प्रह्लादवरदं
+                    देवालयमगच्छाम । कतिपये भक्ताः केचन वाद्यकारा गौः अश्वः तयोः
+                    पालकौ काश्चन पिष्टतण्डुलचित्रयन्त्यश्च सर्वे
+                    आयतनद्वारमुत्घाटयितुं प्रतीक्षमाणा आसन् । अचिरादेवर्चका
+                    द्वारानुन्मील्य जनानुपगर्भगृहमाहूय देवमापूजयन् । तदा
+                    पुष्पकुङ्कुमघणटादिभिरलङ्कृता चञ्चला
+                    श्वेतधेनुर्भक्तावल्योर्मध्ये गर्भगृहस्य देहल्यां च स्थापितं
+                    पश्वाहरं दीर्घजिह्वया अग्रसत् ।
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/upper-ahobilam-waterfall.jpg"
+                        alt="उन्नतोहोबिलजलपातः"
+                    />
+                    <p class="image-caption">उन्नतोहोबिलजलपातः</p>
+                </div>
+
+                <div class="text-block">
+                    संध्यां निवार्य भानुरुदितवान् । बुभुक्षवो वयं
+                    गुरुराघवेन्द्रो नाम भोजनालये अल्पोष्णाहारं भक्षित्वा
+                    सप्तमानस्थं उन्नतोहोबिलं वाहनेन अर्धमुहूर्तेन प्राप्ताः ।
+                    वनमुखं गिरिपादञ्च क्षेत्रमिदम् । लोकभाषायां नल्लमल नाम
+                    वनमिदं कृष्णगिरिरित्यर्थं धारयति । तत्रस्थो जलपातो जनानां
+                    स्वागताय इव भाति ।
+                </div>
+
+                <div class="text-block">
+                    पादाभ्यामीषदारुह्य उग्रनृसिंहायतनं दर्शितमस्माभिः ।
+                    जलधारायाः मधुरान्ध्वनीन्निशम्य मार्गदर्शकस्य कृष्णस्य
+                    नेतृत्वेन भवनाशिनीनद्यां प्रवेष्टुमग्रे सरामः । यद्यपि
+                    नद्याः प्रवाहो गभीरता च न्यूना तस्याः समतलाभावात् पदे पदे
+                    अप्रमादेन चलितव्यमिति उपदिश्य कृष्णेन एकैकस्य हस्ते दृढचलदड
+                    एको दत्तः ।
+                </div>
+
+                <div class="text-block">
+                    नदीतले उपपादम् कालक्रमेण जलप्रवाहेण नानविधवर्णघृष्टप्रस्तराः
+                    अमलचञ्चलसलिले स्फटिका इव प्रभान्ति । तद्विहाय लघुमत्स्याः
+                    पादौ अल्पाल्पं दशन्ति । धट्यानन्तरं नदीं तीर्त्वा सोपानमूलं
+                    प्राप्तम् । पञ्चशतम् सोपानानि स्युरिति ज्ञात्वा शनैः शनैः
+                    वृक्षाच्छादितं तं मार्गं आरुह्य उत्तरस्थलं प्राप्तवन्तः ।
+                </div>
+
+                <div class="image-container image-small-left">
+                    <img
+                        src="pics/bhavanasini-river-waterfall-rainbow.jpg"
+                        alt="भवनाशिनी जलपातः"
+                    />
+                    <p class="image-caption">
+                        भवनाशिनी नदी जलपातश्च - सूर्यप्रकाशे इन्द्रधनुः
+                    </p>
+                </div>
+
+                <div class="text-block">
+                    तत्र इतोपि उन्नतस्थलात् अवतरतो भवनाशिन्या जलपातस्य जलकणाः
+                    सत्वरं श्रान्तत्वमनश्यन् । अयं मार्गो जलपातस्य
+                    पृष्ठभागमनुसृत्य ज्वालानृसिंहगुहां प्रापयति । अस्या गुहायाः
+                    निकटे रक्तकुण्डे नृसिंहेन हस्तौ प्रक्षालितौ
+                    हिरण्यकशिपोर्वधानन्तरमिति जनानां मतम् ।
+                </div>
+
+                <div class="text-block clearfix">
+                    मेरुवदत्युन्नत उग्रस्तम्भोऽस्माद्बिलाद्दृश्यते । तस्मात्
+                    स्तम्भादेव नरहरि स्तम्भसम्भवो जातो राक्षसवधाय । ये युवका
+                    बलवन्तो वा ते उग्रस्तम्भमारोहन्ति । अवरोहन्तो वयम् मार्गे
+                    क्रोडमालोलौ नृसिंहौ नमस्कृत्य गिरिपादं आप्य वाहनेन
+                    हनुमतप्रार्थनाजातं कोदण्डपाणिं करञ्जनृसिंहं प्राप्नुमः।
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/kroda-narasimha-sculpture.jpg"
+                        alt="क्रोडनृसिंहः"
+                    />
+                    <p class="image-caption">
+                        क्रोडनृसिंहः - देवालयस्तम्भशिल्पम्
+                    </p>
+                </div>
+
+                <div class="image-container image-small">
+                    <img
+                        src="pics/ugra-sthambam-waterfall-nallamala-forest.jpg"
+                        alt="उग्रस्तम्भः"
+                    />
+                    <p class="image-caption">उग्रस्तम्भजलपातश्च - नल्लमलवनम्</p>
+                </div>
+
+                <div class="text-block">
+                    अत्रस्थेन अर्चकेन तिरुमङ्गैयाऴ्वारविरचितानि पेरियतिरुमोळ्याः
+                    नृसिंहपद्यानि गीयन्ते। यथा
+                </div>
+
+                <div class="poetry-section">
+                    கவ்வுநாயும்கழுகும்உச்சிபோதொடுகால்சுழன்று *<br />
+                    தெய்வமல்லால்செல்லவொண்ணாச் சிங்கவேள்குன்றமே.<br /><br />
+
+                    कव्वुम् नायुम् कॴुगुम् * उच्चिप्पोदॊडु काल् सुऴण्ड्रु <br />
+                    तॆय्वम् अल्लाल् सॆल्ल ऒण्णाच् * चिङ्गवेळ्गुण्ड्रमे
+                    <br /><br />
+
+                    चिङ्गवेळ्गुण्ड्रम् नाम *सिंहशासितगिरि - अहोबिलम् । <br />
+                    अत्र सारमेयगृध्रसूर्यतापचक्रवाताश्च विद्यन्ते <br />
+                    अतो देवप्रियान् विहाय न केऽपि चिङ्गवेळ्गुण्ड्रम् गच्छेयुः ।
+
+                    <a
+                        href="https://www.uveda.org/divya-prabandam/PT/1/7/advanced-view"
+                        >मूलम</a
+                    >
+                </div>
+
+                <div class="text-block">
+                    अर्चकस्य प्रवचनेन क्षेत्रभक्तकाव्यमहिमानं प्रबोधन्तो वयं
+                    नवनृसिंहेषु सप्त दृष्टवन्तः । अस्माभिर्वनस्य अन्तर्भागे
+                    विरलमार्गेन उग्रकम्पेन जीर्णवाहनेन मुहूर्तद्वयेन
+                    पावनृसिंहोऽगम्यत । घोरवृष्ट्या मार्गो वा तडागो वा नाजानीमहि
+                    । कुशलचालकेन मुहुर्मुहुर्जलाशयं प्रविश्य कथञ्चित् पावनं
+                    पुनश्च वनद्वारमपि प्रापिते ।
+                </div>
+
+                <div class="text-block">
+                    पुरा पादाभ्यामेव इदं स्थलं लब्धम् । अन्तिमे सरलतरवनमार्गेन
+                    नवमो भार्गवः प्राप्तो दर्शितश्च। गगने प्रतीच्यां
+                    सायंसन्धयामकुर्वन् शोभनस्सूर्योऽस्माकं गृहं गच्छतेति वदतीव
+                    श्रुत्वा वयं वनात् बहिरागत्य प्रह्लादवरदस्य शयनसेवां अवलोक्य
+                    तृप्ताः सुप्तवन्तः ।
+                </div>
+            </div>
+
+            <footer>
+                <p>॥ ॐ नमो भगवते नरसिंहाय ॥</p>
+
+                <p>अहो वीर्यम् अहो शौर्यम् अहो बाहुपराक्रमम् ।</p>
+                <p>नरसिम्हं परमं दैवं अहोबिलम् अहोबलम् ॥</p>
+            </footer>
+        </div>
+    </body>
+</html>

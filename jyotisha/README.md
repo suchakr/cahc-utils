@@ -37,6 +37,7 @@ This directory is a research/dev workspace rather than a production package. The
 - `gruha_chaara.ipynb` — focused analysis (domain-specific; check markdown cells for assumptions).
 - `lunar-events-calculator.ipynb` — uses `JdUtils`, `PlanetPos`, `NaksUtils` to demonstrate event calculations (eclipses, rise/set examples).
 - `darsha_poornamasa/lunar_standstills.ipynb` — analysis of lunar standstills; includes CSV outputs such as long-run rise/set tables and example eclipse/stillness datasets. Note: sometimes this appears as `lunar_standstills.ipynb.backup` and there are HTML slides (`lunar_standstill.slides.html`) — treat `darsha_poornamasa/` as both a data and results folder for standstill calculations.
+- `soma_srnga/` — analysis of lunar cusps (shrnga), including calculations and visualizations for rising and setting moon.
 
 ## Relationship diagram (developer view)
 

@@ -69,6 +69,10 @@
       <input type="checkbox" bind:checked={showNakshatras} />
       <span class="ecliptic">Nakshatras</span>
     </label>
+    <label class="indent">
+      <input type="checkbox" bind:checked={showNakshatraLabels} disabled={!showNakshatras} />
+      <span class="ecliptic">Labels</span>
+    </label>
   </section>
   
   <section>
@@ -112,10 +116,6 @@
     <label>
       <input type="checkbox" bind:checked={showArcLabels} />
       <span>Arc Labels</span>
-    </label>
-    <label>
-      <input type="checkbox" bind:checked={showNakshatraLabels} />
-      <span>Nakshatra Labels</span>
     </label>
   </section>
 </aside>
@@ -185,6 +185,22 @@
   
   .polar {
     color: var(--color-polar);
+  }
+  
+  /* Indent for nested checkboxes */
+  label.indent {
+    margin-left: 24px;
+    font-size: 14px;
+  }
+  
+  label.indent input[type="checkbox"]:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  label.indent:has(input[type="checkbox"]:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
   
   /* Mobile toggle button */

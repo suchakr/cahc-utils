@@ -14,7 +14,8 @@ const State = {
     filtered: [], // Current view
     filters: {
         search: "",
-        useRegex: false, // New: Toggle state
+        useRegex: false,
+        sort: "newest", // New
         categories: new Set(),
         subjects: new Set(),
         decades: new Set()
@@ -69,6 +70,15 @@ function init() {
         State.filters.search = e.target.value; // Store raw case for regex
         applyFilters();
     });
+
+    // Sort Dropdown
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            State.filters.sort = e.target.value;
+            applyFilters();
+        });
+    }
 
     if (Elements.regexToggle) {
         Elements.regexToggle.addEventListener('click', () => {
@@ -177,6 +187,12 @@ function applyTheme(theme) {
 function resetFilters() {
     State.filters.search = "";
     State.filters.useRegex = false;
+    State.filters.sort = "newest"; // Reset sort
+
+    // Reset Sort UI
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = "newest";
+
     if (Elements.regexToggle) Elements.regexToggle.classList.remove('active');
 
     State.filters.categories.clear();
@@ -242,6 +258,7 @@ function applyFilters() {
     const cats = State.filters.categories;
     const subs = State.filters.subjects;
     const decs = State.filters.decades;
+    const sortMode = State.filters.sort || 'newest';
 
     const SafeCat = (v) => (!v || v === 'nan' || v === 'NaN' || v === 'Uncategorized') ? "Uncategorized" : v;
     const SafeSub = (v) => (!v || v === 'nan' || v === 'NaN') ? "General" : v;
@@ -252,12 +269,7 @@ function applyFilters() {
         try {
             regex = new RegExp(term, 'i');
         } catch (e) {
-            // Invalid regex, treat as empty or don't filter? 
-            // Better to show no results or just ignore? 
-            // Let's allow partial typing without crashing:
-            // logic: if invalid regex, search nothing or just fail gracefully.
-            // here we'll just fail the match for everything to indicate error indirectly
-            regex = null; // will cause 0 results if we strictly rely on it
+            regex = null;
         }
     }
 
@@ -293,7 +305,39 @@ function applyFilters() {
         return true;
     });
 
+    // 5. Sort Logic
+    State.filtered.sort((a, b) => {
+        if (sortMode === 'newest') return (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
+        if (sortMode === 'oldest') return (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
+        if (sortMode === 'title') return a.title.localeCompare(b.title);
+        if (sortMode === 'size') return (a.size || 0) - (b.size || 0); // Smallest first
+        if (sortMode === 'relevance') {
+            if (!term) return 0; // No search = no relevance
+            const aTitle = a.title.toLowerCase().includes(term.toLowerCase());
+            const bTitle = b.title.toLowerCase().includes(term.toLowerCase());
+            return bTitle - aTitle;
+        }
+        return 0;
+    });
+
     renderGrid();
+}
+
+function highlightText(text, term, useRegex) {
+    if (!term || !text) return text;
+    const safeText = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    try {
+        if (useRegex) {
+            const regex = new RegExp(`(${term})`, 'gi');
+            return safeText.replace(regex, '<mark>$1</mark>');
+        } else {
+            const words = term.split(/\s+/).filter(w => w.length > 0);
+            if (words.length === 0) return safeText;
+            const pattern = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+            const regex = new RegExp(`(${pattern})`, 'gi');
+            return safeText.replace(regex, '<mark>$1</mark>');
+        }
+    } catch (e) { return safeText; }
 }
 
 function renderGrid() {
@@ -315,25 +359,38 @@ function renderGrid() {
     const SafeCat = (v) => (!v || v === 'nan' || v === 'NaN' || v === 'Uncategorized') ? "Uncategorized" : v;
     const SafeSub = (v) => (!v || v === 'nan' || v === 'NaN') ? "General" : v;
 
+    const term = State.filters.search;
+    const useRegex = State.filters.useRegex;
+
     slice.forEach(paper => {
         const cat = SafeCat(paper.category);
         const sub = SafeSub(paper.subject);
+        const link = getPdfLink(paper);
+        const isExternal = link.startsWith('http');
 
         const card = document.createElement('a');
         const catClass = `cat-${cat.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
         card.className = `paper-card ${catClass}`;
-        card.href = getPdfLink(paper);
+        card.href = link;
         card.target = '_blank';
         card.rel = 'noopener noreferrer';
 
+        const sourceIcon = isExternal
+            ? `<span class="source-icon" title="Link opens on external INSA server. Availability depends on their uptime."><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>`
+            : '';
+
+        const titleHtml = highlightText(paper.title, term, useRegex);
+        const authorHtml = highlightText(paper.author, term, useRegex);
+        const yearHtml = highlightText(String(paper.year), term, useRegex);
+
         card.innerHTML = `
             <div class="paper-meta">
-                <span class="paper-year">${paper.year}</span>
+                <span class="paper-year">${yearHtml}</span>
                 <span class="paper-category">${cat} / ${sub}</span>
             </div>
-            <h3 class="paper-title">${paper.title}</h3>
-            <div class="paper-author">${paper.author}</div>
+            <h3 class="paper-title">${titleHtml} ${sourceIcon}</h3>
+            <div class="paper-author">${authorHtml}</div>
             <div class="paper-footer">
                 <span>${paper.journal}</span>
                 <span>${Math.round(paper.size / 1024 * 10) / 10} MB</span>

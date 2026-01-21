@@ -218,9 +218,18 @@ body {
 }
 
 
+/* Search Bar Layout */
 .search-bar {
     position: relative;
-    width: 400px;
+    width: 600px;
+    /* Wider to accommodate sort */
+    display: flex;
+    gap: 12px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
 }
 
 .search-bar input {
@@ -235,6 +244,64 @@ body {
     font-size: 0.95rem;
     outline: none;
     transition: all 0.2s;
+}
+
+/* Sort Dropdown */
+.sort-dropdown {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0 16px;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    appearance: none;
+    /* Custom arrow if needed, but default is fine for now */
+    height: 48px;
+    /* Match input height */
+}
+
+.sort-dropdown:hover,
+.sort-dropdown:focus {
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .sort-dropdown {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text-primary);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Highlights */
+mark {
+    background: rgba(255, 215, 0, 0.25);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+[data-theme="light"] mark {
+    background: rgba(255, 215, 0, 0.4);
+}
+
+/* Source Icon */
+.source-icon {
+    margin-left: 8px;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.source-icon:hover {
+    opacity: 1;
+    color: var(--accent-color);
 }
 
 .search-actions {
@@ -523,11 +590,17 @@ body {
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
+        margin-right: 8px;
+        /* Reduce margin */
     }
 
     .search-bar {
         width: auto;
         flex: 1;
+        min-width: 0;
+        /* Critical for flex child shrinking */
+        gap: 6px;
+        /* Tighter gap */
     }
 
     .app-container {
@@ -536,16 +609,75 @@ body {
     }
 
     .header {
-        padding: 12px 16px;
+        padding: 12px 10px;
+        /* Tighter padding */
+        gap: 10px;
+        /* Reduce gap */
+    }
+
+    .logo {
+        flex-shrink: 0;
+        /* Stop shrinking, fixed tight width */
+        display: flex;
+        flex-direction: column;
+        /* Stack vertically */
+        align-items: center;
+        /* Center align text */
+        line-height: 0.9;
+        margin-right: 4px;
+        min-width: auto;
     }
 
     .logo h1 {
-        font-size: 1.2rem;
+        font-size: 0.75rem;
+        /* Tiny but readable */
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo span {
+        display: block;
+        /* Show it again */
+        font-size: 0.7rem;
+        color: var(--accent-color);
+        letter-spacing: 0px;
+    }
+
+    .icon-btn {
+        margin-left: 4px;
+        /* Tighter spacing */
+        padding: 4px;
+        /* Smaller touch target visual, kept functional */
     }
 
     .badge {
         display: none;
         /* Hide Badge on mobile to save space */
+    }
+
+    /* Compact Sort Dropdown */
+    .sort-dropdown {
+        width: 40px;
+        padding: 0;
+        color: transparent;
+        /* Hide text */
+
+        /* SVG Sort Icon in background */
+        background-color: rgba(255, 255, 255, 0.1);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 16 4 4 4-4'%3E%3C/path%3E%3Cpath d='M7 20V4'%3E%3C/path%3E%3Cpath d='m21 8-4-4-4 4'%3E%3C/path%3E%3Cpath d='M17 4v16'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        appearance: none;
+        -webkit-appearance: none;
+        overflow: hidden;
+    }
+
+    [data-theme="light"] .sort-dropdown {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3 16 4 4 4-4'%3E%3C/path%3E%3Cpath d='M7 20V4'%3E%3C/path%3E%3Cpath d='m21 8-4-4-4 4'%3E%3C/path%3E%3Cpath d='M17 4v16'%3E%3C/path%3E%3C/svg%3E");
     }
 
     /* Mobile Sidebar overlay */

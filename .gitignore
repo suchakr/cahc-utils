@@ -29,7 +29,7 @@
 **/10*.html
 ## virtualenvs
 **/.venv/
-**/.venv
+**/.venv.*/
 
 **/1.*
 **/2.*
@@ -92,3 +92,4 @@ linguistics/varna-sanyoga/*_counts.*
 linguistics/varna-sanyoga/*_stacked.*
 linguistics/varna-sanyoga/*.npy
 linguistics/varna-sanyoga/*.npz
+scrape/.cache/**

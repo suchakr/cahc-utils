@@ -139,7 +139,7 @@ for nc, cntr in zip ( ncs, range(len(ncs) + 1)) :
       "//*[contains(@class,'poem') or contains(@class,'first') ]//text()"
       )] for k in hrefdb ]
 
-  save_list_to_file( flatten(flatten(h2)) , f"~nc{cntr:03}.txt")
+  save_list_to_file( flatten(flatten(h2)) , f"scraped/skanda/~nc{cntr:03}.txt")
 
 # %%
 # मधुरावियजम्
@@ -169,7 +169,7 @@ for mv, cntr in zip ( mvs, range(len(mvs) + 1)) :
       )] for k in hrefdb ]
 
   # save_list_to_file( flatten(flatten(h2)) , f"~mv{cntr:03}.txt")
-  save_list_to_file( flatten(flatten(h2)) , f"~mv{999:03}.txt")
+  save_list_to_file( flatten(flatten(h2)) , f"scraped/skanda/~mv{999:03}.txt")
 # %%
 
 def do_scrape(work, root_url, chapters, center_tag=None, remove_devnagari_numbers_in_parens=False):
@@ -188,7 +188,8 @@ def do_scrape(work, root_url, chapters, center_tag=None, remove_devnagari_number
         "//*[contains(@class,'poem') or contains(@class,'first') ]//center//text()"
         )] for k in hrefdb ]
 
-    save_list_to_file( flatten(flatten(poems)) , f"~{work}~.txt", remove_devnagari_numbers_in_parens=remove_devnagari_numbers_in_parens)
+    os.makedirs('scraped/skanda', exist_ok=True)
+    save_list_to_file( flatten(flatten(poems)) , f"scraped/skanda/~{work}~.txt", remove_devnagari_numbers_in_parens=remove_devnagari_numbers_in_parens)
 #%%
 mudrarakshasa = [
   "mudrarakshasa",

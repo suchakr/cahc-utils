@@ -93,3 +93,6 @@ linguistics/varna-sanyoga/*_stacked.*
 linguistics/varna-sanyoga/*.npy
 linguistics/varna-sanyoga/*.npz
 scrape/.cache/**
+
+# Local Netlify folder
+.netlify

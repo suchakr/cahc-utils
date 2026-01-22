@@ -111,7 +111,7 @@ This sequence diagram illustrates the step-by-step flow from data ingestion to u
 
 ```mermaid
 sequenceDiagram
-    participant Admin as User
+    participant Admin as Developer
     participant INSA as INSA Website
     participant Pipe as Pipeline Scripts
     participant Assets as Local PDFs (Ext)

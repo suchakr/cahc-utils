@@ -62,6 +62,9 @@ from tqdm import tqdm
 
 # Configuration
 PROJECT_ROOT = os.path.expanduser("~/projects/cahcblr.github.io")
+# Relative path to the project's cache dir (one level up from pipeline/)
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "../.cache")
+
 EXISTING_DIRS = [
     os.path.join(PROJECT_ROOT, "assets/ijhs_potentials"),
     os.path.join(PROJECT_ROOT, "assets/cached_papers/rni")
@@ -153,7 +156,7 @@ def scrape_issues():
         excnt = 0
         try :
             issue_id = get_issue_id(k, opt_vals_map[k])
-            html_file = f'./scraped/ijhs/html~/{issue_id}~.html'
+            html_file = os.path.join(CACHE_DIR, f'ijhs/html~/{issue_id}~.html')
             os.makedirs(os.path.dirname(html_file), exist_ok=True)
             
             # skip if html_file exists and has content
@@ -194,8 +197,8 @@ def scrape_issues():
             with open(html_file, 'w') as f :
                 f.write(driver.page_source)
             
-            os.makedirs('scraped/logs', exist_ok=True)
-            with open(f'scraped/logs/log~.html', 'a') as f :
+            os.makedirs(os.path.join(CACHE_DIR, 'logs'), exist_ok=True)
+            with open(os.path.join(CACHE_DIR, 'logs/log~.html'), 'a') as f :
                 f.write(f'{issue_id} {driver.current_url}\n')
             
         except Exception as e :
@@ -207,7 +210,7 @@ def scrape_issues():
 def parse_htmls():
     acc = []
     nx = 0
-    pattern = './scraped/ijhs/html~/ij*.html'
+    pattern = os.path.join(CACHE_DIR, 'ijhs/html~/ij*.html')
     files = sorted(glob(pattern))
     
     if not files:
@@ -246,7 +249,7 @@ def update_metadata(insa_df):
         return insa_df
 
     try:
-        prev_df = pd.read_csv('scraped/ijhs.tsv', sep='\t')
+        prev_df = pd.read_csv(os.path.join(CACHE_DIR, 'ijhs.tsv'), sep='\t')
         # Deduplicate previous metadata to prevent count explosion during merge
         prev_df = prev_df.drop_duplicates(subset=['url'])
     except :
@@ -363,7 +366,8 @@ def download_interactive(insa_df):
             print(f"Failed to download {url}: {e}")
 
     if updates > 0:
-        insa_df.to_csv('scraped/ijhs.tsv', index=False, sep='\t')
+    if updates > 0:
+        insa_df.to_csv(os.path.join(CACHE_DIR, 'ijhs.tsv'), index=False, sep='\t')
         print(f"Updated metadata with sizes for {updates} new files.")
 
 if __name__ == "__main__":
@@ -375,9 +379,9 @@ if __name__ == "__main__":
     df = update_metadata(df)
     
     # Save metadata
-    os.makedirs('scraped', exist_ok=True)
-    df.to_csv('scraped/ijhs.tsv', index=False, sep='\t')
-    print(f"Saved metadata to scraped/ijhs.tsv")
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    df.to_csv(os.path.join(CACHE_DIR, 'ijhs.tsv'), index=False, sep='\t')
+    print(f"Saved metadata to {CACHE_DIR}/ijhs.tsv")
     
     print("\n--- Stage 3: Interactive Download ---")
     download_interactive(df)

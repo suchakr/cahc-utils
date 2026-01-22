@@ -7,7 +7,11 @@
 
 import pandas as pd
 
-tsv_path = 'scraped/ijhs.tsv'
+import os
+
+# Relative path to cache
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "../.cache")
+tsv_path = os.path.join(CACHE_DIR, 'ijhs.tsv')
 print(f"Reading {tsv_path}...")
 df = pd.read_csv(tsv_path, sep='\t')
 

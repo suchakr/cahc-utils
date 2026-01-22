@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+  command = "" # Explicitly override UI default (Jekyll) to nothing
+  ignore = "exit 1" # Always build, even if no changes detected by Git (manual deploy)
+  functions = "netlify/functions"
+
+[dev]
+  framework = "#static"
+
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"

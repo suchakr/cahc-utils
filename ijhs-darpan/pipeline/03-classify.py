@@ -44,13 +44,17 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Relative path to cache
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "../.cache")
+
 # --- Caching Utility ---
 class Cache2Disk(): 
   """Simple disk cache using pickle."""
   def __init__(self, *args):
     # Cache to /tmp or current folder's .cache needed? 
     # Using local .cache for persistence across runs if /tmp is ephemeral
-    cache_dir = os.path.join(os.getcwd(), ".cache")
+    # cache_dir = os.path.join(os.getcwd(), ".cache")
+    cache_dir = CACHE_DIR
     os.makedirs(cache_dir, exist_ok=True)
     filename = os.path.join(cache_dir, '_'.join(['cache'] + list(map(str, args))) + ".pkl")
     self.filename = filename
@@ -198,16 +202,17 @@ Papers: {in_df[['journal', 'paper']].to_dict(orient='records')}
 
 def main():
     # 1. Load Source
-    if not os.path.exists('scraped/ijhs.tsv'):
-        print("scraped/ijhs.tsv not found.")
+    source_path = os.path.join(CACHE_DIR, 'ijhs.tsv')
+    if not os.path.exists(source_path):
+        print(f"{source_path} not found.")
         return
-    source_df = pd.read_csv('scraped/ijhs.tsv', sep='\t')
+    source_df = pd.read_csv(source_path, sep='\t')
     source_df['paper'] = source_df['paper'].str.strip()
     # Deduplicate source by URL
     source_df = source_df.drop_duplicates(subset=['url'])
     
     # 2. Load Existing Classifications
-    classified_file = 'scraped/ijhs-classified.tsv'
+    classified_file = os.path.join(CACHE_DIR, 'ijhs-classified.tsv')
     if os.path.exists(classified_file):
         classified_df = pd.read_csv(classified_file, sep='\t')
         classified_df['paper'] = classified_df['paper'].str.strip()
@@ -314,7 +319,9 @@ def main():
     if not final_df.empty:
         generate_markdown(final_df)
 
-def generate_markdown(df, output_path="scraped/ijhs-classified.md"):
+def generate_markdown(df, output_path=None):
+    if output_path is None:
+        output_path = os.path.join(CACHE_DIR, "ijhs-classified.md")
     """Generates a searchable HTML/Markdown report."""
     
     # Get distinct categories for the dropdown

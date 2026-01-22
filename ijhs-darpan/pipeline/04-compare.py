@@ -65,7 +65,8 @@ def parse_markdown_table(filepath):
     return papers, duplicates
 
 p85_path = "/Users/sunder/projects/cahcblr.github.io/p85_search.markdown"
-ijhs_path = "/Users/sunder/projects/cahc/cahc-utils/scrape/scraped/ijhs-classified.md"
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "../.cache")
+ijhs_path = os.path.join(CACHE_DIR, "ijhs-classified.md")
 
 print(f"--- Processing p85 ---")
 p85_papers, p85_dupes = parse_markdown_table(p85_path)

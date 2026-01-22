@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+.npm
+package-lock.json
+
+# Netlify
+.netlify/
+
+# Secrets
+ops/gcs-key.json
+
+# Cache (Selective)
+# We track TSV and Markdown data, but ignore raw HTML logs
+.cache/logs/
+.cache/**/html~/

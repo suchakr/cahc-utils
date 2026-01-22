@@ -63,7 +63,10 @@ function init() {
     // 4. Setup UI
     updateModeBadge();
     setupFilters();
-    renderGrid();
+
+    // Apply default filters (sorting) immediately
+    applyFilters();
+    // renderGrid is called inside applyFilters, so we don't need to call it explicitly here
 
     // 5. Event Listeners
     Elements.searchInput.addEventListener('input', (e) => {
@@ -128,6 +131,8 @@ function init() {
 function detectEnvironment() {
     if (window.location.protocol === 'file:') {
         State.env = 'file';
+    } else if (window.location.port === '8888') {
+        State.env = 'netlify_dev';
     } else if (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')) {
         State.env = 'localhost';
     } else {
@@ -144,6 +149,10 @@ function updateModeBadge() {
         Elements.modeBadge.textContent = "Local Host";
         Elements.modeBadge.className = "badge host"; // Purple style
         Elements.modeBadge.title = "Served via Local Server";
+    } else if (State.env === 'netlify_dev') {
+        Elements.modeBadge.textContent = "Simulation Mode";
+        Elements.modeBadge.className = "badge host"; // Reuse host style (purple)
+        Elements.modeBadge.title = "Netlify Dev: using local Functions + GCS";
     } else {
         // Netlify / Remote
         Elements.modeBadge.style.display = 'none'; // "no label" as requested
@@ -151,8 +160,11 @@ function updateModeBadge() {
 }
 
 function getPdfLink(paper) {
-    if (State.env === 'netlify') {
-        return paper.remoteUrl;
+    if (State.env === 'netlify' || State.env === 'netlify_dev') {
+        // Extract filename from remoteUrl (assuming it ends with the filename)
+        // Structure: .../Vol01_1_1_PRay.pdf
+        const filename = paper.remoteUrl.split('/').pop().split('?')[0];
+        return `/.netlify/functions/authorize-pdf?file=${encodeURIComponent('assets/ijhs/' + filename)}`;
     }
     // For file or localhost, try local path
     if (paper.localPath) {
@@ -306,13 +318,31 @@ function applyFilters() {
     });
 
     // 5. Sort Logic
+    // Helper to extract comparable value from journal string (e.g. IJHS-1-1966-Issue-1)
+    // We want Issue 3 > Issue 2 > Issue 1
+    const getIssueVal = (j) => {
+        if (!j) return 0;
+        const match = j.match(/Issue-(\d+)/i);
+        return match ? parseInt(match[1]) : 0;
+    };
+
     State.filtered.sort((a, b) => {
-        if (sortMode === 'newest') return (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
-        if (sortMode === 'oldest') return (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
+        if (sortMode === 'newest') {
+            const yA = parseInt(a.year) || 0;
+            const yB = parseInt(b.year) || 0;
+            if (yA !== yB) return yB - yA; // Primary: Year Desc
+            return getIssueVal(b.journal) - getIssueVal(a.journal); // Secondary: Issue Desc
+        }
+        if (sortMode === 'oldest') {
+            const yA = parseInt(a.year) || 0;
+            const yB = parseInt(b.year) || 0;
+            if (yA !== yB) return yA - yB; // Primary: Year Asc
+            return getIssueVal(a.journal) - getIssueVal(b.journal); // Secondary: Issue Asc
+        }
         if (sortMode === 'title') return a.title.localeCompare(b.title);
         if (sortMode === 'size') return (a.size || 0) - (b.size || 0); // Smallest first
         if (sortMode === 'relevance') {
-            if (!term) return 0; // No search = no relevance
+            if (!term) return 0;
             const aTitle = a.title.toLowerCase().includes(term.toLowerCase());
             const bTitle = b.title.toLowerCase().includes(term.toLowerCase());
             return bTitle - aTitle;
@@ -365,35 +395,76 @@ function renderGrid() {
     slice.forEach(paper => {
         const cat = SafeCat(paper.category);
         const sub = SafeSub(paper.subject);
-        const link = getPdfLink(paper);
-        const isExternal = link.startsWith('http');
 
-        const card = document.createElement('a');
+        // Primary Link: INSA (Direct)
+        const primaryLink = paper.remoteUrl;
+
+        // Backup Link: GCS / Local (Secure / Fallback)
+        const backupLink = getPdfLink(paper);
+
+        const isExternal = true; // Primary is always external now
+
+        // Use DIV instead of A to support nested interactive elements (Backup Button)
+        const card = document.createElement('div');
         const catClass = `cat-${cat.replace(/[^a-zA-Z0-9]/g, '-')}`;
 
         card.className = `paper-card ${catClass}`;
-        card.href = link;
-        card.target = '_blank';
-        card.rel = 'noopener noreferrer';
 
-        const sourceIcon = isExternal
-            ? `<span class="source-icon" title="Link opens on external INSA server. Availability depends on their uptime."><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>`
-            : '';
+        // Make the whole card clickable for Primary Link
+        card.onclick = (e) => {
+            // Check if text validation was selected text, if so don't click
+            if (window.getSelection().toString().length > 0) return;
+            window.open(primaryLink, '_blank', 'noopener,noreferrer');
+        };
 
         const titleHtml = highlightText(paper.title, term, useRegex);
         const authorHtml = highlightText(paper.author, term, useRegex);
         const yearHtml = highlightText(String(paper.year), term, useRegex);
+
+        // Primary Read Button (Bold)
+        // Note: Card click also goes here, but this is the visual CTA
+        const readBtn = `
+             <a href="${primaryLink}" 
+               class="read-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               onclick="event.stopPropagation();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Read</span>
+            </a>
+        `;
+
+        // Backup Button (Subtle Archive Icon)
+        const backupBtn = `
+            <a href="${backupLink}" 
+               class="backup-link" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               title="View Archived Copy (Mirror)"
+               onclick="event.stopPropagation();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </a>
+        `;
 
         card.innerHTML = `
             <div class="paper-meta">
                 <span class="paper-year">${yearHtml}</span>
                 <span class="paper-category">${cat} / ${sub}</span>
             </div>
-            <h3 class="paper-title">${titleHtml} ${sourceIcon}</h3>
+            <h3 class="paper-title">${titleHtml}</h3>
             <div class="paper-author">${authorHtml}</div>
             <div class="paper-footer">
                 <span>${paper.journal}</span>
-                <span>${Math.round(paper.size / 1024 * 10) / 10} MB</span>
+                <div class="footer-right">
+                    <span class="size-info">${Math.round(paper.size / 1024 * 10) / 10} MB</span>
+                    ${readBtn}
+                    <div class="vr-sep"></div>
+                    ${backupBtn}
+                </div>
             </div>
         `;
         container.appendChild(card);

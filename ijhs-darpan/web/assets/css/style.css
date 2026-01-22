@@ -545,18 +545,100 @@ mark {
     margin-top: auto;
 }
 
+.size-info {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
 .paper-footer {
     border-top: 1px solid var(--glass-border);
     padding-top: 12px;
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    /* Critical for vertical alignment */
     font-size: 0.75rem;
     opacity: 0.7;
 }
 
 .paper-card:hover .paper-footer {
     opacity: 1;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Tighter gap */
+}
+
+.read-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: white;
+    /* Always white text on accent */
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    /* Pill shape */
+    background: var(--accent-color);
+    transition: all 0.2s;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.read-link:hover {
+    background: #0ea5e9;
+    /* Slightly darker shade of Sky Blue (Tailwind Sky-500) */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode override for read-link hover */
+[data-theme="light"] .read-link:hover {
+    background: #0284c7;
+    /* Darker blue */
+}
+
+
+.backup-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 6px;
+    background: transparent;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    opacity: 0.6;
+}
+
+.backup-link:hover {
+    color: var(--accent-color);
+    background: rgba(var(--accent-color), 0.15);
+    /* Slightly stronger bg on hover */
+    opacity: 1;
+    transform: scale(1.1);
+    /* Micro interaction */
+}
+
+.backup-link span {
+    font-weight: 500;
+}
+
+.vr-sep {
+    width: 1px;
+    height: 16px;
+    background: var(--glass-border);
+    margin: 0 4px;
 }
 
 /* Scrollbars */
@@ -689,12 +771,17 @@ mark {
         width: 85%;
         max-width: 320px;
         z-index: 1000;
-        background: #0f172a;
-        /* Solid bg for readability */
+        background: var(--bg-gradient);
+        /* Adaptive Background */
+        backdrop-filter: blur(12px);
+        /* Glass effect */
+        -webkit-backdrop-filter: blur(12px);
         border-right: 1px solid var(--glass-border);
         transform: translateX(-110%);
         /* Hidden by default */
         box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+        color: var(--text-primary);
+        /* Ensure text color adapts */
     }
 
     .sidebar.open {

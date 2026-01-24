@@ -28,6 +28,12 @@ corrections = [
     ('IJHS-24-1989-Issue-2', 'Vol24_3', 'IJHS-24-1989-Issue-3'), # Fix issue 3 overlap
 ]
 
+# New Author Correction Logic
+author_corrections = [
+    # (URL Pattern, Correct Author)
+    ('Vol46_1_2_RNIyenger.pdf', 'R N Iyengar'),
+]
+
 count = 0
 for wrong_journal, url_pattern, correct_journal in corrections:
     try:
@@ -40,8 +46,17 @@ for wrong_journal, url_pattern, correct_journal in corrections:
     except Exception as e:
         print(f"Error checking {wrong_journal}: {e}")
 
-if count > 0:
+author_count = 0
+for url_pattern, correct_author in author_corrections:
+    mask = (df['url'].str.contains(url_pattern, na=False))
+    matches = mask.sum()
+    if matches > 0:
+        print(f"Patching Author for {matches} rows: {correct_author}")
+        df.loc[mask, 'author'] = correct_author
+        author_count += matches
+
+if count > 0 or author_count > 0:
     df.to_csv(tsv_path, sep='\t', index=False)
-    print(f"Total patched and saved: {count}")
+    print(f"Total patched: {count} journals, {author_count} authors.")
 else:
     print("No rows found to patch.")

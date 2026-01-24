@@ -13004,7 +13004,7 @@ const PAPERS = [
   {
     "journal": "IJHS-46-2011-Issue-1",
     "title": "Dhruva the Ancient Indian Pole Star: Fixity Rotation and Movement",
-    "author": " ",
+    "author": "R N Iyengar",
     "category": "Indic",
     "subject": "Astronomy",
     "year": "2011",

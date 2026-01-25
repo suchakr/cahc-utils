@@ -1,0 +1,17 @@
+{
+  "name": "ijhs-darpan",
+  "version": "1.0.0",
+  "description": "A high-performance, single-page application for browsing the Indian Journal of History of Science (IJHS) archives.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google-cloud/storage": "^7.18.0",
+    "dotenv": "^17.2.3"
+  }
+}

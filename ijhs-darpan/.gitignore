@@ -1,22 +1,13 @@
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.env
-
-# Node
 node_modules/
-.npm
-package-lock.json
-
-# Netlify
-.netlify/
-
-# Secrets
+.cache/
+*.bak
+*.tmp
+__pycache__/
+.env
+*.json
+!package.json
+!tsconfig.json
+!netlify.toml
+# Specifically exclude service account keys
+gcs-key.json
 ops/gcs-key.json
-
-# Cache (Selective)
-# We track TSV and Markdown data, but ignore raw HTML logs
-.cache/logs/
-.cache/**/html~/

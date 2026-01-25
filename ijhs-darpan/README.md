@@ -1,6 +1,6 @@
-# IJHS Darpan
+# Patra Darpan
 
-The Indian Journal of History of Science (IJHS) "Darpan" (Mirror) is a project to index, classify, and serve the archives of the IJHS.
+Patra Darpan (Mirror of Documents) is a project to index, classify, and serve the archives of the Indian Journal of History of Science (IJHS) and other scholarly collections of the CAHC.
 
 ## Project Structure
 
@@ -11,11 +11,14 @@ This project has been refactored (Jan 2026) into the following components:
   - `02-patch.py`: Fixes metadata errors.
   - `03-classify.py`: Uses Gemini LLM to classify new papers.
   - `04-compare.py`: Compares classification with legacy p85 search.
+  - `05-import-cahcblr.py`: Imports non-IJHS metadata from Prof. R.N. Iyengar's collection (`p60`).
 - **`web/`**: The web application (Netlify).
   - Contains `index.html`, `assets/`, and `netlify/` functions.
-- **`ops/`**: Operational utilities.
+- **`ops/`**: Operational and maintenance utilities.
   - `build_data.py`: Generates `data.js` for the web app.
   - `sync_pdfs.py`: Syncs local PDFs to private GCS bucket.
+  - `analyze_tsv.py`: Diagnostic tool to identify duplicates and metadata anomalies.
+  - `dedupe_tsv.py`: Surgical utility to clean duplicates from `.cache` files.
 - **`.cache/`**: Local data store.
   - Contains `ijhs.tsv` (Source of Truth), `ijhs-classified.tsv`, and intermediate artifacts.
 
@@ -29,6 +32,7 @@ graph TD
     subgraph Project ["Project: ijhs-darpan"]
         subgraph Pipeline
             S1[01-scrape.py]
+            S5[05-import-cahcblr.py]
             S2[02-patch.py]
             S3[03-classify.py]
         end
@@ -42,6 +46,8 @@ graph TD
         subgraph Ops
             Build[build_data.py]
             Sync[sync_pdfs.py]
+            Diag[analyze_tsv.py]
+            Dedup[dedupe_tsv.py]
         end
 
         subgraph WebApp ["Web App"]
@@ -59,7 +65,8 @@ graph TD
 
     %% 3. External (Bottom/Side)
     subgraph External ["External Repo: cahcblr.github.io"]
-        Assets[Assets / Local PDFs]
+        Assets["Assets (ijhs_potentials & rni)"]
+        P60[p60_papers.md]
         P85[p85_search.md]
         LiveSite((cahc.ju.ac.in))
     end
@@ -67,8 +74,11 @@ graph TD
     %% Data Ingestion
     INSA -->|Scrape Metadata| S1
     INSA -->|Download PDFs| S1
+    P60 -->|Parse Metadata| S5
+    P85 -->|Parse Metadata| S5
     S1 -->|Save Files| Assets
     S1 -->|Write Metadata| RawTSV
+    S5 -->|Merge Metadata| RawTSV
     
     %% Metadata Refinement
     RawTSV -->|Read| S2 -->|Patch| RawTSV
@@ -120,10 +130,10 @@ sequenceDiagram
     participant Web as Web App
 
     Note over Admin, Cloud: 1. Ingestion Phase
-    Admin->>Pipe: Run 01-scrape.py
+    Admin->>Pipe: Run 01-scrape / 05-import
     Pipe->>INSA: Fetch HTML & PDFs
     Pipe->>Assets: Download New PDFs
-    Pipe->>Cache: Write ijhs.tsv (Metadata)
+    Pipe->>Cache: Write/Merge ijhs.tsv (Metadata)
 
     Note over Admin, Cache: 2. Processing Phase
     Admin->>Pipe: Run 02-patch / 03-classify
@@ -159,6 +169,7 @@ The pipeline scripts should be run in sequence to ensure data integrity:
 
 ```bash
 uv run pipeline/01-scrape.py   # Scrape new metadata
+uv run pipeline/05-import-cahcblr.py # Import non-IJHS metadata
 uv run pipeline/02-patch.py    # Fix known metadata errors
 uv run pipeline/03-classify.py # Classify new papers
 ```
@@ -170,16 +181,36 @@ To regenerate the web application data:
 uv run ops/build_data.py
 ```
 
-To sync PDFs to GCS (requires credentials):
+To sync PDFs to GCS (uses local ADC/gcloud credentials):
 
 ```bash
-uv run ops/sync_pdfs.py
+uv run ops/sync_pdfs.py       # Summarize and ask for confirmation
+uv run ops/sync_pdfs.py -y    # Bypass confirmation (non-interactive)
 ```
 
-### 3. Web Development
-Navigate to `web/` and use Netlify CLI:
+### 3. Diagnostics & Maintenance
+Use these tools to maintain the health of the local metadata store:
 
 ```bash
-cd web
-netlify dev
+uv run ops/analyze_tsv.py   # Find potential duplicates/anomalies
+uv run ops/dedupe_tsv.py    # Surgically remove duplicates from .cache
 ```
+
+### 4. Web Development & Deployment
+
+The Netlify CLI usage differs slightly depending on your objective:
+
+- **Local Development**: Run `dev` from the `web/` directory for a direct local preview.
+  ```bash
+  cd web
+  netlify dev
+  ```
+- **Production Deployment**: Run `deploy` from the **project root** to ensure the instructions in `netlify.toml` (paths, functions, etc.) are correctly followed.
+  ```bash
+  # From project root
+  netlify deploy        # Preview deploy
+  netlify deploy --prod  # Production deploy
+  ```
+
+> [!NOTE]
+> The root `netlify.toml` serves as the primary configuration for the entire pipeline, while the `web/` directory is treated as a specialized context for local serving.

@@ -78,17 +78,32 @@ def main():
     found_count = 0
     
     for _, row in df.iterrows():
-        # Basic metadata
+        # Helper to clean numeric strings (remove .0)
+        def clean_num(v):
+            if pd.isna(v) or str(v).lower() == 'nan': return ""
+            s = str(v)
+            if s.endswith('.0'): return s[:-2]
+            return s
+
         paper = {
             "journal": row.get("journal", ""),
             "title": row.get("paper", "Untitled"),
             "author": row.get("author", "Unknown"),
             "category": row.get("category", "Uncategorized"),
             "subject": row.get("subject", "General"),
-            "year": str(row.get("year", "")), # Ensure string if exists, else parse from journal
+            "year": clean_num(row.get("year", "")),
             "remoteUrl": row.get("url", ""),
             "size": row.get("size_in_kb", 0)
         }
+        
+        # Fix size: Ensure it's numeric and non-NaN
+        try:
+            if pd.isna(paper["size"]) or str(paper["size"]).lower() == 'nan':
+                paper["size"] = 0
+            else:
+                paper["size"] = float(paper["size"])
+        except:
+            paper["size"] = 0
         
         # Try to parse year from journal string if missing (e.g. IJHS-1-1966-Issue-1)
         if not paper["year"] or paper["year"] == "nan":
@@ -103,6 +118,14 @@ def main():
         if local_path:
             paper["localPath"] = local_path
             found_count += 1
+            
+            # If size is 0/missing in metadata, try to get it from local disk
+            if paper["size"] <= 0:
+                # local_path is 'assets/pdfs/...', symlink 'assets/pdfs' -> ASSETS_ROOT
+                rel_to_assets = local_path.replace("assets/pdfs/", "")
+                abspath = ASSETS_ROOT / rel_to_assets
+                if abspath.exists():
+                    paper["size"] = abspath.stat().st_size / 1024.0
         else:
             paper["localPath"] = None
             

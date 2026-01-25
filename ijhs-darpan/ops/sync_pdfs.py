@@ -6,45 +6,40 @@
 # ///
 import os
 import glob
+import argparse
 from google.cloud import storage
 
 # Configuration
 BUCKET_NAME = "cahcblr-pdfs"
 PROJECT_ID = "gen-lang-client-0854320022"
-# Configuration
-BUCKET_NAME = "cahcblr-pdfs"
-PROJECT_ID = "gen-lang-client-0854320022"
 
-# Auto-load credentials if gcs-key.json exists in this directory
-key_path = os.path.join(os.path.dirname(__file__), 'gcs-key.json')
-if os.path.exists(key_path) and 'GOOGLE_APPLICATION_CREDENTIALS' not in os.environ:
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_path
-    print(f"Using credentials from {key_path}")
-
-# IMPORTANT: Update these paths to point to your local PDF repositories
-# I checked `../../assets/pdfs` but it was empty. 
-# Please verify where 'ijhs_potentials' resides on your machine.
+# IMPORTANT: These paths point to local PDF repositories
+# They are resolved relative to the user's home directory.
 LOCAL_DIRS = [
-    "/Users/sunder/projects/cahcblr.github.io/assets/ijhs_potentials",
-    "/Users/sunder/projects/cahcblr.github.io/assets/cached_papers/rni"
+    "~/projects/cahcblr.github.io/assets/ijhs_potentials",
+    "~/projects/cahcblr.github.io/assets/cached_papers/rni"
 ]
 
-def sync_pdfs():
+def sync_pdfs(force_yes=False):
     print(f"Connecting to GCS bucket: {BUCKET_NAME} in project {PROJECT_ID}...")
+    print("Using Application Default Credentials (ADC).")
+    
     try:
+        # Client will automatically use ADC from environment (e.g. gcloud auth)
         storage_client = storage.Client(project=PROJECT_ID)
         bucket = storage_client.bucket(BUCKET_NAME)
         
         # List existing blobs
-        print("Listing existing files in bucket...")
-        blobs = list(bucket.list_blobs())
-        existing_files = {blob.name for blob in blobs}
-        print(f"Found {len(existing_files)} files in bucket.")
+        print("Listing existing files in bucket (this may take a moment)...")
+        blobs = list(bucket.list_blobs(prefix="assets/ijhs/"))
+        # Create a map of filename -> blob for size comparison
+        existing_blobs = {os.path.basename(blob.name): blob for blob in blobs}
+        print(f"Found {len(existing_blobs)} files in 'assets/ijhs/' prefix.")
         
         # Scan local files
         local_files = []
         for dir_path in LOCAL_DIRS:
-            abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), dir_path))
+            abs_path = os.path.expanduser(dir_path)
             print(f"Scanning local directory: {abs_path}")
             if not os.path.exists(abs_path):
                  print(f"Warning: Directory not found: {abs_path}")
@@ -57,44 +52,72 @@ def sync_pdfs():
                 
         print(f"Found {len(local_files)} local PDF files.")
         
-        # Gap Analysis
-        print("\n--- Gap Analysis ---")
-        missing_ops = []
+        # Gap Analysis (By existence and size)
+        to_upload = []
+        up_to_date = 0
+        
         for filename, filepath in local_files:
-            target_blob_name = f"assets/ijhs/{filename}"
-            if target_blob_name not in existing_files:
-                missing_ops.append((target_blob_name, filepath))
+            local_size = os.path.getsize(filepath)
+            
+            if filename not in existing_blobs:
+                to_upload.append(("NEW", filename, filepath))
+            else:
+                remote_blob = existing_blobs[filename]
+                if remote_blob.size != local_size:
+                    to_upload.append(("UPDATE", filename, filepath))
+                else:
+                    up_to_date += 1
 
+        print("\n--- Sync Summary ---")
         print(f"Total Local Files: {len(local_files)}")
-        print(f"Total Bucket Objects (All Paths): {len(existing_files)}")
-        print(f"Files to be Uploaded (Missing in assets/ijhs/): {len(missing_ops)}")
-
-        if not missing_ops:
+        print(f"Already Up-to-date: {up_to_date}")
+        print(f"Pending Actions: {len(to_upload)}")
+        
+        if not to_upload:
             print("Bucket is fully synchronized! No actions needed.")
             return
 
-        print("\nSample of missing files:")
-        for name, _ in missing_ops[:10]:
-            print(f" - {name}")
-        
-        if len(missing_ops) > 100:
-             print(f"... and {len(missing_ops) - 10} more.")
+        print("\nBreakdown of actions:")
+        new_count = len([x for x in to_upload if x[0] == "NEW"])
+        update_count = len([x for x in to_upload if x[0] == "UPDATE"])
+        print(f" - [NEW]    {new_count} files")
+        print(f" - [UPDATE] {update_count} files (size mismatch)")
 
-        print("\nStarting Upload (Auto-Resume)...")
+        print("\nSample of pending files:")
+        for action, name, _ in to_upload[:10]:
+            print(f" [{action}] {name}")
+        
+        if len(to_upload) > 10:
+             print(f"... and {len(to_upload) - 10} more.")
+
+        # Interactive Consent
+        if not force_yes:
+            resp = input(f"\nProceed to upload {len(to_upload)} files to GCS? [y/N]: ")
+            if resp.lower() != 'y':
+                print("Aborted.")
+                return
+
+        print("\nStarting Upload...")
         
         # Sync
         uploaded_count = 0
-        for target_blob_name, filepath in missing_ops:
-            print(f"Uploading: {target_blob_name}")
+        for action, filename, filepath in to_upload:
+            target_blob_name = f"assets/ijhs/{filename}"
+            print(f"({action}) Uploading: {target_blob_name}")
             blob = bucket.blob(target_blob_name)
             blob.upload_from_filename(filepath)
             uploaded_count += 1
                 
-        print(f"Sync complete. Uploaded {uploaded_count} files.")
+        print(f"\nSync complete. Successfully processed {uploaded_count} files.")
 
     except Exception as e:
         print(f"Error: {e}")
-        print("Ensure you have authenticated with 'gcloud auth application-default login' or set GOOGLE_APPLICATION_CREDENTIALS.")
+        print("\nIf you see a 403 or Auth error, ensure you have ran:")
+        print("  gcloud auth application-default login")
 
 if __name__ == "__main__":
-    sync_pdfs()
+    parser = argparse.ArgumentParser(description="Synchronize local PDFs to GCS.")
+    parser.add_argument("-y", "--yes", action="store_true", help="Bypass confirmation prompt.")
+    args = parser.parse_args()
+    
+    sync_pdfs(force_yes=args.yes)

@@ -110,7 +110,7 @@ class TextGeminiClassifier():
       MindSciences
       Biology
       Philosophy
-      Lingiustics
+      Linguistics
       Music
       Other
 

@@ -84,7 +84,7 @@ class TextGeminiClassifier():
     
     genai.configure(api_key=api_key)
     self.model = genai.GenerativeModel(
-      model_name="gemini-2.0-flash-exp",
+      model_name="gemini-1.5-flash",
       generation_config=genai.GenerationConfig(
         temperature=0.0,
         top_p=0.95,
@@ -216,10 +216,12 @@ def main():
     if os.path.exists(classified_file):
         classified_df = pd.read_csv(classified_file, sep='\t')
         classified_df['paper'] = classified_df['paper'].str.strip()
-        # Mapping existing: Set of (journal, paper)
-        # Note: journal might vary slightly, url is best ID but classifier output might not have URL.
-        # Original notebook logic merged on ['journal', 'paper'].
-        existing_keys = set(zip(classified_df['journal'], classified_df['paper']))
+        
+        # Only treat as "already classified" if subject AND category are not null/empty
+        is_classified = classified_df['subject'].notna() & classified_df['category'].notna()
+        classified_subset = classified_df[is_classified]
+        
+        existing_keys = set(zip(classified_subset['journal'], classified_subset['paper']))
     else:
         classified_df = pd.DataFrame()
         existing_keys = set()

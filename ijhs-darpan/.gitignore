@@ -11,3 +11,6 @@ __pycache__/
 # Specifically exclude service account keys
 gcs-key.json
 ops/gcs-key.json
+!.cache/ijhs.tsv
+!.cache/ijhs-classified.tsv
+!.cache/ijhs-classified.md

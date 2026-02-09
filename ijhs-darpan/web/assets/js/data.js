@@ -21888,5 +21888,126 @@ const PAPERS = [
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Effect_of_self_weight_and_vertical_accel.pdf",
     "size": 375.6728515625,
     "localPath": "assets/pdfs/cached_papers/rni/Effect_of_self_weight_and_vertical_accel.pdf"
+  },
+  {
+    "journal": "QJMS 116.2",
+    "title": "A Comparative Study of the Ka\u1e41savadha Episode in Select N\u0101\u1e6dakas, Camp\u016b-k\u0101vyas, Gadya-k\u0101vyas, and Kha\u1e47\u1e0da-k\u0101vyas",
+    "author": "R. S. Hariharan, Shankar Rajaraman",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2025",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/QJMS_116_2_Kamasvada_compare.pdf",
+    "size": 369.8916015625,
+    "localPath": "assets/pdfs/cached_papers/rni/QJMS_116_2_Kamasvada_compare.pdf"
+  },
+  {
+    "journal": "AJPEM",
+    "title": "Stupidity is not a laughing matter",
+    "author": "Warija Adiga",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2025",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_no_laugh.pdf",
+    "size": 495.2197265625,
+    "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_no_laugh.pdf"
+  },
+  {
+    "journal": "AJPEM",
+    "title": "\u015aukan\u0101\u015bopade\u015ba for Project Managers",
+    "author": "Warija Adiga",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2025",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_sukanasopdesa.pdf",
+    "size": 444.744140625,
+    "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_sukanasopdesa.pdf"
+  },
+  {
+    "journal": "AJPEM",
+    "title": "Visibility, a Tool to Ethical Project Management",
+    "author": "Warija Adiga",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2025",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_ethical_project.pdf",
+    "size": 541.5634765625,
+    "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_ethical_project.pdf"
+  },
+  {
+    "journal": "Mahasvini Vol. 2",
+    "title": "A Comparative Analysis of the Ka\u1e41savadha Episode in Select Sanskrit Mah\u0101k\u0101vyas",
+    "author": "R. S. Hariharan, Shankar Rajaraman",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2024",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/mahisvini_2024_kamsavadha.pdf",
+    "size": 6763.6943359375,
+    "localPath": "assets/pdfs/cached_papers/rni/mahisvini_2024_kamsavadha.pdf"
+  },
+  {
+    "journal": "AJPEM",
+    "title": "The Sound of Silence",
+    "author": "Warija Adiga",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2022",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2022_silence.pdf",
+    "size": 432.2490234375,
+    "localPath": "assets/pdfs/cached_papers/rni/ajpem_2022_silence.pdf"
+  },
+  {
+    "journal": "IJTS 37.1",
+    "title": "Well-being and Self-transformation in Indian Psychology",
+    "author": "Sangeetha Menon, Shankar Rajaraman",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2018",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ijts_2018_well_being.pdf",
+    "size": 349.564453125,
+    "localPath": "assets/pdfs/cached_papers/rni/ijts_2018_well_being.pdf"
+  },
+  {
+    "journal": "ALT 1.4",
+    "title": "Sound Play and the Madhur\u0101 Vijaya of Ga\u1e45g\u0101dev\u012b",
+    "author": "Shankar Rajaraman, Venetia Kotamraju",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2013",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/alt_2013_madhura_vijaya.pdf",
+    "size": 200.638671875,
+    "localPath": "assets/pdfs/cached_papers/rni/alt_2013_madhura_vijaya.pdf"
+  },
+  {
+    "journal": "IJHS-1-1966-Issue-1",
+    "title": "The Theory of Chemical Combination in Ancient Indian Philosophies",
+    "author": "Priyadaranjan Ray",
+    "category": "Indic",
+    "subject": "Philosophy",
+    "year": "1966",
+    "remoteUrl": "<https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn",
+    "size": 272.0,
+    "localPath": null
+  },
+  {
+    "journal": "CSIR-1955",
+    "title": "Report of the Calendar Reform Committee",
+    "author": "M. N. Saha, Lahiri",
+    "category": NaN,
+    "subject": NaN,
+    "year": "1955",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf",
+    "size": 24366.0,
+    "localPath": "assets/pdfs/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf"
+  },
+  {
+    "journal": "HSSA-2017",
+    "title": "The Units of Time in Ancient and Medieval India",
+    "author": "Takao Hayashi",
+    "category": NaN,
+    "subject": NaN,
+    "year": "2017",
+    "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf",
+    "size": 855.0,
+    "localPath": "assets/pdfs/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf"
   }
 ];

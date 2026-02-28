@@ -1,6 +1,6 @@
 # IJHS Classified Papers
 
-**Total Papers**: 2001
+**Total Papers**: 2020
 
 Type in the input field to search the table by Paper title or Author.
 
@@ -2179,3 +2179,22 @@ document.body.removeChild(a);
 | 1999 | IJHS-1-1966-Issue-1 | Philosophy | Indic | [The Theory of Chemical Combination in Ancient Indian Philosophies](<https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn) | Priyadaranjan Ray | 272 |
 | 2000 | CSIR-1955 | nan | N/A | [Report of the Calendar Reform Committee](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf) | M. N. Saha, Lahiri | 24366 |
 | 2001 | HSSA-2017 | nan | N/A | [The Units of Time in Ancient and Medieval India](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf) | Takao Hayashi | 855 |
+| 2002 | IJHS 58.4 | Astronomy | Indic | [Equinoctial full moon of the Brahmāṇḍa Purāṇa and the nakṣatra solar zodiac starting from summer...](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/01_58_4.pdf) | R.N. Iyengar, Sunder Chakravarty | 0 |
+| 2003 | IJHS 56.3&4 | Astronomy | Indic | [Transit of sun through the seasonal naksatra cycle in the Vrddha-Gārgīya Jyotisa](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/1.pdf) | R.N. Iyengar, Sunder Chakravarty | 0 |
+| 2004 | IJHS 55.3 | Math | Indic | [Akṣara the Basic Unit of Time Measure in Ancient India](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol55_3_2020__Art01.pdf) | R.N. Iyengar, H. S. Sudarshan, Anand Viswanathan | 0 |
+| 2005 | IJHS 53.2 | Music | Indic | [Concept of Sruti, Svara and Raga of Classical Music in Sanskrit Texts](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol53_2_2018__Art01.pdf) | R.N. Iyengar | 0 |
+| 2006 | IJHS 49.2 | General | Other | [Book Review: R.N. Iyengar - Parasaratantra: Ancient Sanskrit Text on Astronomy and Natural Sciences](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol49_2_10_BookReview.pdf) | S. Jagannatha | 0 |
+| 2007 | IJHS 49.3 | Astronomy | Indic | [Parasara's Six Season Solar Zodiac and Heliacal Visibility of Star Agastya in 1350-1130 BC](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol49_3_1_RN_Iyengar.pdf) | R.N. Iyengar | 0 |
+| 2008 | IJHS 47.3 | Astronomy | Indic | [Historical Notes: Archaeo-Astronomical Significance of the Vedic Darsapaurnamasa Altar](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol47_3_6_RNIyengar.pdf) | R.N. Iyengar and V.H. Satheeshkumar | 0 |
+| 2009 | IJHS 46.1 | Astronomy | Indic | [Dhruva the Ancient Indian Pole Star: Fixity Rotation and Movement](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol46_1_2_RNIyenger.pdf) | R.N. Iyengar | 0 |
+| 2010 | IJHS 45.1 | Astronomy | Indic | [Comets and Meteoritic Showers in the Rigveda and their significance](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol45_1_1_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2011 | IJHS 44.3 | Astronomy | Indic | [Connections Between The Vedanga Jyotisa And Other Vedic Literature](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol44_3_1_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2012 | IJHS 43.1 | Astronomy | Indic | [Archaic Astronomy of Parāśara and Vṛddha Garga](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol43_1_1_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2013 | IJHS 41.3 | Astronomy | Indic | [Historical Notes: Eclipse Period 3339 in Rigveda in support of R.N. Iyrengar’s Thesis](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol41_3_5_RNIyengar.pdf) | K D Abhyankar | 0 |
+| 2014 | IJHS 41.1 | Astronomy | Indic | [Some Celestial Observations associated with Krsna–lore](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol41_1_1_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2015 | IJHS 40.2 | Astronomy | Indic | [Eclipse Period Number 3339 in the Ṛgveda](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol2_2005_01.pdf) | R.N. Iyengar | 0 |
+| 2016 | IJHS 39.1 | Other | Indic | [Profile of A Natural Disaster in Ancient Sanskrit Literature](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol39_1_2_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2017 | IJHS 38.2 | Astronomy | Indic | [Internal Consistency of Eclipses and Planetary Positions in Mahabharata](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol38_2_1_RNIyengar.pdf) | R.N. Iyengar | 0 |
+| 2018 | IJHS 34.3 | Other | Indic | [Earthquake History of India in Medieval Times](https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol34_3_2_RNIyengar.pdf) | R.N. Iyengar, Devendra Sharma, J.M. Siddiqui | 0 |
+| 2019 | CSIR-1955 | nan | N/A | [Report of the Calendar Reform Committee](../assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf) | M. N. Saha, Lahiri | 24366 |
+| 2020 | HSSA-2017 | nan | N/A | [The Units of Time in Ancient and Medieval India](../assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf) | Takao Hayashi | 855 |

@@ -10,7 +10,6 @@ import json
 import os
 import pathlib
 import sys
-
 # Paths
 # Paths
 BASE_DIR = pathlib.Path(__file__).parent.parent # ijhs-darpan root
@@ -86,15 +85,20 @@ def main():
             return s
 
         paper = {
-            "journal": row.get("journal", ""),
-            "title": row.get("paper", "Untitled"),
-            "author": row.get("author", "Unknown"),
-            "category": row.get("category", "Uncategorized"),
-            "subject": row.get("subject", "General"),
+            "journal": clean_num(row.get("journal", "")),
+            "title": clean_num(row.get("paper", "Untitled")),
+            "author": clean_num(row.get("author", "Unknown")),
+            "category": clean_num(row.get("category", "Uncategorized")),
+            "subject": clean_num(row.get("subject", "General")),
             "year": clean_num(row.get("year", "")),
             "remoteUrl": row.get("url", ""),
+            "juUrl": clean_num(row.get("ju_url", "")),
             "size": row.get("size_in_kb", 0)
         }
+
+        # Normalization: If primary is JU but secondary is empty, use primary for JU features
+        if "jainuniversity" in str(paper["remoteUrl"]) and not paper["juUrl"]:
+            paper["juUrl"] = paper["remoteUrl"]
         
         # Fix size: Ensure it's numeric and non-NaN
         try:

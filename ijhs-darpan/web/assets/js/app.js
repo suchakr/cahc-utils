@@ -21,7 +21,8 @@ const State = {
         decades: new Set()
     },
     // We will compute env strictly in a helper
-    env: 'netlify', // 'file', 'localhost', 'netlify'
+    env: 'netlify', // 'file', 'localhost', 'netlify', 'netlify_dev'
+    devMode: localStorage.getItem('ijhs-dev-mode') || 'simulation', // 'simulation' vs 'local'
     theme: localStorage.getItem('ijhs-theme') || 'dark'
 };
 
@@ -113,6 +114,18 @@ function init() {
         });
     }
 
+    // Mode Badge Toggle (Simulation vs Local)
+    if (Elements.modeBadge) {
+        Elements.modeBadge.addEventListener('click', () => {
+            if (State.env === 'netlify_dev') {
+                State.devMode = State.devMode === 'simulation' ? 'local' : 'simulation';
+                localStorage.setItem('ijhs-dev-mode', State.devMode);
+                updateModeBadge();
+                applyFilters(); // Re-render grid to update links
+            }
+        });
+    }
+
     // Close sidebar when clicking outside
     document.addEventListener('click', (e) => {
         if (Elements.sidebar && Elements.sidebar.classList.contains('open') &&
@@ -144,32 +157,35 @@ function updateModeBadge() {
     if (State.env === 'file') {
         Elements.modeBadge.textContent = "Local File";
         Elements.modeBadge.className = "badge local";
+        Elements.modeBadge.style.cursor = 'default';
         Elements.modeBadge.title = "Loaded directly from file system (file://)";
     } else if (State.env === 'localhost') {
-        Elements.modeBadge.textContent = "Local Host";
+        Elements.modeBadge.textContent = "Local Mode";
         Elements.modeBadge.className = "badge host"; // Purple style
+        Elements.modeBadge.style.cursor = 'default';
         Elements.modeBadge.title = "Served via Local Server";
     } else if (State.env === 'netlify_dev') {
-        Elements.modeBadge.textContent = "Simulation Mode";
-        Elements.modeBadge.className = "badge host"; // Reuse host style (purple)
-        Elements.modeBadge.title = "Netlify Dev: using local Functions + GCS";
+        const isSim = State.devMode === 'simulation';
+        Elements.modeBadge.textContent = isSim ? "Simulation Mode" : "Local Mode";
+        Elements.modeBadge.className = isSim ? "badge host" : "badge local"; 
+        Elements.modeBadge.style.cursor = 'pointer';
+        Elements.modeBadge.title = isSim ? "Click to switch to Local Files" : "Click to switch to Simulation (GCS)";
     } else {
         // Netlify / Remote
-        Elements.modeBadge.style.display = 'none'; // "no label" as requested
+        Elements.modeBadge.style.display = 'none'; 
     }
 }
 
-function getPdfLink(paper) {
-    if (State.env === 'netlify' || State.env === 'netlify_dev') {
-        // Extract filename from remoteUrl (assuming it ends with the filename)
-        // Structure: .../Vol01_1_1_PRay.pdf
+/**
+ * Gets the "Mirror" or "Archive" link (GCS via Netlify Function).
+ */
+function getArchivedLink(paper) {
+    if (State.env === 'netlify' || (State.env === 'netlify_dev' && State.devMode === 'simulation')) {
         const filename = paper.remoteUrl.split('/').pop().split('?')[0];
         return `/.netlify/functions/authorize-pdf?file=${encodeURIComponent('assets/ijhs/' + filename)}`;
     }
-    // For file or localhost, try local path
-    if (paper.localPath) {
-        return paper.localPath;
-    }
+    // If we are in local mode, the archive link is redundant if we already have localPath,
+    // but we can return the remoteUrl as a backup.
     return paper.remoteUrl;
 }
 
@@ -288,7 +304,8 @@ function applyFilters() {
     State.filtered = State.papers.filter(p => {
         // 1. Search Filter (Expanded Scope: Title, Author, Subject, Year, Journal)
         if (term) {
-            const content = `${p.title} ${p.author} ${p.subject} ${p.year} ${p.journal}`;
+            const juKeywords = p.juUrl ? "JU Jain University juni" : "";
+            const content = `${p.title} ${p.author} ${p.subject} ${p.year} ${p.journal} ${juKeywords}`;
 
             if (useRegex) {
                 if (!regex || !regex.test(content)) return false;
@@ -396,13 +413,21 @@ function renderGrid() {
         const cat = SafeCat(paper.category);
         const sub = SafeSub(paper.subject);
 
-        // Primary Link: INSA (Direct)
-        const primaryLink = paper.remoteUrl;
+        // Determine Links based on Mode
+        let primaryLink, backupLink;
+        const isLocalMode = (State.env === 'localhost' || State.env === 'file' || (State.env === 'netlify_dev' && State.devMode === 'local'));
 
-        // Backup Link: GCS / Local (Secure / Fallback)
-        const backupLink = getPdfLink(paper);
+        if (isLocalMode) {
+            // Local Mode: Priortize local copy for "Read", remote for "Archive/Backup"
+            primaryLink = paper.localPath || paper.remoteUrl;
+            backupLink = paper.remoteUrl;
+        } else {
+            // Simulation/Remote: Remote for "Read", GCS for "Archive/Backup"
+            primaryLink = paper.remoteUrl;
+            backupLink = getArchivedLink(paper);
+        }
 
-        const isExternal = true; // Primary is always external now
+        const isExternal = true; 
 
         // Use DIV instead of A to support nested interactive elements (Backup Button)
         const card = document.createElement('div');
@@ -450,9 +475,26 @@ function renderGrid() {
             </a>
         `;
 
+        // High Speed Mirror (JU) if available (and if not already primary/backup)
+        let juBtn = "";
+        if (paper.juUrl && paper.juUrl !== primaryLink && paper.juUrl !== backupLink) {
+            juBtn = `
+                <div class="vr-sep"></div>
+                <a href="${paper.juUrl}" 
+                   class="backup-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   title="High Speed Mirror (JU)"
+                   onclick="event.stopPropagation();">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                </a>
+            `;
+        }
+
+        const juBadge = paper.juUrl ? `<span class="badge ju">JU</span>` : "";
         card.innerHTML = `
             <div class="paper-meta">
-                <span class="paper-year">${yearHtml}</span>
+                <span class="paper-year">${yearHtml}${juBadge}</span>
                 <span class="paper-category">${cat} / ${sub}</span>
             </div>
             <h3 class="paper-title">${titleHtml}</h3>
@@ -464,6 +506,7 @@ function renderGrid() {
                     ${readBtn}
                     <div class="vr-sep"></div>
                     ${backupBtn}
+                    ${juBtn}
                 </div>
             </div>
         `;

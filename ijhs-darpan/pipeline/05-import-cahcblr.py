@@ -2,188 +2,214 @@
 # requires-python = ">=3.11"
 # dependencies = [
 #     "pandas",
-#     "lxml",
 # ]
 # ///
-
 import os
-import pandas as pd
 import re
+import pandas as pd
 import pathlib
+import unicodedata
 
-# Configuration
-PROJECT_ROOT = pathlib.Path(os.path.expanduser("~/projects/cahcblr.github.io"))
-CACHE_DIR = pathlib.Path(__file__).parent.parent / ".cache"
+# Paths
+BASE_DIR = pathlib.Path(__file__).parent.parent
+CACHE_DIR = BASE_DIR / ".cache"
 TSV_PATH = CACHE_DIR / "ijhs.tsv"
+CLASSIFIED_PATH = CACHE_DIR / "ijhs-classified.tsv"
+P60_PATH = pathlib.Path(os.path.expanduser("~/projects/cahcblr.github.io/p60_papers.markdown"))
+P85_PATH = pathlib.Path(os.path.expanduser("~/projects/cahcblr.github.io/p85_search.markdown"))
 
-def parse_markdown_table(filepath):
-    """
-    Rudimentary markdown table parser.
-    Expects table rows starting with | and a header separator |---|
-    """
-    with open(filepath, 'r') as f:
+def normalize_title(title):
+    if not isinstance(title, str): return ""
+    # Remove accents
+    title = "".join(c for c in unicodedata.normalize('NFD', title) if unicodedata.category(c) != 'Mn')
+    # Lowercase and remove all non-alphanumeric
+    title = re.sub(r'[^a-zA-Z0-9]', '', title.lower())
+    return title
+
+def parse_markdown_table(path, start_line_pattern="| # |", skip_rows=1):
+    if not path.exists():
+        print(f"Warning: {path} not found.")
+        return []
+    
+    with open(path, "r", encoding="utf-8") as f:
         lines = f.readlines()
     
-    rows = []
-    header = None
-    started = False
-    
+    table_lines = []
+    found_table = False
     for line in lines:
-        line = line.strip()
-        if not line.startswith('|'):
+        if start_line_pattern in line:
+            found_table = True
             continue
-        
-        # Split and clean parts
-        parts = [p.strip() for p in line.split('|')]
-        # Filter out empty strings from the ends if they exist
-        if parts[0] == '': parts = parts[1:]
-        if parts[-1] == '': parts = parts[:-1]
-
-        # If it's the separator |---|---| ignore it
-        if started and all(re.match(r'^-+$', p) for p in parts if p):
-            continue
-            
-        if not started:
-            header = parts
-            started = True
-            continue
-            
-        # Data row
-        if len(parts) >= len(header):
-            rows.append(parts[:len(header)])
-            
-    return pd.DataFrame(rows, columns=header)
-
-def extract_link(md_link):
-    """Extracts URL and Text from [Title](URL)"""
-    # Handle bolded links often found in p60
-    match = re.search(r'\[\s*\*\*(.*?)\*\*\s*\]\((.*?)\)', md_link)
-    if not match:
-        match = re.search(r'\[(.*?)\]\((.*?)\)', md_link)
+        if found_table:
+            if "|" in line:
+                table_lines.append(line.strip())
+            else:
+                if table_lines: # End of table
+                    break
     
+    if not table_lines:
+        return []
+    
+    actual_rows = table_lines[skip_rows:]
+    data = []
+    for row in actual_rows:
+        cols = [c.strip() for c in row.split("|")][1:-1]
+        data.append(cols)
+    return data
+
+def extract_link_and_title(markdown_val):
+    match = re.search(r'\[\**(.+?)\**\]\((.+?)\)', markdown_val)
     if match:
-        return match.group(1).strip(), match.group(2).strip()
-    return md_link, None
-
-def normalize_url(url):
-    """Normalizes relative assets/ paths to absolute URLs."""
-    if not url: return None
-    if url.startswith('../'):
-        # e.g. ../assets/cached_papers/rni/paper.pdf
-        return "https://cahc.jainuniversity.ac.in/" + url.replace('../', '')
-    return url
-
-def import_p60():
-    p60_path = PROJECT_ROOT / "p60_papers.markdown"
-    if not p60_path.exists():
-        print(f"p60 not found at {p60_path}")
-        return []
-    
-    print(f"Parsing {p60_path}...")
-    df_p60 = parse_markdown_table(p60_path)
-    
-    imported = []
-    for _, row in df_p60.iterrows():
-        title, url = extract_link(row.get('Paper Title', ''))
-        if not url: continue
-
-        entry = {
-            'journal': row.get('Source', 'Non-IJHS'),
-            'paper': title,
-            'author': row.get('Author', ''),
-            'url': normalize_url(url),
-            'year': row.get('Year', '')
-        }
-        imported.append(entry)
-    
-    print(f"Extracted {len(imported)} entries from p60.")
-    return imported
-
-def import_p85():
-    p85_path = PROJECT_ROOT / "p85_search.markdown"
-    if not p85_path.exists():
-        print(f"p85 not found at {p85_path}")
-        return []
-    
-    print(f"Parsing {p85_path}...")
-    df_p85 = parse_markdown_table(p85_path)
-    
-    # Columns: # | Journal | Subject | Category | Paper | Author | Size (KB)
-    imported = []
-    for _, row in df_p85.iterrows():
-        title, url = extract_link(row.get('Paper', ''))
-        if not url: continue
-        
-        journal = row.get('Journal', 'Non-IJHS')
-        # Extract year from Journal if present (e.g. CSIR-1955)
-        year = ''
-        year_match = re.search(r'(\d{4})', journal)
-        if year_match:
-            year = year_match.group(1)
-
-        entry = {
-            'journal': journal,
-            'paper': title,
-            'author': row.get('Author', ''),
-            'url': normalize_url(url),
-            'year': year,
-            'size_in_kb': row.get('Size (KB)', '')
-        }
-        imported.append(entry)
-        
-    print(f"Extracted {len(imported)} entries from p85.")
-    return imported
+        title = match.group(1).strip()
+        url = match.group(2).strip()
+        return title, url
+    return markdown_val, None
 
 def main():
-    if not TSV_PATH.exists():
-        print(f"Error: Master TSV not found at {TSV_PATH}")
+    # 1. Load dataframes
+    dfs = {}
+    for name, path in [('source', TSV_PATH), ('classified', CLASSIFIED_PATH)]:
+        if path.exists():
+            df = pd.read_csv(path, sep='\t')
+            if 'ju_url' not in df.columns:
+                df['ju_url'] = ""
+            df['ju_url'] = df['ju_url'].fillna("")
+            dfs[name] = df
+        else:
+            if name == 'source':
+                dfs[name] = pd.DataFrame(columns=['journal', 'paper', 'author', 'url', 'size_in_kb', 'year', 'ju_url'])
+    
+    if 'source' not in dfs:
+        print("Error: Base ijhs.tsv not found.")
         return
 
-    # Load existing
-    master_df = pd.read_csv(TSV_PATH, sep='\t')
+    # Pre-calculate normalized titles for matching
+    for df in dfs.values():
+        df['_norm_title'] = df['paper'].apply(normalize_title)
+        # Ensure year is string for matching
+        df['year'] = df['year'].fillna("").astype(str).str.split('.').str[0]
+
+    processed_urls = set()
+    new_entries = []
     
-    # Track existing identifiers
-    existing_urls = set(master_df['url'].dropna().tolist())
-    
-    def get_filename(url):
-        if not url: return None
-        return url.split('/')[-1].split('?')[0]
-        
-    existing_filenames = {get_filename(url) for url in existing_urls}
-    
-    # Import from all sources
-    new_items = import_p60() + import_p85()
-    
-    added_count = 0
-    to_append = []
-    
-    for item in new_items:
-        fname = get_filename(item['url'])
-        # Deduplicate by URL or Filename
-        if item['url'] not in existing_urls and fname not in existing_filenames:
-            to_append.append(item)
-            added_count += 1
-            existing_urls.add(item['url'])
-            if fname: existing_filenames.add(fname)
+    # helper to update JU URL in both files
+    def update_ju_url(norm_title, year, ju_url):
+        updated = False
+        for name, df in dfs.items():
+            mask = (df['_norm_title'] == norm_title)
+            if not mask.any(): continue
             
-    if to_append:
-        append_df = pd.DataFrame(to_append)
-        # Ensure all master columns exist in append_df
-        for col in master_df.columns:
-            if col not in append_df.columns:
-                append_df[col] = None
+            # Sub-mask for exact year match
+            year_mask = (df['year'] == str(year))
+            if year and (mask & year_mask).any():
+                final_mask = mask & year_mask
+            elif (mask & (df['year'] == "")).any():
+                # Fallback to empty year
+                final_mask = mask & (df['year'] == "")
+            else:
+                final_mask = mask
+                
+            if final_mask.any():
+                idx = df[final_mask].index[0]
+                if not df.at[idx, 'ju_url']:
+                    df.at[idx, 'ju_url'] = ju_url
+                    updated = True
+        return updated
+
+    # 2. Parse P60 (RNI Papers)
+    print("Parsing P60...")
+    p60_data = parse_markdown_table(P60_PATH, "| # | Year | Category |", skip_rows=1)
+    for row in p60_data:
+        if len(row) < 6: continue
+        year = str(row[1]).strip()
+        raw_title = row[3]
+        author = row[4]
+        source = row[5]
         
-        # Merge
-        final_df = pd.concat([master_df, append_df], ignore_index=True)
+        title, url = extract_link_and_title(raw_title)
+        if not url: continue
         
-        # Clean formatting
-        if 'year' in final_df.columns:
-            final_df['year'] = final_df['year'].astype(str).str.replace(r'\.0$', '', regex=True).replace('nan', '')
+        # Absolute-ize link if relative
+        if url.startswith("../assets/"):
+            url = url.replace("../assets/", "https://cahc.jainuniversity.ac.in/assets/")
+        
+        processed_urls.add(url)
+        norm_t = normalize_title(title)
+        
+        # Check if it's already a primary link in source
+        if url in set(dfs['source']['url']):
+            continue
             
-        final_df.to_csv(TSV_PATH, sep='\t', index=False)
-        print(f"Successfully added {added_count} new entries to {TSV_PATH}")
-    else:
-        print("No new entries to add.")
+        # Try to link as JU mirror
+        if "jainuniversity" in url:
+            if update_ju_url(norm_t, year, url):
+                print(f"Linked JU URL for: {title}")
+                continue
+
+        # If not linked, it's a new paper
+        new_entries.append({
+            'journal': source,
+            'paper': title,
+            'author': author,
+            'url': url,
+            'ju_url': url if "jainuniversity" in url else "",
+            'size_in_kb': 0,
+            'year': year
+        })
+
+    # 3. Parse P85 (Search Table)
+    print("Parsing P85...")
+    p85_data = parse_markdown_table(P85_PATH, "| #    | Journal                 |", skip_rows=1)
+    for row in p85_data:
+        if len(row) < 7: continue
+        journal = row[1]
+        raw_paper = row[4]
+        author = row[5]
+        size = row[6]
+        
+        title, url = extract_link_and_title(raw_paper)
+        if not url: continue
+        
+        if url in processed_urls or url in set(dfs['source']['url']):
+            continue
+            
+        processed_urls.add(url)
+        norm_t = normalize_title(title)
+        year_match = re.search(r'(\d{4})', journal)
+        year = year_match.group(1) if year_match else ""
+
+        # Try to link
+        if "jainuniversity" in url:
+            if update_ju_url(norm_t, year, url):
+                print(f"Linked JU URL for: {title}")
+                continue
+
+        new_entries.append({
+            'journal': journal,
+            'paper': title,
+            'author': author,
+            'url': url,
+            'ju_url': url if "jainuniversity" in url else "",
+            'size_in_kb': size,
+            'year': year
+        })
+
+    # 4. Finalize and Save
+    if new_entries:
+        print(f"Adding {len(new_entries)} new entries.")
+        df_new = pd.DataFrame(new_entries)
+        dfs['source'] = pd.concat([dfs['source'], df_new], ignore_index=True)
+        # Note: classified will be updated by 03-classify incrementally
+        # but we already added 'ju_url' column to it at the start.
+    
+    # Save back (remove helper col)
+    for name, df in dfs.items():
+        if '_norm_title' in df.columns:
+            df.drop(columns=['_norm_title'], inplace=True)
+        
+        path = TSV_PATH if name == 'source' else CLASSIFIED_PATH
+        df.to_csv(path, sep='\t', index=False)
+        print(f"Saved {name} to {path}")
 
 if __name__ == "__main__":
     main()

@@ -7,6 +7,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_1_PRay.pdf",
+    "juUrl": "",
     "size": 272.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_1_PRay.pdf"
   },
@@ -18,6 +19,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_2_JRRavetz.pdf",
+    "juUrl": "",
     "size": 133.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_2_JRRavetz.pdf"
   },
@@ -29,6 +31,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_3_MHoskin.pdf",
+    "juUrl": "",
     "size": 189.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_3_MHoskin.pdf"
   },
@@ -40,6 +43,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_4_DJDSPrice.pdf",
+    "juUrl": "",
     "size": 80.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_4_DJDSPrice.pdf"
   },
@@ -51,6 +55,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_5_SNSen.pdf",
+    "juUrl": "",
     "size": 261.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_5_SNSen.pdf"
   },
@@ -62,6 +67,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_6_VRonchi.pdf",
+    "juUrl": "",
     "size": 275.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_6_VRonchi.pdf"
   },
@@ -73,6 +79,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_7_VSubbarayappa.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_7_VSubbarayappa.pdf"
   },
@@ -84,6 +91,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_8_AKBag.pdf",
+    "juUrl": "",
     "size": 134.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_8_AKBag.pdf"
   },
@@ -95,6 +103,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_1_9_BRensch.pdf",
+    "juUrl": "",
     "size": 147.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_1_9_BRensch.pdf"
   },
@@ -106,6 +115,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_1_WPetri.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_1_WPetri.pdf"
   },
@@ -117,6 +127,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_2_MRoy.pdf",
+    "juUrl": "",
     "size": 171.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_2_MRoy.pdf"
   },
@@ -128,6 +139,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_3_AKBag.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_3_AKBag.pdf"
   },
@@ -139,6 +151,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_4_SPRaychaudhuri.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_4_SPRaychaudhuri.pdf"
   },
@@ -150,6 +163,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_5_SNSen.pdf",
+    "juUrl": "",
     "size": 284.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_5_SNSen.pdf"
   },
@@ -161,6 +175,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_6_MTanaka.pdf",
+    "juUrl": "",
     "size": 245.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_6_MTanaka.pdf"
   },
@@ -172,6 +187,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_7_SAKGhori.pdf",
+    "juUrl": "",
     "size": 314.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_7_SAKGhori.pdf"
   },
@@ -183,6 +199,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_8_RKGupta.pdf",
+    "juUrl": "",
     "size": 239.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_8_RKGupta.pdf"
   },
@@ -194,6 +211,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1966",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol01_2_9_Notes.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol01_2_9_Notes.pdf"
   },
@@ -205,6 +223,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_1_PRay.pdf",
+    "juUrl": "",
     "size": 426.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_1_PRay.pdf"
   },
@@ -216,6 +235,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_2_BVSubbarayappa.pdf",
+    "juUrl": "",
     "size": 286.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_2_BVSubbarayappa.pdf"
   },
@@ -227,6 +247,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_3_MRoy.pdf",
+    "juUrl": "",
     "size": 263.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_3_MRoy.pdf"
   },
@@ -238,6 +259,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_4_BMohan.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_4_BMohan.pdf"
   },
@@ -249,6 +271,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_5_MChowdhury.pdf",
+    "juUrl": "",
     "size": 176.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_5_MChowdhury.pdf"
   },
@@ -260,6 +283,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_1_6_Reviews.pdf",
+    "juUrl": "",
     "size": 207.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_1_6_Reviews.pdf"
   },
@@ -271,6 +295,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_1_VDMarza.pdf",
+    "juUrl": "",
     "size": 841.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_1_VDMarza.pdf"
   },
@@ -282,6 +307,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_2_HIJhala.pdf",
+    "juUrl": "",
     "size": 394.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_2_HIJhala.pdf"
   },
@@ -293,6 +319,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_3_RCGupta.pdf",
+    "juUrl": "",
     "size": 246.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_3_RCGupta.pdf"
   },
@@ -304,6 +331,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_4_Notes.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_4_Notes.pdf"
   },
@@ -315,6 +343,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_5_News.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_5_News.pdf"
   },
@@ -326,6 +355,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1967",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol02_2_6_Review.pdf",
+    "juUrl": "",
     "size": 51.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol02_2_6_Review.pdf"
   },
@@ -337,6 +367,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_1_AKBag.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_1_AKBag.pdf"
   },
@@ -348,6 +379,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_2_KAChowdhury.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_2_KAChowdhury.pdf"
   },
@@ -359,6 +391,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_3_GSDikshit.pdf",
+    "juUrl": "",
     "size": 81.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_3_GSDikshit.pdf"
   },
@@ -370,6 +403,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_4_CGKashikar.pdf",
+    "juUrl": "",
     "size": 245.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_4_CGKashikar.pdf"
   },
@@ -381,6 +415,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_5_TMPMahadevan.pdf",
+    "juUrl": "",
     "size": 306.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_5_TMPMahadevan.pdf"
   },
@@ -392,6 +427,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_6_GCPande.pdf",
+    "juUrl": "",
     "size": 200.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_6_GCPande.pdf"
   },
@@ -403,6 +439,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_7_SGopal.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_7_SGopal.pdf"
   },
@@ -414,6 +451,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_8_TASaraswathi.pdf",
+    "juUrl": "",
     "size": 421.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_8_TASaraswathi.pdf"
   },
@@ -425,6 +463,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_9_AKBag.pdf",
+    "juUrl": "",
     "size": 133.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_9_AKBag.pdf"
   },
@@ -436,6 +475,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_10_RCGupta.pdf",
+    "juUrl": "",
     "size": 233.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_10_RCGupta.pdf"
   },
@@ -447,6 +487,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_11_KSShukla.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_11_KSShukla.pdf"
   },
@@ -458,6 +499,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_12_TSKShastri.pdf",
+    "juUrl": "",
     "size": 482.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_12_TSKShastri.pdf"
   },
@@ -469,6 +511,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_13_TSKShastri.pdf",
+    "juUrl": "",
     "size": 189.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_13_TSKShastri.pdf"
   },
@@ -480,6 +523,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_14_SPBhattacharyya.pdf",
+    "juUrl": "",
     "size": 221.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_14_SPBhattacharyya.pdf"
   },
@@ -491,6 +535,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_15_News.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_15_News.pdf"
   },
@@ -502,6 +547,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1969",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol04_1And2_16_Review.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol04_1And2_16_Review.pdf"
   },
@@ -513,6 +559,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_1_CDwarkanath.pdf",
+    "juUrl": "",
     "size": 325.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_1_CDwarkanath.pdf"
   },
@@ -524,6 +571,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_2_PJDeshpande.pdf",
+    "juUrl": "",
     "size": 525.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_2_PJDeshpande.pdf"
   },
@@ -535,6 +583,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_3_LMSingh.pdf",
+    "juUrl": "",
     "size": 366.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_3_LMSingh.pdf"
   },
@@ -546,6 +595,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_4_DSGaur.pdf",
+    "juUrl": "",
     "size": 422.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_4_DSGaur.pdf"
   },
@@ -557,6 +607,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_5_JMitra.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_5_JMitra.pdf"
   },
@@ -568,6 +619,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_6_SGurumurthy.pdf",
+    "juUrl": "",
     "size": 97.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_6_SGurumurthy.pdf"
   },
@@ -579,6 +631,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_7_RSSMurthy.pdf",
+    "juUrl": "",
     "size": 116.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_7_RSSMurthy.pdf"
   },
@@ -590,6 +643,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_8_PRay.pdf",
+    "juUrl": "",
     "size": 289.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_8_PRay.pdf"
   },
@@ -601,6 +655,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_9_BBMishra.pdf",
+    "juUrl": "",
     "size": 219.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_9_BBMishra.pdf"
   },
@@ -612,6 +667,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_10_RCChakravorty.pdf",
+    "juUrl": "",
     "size": 109.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_10_RCChakravorty.pdf"
   },
@@ -623,6 +679,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_11_RNKapil.pdf",
+    "juUrl": "",
     "size": 463.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_11_RNKapil.pdf"
   },
@@ -634,6 +691,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_12_KAChowdhury.pdf",
+    "juUrl": "",
     "size": 53.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_12_KAChowdhury.pdf"
   },
@@ -645,6 +703,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_13_VMittre.pdf",
+    "juUrl": "",
     "size": 352.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_13_VMittre.pdf"
   },
@@ -656,6 +715,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_14_MRoy.pdf",
+    "juUrl": "",
     "size": 351.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_14_MRoy.pdf"
   },
@@ -667,6 +727,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_15_SPRaychaudhuri.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_15_SPRaychaudhuri.pdf"
   },
@@ -678,6 +739,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_1_16_MSShukla.pdf",
+    "juUrl": "",
     "size": 83.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_1_16_MSShukla.pdf"
   },
@@ -689,6 +751,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_1_JCSikdar.pdf",
+    "juUrl": "",
     "size": 488.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_1_JCSikdar.pdf"
   },
@@ -700,6 +763,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_2_GNChakravarthy.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_2_GNChakravarthy.pdf"
   },
@@ -711,6 +775,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_3_HCBhardwaj.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_3_HCBhardwaj.pdf"
   },
@@ -722,6 +787,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_4_DPAgrawal.pdf",
+    "juUrl": "",
     "size": 236.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_4_DPAgrawal.pdf"
   },
@@ -733,6 +799,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_5_BKGRao.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_5_BKGRao.pdf"
   },
@@ -744,6 +811,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_6_MChoudhury.pdf",
+    "juUrl": "",
     "size": 230.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_6_MChoudhury.pdf"
   },
@@ -755,6 +823,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_7_VGovind.pdf",
+    "juUrl": "",
     "size": 521.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_7_VGovind.pdf"
   },
@@ -766,6 +835,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_8_TVMahalingam.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_8_TVMahalingam.pdf"
   },
@@ -777,6 +847,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_9_TMSrinivasan.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_9_TMSrinivasan.pdf"
   },
@@ -788,6 +859,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_10_JFilliozat.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_10_JFilliozat.pdf"
   },
@@ -799,6 +871,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_11_SNSen.pdf",
+    "juUrl": "",
     "size": 358.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_11_SNSen.pdf"
   },
@@ -810,6 +883,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_12_RLVerma.pdf",
+    "juUrl": "",
     "size": 402.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_12_RLVerma.pdf"
   },
@@ -821,6 +895,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_13_PVSharma.pdf",
+    "juUrl": "",
     "size": 154.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_13_PVSharma.pdf"
   },
@@ -832,6 +907,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_14_HCShukla.pdf",
+    "juUrl": "",
     "size": 160.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_14_HCShukla.pdf"
   },
@@ -843,6 +919,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1970",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol05_2_15_TMSrinivasan.pdf",
+    "juUrl": "",
     "size": 161.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol05_2_15_TMSrinivasan.pdf"
   },
@@ -854,6 +931,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_1_MNDeshpande.pdf",
+    "juUrl": "",
     "size": 433.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_1_MNDeshpande.pdf"
   },
@@ -865,6 +943,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_2_RSengupta.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_2_RSengupta.pdf"
   },
@@ -876,6 +955,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vo0l6_1_3_RNRai.pdf",
+    "juUrl": "",
     "size": 177.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vo0l6_1_3_RNRai.pdf"
   },
@@ -887,6 +967,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_4_NKPanikkar.pdf",
+    "juUrl": "",
     "size": 335.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_4_NKPanikkar.pdf"
   },
@@ -898,6 +979,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_5_RCGupta.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_5_RCGupta.pdf"
   },
@@ -909,6 +991,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_6_AVCarozzi.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_6_AVCarozzi.pdf"
   },
@@ -920,6 +1003,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_7_PVSharma.pdf",
+    "juUrl": "",
     "size": 172.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_7_PVSharma.pdf"
   },
@@ -931,6 +1015,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_8_VMukherji.pdf",
+    "juUrl": "",
     "size": 521.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_8_VMukherji.pdf"
   },
@@ -942,6 +1027,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_9_BMChintamani.pdf",
+    "juUrl": "",
     "size": 195.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_9_BMChintamani.pdf"
   },
@@ -953,6 +1039,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_1_10_BookReviews.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_1_10_BookReviews.pdf"
   },
@@ -964,6 +1051,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_1_VMukherji.pdf",
+    "juUrl": "",
     "size": 354.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_1_VMukherji.pdf"
   },
@@ -975,6 +1063,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_2_RNRai.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_2_RNRai.pdf"
   },
@@ -986,6 +1075,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_3_EGKRao.pdf",
+    "juUrl": "",
     "size": 165.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_3_EGKRao.pdf"
   },
@@ -997,6 +1087,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_4_RNRai.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_4_RNRai.pdf"
   },
@@ -1008,6 +1099,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_5_GPSharma.pdf",
+    "juUrl": "",
     "size": 278.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_5_GPSharma.pdf"
   },
@@ -1019,6 +1111,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1971",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol06_2_6_BMChintamani.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol06_2_6_BMChintamani.pdf"
   },
@@ -1030,6 +1123,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_1_RNRai.pdf",
+    "juUrl": "",
     "size": 252.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_1_RNRai.pdf"
   },
@@ -1041,6 +1135,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_2_NKPanikkar.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_2_NKPanikkar.pdf"
   },
@@ -1052,6 +1147,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_3_RNRai.pdf",
+    "juUrl": "",
     "size": 311.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_3_RNRai.pdf"
   },
@@ -1063,6 +1159,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_4_ALSharma.pdf",
+    "juUrl": "",
     "size": 134.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_4_ALSharma.pdf"
   },
@@ -1074,6 +1171,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_5_SNSen.pdf",
+    "juUrl": "",
     "size": 531.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_5_SNSen.pdf"
   },
@@ -1085,6 +1183,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_6_Notes_AKBag.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_6_Notes_AKBag.pdf"
   },
@@ -1096,6 +1195,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_7_News.pdf",
+    "juUrl": "",
     "size": 62.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_7_News.pdf"
   },
@@ -1107,6 +1207,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_1_8_BookReview.pdf",
+    "juUrl": "",
     "size": 37.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_1_8_BookReview.pdf"
   },
@@ -1118,6 +1219,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_1_RCGupta.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_1_RCGupta.pdf"
   },
@@ -1129,6 +1231,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_2_PVSharma.pdf",
+    "juUrl": "",
     "size": 237.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_2_PVSharma.pdf"
   },
@@ -1140,6 +1243,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_3_TKBiswas.pdf",
+    "juUrl": "",
     "size": 372.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_3_TKBiswas.pdf"
   },
@@ -1151,6 +1255,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_4_SDSharma.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_4_SDSharma.pdf"
   },
@@ -1162,6 +1267,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_5_VVRaman.pdf",
+    "juUrl": "",
     "size": 600.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_5_VVRaman.pdf"
   },
@@ -1173,6 +1279,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_6_Notes_VMukherjee.pdf",
+    "juUrl": "",
     "size": 165.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_6_Notes_VMukherjee.pdf"
   },
@@ -1184,6 +1291,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_7_BookReviews.pdf",
+    "juUrl": "",
     "size": 46.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_7_BookReviews.pdf"
   },
@@ -1195,6 +1303,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1972",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol07_2_8_News.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol07_2_8_News.pdf"
   },
@@ -1206,6 +1315,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_1_LCJain.pdf",
+    "juUrl": "",
     "size": 570.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_1_LCJain.pdf"
   },
@@ -1217,6 +1327,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_2_KDSwaminathan.pdf",
+    "juUrl": "",
     "size": 185.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_2_KDSwaminathan.pdf"
   },
@@ -1228,6 +1339,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_3_JNSharma.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_3_JNSharma.pdf"
   },
@@ -1239,6 +1351,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_4_KSShukla.pdf",
+    "juUrl": "",
     "size": 316.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_4_KSShukla.pdf"
   },
@@ -1250,6 +1363,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_5_KKTiwari.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_5_KKTiwari.pdf"
   },
@@ -1261,6 +1375,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_6_BGLSwamy.pdf",
+    "juUrl": "",
     "size": 769.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_6_BGLSwamy.pdf"
   },
@@ -1272,6 +1387,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_7_KRAlur.pdf",
+    "juUrl": "",
     "size": 577.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_7_KRAlur.pdf"
   },
@@ -1283,6 +1399,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1973",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol08_1and2_8_BookReviews.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol08_1and2_8_BookReviews.pdf"
   },
@@ -1294,6 +1411,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_6_TSKuppannasastry.pdf",
+    "juUrl": "",
     "size": 261.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_6_TSKuppannasastry.pdf"
   },
@@ -1305,6 +1423,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_1_EKKharadze.pdf",
+    "juUrl": "",
     "size": 110.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_1_EKKharadze.pdf"
   },
@@ -1316,6 +1435,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_2_JSmak.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_2_JSmak.pdf"
   },
@@ -1327,6 +1447,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_3_ATrautman.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_3_ATrautman.pdf"
   },
@@ -1338,6 +1459,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_4_SCJoshi.pdf",
+    "juUrl": "",
     "size": 172.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_4_SCJoshi.pdf"
   },
@@ -1349,6 +1471,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_5_SKGhosh.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_5_SKGhosh.pdf"
   },
@@ -1360,6 +1483,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_7_RNRai.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_7_RNRai.pdf"
   },
@@ -1371,6 +1495,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_8_BChatterjee.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_8_BChatterjee.pdf"
   },
@@ -1382,6 +1507,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_9_CGPendse.pdf",
+    "juUrl": "",
     "size": 403.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_9_CGPendse.pdf"
   },
@@ -1393,6 +1519,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_11_DGDhavale.pdf",
+    "juUrl": "",
     "size": 53.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_11_DGDhavale.pdf"
   },
@@ -1404,6 +1531,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_13_RCGupta.pdf",
+    "juUrl": "",
     "size": 200.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_13_RCGupta.pdf"
   },
@@ -1415,6 +1543,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_14_GSundaramurthy.pdf",
+    "juUrl": "",
     "size": 130.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_14_GSundaramurthy.pdf"
   },
@@ -1426,6 +1555,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_15_SNSen.pdf",
+    "juUrl": "",
     "size": 291.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_15_SNSen.pdf"
   },
@@ -1437,6 +1567,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_16_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_16_SMRAnsari.pdf"
   },
@@ -1448,6 +1579,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_17_MCPande.pdf",
+    "juUrl": "",
     "size": 295.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_17_MCPande.pdf"
   },
@@ -1459,6 +1591,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_18_DRKaprekar.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_18_DRKaprekar.pdf"
   },
@@ -1470,6 +1603,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_1_19_Discussions.pdf",
+    "juUrl": "",
     "size": 88.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_1_19_Discussions.pdf"
   },
@@ -1481,6 +1615,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_1_RCGupta.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_1_RCGupta.pdf"
   },
@@ -1492,6 +1627,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_2_JVNarlikar.pdf",
+    "juUrl": "",
     "size": 143.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_2_JVNarlikar.pdf"
   },
@@ -1503,6 +1639,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_3_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_3_RPKulkarni.pdf"
   },
@@ -1514,6 +1651,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 344.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_4_RCGupta.pdf"
   },
@@ -1525,6 +1663,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_5_AKMishra.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_5_AKMishra.pdf"
   },
@@ -1536,6 +1675,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_6_VDMarza.pdf",
+    "juUrl": "",
     "size": 1009.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_6_VDMarza.pdf"
   },
@@ -1547,6 +1687,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_7_MNChannabasappa.pdf",
+    "juUrl": "",
     "size": 80.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_7_MNChannabasappa.pdf"
   },
@@ -1558,6 +1699,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1974",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol09_2_8_Reviews.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol09_2_8_Reviews.pdf"
   },
@@ -1569,6 +1711,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_1_PVSharma.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_1_PVSharma.pdf"
   },
@@ -1580,6 +1723,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_2_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 214.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_2_RPKulkarni.pdf"
   },
@@ -1591,6 +1735,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_3_VVRaman.pdf",
+    "juUrl": "",
     "size": 573.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_3_VVRaman.pdf"
   },
@@ -1602,6 +1747,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 357.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_4_RCGupta.pdf"
   },
@@ -1613,6 +1759,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_5_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_5_SMRAnsari.pdf"
   },
@@ -1624,6 +1771,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_6_Announcement.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_6_Announcement.pdf"
   },
@@ -1635,6 +1783,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_1_7_BookReviews.pdf",
+    "juUrl": "",
     "size": 741.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_1_7_BookReviews.pdf"
   },
@@ -1646,6 +1795,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_1_WelcomeSpeech_AGJhingran.pdf",
+    "juUrl": "",
     "size": 31.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_1_WelcomeSpeech_AGJhingran.pdf"
   },
@@ -1657,6 +1807,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_2_IntroductoryRemarks_FCAuluck.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_2_IntroductoryRemarks_FCAuluck.pdf"
   },
@@ -1668,6 +1819,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_3_InauguralSpeech_BRSeshachar.pdf",
+    "juUrl": "",
     "size": 58.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_3_InauguralSpeech_BRSeshachar.pdf"
   },
@@ -1679,6 +1831,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_4_MAhmad.pdf",
+    "juUrl": "",
     "size": 242.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_4_MAhmad.pdf"
   },
@@ -1690,6 +1843,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_5_AMShastri.pdf",
+    "juUrl": "",
     "size": 553.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_5_AMShastri.pdf"
   },
@@ -1701,6 +1855,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_6_Ghayasuddin.pdf",
+    "juUrl": "",
     "size": 559.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_6_Ghayasuddin.pdf"
   },
@@ -1712,6 +1867,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_7_BKNayar.pdf",
+    "juUrl": "",
     "size": 110.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_7_BKNayar.pdf"
   },
@@ -1723,6 +1879,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_8_SessionIDiscussion.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_8_SessionIDiscussion.pdf"
   },
@@ -1734,6 +1891,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_9_BChatterjee.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_9_BChatterjee.pdf"
   },
@@ -1745,6 +1903,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_10_RNRai.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_10_RNRai.pdf"
   },
@@ -1756,6 +1915,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_11_AKBag.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_11_AKBag.pdf"
   },
@@ -1767,6 +1927,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_12_SNSen.pdf",
+    "juUrl": "",
     "size": 253.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_12_SNSen.pdf"
   },
@@ -1778,6 +1939,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_13_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_13_SMRAnsari.pdf"
   },
@@ -1789,6 +1951,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_14_SRoy.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_14_SRoy.pdf"
   },
@@ -1800,6 +1963,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_15_VBMainkar.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_15_VBMainkar.pdf"
   },
@@ -1811,6 +1975,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_16_SMZAlavi.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_16_SMZAlavi.pdf"
   },
@@ -1822,6 +1987,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_17_NKPanikkar.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_17_NKPanikkar.pdf"
   },
@@ -1833,6 +1999,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_18_SessionIIDiscussion.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_18_SessionIIDiscussion.pdf"
   },
@@ -1844,6 +2011,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_19_SMAhmad.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_19_SMAhmad.pdf"
   },
@@ -1855,6 +2023,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_20_BKNayar.pdf",
+    "juUrl": "",
     "size": 67.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_20_BKNayar.pdf"
   },
@@ -1866,6 +2035,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_21_SessionIIIDiscussion.pdf",
+    "juUrl": "",
     "size": 14.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_21_SessionIIIDiscussion.pdf"
   },
@@ -1877,6 +2047,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_22_MSAsimov.pdf",
+    "juUrl": "",
     "size": 56.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_22_MSAsimov.pdf"
   },
@@ -1888,6 +2059,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_23_AHHabibi.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_23_AHHabibi.pdf"
   },
@@ -1899,6 +2071,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_24_BKNayar.pdf",
+    "juUrl": "",
     "size": 172.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_24_BKNayar.pdf"
   },
@@ -1910,6 +2083,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_25_MRBhat.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_25_MRBhat.pdf"
   },
@@ -1921,6 +2095,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1975",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol10_2_26_SessionIVDiscussion.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol10_2_26_SessionIVDiscussion.pdf"
   },
@@ -1932,6 +2107,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_1_RCGupta.pdf",
+    "juUrl": "",
     "size": 159.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_1_RCGupta.pdf"
   },
@@ -1943,6 +2119,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_2_BGLSwamy.pdf",
+    "juUrl": "",
     "size": 450.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_2_BGLSwamy.pdf"
   },
@@ -1954,6 +2131,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_3_BGLSwamy.pdf",
+    "juUrl": "",
     "size": 325.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_3_BGLSwamy.pdf"
   },
@@ -1965,6 +2143,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_4_RNRai.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_4_RNRai.pdf"
   },
@@ -1976,6 +2155,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_5_AKBag.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_5_AKBag.pdf"
   },
@@ -1987,6 +2167,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_6_LCJain.pdf",
+    "juUrl": "",
     "size": 362.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_6_LCJain.pdf"
   },
@@ -1998,6 +2179,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_1_7_RHSingh.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_1_7_RHSingh.pdf"
   },
@@ -2009,6 +2191,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_1_LCJain.pdf",
+    "juUrl": "",
     "size": 481.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_1_LCJain.pdf"
   },
@@ -2020,6 +2203,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_2_MNChannabasappa.pdf",
+    "juUrl": "",
     "size": 267.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_2_MNChannabasappa.pdf"
   },
@@ -2031,6 +2215,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_3_RMitra.pdf",
+    "juUrl": "",
     "size": 179.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_3_RMitra.pdf"
   },
@@ -2042,6 +2227,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_4_DPAgarwal.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_4_DPAgarwal.pdf"
   },
@@ -2053,6 +2239,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_5_MChaudhuri.pdf",
+    "juUrl": "",
     "size": 236.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_5_MChaudhuri.pdf"
   },
@@ -2064,6 +2251,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1976",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol11_2_6_TMSrinivasan.pdf",
+    "juUrl": "",
     "size": 254.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol11_2_6_TMSrinivasan.pdf"
   },
@@ -2075,6 +2263,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_1_PKMajumdar.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_1_PKMajumdar.pdf"
   },
@@ -2086,6 +2275,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_2_PKMajumdar.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_2_PKMajumdar.pdf"
   },
@@ -2097,6 +2287,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_3_PKMajumdar.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_3_PKMajumdar.pdf"
   },
@@ -2108,6 +2299,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_4_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_4_SRNMurthy.pdf"
   },
@@ -2119,6 +2311,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_5_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_5_HGershenowitz.pdf"
   },
@@ -2130,6 +2323,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_6_PKSrivastava.pdf",
+    "juUrl": "",
     "size": 77.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_6_PKSrivastava.pdf"
   },
@@ -2141,6 +2335,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_7_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_7_RPKulkarni.pdf"
   },
@@ -2152,6 +2347,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_8_LCJain.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_8_LCJain.pdf"
   },
@@ -2163,6 +2359,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_9_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_9_SMahdihassan.pdf"
   },
@@ -2174,6 +2371,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_10_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_10_HGershenowitz.pdf"
   },
@@ -2185,6 +2383,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_11_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_11_SMRAnsari.pdf"
   },
@@ -2196,6 +2395,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_1_12_BookReviews.pdf",
+    "juUrl": "",
     "size": 80.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_1_12_BookReviews.pdf"
   },
@@ -2207,6 +2407,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_1_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_1_SRNMurthy.pdf"
   },
@@ -2218,6 +2419,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_2_MRoy.pdf",
+    "juUrl": "",
     "size": 542.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_2_MRoy.pdf"
   },
@@ -2229,6 +2431,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_3_KNPrasad.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_3_KNPrasad.pdf"
   },
@@ -2240,6 +2443,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_4_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_4_RPKulkarni.pdf"
   },
@@ -2251,6 +2455,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_5_RCGupta.pdf",
+    "juUrl": "",
     "size": 371.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_5_RCGupta.pdf"
   },
@@ -2262,6 +2467,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_6_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_6_HGershenowitz.pdf"
   },
@@ -2273,6 +2479,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_7_TSKShastri.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_7_TSKShastri.pdf"
   },
@@ -2284,6 +2491,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1978",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol13_2_8_BookReviews.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol13_2_8_BookReviews.pdf"
   },
@@ -2295,6 +2503,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_1_SSLishk.pdf",
+    "juUrl": "",
     "size": 282.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_1_SSLishk.pdf"
   },
@@ -2306,6 +2515,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_2_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_2_HGershenowitz.pdf"
   },
@@ -2317,6 +2527,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_3_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_3_HGershenowitz.pdf"
   },
@@ -2328,6 +2539,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_4_LCJain.pdf",
+    "juUrl": "",
     "size": 575.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_4_LCJain.pdf"
   },
@@ -2339,6 +2551,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_5_RCGupta.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_5_RCGupta.pdf"
   },
@@ -2350,6 +2563,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_6_BookReviews.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_6_BookReviews.pdf"
   },
@@ -2361,6 +2575,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_1_7_News.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_1_7_News.pdf"
   },
@@ -2372,6 +2587,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_1_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 73.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_1_SRNMurthy.pdf"
   },
@@ -2383,6 +2599,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_2_VMukherji.pdf",
+    "juUrl": "",
     "size": 423.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_2_VMukherji.pdf"
   },
@@ -2394,6 +2611,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_3_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 202.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_3_HGershenowitz.pdf"
   },
@@ -2405,6 +2623,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_4_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_4_HGershenowitz.pdf"
   },
@@ -2416,6 +2635,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_5_JCSikdar.pdf",
+    "juUrl": "",
     "size": 243.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_5_JCSikdar.pdf"
   },
@@ -2427,6 +2647,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_6_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_6_SRNMurthy.pdf"
   },
@@ -2438,6 +2659,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_7_RSSingh.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_7_RSSingh.pdf"
   },
@@ -2449,6 +2671,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_8_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_8_SRNMurthy.pdf"
   },
@@ -2460,6 +2683,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_9_TSKSastry.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_9_TSKSastry.pdf"
   },
@@ -2471,6 +2695,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_10_SSKamavisdar.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_10_SSKamavisdar.pdf"
   },
@@ -2482,6 +2707,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_11_BookReviews.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_11_BookReviews.pdf"
   },
@@ -2493,6 +2719,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1979",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol14_2_12_News.pdf",
+    "juUrl": "",
     "size": 42.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol14_2_12_News.pdf"
   },
@@ -2504,6 +2731,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_4_SBagchi.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_4_SBagchi.pdf"
   },
@@ -2515,6 +2743,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_6_RCGupta.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_6_RCGupta.pdf"
   },
@@ -2526,6 +2755,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_8_HKNaqvi.pdf",
+    "juUrl": "",
     "size": 285.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_8_HKNaqvi.pdf"
   },
@@ -2537,6 +2767,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_9_RLVerma.pdf",
+    "juUrl": "",
     "size": 218.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_9_RLVerma.pdf"
   },
@@ -2548,6 +2779,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_10_AKBag.pdf",
+    "juUrl": "",
     "size": 325.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_10_AKBag.pdf"
   },
@@ -2559,6 +2791,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_11_KBehari.pdf",
+    "juUrl": "",
     "size": 222.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_11_KBehari.pdf"
   },
@@ -2570,6 +2803,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_12_DKumar.pdf",
+    "juUrl": "",
     "size": 189.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_12_DKumar.pdf"
   },
@@ -2581,6 +2815,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_1_INVerma.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_1_INVerma.pdf"
   },
@@ -2592,6 +2827,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_2_JCSikdar.pdf",
+    "juUrl": "",
     "size": 254.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_2_JCSikdar.pdf"
   },
@@ -2603,6 +2839,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_3_TSiddiqi.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_3_TSiddiqi.pdf"
   },
@@ -2614,6 +2851,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_5_SPSangar.pdf",
+    "juUrl": "",
     "size": 250.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_5_SPSangar.pdf"
   },
@@ -2625,6 +2863,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_7_SAKGhori.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_7_SAKGhori.pdf"
   },
@@ -2636,6 +2875,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_1_13_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_1_13_HGershenowitz.pdf"
   },
@@ -2647,6 +2887,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_4_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_4_HGershenowitz.pdf"
   },
@@ -2658,6 +2899,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_5_SSKamavisdar.pdf",
+    "juUrl": "",
     "size": 306.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_5_SSKamavisdar.pdf"
   },
@@ -2669,6 +2911,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_6_SMahadihassan.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_6_SMahadihassan.pdf"
   },
@@ -2680,6 +2923,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_1_KSShukla.pdf",
+    "juUrl": "",
     "size": 1304.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_1_KSShukla.pdf"
   },
@@ -2691,6 +2935,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_2_SRNMurthy.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_2_SRNMurthy.pdf"
   },
@@ -2702,6 +2947,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1980",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol15_2_3_SSLishk.pdf",
+    "juUrl": "",
     "size": 267.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol15_2_3_SSLishk.pdf"
   },
@@ -2713,6 +2959,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_2_KKThakral.pdf",
+    "juUrl": "",
     "size": 97.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_2_KKThakral.pdf"
   },
@@ -2724,6 +2971,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_4_TSiddiqi.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_4_TSiddiqi.pdf"
   },
@@ -2735,6 +2983,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_6_GNChaturvedi.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_6_GNChaturvedi.pdf"
   },
@@ -2746,6 +2995,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_7_SKMishra.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_7_SKMishra.pdf"
   },
@@ -2757,6 +3007,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_8_RSSingh.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_8_RSSingh.pdf"
   },
@@ -2768,6 +3019,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_11_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 278.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_11_SMahdihassan.pdf"
   },
@@ -2779,6 +3031,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_12_NPRai.pdf",
+    "juUrl": "",
     "size": 246.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_12_NPRai.pdf"
   },
@@ -2790,6 +3043,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_15_AKBose.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_15_AKBose.pdf"
   },
@@ -2801,6 +3055,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_16_CBDube.pdf",
+    "juUrl": "",
     "size": 67.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_16_CBDube.pdf"
   },
@@ -2812,6 +3067,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol_16_1_0_Address.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol_16_1_0_Address.pdf"
   },
@@ -2823,6 +3079,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_1_PVSharma.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_1_PVSharma.pdf"
   },
@@ -2834,6 +3091,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_3_RNSingh.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_3_RNSingh.pdf"
   },
@@ -2845,6 +3103,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_5_TSiddiqi.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_5_TSiddiqi.pdf"
   },
@@ -2856,6 +3115,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_9_MSKhan.pdf",
+    "juUrl": "",
     "size": 223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_9_MSKhan.pdf"
   },
@@ -2867,6 +3127,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_10_ABKhan.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_10_ABKhan.pdf"
   },
@@ -2878,6 +3139,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_13_BNSingh.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_13_BNSingh.pdf"
   },
@@ -2889,6 +3151,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_1_14_AHIsraili.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_1_14_AHIsraili.pdf"
   },
@@ -2900,6 +3163,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_4_AJKhan.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_4_AJKhan.pdf"
   },
@@ -2911,6 +3175,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_6_JLSanchez.pdf",
+    "juUrl": "",
     "size": 244.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_6_JLSanchez.pdf"
   },
@@ -2922,6 +3187,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_9_KTMHegde.pdf",
+    "juUrl": "",
     "size": 301.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_9_KTMHegde.pdf"
   },
@@ -2933,6 +3199,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_10_SPSangar.pdf",
+    "juUrl": "",
     "size": 254.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_10_SPSangar.pdf"
   },
@@ -2944,6 +3211,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_11_GAbraham.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_11_GAbraham.pdf"
   },
@@ -2955,6 +3223,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_12_RSSingh.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_12_RSSingh.pdf"
   },
@@ -2966,6 +3235,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_1_PKMajumdar.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_1_PKMajumdar.pdf"
   },
@@ -2977,6 +3247,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_2_SDSharma.pdf",
+    "juUrl": "",
     "size": 221.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_2_SDSharma.pdf"
   },
@@ -2988,6 +3259,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_3_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_3_HGershenowitz.pdf"
   },
@@ -2999,6 +3271,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_5_NKGarg.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_5_NKGarg.pdf"
   },
@@ -3010,6 +3283,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_7_RMitra.pdf",
+    "juUrl": "",
     "size": 277.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_7_RMitra.pdf"
   },
@@ -3021,6 +3295,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_8_DGThatte.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_8_DGThatte.pdf"
   },
@@ -3032,6 +3307,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1981",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol16_2_13_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 154.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol16_2_13_SMahdihassan.pdf"
   },
@@ -3043,6 +3319,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_2_RDRoy.pdf",
+    "juUrl": "",
     "size": 197.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_2_RDRoy.pdf"
   },
@@ -3054,6 +3331,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_4_MJMehta.pdf",
+    "juUrl": "",
     "size": 361.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_4_MJMehta.pdf"
   },
@@ -3065,6 +3343,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_7_AKBag.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_7_AKBag.pdf"
   },
@@ -3076,6 +3355,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_12_KSMurty.pdf",
+    "juUrl": "",
     "size": 282.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_12_KSMurty.pdf"
   },
@@ -3087,6 +3367,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_13_BookReviews.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_13_BookReviews.pdf"
   },
@@ -3098,6 +3379,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_14_News.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_14_News.pdf"
   },
@@ -3109,6 +3391,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_1_SNSen.pdf",
+    "juUrl": "",
     "size": 315.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_1_SNSen.pdf"
   },
@@ -3120,6 +3403,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_3_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 274.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_3_RPKulkarni.pdf"
   },
@@ -3131,6 +3415,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_5_HKNaqvi.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_5_HKNaqvi.pdf"
   },
@@ -3142,6 +3427,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_6_HCBhardwaj.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_6_HCBhardwaj.pdf"
   },
@@ -3153,6 +3439,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_8_EGKRao.pdf",
+    "juUrl": "",
     "size": 433.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_8_EGKRao.pdf"
   },
@@ -3164,6 +3451,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_10_JCSikdar.pdf",
+    "juUrl": "",
     "size": 493.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_10_JCSikdar.pdf"
   },
@@ -3175,6 +3463,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_1_11_NGangadharan.pdf",
+    "juUrl": "",
     "size": 198.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_1_11_NGangadharan.pdf"
   },
@@ -3186,6 +3475,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_1_SSingh.pdf",
+    "juUrl": "",
     "size": 283.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_1_SSingh.pdf"
   },
@@ -3197,6 +3487,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_3_HCBhardwaj.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_3_HCBhardwaj.pdf"
   },
@@ -3208,6 +3499,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_5_MLSharma.pdf",
+    "juUrl": "",
     "size": 150.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_5_MLSharma.pdf"
   },
@@ -3219,6 +3511,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_10_DKumar.pdf",
+    "juUrl": "",
     "size": 212.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_10_DKumar.pdf"
   },
@@ -3230,6 +3523,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_11_SKhatun.pdf",
+    "juUrl": "",
     "size": 198.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_11_SKhatun.pdf"
   },
@@ -3241,6 +3535,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_13_AKBasu.pdf",
+    "juUrl": "",
     "size": 139.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_13_AKBasu.pdf"
   },
@@ -3252,6 +3547,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_15_VNSharma.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_15_VNSharma.pdf"
   },
@@ -3263,6 +3559,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_16_KMMatthew.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_16_KMMatthew.pdf"
   },
@@ -3274,6 +3571,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_18_DPJha.pdf",
+    "juUrl": "",
     "size": 242.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_18_DPJha.pdf"
   },
@@ -3285,6 +3583,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_19_BookReviews.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_19_BookReviews.pdf"
   },
@@ -3296,6 +3595,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_20_Announcement.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_20_Announcement.pdf"
   },
@@ -3307,6 +3607,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_2_RDSingh.pdf",
+    "juUrl": "",
     "size": 476.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_2_RDSingh.pdf"
   },
@@ -3318,6 +3619,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_4_EGForbes.pdf",
+    "juUrl": "",
     "size": 224.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_4_EGForbes.pdf"
   },
@@ -3329,6 +3631,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_6_AKMehra.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_6_AKMehra.pdf"
   },
@@ -3340,6 +3643,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_7_MNMadhyastha.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_7_MNMadhyastha.pdf"
   },
@@ -3351,6 +3655,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_8_KNobuo.pdf",
+    "juUrl": "",
     "size": 185.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_8_KNobuo.pdf"
   },
@@ -3362,6 +3667,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_9_JTBlackmore.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_9_JTBlackmore.pdf"
   },
@@ -3373,6 +3679,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_12_GSingh.pdf",
+    "juUrl": "",
     "size": 225.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_12_GSingh.pdf"
   },
@@ -3384,6 +3691,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_14_VNSharma.pdf",
+    "juUrl": "",
     "size": 228.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_14_VNSharma.pdf"
   },
@@ -3395,6 +3703,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1982",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol17_2_17_PKBhattacharyya.pdf",
+    "juUrl": "",
     "size": 364.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol17_2_17_PKBhattacharyya.pdf"
   },
@@ -3406,6 +3715,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_1_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 179.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_1_HGershenowitz.pdf"
   },
@@ -3417,6 +3727,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_3_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_3_HGershenowitz.pdf"
   },
@@ -3428,6 +3739,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_5_BDatta.pdf",
+    "juUrl": "",
     "size": 1010.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_5_BDatta.pdf"
   },
@@ -3439,6 +3751,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_7_HKNaqvi.pdf",
+    "juUrl": "",
     "size": 284.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_7_HKNaqvi.pdf"
   },
@@ -3450,6 +3763,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_8_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_8_SMahdihassan.pdf"
   },
@@ -3461,6 +3775,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_9_Bookreview.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_9_Bookreview.pdf"
   },
@@ -3472,6 +3787,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_2_VKJoshi.pdf",
+    "juUrl": "",
     "size": 116.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_2_VKJoshi.pdf"
   },
@@ -3483,6 +3799,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 306.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_4_RCGupta.pdf"
   },
@@ -3494,6 +3811,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_1_6_PRamakrishnan.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_1_6_PRamakrishnan.pdf"
   },
@@ -3505,6 +3823,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_3_RSSingh.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_3_RSSingh.pdf"
   },
@@ -3516,6 +3835,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_4_ANSingh.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_4_ANSingh.pdf"
   },
@@ -3527,6 +3847,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_7_PKMajumdar.pdf",
+    "juUrl": "",
     "size": 88.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_7_PKMajumdar.pdf"
   },
@@ -3538,6 +3859,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 120.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_9_BookReviews.pdf"
   },
@@ -3549,6 +3871,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_1_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 367.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_1_HGershenowitz.pdf"
   },
@@ -3560,6 +3883,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_2_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 250.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_2_HGershenowitz.pdf"
   },
@@ -3571,6 +3895,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_5_NCShekar.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_5_NCShekar.pdf"
   },
@@ -3582,6 +3907,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_6_VSKirsanov.pdf",
+    "juUrl": "",
     "size": 329.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_6_VSKirsanov.pdf"
   },
@@ -3593,6 +3919,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1983",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol18_2_8_MChaudhuri.pdf",
+    "juUrl": "",
     "size": 344.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol18_2_8_MChaudhuri.pdf"
   },
@@ -3604,6 +3931,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_3_SAParamhans.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_3_SAParamhans.pdf"
   },
@@ -3615,6 +3943,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_4_NBhatla.pdf",
+    "juUrl": "",
     "size": 102.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_4_NBhatla.pdf"
   },
@@ -3626,6 +3955,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_5_KHKrishnamurthy.pdf",
+    "juUrl": "",
     "size": 181.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_5_KHKrishnamurthy.pdf"
   },
@@ -3637,6 +3967,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_8_Smahdihassan.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_8_Smahdihassan.pdf"
   },
@@ -3648,6 +3979,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_10_SAHRizvi.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_10_SAHRizvi.pdf"
   },
@@ -3659,6 +3991,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_11_BookReviews.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_11_BookReviews.pdf"
   },
@@ -3670,6 +4003,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_12_Report.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_12_Report.pdf"
   },
@@ -3681,6 +4015,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_1_PSingh.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_1_PSingh.pdf"
   },
@@ -3692,6 +4027,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_2_GJChhabra.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_2_GJChhabra.pdf"
   },
@@ -3703,6 +4039,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_6_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_6_HGershenowitz.pdf"
   },
@@ -3714,6 +4051,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_7_AIsmail.pdf",
+    "juUrl": "",
     "size": 101.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_7_AIsmail.pdf"
   },
@@ -3725,6 +4063,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_1_9_Smahdihassan.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_1_9_Smahdihassan.pdf"
   },
@@ -3736,6 +4075,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_3_PDGupta.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_3_PDGupta.pdf"
   },
@@ -3747,6 +4087,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_5_MSBhatnagar.pdf",
+    "juUrl": "",
     "size": 261.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_5_MSBhatnagar.pdf"
   },
@@ -3758,6 +4099,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_8_VDeshpande.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_8_VDeshpande.pdf"
   },
@@ -3769,6 +4111,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_9_BookReviews.pdf"
   },
@@ -3780,6 +4123,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_10_Report.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_10_Report.pdf"
   },
@@ -3791,6 +4135,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_11_News.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_11_News.pdf"
   },
@@ -3802,6 +4147,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_1_BDatta.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_1_BDatta.pdf"
   },
@@ -3813,6 +4159,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_2_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 71.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_2_HGershenowitz.pdf"
   },
@@ -3824,6 +4171,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_4_MRoy.pdf",
+    "juUrl": "",
     "size": 101.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_4_MRoy.pdf"
   },
@@ -3835,6 +4183,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_2_6_RMercier.pdf",
+    "juUrl": "",
     "size": 414.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_2_6_RMercier.pdf"
   },
@@ -3846,6 +4195,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_1_VVRaman.pdf",
+    "juUrl": "",
     "size": 235.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_1_VVRaman.pdf"
   },
@@ -3857,6 +4207,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_3_VShekhawat.pdf",
+    "juUrl": "",
     "size": 509.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_3_VShekhawat.pdf"
   },
@@ -3868,6 +4219,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_4_DKumar.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_4_DKumar.pdf"
   },
@@ -3879,6 +4231,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_9_Announcement.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_9_Announcement.pdf"
   },
@@ -3890,6 +4243,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_10_SupplementVedangjyotishaofLagdha.pdf",
+    "juUrl": "",
     "size": 890.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_10_SupplementVedangjyotishaofLagdha.pdf"
   },
@@ -3901,6 +4255,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_2_URBansal.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_2_URBansal.pdf"
   },
@@ -3912,6 +4267,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_5_HGershenowitz.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_5_HGershenowitz.pdf"
   },
@@ -3923,6 +4279,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_6_CLYadav.pdf",
+    "juUrl": "",
     "size": 125.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_6_CLYadav.pdf"
   },
@@ -3934,6 +4291,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_7_APKulaichev.pdf",
+    "juUrl": "",
     "size": 177.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_7_APKulaichev.pdf"
   },
@@ -3945,6 +4303,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_3_8_BookReviews.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_3_8_BookReviews.pdf"
   },
@@ -3956,6 +4315,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_1_SCDey.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_1_SCDey.pdf"
   },
@@ -3967,6 +4327,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_2_DKAgarwal.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_2_DKAgarwal.pdf"
   },
@@ -3978,6 +4339,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_6_PKChattopadhyay.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_6_PKChattopadhyay.pdf"
   },
@@ -3989,6 +4351,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_8_AKBag.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_8_AKBag.pdf"
   },
@@ -4000,6 +4363,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_9_BookReviews.pdf"
   },
@@ -4011,6 +4375,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_10_NotesAndNews.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_10_NotesAndNews.pdf"
   },
@@ -4022,6 +4387,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_3_MSBhatnagar.pdf",
+    "juUrl": "",
     "size": 80.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_3_MSBhatnagar.pdf"
   },
@@ -4033,6 +4399,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_4_HKNaqvi.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_4_HKNaqvi.pdf"
   },
@@ -4044,6 +4411,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_5_MMajumdar.pdf",
+    "juUrl": "",
     "size": 273.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_5_MMajumdar.pdf"
   },
@@ -4055,6 +4423,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1984",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol19_4_7_BCJoshi.pdf",
+    "juUrl": "",
     "size": 354.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol19_4_7_BCJoshi.pdf"
   },
@@ -4066,6 +4435,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_2_KVSarma.pdf",
+    "juUrl": "",
     "size": 368.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_2_KVSarma.pdf"
   },
@@ -4077,6 +4447,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_4_SNSen.pdf",
+    "juUrl": "",
     "size": 1262.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_4_SNSen.pdf"
   },
@@ -4088,6 +4459,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_5_AKBag.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_5_AKBag.pdf"
   },
@@ -4099,6 +4471,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_8_SDSharma.pdf",
+    "juUrl": "",
     "size": 383.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_8_SDSharma.pdf"
   },
@@ -4110,6 +4483,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_9_KSShukla.pdf",
+    "juUrl": "",
     "size": 575.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_9_KSShukla.pdf"
   },
@@ -4121,6 +4495,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_12_SDSharma.pdf",
+    "juUrl": "",
     "size": 481.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_12_SDSharma.pdf"
   },
@@ -4132,6 +4507,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_3_SAKhan.pdf",
+    "juUrl": "",
     "size": 473.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_3_SAKhan.pdf"
   },
@@ -4143,6 +4519,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_6_SDSharma.pdf",
+    "juUrl": "",
     "size": 235.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_6_SDSharma.pdf"
   },
@@ -4154,6 +4531,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_7_ASomayaji.pdf",
+    "juUrl": "",
     "size": 669.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_7_ASomayaji.pdf"
   },
@@ -4165,6 +4543,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_11_RNRai.pdf",
+    "juUrl": "",
     "size": 453.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_11_RNRai.pdf"
   },
@@ -4176,6 +4555,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_13_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 735.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_13_SMRAnsari.pdf"
   },
@@ -4187,6 +4567,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1985",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol20-1to4_14_JCBhattacharyya.pdf",
+    "juUrl": "",
     "size": 529.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol20-1to4_14_JCBhattacharyya.pdf"
   },
@@ -4198,6 +4579,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_1_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_1_SMahdihassan.pdf"
   },
@@ -4209,6 +4591,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_2_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_2_ASRamanathan.pdf"
   },
@@ -4220,6 +4603,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_3_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_3_ASRamanathan.pdf"
   },
@@ -4231,6 +4615,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_4_RDRoy.pdf",
+    "juUrl": "",
     "size": 191.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_4_RDRoy.pdf"
   },
@@ -4242,6 +4627,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_5_RRDaniel.pdf",
+    "juUrl": "",
     "size": 342.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_5_RRDaniel.pdf"
   },
@@ -4253,6 +4639,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_6_RCGupta.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_6_RCGupta.pdf"
   },
@@ -4264,6 +4651,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_7_SKak.pdf",
+    "juUrl": "",
     "size": 136.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_7_SKak.pdf"
   },
@@ -4275,6 +4663,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_8_BZSzalek.pdf",
+    "juUrl": "",
     "size": 77.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_8_BZSzalek.pdf"
   },
@@ -4286,6 +4675,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_9_BookReview.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_9_BookReview.pdf"
   },
@@ -4297,6 +4687,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_1_11_News.pdf",
+    "juUrl": "",
     "size": 42.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_1_11_News.pdf"
   },
@@ -4308,6 +4699,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_1_VShekhawat.pdf",
+    "juUrl": "",
     "size": 276.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_1_VShekhawat.pdf"
   },
@@ -4319,6 +4711,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_2_PKunitzsch.pdf",
+    "juUrl": "",
     "size": 232.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_2_PKunitzsch.pdf"
   },
@@ -4330,6 +4723,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_3_PSingh.pdf",
+    "juUrl": "",
     "size": 143.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_3_PSingh.pdf"
   },
@@ -4341,6 +4735,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 151.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_4_RCGupta.pdf"
   },
@@ -4352,6 +4747,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_5_SAHRizvi.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_5_SAHRizvi.pdf"
   },
@@ -4363,6 +4759,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_6_BCJoshi.pdf",
+    "juUrl": "",
     "size": 597.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_6_BCJoshi.pdf"
   },
@@ -4374,6 +4771,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_7_OPUpadhyay.pdf",
+    "juUrl": "",
     "size": 244.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_7_OPUpadhyay.pdf"
   },
@@ -4385,6 +4783,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_8_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_8_SMahdihassan.pdf"
   },
@@ -4396,6 +4795,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_9_BookReviews.pdf"
   },
@@ -4407,6 +4807,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_10_Report.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_10_Report.pdf"
   },
@@ -4418,6 +4819,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_11_News.pdf",
+    "juUrl": "",
     "size": 55.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_11_News.pdf"
   },
@@ -4429,6 +4831,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_2_12_Announcements.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_2_12_Announcements.pdf"
   },
@@ -4440,6 +4843,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_1_ARahman.pdf",
+    "juUrl": "",
     "size": 246.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_1_ARahman.pdf"
   },
@@ -4451,6 +4855,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_2_MFAintabi.pdf",
+    "juUrl": "",
     "size": 46.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_2_MFAintabi.pdf"
   },
@@ -4462,6 +4867,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_3_MAsimov.pdf",
+    "juUrl": "",
     "size": 499.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_3_MAsimov.pdf"
   },
@@ -4473,6 +4879,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_4_MMKhairullayev.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_4_MMKhairullayev.pdf"
   },
@@ -4484,6 +4891,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_5_KNPandita.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_5_KNPandita.pdf"
   },
@@ -4495,6 +4903,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_6_MAsimov.pdf",
+    "juUrl": "",
     "size": 76.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_6_MAsimov.pdf"
   },
@@ -4506,6 +4915,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_7_HMSaid.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_7_HMSaid.pdf"
   },
@@ -4517,6 +4927,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_8_AKBag.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_8_AKBag.pdf"
   },
@@ -4528,6 +4939,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_9_SAARizvi.pdf",
+    "juUrl": "",
     "size": 202.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_9_SAARizvi.pdf"
   },
@@ -4539,6 +4951,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_10_WHAbdi.pdf",
+    "juUrl": "",
     "size": 160.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_10_WHAbdi.pdf"
   },
@@ -4550,6 +4963,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_3_11_Report.pdf",
+    "juUrl": "",
     "size": 79.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_3_11_Report.pdf"
   },
@@ -4561,6 +4975,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_1_SRAPerwaz.pdf",
+    "juUrl": "",
     "size": 356.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_1_SRAPerwaz.pdf"
   },
@@ -4572,6 +4987,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_2_MSKhan.pdf",
+    "juUrl": "",
     "size": 253.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_2_MSKhan.pdf"
   },
@@ -4583,6 +4999,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_3_TSiddiqi.pdf",
+    "juUrl": "",
     "size": 629.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_3_TSiddiqi.pdf"
   },
@@ -4594,6 +5011,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_4_GNChaturvedi.pdf",
+    "juUrl": "",
     "size": 125.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_4_GNChaturvedi.pdf"
   },
@@ -4605,6 +5023,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_5_MTaiyab.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_5_MTaiyab.pdf"
   },
@@ -4616,6 +5035,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_6_PNPushp.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_6_PNPushp.pdf"
   },
@@ -4627,6 +5047,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_7_HSVirk.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_7_HSVirk.pdf"
   },
@@ -4638,6 +5059,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1986",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol21_4_8_SShafi.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol21_4_8_SShafi.pdf"
   },
@@ -4649,6 +5071,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_1_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_1_ASRamanathan.pdf"
   },
@@ -4660,6 +5083,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_2_VDeshpande.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_2_VDeshpande.pdf"
   },
@@ -4671,6 +5095,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_4_AKBiswas.pdf",
+    "juUrl": "",
     "size": 410.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_4_AKBiswas.pdf"
   },
@@ -4682,6 +5107,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_5_WHAbdi.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_5_WHAbdi.pdf"
   },
@@ -4693,6 +5119,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_6_SCKak.pdf",
+    "juUrl": "",
     "size": 204.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_6_SCKak.pdf"
   },
@@ -4704,6 +5131,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_7_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 195.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_7_SMahdihassan.pdf"
   },
@@ -4715,6 +5143,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_8_RKrishnamurthy.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_8_RKrishnamurthy.pdf"
   },
@@ -4726,6 +5155,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_9_SChandra.pdf",
+    "juUrl": "",
     "size": 79.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_9_SChandra.pdf"
   },
@@ -4737,6 +5167,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_10_BookReviews.pdf",
+    "juUrl": "",
     "size": 110.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_10_BookReviews.pdf"
   },
@@ -4748,6 +5179,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1_11_Report.pdf",
+    "juUrl": "",
     "size": 19.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1_11_Report.pdf"
   },
@@ -4759,6 +5191,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_1-12_Announcements.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_1-12_Announcements.pdf"
   },
@@ -4770,6 +5203,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_2_RPSTyagi.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_2_RPSTyagi.pdf"
   },
@@ -4781,6 +5215,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_3_VKSharma.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_3_VKSharma.pdf"
   },
@@ -4792,6 +5227,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_4_GPrasad.pdf",
+    "juUrl": "",
     "size": 74.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_4_GPrasad.pdf"
   },
@@ -4803,6 +5239,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_5_DNGarg.pdf",
+    "juUrl": "",
     "size": 147.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_5_DNGarg.pdf"
   },
@@ -4814,6 +5251,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_6_KCSatija.pdf",
+    "juUrl": "",
     "size": 140.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_6_KCSatija.pdf"
   },
@@ -4825,6 +5263,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_7_RDRana.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_7_RDRana.pdf"
   },
@@ -4836,6 +5275,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_8_VMMandokhot.pdf",
+    "juUrl": "",
     "size": 130.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_8_VMMandokhot.pdf"
   },
@@ -4847,6 +5287,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_9_UMandokhot.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_9_UMandokhot.pdf"
   },
@@ -4858,6 +5299,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_10_SPrasad.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_10_SPrasad.pdf"
   },
@@ -4869,6 +5311,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_11_SKKalra.pdf",
+    "juUrl": "",
     "size": 325.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_11_SKKalra.pdf"
   },
@@ -4880,6 +5323,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_12_RDSharma.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_12_RDSharma.pdf"
   },
@@ -4891,6 +5335,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_13_SCDogra.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_13_SCDogra.pdf"
   },
@@ -4902,6 +5347,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_2_14_News.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_2_14_News.pdf"
   },
@@ -4913,6 +5359,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_1_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 288.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_1_ASRamanathan.pdf"
   },
@@ -4924,6 +5371,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_2_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_2_ASRamanathan.pdf"
   },
@@ -4935,6 +5383,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_3_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 148.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_3_ASRamanathan.pdf"
   },
@@ -4946,6 +5395,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_4_SCKak.pdf",
+    "juUrl": "",
     "size": 349.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_4_SCKak.pdf"
   },
@@ -4957,6 +5407,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_5_SCKak.pdf",
+    "juUrl": "",
     "size": 287.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_5_SCKak.pdf"
   },
@@ -4968,6 +5419,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_6_OPUpadhyay.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_6_OPUpadhyay.pdf"
   },
@@ -4979,6 +5431,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_7_RCGupta.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_7_RCGupta.pdf"
   },
@@ -4990,6 +5443,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_8_Jlaurent.pdf",
+    "juUrl": "",
     "size": 632.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_8_Jlaurent.pdf"
   },
@@ -5001,6 +5455,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_9_BookReviews.pdf"
   },
@@ -5012,6 +5467,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_3_10_Supplement_RasaRatnaSamuccaya.pdf",
+    "juUrl": "",
     "size": 1612.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_3_10_Supplement_RasaRatnaSamuccaya.pdf"
   },
@@ -5023,6 +5479,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_1_ASRamanathan.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_1_ASRamanathan.pdf"
   },
@@ -5034,6 +5491,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_2_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_2_SMahdihassan.pdf"
   },
@@ -5045,6 +5503,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_3_BCJoshi.pdf",
+    "juUrl": "",
     "size": 349.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_3_BCJoshi.pdf"
   },
@@ -5056,6 +5515,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_4_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_4_RPKulkarni.pdf"
   },
@@ -5067,6 +5527,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_5_RPKulkarni.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_5_RPKulkarni.pdf"
   },
@@ -5078,6 +5539,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_6_BNMehrotra.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_6_BNMehrotra.pdf"
   },
@@ -5089,6 +5551,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_7_VSingh.pdf",
+    "juUrl": "",
     "size": 204.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_7_VSingh.pdf"
   },
@@ -5100,6 +5563,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_8_SPGupta.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_8_SPGupta.pdf"
   },
@@ -5111,6 +5575,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1987",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol22_4_9_RKTrivedi.pdf",
+    "juUrl": "",
     "size": 395.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol22_4_9_RKTrivedi.pdf"
   },
@@ -5122,6 +5587,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_1_1_SCKak.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_1_1_SCKak.pdf"
   },
@@ -5133,6 +5599,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_1_2_GArmitage.pdf",
+    "juUrl": "",
     "size": 1493.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_1_2_GArmitage.pdf"
   },
@@ -5144,6 +5611,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_1_3_PJha.pdf",
+    "juUrl": "",
     "size": 153.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_1_3_PJha.pdf"
   },
@@ -5155,6 +5623,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_1_4_BookReview.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_1_4_BookReview.pdf"
   },
@@ -5166,6 +5635,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_1_5_Supplement.pdf",
+    "juUrl": "",
     "size": 684.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_1_5_Supplement.pdf"
   },
@@ -5177,6 +5647,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_2_1_SAHRizvi.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_2_1_SAHRizvi.pdf"
   },
@@ -5188,6 +5659,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_2_2_SSeshan.pdf",
+    "juUrl": "",
     "size": 582.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_2_2_SSeshan.pdf"
   },
@@ -5199,6 +5671,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_2_3_BSzalek.pdf",
+    "juUrl": "",
     "size": 185.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_2_3_BSzalek.pdf"
   },
@@ -5210,6 +5683,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_2_4_BookReviews.pdf",
+    "juUrl": "",
     "size": 38.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_2_4_BookReviews.pdf"
   },
@@ -5221,6 +5695,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_1_APKulaichev.pdf",
+    "juUrl": "",
     "size": 270.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_1_APKulaichev.pdf"
   },
@@ -5232,6 +5707,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_2_SAParamhans.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_2_SAParamhans.pdf"
   },
@@ -5243,6 +5719,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_2_SAParamhans.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_2_SAParamhans.pdf"
   },
@@ -5254,6 +5731,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_4BBLal.pdf",
+    "juUrl": "",
     "size": 61.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_4BBLal.pdf"
   },
@@ -5265,6 +5743,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_5_LCJain.pdf",
+    "juUrl": "",
     "size": 255.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_5_LCJain.pdf"
   },
@@ -5276,6 +5755,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_6_SMahadihassan.pdf",
+    "juUrl": "",
     "size": 72.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_6_SMahadihassan.pdf"
   },
@@ -5287,6 +5767,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_7_RKKochhar.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_7_RKKochhar.pdf"
   },
@@ -5298,6 +5779,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_8_AKBiswas.pdf",
+    "juUrl": "",
     "size": 175.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_8_AKBiswas.pdf"
   },
@@ -5309,6 +5791,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_9_BookReviews.pdf",
+    "juUrl": "",
     "size": 67.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_9_BookReviews.pdf"
   },
@@ -5320,6 +5803,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_3_10_ProjectsRenewed.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_3_10_ProjectsRenewed.pdf"
   },
@@ -5331,6 +5815,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_1_KSShukla.pdf",
+    "juUrl": "",
     "size": 179.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_1_KSShukla.pdf"
   },
@@ -5342,6 +5827,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_2_BSen.pdf",
+    "juUrl": "",
     "size": 524.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_2_BSen.pdf"
   },
@@ -5353,6 +5839,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_3_TRChandrasekhar.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_3_TRChandrasekhar.pdf"
   },
@@ -5364,6 +5851,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_4_SNSen.pdf",
+    "juUrl": "",
     "size": 466.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_4_SNSen.pdf"
   },
@@ -5375,6 +5863,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_5_MCMallik.pdf",
+    "juUrl": "",
     "size": 712.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_5_MCMallik.pdf"
   },
@@ -5386,6 +5875,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_6_ABasu.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_6_ABasu.pdf"
   },
@@ -5397,6 +5887,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_7_VLSharma.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_7_VLSharma.pdf"
   },
@@ -5408,6 +5899,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_8_SMahadihassan.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_8_SMahadihassan.pdf"
   },
@@ -5419,6 +5911,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_9_BookReview.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_9_BookReview.pdf"
   },
@@ -5430,6 +5923,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_10_Report.pdf",
+    "juUrl": "",
     "size": 109.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_10_Report.pdf"
   },
@@ -5441,6 +5935,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1989",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol24_4_11_Supplement.pdf",
+    "juUrl": "",
     "size": 427.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol24_4_11_Supplement.pdf"
   },
@@ -5452,6 +5947,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_1_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 52.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_1_SMahdihassan.pdf"
   },
@@ -5463,6 +5959,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_2_AKBag.pdf",
+    "juUrl": "",
     "size": 223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_2_AKBag.pdf"
   },
@@ -5474,6 +5971,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_3_MSKhan.pdf",
+    "juUrl": "",
     "size": 208.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_3_MSKhan.pdf"
   },
@@ -5485,6 +5983,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_4_VNSharma.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_4_VNSharma.pdf"
   },
@@ -5496,6 +5995,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_5_NewsProjectsapprovedNewpublication.pdf",
+    "juUrl": "",
     "size": 109.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_5_NewsProjectsapprovedNewpublication.pdf"
   },
@@ -5507,6 +6007,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1990",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol25_1to4_6_SupplementLaghumanasa.pdf",
+    "juUrl": "",
     "size": 2361.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol25_1to4_6_SupplementLaghumanasa.pdf"
   },
@@ -5518,6 +6019,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_1_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 160.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_1_KDAbhyankar.pdf"
   },
@@ -5529,6 +6031,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_2_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 81.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_2_SMahdihassan.pdf"
   },
@@ -5540,6 +6043,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_3_SRSarma.pdf",
+    "juUrl": "",
     "size": 630.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_3_SRSarma.pdf"
   },
@@ -5551,6 +6055,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_4_SAParamhans.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_4_SAParamhans.pdf"
   },
@@ -5562,6 +6067,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_5_AKChakraborty.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_5_AKChakraborty.pdf"
   },
@@ -5573,6 +6079,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_6_SSangwan.pdf",
+    "juUrl": "",
     "size": 674.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_6_SSangwan.pdf"
   },
@@ -5584,6 +6091,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_7_ABandyopandhyay.pdf",
+    "juUrl": "",
     "size": 175.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_7_ABandyopandhyay.pdf"
   },
@@ -5595,6 +6103,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_1_8_BookReview.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_1_8_BookReview.pdf"
   },
@@ -5606,6 +6115,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_1_KTAcharya.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_1_KTAcharya.pdf"
   },
@@ -5617,6 +6127,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_2_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 34.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_2_SMahdihassan.pdf"
   },
@@ -5628,6 +6139,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_3_MRay.pdf",
+    "juUrl": "",
     "size": 313.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_3_MRay.pdf"
   },
@@ -5639,6 +6151,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_4_MChaudhuri.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_4_MChaudhuri.pdf"
   },
@@ -5650,6 +6163,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_5_HKNaqvi.pdf",
+    "juUrl": "",
     "size": 272.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_5_HKNaqvi.pdf"
   },
@@ -5661,6 +6175,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_6_KVSarma.pdf",
+    "juUrl": "",
     "size": 316.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_6_KVSarma.pdf"
   },
@@ -5672,6 +6187,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_7_VNSharma.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_7_VNSharma.pdf"
   },
@@ -5683,6 +6199,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_8_AKSaxena.pdf",
+    "juUrl": "",
     "size": 176.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_8_AKSaxena.pdf"
   },
@@ -5694,6 +6211,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_2_9_NewsIHCongress.pdf",
+    "juUrl": "",
     "size": 27.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_2_9_NewsIHCongress.pdf"
   },
@@ -5705,6 +6223,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_3_1_PVSharma.pdf",
+    "juUrl": "",
     "size": 229.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_3_1_PVSharma.pdf"
   },
@@ -5716,6 +6235,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_3_2_VNSharma.pdf",
+    "juUrl": "",
     "size": 508.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_3_2_VNSharma.pdf"
   },
@@ -5727,6 +6247,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_3_3_AKarbelashvili.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_3_3_AKarbelashvili.pdf"
   },
@@ -5738,6 +6259,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_3_4_PKBasu.pdf",
+    "juUrl": "",
     "size": 492.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_3_4_PKBasu.pdf"
   },
@@ -5749,6 +6271,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_3_5_SupplementRasaratnasamucchaya.pdf",
+    "juUrl": "",
     "size": 386.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_3_5_SupplementRasaratnasamucchaya.pdf"
   },
@@ -5760,6 +6283,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_1_BPrakash.pdf",
+    "juUrl": "",
     "size": 449.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_1_BPrakash.pdf"
   },
@@ -5771,6 +6295,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_2_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 37.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_2_SMahdihassan.pdf"
   },
@@ -5782,6 +6307,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_3_NKChandel.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_3_NKChandel.pdf"
   },
@@ -5793,6 +6319,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_4_GAbraham.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_4_GAbraham.pdf"
   },
@@ -5804,6 +6331,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_5_SPGupta.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_5_SPGupta.pdf"
   },
@@ -5815,6 +6343,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1991",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol26_4_6_SupplementsPanchavimsatika.pdf",
+    "juUrl": "",
     "size": 1078.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol26_4_6_SupplementsPanchavimsatika.pdf"
   },
@@ -5826,6 +6355,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_1_1_SMahdihassan.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_1_1_SMahdihassan.pdf"
   },
@@ -5837,6 +6367,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_1_2_KTAchaya.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_1_2_KTAchaya.pdf"
   },
@@ -5848,6 +6379,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_1_3_NSaxena.pdf",
+    "juUrl": "",
     "size": 188.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_1_3_NSaxena.pdf"
   },
@@ -5859,6 +6391,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_1_4_KAChowdhury.pdf",
+    "juUrl": "",
     "size": 337.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_1_4_KAChowdhury.pdf"
   },
@@ -5870,6 +6403,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_1_5_BDatta.pdf",
+    "juUrl": "",
     "size": 1067.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_1_5_BDatta.pdf"
   },
@@ -5881,6 +6415,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_1_VDeshpande.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_1_VDeshpande.pdf"
   },
@@ -5892,6 +6427,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_2_AJQaisar.pdf",
+    "juUrl": "",
     "size": 220.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_2_AJQaisar.pdf"
   },
@@ -5903,6 +6439,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_3_MMehta.pdf",
+    "juUrl": "",
     "size": 351.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_3_MMehta.pdf"
   },
@@ -5914,6 +6451,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_4_JNSinha.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_4_JNSinha.pdf"
   },
@@ -5925,6 +6463,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_5_BookReviews.pdf",
+    "juUrl": "",
     "size": 40.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_5_BookReviews.pdf"
   },
@@ -5936,6 +6475,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_2_6_NewPublications.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_2_6_NewPublications.pdf"
   },
@@ -5947,6 +6487,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_1_JCSikdar.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_1_JCSikdar.pdf"
   },
@@ -5958,6 +6499,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_2_BDatta.pdf",
+    "juUrl": "",
     "size": 217.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_2_BDatta.pdf"
   },
@@ -5969,6 +6511,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_3_RKrishnamurthy.pdf",
+    "juUrl": "",
     "size": 134.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_3_RKrishnamurthy.pdf"
   },
@@ -5980,6 +6523,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_4_ASaeed.pdf",
+    "juUrl": "",
     "size": 233.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_4_ASaeed.pdf"
   },
@@ -5991,6 +6535,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_5_DKMittra.pdf",
+    "juUrl": "",
     "size": 170.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_5_DKMittra.pdf"
   },
@@ -6002,6 +6547,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_6_AGhosh.pdf",
+    "juUrl": "",
     "size": 319.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_6_AGhosh.pdf"
   },
@@ -6013,6 +6559,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_7_News.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_7_News.pdf"
   },
@@ -6024,6 +6571,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_3_8_Supplement_RasaRatnaSamuccaya.pdf",
+    "juUrl": "",
     "size": 616.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_3_8_Supplement_RasaRatnaSamuccaya.pdf"
   },
@@ -6035,6 +6583,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_1_SNSen.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_1_SNSen.pdf"
   },
@@ -6046,6 +6595,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_2_JNKapur.pdf",
+    "juUrl": "",
     "size": 265.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_2_JNKapur.pdf"
   },
@@ -6057,6 +6607,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_3_HNBose.pdf",
+    "juUrl": "",
     "size": 165.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_3_HNBose.pdf"
   },
@@ -6068,6 +6619,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_4_CKMajumdar.pdf",
+    "juUrl": "",
     "size": 241.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_4_CKMajumdar.pdf"
   },
@@ -6079,6 +6631,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_5_AKRaychaudhuri.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_5_AKRaychaudhuri.pdf"
   },
@@ -6090,6 +6643,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_6_AKSaha.pdf",
+    "juUrl": "",
     "size": 48.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_6_AKSaha.pdf"
   },
@@ -6101,6 +6655,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_7_SKMukherjee.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_7_SKMukherjee.pdf"
   },
@@ -6112,6 +6667,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_8_RCMehrotra.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_8_RCMehrotra.pdf"
   },
@@ -6123,6 +6679,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_9_SKMukerjee.pdf",
+    "juUrl": "",
     "size": 274.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_9_SKMukerjee.pdf"
   },
@@ -6134,6 +6691,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_10_JDas.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_10_JDas.pdf"
   },
@@ -6145,6 +6703,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_11_RRDaniel.pdf",
+    "juUrl": "",
     "size": 222.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_11_RRDaniel.pdf"
   },
@@ -6156,6 +6715,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_12_BookReviews.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_12_BookReviews.pdf"
   },
@@ -6167,6 +6727,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_13_Obituary_SNSen.pdf",
+    "juUrl": "",
     "size": 56.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_13_Obituary_SNSen.pdf"
   },
@@ -6178,6 +6739,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_16_Erratum.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_16_Erratum.pdf"
   },
@@ -6189,6 +6751,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1992",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol27_4_17_SupplementBibliographyofPhysics.pdf",
+    "juUrl": "",
     "size": 521.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol27_4_17_SupplementBibliographyofPhysics.pdf"
   },
@@ -6200,6 +6763,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_1_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 209.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_1_KDAbhyankar.pdf"
   },
@@ -6211,6 +6775,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_2_SCKak.pdf",
+    "juUrl": "",
     "size": 297.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_2_SCKak.pdf"
   },
@@ -6222,6 +6787,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_3_PVSharma.pdf",
+    "juUrl": "",
     "size": 253.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_3_PVSharma.pdf"
   },
@@ -6233,6 +6799,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_4_VNSharma.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_4_VNSharma.pdf"
   },
@@ -6244,6 +6811,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_5_SRSarma.pdf",
+    "juUrl": "",
     "size": 350.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_5_SRSarma.pdf"
   },
@@ -6255,6 +6823,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_6_SChandra.pdf",
+    "juUrl": "",
     "size": 54.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_6_SChandra.pdf"
   },
@@ -6266,6 +6835,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_1_7_SupplementBibliographyofPhysics.pdf",
+    "juUrl": "",
     "size": 1873.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_1_7_SupplementBibliographyofPhysics.pdf"
   },
@@ -6277,6 +6847,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_1_SCKak.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_1_SCKak.pdf"
   },
@@ -6288,6 +6859,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_2_RCGupta.pdf",
+    "juUrl": "",
     "size": 276.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_2_RCGupta.pdf"
   },
@@ -6299,6 +6871,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_3_BDatta.pdf",
+    "juUrl": "",
     "size": 317.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_3_BDatta.pdf"
   },
@@ -6310,6 +6883,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_4_VNSharma.pdf",
+    "juUrl": "",
     "size": 456.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_4_VNSharma.pdf"
   },
@@ -6321,6 +6895,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_5_RMercier.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_5_RMercier.pdf"
   },
@@ -6332,6 +6907,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_6_AGhosh.pdf",
+    "juUrl": "",
     "size": 405.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_6_AGhosh.pdf"
   },
@@ -6343,6 +6919,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_7_BookReview.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_7_BookReview.pdf"
   },
@@ -6354,6 +6931,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_2_8_SupplementBiblographyofPhysics.pdf",
+    "juUrl": "",
     "size": 2214.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_2_8_SupplementBiblographyofPhysics.pdf"
   },
@@ -6365,6 +6943,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_3_1_YOhashi.pdf",
+    "juUrl": "",
     "size": 1027.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_3_1_YOhashi.pdf"
   },
@@ -6376,6 +6955,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_3_2_BDatta.pdf",
+    "juUrl": "",
     "size": 166.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_3_2_BDatta.pdf"
   },
@@ -6387,6 +6967,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_3_3_BDatta.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_3_3_BDatta.pdf"
   },
@@ -6398,6 +6979,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_3_4_HSVirk.pdf",
+    "juUrl": "",
     "size": 168.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_3_4_HSVirk.pdf"
   },
@@ -6409,6 +6991,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_3_5_News.pdf",
+    "juUrl": "",
     "size": 42.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_3_5_News.pdf"
   },
@@ -6420,6 +7003,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_4_1_PSFilliozat.pdf",
+    "juUrl": "",
     "size": 172.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_4_1_PSFilliozat.pdf"
   },
@@ -6431,6 +7015,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_4_2_LCJain.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_4_2_LCJain.pdf"
   },
@@ -6442,6 +7027,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_4_3_AKBiswas.pdf",
+    "juUrl": "",
     "size": 398.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_4_3_AKBiswas.pdf"
   },
@@ -6453,6 +7039,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_4_4_BookReviewsAKBiswasAndARahman.pdf",
+    "juUrl": "",
     "size": 72.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_4_4_BookReviewsAKBiswasAndARahman.pdf"
   },
@@ -6464,6 +7051,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1993",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol28_4_5_SupplementBibliographyofPhysics.pdf",
+    "juUrl": "",
     "size": 2284.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol28_4_5_SupplementBibliographyofPhysics.pdf"
   },
@@ -6475,6 +7063,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_1_DKumar.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_1_DKumar.pdf"
   },
@@ -6486,6 +7075,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_2_SGhose.pdf",
+    "juUrl": "",
     "size": 226.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_2_SGhose.pdf"
   },
@@ -6497,6 +7087,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_3_MKahali.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_3_MKahali.pdf"
   },
@@ -6508,6 +7099,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_4_DBose.pdf",
+    "juUrl": "",
     "size": 162.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_4_DBose.pdf"
   },
@@ -6519,6 +7111,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_5_SNSen.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_5_SNSen.pdf"
   },
@@ -6530,6 +7123,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_6_SCGhosh.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_6_SCGhosh.pdf"
   },
@@ -6541,6 +7135,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_7_AGhosh.pdf",
+    "juUrl": "",
     "size": 243.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_7_AGhosh.pdf"
   },
@@ -6552,6 +7147,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_8_AKBiswas.pdf",
+    "juUrl": "",
     "size": 204.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_8_AKBiswas.pdf"
   },
@@ -6563,6 +7159,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_9_JKGhosh.pdf",
+    "juUrl": "",
     "size": 159.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_9_JKGhosh.pdf"
   },
@@ -6574,6 +7171,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_10_SChatterjee.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_10_SChatterjee.pdf"
   },
@@ -6585,6 +7183,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_11_DChattopadhyaya.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_11_DChattopadhyaya.pdf"
   },
@@ -6596,6 +7195,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_12_News.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_12_News.pdf"
   },
@@ -6607,6 +7207,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_1_13_Supplement.pdf",
+    "juUrl": "",
     "size": 633.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_1_13_Supplement.pdf"
   },
@@ -6618,6 +7219,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_2_2_AKBiswas.pdf",
+    "juUrl": "",
     "size": 700.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_2_2_AKBiswas.pdf"
   },
@@ -6629,6 +7231,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_2_3_YOhashi.pdf",
+    "juUrl": "",
     "size": 2055.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_2_3_YOhashi.pdf"
   },
@@ -6640,6 +7243,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_2_4_VDeshpande.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_2_4_VDeshpande.pdf"
   },
@@ -6651,6 +7255,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_2_5_MFilliozat.pdf",
+    "juUrl": "",
     "size": 218.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_2_5_MFilliozat.pdf"
   },
@@ -6662,6 +7267,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_2_6_News.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_2_6_News.pdf"
   },
@@ -6673,6 +7279,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_1_SKBhatia.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_1_SKBhatia.pdf"
   },
@@ -6684,6 +7291,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_2_NGDongre.pdf",
+    "juUrl": "",
     "size": 161.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_2_NGDongre.pdf"
   },
@@ -6695,6 +7303,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_3_SCKak.pdf",
+    "juUrl": "",
     "size": 219.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_3_SCKak.pdf"
   },
@@ -6706,6 +7315,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_4_AKBiswas.pdf",
+    "juUrl": "",
     "size": 498.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_4_AKBiswas.pdf"
   },
@@ -6717,6 +7327,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_5_VRamaswamy.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_5_VRamaswamy.pdf"
   },
@@ -6728,6 +7339,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_6_VNSharma.pdf",
+    "juUrl": "",
     "size": 207.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_6_VNSharma.pdf"
   },
@@ -6739,6 +7351,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_7_Obituary.pdf",
+    "juUrl": "",
     "size": 56.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_7_Obituary.pdf"
   },
@@ -6750,6 +7363,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_3_8_News.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_3_8_News.pdf"
   },
@@ -6761,6 +7375,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_1_DFrawley.pdf",
+    "juUrl": "",
     "size": 147.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_1_DFrawley.pdf"
   },
@@ -6772,6 +7387,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_2_SRSarma.pdf",
+    "juUrl": "",
     "size": 465.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_2_SRSarma.pdf"
   },
@@ -6783,6 +7399,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_3_SDas.pdf",
+    "juUrl": "",
     "size": 333.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_3_SDas.pdf"
   },
@@ -6794,6 +7411,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_4_VNJha.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_4_VNJha.pdf"
   },
@@ -6805,6 +7423,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_5_AKBiswas.pdf",
+    "juUrl": "",
     "size": 423.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_5_AKBiswas.pdf"
   },
@@ -6816,6 +7435,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_6_NGDongre.pdf",
+    "juUrl": "",
     "size": 329.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_6_NGDongre.pdf"
   },
@@ -6827,6 +7447,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1994",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol29_4_9_News.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol29_4_9_News.pdf"
   },
@@ -6838,6 +7459,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_1_JDHughes.pdf",
+    "juUrl": "",
     "size": 163.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_1_JDHughes.pdf"
   },
@@ -6849,6 +7471,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_2_PManansala.pdf",
+    "juUrl": "",
     "size": 237.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_2_PManansala.pdf"
   },
@@ -6860,6 +7483,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_3_NCRana.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_3_NCRana.pdf"
   },
@@ -6871,6 +7495,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_4_AMukhopadhyay.pdf",
+    "juUrl": "",
     "size": 170.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_4_AMukhopadhyay.pdf"
   },
@@ -6882,6 +7507,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_5_JInsley.pdf",
+    "juUrl": "",
     "size": 147.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_5_JInsley.pdf"
   },
@@ -6893,6 +7519,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_6_LCJain.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_6_LCJain.pdf"
   },
@@ -6904,6 +7531,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_7_BookReview.pdf",
+    "juUrl": "",
     "size": 51.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_7_BookReview.pdf"
   },
@@ -6915,6 +7543,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_1_8_ReviewReport.pdf",
+    "juUrl": "",
     "size": 208.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_1_8_ReviewReport.pdf"
   },
@@ -6926,6 +7555,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_1_APGreeshmalatha.pdf",
+    "juUrl": "",
     "size": 562.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_1_APGreeshmalatha.pdf"
   },
@@ -6937,6 +7567,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_2_LCJain.pdf",
+    "juUrl": "",
     "size": 459.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_2_LCJain.pdf"
   },
@@ -6948,6 +7579,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_3_MSKhan.pdf",
+    "juUrl": "",
     "size": 349.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_3_MSKhan.pdf"
   },
@@ -6959,6 +7591,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_4_AKChakravarty.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_4_AKChakravarty.pdf"
   },
@@ -6970,6 +7603,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_5_BookReviews.pdf",
+    "juUrl": "",
     "size": 51.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_5_BookReviews.pdf"
   },
@@ -6981,6 +7615,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_6_News.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_6_News.pdf"
   },
@@ -6992,6 +7627,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1995",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol30_2and3and4_7_Supplementary_HistoryofMagneticStudiesinIndia.pdf",
+    "juUrl": "",
     "size": 3495.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol30_2and3and4_7_Supplementary_HistoryofMagneticStudiesinIndia.pdf"
   },
@@ -7003,6 +7639,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_1_AKChakravarty.pdf",
+    "juUrl": "",
     "size": 211.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_1_AKChakravarty.pdf"
   },
@@ -7014,6 +7651,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_2_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 262.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_2_KDAbhyankar.pdf"
   },
@@ -7025,6 +7663,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_3_AMShastri_vikrama.pdf",
+    "juUrl": "",
     "size": 589.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_3_AMShastri_vikrama.pdf"
   },
@@ -7036,6 +7675,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_4_AMShastri_Saka.pdf",
+    "juUrl": "",
     "size": 445.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_4_AMShastri_Saka.pdf"
   },
@@ -7047,6 +7687,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_5_ABhattacharyya.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_5_ABhattacharyya.pdf"
   },
@@ -7058,6 +7699,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_6_KVSarma.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_6_KVSarma.pdf"
   },
@@ -7069,6 +7711,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_7_NewsSeminarPublications.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_7_NewsSeminarPublications.pdf"
   },
@@ -7080,6 +7723,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_1_8_SupplementBibliographyon%20MagneticStudies.pdf",
+    "juUrl": "",
     "size": 2752.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_1_8_SupplementBibliographyon%20MagneticStudies.pdf"
   },
@@ -7091,6 +7735,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_1_PVSharma.pdf",
+    "juUrl": "",
     "size": 323.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_1_PVSharma.pdf"
   },
@@ -7102,6 +7747,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_2_KHKrishnamurthy.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_2_KHKrishnamurthy.pdf"
   },
@@ -7113,6 +7759,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_3_VMishra.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_3_VMishra.pdf"
   },
@@ -7124,6 +7771,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_4_LGopal.pdf",
+    "juUrl": "",
     "size": 83.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_4_LGopal.pdf"
   },
@@ -7135,6 +7783,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_5_DPingree.pdf",
+    "juUrl": "",
     "size": 460.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_5_DPingree.pdf"
   },
@@ -7146,6 +7795,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_2_6_NewsMonographPublications.pdf",
+    "juUrl": "",
     "size": 136.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_2_6_NewsMonographPublications.pdf"
   },
@@ -7157,6 +7807,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_1_HWLaale.pdf",
+    "juUrl": "",
     "size": 477.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_1_HWLaale.pdf"
   },
@@ -7168,6 +7819,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_2_MBanerjee.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_2_MBanerjee.pdf"
   },
@@ -7179,6 +7831,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_3_SDSharma.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_3_SDSharma.pdf"
   },
@@ -7190,6 +7843,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_4_VDeshpande.pdf",
+    "juUrl": "",
     "size": 76.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_4_VDeshpande.pdf"
   },
@@ -7201,6 +7855,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_5_PKMisra.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_5_PKMisra.pdf"
   },
@@ -7212,6 +7867,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_3_6_BookReviewandNews.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_3_6_BookReviewandNews.pdf"
   },
@@ -7223,6 +7879,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_1_MJShendge.pdf",
+    "juUrl": "",
     "size": 485.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_1_MJShendge.pdf"
   },
@@ -7234,6 +7891,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_2_RKrishnamurthy.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_2_RKrishnamurthy.pdf"
   },
@@ -7245,6 +7903,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_3_SDas.pdf",
+    "juUrl": "",
     "size": 335.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_3_SDas.pdf"
   },
@@ -7256,6 +7915,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_4_VJDeshpande.pdf",
+    "juUrl": "",
     "size": 278.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_4_VJDeshpande.pdf"
   },
@@ -7267,6 +7927,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_5_MKChandrashekaran.pdf",
+    "juUrl": "",
     "size": 150.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_5_MKChandrashekaran.pdf"
   },
@@ -7278,6 +7939,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1996",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol31_4_6_NCShah.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol31_4_6_NCShah.pdf"
   },
@@ -7289,6 +7951,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_1_BPrakash.pdf",
+    "juUrl": "",
     "size": 600.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_1_BPrakash.pdf"
   },
@@ -7300,6 +7963,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_2_GVRajamanickam.pdf",
+    "juUrl": "",
     "size": 461.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_2_GVRajamanickam.pdf"
   },
@@ -7311,6 +7975,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_3_GAbraham.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_3_GAbraham.pdf"
   },
@@ -7322,6 +7987,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_4_AMukhopadhyay.pdf",
+    "juUrl": "",
     "size": 247.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_4_AMukhopadhyay.pdf"
   },
@@ -7333,6 +7999,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_5_SKChatterjee.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_5_SKChatterjee.pdf"
   },
@@ -7344,6 +8011,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_6_BNMukherjee.pdf",
+    "juUrl": "",
     "size": 102.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_6_BNMukherjee.pdf"
   },
@@ -7355,6 +8023,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_7_BookReview.pdf",
+    "juUrl": "",
     "size": 51.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_7_BookReview.pdf"
   },
@@ -7366,6 +8035,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_9_NewsandAcademyPublicationsonHOS.pdf",
+    "juUrl": "",
     "size": 130.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_9_NewsandAcademyPublicationsonHOS.pdf"
   },
@@ -7377,6 +8047,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_1_10_SupplementRasahrdayatantramCh1to10.pdf",
+    "juUrl": "",
     "size": 2446.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_1_10_SupplementRasahrdayatantramCh1to10.pdf"
   },
@@ -7388,6 +8059,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_1_SCKak.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_1_SCKak.pdf"
   },
@@ -7399,6 +8071,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_2_HFrost.pdf",
+    "juUrl": "",
     "size": 102.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_2_HFrost.pdf"
   },
@@ -7410,6 +8083,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_3_VMishra.pdf",
+    "juUrl": "",
     "size": 80.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_3_VMishra.pdf"
   },
@@ -7421,6 +8095,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_4_GAbraham.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_4_GAbraham.pdf"
   },
@@ -7432,6 +8107,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_5_AGhosh.pdf",
+    "juUrl": "",
     "size": 313.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_5_AGhosh.pdf"
   },
@@ -7443,6 +8119,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_6_KVSarma.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_6_KVSarma.pdf"
   },
@@ -7454,6 +8131,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_7_BookReview.pdf",
+    "juUrl": "",
     "size": 58.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_7_BookReview.pdf"
   },
@@ -7465,6 +8143,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_2_8_NewsIndoPortuguesePublicationsonHOS.pdf",
+    "juUrl": "",
     "size": 77.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_2_8_NewsIndoPortuguesePublicationsonHOS.pdf"
   },
@@ -7476,6 +8155,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_3_1_KCHari.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_3_1_KCHari.pdf"
   },
@@ -7487,6 +8167,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_3_2_SRSarma.pdf",
+    "juUrl": "",
     "size": 125.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_3_2_SRSarma.pdf"
   },
@@ -7498,6 +8179,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_3_3_YOhashi.pdf",
+    "juUrl": "",
     "size": 1491.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_3_3_YOhashi.pdf"
   },
@@ -7509,6 +8191,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_3_4_BookReview.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_3_4_BookReview.pdf"
   },
@@ -7520,6 +8203,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_1_SCKak.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_1_SCKak.pdf"
   },
@@ -7531,6 +8215,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_2_VMMallayya.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_2_VMMallayya.pdf"
   },
@@ -7542,6 +8227,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_3_SKChatterjee.pdf",
+    "juUrl": "",
     "size": 300.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_3_SKChatterjee.pdf"
   },
@@ -7553,6 +8239,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_4_BRRao.pdf",
+    "juUrl": "",
     "size": 526.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_4_BRRao.pdf"
   },
@@ -7564,6 +8251,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_5_NSaxena.pdf",
+    "juUrl": "",
     "size": 181.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_5_NSaxena.pdf"
   },
@@ -7575,6 +8263,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_6_KSMathew.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_6_KSMathew.pdf"
   },
@@ -7586,6 +8275,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_7_BookReviewaAndSRSarma.pdf",
+    "juUrl": "",
     "size": 61.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_7_BookReviewaAndSRSarma.pdf"
   },
@@ -7597,6 +8287,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1997",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol32_4_8_NewsMagicSquare.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol32_4_8_NewsMagicSquare.pdf"
   },
@@ -7608,6 +8299,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_1_SKAdhikari.pdf",
+    "juUrl": "",
     "size": 249.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_1_SKAdhikari.pdf"
   },
@@ -7619,6 +8311,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_2_SCKak.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_2_SCKak.pdf"
   },
@@ -7630,6 +8323,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_3_SCKak.pdf",
+    "juUrl": "",
     "size": 78.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_3_SCKak.pdf"
   },
@@ -7641,6 +8335,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_4_SSSarma.pdf",
+    "juUrl": "",
     "size": 185.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_4_SSSarma.pdf"
   },
@@ -7652,6 +8347,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_5_SKJain.pdf",
+    "juUrl": "",
     "size": 198.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_5_SKJain.pdf"
   },
@@ -7663,6 +8359,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_6_SJJKozhamthadam.pdf",
+    "juUrl": "",
     "size": 329.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_6_SJJKozhamthadam.pdf"
   },
@@ -7674,6 +8371,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_7_PublicationonHOS.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_7_PublicationonHOS.pdf"
   },
@@ -7685,6 +8383,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_1_8_Supplement.pdf",
+    "juUrl": "",
     "size": 594.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_1_8_Supplement.pdf"
   },
@@ -7696,6 +8395,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_1_SCKak.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_1_SCKak.pdf"
   },
@@ -7707,6 +8407,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_2_BNNAchar.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_2_BNNAchar.pdf"
   },
@@ -7718,6 +8419,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_3_SMadabhushi.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_3_SMadabhushi.pdf"
   },
@@ -7729,6 +8431,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_4_AMukhopadhyay.pdf",
+    "juUrl": "",
     "size": 191.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_4_AMukhopadhyay.pdf"
   },
@@ -7740,6 +8443,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_5_SSarkar.pdf",
+    "juUrl": "",
     "size": 255.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_5_SSarkar.pdf"
   },
@@ -7751,6 +8455,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_6_SKChatterjee.pdf",
+    "juUrl": "",
     "size": 263.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_6_SKChatterjee.pdf"
   },
@@ -7762,6 +8467,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_7_News.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_7_News.pdf"
   },
@@ -7773,6 +8479,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_8_ProjectsApproved.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_8_ProjectsApproved.pdf"
   },
@@ -7784,6 +8491,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_9_AcademyPublicationsofHOS.pdf",
+    "juUrl": "",
     "size": 79.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_9_AcademyPublicationsofHOS.pdf"
   },
@@ -7795,6 +8503,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_2_10_Supplement.pdf",
+    "juUrl": "",
     "size": 611.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_2_10_Supplement.pdf"
   },
@@ -7806,6 +8515,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_1_SCKak.pdf",
+    "juUrl": "",
     "size": 213.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_1_SCKak.pdf"
   },
@@ -7817,6 +8527,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_2_KCHari.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_2_KCHari.pdf"
   },
@@ -7828,6 +8539,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_3_CSRao.pdf",
+    "juUrl": "",
     "size": 325.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_3_CSRao.pdf"
   },
@@ -7839,6 +8551,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_4_NGDongre.pdf",
+    "juUrl": "",
     "size": 161.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_4_NGDongre.pdf"
   },
@@ -7850,6 +8563,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_5_ADas.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_5_ADas.pdf"
   },
@@ -7861,6 +8575,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_6_AcademyPublicationsofHOS.pdf",
+    "juUrl": "",
     "size": 88.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_6_AcademyPublicationsofHOS.pdf"
   },
@@ -7872,6 +8587,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_3_7_Supplement.pdf",
+    "juUrl": "",
     "size": 789.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_3_7_Supplement.pdf"
   },
@@ -7883,6 +8599,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_1_KCHari.pdf",
+    "juUrl": "",
     "size": 171.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_1_KCHari.pdf"
   },
@@ -7894,6 +8611,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_2_PSensarma.pdf",
+    "juUrl": "",
     "size": 120.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_2_PSensarma.pdf"
   },
@@ -7905,6 +8623,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_3_NGDongre.pdf",
+    "juUrl": "",
     "size": 177.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_3_NGDongre.pdf"
   },
@@ -7916,6 +8635,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_4_CPalit.pdf",
+    "juUrl": "",
     "size": 213.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_4_CPalit.pdf"
   },
@@ -7927,6 +8647,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_5_AcademysPublicationsonHOS.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_5_AcademysPublicationsonHOS.pdf"
   },
@@ -7938,6 +8659,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_6_News.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_6_News.pdf"
   },
@@ -7949,6 +8671,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1998",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol33_4_7_Supplement.pdf",
+    "juUrl": "",
     "size": 1024.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol33_4_7_Supplement.pdf"
   },
@@ -7960,6 +8683,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_1_KCHari.pdf",
+    "juUrl": "",
     "size": 288.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_1_KCHari.pdf"
   },
@@ -7971,6 +8695,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_2_NKumar.pdf",
+    "juUrl": "",
     "size": 1167.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_2_NKumar.pdf"
   },
@@ -7982,6 +8707,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_3_RShrivastva.pdf",
+    "juUrl": "",
     "size": 721.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_3_RShrivastva.pdf"
   },
@@ -7993,6 +8719,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_4_AGhosh.pdf",
+    "juUrl": "",
     "size": 223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_4_AGhosh.pdf"
   },
@@ -8004,6 +8731,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_5_RSingh.pdf",
+    "juUrl": "",
     "size": 240.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_5_RSingh.pdf"
   },
@@ -8015,6 +8743,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_6_BookReviews.pdf",
+    "juUrl": "",
     "size": 71.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_6_BookReviews.pdf"
   },
@@ -8026,6 +8755,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_1_7_News.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_1_7_News.pdf"
   },
@@ -8037,6 +8767,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_1_JSPettersson.pdf",
+    "juUrl": "",
     "size": 317.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_1_JSPettersson.pdf"
   },
@@ -8048,6 +8779,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_2_BNNAchar.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_2_BNNAchar.pdf"
   },
@@ -8059,6 +8791,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_3_Skak.pdf",
+    "juUrl": "",
     "size": 203.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_3_Skak.pdf"
   },
@@ -8070,6 +8803,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_4_DKKanjilal.pdf",
+    "juUrl": "",
     "size": 101.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_4_DKKanjilal.pdf"
   },
@@ -8081,6 +8815,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_5_KCHari.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_5_KCHari.pdf"
   },
@@ -8088,10 +8823,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-2",
     "title": "Yantraraja: The Astrolabe in Sanskrit",
     "author": " Sreeramula Rajeswara Sarma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_6_SRSarma.pdf",
+    "juUrl": "",
     "size": 368.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_6_SRSarma.pdf"
   },
@@ -8103,6 +8839,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_7_BookReviews.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_7_BookReviews.pdf"
   },
@@ -8114,6 +8851,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_8_News.pdf",
+    "juUrl": "",
     "size": 40.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_8_News.pdf"
   },
@@ -8121,10 +8859,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-2",
     "title": "Academy Publications on HOS",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_2_9_AcademyPublicationsonHOS.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_2_9_AcademyPublicationsonHOS.pdf"
   },
@@ -8132,10 +8871,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-3",
     "title": "Mining of Copper in Ancient India",
     "author": " Rina Shrivastava",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_3_1_RShrivastva.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_3_1_RShrivastva.pdf"
   },
@@ -8143,10 +8883,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-3",
     "title": "Earthquake History of India in Medieval Times",
     "author": " R N Iyengar et al.",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_3_2_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol34_3_2_RNIyengar.pdf",
     "size": 909.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol34_3_2_RNIyengar.pdf"
   },
@@ -8154,10 +8895,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-3",
     "title": "Michael Faraday Vis\u2013A\u2013Vis Chandrasekhar",
     "author": " N K Maitra",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_3_3_NKMaitra.pdf",
+    "juUrl": "",
     "size": 72.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_3_3_NKMaitra.pdf"
   },
@@ -8169,6 +8911,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_3_4_BookReviews.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_3_4_BookReviews.pdf"
   },
@@ -8180,6 +8923,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_3_5_News.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_3_5_News.pdf"
   },
@@ -8187,10 +8931,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-4",
     "title": "Technology of Iron and Steel in Kodumal\u2014 An Ancient Industrial Centre in Tamil Nadu",
     "author": " B Sasisekaran and B Raghunatha Rao",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_1_BSasisekaran.pdf",
+    "juUrl": "",
     "size": 672.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_1_BSasisekaran.pdf"
   },
@@ -8198,10 +8943,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-4",
     "title": "Katapayadi Notation on a Sanskrit Astrolabe",
     "author": " Sreeramula Rajeswara Sarma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_2_SRSarma.pdf",
+    "juUrl": "",
     "size": 366.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_2_SRSarma.pdf"
   },
@@ -8209,10 +8955,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-4",
     "title": "Dams\u2014 Engineering Analysisof Alternatives",
     "author": " Sandeep Garg et al.",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_3_SGarg.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_3_SGarg.pdf"
   },
@@ -8220,10 +8967,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-4",
     "title": "Science in British India",
     "author": " R K Kochhar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_4_RKKochhar.pdf",
+    "juUrl": "",
     "size": 481.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_4_RKKochhar.pdf"
   },
@@ -8235,6 +8983,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_5_BookReview.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_5_BookReview.pdf"
   },
@@ -8246,6 +8995,7 @@ const PAPERS = [
     "subject": "General",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_6_News.pdf",
+    "juUrl": "",
     "size": 109.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_6_News.pdf"
   },
@@ -8253,10 +9003,11 @@ const PAPERS = [
     "journal": "IJHS-34-1999-Issue-4",
     "title": "Supplement\u2014 Rasendramangalam of Nagarjuna",
     "author": " H S Sharma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1999",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol34_4_7_Supplement_Rasendramangalam.pdf",
+    "juUrl": "",
     "size": 649.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol34_4_7_Supplement_Rasendramangalam.pdf"
   },
@@ -8264,10 +9015,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "On The Astronomical Basis of the Date of Satapatha Brahmana: A Re\u2013Examination of Dikshit's Theory",
     "author": " B N N Achar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_1_BNNAchar.pdf",
+    "juUrl": "",
     "size": 343.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_1_BNNAchar.pdf"
   },
@@ -8275,10 +9027,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "Date of the Solar Orbit of Satapatha Brahmana",
     "author": " K Chandra Hari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_2_KCHari.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_2_KCHari.pdf"
   },
@@ -8286,10 +9039,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "Dietary Diversity in Manu\u2013Samhita",
     "author": " P Sensarma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_3_PSensarma.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_3_PSensarma.pdf"
   },
@@ -8297,10 +9051,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "Origin of the Mean Motion Tables of Jai Singh",
     "author": " B V Dalen",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_4_BvDalen.pdf",
+    "juUrl": "",
     "size": 363.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_4_BvDalen.pdf"
   },
@@ -8308,10 +9063,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "Pharmaceutical Society of India: The oldest Indian Pharmaceutical Organisation",
     "author": " H Singh",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_5_HSingh.pdf",
+    "juUrl": "",
     "size": 139.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_5_HSingh.pdf"
   },
@@ -8323,6 +9079,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_6_BookReviews.pdf",
+    "juUrl": "",
     "size": 136.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_6_BookReviews.pdf"
   },
@@ -8330,10 +9087,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-1",
     "title": "Notices",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_1_7_Notices.pdf",
+    "juUrl": "",
     "size": 39.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_1_7_Notices.pdf"
   },
@@ -8341,10 +9099,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "A Case for Revising the Date of Vedanga Jyotisa",
     "author": " B N N Achar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_1_BNNAchar.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_1_BNNAchar.pdf"
   },
@@ -8352,10 +9111,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Babylonian Source of Aryabhata\u2019s Planetary Constants",
     "author": " K D Abhyankar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_2_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 62.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_2_KDAbhyankar.pdf"
   },
@@ -8363,10 +9123,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Govindaswamin\u2019s Arithmetic Rules Cited in the Kriyakramakari of Sankara and Narayana",
     "author": " T Hayashi",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_3_THayashi.pdf",
+    "juUrl": "",
     "size": 666.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_3_THayashi.pdf"
   },
@@ -8374,10 +9135,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Astronomical Instruments at Kota",
     "author": " V N Sharma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_4_VNSharma.pdf",
+    "juUrl": "",
     "size": 427.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_4_VNSharma.pdf"
   },
@@ -8385,10 +9147,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Joseph Needham and the History of Indian Technology",
     "author": " Irfan Habib",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_5_IHabib.pdf",
+    "juUrl": "",
     "size": 615.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_5_IHabib.pdf"
   },
@@ -8400,6 +9163,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_6_BookReviews.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_6_BookReviews.pdf"
   },
@@ -8407,10 +9171,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Notices",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_7_Notices.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_7_Notices.pdf"
   },
@@ -8418,10 +9183,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-3",
     "title": "Conferences: NISTADS INSA Workshop on History of Science in India",
     "author": " A N Thakur",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_3_8_Conferences.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_3_8_Conferences.pdf"
   },
@@ -8429,10 +9195,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-4",
     "title": "On the Caitradi Scheme",
     "author": " B N N Achar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_4_1_BNNAchar.pdf",
+    "juUrl": "",
     "size": 280.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_4_1_BNNAchar.pdf"
   },
@@ -8440,10 +9207,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-4",
     "title": "Planetary Revolutions in Indian Astronomy",
     "author": " Hugh Thurston",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_4_2_HThurston.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_4_2_HThurston.pdf"
   },
@@ -8451,10 +9219,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-4",
     "title": "Jean\u2013Baptiste Biot on the History of Indian Astronomy (1830\u20131860): The Nation in the Post\u2013Enlightenment Historiography of Science",
     "author": " Dhruv Raina",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_4_3_DRaina.pdf",
+    "juUrl": "",
     "size": 509.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_4_3_DRaina.pdf"
   },
@@ -8466,6 +9235,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_4_4_BookReviews.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_4_4_BookReviews.pdf"
   },
@@ -8473,10 +9243,11 @@ const PAPERS = [
     "journal": "IJHS-35-2000-Issue-4",
     "title": "Supplements",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2000",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol35_4_5_SupplementsHOSResearchProjects.pdf",
+    "juUrl": "",
     "size": 1524.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol35_4_5_SupplementsHOSResearchProjects.pdf"
   },
@@ -8484,10 +9255,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "New Insights on the 1600 Year Old Corrosion Resistant Delhi Iron Pillar",
     "author": " R Balasubramaniam",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_1_RBalasubramanian.pdf",
+    "juUrl": "",
     "size": 1182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_1_RBalasubramanian.pdf"
   },
@@ -8495,10 +9267,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "Measuring Time With Long Syllables",
     "author": " S R Sarma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_2_SRSarma.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_2_SRSarma.pdf"
   },
@@ -8506,10 +9279,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "Ahargana and Weekdays As Per Modern Suryasiddhanta",
     "author": " A K Bag",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_3_AKBag.pdf",
+    "juUrl": "",
     "size": 163.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_3_AKBag.pdf"
   },
@@ -8521,6 +9295,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_4_BookReview.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_4_BookReview.pdf"
   },
@@ -8528,10 +9303,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "Notices of Journals",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_5_Notices.pdf",
+    "juUrl": "",
     "size": 72.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_5_Notices.pdf"
   },
@@ -8539,10 +9315,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "Conferences",
     "author": " A K Bag",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_6_Conferences.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_6_Conferences.pdf"
   },
@@ -8550,10 +9327,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-1&2",
     "title": "Projects Approved and Renewed by the Indian National Commission for History of Science",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_1and2_7_Projects.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_1and2_7_Projects.pdf"
   },
@@ -8561,10 +9339,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Technology of Forge Welding Adopted at Mallappadi \u2013 An Iron Age Site in Tamil Nadu",
     "author": " B Sasisekaran and B raghunatha Rao",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_1_BSasisekaran.pdf",
+    "juUrl": "",
     "size": 375.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_1_BSasisekaran.pdf"
   },
@@ -8572,10 +9351,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Aryabhata: His name\u201a Time and Provenance",
     "author": " K V Sarma",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_2_KVSarma.pdf",
+    "juUrl": "",
     "size": 161.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_2_KVSarma.pdf"
   },
@@ -8583,10 +9363,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Aryabhata\u2019s Kaliyuga Revisited: An Optimization Problem",
     "author": " Y V Jeppu",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_3_YVJeppu.pdf",
+    "juUrl": "",
     "size": 125.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_3_YVJeppu.pdf"
   },
@@ -8594,10 +9375,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Vakyakarana\u2013A Study",
     "author": " K Chandra Hari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_4_KCHari.pdf",
+    "juUrl": "",
     "size": 333.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_4_KCHari.pdf"
   },
@@ -8605,10 +9387,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "A Tale of Two Fingerprint Experts",
     "author": " G S Sodhi and Jasjeet Kaur",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_5_GSSodhi.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_5_GSSodhi.pdf"
   },
@@ -8620,6 +9403,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_6_BookReviews.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_6_BookReviews.pdf"
   },
@@ -8627,10 +9411,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Project Report: Search for Ancient Indian Records of the Sighting of Supernovae",
     "author": " Jayant V Narlikar and Saroja Bhate",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_7_ProjectReport.pdf",
+    "juUrl": "",
     "size": 1503.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_7_ProjectReport.pdf"
   },
@@ -8638,10 +9423,11 @@ const PAPERS = [
     "journal": "IJHS-36-2001-Issue-3&4",
     "title": "Conferences",
     "author": " S M R Ansari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2001",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol36_3and4_8_Conferences.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol36_3and4_8_Conferences.pdf"
   },
@@ -8649,10 +9435,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Studies of Ancient Indian OCP Period Copper",
     "author": " RBalasubramaniam\u201a M N Mungole et. al",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_1_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 350.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_1_RBalasubramaniam.pdf"
   },
@@ -8660,10 +9447,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Metallurgy and Metal Industry in Ancient Tamil Nadu\u2014 An Archaeological Study",
     "author": " B Sasisekaran",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_2_BSasisekaran.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_2_BSasisekaran.pdf"
   },
@@ -8671,10 +9459,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Probable Rationale for Unequal Naksatra Divisions in Jain Astronomy",
     "author": " K D Abhyankar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_3_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_3_KDAbhyankar.pdf"
   },
@@ -8682,10 +9471,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Indigenous Colours in Mithila(North Bihar)\u2013 A Historical Perspective",
     "author": " Vidyanath Jha",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_4_VJha.pdf",
+    "juUrl": "",
     "size": 288.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_4_VJha.pdf"
   },
@@ -8693,10 +9483,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "The Topography of a Changing World",
     "author": " T N Venkateswaran",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_5_TVVenkateswaran.pdf",
+    "juUrl": "",
     "size": 370.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_5_TVVenkateswaran.pdf"
   },
@@ -8708,6 +9499,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_6_BookReview.pdf",
+    "juUrl": "",
     "size": 27.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_6_BookReview.pdf"
   },
@@ -8715,10 +9507,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Conferences",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_7_Conference.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_7_Conference.pdf"
   },
@@ -8726,10 +9519,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-1",
     "title": "Supplement: Growth of Scientific Periodicals in India (1788\u2013 1900)",
     "author": " B K Sen",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_1_9_Supplement%20ScientificPeriodicals.pdf",
+    "juUrl": "",
     "size": 629.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_1_9_Supplement%20ScientificPeriodicals.pdf"
   },
@@ -8737,10 +9531,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Aryabhata and the table of Rsines",
     "author": " B N Narahari Achar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_1_BNNAchar.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_1_BNNAchar.pdf"
   },
@@ -8748,10 +9543,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Genesis and Antecedents of Aryabhatiya",
     "author": " K Chandra Hari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_2_KCHari.pdf",
+    "juUrl": "",
     "size": 218.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_2_KCHari.pdf"
   },
@@ -8759,10 +9555,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "A New Study of Dhar Iron Pillar",
     "author": " R Balasubramaniam",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_3_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 1321.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_3_RBalasubramaniam.pdf"
   },
@@ -8770,10 +9567,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Fritz Haber\u2014 A Conflicting Chemist",
     "author": " Jaime Wisniak",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_4_JWisniak.pdf",
+    "juUrl": "",
     "size": 344.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_4_JWisniak.pdf"
   },
@@ -8781,10 +9579,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Sir C V Raman and his contacts with Hungarian Scientists",
     "author": " Rajinder Singh",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_5_RSingh.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_5_RSingh.pdf"
   },
@@ -8796,6 +9595,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_6_BookReview.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_6_BookReview.pdf"
   },
@@ -8803,10 +9603,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Projects Report: Minerals and Metals in Ancient India",
     "author": " Shabnam Shukla",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_7_ProjectReport.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_7_ProjectReport.pdf"
   },
@@ -8814,10 +9615,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Conferences: Indian History Congress",
     "author": " Shabnam Shukla",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_8_Conferences.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_8_Conferences.pdf"
   },
@@ -8825,10 +9627,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Conferences: National Seminar",
     "author": " Balai Chaki",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_9_BChaki.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_9_BChaki.pdf"
   },
@@ -8836,10 +9639,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Indian National Commission for History of Science: Projects Renewed and Approved",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_10_INCforHOS.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_10_INCforHOS.pdf"
   },
@@ -8847,10 +9651,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-2",
     "title": "Supplement: Growth of Scientific Periodicals in India (1788\u2013 1900)",
     "author": " B K Sen",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_2_11_SupplementScientificPeriodicals.pdf",
+    "juUrl": "",
     "size": 995.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_2_11_SupplementScientificPeriodicals.pdf"
   },
@@ -8858,10 +9663,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "On Two Important Provisions in Vedanga&ndash Jyotisa",
     "author": " K D Abhyankar",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_1_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_1_KDAbhyankar.pdf"
   },
@@ -8869,10 +9675,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Date of Haridatta\u201a Promulgator of the Prahita System of Astronomy in Kerala",
     "author": " K Chandra Hari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_2_KCHari.pdf",
+    "juUrl": "",
     "size": 213.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_2_KCHari.pdf"
   },
@@ -8880,10 +9687,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Nemicandra\u2019s Rule for the Volume of a Sphere",
     "author": " Dipak Jadhav",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_3_DJadhav.pdf",
+    "juUrl": "",
     "size": 207.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_3_DJadhav.pdf"
   },
@@ -8891,10 +9699,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Practical Astronomy in Indo\u2013Persian Sources",
     "author": " S M R Ansari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_4_SMRAnsari.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_4_SMRAnsari.pdf"
   },
@@ -8902,10 +9711,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Sir CV Raman\u201a Dame Kathleen Lonsdale and their Scientific Controversy due to the Diffuse Spots in X\u2013ray Photographs",
     "author": " Ravinder Singh",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_5_RSingh.pdf",
+    "juUrl": "",
     "size": 342.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_5_RSingh.pdf"
   },
@@ -8917,6 +9727,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_6_BookReview.pdf",
+    "juUrl": "",
     "size": 185.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_6_BookReview.pdf"
   },
@@ -8924,10 +9735,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Project Report: Shipping and ship building in India\u2013 Medieval Period",
     "author": " Shabnam Shukla",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_7_ProjectReport.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_7_ProjectReport.pdf"
   },
@@ -8935,10 +9747,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Orbituary: Apurba Kumar Chakravarty",
     "author": " Shabnam Shukla\u201a S K Chatterjee",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_8_Obituary.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_8_Obituary.pdf"
   },
@@ -8946,10 +9759,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Notice of Journals",
     "author": " ",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_9_NoticeofJournals.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_9_NoticeofJournals.pdf"
   },
@@ -8957,10 +9771,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-3",
     "title": "Supplement: Growth of Scientific Periodicals in India (1788\u2013 1900)",
     "author": " B K Sen",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_3_10_SupplementScientificPeriodicalsBKSen.pdf",
+    "juUrl": "",
     "size": 1250.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_3_10_SupplementScientificPeriodicalsBKSen.pdf"
   },
@@ -8968,10 +9783,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "The Objective Criteria in Deciphering the Indus Script",
     "author": " Madhusudan Mishra",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_1_MMishra.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_1_MMishra.pdf"
   },
@@ -8979,10 +9795,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "Material and Electrochemical Characterization of Ancient Indian OCP Period Copper",
     "author": " T Laha et. al.",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_2_TLaha.pdf",
+    "juUrl": "",
     "size": 188.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_2_TLaha.pdf"
   },
@@ -8990,10 +9807,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "An Early Eclipse Record of Indian Astronomy",
     "author": " K Chandra Hari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_3_KCHari.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_3_KCHari.pdf"
   },
@@ -9001,10 +9819,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "Hugh Martin Leake: A Historical Memoir",
     "author": " N C Shah",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_4_NCShah.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_4_NCShah.pdf"
   },
@@ -9012,10 +9831,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "The beginning of Biochemical Researches in India\u2014 An Historical Perspective",
     "author": " Srabani sen",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_5_SSen.pdf",
+    "juUrl": "",
     "size": 287.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_5_SSen.pdf"
   },
@@ -9027,6 +9847,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_6_BookReview.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_6_BookReview.pdf"
   },
@@ -9034,10 +9855,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "Project Report: Raj Nighantu of Narhari Pandit",
     "author": " Shabnam Shukla",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_8_ProjectReport.pdf",
+    "juUrl": "",
     "size": 67.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_8_ProjectReport.pdf"
   },
@@ -9045,10 +9867,11 @@ const PAPERS = [
     "journal": "IJHS-37-2002-Issue-4",
     "title": "Orbituary: Shabbir Ahmad Khan Ghori",
     "author": " S M R Ansari",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_9_Obituary.pdf",
+    "juUrl": "",
     "size": 55.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_9_Obituary.pdf"
   },
@@ -9060,6 +9883,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2002",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol37_4_10_NoticeofJournals.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol37_4_10_NoticeofJournals.pdf"
   },
@@ -9071,6 +9895,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_1_RCGupta.pdf",
+    "juUrl": "",
     "size": 606.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_1_RCGupta.pdf"
   },
@@ -9082,6 +9907,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_2_AKBag.pdf",
+    "juUrl": "",
     "size": 721.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_2_AKBag.pdf"
   },
@@ -9093,6 +9919,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_3_AKBag.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_3_AKBag.pdf"
   },
@@ -9104,6 +9931,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_4_KCHari.pdf",
+    "juUrl": "",
     "size": 666.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_4_KCHari.pdf"
   },
@@ -9115,6 +9943,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_5_SFTuan.pdf",
+    "juUrl": "",
     "size": 373.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_5_SFTuan.pdf"
   },
@@ -9126,6 +9955,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_6_BookReview.pdf",
+    "juUrl": "",
     "size": 203.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_6_BookReview.pdf"
   },
@@ -9137,6 +9967,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_1_7_Obituary.pdf",
+    "juUrl": "",
     "size": 218.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_1_7_Obituary.pdf"
   },
@@ -9148,6 +9979,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_1_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol38_2_1_RNIyengar.pdf",
     "size": 2037.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol38_2_1_RNIyengar.pdf"
   },
@@ -9159,6 +9991,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_2_JLCoze.pdf",
+    "juUrl": "",
     "size": 458.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_2_JLCoze.pdf"
   },
@@ -9170,6 +10003,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_3_KRamasubramanian.pdf",
+    "juUrl": "",
     "size": 532.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_3_KRamasubramanian.pdf"
   },
@@ -9181,6 +10015,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_4_BRRao.pdf",
+    "juUrl": "",
     "size": 253.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_4_BRRao.pdf"
   },
@@ -9192,6 +10027,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_5_RSingh.pdf",
+    "juUrl": "",
     "size": 1003.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_5_RSingh.pdf"
   },
@@ -9203,6 +10039,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_6_BookReview.pdf",
+    "juUrl": "",
     "size": 226.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_6_BookReview.pdf"
   },
@@ -9214,6 +10051,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_7_ProjectReport.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_7_ProjectReport.pdf"
   },
@@ -9225,6 +10063,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_8_IndianNationalCommissionforHOS.pdf",
+    "juUrl": "",
     "size": 83.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_8_IndianNationalCommissionforHOS.pdf"
   },
@@ -9236,6 +10075,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_2_9_Conferences.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_2_9_Conferences.pdf"
   },
@@ -9247,6 +10087,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_1_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 1266.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_1_RBalasubramaniam.pdf"
   },
@@ -9258,6 +10099,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_2_BSasisekaran.pdf",
+    "juUrl": "",
     "size": 1104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_2_BSasisekaran.pdf"
   },
@@ -9269,6 +10111,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_3_KCHari.pdf",
+    "juUrl": "",
     "size": 1150.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_3_KCHari.pdf"
   },
@@ -9280,6 +10123,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_4_SBRao.pdf",
+    "juUrl": "",
     "size": 747.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_4_SBRao.pdf"
   },
@@ -9291,6 +10135,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_5_IGKhan.pdf",
+    "juUrl": "",
     "size": 2160.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_5_IGKhan.pdf"
   },
@@ -9302,6 +10147,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_6_BookReview.pdf",
+    "juUrl": "",
     "size": 417.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_6_BookReview.pdf"
   },
@@ -9313,6 +10159,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_7_ProjectReport.pdf",
+    "juUrl": "",
     "size": 229.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_7_ProjectReport.pdf"
   },
@@ -9324,6 +10171,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_8_Obituary.pdf",
+    "juUrl": "",
     "size": 253.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_8_Obituary.pdf"
   },
@@ -9335,6 +10183,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_3_9_Supplement.pdf",
+    "juUrl": "",
     "size": 3824.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_3_9_Supplement.pdf"
   },
@@ -9346,6 +10195,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_1_PSensarma.pdf",
+    "juUrl": "",
     "size": 504.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_1_PSensarma.pdf"
   },
@@ -9357,6 +10207,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_2_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 1630.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_2_RBalasubramaniam.pdf"
   },
@@ -9368,6 +10219,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_3_ACMandal.pdf",
+    "juUrl": "",
     "size": 847.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_3_ACMandal.pdf"
   },
@@ -9379,6 +10231,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_4_GAbraham.pdf",
+    "juUrl": "",
     "size": 383.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_4_GAbraham.pdf"
   },
@@ -9390,6 +10243,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_5_RSingh.pdf",
+    "juUrl": "",
     "size": 678.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_5_RSingh.pdf"
   },
@@ -9401,6 +10255,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_6_BookReview.pdf",
+    "juUrl": "",
     "size": 429.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_6_BookReview.pdf"
   },
@@ -9412,6 +10267,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_7_Conference.pdf",
+    "juUrl": "",
     "size": 266.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_7_Conference.pdf"
   },
@@ -9423,6 +10279,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_8_News.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_8_News.pdf"
   },
@@ -9434,6 +10291,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2003",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol38_4_9_CHAMANewsletter.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol38_4_9_CHAMANewsletter.pdf"
   },
@@ -9445,6 +10303,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_1_RSatyanarayana.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_1_RSatyanarayana.pdf"
   },
@@ -9456,6 +10315,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_2_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol39_1_2_RNIyengar.pdf",
     "size": 621.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol39_1_2_RNIyengar.pdf"
   },
@@ -9467,6 +10327,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_3_MIDass.pdf",
+    "juUrl": "",
     "size": 632.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_3_MIDass.pdf"
   },
@@ -9478,6 +10339,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_4_JWisniak.pdf",
+    "juUrl": "",
     "size": 460.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_4_JWisniak.pdf"
   },
@@ -9489,6 +10351,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_5_JNSinha.pdf",
+    "juUrl": "",
     "size": 315.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_5_JNSinha.pdf"
   },
@@ -9500,6 +10363,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_6_BookReview.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_6_BookReview.pdf"
   },
@@ -9511,6 +10375,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_9_SRSarma.pdf",
+    "juUrl": "",
     "size": 27.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_9_SRSarma.pdf"
   },
@@ -9522,6 +10387,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_1_10_News.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_1_10_News.pdf"
   },
@@ -9533,6 +10399,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_1_SKAcharya.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_1_SKAcharya.pdf"
   },
@@ -9544,6 +10411,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_2_KCHari.pdf",
+    "juUrl": "",
     "size": 223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_2_KCHari.pdf"
   },
@@ -9555,6 +10423,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_3_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 667.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_3_RBalasubramaniam.pdf"
   },
@@ -9566,6 +10435,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_4_NAthiyaman.pdf",
+    "juUrl": "",
     "size": 313.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_4_NAthiyaman.pdf"
   },
@@ -9577,6 +10447,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_5_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 53.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_5_HistoricalNotes.pdf"
   },
@@ -9588,6 +10459,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_6_NRathnasree.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_6_NRathnasree.pdf"
   },
@@ -9599,6 +10471,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_7_BookReviews.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_7_BookReviews.pdf"
   },
@@ -9610,6 +10483,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_8_Notices.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_8_Notices.pdf"
   },
@@ -9621,6 +10495,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_2_9_Supplement.pdf",
+    "juUrl": "",
     "size": 1117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_2_9_Supplement.pdf"
   },
@@ -9632,6 +10507,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_1_ARBasu.pdf",
+    "juUrl": "",
     "size": 410.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_1_ARBasu.pdf"
   },
@@ -9643,6 +10519,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_2_TVVenkateswaran.pdf",
+    "juUrl": "",
     "size": 444.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_2_TVVenkateswaran.pdf"
   },
@@ -9654,6 +10531,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_3_ASDhumatkar.pdf",
+    "juUrl": "",
     "size": 371.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_3_ASDhumatkar.pdf"
   },
@@ -9665,6 +10543,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_4_ABasu.pdf",
+    "juUrl": "",
     "size": 279.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_4_ABasu.pdf"
   },
@@ -9676,6 +10555,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_5_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_5_HistoricalNotes.pdf"
   },
@@ -9687,6 +10567,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_6_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 105.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_6_SKMajumdar.pdf"
   },
@@ -9698,6 +10579,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_3_7_BookReview.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_3_7_BookReview.pdf"
   },
@@ -9709,6 +10591,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_1_RRajan.pdf",
+    "juUrl": "",
     "size": 705.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_1_RRajan.pdf"
   },
@@ -9720,6 +10603,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_2_ANThakur.pdf",
+    "juUrl": "",
     "size": 159.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_2_ANThakur.pdf"
   },
@@ -9731,6 +10615,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_3_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 150.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_3_KDAbhyankar.pdf"
   },
@@ -9742,6 +10627,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_4_SBRao.pdf",
+    "juUrl": "",
     "size": 414.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_4_SBRao.pdf"
   },
@@ -9753,6 +10639,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_5_GDYoung.pdf",
+    "juUrl": "",
     "size": 509.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_5_GDYoung.pdf"
   },
@@ -9764,6 +10651,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_6_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 480.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_6_HistoricalNotes.pdf"
   },
@@ -9775,6 +10663,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_7_CmdSKChatterjee.pdf",
+    "juUrl": "",
     "size": 237.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_7_CmdSKChatterjee.pdf"
   },
@@ -9786,6 +10675,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_8_JNSinha.pdf",
+    "juUrl": "",
     "size": 61.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_8_JNSinha.pdf"
   },
@@ -9797,6 +10687,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2004",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol39_4_9_News.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol39_4_9_News.pdf"
   },
@@ -9808,6 +10699,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol1_2005_01.pdf",
+    "juUrl": "",
     "size": 2707.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol1_2005_01.pdf"
   },
@@ -9819,6 +10711,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol1_2005_02_ENVIRONMENT%20AND%20ECOLOGY%20IN%20THE%20RAMAYANA.pdf",
+    "juUrl": "",
     "size": 6863.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol1_2005_02_ENVIRONMENT%20AND%20ECOLOGY%20IN%20THE%20RAMAYANA.pdf"
   },
@@ -9830,6 +10723,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol1_2005_03_MYSTICAL%20MATHEMATICS%20IN%20ANCIENT%20PLANETS.pdf",
+    "juUrl": "",
     "size": 6720.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol1_2005_03_MYSTICAL%20MATHEMATICS%20IN%20ANCIENT%20PLANETS.pdf"
   },
@@ -9841,6 +10735,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol1_2005_04_CONGRESS%20AND%20CONSERVATION.pdf",
+    "juUrl": "",
     "size": 9895.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol1_2005_04_CONGRESS%20AND%20CONSERVATION.pdf"
   },
@@ -9852,6 +10747,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol40_1_5_SSen.pdf",
+    "juUrl": "",
     "size": 337.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol40_1_5_SSen.pdf"
   },
@@ -9863,6 +10759,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol40_1_6_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol40_1_6_HistoricalNotes.pdf"
   },
@@ -9874,6 +10771,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol40_1_7_KCHari.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol40_1_7_KCHari.pdf"
   },
@@ -9885,6 +10783,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol40_1_8_BookReview.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol40_1_8_BookReview.pdf"
   },
@@ -9896,6 +10795,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol1_2005_08_NEWS.pdf",
+    "juUrl": "",
     "size": 973.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol1_2005_08_NEWS.pdf"
   },
@@ -9907,6 +10807,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol40_1_10_SupplementScientificPeriodicals.pdf",
+    "juUrl": "",
     "size": 1024.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol40_1_10_SupplementScientificPeriodicals.pdf"
   },
@@ -9918,6 +10819,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_01.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol2_2005_01.pdf",
     "size": 5391.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol2_2005_01.pdf"
   },
@@ -9929,6 +10831,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_02_MANAGEMENT%20OF%20FISTULA%20IN%20ANO%20IN%20ANCIENT%20GREEK%20AND%20AYURVEDIC%20MEDICINE%20A%20HISTORICAL%20AN.pdf",
+    "juUrl": "",
     "size": 18650.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_02_MANAGEMENT%20OF%20FISTULA%20IN%20ANO%20IN%20ANCIENT%20GREEK%20AND%20AYURVEDIC%20MEDICINE%20A%20HISTORICAL%20AN.pdf"
   },
@@ -9940,6 +10843,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_03_HIPPARCHUS'S%203600%20BASED%20CHORD%20TABLE%20AND%20ITS%20PLACE%20IN%20THE%20HISTORY%20OF%20ANCIENT%20GREEK%20AN.pdf",
+    "juUrl": "",
     "size": 3133.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_03_HIPPARCHUS'S%203600%20BASED%20CHORD%20TABLE%20AND%20ITS%20PLACE%20IN%20THE%20HISTORY%20OF%20ANCIENT%20GREEK%20AN.pdf"
   },
@@ -9951,6 +10855,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_04_HINDUS%20SCIENTIFIC%20CONTRIBUTIONS%20IN%20INDO%20CALENDAR.pdf",
+    "juUrl": "",
     "size": 21918.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_04_HINDUS%20SCIENTIFIC%20CONTRIBUTIONS%20IN%20INDO%20CALENDAR.pdf"
   },
@@ -9962,6 +10867,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_05_HISTORICAL%20NOTES_1.pdf",
+    "juUrl": "",
     "size": 1845.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_05_HISTORICAL%20NOTES_1.pdf"
   },
@@ -9973,6 +10879,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_05_HISTORICAL%20NOTES_2.pdf",
+    "juUrl": "",
     "size": 9223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_05_HISTORICAL%20NOTES_2.pdf"
   },
@@ -9984,6 +10891,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_06_BOOK%20REVIEW.pdf",
+    "juUrl": "",
     "size": 2902.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_06_BOOK%20REVIEW.pdf"
   },
@@ -9995,6 +10903,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_07_NEWS.pdf",
+    "juUrl": "",
     "size": 1722.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_07_NEWS.pdf"
   },
@@ -10006,6 +10915,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol2_2005_08_SUPPLEMENT.pdf",
+    "juUrl": "",
     "size": 9939.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol2_2005_08_SUPPLEMENT.pdf"
   },
@@ -10017,6 +10927,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_01_THE%20FIRST%20CATALOGUE%20ON%20FORGE%20WELDED%20IRON%20CANNONS%20BY%20NEOGI.pdf",
+    "juUrl": "",
     "size": 3913.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_01_THE%20FIRST%20CATALOGUE%20ON%20FORGE%20WELDED%20IRON%20CANNONS%20BY%20NEOGI.pdf"
   },
@@ -10028,6 +10939,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_02_RAJAGOPALA%20THE%20MASSIVE%20IRON%20CANNON%20AT%20THANJAVUR%20IN%20TAMIL%20NADU.pdf",
+    "juUrl": "",
     "size": 28448.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_02_RAJAGOPALA%20THE%20MASSIVE%20IRON%20CANNON%20AT%20THANJAVUR%20IN%20TAMIL%20NADU.pdf"
   },
@@ -10039,6 +10951,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_03_DAL%20MARDAN%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20BISHNUPUR.pdf",
+    "juUrl": "",
     "size": 2301.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_03_DAL%20MARDAN%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20BISHNUPUR.pdf"
   },
@@ -10050,6 +10963,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_04_THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20BADA%20BURJ%20OF%20GOLCONDA%20FORT%20RAMPART.pdf",
+    "juUrl": "",
     "size": 7456.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_04_THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20BADA%20BURJ%20OF%20GOLCONDA%20FORT%20RAMPART.pdf"
   },
@@ -10061,6 +10975,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_05_THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20FATEH%20BURJ%20OF%20GOLCONDA%20FORST%20RAMPART.pdf",
+    "juUrl": "",
     "size": 5311.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_05_THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20FATEH%20BURJ%20OF%20GOLCONDA%20FORST%20RAMPART.pdf"
   },
@@ -10072,6 +10987,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_06_BHAVANI%20SANKAR%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20JHANSI%20FORT.pdf",
+    "juUrl": "",
     "size": 26629.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_06_BHAVANI%20SANKAR%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20JHANSI%20FORT.pdf"
   },
@@ -10083,6 +10999,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_07_KADAK%20BIJLI%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20JHANSI%20FORT.pdf",
+    "juUrl": "",
     "size": 21132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_07_KADAK%20BIJLI%20THE%20FORGE%20WELDED%20IRON%20CANNON%20AT%20JHANSI%20FORT.pdf"
   },
@@ -10094,6 +11011,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_08_AZDAHA%20PAIKAR%20THE%20COMPOSITE%20IRON%20BROZE%20CANNON%20AT%20MUSA%20BURJ%20OF%20GOLCONDA%20FORT.pdf",
+    "juUrl": "",
     "size": 8487.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_08_AZDAHA%20PAIKAR%20THE%20COMPOSITE%20IRON%20BROZE%20CANNON%20AT%20MUSA%20BURJ%20OF%20GOLCONDA%20FORT.pdf"
   },
@@ -10105,6 +11023,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_09_FATH%20RAIHBAR%20THE%20MASSIVE%20BRONZE%20CANNON%20AT%20PETLA%20BURJ%20OF%20GOLCONDA%20FORT.pdf",
+    "juUrl": "",
     "size": 8715.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_09_FATH%20RAIHBAR%20THE%20MASSIVE%20BRONZE%20CANNON%20AT%20PETLA%20BURJ%20OF%20GOLCONDA%20FORT.pdf"
   },
@@ -10116,6 +11035,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_10_HISTORICAL%20NOTES.pdf",
+    "juUrl": "",
     "size": 1765.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_10_HISTORICAL%20NOTES.pdf"
   },
@@ -10127,6 +11047,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol3_2005_11_SUPPELMENT.pdf",
+    "juUrl": "",
     "size": 28728.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol3_2005_11_SUPPELMENT.pdf"
   },
@@ -10138,6 +11059,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_01_IRON%20CANNONS%20OF%20CHINA.pdf",
+    "juUrl": "",
     "size": 5363.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_01_IRON%20CANNONS%20OF%20CHINA.pdf"
   },
@@ -10149,6 +11071,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_02_MONSTER%20CANNON%20WROUGHT%20IRON%20BOMBARDS%20OF%20EUROPE.pdf",
+    "juUrl": "",
     "size": 6006.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_02_MONSTER%20CANNON%20WROUGHT%20IRON%20BOMBARDS%20OF%20EUROPE.pdf"
   },
@@ -10160,6 +11083,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_03_CANNONS%20OF%20EASTERN%20INDIA.pdf",
+    "juUrl": "",
     "size": 7624.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_03_CANNONS%20OF%20EASTERN%20INDIA.pdf"
   },
@@ -10171,6 +11095,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_04_FORGE%20WELDED%20CANNONS%20IN%20THE%20FORTS%20OF%20KARIMNAGAR%20DISTRICT%20IN%20THE%20ANDHRA%20PRADESH.pdf",
+    "juUrl": "",
     "size": 5678.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_04_FORGE%20WELDED%20CANNONS%20IN%20THE%20FORTS%20OF%20KARIMNAGAR%20DISTRICT%20IN%20THE%20ANDHRA%20PRADESH.pdf"
   },
@@ -10182,6 +11107,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_05_DEVELOPMENT%20OF%20CANNON%20TECHNOLOGY%20IN%20INDIA.pdf",
+    "juUrl": "",
     "size": 13544.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_05_DEVELOPMENT%20OF%20CANNON%20TECHNOLOGY%20IN%20INDIA.pdf"
   },
@@ -10193,6 +11119,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_06_EPIC%20OF%20SALTPETRE%20TO%20GUNPOWDER.pdf",
+    "juUrl": "",
     "size": 11534.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_06_EPIC%20OF%20SALTPETRE%20TO%20GUNPOWDER.pdf"
   },
@@ -10204,6 +11131,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_07_GUNPOWDER%20ARTILLERY%20AND%20MILITARY%20ARCHITECTURE%20IN%20SOUTH%20INDIA%20(15-18TH%20CENTURY).pdf",
+    "juUrl": "",
     "size": 8694.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_07_GUNPOWDER%20ARTILLERY%20AND%20MILITARY%20ARCHITECTURE%20IN%20SOUTH%20INDIA%20(15-18TH%20CENTURY).pdf"
   },
@@ -10215,6 +11143,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_08_FIREPOWER%20CENTRIC%20WARFARE%20IN%20INDIA%20AND%20MILITARY%20MODERNIZATION%20OF%20THE%20MARATHAS%201740-1.pdf",
+    "juUrl": "",
     "size": 14140.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_08_FIREPOWER%20CENTRIC%20WARFARE%20IN%20INDIA%20AND%20MILITARY%20MODERNIZATION%20OF%20THE%20MARATHAS%201740-1.pdf"
   },
@@ -10226,6 +11155,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_09_ROCKETS%20UNDER%20HAIDAR%20ALI%20AND%20TIPU%20SULTAN'.pdf",
+    "juUrl": "",
     "size": 24969.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_09_ROCKETS%20UNDER%20HAIDAR%20ALI%20AND%20TIPU%20SULTAN'.pdf"
   },
@@ -10237,6 +11167,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Pages%20from%20Vol4_2005_10_HISTORICAL%20NOTES_1.pdf",
+    "juUrl": "",
     "size": 1806.0,
     "localPath": "assets/pdfs/ijhs_potentials/Pages%20from%20Vol4_2005_10_HISTORICAL%20NOTES_1.pdf"
   },
@@ -10248,6 +11179,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_10_HISTORICAL%20NOTES_2.pdf",
+    "juUrl": "",
     "size": 3258.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_10_HISTORICAL%20NOTES_2.pdf"
   },
@@ -10259,6 +11191,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_10_HISTORICAL%20NOTES_3.pdf",
+    "juUrl": "",
     "size": 1536.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_10_HISTORICAL%20NOTES_3.pdf"
   },
@@ -10270,6 +11203,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_11_BOOK%20REVIEW.pdf",
+    "juUrl": "",
     "size": 2703.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_11_BOOK%20REVIEW.pdf"
   },
@@ -10281,6 +11215,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_12_NEWS.pdf",
+    "juUrl": "",
     "size": 363.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_12_NEWS.pdf"
   },
@@ -10292,6 +11227,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol4_2005_13_SUUPPLEMENT.pdf",
+    "juUrl": "",
     "size": 19834.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol4_2005_13_SUUPPLEMENT.pdf"
   },
@@ -10303,6 +11239,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_1_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol41_1_1_RNIyengar.pdf",
     "size": 204.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol41_1_1_RNIyengar.pdf"
   },
@@ -10314,6 +11251,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_2_PSensarma.pdf",
+    "juUrl": "",
     "size": 195.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_2_PSensarma.pdf"
   },
@@ -10325,6 +11263,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_3_KCHari.pdf",
+    "juUrl": "",
     "size": 365.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_3_KCHari.pdf"
   },
@@ -10336,6 +11275,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_4_DBhattacharya.pdf",
+    "juUrl": "",
     "size": 922.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_4_DBhattacharya.pdf"
   },
@@ -10347,6 +11287,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_5_JAshraf.pdf",
+    "juUrl": "",
     "size": 252.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_5_JAshraf.pdf"
   },
@@ -10358,6 +11299,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_6_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 358.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_6_HistoricalNotes.pdf"
   },
@@ -10369,6 +11311,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_7_Einstien.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_7_Einstien.pdf"
   },
@@ -10380,6 +11323,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_8_Magic%20Square.pdf",
+    "juUrl": "",
     "size": 15.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_8_Magic%20Square.pdf"
   },
@@ -10391,6 +11335,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_9_BookReview.pdf",
+    "juUrl": "",
     "size": 131.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_9_BookReview.pdf"
   },
@@ -10402,6 +11347,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_10_Notices.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_10_Notices.pdf"
   },
@@ -10413,6 +11359,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_1_11_Supplement_Grahalaghavam.pdf",
+    "juUrl": "",
     "size": 982.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_1_11_Supplement_Grahalaghavam.pdf"
   },
@@ -10424,6 +11371,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_1_SBhujle.pdf",
+    "juUrl": "",
     "size": 274.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_1_SBhujle.pdf"
   },
@@ -10435,6 +11383,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_2_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 88.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_2_KDAbhyankar.pdf"
   },
@@ -10446,6 +11395,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_3_AKBiswas.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_3_AKBiswas.pdf"
   },
@@ -10457,6 +11407,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_4_VNSharma.pdf",
+    "juUrl": "",
     "size": 611.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_4_VNSharma.pdf"
   },
@@ -10468,6 +11419,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_5_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 423.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_5_HistoricalNotes.pdf"
   },
@@ -10479,6 +11431,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_6_BookReview.pdf",
+    "juUrl": "",
     "size": 49.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_6_BookReview.pdf"
   },
@@ -10490,6 +11443,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_7_Obituary.pdf",
+    "juUrl": "",
     "size": 216.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_7_Obituary.pdf"
   },
@@ -10501,6 +11455,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_2_8_SupplementGrahalaghvam.pdf",
+    "juUrl": "",
     "size": 2831.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_2_8_SupplementGrahalaghvam.pdf"
   },
@@ -10512,6 +11467,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_1_AKMishra.pdf",
+    "juUrl": "",
     "size": 196.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_1_AKMishra.pdf"
   },
@@ -10523,6 +11479,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_2_KCHari.pdf",
+    "juUrl": "",
     "size": 105.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_2_KCHari.pdf"
   },
@@ -10534,6 +11491,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_3_NRaghavan.pdf",
+    "juUrl": "",
     "size": 784.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_3_NRaghavan.pdf"
   },
@@ -10545,6 +11503,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_4_RKDube.pdf",
+    "juUrl": "",
     "size": 397.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_4_RKDube.pdf"
   },
@@ -10556,6 +11515,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_5_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol41_3_5_RNIyengar.pdf",
     "size": 37.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol41_3_5_RNIyengar.pdf"
   },
@@ -10567,6 +11527,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_6_RCGupta.pdf",
+    "juUrl": "",
     "size": 78.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_6_RCGupta.pdf"
   },
@@ -10578,6 +11539,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_7_SisirKMajumdar.pdf",
+    "juUrl": "",
     "size": 69.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_7_SisirKMajumdar.pdf"
   },
@@ -10589,6 +11551,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_8_BookReview.pdf",
+    "juUrl": "",
     "size": 687.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_8_BookReview.pdf"
   },
@@ -10600,6 +11563,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol41_3_9_SupplementGrahalaghavam.pdf",
+    "juUrl": "",
     "size": 4070.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol41_3_9_SupplementGrahalaghavam.pdf"
   },
@@ -10611,6 +11575,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_1_RKDubey.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_1_RKDubey.pdf"
   },
@@ -10622,6 +11587,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_2_JKozhmthadan.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_2_JKozhmthadan.pdf"
   },
@@ -10633,6 +11599,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_3_DRaina.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_3_DRaina.pdf"
   },
@@ -10644,6 +11611,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_4_SSahoo.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_4_SSahoo.pdf"
   },
@@ -10655,6 +11623,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_5_BSahai.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_5_BSahai.pdf"
   },
@@ -10666,6 +11635,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_6_HJoglekar.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_6_HJoglekar.pdf"
   },
@@ -10677,6 +11647,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_7_NRatnasree.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_7_NRatnasree.pdf"
   },
@@ -10688,6 +11659,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_8_BSShyalaja.pdf",
+    "juUrl": "",
     "size": 16.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_8_BSShyalaja.pdf"
   },
@@ -10699,6 +11671,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_9_BookReview.pdf",
+    "juUrl": "",
     "size": 1.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_9_BookReview.pdf"
   },
@@ -10710,6 +11683,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_1_10_Supplement.pdf",
+    "juUrl": "",
     "size": 212.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_1_10_Supplement.pdf"
   },
@@ -10721,6 +11695,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_1_PSensarma.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_1_PSensarma.pdf"
   },
@@ -10732,6 +11707,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_2_ASule.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_2_ASule.pdf"
   },
@@ -10743,6 +11719,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_3_AParekh.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_3_AParekh.pdf"
   },
@@ -10754,6 +11731,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 552.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_4_RCGupta.pdf"
   },
@@ -10765,6 +11743,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_5_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 576.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_5_RBalasubramaniam.pdf"
   },
@@ -10776,6 +11755,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_6_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_6_KDAbhyankar.pdf"
   },
@@ -10787,6 +11767,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_7_KCHari.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_7_KCHari.pdf"
   },
@@ -10798,6 +11779,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_8_RRanade.pdf",
+    "juUrl": "",
     "size": 58.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_8_RRanade.pdf"
   },
@@ -10809,6 +11791,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_9_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 142.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_9_SKMajumdar.pdf"
   },
@@ -10820,6 +11803,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_10_BookReviewDWajastyk.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_10_BookReviewDWajastyk.pdf"
   },
@@ -10831,6 +11815,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_11_BookReviewMSSriram.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_11_BookReviewMSSriram.pdf"
   },
@@ -10842,6 +11827,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_12_BookReviewJNSinha.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_12_BookReviewJNSinha.pdf"
   },
@@ -10853,6 +11839,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_13_Obituary.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_13_Obituary.pdf"
   },
@@ -10864,6 +11851,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_14_News.pdf",
+    "juUrl": "",
     "size": 42.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_14_News.pdf"
   },
@@ -10875,6 +11863,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_2_15_Supplement.pdf",
+    "juUrl": "",
     "size": 562.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_2_15_Supplement.pdf"
   },
@@ -10886,6 +11875,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_1_DBWagner.pdf",
+    "juUrl": "",
     "size": 521.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_1_DBWagner.pdf"
   },
@@ -10897,6 +11887,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_2_AFeuerbach.pdf",
+    "juUrl": "",
     "size": 272.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_2_AFeuerbach.pdf"
   },
@@ -10908,6 +11899,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_3_JLCoze.pdf",
+    "juUrl": "",
     "size": 398.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_3_JLCoze.pdf"
   },
@@ -10919,6 +11911,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_4_AFeuerbach.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_4_AFeuerbach.pdf"
   },
@@ -10930,6 +11923,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_5_PKChattopadhyay.pdf",
+    "juUrl": "",
     "size": 465.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_5_PKChattopadhyay.pdf"
   },
@@ -10941,6 +11935,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_6_VTripathi.pdf",
+    "juUrl": "",
     "size": 298.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_6_VTripathi.pdf"
   },
@@ -10952,6 +11947,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_7_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 256.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_7_RBalasubramaniam.pdf"
   },
@@ -10963,6 +11959,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_8_SJaikishan.pdf",
+    "juUrl": "",
     "size": 414.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_8_SJaikishan.pdf"
   },
@@ -10974,6 +11971,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_9_SJaikishan.pdf",
+    "juUrl": "",
     "size": 579.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_9_SJaikishan.pdf"
   },
@@ -10985,6 +11983,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_10_SJaikishan.pdf",
+    "juUrl": "",
     "size": 262.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_10_SJaikishan.pdf"
   },
@@ -10996,6 +11995,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_11_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 494.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_11_RBalasubramaniam.pdf"
   },
@@ -11007,6 +12007,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_12_HistoricalNoteRBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_12_HistoricalNoteRBalasubramaniam.pdf"
   },
@@ -11018,6 +12019,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_13_HistoricalNoteGJuleff.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_13_HistoricalNoteGJuleff.pdf"
   },
@@ -11029,6 +12031,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_14_HistoricalNoteLPandey.pdf",
+    "juUrl": "",
     "size": 31.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_14_HistoricalNoteLPandey.pdf"
   },
@@ -11040,6 +12043,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_3_15_Historical%20NoteRBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 96.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_3_15_Historical%20NoteRBalasubramaniam.pdf"
   },
@@ -11051,6 +12055,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_1_JWadsworth.pdf",
+    "juUrl": "",
     "size": 454.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_1_JWadsworth.pdf"
   },
@@ -11062,6 +12067,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_2_JVerhoeven.pdf",
+    "juUrl": "",
     "size": 358.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_2_JVerhoeven.pdf"
   },
@@ -11073,6 +12079,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_3_JLCoze.pdf",
+    "juUrl": "",
     "size": 218.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_3_JLCoze.pdf"
   },
@@ -11084,6 +12091,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_4_PTCraddock.pdf",
+    "juUrl": "",
     "size": 188.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_4_PTCraddock.pdf"
   },
@@ -11095,6 +12103,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_5_VKumar.pdf",
+    "juUrl": "",
     "size": 548.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_5_VKumar.pdf"
   },
@@ -11106,6 +12115,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_6_MRBarnett.pdf",
+    "juUrl": "",
     "size": 392.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_6_MRBarnett.pdf"
   },
@@ -11117,6 +12127,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_7_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 444.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_7_RBalasubramaniam.pdf"
   },
@@ -11128,6 +12139,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_8_SSrinivasan.pdf",
+    "juUrl": "",
     "size": 401.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_8_SSrinivasan.pdf"
   },
@@ -11139,6 +12151,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_9_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 74.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_9_HistoricalNotes.pdf"
   },
@@ -11150,6 +12163,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_10_SJaikishan.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_10_SJaikishan.pdf"
   },
@@ -11161,6 +12175,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_11_BookReview.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_11_BookReview.pdf"
   },
@@ -11172,6 +12187,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol42_4_12_Supplement.pdf",
+    "juUrl": "",
     "size": 552.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol42_4_12_Supplement.pdf"
   },
@@ -11183,6 +12199,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_1_RNIyengar.pdf",
+    "juUrl": "",
     "size": 220.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol43_1_1_RNIyengar.pdf"
   },
@@ -11194,6 +12211,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_2_SSantra.pdf",
+    "juUrl": "",
     "size": 208.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_2_SSantra.pdf"
   },
@@ -11205,6 +12223,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_3_JDeloche.pdf",
+    "juUrl": "",
     "size": 344.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_3_JDeloche.pdf"
   },
@@ -11216,6 +12235,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_4_PKBondyopadhyay.pdf",
+    "juUrl": "",
     "size": 435.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_4_PKBondyopadhyay.pdf"
   },
@@ -11227,6 +12247,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_5_KDAbhyankar.pdf",
+    "juUrl": "",
     "size": 148.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_5_KDAbhyankar.pdf"
   },
@@ -11238,6 +12259,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_6_RCGupta.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_6_RCGupta.pdf"
   },
@@ -11249,6 +12271,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_7_DBhattacharya.pdf",
+    "juUrl": "",
     "size": 195.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_7_DBhattacharya.pdf"
   },
@@ -11260,6 +12283,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_8_DNUkidwe.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_8_DNUkidwe.pdf"
   },
@@ -11271,6 +12295,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_9_DBhattacharya.pdf",
+    "juUrl": "",
     "size": 102.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_9_DBhattacharya.pdf"
   },
@@ -11282,6 +12307,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_10_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_10_SKMajumdar.pdf"
   },
@@ -11293,6 +12319,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_11_BookReview_CPalit.pdf",
+    "juUrl": "",
     "size": 78.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_11_BookReview_CPalit.pdf"
   },
@@ -11304,6 +12331,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_12_BookReview_AKBiswas.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_12_BookReview_AKBiswas.pdf"
   },
@@ -11315,6 +12343,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_13_Obituary.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_13_Obituary.pdf"
   },
@@ -11326,6 +12355,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_14_News.pdf",
+    "juUrl": "",
     "size": 73.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_14_News.pdf"
   },
@@ -11337,6 +12367,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_1_15_Supplement.pdf",
+    "juUrl": "",
     "size": 291.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_1_15_Supplement.pdf"
   },
@@ -11348,6 +12379,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_1_VJDeshpande.pdf",
+    "juUrl": "",
     "size": 303.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_1_VJDeshpande.pdf"
   },
@@ -11359,6 +12391,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_2_JBhattacharya.pdf",
+    "juUrl": "",
     "size": 252.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_2_JBhattacharya.pdf"
   },
@@ -11370,6 +12403,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_3_RAkhtar.pdf",
+    "juUrl": "",
     "size": 196.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_3_RAkhtar.pdf"
   },
@@ -11381,6 +12415,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_4_HSingh.pdf",
+    "juUrl": "",
     "size": 224.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_4_HSingh.pdf"
   },
@@ -11392,6 +12427,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_5_SKAcharya.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_5_SKAcharya.pdf"
   },
@@ -11403,6 +12439,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_6_CPalit.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_6_CPalit.pdf"
   },
@@ -11414,6 +12451,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_7_RKDube.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_7_RKDube.pdf"
   },
@@ -11425,6 +12463,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_8_SKMjumdar.pdf",
+    "juUrl": "",
     "size": 123.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_8_SKMjumdar.pdf"
   },
@@ -11436,6 +12475,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_9_BookReview.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_9_BookReview.pdf"
   },
@@ -11447,6 +12487,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_2_10_Obituary.pdf",
+    "juUrl": "",
     "size": 250.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_2_10_Obituary.pdf"
   },
@@ -11458,6 +12499,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_1_PGondhalekar.pdf",
+    "juUrl": "",
     "size": 217.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_1_PGondhalekar.pdf"
   },
@@ -11469,6 +12511,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_2_ACohen.pdf",
+    "juUrl": "",
     "size": 219.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_2_ACohen.pdf"
   },
@@ -11480,6 +12523,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_3_PKDatta.pdf",
+    "juUrl": "",
     "size": 431.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_3_PKDatta.pdf"
   },
@@ -11491,6 +12535,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_4_DBhattacharya.pdf",
+    "juUrl": "",
     "size": 282.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_4_DBhattacharya.pdf"
   },
@@ -11502,6 +12547,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_5_NRatnasree.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_5_NRatnasree.pdf"
   },
@@ -11513,6 +12559,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_6_RSingh.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_6_RSingh.pdf"
   },
@@ -11524,6 +12571,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_7_BookReview.pdf",
+    "juUrl": "",
     "size": 168.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_7_BookReview.pdf"
   },
@@ -11535,6 +12583,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_8_Obituary.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_8_Obituary.pdf"
   },
@@ -11546,6 +12595,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_9_News.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_9_News.pdf"
   },
@@ -11557,6 +12607,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_3_10_Supplement.pdf",
+    "juUrl": "",
     "size": 454.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_3_10_Supplement.pdf"
   },
@@ -11568,6 +12619,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_1_PGondhalekar.pdf",
+    "juUrl": "",
     "size": 282.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_1_PGondhalekar.pdf"
   },
@@ -11579,6 +12631,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_2_Sbalachandrarao.pdf",
+    "juUrl": "",
     "size": 372.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_2_Sbalachandrarao.pdf"
   },
@@ -11590,6 +12643,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_3_VMMallayya.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_3_VMMallayya.pdf"
   },
@@ -11601,6 +12655,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_4_SDucheyne.pdf",
+    "juUrl": "",
     "size": 681.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_4_SDucheyne.pdf"
   },
@@ -11612,6 +12667,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_5_HSingh.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_5_HSingh.pdf"
   },
@@ -11623,6 +12679,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_6_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 55.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_6_SKMajumdar.pdf"
   },
@@ -11634,6 +12691,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_7_BookReviewKRajan.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_7_BookReviewKRajan.pdf"
   },
@@ -11645,6 +12703,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_8_BookReviewBPrakash.pdf",
+    "juUrl": "",
     "size": 83.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_8_BookReviewBPrakash.pdf"
   },
@@ -11656,6 +12715,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_9_News.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_9_News.pdf"
   },
@@ -11667,6 +12727,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2008",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol43_4_10_BooksreceivedforReview.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol43_4_10_BooksreceivedforReview.pdf"
   },
@@ -11678,6 +12739,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_0_Editorial.pdf",
+    "juUrl": "",
     "size": 318.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_0_Editorial.pdf"
   },
@@ -11689,6 +12751,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_1_MRoy.pdf",
+    "juUrl": "",
     "size": 71.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_1_MRoy.pdf"
   },
@@ -11700,6 +12763,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_2_PSensarma.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_2_PSensarma.pdf"
   },
@@ -11711,6 +12775,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_3_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 342.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_3_RBalasubramaniam.pdf"
   },
@@ -11722,6 +12787,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_4_BPrakash.pdf",
+    "juUrl": "",
     "size": 459.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_4_BPrakash.pdf"
   },
@@ -11733,6 +12799,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_5_KRoy.pdf",
+    "juUrl": "",
     "size": 61.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_5_KRoy.pdf"
   },
@@ -11744,6 +12811,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_6_Historical%20Notes.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_6_Historical%20Notes.pdf"
   },
@@ -11755,6 +12823,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_7_KCHari.pdf",
+    "juUrl": "",
     "size": 62.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_7_KCHari.pdf"
   },
@@ -11766,6 +12835,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_8_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 40.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_8_SKMajumdar.pdf"
   },
@@ -11777,6 +12847,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_1_9_Book%20Review.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_1_9_Book%20Review.pdf"
   },
@@ -11788,6 +12859,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_0_Editorial.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_0_Editorial.pdf"
   },
@@ -11799,6 +12871,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_1_CPechhia.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_1_CPechhia.pdf"
   },
@@ -11810,6 +12883,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_2_PAMaas.pdf",
+    "juUrl": "",
     "size": 636.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_2_PAMaas.pdf"
   },
@@ -11821,6 +12895,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_3_DWujastyk.pdf",
+    "juUrl": "",
     "size": 2110.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_3_DWujastyk.pdf"
   },
@@ -11832,6 +12907,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_4_KGZysk.pdf",
+    "juUrl": "",
     "size": 37.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_4_KGZysk.pdf"
   },
@@ -11843,6 +12919,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_5_PT%20Craddock.pdf",
+    "juUrl": "",
     "size": 512.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_5_PT%20Craddock.pdf"
   },
@@ -11854,6 +12931,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_6_ACerulli.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_6_ACerulli.pdf"
   },
@@ -11865,6 +12943,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_7_MSankaranarayana.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_7_MSankaranarayana.pdf"
   },
@@ -11876,6 +12955,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_8_KPrasendanz.pdf",
+    "juUrl": "",
     "size": 221.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_8_KPrasendanz.pdf"
   },
@@ -11887,6 +12967,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_9_HistoricalNotes.pdf",
+    "juUrl": "",
     "size": 323.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_9_HistoricalNotes.pdf"
   },
@@ -11898,6 +12979,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_10_SPrema.pdf",
+    "juUrl": "",
     "size": 159.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_10_SPrema.pdf"
   },
@@ -11909,6 +12991,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_11_RSarkar.pdf",
+    "juUrl": "",
     "size": 42.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_11_RSarkar.pdf"
   },
@@ -11920,6 +13003,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_12_SDas.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_12_SDas.pdf"
   },
@@ -11931,6 +13015,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_2_13_Supplement.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_2_13_Supplement.pdf"
   },
@@ -11942,6 +13027,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_1_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol44_3_1_RNIyengar.pdf",
     "size": 46.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol44_3_1_RNIyengar.pdf"
   },
@@ -11953,6 +13039,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_2_WLox.pdf",
+    "juUrl": "",
     "size": 234.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_2_WLox.pdf"
   },
@@ -11964,6 +13051,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_3_RBalasubramaniampdf.pdf",
+    "juUrl": "",
     "size": 162.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_3_RBalasubramaniampdf.pdf"
   },
@@ -11975,6 +13063,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_4_KRoy.pdf",
+    "juUrl": "",
     "size": 66.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_4_KRoy.pdf"
   },
@@ -11986,6 +13075,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_5_Historical%20Notes.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_5_Historical%20Notes.pdf"
   },
@@ -11997,6 +13087,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_6_RBhattacharya.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_6_RBhattacharya.pdf"
   },
@@ -12008,6 +13099,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_7_AKBag.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_7_AKBag.pdf"
   },
@@ -12019,6 +13111,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_8_AKBiswaspdf.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_8_AKBiswaspdf.pdf"
   },
@@ -12030,6 +13123,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_9_News.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_9_News.pdf"
   },
@@ -12041,6 +13135,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_3_10_SShuklapdf.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_3_10_SShuklapdf.pdf"
   },
@@ -12052,6 +13147,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_11_SupplementRasaprakasasudhakara.pdf",
+    "juUrl": "",
     "size": 46.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_11_SupplementRasaprakasasudhakara.pdf"
   },
@@ -12063,6 +13159,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_1_PGondhalekar.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_1_PGondhalekar.pdf"
   },
@@ -12074,6 +13171,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_2_MRoy.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_2_MRoy.pdf"
   },
@@ -12085,6 +13183,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_3_RBalasubramaniam.pdf",
+    "juUrl": "",
     "size": 330.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_3_RBalasubramaniam.pdf"
   },
@@ -12096,6 +13195,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_4_JDeloche.pdf",
+    "juUrl": "",
     "size": 797.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_4_JDeloche.pdf"
   },
@@ -12107,6 +13207,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_5_HSingh.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_5_HSingh.pdf"
   },
@@ -12118,6 +13219,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_6_Historical%20Notes.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_6_Historical%20Notes.pdf"
   },
@@ -12129,6 +13231,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_7_AKBag.pdf",
+    "juUrl": "",
     "size": 34.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_7_AKBag.pdf"
   },
@@ -12140,6 +13243,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_8_SeminarReport.pdf",
+    "juUrl": "",
     "size": 13.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_8_SeminarReport.pdf"
   },
@@ -12151,6 +13255,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_9_SShukla.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_9_SShukla.pdf"
   },
@@ -12162,6 +13267,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_10_CPecchia.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_10_CPecchia.pdf"
   },
@@ -12173,6 +13279,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_11_News.pdf",
+    "juUrl": "",
     "size": 13.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_11_News.pdf"
   },
@@ -12184,6 +13291,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_4_12_Reminiscenses.pdf",
+    "juUrl": "",
     "size": 9.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_4_12_Reminiscenses.pdf"
   },
@@ -12195,6 +13303,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2009",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol44_13_SupplementRasaprakasasudhakara.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol44_13_SupplementRasaprakasasudhakara.pdf"
   },
@@ -12206,6 +13315,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_0_Contents.pdf",
+    "juUrl": "",
     "size": 10.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_0_Contents.pdf"
   },
@@ -12217,6 +13327,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_1_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol45_1_1_RNIyengar.pdf",
     "size": 113.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol45_1_1_RNIyengar.pdf"
   },
@@ -12228,6 +13339,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_2_JDeloche.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_2_JDeloche.pdf"
   },
@@ -12239,6 +13351,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_4_RCGupta.pdf",
+    "juUrl": "",
     "size": 183.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_4_RCGupta.pdf"
   },
@@ -12250,6 +13363,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_5_BMandalarticle.pdf",
+    "juUrl": "",
     "size": 937.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_5_BMandalarticle.pdf"
   },
@@ -12261,6 +13375,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_6_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 15.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_6_SKMajumdar.pdf"
   },
@@ -12272,6 +13387,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_7_Bookreview.pdf",
+    "juUrl": "",
     "size": 27.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_7_Bookreview.pdf"
   },
@@ -12283,6 +13399,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_8_SeminarReport.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_8_SeminarReport.pdf"
   },
@@ -12294,6 +13411,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_9_News.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_9_News.pdf"
   },
@@ -12305,6 +13423,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_10_Awards.pdf",
+    "juUrl": "",
     "size": 13.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_10_Awards.pdf"
   },
@@ -12316,6 +13435,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_11_1_Supplement.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_11_1_Supplement.pdf"
   },
@@ -12327,6 +13447,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_11_2_Supplement.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_11_2_Supplement.pdf"
   },
@@ -12338,6 +13459,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_11_3_Supplement.pdf",
+    "juUrl": "",
     "size": 59.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_11_3_Supplement.pdf"
   },
@@ -12349,6 +13471,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_11_4_Supplement.pdf",
+    "juUrl": "",
     "size": 39.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_11_4_Supplement.pdf"
   },
@@ -12360,6 +13483,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_1_11_5_Supplement.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_1_11_5_Supplement.pdf"
   },
@@ -12371,6 +13495,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_0_Contents.pdf",
+    "juUrl": "",
     "size": 9.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_0_Contents.pdf"
   },
@@ -12382,6 +13507,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_1_NSingh.pdf",
+    "juUrl": "",
     "size": 57.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_1_NSingh.pdf"
   },
@@ -12393,6 +13519,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_2_PTaneja.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_2_PTaneja.pdf"
   },
@@ -12404,6 +13531,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_3_AKPanda.pdf",
+    "juUrl": "",
     "size": 38.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_3_AKPanda.pdf"
   },
@@ -12415,6 +13543,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_4_SSen.pdf",
+    "juUrl": "",
     "size": 214.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_4_SSen.pdf"
   },
@@ -12426,6 +13555,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_5_AKBiswas.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_5_AKBiswas.pdf"
   },
@@ -12437,6 +13567,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_6_RKochar.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_6_RKochar.pdf"
   },
@@ -12448,6 +13579,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_7_AKBag.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_7_AKBag.pdf"
   },
@@ -12459,6 +13591,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_8_Bookreview.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_8_Bookreview.pdf"
   },
@@ -12470,6 +13603,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_9_News.pdf",
+    "juUrl": "",
     "size": 19.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_9_News.pdf"
   },
@@ -12481,6 +13615,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_10_Obituary.pdf",
+    "juUrl": "",
     "size": 46.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_10_Obituary.pdf"
   },
@@ -12492,6 +13627,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_11_1_Supplement_cover.pdf",
+    "juUrl": "",
     "size": 45.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_11_1_Supplement_cover.pdf"
   },
@@ -12503,6 +13639,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_2_11_2_Supplement_text.pdf",
+    "juUrl": "",
     "size": 580.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_2_11_2_Supplement_text.pdf"
   },
@@ -12514,6 +13651,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_0_Contents.pdf",
+    "juUrl": "",
     "size": 10.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_0_Contents.pdf"
   },
@@ -12525,6 +13663,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_1_PGondalekha.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_1_PGondalekha.pdf"
   },
@@ -12536,6 +13675,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_2_MNVahia.pdf",
+    "juUrl": "",
     "size": 979.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_2_MNVahia.pdf"
   },
@@ -12547,6 +13687,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_3_BSasisekara.pdf",
+    "juUrl": "",
     "size": 893.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_3_BSasisekara.pdf"
   },
@@ -12558,6 +13699,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_4_RKDubey.pdf",
+    "juUrl": "",
     "size": 39.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_4_RKDubey.pdf"
   },
@@ -12569,6 +13711,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_5_JLCoze.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_5_JLCoze.pdf"
   },
@@ -12580,6 +13723,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_6_SRSarma.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_6_SRSarma.pdf"
   },
@@ -12591,6 +13735,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_7_HSingh.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_7_HSingh.pdf"
   },
@@ -12602,6 +13747,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_8_SKSen.pdf",
+    "juUrl": "",
     "size": 12.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_8_SKSen.pdf"
   },
@@ -12613,6 +13759,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_9_NupurDasgup.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_9_NupurDasgup.pdf"
   },
@@ -12624,6 +13771,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_10_NParthasar.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_10_NParthasar.pdf"
   },
@@ -12635,6 +13783,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_11_News.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_11_News.pdf"
   },
@@ -12646,6 +13795,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_12_SupplementInn.pdf",
+    "juUrl": "",
     "size": 62.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_12_SupplementInn.pdf"
   },
@@ -12657,6 +13807,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_13_Sanskrittextc.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_13_Sanskrittextc.pdf"
   },
@@ -12668,6 +13819,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_3_14_EnglishtextCha.pdf",
+    "juUrl": "",
     "size": 225.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_3_14_EnglishtextCha.pdf"
   },
@@ -12679,6 +13831,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_0_Contents.pdf",
+    "juUrl": "",
     "size": 11.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_0_Contents.pdf"
   },
@@ -12690,6 +13843,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_1_ANarayan.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_1_ANarayan.pdf"
   },
@@ -12701,6 +13855,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_2_ASharan.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_2_ASharan.pdf"
   },
@@ -12712,6 +13867,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_3_RCKapoor.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_3_RCKapoor.pdf"
   },
@@ -12723,6 +13879,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_4_GKhan.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_4_GKhan.pdf"
   },
@@ -12734,6 +13891,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_5_HSingh.pdf",
+    "juUrl": "",
     "size": 338.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_5_HSingh.pdf"
   },
@@ -12745,6 +13903,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_6_JNSinha.pdf",
+    "juUrl": "",
     "size": 30.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_6_JNSinha.pdf"
   },
@@ -12756,6 +13915,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_7_Historicalnotes.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_7_Historicalnotes.pdf"
   },
@@ -12767,6 +13927,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_8_Bookreview.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_8_Bookreview.pdf"
   },
@@ -12778,6 +13939,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_9_ReportsDPAgarwal.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_9_ReportsDPAgarwal.pdf"
   },
@@ -12789,6 +13951,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_10_ReportsJayanta.pdf",
+    "juUrl": "",
     "size": 34.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_10_ReportsJayanta.pdf"
   },
@@ -12800,6 +13963,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_11_ReportShukla.pdf",
+    "juUrl": "",
     "size": 14.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_11_ReportShukla.pdf"
   },
@@ -12811,6 +13975,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_12_ReportMNarayan.pdf",
+    "juUrl": "",
     "size": 30.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_12_ReportMNarayan.pdf"
   },
@@ -12822,6 +13987,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_13_Bookreceived.pdf",
+    "juUrl": "",
     "size": 11.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_13_Bookreceived.pdf"
   },
@@ -12833,6 +13999,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_14_SupplementInner.pdf",
+    "juUrl": "",
     "size": 67.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_14_SupplementInner.pdf"
   },
@@ -12844,6 +14011,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_15_SupChap9English.pdf",
+    "juUrl": "",
     "size": 30.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_15_SupChap9English.pdf"
   },
@@ -12855,6 +14023,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_16_SupChap9Sankrit.pdf",
+    "juUrl": "",
     "size": 31.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_16_SupChap9Sankrit.pdf"
   },
@@ -12866,6 +14035,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_17_SupChap10Sankrit.pdf",
+    "juUrl": "",
     "size": 34.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_17_SupChap10Sankrit.pdf"
   },
@@ -12877,6 +14047,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_18_SupChap10English.pdf",
+    "juUrl": "",
     "size": 38.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_18_SupChap10English.pdf"
   },
@@ -12888,6 +14059,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_19_SupChap11Sankrit.pdf",
+    "juUrl": "",
     "size": 52.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_19_SupChap11Sankrit.pdf"
   },
@@ -12899,6 +14071,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_20_SupChap11English.pdf",
+    "juUrl": "",
     "size": 54.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_20_SupChap11English.pdf"
   },
@@ -12910,6 +14083,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_21_SupChap12Sankrit.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_21_SupChap12Sankrit.pdf"
   },
@@ -12921,6 +14095,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_22_SupChap12English.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_22_SupChap12English.pdf"
   },
@@ -12932,6 +14107,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_23_SupChap13Sankrit.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_23_SupChap13Sankrit.pdf"
   },
@@ -12943,6 +14119,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_24_SupChap13English.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_24_SupChap13English.pdf"
   },
@@ -12954,6 +14131,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_25_Appendices.pdf",
+    "juUrl": "",
     "size": 54.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_25_Appendices.pdf"
   },
@@ -12965,6 +14143,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_26_Index.pdf",
+    "juUrl": "",
     "size": 12.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_26_Index.pdf"
   },
@@ -12976,6 +14155,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_27_Cumulativeindex.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_27_Cumulativeindex.pdf"
   },
@@ -12987,6 +14167,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2010",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol45_4_28_AnnualContents.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol45_4_28_AnnualContents.pdf"
   },
@@ -12998,6 +14179,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_1_PGondalekhar.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_1_PGondalekhar.pdf"
   },
@@ -13009,6 +14191,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_2_RNIyenger.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol46_1_2_RNIyenger.pdf",
     "size": 156.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol46_1_2_RNIyenger.pdf"
   },
@@ -13020,6 +14203,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_3_OPJaiswal.pdf",
+    "juUrl": "",
     "size": 37.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_3_OPJaiswal.pdf"
   },
@@ -13031,6 +14215,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_4_VMishra.pdf",
+    "juUrl": "",
     "size": 69.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_4_VMishra.pdf"
   },
@@ -13042,6 +14227,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_5_JBhattacharyya.pdf",
+    "juUrl": "",
     "size": 225.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_5_JBhattacharyya.pdf"
   },
@@ -13053,6 +14239,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_6_AKBiswas.pdf",
+    "juUrl": "",
     "size": 62.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_6_AKBiswas.pdf"
   },
@@ -13064,6 +14251,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_7_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_7_SKMajumdar.pdf"
   },
@@ -13075,6 +14263,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_8_SRSarma.pdf",
+    "juUrl": "",
     "size": 166.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_8_SRSarma.pdf"
   },
@@ -13086,6 +14275,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_9_Bookreview.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_9_Bookreview.pdf"
   },
@@ -13097,6 +14287,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_10_Project%20reportAKSeth.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_10_Project%20reportAKSeth.pdf"
   },
@@ -13108,6 +14299,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_11_Project%20reportSSen.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_11_Project%20reportSSen.pdf"
   },
@@ -13119,6 +14311,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_12_News.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_12_News.pdf"
   },
@@ -13130,6 +14323,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_14_Supplement.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_14_Supplement.pdf"
   },
@@ -13141,6 +14335,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_1_15_Supplement.pdf",
+    "juUrl": "",
     "size": 399.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_1_15_Supplement.pdf"
   },
@@ -13152,6 +14347,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_0_Contents.pdf",
+    "juUrl": "",
     "size": 9.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_0_Contents.pdf"
   },
@@ -13163,6 +14359,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_1_KJaouiche.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_1_KJaouiche.pdf"
   },
@@ -13174,6 +14371,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_2_AKeller.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_2_AKeller.pdf"
   },
@@ -13185,6 +14383,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_3_DRaina.pdf",
+    "juUrl": "",
     "size": 49.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_3_DRaina.pdf"
   },
@@ -13196,6 +14395,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_4_1_MJDurandRichard.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_4_1_MJDurandRichard.pdf"
   },
@@ -13207,6 +14407,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_7_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_7_SKMajumdar.pdf"
   },
@@ -13218,6 +14419,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_8_BShailaja.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_8_BShailaja.pdf"
   },
@@ -13229,6 +14431,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_9_Bookreview.pdf",
+    "juUrl": "",
     "size": 39.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_9_Bookreview.pdf"
   },
@@ -13240,6 +14443,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_10_AKThakur.pdf",
+    "juUrl": "",
     "size": 27.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_10_AKThakur.pdf"
   },
@@ -13251,6 +14455,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_11_SuktaDas.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_11_SuktaDas.pdf"
   },
@@ -13262,6 +14467,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_12_NewsSRSarma.pdf",
+    "juUrl": "",
     "size": 30.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_12_NewsSRSarma.pdf"
   },
@@ -13273,6 +14479,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_13_NewsKnudsen.pdf",
+    "juUrl": "",
     "size": 15.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_13_NewsKnudsen.pdf"
   },
@@ -13284,6 +14491,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_14_NewsShukla.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_14_NewsShukla.pdf"
   },
@@ -13295,6 +14503,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_2_15_Supplement.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_2_15_Supplement.pdf"
   },
@@ -13306,6 +14515,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_0_Contents.pdf",
+    "juUrl": "",
     "size": 11.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_0_Contents.pdf"
   },
@@ -13317,6 +14527,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_1_ANarayanan.pdf",
+    "juUrl": "",
     "size": 768.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_1_ANarayanan.pdf"
   },
@@ -13328,6 +14539,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_1_BPrakash.pdf",
+    "juUrl": "",
     "size": 2010.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_1_BPrakash.pdf"
   },
@@ -13339,6 +14551,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_2_ANarayanan.pdf",
+    "juUrl": "",
     "size": 454.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_2_ANarayanan.pdf"
   },
@@ -13350,6 +14563,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_2_SSen.pdf",
+    "juUrl": "",
     "size": 1356.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_2_SSen.pdf"
   },
@@ -13361,6 +14575,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_3_AKBiswas.pdf",
+    "juUrl": "",
     "size": 176.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_3_AKBiswas.pdf"
   },
@@ -13372,6 +14587,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_3_AKBiswas.pdf",
+    "juUrl": "",
     "size": 148.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_3_AKBiswas.pdf"
   },
@@ -13383,6 +14599,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_4_SNBiswas.pdf",
+    "juUrl": "",
     "size": 1128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_4_SNBiswas.pdf"
   },
@@ -13394,6 +14611,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_4(1)_PKBandyopadhyay.pdf",
+    "juUrl": "",
     "size": 3404.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_4(1)_PKBandyopadhyay.pdf"
   },
@@ -13405,6 +14623,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_5_RCGupta.pdf",
+    "juUrl": "",
     "size": 38.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_5_RCGupta.pdf"
   },
@@ -13416,6 +14635,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_6_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_6_SKMajumdar.pdf"
   },
@@ -13427,6 +14647,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_5_AKBag.pdf",
+    "juUrl": "",
     "size": 143.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_5_AKBag.pdf"
   },
@@ -13438,6 +14659,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_6_RNIyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol47_3_6_RNIyengar.pdf",
     "size": 536.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol47_3_6_RNIyengar.pdf"
   },
@@ -13449,6 +14671,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_7_Bookreview.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_7_Bookreview.pdf"
   },
@@ -13460,6 +14683,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_8_SVSingh.pdf",
+    "juUrl": "",
     "size": 48.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_8_SVSingh.pdf"
   },
@@ -13471,6 +14695,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_7_UBTewari.pdf",
+    "juUrl": "",
     "size": 55.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_7_UBTewari.pdf"
   },
@@ -13482,6 +14707,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_8_Bookreview.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_8_Bookreview.pdf"
   },
@@ -13493,6 +14719,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_10_News.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_10_News.pdf"
   },
@@ -13504,6 +14731,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_9_Projectreports.pdf",
+    "juUrl": "",
     "size": 46.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_9_Projectreports.pdf"
   },
@@ -13515,6 +14743,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_10_ASBhat.pdf",
+    "juUrl": "",
     "size": 30.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_10_ASBhat.pdf"
   },
@@ -13526,6 +14755,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_11_Supplement.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_11_Supplement.pdf"
   },
@@ -13537,6 +14767,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_3_12_Supplement.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_3_12_Supplement.pdf"
   },
@@ -13548,6 +14779,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_11_Announcements.pdf",
+    "juUrl": "",
     "size": 16.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_11_Announcements.pdf"
   },
@@ -13559,6 +14791,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_0_Contents.pdf",
+    "juUrl": "",
     "size": 10.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_0_Contents.pdf"
   },
@@ -13570,6 +14803,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_1_TRSPrasanna.pdf",
+    "juUrl": "",
     "size": 475.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_1_TRSPrasanna.pdf"
   },
@@ -13581,6 +14815,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_2_BVenkateswarlu.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_2_BVenkateswarlu.pdf"
   },
@@ -13592,6 +14827,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_3_RCGupta.pdf",
+    "juUrl": "",
     "size": 167.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_3_RCGupta.pdf"
   },
@@ -13603,6 +14839,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_4_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_4_SKMajumdar.pdf"
   },
@@ -13614,6 +14851,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_5_Purabi.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_5_Purabi.pdf"
   },
@@ -13625,6 +14863,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_6_Bookreview.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_6_Bookreview.pdf"
   },
@@ -13636,6 +14875,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_7_VJDeshpande.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_7_VJDeshpande.pdf"
   },
@@ -13647,6 +14887,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_8_PPDeshpande.pdf",
+    "juUrl": "",
     "size": 427.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_8_PPDeshpande.pdf"
   },
@@ -13658,6 +14899,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_9_News.pdf",
+    "juUrl": "",
     "size": 52.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_9_News.pdf"
   },
@@ -13669,6 +14911,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_10_Supplement.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_10_Supplement.pdf"
   },
@@ -13680,6 +14923,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_12_Cumulativeindex.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_12_Cumulativeindex.pdf"
   },
@@ -13691,6 +14935,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2011",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol46_4_13_Annualcontent.pdf",
+    "juUrl": "",
     "size": 19.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol46_4_13_Annualcontent.pdf"
   },
@@ -13702,6 +14947,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_0_Contents.pdf",
+    "juUrl": "",
     "size": 10.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_0_Contents.pdf"
   },
@@ -13713,6 +14959,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_1_LDi.pdf",
+    "juUrl": "",
     "size": 2223.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_1_LDi.pdf"
   },
@@ -13724,6 +14971,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_2_DVDwivedi.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_2_DVDwivedi.pdf"
   },
@@ -13735,6 +14983,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_3_SRSarma.pdf",
+    "juUrl": "",
     "size": 2045.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_3_SRSarma.pdf"
   },
@@ -13746,6 +14995,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_4_JNSinha.pdf",
+    "juUrl": "",
     "size": 36.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_4_JNSinha.pdf"
   },
@@ -13757,6 +15007,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_5_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 14.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_5_SKMajumdar.pdf"
   },
@@ -13768,6 +15019,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_6_SKSaha.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_6_SKSaha.pdf"
   },
@@ -13779,6 +15031,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_7_Bookreview.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_7_Bookreview.pdf"
   },
@@ -13790,6 +15043,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_8_KRoy.pdf",
+    "juUrl": "",
     "size": 31.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_8_KRoy.pdf"
   },
@@ -13801,6 +15055,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_9_PKChattopadhyay.pdf",
+    "juUrl": "",
     "size": 529.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_9_PKChattopadhyay.pdf"
   },
@@ -13812,6 +15067,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_10_News.pdf",
+    "juUrl": "",
     "size": 60.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_10_News.pdf"
   },
@@ -13823,6 +15079,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_12_Supplement_cover.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_12_Supplement_cover.pdf"
   },
@@ -13834,6 +15091,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_1_14_Announcement.pdf",
+    "juUrl": "",
     "size": 14.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_1_14_Announcement.pdf"
   },
@@ -13845,6 +15103,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_0_Contents.pdf",
+    "juUrl": "",
     "size": 12.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_0_Contents.pdf"
   },
@@ -13856,6 +15115,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_1_Sdas.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_1_Sdas.pdf"
   },
@@ -13867,6 +15127,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_2_NKodlady.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_2_NKodlady.pdf"
   },
@@ -13878,6 +15139,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_3_ASamanta.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_3_ASamanta.pdf"
   },
@@ -13889,6 +15151,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_4_VMRavikumar.pdf",
+    "juUrl": "",
     "size": 48.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_4_VMRavikumar.pdf"
   },
@@ -13900,6 +15163,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_5_JDeloche.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_5_JDeloche.pdf"
   },
@@ -13911,6 +15175,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_6_BSShylaja.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_6_BSShylaja.pdf"
   },
@@ -13922,6 +15187,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_7_VRRaghvan.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_7_VRRaghvan.pdf"
   },
@@ -13933,6 +15199,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_8_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 16.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_8_SKMajumdar.pdf"
   },
@@ -13944,6 +15211,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_9_Bookreview.pdf",
+    "juUrl": "",
     "size": 33.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_9_Bookreview.pdf"
   },
@@ -13955,6 +15223,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_10_AKBiswas.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_10_AKBiswas.pdf"
   },
@@ -13966,6 +15235,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_11_CPalit.pdf",
+    "juUrl": "",
     "size": 22.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_11_CPalit.pdf"
   },
@@ -13977,6 +15247,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_2_12_News.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_2_12_News.pdf"
   },
@@ -13988,6 +15259,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_3_4_PKBandyopadhyay.pdf",
+    "juUrl": "",
     "size": 8639.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_3_4_PKBandyopadhyay.pdf"
   },
@@ -13999,6 +15271,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_0_Editorial.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_0_Editorial.pdf"
   },
@@ -14010,6 +15283,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_1_Contents.pdf",
+    "juUrl": "",
     "size": 8.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_1_Contents.pdf"
   },
@@ -14021,6 +15295,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_2_PRamManohar.pdf",
+    "juUrl": "",
     "size": 247.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_2_PRamManohar.pdf"
   },
@@ -14032,6 +15307,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_3_DPKaundinya.pdf",
+    "juUrl": "",
     "size": 293.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_3_DPKaundinya.pdf"
   },
@@ -14043,6 +15319,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_4_RSridhan.pdf",
+    "juUrl": "",
     "size": 1002.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_4_RSridhan.pdf"
   },
@@ -14054,6 +15331,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_5_RSridhan.pdf",
+    "juUrl": "",
     "size": 414.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_5_RSridhan.pdf"
   },
@@ -14065,6 +15343,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_6_ADutta.pdf",
+    "juUrl": "",
     "size": 312.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_6_ADutta.pdf"
   },
@@ -14076,6 +15355,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_7_AKBag.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_7_AKBag.pdf"
   },
@@ -14087,6 +15367,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_8_SMadhavan.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_8_SMadhavan.pdf"
   },
@@ -14098,6 +15379,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_9_MSSriram.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_9_MSSriram.pdf"
   },
@@ -14109,6 +15391,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_10_Malaya.pdf",
+    "juUrl": "",
     "size": 963.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_10_Malaya.pdf"
   },
@@ -14120,6 +15403,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_11_PPDivakaran.pdf",
+    "juUrl": "",
     "size": 422.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_11_PPDivakaran.pdf"
   },
@@ -14131,6 +15415,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_12_Booksreceived.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_12_Booksreceived.pdf"
   },
@@ -14142,6 +15427,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_13_Cumulativeindex.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_13_Cumulativeindex.pdf"
   },
@@ -14153,6 +15439,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2012",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol47_4_14_Annualcontent.pdf",
+    "juUrl": "",
     "size": 24.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol47_4_14_Annualcontent.pdf"
   },
@@ -14164,6 +15451,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_0_Contents.pdf",
+    "juUrl": "",
     "size": 12.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_0_Contents.pdf"
   },
@@ -14175,6 +15463,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_1_PTCraddock.pdf",
+    "juUrl": "",
     "size": 1053.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_1_PTCraddock.pdf"
   },
@@ -14186,6 +15475,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_2_JBhattacharya.pdf",
+    "juUrl": "",
     "size": 58.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_2_JBhattacharya.pdf"
   },
@@ -14197,6 +15487,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_3_AKBiswas.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_3_AKBiswas.pdf"
   },
@@ -14208,6 +15499,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_4_Rsingh.pdf",
+    "juUrl": "",
     "size": 68.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_4_Rsingh.pdf"
   },
@@ -14219,6 +15511,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_5_Ssar.pdf",
+    "juUrl": "",
     "size": 43.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_5_Ssar.pdf"
   },
@@ -14230,6 +15523,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_6_Pchakrabarti.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_6_Pchakrabarti.pdf"
   },
@@ -14241,6 +15535,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_7_Bookreview.pdf",
+    "juUrl": "",
     "size": 23.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_7_Bookreview.pdf"
   },
@@ -14252,6 +15547,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_8_APPandey.pdf",
+    "juUrl": "",
     "size": 20.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_8_APPandey.pdf"
   },
@@ -14263,6 +15559,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_9_Msarkar.pdf",
+    "juUrl": "",
     "size": 32.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_9_Msarkar.pdf"
   },
@@ -14274,6 +15571,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_10_News.pdf",
+    "juUrl": "",
     "size": 22.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_10_News.pdf"
   },
@@ -14285,6 +15583,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_12_Supplement.pdf",
+    "juUrl": "",
     "size": 278.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_12_Supplement.pdf"
   },
@@ -14296,6 +15595,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_1_13_Form%20IV.pdf",
+    "juUrl": "",
     "size": 10.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_1_13_Form%20IV.pdf"
   },
@@ -14307,6 +15607,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_0_Contents.pdf",
+    "juUrl": "",
     "size": 13.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_0_Contents.pdf"
   },
@@ -14318,6 +15619,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_1_NCShah.pdf",
+    "juUrl": "",
     "size": 749.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_1_NCShah.pdf"
   },
@@ -14329,6 +15631,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_2_VDeshpande.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_2_VDeshpande.pdf"
   },
@@ -14340,6 +15643,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_3_JDeloche.pdf",
+    "juUrl": "",
     "size": 2014.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_3_JDeloche.pdf"
   },
@@ -14351,6 +15655,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_4_AKBiswas.pdf",
+    "juUrl": "",
     "size": 64.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_4_AKBiswas.pdf"
   },
@@ -14362,6 +15667,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_5_JWisniak.pdf",
+    "juUrl": "",
     "size": 134.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_5_JWisniak.pdf"
   },
@@ -14373,6 +15679,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_6_BSShylaja.pdf",
+    "juUrl": "",
     "size": 86.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_6_BSShylaja.pdf"
   },
@@ -14384,6 +15691,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_7_KBBasant.pdf",
+    "juUrl": "",
     "size": 668.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_7_KBBasant.pdf"
   },
@@ -14395,6 +15703,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_8_Correspondence.pdf",
+    "juUrl": "",
     "size": 19.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_8_Correspondence.pdf"
   },
@@ -14406,6 +15715,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_9_BookReview.pdf",
+    "juUrl": "",
     "size": 18.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_9_BookReview.pdf"
   },
@@ -14417,6 +15727,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_10_VTripathi.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_10_VTripathi.pdf"
   },
@@ -14428,6 +15739,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_11_MBhattacharjee.pdf",
+    "juUrl": "",
     "size": 34.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_11_MBhattacharjee.pdf"
   },
@@ -14439,6 +15751,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_12_News.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_12_News.pdf"
   },
@@ -14450,6 +15763,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_2_13_Supplement_inner.pdf",
+    "juUrl": "",
     "size": 60.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_2_13_Supplement_inner.pdf"
   },
@@ -14461,6 +15775,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_0_Contents.pdf",
+    "juUrl": "",
     "size": 16.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_0_Contents.pdf"
   },
@@ -14472,6 +15787,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_1_ANarayanan.pdf",
+    "juUrl": "",
     "size": 1467.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_1_ANarayanan.pdf"
   },
@@ -14483,6 +15799,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_2_CYJagtap.pdf",
+    "juUrl": "",
     "size": 96.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_2_CYJagtap.pdf"
   },
@@ -14494,6 +15811,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_3_RCKapoor.pdf",
+    "juUrl": "",
     "size": 306.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_3_RCKapoor.pdf"
   },
@@ -14505,6 +15823,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_4_SSarkar.pdf",
+    "juUrl": "",
     "size": 1114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_4_SSarkar.pdf"
   },
@@ -14516,6 +15835,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_5_CPalit.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_5_CPalit.pdf"
   },
@@ -14527,6 +15847,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_6_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_6_SKMajumdar.pdf"
   },
@@ -14538,6 +15859,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_7_Correspondence.pdf",
+    "juUrl": "",
     "size": 9.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_7_Correspondence.pdf"
   },
@@ -14549,6 +15871,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_8_Bookreview.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_8_Bookreview.pdf"
   },
@@ -14560,6 +15883,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_9_Project%20Reports.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_9_Project%20Reports.pdf"
   },
@@ -14571,6 +15895,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_10_SSen.pdf",
+    "juUrl": "",
     "size": 47.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_10_SSen.pdf"
   },
@@ -14582,6 +15907,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_11_News.pdf",
+    "juUrl": "",
     "size": 134.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_11_News.pdf"
   },
@@ -14593,6 +15919,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_12_Supplement_cover.pdf",
+    "juUrl": "",
     "size": 60.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_12_Supplement_cover.pdf"
   },
@@ -14604,6 +15931,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_3_13_Supplement_text.pdf",
+    "juUrl": "",
     "size": 1010.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_3_13_Supplement_text.pdf"
   },
@@ -14615,6 +15943,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_0_Contents.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_0_Contents.pdf"
   },
@@ -14626,6 +15955,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_1_BBaware.pdf",
+    "juUrl": "",
     "size": 284.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_1_BBaware.pdf"
   },
@@ -14637,6 +15967,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_2_VNSharma.pdf",
+    "juUrl": "",
     "size": 588.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_2_VNSharma.pdf"
   },
@@ -14648,6 +15979,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_3_%20AMSharan.pdf",
+    "juUrl": "",
     "size": 3232.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_3_%20AMSharan.pdf"
   },
@@ -14659,6 +15991,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_4_PMandal.pdf",
+    "juUrl": "",
     "size": 284.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_4_PMandal.pdf"
   },
@@ -14670,6 +16003,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_5_SuktaDas.pdf",
+    "juUrl": "",
     "size": 148.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_5_SuktaDas.pdf"
   },
@@ -14681,6 +16015,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_6_%20RCGupta.pdf",
+    "juUrl": "",
     "size": 151.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_6_%20RCGupta.pdf"
   },
@@ -14692,6 +16027,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_7_Correspondence.pdf",
+    "juUrl": "",
     "size": 98.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_7_Correspondence.pdf"
   },
@@ -14703,6 +16039,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_8_Book%20Review.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_8_Book%20Review.pdf"
   },
@@ -14714,6 +16051,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_9_Project%20Report_%20Jbhattacharyya.pdf",
+    "juUrl": "",
     "size": 178.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_9_Project%20Report_%20Jbhattacharyya.pdf"
   },
@@ -14725,6 +16063,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_10_ProjectReport_%20BKSen.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_10_ProjectReport_%20BKSen.pdf"
   },
@@ -14736,6 +16075,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_11_%20News.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_11_%20News.pdf"
   },
@@ -14747,6 +16087,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_12_BookReceivedForReview.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_12_BookReceivedForReview.pdf"
   },
@@ -14758,6 +16099,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_13_CumulativeIndex.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_13_CumulativeIndex.pdf"
   },
@@ -14769,6 +16111,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2013",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol48_4_14_AnnualContent.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol48_4_14_AnnualContent.pdf"
   },
@@ -14780,6 +16123,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_0_Contents.pdf",
+    "juUrl": "",
     "size": 85.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_0_Contents.pdf"
   },
@@ -14791,6 +16135,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_1_PKChattopadhyay.pdf",
+    "juUrl": "",
     "size": 570.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_1_PKChattopadhyay.pdf"
   },
@@ -14802,6 +16147,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_2_SNDhundi.pdf",
+    "juUrl": "",
     "size": 191.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_2_SNDhundi.pdf"
   },
@@ -14813,6 +16159,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_3_Sdasgupta.pdf",
+    "juUrl": "",
     "size": 377.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_3_Sdasgupta.pdf"
   },
@@ -14824,6 +16171,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_4_SKJain.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_4_SKJain.pdf"
   },
@@ -14835,6 +16183,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_5_Kmishra.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_5_Kmishra.pdf"
   },
@@ -14846,6 +16195,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_6_Sbhowmik.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_6_Sbhowmik.pdf"
   },
@@ -14857,6 +16207,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_7_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_7_SKMajumdar.pdf"
   },
@@ -14868,6 +16219,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_8_JJShah.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_8_JJShah.pdf"
   },
@@ -14879,6 +16231,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_9_Pmukherji.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_9_Pmukherji.pdf"
   },
@@ -14890,6 +16243,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_10_Book%20Review.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_10_Book%20Review.pdf"
   },
@@ -14901,6 +16255,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_11_SKGeorge.pdf",
+    "juUrl": "",
     "size": 308.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_11_SKGeorge.pdf"
   },
@@ -14912,6 +16267,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_12_Sbiswas.pdf",
+    "juUrl": "",
     "size": 105.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_12_Sbiswas.pdf"
   },
@@ -14923,6 +16279,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_1_13_News.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_1_13_News.pdf"
   },
@@ -14934,6 +16291,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_0_Contents.pdf",
+    "juUrl": "",
     "size": 19.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_0_Contents.pdf"
   },
@@ -14945,6 +16303,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_1_RN_Iyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol49_3_1_RN_Iyengar.pdf",
     "size": 641.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol49_3_1_RN_Iyengar.pdf"
   },
@@ -14956,6 +16315,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_1_Editorial.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_1_Editorial.pdf"
   },
@@ -14967,6 +16327,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_2_GuestEditorial.pdf",
+    "juUrl": "",
     "size": 21.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_2_GuestEditorial.pdf"
   },
@@ -14978,6 +16339,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_2_Dwivedi.pdf",
+    "juUrl": "",
     "size": 79.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_2_Dwivedi.pdf"
   },
@@ -14989,6 +16351,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_3_NHanda.pdf",
+    "juUrl": "",
     "size": 444.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_3_NHanda.pdf"
   },
@@ -15000,6 +16363,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_3_KPlofker.pdf",
+    "juUrl": "",
     "size": 632.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_3_KPlofker.pdf"
   },
@@ -15011,6 +16375,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_4_AKeller.pdf",
+    "juUrl": "",
     "size": 331.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_4_AKeller.pdf"
   },
@@ -15022,6 +16387,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_4_DJadhav.pdf",
+    "juUrl": "",
     "size": 86.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_4_DJadhav.pdf"
   },
@@ -15033,6 +16399,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_5_Pustynski.pdf",
+    "juUrl": "",
     "size": 790.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_5_Pustynski.pdf"
   },
@@ -15044,6 +16411,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_5_TKnudsen.pdf",
+    "juUrl": "",
     "size": 547.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_5_TKnudsen.pdf"
   },
@@ -15055,6 +16423,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_6_VMallayya.pdf",
+    "juUrl": "",
     "size": 499.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_6_VMallayya.pdf"
   },
@@ -15066,6 +16435,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_6_NShah.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_6_NShah.pdf"
   },
@@ -15077,6 +16447,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_7_DBhatacharya.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_7_DBhatacharya.pdf"
   },
@@ -15088,6 +16459,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_7_KMahesh.pdf",
+    "juUrl": "",
     "size": 355.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_7_KMahesh.pdf"
   },
@@ -15099,6 +16471,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_8_CMontelle.pdf",
+    "juUrl": "",
     "size": 2112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_8_CMontelle.pdf"
   },
@@ -15110,6 +16483,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_8_RSridharan.pdf",
+    "juUrl": "",
     "size": 153.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_8_RSridharan.pdf"
   },
@@ -15121,6 +16495,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_9_SKMajumdar.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_9_SKMajumdar.pdf"
   },
@@ -15132,6 +16507,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_9_KRupa.pdf",
+    "juUrl": "",
     "size": 1068.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_2_9_KRupa.pdf"
   },
@@ -15143,6 +16519,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_2_10_BookReview.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol49_2_10_BookReview.pdf",
     "size": 76.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol49_2_10_BookReview.pdf"
   },
@@ -15154,6 +16531,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_10_KBBasant.pdf",
+    "juUrl": "",
     "size": 1840.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_10_KBBasant.pdf"
   },
@@ -15165,6 +16543,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_11_RCGupta.pdf",
+    "juUrl": "",
     "size": 51.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_11_RCGupta.pdf"
   },
@@ -15176,6 +16555,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_12_SNellickappilly.pdf",
+    "juUrl": "",
     "size": 44.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_12_SNellickappilly.pdf"
   },
@@ -15187,6 +16567,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_13_PMandal.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_13_PMandal.pdf"
   },
@@ -15198,6 +16579,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_3_14_NEWS.pdf",
+    "juUrl": "",
     "size": 15.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_3_14_NEWS.pdf"
   },
@@ -15209,6 +16591,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_0_Contents.pdf",
+    "juUrl": "",
     "size": 13.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_0_Contents.pdf"
   },
@@ -15220,6 +16603,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_1_Editorial.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_1_Editorial.pdf"
   },
@@ -15231,6 +16615,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_2_Guest_Editorial.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_2_Guest_Editorial.pdf"
   },
@@ -15242,6 +16627,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_3_AChakravorty.pdf",
+    "juUrl": "",
     "size": 254.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_3_AChakravorty.pdf"
   },
@@ -15253,6 +16639,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_4_KBhattacharyya.pdf",
+    "juUrl": "",
     "size": 52.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_4_KBhattacharyya.pdf"
   },
@@ -15264,6 +16651,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_5_KNagarajan.pdf",
+    "juUrl": "",
     "size": 596.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_5_KNagarajan.pdf"
   },
@@ -15275,6 +16663,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_6_AVRRao.pdf",
+    "juUrl": "",
     "size": 576.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_6_AVRRao.pdf"
   },
@@ -15286,6 +16675,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_7_HSingh.pdf",
+    "juUrl": "",
     "size": 415.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_7_HSingh.pdf"
   },
@@ -15297,6 +16687,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_8_AKShukla.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_8_AKShukla.pdf"
   },
@@ -15308,6 +16699,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_9_MRoy.pdf",
+    "juUrl": "",
     "size": 39.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_9_MRoy.pdf"
   },
@@ -15319,6 +16711,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_10_BKSen.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_10_BKSen.pdf"
   },
@@ -15330,6 +16723,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_11_DRaina.pdf",
+    "juUrl": "",
     "size": 61.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_11_DRaina.pdf"
   },
@@ -15337,10 +16731,11 @@ const PAPERS = [
     "journal": "IJHS-49-2014-issue-4",
     "title": "Good Life, Self-Sufficiency and Chemical Knowledge: Through The Chemical Worls View of Late Jnan Chandra Ghosh",
     "author": " Prajit K Basu",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_12_PKBasu.pdf",
+    "juUrl": "",
     "size": 53.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_12_PKBasu.pdf"
   },
@@ -15352,6 +16747,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_13_Bookreview.pdf",
+    "juUrl": "",
     "size": 75.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_13_Bookreview.pdf"
   },
@@ -15363,6 +16759,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_14_Bookreceived.pdf",
+    "juUrl": "",
     "size": 17.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_14_Bookreceived.pdf"
   },
@@ -15374,6 +16771,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_15_CumulativeIndex.pdf",
+    "juUrl": "",
     "size": 40.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_15_CumulativeIndex.pdf"
   },
@@ -15385,6 +16783,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2014",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol49_4_16_AnnualContents2014.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol49_4_16_AnnualContents2014.pdf"
   },
@@ -15396,6 +16795,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Contents.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Contents.pdf"
   },
@@ -15407,6 +16807,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Message_President.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Message_President.pdf"
   },
@@ -15418,6 +16819,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art01.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art01.pdf"
   },
@@ -15429,6 +16831,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art02.pdf",
+    "juUrl": "",
     "size": 286.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art02.pdf"
   },
@@ -15440,6 +16843,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art03.pdf",
+    "juUrl": "",
     "size": 368.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art03.pdf"
   },
@@ -15451,6 +16855,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art04.pdf",
+    "juUrl": "",
     "size": 52.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art04.pdf"
   },
@@ -15462,6 +16867,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art05.pdf",
+    "juUrl": "",
     "size": 900.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art05.pdf"
   },
@@ -15473,6 +16879,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art06.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art06.pdf"
   },
@@ -15484,6 +16891,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art07.pdf",
+    "juUrl": "",
     "size": 899.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art07.pdf"
   },
@@ -15495,6 +16903,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art08.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art08.pdf"
   },
@@ -15506,6 +16915,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art09.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art09.pdf"
   },
@@ -15517,6 +16927,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art10.pdf",
+    "juUrl": "",
     "size": 391.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art10.pdf"
   },
@@ -15528,6 +16939,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art11.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art11.pdf"
   },
@@ -15539,6 +16951,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art12.pdf",
+    "juUrl": "",
     "size": 37.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art12.pdf"
   },
@@ -15550,6 +16963,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art13.pdf",
+    "juUrl": "",
     "size": 500.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art13.pdf"
   },
@@ -15561,6 +16975,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art14.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art14.pdf"
   },
@@ -15572,6 +16987,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_1_Art15.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_1_Art15.pdf"
   },
@@ -15583,6 +16999,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Contents.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Contents.pdf"
   },
@@ -15594,6 +17011,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art01.pdf",
+    "juUrl": "",
     "size": 260.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art01.pdf"
   },
@@ -15605,6 +17023,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art02.pdf",
+    "juUrl": "",
     "size": 189.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art02.pdf"
   },
@@ -15616,6 +17035,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art03.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art03.pdf"
   },
@@ -15627,6 +17047,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art04.pdf",
+    "juUrl": "",
     "size": 889.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art04.pdf"
   },
@@ -15638,6 +17059,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art05.pdf",
+    "juUrl": "",
     "size": 1373.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art05.pdf"
   },
@@ -15649,6 +17071,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art06.pdf",
+    "juUrl": "",
     "size": 677.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art06.pdf"
   },
@@ -15660,6 +17083,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art07.pdf",
+    "juUrl": "",
     "size": 1283.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art07.pdf"
   },
@@ -15671,6 +17095,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art08.pdf",
+    "juUrl": "",
     "size": 430.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art08.pdf"
   },
@@ -15682,6 +17107,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art09.pdf",
+    "juUrl": "",
     "size": 215.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art09.pdf"
   },
@@ -15693,6 +17119,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art10.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art10.pdf"
   },
@@ -15704,6 +17131,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art11.pdf",
+    "juUrl": "",
     "size": 173.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art11.pdf"
   },
@@ -15715,6 +17143,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art12.pdf",
+    "juUrl": "",
     "size": 486.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art12.pdf"
   },
@@ -15726,6 +17155,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art13.pdf",
+    "juUrl": "",
     "size": 105.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art13.pdf"
   },
@@ -15737,6 +17167,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art14.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art14.pdf"
   },
@@ -15748,6 +17179,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_2_Art15.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_2_Art15.pdf"
   },
@@ -15759,6 +17191,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_CONTENTS.pdf",
+    "juUrl": "",
     "size": 11.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_CONTENTS.pdf"
   },
@@ -15770,6 +17203,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art01.pdf",
+    "juUrl": "",
     "size": 568.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art01.pdf"
   },
@@ -15781,6 +17215,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art02.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art02.pdf"
   },
@@ -15792,6 +17227,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art03.pdf",
+    "juUrl": "",
     "size": 86.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art03.pdf"
   },
@@ -15803,6 +17239,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art04.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art04.pdf"
   },
@@ -15814,6 +17251,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art05.pdf",
+    "juUrl": "",
     "size": 1618.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art05.pdf"
   },
@@ -15825,6 +17263,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art06.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art06.pdf"
   },
@@ -15836,6 +17275,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art07.pdf",
+    "juUrl": "",
     "size": 54.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art07.pdf"
   },
@@ -15847,6 +17287,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art08.pdf",
+    "juUrl": "",
     "size": 844.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art08.pdf"
   },
@@ -15858,6 +17299,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art09.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art09.pdf"
   },
@@ -15869,6 +17311,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art10.pdf",
+    "juUrl": "",
     "size": 58.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art10.pdf"
   },
@@ -15880,6 +17323,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art11.pdf",
+    "juUrl": "",
     "size": 11.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art11.pdf"
   },
@@ -15891,6 +17335,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art12.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art12.pdf"
   },
@@ -15902,6 +17347,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art13.pdf",
+    "juUrl": "",
     "size": 26.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art13.pdf"
   },
@@ -15913,6 +17359,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_3_Art14.pdf",
+    "juUrl": "",
     "size": 7.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_3_Art14.pdf"
   },
@@ -15924,6 +17371,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_CONTENTS.pdf",
+    "juUrl": "",
     "size": 97.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_CONTENTS.pdf"
   },
@@ -15935,6 +17383,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art01.pdf",
+    "juUrl": "",
     "size": 1128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art01.pdf"
   },
@@ -15946,6 +17395,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art02.pdf",
+    "juUrl": "",
     "size": 177.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art02.pdf"
   },
@@ -15957,6 +17407,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art03.pdf",
+    "juUrl": "",
     "size": 2402.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art03.pdf"
   },
@@ -15968,6 +17419,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art04.pdf",
+    "juUrl": "",
     "size": 749.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art04.pdf"
   },
@@ -15979,6 +17431,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art05.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art05.pdf"
   },
@@ -15990,6 +17443,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art06.pdf",
+    "juUrl": "",
     "size": 163.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art06.pdf"
   },
@@ -16001,6 +17455,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art07.pdf",
+    "juUrl": "",
     "size": 167.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art07.pdf"
   },
@@ -16012,6 +17467,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art08.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art08.pdf"
   },
@@ -16023,6 +17479,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art09.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art09.pdf"
   },
@@ -16034,6 +17491,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art10.pdf",
+    "juUrl": "",
     "size": 151.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art10.pdf"
   },
@@ -16045,6 +17503,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art11.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art11.pdf"
   },
@@ -16056,6 +17515,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art12.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art12.pdf"
   },
@@ -16067,6 +17527,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art13.pdf",
+    "juUrl": "",
     "size": 143.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art13.pdf"
   },
@@ -16078,6 +17539,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2015",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol50_2015_4_Art14.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol50_2015_4_Art14.pdf"
   },
@@ -16089,6 +17551,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art01.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art01.pdf"
   },
@@ -16100,6 +17563,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art02.pdf",
+    "juUrl": "",
     "size": 180.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art02.pdf"
   },
@@ -16111,6 +17575,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art03.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art03.pdf"
   },
@@ -16122,6 +17587,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art04.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art04.pdf"
   },
@@ -16133,6 +17599,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art05.pdf",
+    "juUrl": "",
     "size": 484.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art05.pdf"
   },
@@ -16144,6 +17611,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art06.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art06.pdf"
   },
@@ -16155,6 +17623,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art07.pdf",
+    "juUrl": "",
     "size": 186.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art07.pdf"
   },
@@ -16166,6 +17635,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art08.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art08.pdf"
   },
@@ -16177,6 +17647,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art09.pdf",
+    "juUrl": "",
     "size": 385.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art09.pdf"
   },
@@ -16188,6 +17659,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art10.pdf",
+    "juUrl": "",
     "size": 476.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art10.pdf"
   },
@@ -16199,6 +17671,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art11.pdf",
+    "juUrl": "",
     "size": 144.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art11.pdf"
   },
@@ -16210,6 +17683,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art12.pdf",
+    "juUrl": "",
     "size": 150.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art12.pdf"
   },
@@ -16221,6 +17695,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art13.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art13.pdf"
   },
@@ -16232,6 +17707,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art14.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art14.pdf"
   },
@@ -16243,6 +17719,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art15.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art15.pdf"
   },
@@ -16254,6 +17731,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art16.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art16.pdf"
   },
@@ -16265,6 +17743,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art17.pdf",
+    "juUrl": "",
     "size": 412.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art17.pdf"
   },
@@ -16276,6 +17755,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_1_Art18.pdf",
+    "juUrl": "",
     "size": 620.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_1_Art18.pdf"
   },
@@ -16287,6 +17767,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art00.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art00.pdf"
   },
@@ -16298,6 +17779,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art01.pdf",
+    "juUrl": "",
     "size": 468.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art01.pdf"
   },
@@ -16309,6 +17791,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art02.pdf",
+    "juUrl": "",
     "size": 704.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art02.pdf"
   },
@@ -16320,6 +17803,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art03.pdf",
+    "juUrl": "",
     "size": 433.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art03.pdf"
   },
@@ -16331,6 +17815,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art04.pdf",
+    "juUrl": "",
     "size": 181.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art04.pdf"
   },
@@ -16342,6 +17827,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art05.pdf",
+    "juUrl": "",
     "size": 142.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art05.pdf"
   },
@@ -16353,6 +17839,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art06.pdf",
+    "juUrl": "",
     "size": 316.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art06.pdf"
   },
@@ -16364,6 +17851,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art07.pdf",
+    "juUrl": "",
     "size": 413.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art07.pdf"
   },
@@ -16375,6 +17863,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art08.pdf",
+    "juUrl": "",
     "size": 178.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art08.pdf"
   },
@@ -16386,6 +17875,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art09.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art09.pdf"
   },
@@ -16397,6 +17887,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art10.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art10.pdf"
   },
@@ -16408,6 +17899,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art11.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art11.pdf"
   },
@@ -16419,6 +17911,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art12.pdf",
+    "juUrl": "",
     "size": 1368.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art12.pdf"
   },
@@ -16430,6 +17923,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_1_Art13.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_1_Art13.pdf"
   },
@@ -16441,6 +17935,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art00.pdf",
+    "juUrl": "",
     "size": 81.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art00.pdf"
   },
@@ -16452,6 +17947,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art01.pdf",
+    "juUrl": "",
     "size": 81.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art01.pdf"
   },
@@ -16463,6 +17959,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art02.pdf",
+    "juUrl": "",
     "size": 73.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art02.pdf"
   },
@@ -16474,6 +17971,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art03.pdf",
+    "juUrl": "",
     "size": 2076.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art03.pdf"
   },
@@ -16485,6 +17983,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art04.pdf",
+    "juUrl": "",
     "size": 222.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art04.pdf"
   },
@@ -16496,6 +17995,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art05.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art05.pdf"
   },
@@ -16507,6 +18007,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art06.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art06.pdf"
   },
@@ -16518,6 +18019,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art07.pdf",
+    "juUrl": "",
     "size": 738.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art07.pdf"
   },
@@ -16529,6 +18031,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art08.pdf",
+    "juUrl": "",
     "size": 321.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art08.pdf"
   },
@@ -16540,6 +18043,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art09.pdf",
+    "juUrl": "",
     "size": 346.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art09.pdf"
   },
@@ -16551,6 +18055,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art10.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art10.pdf"
   },
@@ -16562,6 +18067,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art11.pdf",
+    "juUrl": "",
     "size": 711.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art11.pdf"
   },
@@ -16573,6 +18079,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art12.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art12.pdf"
   },
@@ -16584,6 +18091,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art13.pdf",
+    "juUrl": "",
     "size": 239.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art13.pdf"
   },
@@ -16595,6 +18103,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_2_2_Art14.pdf",
+    "juUrl": "",
     "size": 264.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_2_2_Art14.pdf"
   },
@@ -16606,6 +18115,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art00.pdf",
+    "juUrl": "",
     "size": 162.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art00.pdf"
   },
@@ -16617,6 +18127,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art01.pdf",
+    "juUrl": "",
     "size": 982.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art01.pdf"
   },
@@ -16628,6 +18139,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art02.pdf",
+    "juUrl": "",
     "size": 506.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art02.pdf"
   },
@@ -16639,6 +18151,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art03.pdf",
+    "juUrl": "",
     "size": 1657.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art03.pdf"
   },
@@ -16650,6 +18163,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art04.pdf",
+    "juUrl": "",
     "size": 538.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art04.pdf"
   },
@@ -16661,6 +18175,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art05.pdf",
+    "juUrl": "",
     "size": 1096.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art05.pdf"
   },
@@ -16672,6 +18187,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art06.pdf",
+    "juUrl": "",
     "size": 775.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art06.pdf"
   },
@@ -16683,6 +18199,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art07.pdf",
+    "juUrl": "",
     "size": 289.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art07.pdf"
   },
@@ -16694,6 +18211,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art08.pdf",
+    "juUrl": "",
     "size": 569.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art08.pdf"
   },
@@ -16705,6 +18223,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art09.pdf",
+    "juUrl": "",
     "size": 439.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art09.pdf"
   },
@@ -16716,6 +18235,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art10.pdf",
+    "juUrl": "",
     "size": 273.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art10.pdf"
   },
@@ -16727,6 +18247,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_2016_3_Art11.pdf",
+    "juUrl": "",
     "size": 225.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_2016_3_Art11.pdf"
   },
@@ -16738,6 +18259,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Contents.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Contents.pdf"
   },
@@ -16749,6 +18271,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art01.pdf",
+    "juUrl": "",
     "size": 177.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art01.pdf"
   },
@@ -16760,6 +18283,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art02.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art02.pdf"
   },
@@ -16771,6 +18295,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art03.pdf",
+    "juUrl": "",
     "size": 201.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art03.pdf"
   },
@@ -16782,6 +18307,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art04.pdf",
+    "juUrl": "",
     "size": 335.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art04.pdf"
   },
@@ -16793,6 +18319,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art05.pdf",
+    "juUrl": "",
     "size": 642.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art05.pdf"
   },
@@ -16804,6 +18331,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art06.pdf",
+    "juUrl": "",
     "size": 166.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art06.pdf"
   },
@@ -16815,6 +18343,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art07.pdf",
+    "juUrl": "",
     "size": 676.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art07.pdf"
   },
@@ -16826,6 +18355,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art08.pdf",
+    "juUrl": "",
     "size": 224.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art08.pdf"
   },
@@ -16837,6 +18367,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art09.pdf",
+    "juUrl": "",
     "size": 644.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art09.pdf"
   },
@@ -16848,6 +18379,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art10.pdf",
+    "juUrl": "",
     "size": 210.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art10.pdf"
   },
@@ -16859,6 +18391,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art11.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art11.pdf"
   },
@@ -16870,6 +18403,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art12.pdf",
+    "juUrl": "",
     "size": 566.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art12.pdf"
   },
@@ -16881,6 +18415,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art13.pdf",
+    "juUrl": "",
     "size": 593.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art13.pdf"
   },
@@ -16892,6 +18427,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art14.pdf",
+    "juUrl": "",
     "size": 529.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art14.pdf"
   },
@@ -16903,6 +18439,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art15.pdf",
+    "juUrl": "",
     "size": 110.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art15.pdf"
   },
@@ -16914,6 +18451,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2016",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol51_4_2016_Art16.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol51_4_2016_Art16.pdf"
   },
@@ -16925,6 +18463,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art00.pdf",
+    "juUrl": "",
     "size": 165.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art00.pdf"
   },
@@ -16936,6 +18475,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art01.pdf",
+    "juUrl": "",
     "size": 809.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art01.pdf"
   },
@@ -16947,6 +18487,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art02.pdf",
+    "juUrl": "",
     "size": 411.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art02.pdf"
   },
@@ -16958,6 +18499,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art03.pdf",
+    "juUrl": "",
     "size": 620.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art03.pdf"
   },
@@ -16969,6 +18511,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art04.pdf",
+    "juUrl": "",
     "size": 349.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art04.pdf"
   },
@@ -16980,6 +18523,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art05.pdf",
+    "juUrl": "",
     "size": 545.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art05.pdf"
   },
@@ -16991,6 +18535,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art06.pdf",
+    "juUrl": "",
     "size": 50.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art06.pdf"
   },
@@ -17002,6 +18547,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art07.pdf",
+    "juUrl": "",
     "size": 127.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art07.pdf"
   },
@@ -17013,6 +18559,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art08.pdf",
+    "juUrl": "",
     "size": 184.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art08.pdf"
   },
@@ -17024,6 +18571,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art09.pdf",
+    "juUrl": "",
     "size": 269.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art09.pdf"
   },
@@ -17035,6 +18583,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art10.pdf",
+    "juUrl": "",
     "size": 299.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art10.pdf"
   },
@@ -17046,6 +18595,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_1_2017_Art11.pdf",
+    "juUrl": "",
     "size": 378.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_1_2017_Art11.pdf"
   },
@@ -17057,6 +18607,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Contents.pdf",
+    "juUrl": "",
     "size": 163.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Contents.pdf"
   },
@@ -17068,6 +18619,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art01.pdf",
+    "juUrl": "",
     "size": 579.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art01.pdf"
   },
@@ -17079,6 +18631,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art02.pdf",
+    "juUrl": "",
     "size": 293.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art02.pdf"
   },
@@ -17090,6 +18643,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art03.pdf",
+    "juUrl": "",
     "size": 636.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art03.pdf"
   },
@@ -17101,6 +18655,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art04.pdf",
+    "juUrl": "",
     "size": 343.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art04.pdf"
   },
@@ -17112,6 +18667,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art05.pdf",
+    "juUrl": "",
     "size": 368.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art05.pdf"
   },
@@ -17123,6 +18679,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art06.pdf",
+    "juUrl": "",
     "size": 326.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art06.pdf"
   },
@@ -17134,6 +18691,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art07.pdf",
+    "juUrl": "",
     "size": 344.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art07.pdf"
   },
@@ -17145,6 +18703,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art08.pdf",
+    "juUrl": "",
     "size": 542.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art08.pdf"
   },
@@ -17156,6 +18715,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art09.pdf",
+    "juUrl": "",
     "size": 467.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art09.pdf"
   },
@@ -17167,6 +18727,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art10.pdf",
+    "juUrl": "",
     "size": 289.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art10.pdf"
   },
@@ -17178,6 +18739,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art12.pdf",
+    "juUrl": "",
     "size": 158.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art12.pdf"
   },
@@ -17189,6 +18751,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art13.pdf",
+    "juUrl": "",
     "size": 236.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art13.pdf"
   },
@@ -17200,6 +18763,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_2_2017__Art11.pdf",
+    "juUrl": "",
     "size": 1004.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_2_2017__Art11.pdf"
   },
@@ -17211,6 +18775,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art01.pdf",
+    "juUrl": "",
     "size": 926.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art01.pdf"
   },
@@ -17222,6 +18787,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art02.pdf",
+    "juUrl": "",
     "size": 277.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art02.pdf"
   },
@@ -17233,6 +18799,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art03.pdf",
+    "juUrl": "",
     "size": 324.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art03.pdf"
   },
@@ -17244,6 +18811,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art04.pdf",
+    "juUrl": "",
     "size": 1809.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art04.pdf"
   },
@@ -17255,6 +18823,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art05.pdf",
+    "juUrl": "",
     "size": 411.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art05.pdf"
   },
@@ -17266,6 +18835,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art06.pdf",
+    "juUrl": "",
     "size": 343.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art06.pdf"
   },
@@ -17277,6 +18847,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art07.pdf",
+    "juUrl": "",
     "size": 430.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art07.pdf"
   },
@@ -17288,6 +18859,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art08.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art08.pdf"
   },
@@ -17299,6 +18871,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art09.pdf",
+    "juUrl": "",
     "size": 1202.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art09.pdf"
   },
@@ -17310,6 +18883,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art10.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art10.pdf"
   },
@@ -17321,6 +18895,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art11.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art11.pdf"
   },
@@ -17332,6 +18907,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_3_2017__Art12.pdf",
+    "juUrl": "",
     "size": 1410.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_3_2017__Art12.pdf"
   },
@@ -17343,6 +18919,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents.pdf",
+    "juUrl": "",
     "size": 100.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents.pdf"
   },
@@ -17354,6 +18931,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art01.pdf",
+    "juUrl": "",
     "size": 1063.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art01.pdf"
   },
@@ -17365,6 +18943,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art02.pdf",
+    "juUrl": "",
     "size": 449.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art02.pdf"
   },
@@ -17376,6 +18955,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art03.pdf",
+    "juUrl": "",
     "size": 1227.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art03.pdf"
   },
@@ -17387,6 +18967,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art04.pdf",
+    "juUrl": "",
     "size": 1921.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art04.pdf"
   },
@@ -17398,6 +18979,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art05.pdf",
+    "juUrl": "",
     "size": 974.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art05.pdf"
   },
@@ -17409,6 +18991,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art06.pdf",
+    "juUrl": "",
     "size": 376.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art06.pdf"
   },
@@ -17420,6 +19003,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art07.pdf",
+    "juUrl": "",
     "size": 165.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art07.pdf"
   },
@@ -17431,6 +19015,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art08.pdf",
+    "juUrl": "",
     "size": 83.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art08.pdf"
   },
@@ -17442,6 +19027,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art09.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art09.pdf"
   },
@@ -17453,6 +19039,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art10.pdf",
+    "juUrl": "",
     "size": 120.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art10.pdf"
   },
@@ -17464,6 +19051,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art11.pdf",
+    "juUrl": "",
     "size": 171.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art11.pdf"
   },
@@ -17475,6 +19063,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art12.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art12.pdf"
   },
@@ -17486,6 +19075,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/13-Books%20Received%20for%20Review.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/13-Books%20Received%20for%20Review.pdf"
   },
@@ -17497,6 +19087,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol52_4_2017__Art13.pdf",
+    "juUrl": "",
     "size": 2318.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol52_4_2017__Art13.pdf"
   },
@@ -17508,6 +19099,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/17-Cumulativeindex.pdf",
+    "juUrl": "",
     "size": 135.0,
     "localPath": "assets/pdfs/ijhs_potentials/17-Cumulativeindex.pdf"
   },
@@ -17519,6 +19111,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2017",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/18-Contentsall.pdf",
+    "juUrl": "",
     "size": 114.0,
     "localPath": "assets/pdfs/ijhs_potentials/18-Contentsall.pdf"
   },
@@ -17530,6 +19123,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Contents.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Contents.pdf"
   },
@@ -17541,6 +19135,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art01.pdf",
+    "juUrl": "",
     "size": 244.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art01.pdf"
   },
@@ -17552,6 +19147,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art02.pdf",
+    "juUrl": "",
     "size": 429.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art02.pdf"
   },
@@ -17563,6 +19159,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art03.pdf",
+    "juUrl": "",
     "size": 286.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art03.pdf"
   },
@@ -17574,6 +19171,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art04.pdf",
+    "juUrl": "",
     "size": 777.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art04.pdf"
   },
@@ -17585,6 +19183,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art05.pdf",
+    "juUrl": "",
     "size": 154.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art05.pdf"
   },
@@ -17596,6 +19195,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art06.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art06.pdf"
   },
@@ -17607,6 +19207,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art07.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art07.pdf"
   },
@@ -17618,6 +19219,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art08.pdf",
+    "juUrl": "",
     "size": 194.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art08.pdf"
   },
@@ -17629,6 +19231,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art09.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art09.pdf"
   },
@@ -17640,6 +19243,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art10.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art10.pdf"
   },
@@ -17651,6 +19255,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art11.pdf",
+    "juUrl": "",
     "size": 111.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art11.pdf"
   },
@@ -17662,6 +19267,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_1_2018__Art12.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_1_2018__Art12.pdf"
   },
@@ -17673,6 +19279,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Contents.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Contents.pdf"
   },
@@ -17684,6 +19291,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art01.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol53_2_2018__Art01.pdf",
     "size": 567.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol53_2_2018__Art01.pdf"
   },
@@ -17695,6 +19303,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art02.pdf",
+    "juUrl": "",
     "size": 2752.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art02.pdf"
   },
@@ -17706,6 +19315,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art03.pdf",
+    "juUrl": "",
     "size": 206.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art03.pdf"
   },
@@ -17717,6 +19327,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art04.pdf",
+    "juUrl": "",
     "size": 297.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art04.pdf"
   },
@@ -17728,6 +19339,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art05.pdf",
+    "juUrl": "",
     "size": 327.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art05.pdf"
   },
@@ -17739,6 +19351,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art06.pdf",
+    "juUrl": "",
     "size": 7085.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art06.pdf"
   },
@@ -17750,6 +19363,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art07.pdf",
+    "juUrl": "",
     "size": 2266.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art07.pdf"
   },
@@ -17761,6 +19375,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art08.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art08.pdf"
   },
@@ -17772,6 +19387,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art09.pdf",
+    "juUrl": "",
     "size": 119.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art09.pdf"
   },
@@ -17783,6 +19399,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art10.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art10.pdf"
   },
@@ -17794,6 +19411,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_2_2018__Art11.pdf",
+    "juUrl": "",
     "size": 95.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_2_2018__Art11.pdf"
   },
@@ -17805,6 +19423,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art01.pdf",
+    "juUrl": "",
     "size": 1524.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art01.pdf"
   },
@@ -17816,6 +19435,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art02.pdf",
+    "juUrl": "",
     "size": 195.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art02.pdf"
   },
@@ -17827,6 +19447,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art03.pdf",
+    "juUrl": "",
     "size": 377.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art03.pdf"
   },
@@ -17838,6 +19459,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art04.pdf",
+    "juUrl": "",
     "size": 998.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art04.pdf"
   },
@@ -17849,6 +19471,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art05.pdf",
+    "juUrl": "",
     "size": 142.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art05.pdf"
   },
@@ -17860,6 +19483,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art06.pdf",
+    "juUrl": "",
     "size": 191.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art06.pdf"
   },
@@ -17871,6 +19495,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art07.pdf",
+    "juUrl": "",
     "size": 159.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art07.pdf"
   },
@@ -17882,6 +19507,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art08.pdf",
+    "juUrl": "",
     "size": 360.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art08.pdf"
   },
@@ -17893,6 +19519,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art09.pdf",
+    "juUrl": "",
     "size": 283.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art09.pdf"
   },
@@ -17904,6 +19531,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art10.pdf",
+    "juUrl": "",
     "size": 1916.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art10.pdf"
   },
@@ -17915,6 +19543,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art11.pdf",
+    "juUrl": "",
     "size": 346.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art11.pdf"
   },
@@ -17926,6 +19555,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art12.pdf",
+    "juUrl": "",
     "size": 93.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art12.pdf"
   },
@@ -17937,6 +19567,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_3_2018__Art13.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_3_2018__Art13.pdf"
   },
@@ -17948,6 +19579,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Contents.pdf",
+    "juUrl": "",
     "size": 376.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Contents.pdf"
   },
@@ -17959,6 +19591,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art01.pdf",
+    "juUrl": "",
     "size": 348.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art01.pdf"
   },
@@ -17970,6 +19603,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art02.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art02.pdf"
   },
@@ -17981,6 +19615,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art03.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art03.pdf"
   },
@@ -17992,6 +19627,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art04.pdf",
+    "juUrl": "",
     "size": 375.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art04.pdf"
   },
@@ -18003,6 +19639,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art05.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art05.pdf"
   },
@@ -18014,6 +19651,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art06.pdf",
+    "juUrl": "",
     "size": 118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art06.pdf"
   },
@@ -18025,6 +19663,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art07.pdf",
+    "juUrl": "",
     "size": 804.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art07.pdf"
   },
@@ -18036,6 +19675,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art08.pdf",
+    "juUrl": "",
     "size": 151.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art08.pdf"
   },
@@ -18047,6 +19687,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art09.pdf",
+    "juUrl": "",
     "size": 644.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art09.pdf"
   },
@@ -18058,6 +19699,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art10.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art10.pdf"
   },
@@ -18069,6 +19711,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art11.pdf",
+    "juUrl": "",
     "size": 128.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art11.pdf"
   },
@@ -18080,6 +19723,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art12.pdf",
+    "juUrl": "",
     "size": 1118.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art12.pdf"
   },
@@ -18091,6 +19735,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art13.pdf",
+    "juUrl": "",
     "size": 129.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art13.pdf"
   },
@@ -18102,6 +19747,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art14.pdf",
+    "juUrl": "",
     "size": 1350.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art14.pdf"
   },
@@ -18113,6 +19759,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art15.pdf",
+    "juUrl": "",
     "size": 247.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art15.pdf"
   },
@@ -18124,6 +19771,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art16.pdf",
+    "juUrl": "",
     "size": 234.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art16.pdf"
   },
@@ -18135,6 +19783,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art17.pdf",
+    "juUrl": "",
     "size": 854.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art17.pdf"
   },
@@ -18146,6 +19795,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art18.pdf",
+    "juUrl": "",
     "size": 138.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art18.pdf"
   },
@@ -18157,6 +19807,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art19.pdf",
+    "juUrl": "",
     "size": 446.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art19.pdf"
   },
@@ -18168,6 +19819,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art20.pdf",
+    "juUrl": "",
     "size": 126.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art20.pdf"
   },
@@ -18179,6 +19831,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art21.pdf",
+    "juUrl": "",
     "size": 324.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art21.pdf"
   },
@@ -18190,6 +19843,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art22.pdf",
+    "juUrl": "",
     "size": 397.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art22.pdf"
   },
@@ -18201,6 +19855,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art23.pdf",
+    "juUrl": "",
     "size": 130.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art23.pdf"
   },
@@ -18212,6 +19867,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art24.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art24.pdf"
   },
@@ -18223,6 +19879,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art25.pdf",
+    "juUrl": "",
     "size": 246.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art25.pdf"
   },
@@ -18234,6 +19891,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art26.pdf",
+    "juUrl": "",
     "size": 616.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art26.pdf"
   },
@@ -18245,6 +19903,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art27.pdf",
+    "juUrl": "",
     "size": 1115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art27.pdf"
   },
@@ -18256,6 +19915,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art28.pdf",
+    "juUrl": "",
     "size": 145.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art28.pdf"
   },
@@ -18267,6 +19927,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art29.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art29.pdf"
   },
@@ -18278,6 +19939,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art30.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art30.pdf"
   },
@@ -18289,6 +19951,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art31.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art31.pdf"
   },
@@ -18300,6 +19963,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Art32.pdf",
+    "juUrl": "",
     "size": 533.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Art32.pdf"
   },
@@ -18311,6 +19975,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018-Index.pdf",
+    "juUrl": "",
     "size": 99.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018-Index.pdf"
   },
@@ -18322,6 +19987,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018-Cumulativeindex.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018-Cumulativeindex.pdf"
   },
@@ -18333,6 +19999,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/35-Contentsall.pdf",
+    "juUrl": "",
     "size": 116.0,
     "localPath": "assets/pdfs/ijhs_potentials/35-Contentsall.pdf"
   },
@@ -18344,6 +20011,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol53_4_2018__Books.pdf",
+    "juUrl": "",
     "size": 120.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol53_4_2018__Books.pdf"
   },
@@ -18355,6 +20023,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Contents.pdf",
+    "juUrl": "",
     "size": 91.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Contents.pdf"
   },
@@ -18366,6 +20035,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art01.pdf",
+    "juUrl": "",
     "size": 174.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art01.pdf"
   },
@@ -18377,6 +20047,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art02.pdf",
+    "juUrl": "",
     "size": 684.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art02.pdf"
   },
@@ -18388,6 +20059,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art03.pdf",
+    "juUrl": "",
     "size": 153.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art03.pdf"
   },
@@ -18399,6 +20071,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art04.pdf",
+    "juUrl": "",
     "size": 2393.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art04.pdf"
   },
@@ -18410,6 +20083,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art05.pdf",
+    "juUrl": "",
     "size": 318.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art05.pdf"
   },
@@ -18421,6 +20095,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art06.pdf",
+    "juUrl": "",
     "size": 192.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art06.pdf"
   },
@@ -18432,6 +20107,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art07.pdf",
+    "juUrl": "",
     "size": 156.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art07.pdf"
   },
@@ -18443,6 +20119,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art08.pdf",
+    "juUrl": "",
     "size": 512.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art08.pdf"
   },
@@ -18454,6 +20131,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art09.pdf",
+    "juUrl": "",
     "size": 330.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art09.pdf"
   },
@@ -18465,6 +20143,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art10.pdf",
+    "juUrl": "",
     "size": 106.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art10.pdf"
   },
@@ -18476,6 +20155,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art11.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art11.pdf"
   },
@@ -18487,6 +20167,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art12.pdf",
+    "juUrl": "",
     "size": 107.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art12.pdf"
   },
@@ -18498,6 +20179,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art13.pdf",
+    "juUrl": "",
     "size": 142.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art13.pdf"
   },
@@ -18509,6 +20191,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_1_2019__Art14.pdf",
+    "juUrl": "",
     "size": 1048.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_1_2019__Art14.pdf"
   },
@@ -18520,6 +20203,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Contents.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Contents.pdf"
   },
@@ -18531,6 +20215,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art01.pdf",
+    "juUrl": "",
     "size": 582.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art01.pdf"
   },
@@ -18542,6 +20227,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art02.pdf",
+    "juUrl": "",
     "size": 696.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art02.pdf"
   },
@@ -18553,6 +20239,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art03.pdf",
+    "juUrl": "",
     "size": 228.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art03.pdf"
   },
@@ -18564,6 +20251,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art04.pdf",
+    "juUrl": "",
     "size": 208.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art04.pdf"
   },
@@ -18575,6 +20263,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art05.pdf",
+    "juUrl": "",
     "size": 301.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art05.pdf"
   },
@@ -18586,6 +20275,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art06.pdf",
+    "juUrl": "",
     "size": 161.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art06.pdf"
   },
@@ -18597,6 +20287,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art07.pdf",
+    "juUrl": "",
     "size": 139.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art07.pdf"
   },
@@ -18608,6 +20299,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art08.pdf",
+    "juUrl": "",
     "size": 206.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art08.pdf"
   },
@@ -18619,6 +20311,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art09.pdf",
+    "juUrl": "",
     "size": 112.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art09.pdf"
   },
@@ -18630,6 +20323,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art10.pdf",
+    "juUrl": "",
     "size": 104.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art10.pdf"
   },
@@ -18641,6 +20335,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art11.pdf",
+    "juUrl": "",
     "size": 132.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art11.pdf"
   },
@@ -18652,6 +20347,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art12.pdf",
+    "juUrl": "",
     "size": 117.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art12.pdf"
   },
@@ -18663,6 +20359,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art13.pdf",
+    "juUrl": "",
     "size": 358.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art13.pdf"
   },
@@ -18674,6 +20371,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_2_2019__Art14.pdf",
+    "juUrl": "",
     "size": 160.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_2_2019__Art14.pdf"
   },
@@ -18685,6 +20383,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art01.pdf",
+    "juUrl": "",
     "size": 206.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art01.pdf"
   },
@@ -18696,6 +20395,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art02.pdf",
+    "juUrl": "",
     "size": 304.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art02.pdf"
   },
@@ -18707,6 +20407,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art03.pdf",
+    "juUrl": "",
     "size": 295.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art03.pdf"
   },
@@ -18718,6 +20419,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art04.pdf",
+    "juUrl": "",
     "size": 166.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art04.pdf"
   },
@@ -18729,6 +20431,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art05.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art05.pdf"
   },
@@ -18740,6 +20443,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art06.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art06.pdf"
   },
@@ -18751,6 +20455,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art07.pdf",
+    "juUrl": "",
     "size": 137.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art07.pdf"
   },
@@ -18762,6 +20467,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art08.pdf",
+    "juUrl": "",
     "size": 275.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art08.pdf"
   },
@@ -18773,6 +20479,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art10.pdf",
+    "juUrl": "",
     "size": 561.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art10.pdf"
   },
@@ -18784,6 +20491,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art11.pdf",
+    "juUrl": "",
     "size": 86.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art11.pdf"
   },
@@ -18795,6 +20503,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art12.pdf",
+    "juUrl": "",
     "size": 63.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art12.pdf"
   },
@@ -18806,6 +20515,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art13.pdf",
+    "juUrl": "",
     "size": 155.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art13.pdf"
   },
@@ -18817,6 +20527,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_3_2019__Art14.pdf",
+    "juUrl": "",
     "size": 121.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_3_2019__Art14.pdf"
   },
@@ -18828,6 +20539,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_Vol54_4.pdf",
+    "juUrl": "",
     "size": 25.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_Vol54_4.pdf"
   },
@@ -18839,6 +20551,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art01.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art01.pdf"
   },
@@ -18850,6 +20563,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art02.pdf",
+    "juUrl": "",
     "size": 616.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art02.pdf"
   },
@@ -18861,6 +20575,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art03.pdf",
+    "juUrl": "",
     "size": 437.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art03.pdf"
   },
@@ -18872,6 +20587,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art04.pdf",
+    "juUrl": "",
     "size": 82.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art04.pdf"
   },
@@ -18883,6 +20599,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art05.pdf",
+    "juUrl": "",
     "size": 142.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art05.pdf"
   },
@@ -18894,6 +20611,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art06.pdf",
+    "juUrl": "",
     "size": 526.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art06.pdf"
   },
@@ -18905,6 +20623,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art08.pdf",
+    "juUrl": "",
     "size": 397.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art08.pdf"
   },
@@ -18916,6 +20635,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2019",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol54_4_2019__Art09.pdf",
+    "juUrl": "",
     "size": 352.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol54_4_2019__Art09.pdf"
   },
@@ -18927,6 +20647,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__contents.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__contents.pdf"
   },
@@ -18938,6 +20659,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art01.pdf",
+    "juUrl": "",
     "size": 226.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art01.pdf"
   },
@@ -18949,6 +20671,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art02.pdf",
+    "juUrl": "",
     "size": 365.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art02.pdf"
   },
@@ -18960,6 +20683,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art03.pdf",
+    "juUrl": "",
     "size": 240.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art03.pdf"
   },
@@ -18971,6 +20695,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art04.pdf",
+    "juUrl": "",
     "size": 191.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art04.pdf"
   },
@@ -18982,6 +20707,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art05.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art05.pdf"
   },
@@ -18993,6 +20719,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art06.pdf",
+    "juUrl": "",
     "size": 821.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art06.pdf"
   },
@@ -19004,6 +20731,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art07.pdf",
+    "juUrl": "",
     "size": 1359.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art07.pdf"
   },
@@ -19015,6 +20743,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_1_2020__Art08.pdf",
+    "juUrl": "",
     "size": 84.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_1_2020__Art08.pdf"
   },
@@ -19026,6 +20755,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Contents.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Contents.pdf"
   },
@@ -19037,6 +20767,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art01.pdf",
+    "juUrl": "",
     "size": 164.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art01.pdf"
   },
@@ -19048,6 +20779,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art02.pdf",
+    "juUrl": "",
     "size": 667.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art02.pdf"
   },
@@ -19059,6 +20791,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art03.pdf",
+    "juUrl": "",
     "size": 152.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art03.pdf"
   },
@@ -19070,6 +20803,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art04.pdf",
+    "juUrl": "",
     "size": 1627.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art04.pdf"
   },
@@ -19081,6 +20815,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art05.pdf",
+    "juUrl": "",
     "size": 169.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art05.pdf"
   },
@@ -19092,6 +20827,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art06.pdf",
+    "juUrl": "",
     "size": 313.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art06.pdf"
   },
@@ -19103,6 +20839,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art07.pdf",
+    "juUrl": "",
     "size": 251.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art07.pdf"
   },
@@ -19114,6 +20851,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_2_2020__Art08.pdf",
+    "juUrl": "",
     "size": 357.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_2_2020__Art08.pdf"
   },
@@ -19125,6 +20863,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Contents.pdf",
+    "juUrl": "",
     "size": 28.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Contents.pdf"
   },
@@ -19136,6 +20875,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art01.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vol55_3_2020__Art01.pdf",
     "size": 1284.0,
     "localPath": "assets/pdfs/cached_papers/rni/Vol55_3_2020__Art01.pdf"
   },
@@ -19147,6 +20887,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art02.pdf",
+    "juUrl": "",
     "size": 371.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art02.pdf"
   },
@@ -19158,6 +20899,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art03.pdf",
+    "juUrl": "",
     "size": 122.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art03.pdf"
   },
@@ -19169,6 +20911,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art04.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art04.pdf"
   },
@@ -19180,6 +20923,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art05.pdf",
+    "juUrl": "",
     "size": 97.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art05.pdf"
   },
@@ -19191,6 +20935,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art06.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art06.pdf"
   },
@@ -19202,6 +20947,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art07.pdf",
+    "juUrl": "",
     "size": 259.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art07.pdf"
   },
@@ -19213,6 +20959,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_3_2020__Art08.pdf",
+    "juUrl": "",
     "size": 124.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_3_2020__Art08.pdf"
   },
@@ -19224,6 +20971,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4Contents.pdf",
+    "juUrl": "",
     "size": 29.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4Contents.pdf"
   },
@@ -19235,6 +20983,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art01.pdf",
+    "juUrl": "",
     "size": 886.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art01.pdf"
   },
@@ -19246,6 +20995,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art02.pdf",
+    "juUrl": "",
     "size": 141.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art02.pdf"
   },
@@ -19257,6 +21007,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art03.pdf",
+    "juUrl": "",
     "size": 105.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art03.pdf"
   },
@@ -19268,6 +21019,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art04.pdf",
+    "juUrl": "",
     "size": 900.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art04.pdf"
   },
@@ -19279,6 +21031,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art05.pdf",
+    "juUrl": "",
     "size": 686.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art05.pdf"
   },
@@ -19290,6 +21043,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art10.pdf",
+    "juUrl": "",
     "size": 113.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art10.pdf"
   },
@@ -19301,6 +21055,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art06.pdf",
+    "juUrl": "",
     "size": 71.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art06.pdf"
   },
@@ -19312,6 +21067,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art07.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art07.pdf"
   },
@@ -19323,6 +21079,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art08.pdf",
+    "juUrl": "",
     "size": 101.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art08.pdf"
   },
@@ -19334,6 +21091,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__Art09.pdf",
+    "juUrl": "",
     "size": 406.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__Art09.pdf"
   },
@@ -19345,6 +21103,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__CIndex.pdf",
+    "juUrl": "",
     "size": 35.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__CIndex.pdf"
   },
@@ -19356,6 +21115,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2020",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Vol55_4_2020__AnnualContents.pdf",
+    "juUrl": "",
     "size": 41.0,
     "localPath": "assets/pdfs/ijhs_potentials/Vol55_4_2020__AnnualContents.pdf"
   },
@@ -19367,6 +21127,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Content.pdf",
+    "juUrl": "",
     "size": 90.0,
     "localPath": "assets/pdfs/ijhs_potentials/Content.pdf"
   },
@@ -19378,6 +21139,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/1-13.pdf",
+    "juUrl": "",
     "size": 7639.0,
     "localPath": "assets/pdfs/ijhs_potentials/1-13.pdf"
   },
@@ -19389,6 +21151,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/14-19.pdf",
+    "juUrl": "",
     "size": 345.0,
     "localPath": "assets/pdfs/ijhs_potentials/14-19.pdf"
   },
@@ -19400,6 +21163,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/20-27.pdf",
+    "juUrl": "",
     "size": 401.0,
     "localPath": "assets/pdfs/ijhs_potentials/20-27.pdf"
   },
@@ -19411,6 +21175,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/28-36.pdf",
+    "juUrl": "",
     "size": 451.0,
     "localPath": "assets/pdfs/ijhs_potentials/28-36.pdf"
   },
@@ -19422,6 +21187,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/37-48.pdf",
+    "juUrl": "",
     "size": 607.0,
     "localPath": "assets/pdfs/ijhs_potentials/37-48.pdf"
   },
@@ -19433,6 +21199,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/49-59.pdf",
+    "juUrl": "",
     "size": 7844.0,
     "localPath": "assets/pdfs/ijhs_potentials/49-59.pdf"
   },
@@ -19444,6 +21211,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/60-64.pdf",
+    "juUrl": "",
     "size": 295.0,
     "localPath": "assets/pdfs/ijhs_potentials/60-64.pdf"
   },
@@ -19455,6 +21223,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/65-69.pdf",
+    "juUrl": "",
     "size": 4244.0,
     "localPath": "assets/pdfs/ijhs_potentials/65-69.pdf"
   },
@@ -19466,6 +21235,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/0__Content.pdf",
+    "juUrl": "",
     "size": 97.0,
     "localPath": "assets/pdfs/ijhs_potentials/0__Content.pdf"
   },
@@ -19477,6 +21247,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/1__Mahesh.pdf",
+    "juUrl": "",
     "size": 491.0,
     "localPath": "assets/pdfs/ijhs_potentials/1__Mahesh.pdf"
   },
@@ -19488,6 +21259,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/2__Chauthaiwale.pdf",
+    "juUrl": "",
     "size": 262.0,
     "localPath": "assets/pdfs/ijhs_potentials/2__Chauthaiwale.pdf"
   },
@@ -19499,6 +21271,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/3__Thomas.pdf",
+    "juUrl": "",
     "size": 1094.0,
     "localPath": "assets/pdfs/ijhs_potentials/3__Thomas.pdf"
   },
@@ -19510,6 +21283,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/4__Sasisekaran.pdf",
+    "juUrl": "",
     "size": 702.0,
     "localPath": "assets/pdfs/ijhs_potentials/4__Sasisekaran.pdf"
   },
@@ -19521,6 +21295,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/5__Jitendra.pdf",
+    "juUrl": "",
     "size": 829.0,
     "localPath": "assets/pdfs/ijhs_potentials/5__Jitendra.pdf"
   },
@@ -19532,6 +21307,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/6__Arnab%20Rai%20Choudhuri.pdf",
+    "juUrl": "",
     "size": 7500.0,
     "localPath": "assets/pdfs/ijhs_potentials/6__Arnab%20Rai%20Choudhuri.pdf"
   },
@@ -19543,6 +21319,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/7__Satyanad.pdf",
+    "juUrl": "",
     "size": 405.0,
     "localPath": "assets/pdfs/ijhs_potentials/7__Satyanad.pdf"
   },
@@ -19554,6 +21331,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/8__Maidul.pdf",
+    "juUrl": "",
     "size": 276.0,
     "localPath": "assets/pdfs/ijhs_potentials/8__Maidul.pdf"
   },
@@ -19565,6 +21343,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/1.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/1.pdf",
     "size": 5789.0,
     "localPath": "assets/pdfs/cached_papers/rni/1.pdf"
   },
@@ -19576,6 +21355,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/2.pdf",
+    "juUrl": "",
     "size": 454.0,
     "localPath": "assets/pdfs/ijhs_potentials/2.pdf"
   },
@@ -19587,6 +21367,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/3.pdf",
+    "juUrl": "",
     "size": 990.0,
     "localPath": "assets/pdfs/ijhs_potentials/3.pdf"
   },
@@ -19598,6 +21379,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/4.pdf",
+    "juUrl": "",
     "size": 704.0,
     "localPath": "assets/pdfs/ijhs_potentials/4.pdf"
   },
@@ -19609,6 +21391,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/5.pdf",
+    "juUrl": "",
     "size": 691.0,
     "localPath": "assets/pdfs/ijhs_potentials/5.pdf"
   },
@@ -19620,6 +21403,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/6.pdf",
+    "juUrl": "",
     "size": 593.0,
     "localPath": "assets/pdfs/ijhs_potentials/6.pdf"
   },
@@ -19631,6 +21415,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/7.pdf",
+    "juUrl": "",
     "size": 70.0,
     "localPath": "assets/pdfs/ijhs_potentials/7.pdf"
   },
@@ -19642,6 +21427,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2021",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/8.pdf",
+    "juUrl": "",
     "size": 276.0,
     "localPath": "assets/pdfs/ijhs_potentials/8.pdf"
   },
@@ -19653,6 +21439,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/1_PM%20Dolas.pdf",
+    "juUrl": "",
     "size": 6455.0,
     "localPath": "assets/pdfs/ijhs_potentials/1_PM%20Dolas.pdf"
   },
@@ -19664,6 +21451,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/2_NC%20Shah.pdf",
+    "juUrl": "",
     "size": 4879.0,
     "localPath": "assets/pdfs/ijhs_potentials/2_NC%20Shah.pdf"
   },
@@ -19675,6 +21463,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/3_F%20Di%20Giacomo.pdf",
+    "juUrl": "",
     "size": 3578.0,
     "localPath": "assets/pdfs/ijhs_potentials/3_F%20Di%20Giacomo.pdf"
   },
@@ -19686,6 +21475,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/4_S%20Dasgupta.pdf",
+    "juUrl": "",
     "size": 3017.0,
     "localPath": "assets/pdfs/ijhs_potentials/4_S%20Dasgupta.pdf"
   },
@@ -19697,6 +21487,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/5_P%20Sharma.pdf",
+    "juUrl": "",
     "size": 7085.0,
     "localPath": "assets/pdfs/ijhs_potentials/5_P%20Sharma.pdf"
   },
@@ -19708,6 +21499,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/6_R%20Ghosh.pdf",
+    "juUrl": "",
     "size": 3274.0,
     "localPath": "assets/pdfs/ijhs_potentials/6_R%20Ghosh.pdf"
   },
@@ -19719,6 +21511,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/7_MA%20Wani.pdf",
+    "juUrl": "",
     "size": 2960.0,
     "localPath": "assets/pdfs/ijhs_potentials/7_MA%20Wani.pdf"
   },
@@ -19730,6 +21523,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/8_S%20Kulangara.pdf",
+    "juUrl": "",
     "size": 3028.0,
     "localPath": "assets/pdfs/ijhs_potentials/8_S%20Kulangara.pdf"
   },
@@ -19741,6 +21535,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/9_B%20Goswami.pdf",
+    "juUrl": "",
     "size": 2936.0,
     "localPath": "assets/pdfs/ijhs_potentials/9_B%20Goswami.pdf"
   },
@@ -19752,6 +21547,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_Content.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_Content.pdf"
   },
@@ -19763,6 +21559,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_1.pdf",
+    "juUrl": "",
     "size": 1355.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_1.pdf"
   },
@@ -19774,6 +21571,7 @@ const PAPERS = [
     "subject": "Music",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_2.pdf",
+    "juUrl": "",
     "size": 455.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_2.pdf"
   },
@@ -19785,6 +21583,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_3.pdf",
+    "juUrl": "",
     "size": 275.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_3.pdf"
   },
@@ -19796,6 +21595,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_4.pdf",
+    "juUrl": "",
     "size": 357.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_4.pdf"
   },
@@ -19807,6 +21607,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_5.pdf",
+    "juUrl": "",
     "size": 382.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_5.pdf"
   },
@@ -19818,6 +21619,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_6.pdf",
+    "juUrl": "",
     "size": 878.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_6.pdf"
   },
@@ -19829,6 +21631,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_7.pdf",
+    "juUrl": "",
     "size": 1003.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_7.pdf"
   },
@@ -19840,6 +21643,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_8.pdf",
+    "juUrl": "",
     "size": 627.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_8.pdf"
   },
@@ -19851,6 +21655,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_9.pdf",
+    "juUrl": "",
     "size": 227.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_9.pdf"
   },
@@ -19862,6 +21667,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_2_10.pdf",
+    "juUrl": "",
     "size": 164.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_2_10.pdf"
   },
@@ -19873,6 +21679,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_Content.pdf",
+    "juUrl": "",
     "size": 81.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_Content.pdf"
   },
@@ -19884,6 +21691,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_1.pdf",
+    "juUrl": "",
     "size": 1338.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_1.pdf"
   },
@@ -19895,6 +21703,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_2.pdf",
+    "juUrl": "",
     "size": 322.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_2.pdf"
   },
@@ -19906,6 +21715,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_3.pdf",
+    "juUrl": "",
     "size": 340.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_3.pdf"
   },
@@ -19917,6 +21727,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_4.pdf",
+    "juUrl": "",
     "size": 272.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_4.pdf"
   },
@@ -19928,6 +21739,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_5.pdf",
+    "juUrl": "",
     "size": 268.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_5.pdf"
   },
@@ -19939,6 +21751,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_6.pdf",
+    "juUrl": "",
     "size": 228.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_6.pdf"
   },
@@ -19950,6 +21763,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_7.pdf",
+    "juUrl": "",
     "size": 1122.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_7.pdf"
   },
@@ -19961,6 +21775,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_3_8.pdf",
+    "juUrl": "",
     "size": 242.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_3_8.pdf"
   },
@@ -19972,6 +21787,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/S1-IndusZoomorphicIconCatalogue.pdf",
+    "juUrl": "",
     "size": 1065.0,
     "localPath": "assets/pdfs/ijhs_potentials/S1-IndusZoomorphicIconCatalogue.pdf"
   },
@@ -19983,6 +21799,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_Content.pdf",
+    "juUrl": "",
     "size": 92.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_Content.pdf"
   },
@@ -19994,6 +21811,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_1.pdf",
+    "juUrl": "",
     "size": 663.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_1.pdf"
   },
@@ -20005,6 +21823,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_2.pdf",
+    "juUrl": "",
     "size": 267.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_2.pdf"
   },
@@ -20016,6 +21835,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_3.pdf",
+    "juUrl": "",
     "size": 592.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_3.pdf"
   },
@@ -20027,6 +21847,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_4.pdf",
+    "juUrl": "",
     "size": 1103.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_4.pdf"
   },
@@ -20038,6 +21859,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_5.pdf",
+    "juUrl": "",
     "size": 919.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_5.pdf"
   },
@@ -20049,6 +21871,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_6.pdf",
+    "juUrl": "",
     "size": 357.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_6.pdf"
   },
@@ -20060,6 +21883,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_7.pdf",
+    "juUrl": "",
     "size": 231.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_7.pdf"
   },
@@ -20071,6 +21895,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_8.pdf",
+    "juUrl": "",
     "size": 205.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_8.pdf"
   },
@@ -20082,6 +21907,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_9.pdf",
+    "juUrl": "",
     "size": 244.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_9.pdf"
   },
@@ -20093,6 +21919,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2022",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/57_4_10.pdf",
+    "juUrl": "",
     "size": 256.0,
     "localPath": "assets/pdfs/ijhs_potentials/57_4_10.pdf"
   },
@@ -20104,6 +21931,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_Content.pdf",
+    "juUrl": "",
     "size": 108.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_Content.pdf"
   },
@@ -20115,6 +21943,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_1.pdf",
+    "juUrl": "",
     "size": 1026.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_1.pdf"
   },
@@ -20126,6 +21955,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_2.pdf",
+    "juUrl": "",
     "size": 339.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_2.pdf"
   },
@@ -20137,6 +21967,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_3.pdf",
+    "juUrl": "",
     "size": 355.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_3.pdf"
   },
@@ -20148,6 +21979,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_4.pdf",
+    "juUrl": "",
     "size": 497.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_4.pdf"
   },
@@ -20159,6 +21991,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_5.pdf",
+    "juUrl": "",
     "size": 396.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_5.pdf"
   },
@@ -20170,6 +22003,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_6.pdf",
+    "juUrl": "",
     "size": 335.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_6.pdf"
   },
@@ -20181,6 +22015,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_7.pdf",
+    "juUrl": "",
     "size": 474.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_7.pdf"
   },
@@ -20192,6 +22027,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_8.pdf",
+    "juUrl": "",
     "size": 384.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_8.pdf"
   },
@@ -20203,6 +22039,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_9.pdf",
+    "juUrl": "",
     "size": 327.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_9.pdf"
   },
@@ -20214,6 +22051,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58_1_10.pdf",
+    "juUrl": "",
     "size": 187.0,
     "localPath": "assets/pdfs/ijhs_potentials/58_1_10.pdf"
   },
@@ -20225,6 +22063,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/58-1_11.pdf",
+    "juUrl": "",
     "size": 227.0,
     "localPath": "assets/pdfs/ijhs_potentials/58-1_11.pdf"
   },
@@ -20236,6 +22075,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_Contents.pdf",
+    "juUrl": "",
     "size": 87.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_Contents.pdf"
   },
@@ -20247,6 +22087,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_1.pdf",
+    "juUrl": "",
     "size": 351.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_1.pdf"
   },
@@ -20258,6 +22099,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_2.pdf",
+    "juUrl": "",
     "size": 605.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_2.pdf"
   },
@@ -20269,6 +22111,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_3.pdf",
+    "juUrl": "",
     "size": 249.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_3.pdf"
   },
@@ -20280,6 +22123,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS58_2_4.pdf",
+    "juUrl": "",
     "size": 427.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS58_2_4.pdf"
   },
@@ -20291,6 +22135,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_5.pdf",
+    "juUrl": "",
     "size": 691.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_5.pdf"
   },
@@ -20302,6 +22147,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_6.pdf",
+    "juUrl": "",
     "size": 366.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_6.pdf"
   },
@@ -20313,6 +22159,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS58_2_7.pdf",
+    "juUrl": "",
     "size": 237.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS58_2_7.pdf"
   },
@@ -20324,6 +22171,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_2_8.pdf",
+    "juUrl": "",
     "size": 196.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_2_8.pdf"
   },
@@ -20335,6 +22183,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_58-3.pdf",
+    "juUrl": "",
     "size": 94.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_58-3.pdf"
   },
@@ -20346,6 +22195,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_1.pdf",
+    "juUrl": "",
     "size": 901.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_1.pdf"
   },
@@ -20357,6 +22207,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_2.pdf",
+    "juUrl": "",
     "size": 476.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_2.pdf"
   },
@@ -20368,6 +22219,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_3.pdf",
+    "juUrl": "",
     "size": 691.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_3.pdf"
   },
@@ -20379,6 +22231,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_4.pdf",
+    "juUrl": "",
     "size": 270.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_4.pdf"
   },
@@ -20390,6 +22243,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_5.pdf",
+    "juUrl": "",
     "size": 227.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_5.pdf"
   },
@@ -20401,6 +22255,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_6.pdf",
+    "juUrl": "",
     "size": 450.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_6.pdf"
   },
@@ -20412,6 +22267,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_7.pdf",
+    "juUrl": "",
     "size": 351.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_7.pdf"
   },
@@ -20423,6 +22279,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_8.pdf",
+    "juUrl": "",
     "size": 149.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_8.pdf"
   },
@@ -20434,6 +22291,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_9.pdf",
+    "juUrl": "",
     "size": 115.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_9.pdf"
   },
@@ -20445,6 +22303,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_58_3_10.pdf",
+    "juUrl": "",
     "size": 206.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_58_3_10.pdf"
   },
@@ -20456,6 +22315,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_58_4IJHS.pdf",
+    "juUrl": "",
     "size": 182.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_58_4IJHS.pdf"
   },
@@ -20467,6 +22327,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/01_58_4.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/01_58_4.pdf",
     "size": 1132.0,
     "localPath": "assets/pdfs/cached_papers/rni/01_58_4.pdf"
   },
@@ -20478,6 +22339,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/02-58_4.pdf",
+    "juUrl": "",
     "size": 970.0,
     "localPath": "assets/pdfs/ijhs_potentials/02-58_4.pdf"
   },
@@ -20489,6 +22351,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/03-58_4.pdf",
+    "juUrl": "",
     "size": 975.0,
     "localPath": "assets/pdfs/ijhs_potentials/03-58_4.pdf"
   },
@@ -20500,6 +22363,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/04-58_4.pdf",
+    "juUrl": "",
     "size": 628.0,
     "localPath": "assets/pdfs/ijhs_potentials/04-58_4.pdf"
   },
@@ -20511,6 +22375,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/05-58_4.pdf",
+    "juUrl": "",
     "size": 1114.0,
     "localPath": "assets/pdfs/ijhs_potentials/05-58_4.pdf"
   },
@@ -20522,6 +22387,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/06-58_4.pdf",
+    "juUrl": "",
     "size": 584.0,
     "localPath": "assets/pdfs/ijhs_potentials/06-58_4.pdf"
   },
@@ -20533,6 +22399,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/07-58_4.pdf",
+    "juUrl": "",
     "size": 277.0,
     "localPath": "assets/pdfs/ijhs_potentials/07-58_4.pdf"
   },
@@ -20544,6 +22411,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/08-58_4.pdf",
+    "juUrl": "",
     "size": 157.0,
     "localPath": "assets/pdfs/ijhs_potentials/08-58_4.pdf"
   },
@@ -20555,6 +22423,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/09-58_4.pdf",
+    "juUrl": "",
     "size": 301.0,
     "localPath": "assets/pdfs/ijhs_potentials/09-58_4.pdf"
   },
@@ -20566,6 +22435,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/10-58_4.pdf",
+    "juUrl": "",
     "size": 120.0,
     "localPath": "assets/pdfs/ijhs_potentials/10-58_4.pdf"
   },
@@ -20577,6 +22447,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2023",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Cumulative%20Index_58_ijhs.pdf",
+    "juUrl": "",
     "size": 662.0,
     "localPath": "assets/pdfs/ijhs_potentials/Cumulative%20Index_58_ijhs.pdf"
   },
@@ -20588,6 +22459,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_59_1_ijhs.pdf",
+    "juUrl": "",
     "size": 101.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_59_1_ijhs.pdf"
   },
@@ -20599,6 +22471,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/01-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 1127.0,
     "localPath": "assets/pdfs/ijhs_potentials/01-IJHS59_1.pdf"
   },
@@ -20610,6 +22483,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/02-IJHS59_2.pdf",
+    "juUrl": "",
     "size": 629.0,
     "localPath": "assets/pdfs/ijhs_potentials/02-IJHS59_2.pdf"
   },
@@ -20621,6 +22495,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/03-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 334.0,
     "localPath": "assets/pdfs/ijhs_potentials/03-IJHS59_1.pdf"
   },
@@ -20632,6 +22507,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/04-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 570.0,
     "localPath": "assets/pdfs/ijhs_potentials/04-IJHS59_1.pdf"
   },
@@ -20643,6 +22519,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/05-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 326.0,
     "localPath": "assets/pdfs/ijhs_potentials/05-IJHS59_1.pdf"
   },
@@ -20654,6 +22531,7 @@ const PAPERS = [
     "subject": "MindSciences",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/06-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 496.0,
     "localPath": "assets/pdfs/ijhs_potentials/06-IJHS59_1.pdf"
   },
@@ -20665,6 +22543,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/07-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 338.0,
     "localPath": "assets/pdfs/ijhs_potentials/07-IJHS59_1.pdf"
   },
@@ -20676,6 +22555,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/08-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 1556.0,
     "localPath": "assets/pdfs/ijhs_potentials/08-IJHS59_1.pdf"
   },
@@ -20687,6 +22567,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/09-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 146.0,
     "localPath": "assets/pdfs/ijhs_potentials/09-IJHS59_1.pdf"
   },
@@ -20698,6 +22579,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/10-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 178.0,
     "localPath": "assets/pdfs/ijhs_potentials/10-IJHS59_1.pdf"
   },
@@ -20709,6 +22591,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/11-IJHS59_1.pdf",
+    "juUrl": "",
     "size": 642.0,
     "localPath": "assets/pdfs/ijhs_potentials/11-IJHS59_1.pdf"
   },
@@ -20720,6 +22603,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Corrigendum_59_1.pdf",
+    "juUrl": "",
     "size": 65.0,
     "localPath": "assets/pdfs/ijhs_potentials/Corrigendum_59_1.pdf"
   },
@@ -20731,6 +22615,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_59_2_ijhs.pdf",
+    "juUrl": "",
     "size": 89.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_59_2_ijhs.pdf"
   },
@@ -20742,6 +22627,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/01-43539_2024_127_OnlinePDF123-142.pdf",
+    "juUrl": "",
     "size": 1331.0,
     "localPath": "assets/pdfs/ijhs_potentials/01-43539_2024_127_OnlinePDF123-142.pdf"
   },
@@ -20753,6 +22639,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/02-43539_2024_121_OnlinePDF143-158.pdf",
+    "juUrl": "",
     "size": 449.0,
     "localPath": "assets/pdfs/ijhs_potentials/02-43539_2024_121_OnlinePDF143-158.pdf"
   },
@@ -20764,6 +22651,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/03-43539_2024_123_OnlinePDF159-164.pdf",
+    "juUrl": "",
     "size": 449.0,
     "localPath": "assets/pdfs/ijhs_potentials/03-43539_2024_123_OnlinePDF159-164.pdf"
   },
@@ -20775,6 +22663,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/04-43539_2024_126_OnlinePDF165-177.pdf",
+    "juUrl": "",
     "size": 383.0,
     "localPath": "assets/pdfs/ijhs_potentials/04-43539_2024_126_OnlinePDF165-177.pdf"
   },
@@ -20786,6 +22675,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/05-43539_2024_122_OnlinePDF178-191.pdf",
+    "juUrl": "",
     "size": 518.0,
     "localPath": "assets/pdfs/ijhs_potentials/05-43539_2024_122_OnlinePDF178-191.pdf"
   },
@@ -20797,6 +22687,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/06-43539_2024_120_OnlinePDF192-203.pdf",
+    "juUrl": "",
     "size": 412.0,
     "localPath": "assets/pdfs/ijhs_potentials/06-43539_2024_120_OnlinePDF192-203.pdf"
   },
@@ -20808,6 +22699,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/07-43539_2024_125_OnlinePDF204-215.pdf",
+    "juUrl": "",
     "size": 471.0,
     "localPath": "assets/pdfs/ijhs_potentials/07-43539_2024_125_OnlinePDF204-215.pdf"
   },
@@ -20819,6 +22711,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/08-43539_2024_124_OnlinePDF216-222.pdf",
+    "juUrl": "",
     "size": 315.0,
     "localPath": "assets/pdfs/ijhs_potentials/08-43539_2024_124_OnlinePDF216-222.pdf"
   },
@@ -20830,6 +22723,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/09-43539_2024_129_OnlinePDF223-224.pdf",
+    "juUrl": "",
     "size": 181.0,
     "localPath": "assets/pdfs/ijhs_potentials/09-43539_2024_129_OnlinePDF223-224.pdf"
   },
@@ -20841,6 +22735,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/10-43539_2024_128_OnlinePDF225-232.pdf",
+    "juUrl": "",
     "size": 423.0,
     "localPath": "assets/pdfs/ijhs_potentials/10-43539_2024_128_OnlinePDF225-232.pdf"
   },
@@ -20852,6 +22747,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/Contents_IJHS_59_3.pdf",
+    "juUrl": "",
     "size": 103.0,
     "localPath": "assets/pdfs/ijhs_potentials/Contents_IJHS_59_3.pdf"
   },
@@ -20863,6 +22759,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_1.pdf",
+    "juUrl": "",
     "size": 705.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_1.pdf"
   },
@@ -20874,6 +22771,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_2.pdf",
+    "juUrl": "",
     "size": 718.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_2.pdf"
   },
@@ -20885,6 +22783,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_3.pdf",
+    "juUrl": "",
     "size": 747.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_3.pdf"
   },
@@ -20896,6 +22795,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_4.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_4.pdf"
   },
@@ -20907,6 +22807,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_5.pdf",
+    "juUrl": "",
     "size": 400.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_5.pdf"
   },
@@ -20918,6 +22819,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_6.pdf",
+    "juUrl": "",
     "size": 536.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_6.pdf"
   },
@@ -20929,6 +22831,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_7.pdf",
+    "juUrl": "",
     "size": 441.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_7.pdf"
   },
@@ -20940,6 +22843,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_8.pdf",
+    "juUrl": "",
     "size": 193.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_8.pdf"
   },
@@ -20951,6 +22855,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_9.pdf",
+    "juUrl": "",
     "size": 313.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_9.pdf"
   },
@@ -20962,6 +22867,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_3_10.pdf",
+    "juUrl": "",
     "size": 267.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_3_10.pdf"
   },
@@ -20973,6 +22879,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_59_4Contents.pdf",
+    "juUrl": "",
     "size": 1495.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_59_4Contents.pdf"
   },
@@ -20984,6 +22891,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/01_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 1845.0,
     "localPath": "assets/pdfs/ijhs_potentials/01_IJHS59_4.pdf"
   },
@@ -20995,6 +22903,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/02_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 1943.0,
     "localPath": "assets/pdfs/ijhs_potentials/02_IJHS59_4.pdf"
   },
@@ -21006,6 +22915,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/03_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 813.0,
     "localPath": "assets/pdfs/ijhs_potentials/03_IJHS59_4.pdf"
   },
@@ -21017,6 +22927,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/04_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 598.0,
     "localPath": "assets/pdfs/ijhs_potentials/04_IJHS59_4.pdf"
   },
@@ -21028,6 +22939,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/05_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 1619.0,
     "localPath": "assets/pdfs/ijhs_potentials/05_IJHS59_4.pdf"
   },
@@ -21039,6 +22951,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/06_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 1226.0,
     "localPath": "assets/pdfs/ijhs_potentials/06_IJHS59_4.pdf"
   },
@@ -21050,6 +22963,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/07_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 755.0,
     "localPath": "assets/pdfs/ijhs_potentials/07_IJHS59_4.pdf"
   },
@@ -21061,6 +22975,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/08_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 388.0,
     "localPath": "assets/pdfs/ijhs_potentials/08_IJHS59_4.pdf"
   },
@@ -21072,6 +22987,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2024",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/09_IJHS59_4.pdf",
+    "juUrl": "",
     "size": 1449.0,
     "localPath": "assets/pdfs/ijhs_potentials/09_IJHS59_4.pdf"
   },
@@ -21083,6 +22999,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_1.pdf",
+    "juUrl": "",
     "size": 1850.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_1.pdf"
   },
@@ -21094,6 +23011,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_2.pdf",
+    "juUrl": "",
     "size": 1583.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_2.pdf"
   },
@@ -21105,6 +23023,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_3.pdf",
+    "juUrl": "",
     "size": 2483.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_3.pdf"
   },
@@ -21116,6 +23035,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_4.pdf",
+    "juUrl": "",
     "size": 512.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_4.pdf"
   },
@@ -21127,6 +23047,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_5.pdf",
+    "juUrl": "",
     "size": 459.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_5.pdf"
   },
@@ -21138,6 +23059,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_6.pdf",
+    "juUrl": "",
     "size": 416.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_6.pdf"
   },
@@ -21149,6 +23071,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_7.pdf",
+    "juUrl": "",
     "size": 440.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_7.pdf"
   },
@@ -21160,6 +23083,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_8.pdf",
+    "juUrl": "",
     "size": 485.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_8.pdf"
   },
@@ -21171,6 +23095,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_9.pdf",
+    "juUrl": "",
     "size": 541.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_9.pdf"
   },
@@ -21182,6 +23107,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_10.pdf",
+    "juUrl": "",
     "size": 371.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_10.pdf"
   },
@@ -21193,6 +23119,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_1_11.pdf",
+    "juUrl": "",
     "size": 691.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_1_11.pdf"
   },
@@ -21204,6 +23131,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_1.pdf",
+    "juUrl": "",
     "size": 1633.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_1.pdf"
   },
@@ -21215,6 +23143,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_2.pdf",
+    "juUrl": "",
     "size": 1505.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_2.pdf"
   },
@@ -21226,6 +23155,7 @@ const PAPERS = [
     "subject": "Linguistics",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_3.pdf",
+    "juUrl": "",
     "size": 584.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_3.pdf"
   },
@@ -21237,6 +23167,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_4.pdf",
+    "juUrl": "",
     "size": 454.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_4.pdf"
   },
@@ -21248,6 +23179,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_5.pdf",
+    "juUrl": "",
     "size": 5163.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_5.pdf"
   },
@@ -21259,6 +23191,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_6.pdf",
+    "juUrl": "",
     "size": 832.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_6.pdf"
   },
@@ -21270,6 +23203,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_7.pdf",
+    "juUrl": "",
     "size": 885.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_7.pdf"
   },
@@ -21281,6 +23215,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_8.pdf",
+    "juUrl": "",
     "size": 428.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_8.pdf"
   },
@@ -21292,6 +23227,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_9.pdf",
+    "juUrl": "",
     "size": 908.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_9.pdf"
   },
@@ -21303,6 +23239,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_10.pdf",
+    "juUrl": "",
     "size": 3917.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_10.pdf"
   },
@@ -21314,6 +23251,7 @@ const PAPERS = [
     "subject": "General",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_11.pdf",
+    "juUrl": "",
     "size": 305.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_11.pdf"
   },
@@ -21325,6 +23263,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_2_12.pdf",
+    "juUrl": "",
     "size": 387.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_2_12.pdf"
   },
@@ -21336,6 +23275,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_0.pdf",
+    "juUrl": "",
     "size": 1485.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_0.pdf"
   },
@@ -21347,6 +23287,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_1.pdf",
+    "juUrl": "",
     "size": 1115.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_1.pdf"
   },
@@ -21358,6 +23299,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_2.pdf",
+    "juUrl": "",
     "size": 1693.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_2.pdf"
   },
@@ -21369,6 +23311,7 @@ const PAPERS = [
     "subject": "Metallurgy",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_3.pdf",
+    "juUrl": "",
     "size": 3020.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_3.pdf"
   },
@@ -21380,6 +23323,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_4.pdf",
+    "juUrl": "",
     "size": 2069.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_4.pdf"
   },
@@ -21391,6 +23335,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_5.pdf",
+    "juUrl": "",
     "size": 6824.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_5.pdf"
   },
@@ -21402,6 +23347,7 @@ const PAPERS = [
     "subject": "Biology",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_6.pdf",
+    "juUrl": "",
     "size": 1070.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_6.pdf"
   },
@@ -21413,6 +23359,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_7.pdf",
+    "juUrl": "",
     "size": 462.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_7.pdf"
   },
@@ -21424,6 +23371,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_8.pdf",
+    "juUrl": "",
     "size": 7000.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_8.pdf"
   },
@@ -21435,6 +23383,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_9.pdf",
+    "juUrl": "",
     "size": 1051.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_9.pdf"
   },
@@ -21446,6 +23395,7 @@ const PAPERS = [
     "subject": "Agriculture",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_10.pdf",
+    "juUrl": "",
     "size": 423.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_10.pdf"
   },
@@ -21457,6 +23407,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_11.pdf",
+    "juUrl": "",
     "size": 376.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_11.pdf"
   },
@@ -21468,6 +23419,7 @@ const PAPERS = [
     "subject": "Medicine",
     "year": "2025",
     "remoteUrl": "https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn))/writereaddata/UpLoadedFiles/IJHS/IJHS_60_3_12.pdf",
+    "juUrl": "",
     "size": 872.0,
     "localPath": "assets/pdfs/ijhs_potentials/IJHS_60_3_12.pdf"
   },
@@ -21479,6 +23431,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2025",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/QJMS_116_2_Hindu_Time.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/QJMS_116_2_Hindu_Time.pdf",
     "size": 378.7802734375,
     "localPath": "assets/pdfs/cached_papers/rni/QJMS_116_2_Hindu_Time.pdf"
   },
@@ -21490,6 +23443,7 @@ const PAPERS = [
     "subject": "Culture",
     "year": "2021",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Indian_Heritage_of_Gurukula_System_Ethic.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Indian_Heritage_of_Gurukula_System_Ethic.pdf",
     "size": 941.05859375,
     "localPath": "assets/pdfs/cached_papers/rni/Indian_Heritage_of_Gurukula_System_Ethic.pdf"
   },
@@ -21501,6 +23455,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$T_A_T_T_V_A_D_E_P_A_H_Journal_of_Academy.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$T_A_T_T_V_A_D_E_P_A_H_Journal_of_Academy.pdf",
     "size": 2654.6162109375,
     "localPath": "assets/pdfs/cached_papers/rni/$T_A_T_T_V_A_D_E_P_A_H_Journal_of_Academy.pdf"
   },
@@ -21512,6 +23467,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Vddhagargiya_Jyotisa_2_Continued_from_p.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Vddhagargiya_Jyotisa_2_Continued_from_p.pdf",
     "size": 524.5673828125,
     "localPath": "assets/pdfs/cached_papers/rni/$Vddhagargiya_Jyotisa_2_Continued_from_p.pdf"
   },
@@ -21523,6 +23479,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2019",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/vddhagargiya_jyotisa_3.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/vddhagargiya_jyotisa_3.pdf",
     "size": 500.8486328125,
     "localPath": "assets/pdfs/cached_papers/rni/vddhagargiya_jyotisa_3.pdf"
   },
@@ -21534,6 +23491,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2018",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/rni-ichr-archaeo-astronomy-2018.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/rni-ichr-archaeo-astronomy-2018.pdf",
     "size": 2137.17578125,
     "localPath": "assets/pdfs/cached_papers/rni/rni-ichr-archaeo-astronomy-2018.pdf"
   },
@@ -21545,6 +23503,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2018",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Narada_Silpasastra_Sanskrit_Text_on_Arch.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Narada_Silpasastra_Sanskrit_Text_on_Arch.pdf",
     "size": 687.6279296875,
     "localPath": "assets/pdfs/cached_papers/rni/Narada_Silpasastra_Sanskrit_Text_on_Arch.pdf"
   },
@@ -21556,6 +23515,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "2017",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Concept_of_Probability_in_Sanskrit_Texts.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Concept_of_Probability_in_Sanskrit_Texts.pdf",
     "size": 671.4140625,
     "localPath": "assets/pdfs/cached_papers/rni/Concept_of_Probability_in_Sanskrit_Texts.pdf"
   },
@@ -21567,6 +23527,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Ancient_Indian_Astronomy_in_Vedic_Texts.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Ancient_Indian_Astronomy_in_Vedic_Texts.pdf",
     "size": 1147.9150390625,
     "localPath": "assets/pdfs/cached_papers/rni/$Ancient_Indian_Astronomy_in_Vedic_Texts.pdf"
   },
@@ -21578,6 +23539,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2016",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/rni-extract-comets-meteors-vedas-2016.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/rni-extract-comets-meteors-vedas-2016.pdf",
     "size": 761.51171875,
     "localPath": "assets/pdfs/cached_papers/rni/rni-extract-comets-meteors-vedas-2016.pdf"
   },
@@ -21589,6 +23551,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Comparison_of_Seismic_Qualification_Chal.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Comparison_of_Seismic_Qualification_Chal.pdf",
     "size": 1137.193359375,
     "localPath": "assets/pdfs/cached_papers/rni/Comparison_of_Seismic_Qualification_Chal.pdf"
   },
@@ -21600,6 +23563,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2015",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Location_of_the_Vedic_Iria_and_its_Arch.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Location_of_the_Vedic_Iria_and_its_Arch.pdf",
     "size": 736.6220703125,
     "localPath": "assets/pdfs/cached_papers/rni/Location_of_the_Vedic_Iria_and_its_Arch.pdf"
   },
@@ -21611,6 +23575,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2014",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Parasara_Tantra_an_Ancient_Text_on_Natur.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/$Parasara_Tantra_an_Ancient_Text_on_Natur.pdf",
     "size": 174.880859375,
     "localPath": "assets/pdfs/cached_papers/rni/$Parasara_Tantra_an_Ancient_Text_on_Natur.pdf"
   },
@@ -21622,6 +23587,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2009",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Rainfall_cycles_in_Ancient_Sanskrit_Text.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Rainfall_cycles_in_Ancient_Sanskrit_Text.pdf",
     "size": 186.0234375,
     "localPath": "assets/pdfs/cached_papers/rni/Rainfall_cycles_in_Ancient_Sanskrit_Text.pdf"
   },
@@ -21633,6 +23599,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2007",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/profile_of_indian_astronomy_before_siddhantic_period.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/profile_of_indian_astronomy_before_siddhantic_period.pdf",
     "size": 816.7412109375,
     "localPath": "assets/pdfs/cached_papers/rni/profile_of_indian_astronomy_before_siddhantic_period.pdf"
   },
@@ -21644,6 +23611,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Estimation_of_seismic_spectral_accelerat.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Estimation_of_seismic_spectral_accelerat.pdf",
     "size": 1315.8251953125,
     "localPath": "assets/pdfs/cached_papers/rni/Estimation_of_seismic_spectral_accelerat.pdf"
   },
@@ -21655,6 +23623,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2007",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/geographical_location_of_vedic_irina_in_southern_rajasthan.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/geographical_location_of_vedic_irina_in_southern_rajasthan.pdf",
     "size": 62.1748046875,
     "localPath": "assets/pdfs/cached_papers/rni/geographical_location_of_vedic_irina_in_southern_rajasthan.pdf"
   },
@@ -21666,6 +23635,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Forecasting_of_seasonal_monsoon_rainfall.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Forecasting_of_seasonal_monsoon_rainfall.pdf",
     "size": 310.8115234375,
     "localPath": "assets/pdfs/cached_papers/rni/Forecasting_of_seasonal_monsoon_rainfall.pdf"
   },
@@ -21677,6 +23647,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2006",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/on_some_comet_observations_in_ancient_india.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/on_some_comet_observations_in_ancient_india.pdf",
     "size": 39.6015625,
     "localPath": "assets/pdfs/cached_papers/rni/on_some_comet_observations_in_ancient_india.pdf"
   },
@@ -21688,6 +23659,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Seismic_hazard_estimation_for_Mumbai_cit.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Seismic_hazard_estimation_for_Mumbai_cit.pdf",
     "size": 228.9404296875,
     "localPath": "assets/pdfs/cached_papers/rni/Seismic_hazard_estimation_for_Mumbai_cit.pdf"
   },
@@ -21699,6 +23671,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2006",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Strong_Ground_Motion_Estimation_During_t.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Strong_Ground_Motion_Estimation_During_t.pdf",
     "size": 692.291015625,
     "localPath": "assets/pdfs/cached_papers/rni/Strong_Ground_Motion_Estimation_During_t.pdf"
   },
@@ -21710,6 +23683,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/evolution_of_the_western_coastline_of_india_and_the_probable_location_of_dwaraka_of_krishna.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/evolution_of_the_western_coastline_of_india_and_the_probable_location_of_dwaraka_of_krishna.pdf",
     "size": 488.345703125,
     "localPath": "assets/pdfs/cached_papers/rni/evolution_of_the_western_coastline_of_india_and_the_probable_location_of_dwaraka_of_krishna.pdf"
   },
@@ -21721,6 +23695,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Interview_with_Prof_RN_Iyengar.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Interview_with_Prof_RN_Iyengar.pdf",
     "size": 111.755859375,
     "localPath": "assets/pdfs/cached_papers/rni/Interview_with_Prof_RN_Iyengar.pdf"
   },
@@ -21732,6 +23707,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Intrinsic_mode_functions_and_a_strategy.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Intrinsic_mode_functions_and_a_strategy.pdf",
     "size": 887.427734375,
     "localPath": "assets/pdfs/cached_papers/rni/Intrinsic_mode_functions_and_a_strategy.pdf"
   },
@@ -21743,6 +23719,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2005",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vedic_Irinn_a_and_the_Rann_of_kutch.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Vedic_Irinn_a_and_the_Rann_of_kutch.pdf",
     "size": 2129.259765625,
     "localPath": "assets/pdfs/cached_papers/rni/Vedic_Irinn_a_and_the_Rann_of_kutch.pdf"
   },
@@ -21754,6 +23731,7 @@ const PAPERS = [
     "subject": "Astronomy",
     "year": "2004",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Description_of_rainfall_variability_in_B.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Description_of_rainfall_variability_in_B.pdf",
     "size": 124.9296875,
     "localPath": "assets/pdfs/cached_papers/rni/Description_of_rainfall_variability_in_B.pdf"
   },
@@ -21765,6 +23743,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2004",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Microzonation_of_earthquake_hazard_in_Gr.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Microzonation_of_earthquake_hazard_in_Gr.pdf",
     "size": 543.5693359375,
     "localPath": "assets/pdfs/cached_papers/rni/Microzonation_of_earthquake_hazard_in_Gr.pdf"
   },
@@ -21776,6 +23755,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2001",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Earthquake_source_model_using_strong_mot.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Earthquake_source_model_using_strong_mot.pdf",
     "size": 554.0908203125,
     "localPath": "assets/pdfs/cached_papers/rni/Earthquake_source_model_using_strong_mot.pdf"
   },
@@ -21787,6 +23767,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "2000",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Seismic_status_of_Delhi_megacity.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Seismic_status_of_Delhi_megacity.pdf",
     "size": 231.38671875,
     "localPath": "assets/pdfs/cached_papers/rni/Seismic_status_of_Delhi_megacity.pdf"
   },
@@ -21798,6 +23779,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1999",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Earthquakes_in_ancient_India.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Earthquakes_in_ancient_India.pdf",
     "size": 51.828125,
     "localPath": "assets/pdfs/cached_papers/rni/Earthquakes_in_ancient_India.pdf"
   },
@@ -21809,6 +23791,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1996",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/some_earthquakes_of_kashmir_from_historical_sources.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/some_earthquakes_of_kashmir_from_historical_sources.pdf",
     "size": 388.8955078125,
     "localPath": "assets/pdfs/cached_papers/rni/some_earthquakes_of_kashmir_from_historical_sources.pdf"
   },
@@ -21820,6 +23803,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1993",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Dynamic_response_of_a_beam_on_elastic_fo.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Dynamic_response_of_a_beam_on_elastic_fo.pdf",
     "size": 669.1640625,
     "localPath": "assets/pdfs/cached_papers/rni/Dynamic_response_of_a_beam_on_elastic_fo.pdf"
   },
@@ -21831,6 +23815,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1991",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Application_of_principal_component_analy.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Application_of_principal_component_analy.pdf",
     "size": 3062.2001953125,
     "localPath": "assets/pdfs/cached_papers/rni/Application_of_principal_component_analy.pdf"
   },
@@ -21842,6 +23827,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1991",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Rocking_response_of_rectangular_rigid_bl.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Rocking_response_of_rectangular_rigid_bl.pdf",
     "size": 607.072265625,
     "localPath": "assets/pdfs/cached_papers/rni/Rocking_response_of_rectangular_rigid_bl.pdf"
   },
@@ -21853,6 +23839,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1986",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/A_nonlinear_system_under_combined_period.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/A_nonlinear_system_under_combined_period.pdf",
     "size": 494.748046875,
     "localPath": "assets/pdfs/cached_papers/rni/A_nonlinear_system_under_combined_period.pdf"
   },
@@ -21864,6 +23851,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1980",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Cluster_analysis_of_rainfall_stations_of.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Cluster_analysis_of_rainfall_stations_of.pdf",
     "size": 595.5146484375,
     "localPath": "assets/pdfs/cached_papers/rni/Cluster_analysis_of_rainfall_stations_of.pdf"
   },
@@ -21875,6 +23863,7 @@ const PAPERS = [
     "subject": "Math",
     "year": "1975",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Random_vibration_of_a_second_order_non_l.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Random_vibration_of_a_second_order_non_l.pdf",
     "size": 497.814453125,
     "localPath": "assets/pdfs/cached_papers/rni/Random_vibration_of_a_second_order_non_l.pdf"
   },
@@ -21886,6 +23875,7 @@ const PAPERS = [
     "subject": "Other",
     "year": "1971",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Effect_of_self_weight_and_vertical_accel.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/Effect_of_self_weight_and_vertical_accel.pdf",
     "size": 375.6728515625,
     "localPath": "assets/pdfs/cached_papers/rni/Effect_of_self_weight_and_vertical_accel.pdf"
   },
@@ -21893,10 +23883,11 @@ const PAPERS = [
     "journal": "QJMS 116.2",
     "title": "A Comparative Study of the Ka\u1e41savadha Episode in Select N\u0101\u1e6dakas, Camp\u016b-k\u0101vyas, Gadya-k\u0101vyas, and Kha\u1e47\u1e0da-k\u0101vyas",
     "author": "R. S. Hariharan, Shankar Rajaraman",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2025",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/QJMS_116_2_Kamasvada_compare.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/QJMS_116_2_Kamasvada_compare.pdf",
     "size": 369.8916015625,
     "localPath": "assets/pdfs/cached_papers/rni/QJMS_116_2_Kamasvada_compare.pdf"
   },
@@ -21904,10 +23895,11 @@ const PAPERS = [
     "journal": "AJPEM",
     "title": "Stupidity is not a laughing matter",
     "author": "Warija Adiga",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2025",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_no_laugh.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_no_laugh.pdf",
     "size": 495.2197265625,
     "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_no_laugh.pdf"
   },
@@ -21915,10 +23907,11 @@ const PAPERS = [
     "journal": "AJPEM",
     "title": "\u015aukan\u0101\u015bopade\u015ba for Project Managers",
     "author": "Warija Adiga",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2025",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_sukanasopdesa.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_sukanasopdesa.pdf",
     "size": 444.744140625,
     "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_sukanasopdesa.pdf"
   },
@@ -21926,10 +23919,11 @@ const PAPERS = [
     "journal": "AJPEM",
     "title": "Visibility, a Tool to Ethical Project Management",
     "author": "Warija Adiga",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2025",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_ethical_project.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2025_ethical_project.pdf",
     "size": 541.5634765625,
     "localPath": "assets/pdfs/cached_papers/rni/ajpem_2025_ethical_project.pdf"
   },
@@ -21937,10 +23931,11 @@ const PAPERS = [
     "journal": "Mahasvini Vol. 2",
     "title": "A Comparative Analysis of the Ka\u1e41savadha Episode in Select Sanskrit Mah\u0101k\u0101vyas",
     "author": "R. S. Hariharan, Shankar Rajaraman",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2024",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/mahisvini_2024_kamsavadha.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/mahisvini_2024_kamsavadha.pdf",
     "size": 6763.6943359375,
     "localPath": "assets/pdfs/cached_papers/rni/mahisvini_2024_kamsavadha.pdf"
   },
@@ -21948,10 +23943,11 @@ const PAPERS = [
     "journal": "AJPEM",
     "title": "The Sound of Silence",
     "author": "Warija Adiga",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2022",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2022_silence.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ajpem_2022_silence.pdf",
     "size": 432.2490234375,
     "localPath": "assets/pdfs/cached_papers/rni/ajpem_2022_silence.pdf"
   },
@@ -21959,10 +23955,11 @@ const PAPERS = [
     "journal": "IJTS 37.1",
     "title": "Well-being and Self-transformation in Indian Psychology",
     "author": "Sangeetha Menon, Shankar Rajaraman",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2018",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ijts_2018_well_being.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/ijts_2018_well_being.pdf",
     "size": 349.564453125,
     "localPath": "assets/pdfs/cached_papers/rni/ijts_2018_well_being.pdf"
   },
@@ -21970,10 +23967,11 @@ const PAPERS = [
     "journal": "ALT 1.4",
     "title": "Sound Play and the Madhur\u0101 Vijaya of Ga\u1e45g\u0101dev\u012b",
     "author": "Shankar Rajaraman, Venetia Kotamraju",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2013",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/alt_2013_madhura_vijaya.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/alt_2013_madhura_vijaya.pdf",
     "size": 200.638671875,
     "localPath": "assets/pdfs/cached_papers/rni/alt_2013_madhura_vijaya.pdf"
   },
@@ -21985,6 +23983,7 @@ const PAPERS = [
     "subject": "Philosophy",
     "year": "1966",
     "remoteUrl": "<https://insa.nic.in/(S(eh1ucortlbqqezipwgliy3mn",
+    "juUrl": "",
     "size": 272.0,
     "localPath": null
   },
@@ -21992,10 +23991,11 @@ const PAPERS = [
     "journal": "CSIR-1955",
     "title": "Report of the Calendar Reform Committee",
     "author": "M. N. Saha, Lahiri",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "1955",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf",
     "size": 24366.0,
     "localPath": "assets/pdfs/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf"
   },
@@ -22003,10 +24003,35 @@ const PAPERS = [
     "journal": "HSSA-2017",
     "title": "The Units of Time in Ancient and Medieval India",
     "author": "Takao Hayashi",
-    "category": NaN,
-    "subject": NaN,
+    "category": "",
+    "subject": "",
     "year": "2017",
     "remoteUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf",
+    "juUrl": "https://cahc.jainuniversity.ac.in/assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf",
+    "size": 855.0,
+    "localPath": "assets/pdfs/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf"
+  },
+  {
+    "journal": "CSIR-1955",
+    "title": "Report of the Calendar Reform Committee",
+    "author": "M. N. Saha, Lahiri",
+    "category": "",
+    "subject": "",
+    "year": "1955",
+    "remoteUrl": "../assets/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf",
+    "juUrl": "",
+    "size": 24366.0,
+    "localPath": "assets/pdfs/cached_papers/rni/History-of-Calendar-Panchanga-Committee.pdf"
+  },
+  {
+    "journal": "HSSA-2017",
+    "title": "The Units of Time in Ancient and Medieval India",
+    "author": "Takao Hayashi",
+    "category": "",
+    "subject": "",
+    "year": "2017",
+    "remoteUrl": "../assets/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf",
+    "juUrl": "",
     "size": 855.0,
     "localPath": "assets/pdfs/cached_papers/rni/time-2015-haya-time-units-ancient-india.pdf"
   }

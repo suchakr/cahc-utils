@@ -27,7 +27,7 @@ This project has been refactored (Jan 2026) into the following components:
 ```mermaid
 graph TD
     %% Define Subgraphs (Order influences layout)
-    
+
     %% 1. Main Project (Left)
     subgraph Project ["Project: ijhs-darpan"]
         subgraph Pipeline
@@ -79,7 +79,7 @@ graph TD
     S1 -->|Save Files| Assets
     S1 -->|Write Metadata| RawTSV
     S5 -->|Merge Metadata| RawTSV
-    
+
     %% Metadata Refinement
     RawTSV -->|Read| S2 -->|Patch| RawTSV
     RawTSV -->|Read| S3 -->|Classify| ClassTSV
@@ -102,7 +102,7 @@ graph TD
     style External fill:#e8f5e9,stroke:#66bb6a,stroke-width:2px
     style Cloud fill:#e3f2fd,stroke:#29b6f6,stroke-width:2px
     style Project fill:#fff3e0,stroke:#ffa726,stroke-width:2px
-    
+
     style Pipeline fill:#fff,stroke:#ccc,stroke-dasharray: 5 5
     style LocalStore fill:#fffde7,stroke:#ccc,stroke-dasharray: 5 5
     style Ops fill:#f3e5f5,stroke:#ccc,stroke-dasharray: 5 5
@@ -160,11 +160,10 @@ sequenceDiagram
     end
 ```
 
-
-
 ## Usage
 
 ### 1. Data Pipeline
+
 The pipeline scripts should be run in sequence to ensure data integrity:
 
 ```bash
@@ -175,6 +174,7 @@ uv run pipeline/03-classify.py # Classify new papers
 ```
 
 ### 2. Operations
+
 To regenerate the web application data:
 
 ```bash
@@ -189,6 +189,7 @@ uv run ops/sync_pdfs.py -y    # Bypass confirmation (non-interactive)
 ```
 
 ### 3. Diagnostics & Maintenance
+
 Use these tools to maintain the health of the local metadata store:
 
 ```bash
@@ -205,11 +206,12 @@ The Netlify CLI usage differs slightly depending on your objective:
   cd web
   netlify dev
   ```
-- **Production Deployment**: Run `deploy` from the **project root** to ensure the instructions in `netlify.toml` (paths, functions, etc.) are correctly followed.
+- **Local Mode Toggle**: When running `netlify dev`, look for the **Simulation Mode** badge in the header. Click it to toggle between:
+  - **Simulation Mode**: Uses INSA for "Read" and GCS (Cloud) for "Archive".
+  - **Local Mode**: Uses your local PDF files for "Read" and INSA for "Archive".
+- **Production Deployment**: Run `deploy` from the **project root**.
   ```bash
-  # From project root
-  netlify deploy        # Preview deploy
-  netlify deploy --prod  # Production deploy
+  netlify deploy --prod
   ```
 
 > [!NOTE]

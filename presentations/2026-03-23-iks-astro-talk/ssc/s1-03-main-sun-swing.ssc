@@ -1,0 +1,118 @@
+// Session 1 · Sunrise swing demo
+// Shows the Sun's changing rising point through one year at Ujjain for multiple epochs.
+
+include("sun-swing-bce-1800.inc");
+include("sun-swing-bce-1350.inc");
+include("sun-swing-ce-2000.inc");
+
+var $JD_0 = 1721057.284468;
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+function JD(x) { if (x) { core.setJDay(x); W(0.04); } return core.getJDay(); }
+var getOI = core.getObjectInfo;
+
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+}
+
+function label(text, x, y, size, color) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  return id;
+}
+
+var epochRuns = [
+  { year_name: "1800 BCE", year_num: 1800, arr: SUNRISES_BCE_1800 },
+  { year_name: "1350 BCE", year_num: 1350, arr: SUNRISES_BCE_1350 },
+  { year_name: "2000 CE",  year_num: -2000, arr: SUNRISES_CE_2000 }
+];
+
+for (var e = 0; e < epochRuns.length; e++) {
+  var run = epochRuns[e];
+  var SUNRISES = run.arr;
+  var year = run.year_num;
+  var year_label = run.year_name;
+  
+  for (var repeat_show = 0; repeat_show < 1; repeat_show++) {
+    
+    resetScene();
+    core.setGuiVisible(false);
+    core.setObserverLocation("Ujjain, India", "Earth");
+    
+    LandscapeMgr.setFlagLandscape(repeat_show == 0 ? true : false);
+    LandscapeMgr.setFlagAtmosphere(repeat_show == 0 ? true : false);
+    try {LandscapeMgr.setFlagGround(repeat_show == 0 ? false : true);} catch(err) {}
+    LandscapeMgr.setFlagFog(false);
+    LandscapeMgr.setFlagCardinalPoints(true);
+    GridLinesMgr.setFlagAzimuthalGrid(true);
+    GridLinesMgr.setFlagEquatorGrid(false);
+    GridLinesMgr.setFlagEclipticLine(false);
+    GridLinesMgr.setFlagEquatorLine(false);
+    
+    // Show constellation asterism lines
+    ConstellationMgr.setFlagLines(true);
+    // Optional: also show constellation names
+    ConstellationMgr.setFlagLabels(true);
+    // Optional: show constellation boundaries
+    ConstellationMgr.setFlagBoundaries(true);
+    
+    core.moveToAltAzi(5, 90, 0);       // face east, 5° altitude
+    StelMovementMgr.zoomTo(60, 0);     // zoom in to 60° FOV
+    
+    // Scale Sun to 15x and try to turn off glare
+    try { SolarSystem.setFlagScaleSun(true); SolarSystem.setSunScale(15); } catch(err) {}
+    try { StelSkyDrawer.setFlagSunGlare(false); } catch(err) {}
+    try { SolarSystem.setFlagGlare(false); } catch(err) {}
+    
+    // Intro title sequence
+    label("The Sun's Annual Swing (" + year_label + ")", 70, 140, 36, "#FFAAAA");
+    label("Ujjain (East View): watch sunrise move northward and southward.", 70, 210, 30, "#FFFFFF");
+    label("The turning points are the solstices; the middle crossings are the equinoxes.", 70, 250, 30, "#FFFFFF");
+    label("Demo setup: Change astersim/ eclipitic setting if you like - Demo starts in 15 seconds", 70, 790, 25, "#FFFFFF");
+    
+    // Prime the sky to the first calculated sunrise
+    JD(SUNRISES[0]);
+    W(15*2); // Wait 30s as per user request W(15*2)
+    
+    resetScene();
+    label("Sunrise Shift Through the Year " + year_label, 70, 50, 30, "#FFD166");
+    label("Ujjain: facing East at exact sunrise", 70, 95, 18, "#DDDDDD");
+    W(1);
+    
+    var flagged = {};
+    // Sweep through all exactly calculated Astropy sunrises for the 366-day year
+    for (var d = 0; d < SUNRISES.length; d++) {
+      // Use exact pre-calculated JD from astropy
+      JD(SUNRISES[d] + (.15/24) * (repeat_show == 0 ? 1 : -1));
+      W(0.1);
+      
+      // Look for the sun's exact longitude to mark solstices and equinoxes
+      var sunInfo = getOI("Sun");
+      var kind = null;
+      if (!flagged.summer && Math.abs(sunInfo.elong - 90) < 1.0) { kind = "Summer Solstice"; flagged.summer = true; }
+      else if (!flagged.autumn && Math.abs(sunInfo.elong - 180) < 1.0) { kind = "Autumn Equinox"; flagged.autumn = true; flagged.dip = true; }
+      else if (!flagged.winter && Math.abs(sunInfo.elong - 270) < 1.0) { kind = "Winter Solstice"; flagged.winter = true; }
+      else if (!flagged.spring && (sunInfo.elong < 1.0 || sunInfo.elong > 359.0)) { kind = "Spring Equinox"; flagged.spring = true; }
+      
+      if (kind) {
+        // Calculate horizontal screen position relative to center (Azi 90).
+        var centerAzimuth = 90;
+        var w = core.getScreenWidth();
+        var h = core.getScreenHeight();
+        
+        // Convert azimuth to X pixel coordinate on screen
+        var degreesFromCenter = sunInfo.azimuth - centerAzimuth;
+        var pixelsPerDegree = w / 90; 
+        var x = (w / 2) + (degreesFromCenter * pixelsPerDegree) - 60; 
+        
+        // Drop the label (with a dip flag check for autumn layout logic)
+        label(kind, x, h / 2 + 100 + (flagged.dip && kind == "Autumn Equinox" ? 30 : 0), 20, "#FFD166");
+      }
+    }
+    
+    label("The sunrise point swings northward to the June solstice and southward to the December solstice.", 70, 1030, 20, "#FFFFFF");
+    label("This is the exact horizon expression of the Sun's annual motion in " + year_label + ".", 70, 1070, 20, "#AABBFF");
+    W(10);
+  }
+}
+W(25);

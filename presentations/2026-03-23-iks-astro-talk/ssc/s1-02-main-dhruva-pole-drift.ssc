@@ -1,0 +1,165 @@
+// Session 1 · Dhruva pole-drift demo
+// Shows the NCP drift from the Thuban era (~2850 BCE) to the Polaris era (1500 CE).
+// Self-contained: no nakshatras.inc dependency.
+
+// ── Inlined utilities (previously from nakshatras.inc) ──────────────────────
+var $JD_0 = 1721057.284468;                          // JD of 0-Jan-1 (J2000 ref)
+function BCE(y)  { return $JD_0 - (y - 1) * 365.25; }
+function CE(y)   { return $JD_0 + y       * 365.25; }
+function W(x)    { if (!x) x = 0.1; core.wait(x); }
+function JD(x)   { if (x) { core.setJDay(x); W(0.05); } return core.getJDay(); }
+var getOI = core.getObjectInfo;
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function toJd(year)      { return year < 0 ? BCE(-year) : CE(year); }
+function epochStr(year)  { return year < 0 ? (-year) + " BCE" : year + " CE"; }
+
+function resetLabels() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+  CustomObjectMgr.removeCustomObjects();
+}
+
+function label(text, x, y, size, color) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+}
+
+// ── Scene setup ──────────────────────────────────────────────────────────────
+resetLabels();
+core.setGuiVisible(false);
+core.setObserverLocation("Kurukshetra, India", "Earth");
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagFog(false);
+// LandscapeMgr.setFlagCardinalsPoints(false);
+
+// Projection: uncomment one line to switch style.
+// Default (Perspective) gives the most natural star-field look.
+// Orthographic gives a spherical-sky feel — useful for larger audiences.
+// core.setCurrentProjectionType("ProjectionOrthographic");
+// core.setCurrentProjectionType("ProjectionPerspective");   // default
+
+GridLinesMgr.setFlagEquatorGrid(true);
+GridLinesMgr.setFlagAzimuthalGrid(false);
+GridLinesMgr.setFlagEclipticLine(false);
+GridLinesMgr.setFlagEquatorLine(false);
+GridLinesMgr.setFlagPrecessionCircles(false); 
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(false);
+ConstellationMgr.setFlagArt(false);
+
+
+// Switch to equatorial mount: view anchors to RA/Dec, ending sky-spin when JD advances.
+StelMovementMgr.setFlagTracking(false);
+StelMovementMgr.setEquatorialMount(true);
+
+// Start facing close to the NCP with a narrow view to set context.
+core.moveToRaDec(0, 89.7, 0);
+StelMovementMgr.zoomTo(25, 1);
+W(2);
+
+// ── Intro Title Sequence ─────────────────────────────────────────────────────
+core.setJDay(toJd(-2850)); // Set sky to starting epoch
+
+
+label("The Shifting Pole Star", 80, 200, 36, "#FFAAAA");
+W(3);
+
+label("Epoch: 2850 BCE  |  Location: Kurukshetra (~30° N)", 80, 320, 20, "#FFD166");
+label("Facing the North Celestial Pole (NCP)", 80, 350, 20, "#AABBFF");
+W(3);
+
+label("Watch how the pole drifts away from Thuban (Abhaya Dhruva)", 80,720, 30, "#FFFFFF");
+label("as millennia pass and Polaris (Matsya Dhruva) approaches the pole.", 80, 780, 30, "#FFFFFF");
+W(10);
+ 
+resetLabels(); // Clear intro before sweep starts
+W(1);
+
+// ── Main epoch sweep ─────────────────────────────────────────────────────────
+var START    = -2850;  // earliest epoch
+var END      =  2200;  // final epoch
+var STEP     =  500;  // years between labelled frames
+var SUBSTEPS =     4;  // sub-steps for smooth inter-epoch transition
+var PAUSE    =   1.5;  // hold time at each labelled epoch (seconds)
+
+// FOV schedule: zoom out gradually from 25° to 60° over the full sweep.
+// This keeps Thuban in frame much longer than the original 20° setting.
+function fovAt(year) {
+  var t   = (year - START) / (END - START);   // 0 → 1
+  var fov = 25 + t * 35;                      // 25° at start, 60° at end
+  return Math.round(Math.max(20, Math.min(60, fov)));
+}
+var step = 100
+for (var year = START; year <= END; year += step) {
+
+   // step is 100 years near START and END, 500 years in the middle
+   if (year < START + 500 || year > END - 500) {
+     step = STEP 
+   } else {
+     step = STEP 
+   }
+
+  // Smooth inter-epoch transition: step JD in small increments; equatorial mount
+  // keeps the view stable — only precession-driven drift is visible.
+  if (year > START) {
+    var prev = year - STEP;
+    for (var s = 1; s <= SUBSTEPS; s++) {
+      var interp = prev + (STEP * s / SUBSTEPS);
+      core.setJDay(toJd(interp));  // raw set — no extra wait inside the sub-loop
+      W(0.06);   // 8 × 0.06 s ≈ 0.5 s soft transition per century
+    }
+  } else {
+    core.setJDay(toJd(year));
+  }
+
+  resetLabels();
+  JD(toJd(year));
+
+  // Dynamic FOV and re-centre on the NCP
+  StelMovementMgr.zoomTo(fovAt(year), 1.4);
+  core.moveToRaDec(0, 89.7, 0.3);
+
+  // Place markers on the three key points
+  var thuban  = getOI("HIP 68756");  W(0.25);  // α Dra — Abhaya Dhruva
+  var polaris = getOI("HIP 11767");  W(0.25);  // α UMi — modern Dhruva
+
+  // Fade in the precession circle midway through the story
+  if (year >= 1000) {
+    GridLinesMgr.setFlagPrecessionCircles(true);
+  }
+
+  CustomObjectMgr.addCustomObjectRaDec("NCP",     0,          90,          true);
+  CustomObjectMgr.addCustomObjectRaDec("Thuban",  thuban.ra,  thuban.dec,  true);
+  CustomObjectMgr.addCustomObjectRaDec("Polaris", polaris.ra*1.01, polaris.dec*1.01, true);
+
+  // Overlay labels
+  label("Dhruva: pole-star drift — Thuban to Polaris",         80,  48, 26, "#22FFFF");
+  label("Kurukshetra (~30° N)  ·  fixed north-pole view",      80,  84, 16, "#E2E8F0");
+  label("Epoch: " + epochStr(year),                            80, 112, 22, "#FFD166");
+  label("NCP drifts away from Thuban and toward Polaris.",     80, 144, 16, "#F8FAFC");
+
+  W(PAUSE);
+}
+
+// ── End card ─────────────────────────────────────────────────────────────────
+resetLabels();
+// Note: GridLinesMgr.setFlagPrecessionCirclesLabels is likely not a valid method and crashing the script.
+// If you want the circle on, it is already on from the loop, or you can use:
+GridLinesMgr.setFlagPrecessionCircles(true);
+StelMovementMgr.zoomTo(75, 2);
+W(2); // give zoom time to happen
+
+var thuban  = getOI("HIP 68756");
+var polaris = getOI("HIP 11767");
+
+// CustomObjectMgr.addCustomObjectRaDec("NCP",     0,          90,          true);
+CustomObjectMgr.addCustomObjectRaDec("Thuban",  thuban.ra,  thuban.dec,  true);
+CustomObjectMgr.addCustomObjectRaDec("Polaris", polaris.ra*1.01, polaris.dec*1.01, true);
+label("Modern sky: Polaris is ~1° from the pole  —  Thuban is now ~40° away.",
+      80, 72, 20, "#FFD166");
+label("The identity of the pole star is historical, not timeless.",
+      80, 106, 20, "#AAFFAA");
+W(60);

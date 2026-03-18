@@ -31,9 +31,6 @@ These are the scripts from the original `stel_scripts` set that appear most usab
 - `s1-04-main-nakshatra-tour.ssc`
   - strongest script for a tutorial nakṣatra tour
 
-- `s1-05-main-precession-sun-transit.ssc`
-  - strongest bridge from visual precession to the sun-transit research story
-
 - `a3-puri-demo.ssc`
   - strongest ready-made eclipse demo script
 
@@ -205,13 +202,13 @@ Technical Contrast Only:
 
 ### 5. Precession and Sun-Transit Work
 
+Live Mode:
+
+- figure-led explanation, not a dedicated Stellarium script
+
 Primary:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s1-05-main-precession-sun-transit.ssc`
-
-Backup:
-
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s1-03-sun-meridian-high-low.ssc`
+- Dhruva precession intuition already established by `s1-02-main-dhruva-pole-drift.ssc`
 
 Visual Backup:
 

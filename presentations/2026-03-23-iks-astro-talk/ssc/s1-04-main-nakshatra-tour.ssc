@@ -14,7 +14,7 @@ ConstellationMgr.setFlagArt(false);
 ConstellationMgr.setFlagBoundaries(false);
 ConstellationMgr.setFlagLines(false);
 ConstellationMgr.setFlagLabels(false);
-core.setGuiVisible(false);
+core.setGuiVisible(true);
 
 
 //ConstellationMgr.setFlagBoundaries(true);
@@ -22,15 +22,37 @@ ConstellationMgr.setFlagLines(true);
 ConstellationMgr.setFlagLabels(true);
 ConstellationMgr.setFlagIsolateSelected(true);
 
+// Turn off the ground (makes stars below the horizon visible), atmosphere, fog
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagFog(false);
+
+// Turn off all solar system objects, planet labels, planet orbits
+SolarSystem.setFlagPlanets(false);
+SolarSystem.setFlagLabels(false);
+SolarSystem.setFlagOrbits(false);
+
+// Turn off planet orbits (optional)
+SolarSystem.setFlagOrbits(false); 
+
+// Turn on the Ecliptic line (current date), color it red
+GridLinesMgr.setFlagEclipticLine(true);
+GridLinesMgr.setColorEclipticLine(core.vec3f(1.0, 0.0, 0.0));
+
 StelMovementMgr.zoomTo(220, 2);
 core.wait(1.5);
 core.moveToRaDec(45, 105, 1)
+core.setSkyCulture("vedic_25_codex")
 core.wait(1);
 var id = LabelMgr.labelScreen("A Tour of the 27 Nakṣatras", 420, 120, false, 30, "#F8FAFC");
 LabelMgr.setLabelShow(id, true);
-var id2 = LabelMgr.labelScreen("From visible star-groups to research-useful arc spans", 420, 165, false, 18, "#CBD5E1");
+var id2 = LabelMgr.labelScreen("visible star-groups", 420, 165, false, 18, "#CBD5E1");
 LabelMgr.setLabelShow(id2, true);
-core.wait(2.5)
+// var id3 = LabelMgr.labelScreen("Demo setup: Please switch SkyCulture to 'Vedic Codex'. Starts in 15 seconds...", 70, 790, false, 25, "#FFFFFF");
+// LabelMgr.setLabelShow(id3, true);
+core.wait(15);
+// LabelMgr.setLabelShow(id3, false);
+// LabelMgr.deleteLabel(id3);
 LabelMgr.setLabelShow(id, false);
 LabelMgr.deleteLabel(id);
 LabelMgr.setLabelShow(id2, false);
@@ -74,9 +96,12 @@ for (n in n28) {
 
       var id1 = LabelMgr.labelScreen(naks.descr1, 500, 550, false, 15);
       LabelMgr.setLabelShow(id1, true);
+      var idShape = LabelMgr.labelScreen("Shape:: " + naks.shape, 500, 580, false, 20, "#FFD700");
+      LabelMgr.setLabelShow(idShape, true);
+
 
       StelMovementMgr.zoomTo(fov, 2.5);
-      core.wait(2.5);
+      core.wait(2.5*2);
       StelMovementMgr.zoomTo(80, 1.5);
       core.wait(0.8);
 
@@ -84,6 +109,9 @@ for (n in n28) {
       LabelMgr.deleteLabel(id);
       LabelMgr.setLabelShow(id1, false);
       LabelMgr.deleteLabel(id1);
+      LabelMgr.setLabelShow(idShape, false);
+      LabelMgr.deleteLabel(idShape);
+
       core.wait(0.1)
     }
 
@@ -125,12 +153,14 @@ function naks_info(arr) {
   hips.shift();
   hips.shift();
   var hip = hips[0];
-  var sanskrit_name = arr[4]
+  var sanskrit_name = arr[4];
+  var shape = arr.length > 5 ? arr[5] : "";
 
 
 
   var ans = {
     sanskrit_name: sanskrit_name,
+    shape: shape,
     name: name,
     descr: descr,
     descr1: descr1,
@@ -148,10 +178,11 @@ function _n28() {
   var the_n28 = [
     [
       '# N01-Ash   ,   2, 2',
-      '#    N01-Ash | bet Ari   | +alf Ari',
+      '#    N01-Ash | β Ari   | +α Ari',
       '#    N01-Ash | 8903      | 9884',
       'N01  1 8903 9884',
       "अश्विनी 01",
+      "SCP: Horse-neck | VM: Horse-face (hayamukha)",
     ],
     [
       '# N02-Bha   ,   3, 5',
@@ -159,194 +190,221 @@ function _n28() {
       '#    N02-Bha | 12719     | 13061     | 13209',
       'N02  2 12719 13061 13061 13209',
       "भरणी 02",
+      "SCP: Bhaga (Perineum) | VM: Womb (yoni)",
     ],
     [
       '# N03-Kri   ,   7, 12',
-      '#    N03-Kri | 20 Tau    | 28 Tau    | 23 Tau    | 17 Tau    | 27 Tau    | +eta Tau  | q Tau',
+      '#    N03-Kri | 20 Tau    | 28 Tau    | 23 Tau    | 17 Tau    | 27 Tau    | +η Tau  | q Tau',
       '#    N03-Kri | 17573     | 17851     | 17608     | 17499     | 17847     | 17702     | 17531',
       //'#N03  6 17573 17851 17851 17608 17608 17499 17499 17847 17847 17702 17702 17531',
       'N03   7 17499 17608 17608 17847 17847 17851 17851 17702 17702 17573 17573 17531 17531 17499',
       "कृत्तिका 03",
+      "SCP: Knife/Cleaver | VM: Cleaver (kṣura)",
     ],
     [
       '# N04-Roh   ,   5, 17',
-      '#    N04-Roh | del Tau   | eps Tau   | gam Tau   | tet02 Tau | +alf Tau',
+      '#    N04-Roh | δ Tau   | ε Tau   | γ Tau   | θ² Tau | +α Tau',
       '#    N04-Roh | 20455     | 20889     | 20205     | 20894     | 21421',
       //'#N04  4 20455 20889 20889 20205 20205 20894 20894 21421',
       'N04  5 21421 20894   20894 20205   20205 20455   20455 20889   20889 21421',
       "रोहिणी 04",
+      "SCP: Cart | VM: Cart (śakaṭa)",
     ],
     [
       '# N05-Mrg   ,   3, 20',
-      '#    N05-Mrg | lam Ori   | phi01 Ori | +gam Ori',
+      '#    N05-Mrg | λ Ori   | φ¹ Ori | +γ Ori',
       '#    N05-Mrg | 26207     | 26176     | 25336',
       'N05  3 26207 26176   26176 25336   25336 26207',
       "मृगशीर्षा 05",
+      "SCP: Deer's Head | VM: Deer-head (mṛgottamāṅga)",
     ],
     [
       '# N06-Ard   ,   1, 21',
-      '#    N06-Ard | +alf Ori',
+      '#    N06-Ard | +α Ori',
       '#    N06-Ard | 27989',
       'N06  1 27989 27989',
       "आर्द्रा 06",
+      "SCP: Bāhu (Arm) | VM: Jewel (maṇi)",
     ],
     [
       '# N07-Pun   ,   2, 23',
-      '#    N07-Pun | +bet Gem  | alf Gem',
+      '#    N07-Pun | +β Gem  | α Gem',
       '#    N07-Pun | 37826     | 36850',
       'N07  1 37826 36850',
       "पुनर्वसू 07",
+      "SCP: Balance | VM: House (gṛha)",
     ],
     [
       '# N08-Pus   ,   1, 24',
-      '#    N08-Pus | +del Cnc',
+      '#    N08-Pus | +δ Cnc',
       '#    N08-Pus | 42911',
       'N08  1 42911 42911',
       "पुष्या 08",
+      "SCP: Śarāva (Pot-lid) | VM: Arrow (śara)",
     ],
     [
       '# N09-Asl   ,   6, 30',
-      '#    N09-Asl | rho Hya   | eta Hya   | del Hya   | eps Hya   | zet Hya   | sig Hya',
+      '#    N09-Asl | ρ Hya   | η Hya   | δ Hya   | ε Hya   | ζ Hya   | σ Hya',
       '#    N09-Asl | 43234     | 42799     | 42313     | 43109     | 43813     | 42402',
       'N09 5 42402 42799    42799 43813   43813 43109    43109 42313     42313 42402',
       "आश्लेषा 09",
+      "SCP: Snake Head / Flag* | VM: Wheel (cakra)",
     ],
     [
       '# N10-Mag   ,   6, 36',
-      '#    N10-Mag | mu. Leo   | gam Leo   | zet Leo   | eps Leo   | +alf Leo  | eta Leo',
+      '#    N10-Mag | μ Leo   | γ Leo   | ζ Leo   | ε Leo   | +α Leo  | η Leo',
       '#    N10-Mag | 48455     | 50583     | 50335     | 47908     | 49669     | 49583',
       'N10  6 50583 50335   50335 48455   48455 47908    47908 49669   49669 49583    49583 50583',
       "मघा 10",
+      "SCP: Enclosure | VM: Bed (śayana)",
     ],
     [
       '# N11-PPal  ,   2, 38',
-      '#   N11-PPal | tet Leo   | +del Leo',
+      '#   N11-PPal | θ Leo   | +δ Leo',
       '#   N11-PPal | 54879     | 54872',
       'N11  1 54879 54872',
       "पूर्वफल्गुनी 11",
+      "SCP: Half-chair | VM: Couch (paryaṅka)",
     ],
     [
       '# N12-UPal  ,   2, 40',
-      '#   N12-UPal | +bet Leo  | 93 Leo',
+      '#   N12-UPal | +β Leo  | 93 Leo',
       '#   N12-UPal | 57632     | 57565',
       'N12  1 57632 57565',
       "उत्तरफल्गुनी 12",
+      "SCP: Half-chair | VM: Pair-of-deer (mṛgayugala)",
     ],
     [
       '# N13-Has   ,   5, 45',
-      '#    N13-Has | gam Crv   | bet Crv   | +del Crv  | eps Crv   | alf Crv',
+      '#    N13-Has | γ Crv   | β Crv   | +δ Crv  | ε Crv   | α Crv',
       '#    N13-Has | 59803     | 61359     | 60965     | 59316     | 59199',
       'N13   5 61359 60965   60965 59803   59803 59316    59316 59199    59199 61359',
       "हस्ता 13",
+      "SCP: Hand | VM: Hand (kara)",
     ],
     [
       '# N14-Chi   ,   1, 46',
-      '#    N14-Chi | +alf Vir',
+      '#    N14-Chi | +α Vir',
       '#    N14-Chi | 65474',
       'N14  1 65474 65474',
       "चित्रा 14",
+      "SCP: Flower | VM: Pearl-gem (muktāphala)",
     ],
     [
       '# N15-Swa   ,   1, 47',
-      '#    N15-Swa | +alf Boo',
+      '#    N15-Swa | +α Boo',
       '#    N15-Swa | 69673',
       'N15  1 69673 69673',
       "स्वाती 15",
+      "SCP: Wedge | VM: Coral-branch (vidruma)",
     ],
     [
       '# N16-Vis   ,   1, 48',
-      '#    N16-Vis | +alf02 Lib',
+      '#    N16-Vis | +α² Lib',
       '#    N16-Vis | 72622',
       'N16  1 72622 72622',
       "विशाखा 16",
+      "SCP: Divider, Rope* | VM: Archway (toraṇa)",
     ],
     [
       '# N17-Anu   ,   4, 52',
-      '#    N17-Anu | +del Sco  | pi. Sco   | bet Sco   | ome Sco',
+      '#    N17-Anu | +δ Sco  | π Sco   | β Sco   | ω Sco',
       '#    N17-Anu | 78401     | 78265     | 78220A    | 78933',
       //'#N17  3 78401 78265 78265 "78220 A" "78220 A" 78933',
       //'#N17  3 78401 78265 78265 78885 78885 78933',
       'N17  4 78933 78885   78885 78401    78401 78265   78265 78933',
       "अनुराधा 17",
+      "SCP: Necklace | VM: Three-curves (trivāli)",
     ],
     [
       '# N18-Jye   ,   1, 53',
-      '#    N18-Jye | +alf Sco',
+      '#    N18-Jye | +α Sco',
       '#    N18-Jye | 80763',
       'N18  1 80763 80763',
       "ज्येष्ठा 18",
+      "SCP: Elephant Tusk | VM: Earring (kuṇḍala)",
     ],
     [
       '# N19-Mul   ,   2, 55',
-      '#    N19-Mul | tet Sco   | +lam Sco',
+      '#    N19-Mul | θ Sco   | +λ Sco',
       '#    N19-Mul | 86228     | 85927',
       'N19  1 86228 85927',
       "मूला 19",
+      "SCP: Root / Scorpion Tail* | VM: Lion-stride (mṛgapativikrama)",
     ],
     [
       '# N20-PAsh  ,   4, 59',
-      '#   N20-PAsh | gam02 Sgr | +eps Sgr  | del Sgr   | lam Sgr',
+      '#   N20-PAsh | γ² Sgr | +ε Sgr  | δ Sgr   | λ Sgr',
       '#   N20-PAsh | 88635     | 90185     | 89931     | 90496',
       'N20  4 88635 90185    90185 89931    89931 90496    90496 88635',
       "पूर्व्वाषाढा 20",
+      "SCP: Gajavikrama* (Elephant Step) | VM: Bed (śayyā)",
     ],
     [
       '# N21-UAsh  ,   4, 63',
-      '#   N21-UAsh | +sig Sgr  | zet Sgr   | phi Sgr   | tau Sgr',
+      '#   N21-UAsh | +σ Sgr  | ζ Sgr   | φ Sgr   | τ Sgr',
       '#   N21-UAsh | 92855     | 93506     | 92041     | 93864',
       //'#N21  3 92855 93506   93506 92041    92041 93864   93864 92855',
       'N21  4 92041 93506   93506 93864   93864 92855   92855 92041',
       "उत्तराषाढा 21",
+      "SCP: Siṃhaniṣadya* (Lion seat) | VM: Elephant-lord (gajapati)",
     ],
     [
       '# N22-Shr   ,   3, 66',
-      '#    N22-Shr | +alf Aql  | gam Aql   | bet Aql',
+      '#    N22-Shr | +α Aql  | γ Aql   | β Aql',
       '#    N22-Shr | 97649     | 97278     | 98036',
       'N22  3 97649 97278     97278 98036    98036 97649',
       "श्रवणा 22",
+      "SCP: Ear / Barley seed* | VM: Three-strides (trivikrama)",
     ],
     [
       '# N23-Dha   ,   5, 71',
-      '#    N23-Dha | eps Del   | gam Del   | del Del   | +alf Del  | bet Del',
+      '#    N23-Dha | ε Del   | γ Del   | δ Del   | +α Del  | β Del',
       '#    N23-Dha | 101421    | 102532    | 102281    | 101958    | 101769',
       //'#N23  4 101421 102532 102532 102281 102281 101958 101958 101769',
       'N23  5 101421 102281   102281 102532   102532 101958   101958 101769   101769 101421',
       "धनिष्ठा 23",
+      "SCP: Śakuni-pañjara* (Bird cage) | VM: Pumpkin (kuśmāṇḍa)",
     ],
     [
       '# N24-Sha   ,   3, 74',
-      '#    N24-Sha | +gam Aqr  | kap Aqr   | lam Aqr',
+      '#    N24-Sha | +γ Aqr  | κ Aqr   | λ Aqr',
       '#    N24-Sha | 110395    | 111710    | 112961',
       'N24  3 110395 111710    111710 112961     112961 110395',
       "शतभिषक् 24",
+      "SCP: Puṣpopacāra* (Flower Bouquet) | VM: Circle (vṛtta)",
     ],
     [
       '# N25-PBha  ,   2, 76',
-      '#   N25-PBha | bet Peg   | +alf Peg',
+      '#   N25-PBha | β Peg   | +α Peg',
       '#   N25-PBha | 113881    | 113963',
       'N25  1 113881 113963',
       "पूर्वभाद्रपदा 25",
+      "SCP: Cow's Foot | VM: Twin-barley (yamalayava)",
     ],
     [
       '# N26-UBha  ,   2, 78',
-      '#   N26-UBha | +alf And  | gam Peg',
+      '#   N26-UBha | +α And  | γ Peg',
       '#   N26-UBha | 677       | 1067',
       'N26  1 677 1067',
       "उत्तरभाद्रपदा 26",
+      "SCP: Cow's Foot | VM: Couch (paryaṅka)",
     ],
     [
       '# N27-Rev   ,   1, 79',
-      '#    N27-Rev | +alf Psc',
+      '#    N27-Rev | +α Psc',
       '#    N27-Rev | 9487',
       'N27  1 9487 9487',
       "रेवती 27",
+      "SCP: Canoe* | VM: Drum (muraja)",
     ],
     [
       '# N28-Abh   ,   3, 82',
-      '#    N28-Abh | zet01 Lyr | +alf Lyr  | eps01 Lyr',
+      '#    N28-Abh | ζ¹ Lyr | +α Lyr  | ε¹ Lyr',
       '#    N28-Abh | 91971     | 91262     | 91919',
       'N28  3 91971 91262  91262 91919   91919 91971',
       "अभिजित् ∆",
+      "",
     ]
   ];
   return the_n28;
@@ -435,88 +493,88 @@ function dumpObj(tag, o) {
 function naks_db() {
   var _n82 = [
     //"#	naks	main_id	name	is_yoga	mag	bri	ra	dec",
-    "1	N01-Ash	* alf Ari	Hamal	1	2.0	5.0	31.79	23.46",
-    "2	N01-Ash	* bet Ari	Sheratan	0	2.7	4.0	28.66	20.81",
+    "1	N01-Ash	* α Ari	Hamal	1	2.0	5.0	31.79	23.46",
+    "2	N01-Ash	* β Ari	Sheratan	0	2.7	4.0	28.66	20.81",
     "3	N02-Bha	* 41 Ari	Bharani	1	3.6	3.0	42.50	27.26",
     "4	N02-Bha	* 31 Ari	xxx	0	5.7	1.0	39.16	12.45",
     "5	N02-Bha	* 35 Ari	xxx	0	4.7	2.0	40.86	27.71",
-    "6	N03-Kri	* eta Tau	Alcyone	1	2.9	4.0	56.87	24.11",
+    "6	N03-Kri	* η Tau	Alcyone	1	2.9	4.0	56.87	24.11",
     "7	N03-Kri	* 17 Tau	Electra	0	3.7	3.0	56.22	24.11",
     "8	N03-Kri	* q Tau	Taygeta	0	4.3	3.0	56.30	24.47",
     "9	N03-Kri	* 20 Tau	Maia	0	3.9	3.0	56.46	24.37",
     "10	N03-Kri	* 23 Tau	Merope	0	4.2	3.0	56.58	23.95",
     "11	N03-Kri	* 27 Tau	Atlas	0	3.6	3.0	57.29	24.05",
     "12	N03-Kri	* 28 Tau	Pleione	0	5.1	2.0	57.30	24.14",
-    "13	N04-Roh	* alf Tau	Aldebaran	1	0.9	6.0	68.98	16.51",
-    "14	N04-Roh	* gam Tau	Prima Hyadum	0	3.7	3.0	64.95	15.63",
-    "15	N04-Roh	* del Tau	Secunda Hyadum	0	3.8	3.0	65.73	17.54",
-    "16	N04-Roh	* eps Tau	Ain	0	3.5	3.0	67.15	19.18",
-    "17	N04-Roh	* tet02 Tau	Chamukuy	0	3.4	4.0	67.17	15.87",
-    "18	N05-Mrg	* gam Ori	Bellatrix	1	1.6	5.0	81.28	6.35",
-    "19	N05-Mrg	* phi01 Ori	lambda Ori X-5	0	4.4	3.0	83.71	9.49",
-    "20	N05-Mrg	* lam Ori	Heka	0	3.7	3.0	83.78	9.93",
-    "21	N06-Ard	* alf Ori	Betelgeuse	1	0.4	7.0	88.79	7.41",
-    "22	N07-Pun	* bet Gem	Pollux	1	1.1	6.0	116.33	28.03",
-    "23	N07-Pun	* alf Gem	Castor	0	1.6	5.0	113.65	31.89",
-    "24	N08-Pus	* del Cnc	Asellus Australis	1	3.9	3.0	131.17	18.15",
-    "25	N09-Asl	* del Hya	xxx	0	4.1	3.0	129.41	5.70",
-    "26	N09-Asl	* sig Hya	Minchir	0	4.4	3.0	129.69	3.34",
-    "27	N09-Asl	* eta Hya	xxx	0	4.3	3.0	130.81	3.40",
-    "28	N09-Asl	* eps Hya	Ashlesha	0	3.4	4.0	131.69	6.42",
-    "29	N09-Asl	* rho Hya	xxx	0	4.3	3.0	132.11	5.84",
-    "30	N09-Asl	* zet Hya	xxx	0	3.1	4.0	133.85	5.95",
-    "31	N10-Mag	* alf Leo	Regulus	1	1.4	6.0	152.09	11.97",
-    "32	N10-Mag	* eps Leo	xxx	0	3.0	4.0	146.46	23.77",
-    "33	N10-Mag	* mu. Leo	Rasalas	0	3.9	3.0	148.19	26.01",
-    "34	N10-Mag	* eta Leo	xxx	0	3.4	4.0	151.83	16.76",
-    "35	N10-Mag	* zet Leo	Adhafera	0	3.4	4.0	154.17	23.42",
-    "36	N10-Mag	* gam Leo	Algieba	0	2.4	5.0	154.99	19.84",
-    "37	N11-PPal	* del Leo	Zosma	1	2.5	4.0	168.53	20.52",
-    "38	N11-PPal	* tet Leo	Chertan	0	3.4	4.0	168.56	15.43",
-    "39	N12-UPal	* bet Leo	Denebola	1	2.1	5.0	177.26	14.57",
+    "13	N04-Roh	* α Tau	Aldebaran	1	0.9	6.0	68.98	16.51",
+    "14	N04-Roh	* γ Tau	Prima Hyadum	0	3.7	3.0	64.95	15.63",
+    "15	N04-Roh	* δ Tau	Secunda Hyadum	0	3.8	3.0	65.73	17.54",
+    "16	N04-Roh	* ε Tau	Ain	0	3.5	3.0	67.15	19.18",
+    "17	N04-Roh	* θ² Tau	Chamukuy	0	3.4	4.0	67.17	15.87",
+    "18	N05-Mrg	* γ Ori	Bellatrix	1	1.6	5.0	81.28	6.35",
+    "19	N05-Mrg	* φ¹ Ori	lambda Ori X-5	0	4.4	3.0	83.71	9.49",
+    "20	N05-Mrg	* λ Ori	Heka	0	3.7	3.0	83.78	9.93",
+    "21	N06-Ard	* α Ori	Betelgeuse	1	0.4	7.0	88.79	7.41",
+    "22	N07-Pun	* β Gem	Pollux	1	1.1	6.0	116.33	28.03",
+    "23	N07-Pun	* α Gem	Castor	0	1.6	5.0	113.65	31.89",
+    "24	N08-Pus	* δ Cnc	Asellus Australis	1	3.9	3.0	131.17	18.15",
+    "25	N09-Asl	* δ Hya	xxx	0	4.1	3.0	129.41	5.70",
+    "26	N09-Asl	* σ Hya	Minchir	0	4.4	3.0	129.69	3.34",
+    "27	N09-Asl	* η Hya	xxx	0	4.3	3.0	130.81	3.40",
+    "28	N09-Asl	* ε Hya	Ashlesha	0	3.4	4.0	131.69	6.42",
+    "29	N09-Asl	* ρ Hya	xxx	0	4.3	3.0	132.11	5.84",
+    "30	N09-Asl	* ζ Hya	xxx	0	3.1	4.0	133.85	5.95",
+    "31	N10-Mag	* α Leo	Regulus	1	1.4	6.0	152.09	11.97",
+    "32	N10-Mag	* ε Leo	xxx	0	3.0	4.0	146.46	23.77",
+    "33	N10-Mag	* μ Leo	Rasalas	0	3.9	3.0	148.19	26.01",
+    "34	N10-Mag	* η Leo	xxx	0	3.4	4.0	151.83	16.76",
+    "35	N10-Mag	* ζ Leo	Adhafera	0	3.4	4.0	154.17	23.42",
+    "36	N10-Mag	* γ Leo	Algieba	0	2.4	5.0	154.99	19.84",
+    "37	N11-PPal	* δ Leo	Zosma	1	2.5	4.0	168.53	20.52",
+    "38	N11-PPal	* θ Leo	Chertan	0	3.4	4.0	168.56	15.43",
+    "39	N12-UPal	* β Leo	Denebola	1	2.1	5.0	177.26	14.57",
     "40	N12-UPal	* 93 Leo	xxx	0	4.5	2.0	177.00	20.22",
-    "41	N13-Has	* del Crv	Algorab	1	2.9	4.0	187.47	-16.52",
-    "42	N13-Has	* alf Crv	Alchiba	0	4.0	3.0	182.10	-24.73",
-    "43	N13-Has	* eps Crv	Minkar	0	3.0	4.0	182.53	-22.62",
-    "44	N13-Has	* gam Crv	Gienah	0	2.6	4.0	183.95	-17.54",
-    "45	N13-Has	* bet Crv	Kraz	0	2.6	4.0	188.60	-23.40",
-    "46	N14-Chi	* alf Vir	Spica	1	1.0	6.0	201.30	-11.16",
-    "47	N15-Swa	* alf Boo	Arcturus	1	-0.1	7.0	213.92	19.18",
-    "48	N16-Vis	* alf02 Lib	Zubenelgenubi	1	2.8	4.0	222.72	-16.04",
-    "49	N17-Anu	* del Sco	Dschubba	1	2.3	5.0	240.08	-22.62",
-    "50	N17-Anu	* pi. Sco	Fang	0	2.9	4.0	239.71	-26.11",
-    "51	N17-Anu	* bet Sco	Acrab	0	2.5	4.0	241.36	-19.81",
-    "52	N17-Anu	* ome Sco	xxx	0	4.0	3.0	241.70	-20.67",
-    "53	N18-Jye	* alf Sco	Antares	1	0.9	6.0	247.35	-26.43",
-    "54	N19-Mul	* lam Sco	Shaula	1	1.6	5.0	263.40	-37.10",
-    "55	N19-Mul	* tet Sco	Sargas	0	1.9	5.0	264.33	-43.00",
-    "56	N20-PAsh	* eps Sgr	Kaus Australis	1	1.9	5.0	276.04	-34.38",
-    "57	N20-PAsh	* gam02 Sgr	Alnasl	0	3.0	4.0	271.45	-30.42",
-    "58	N20-PAsh	* del Sgr	Kaus Media	0	2.7	4.0	275.25	-29.83",
-    "59	N20-PAsh	* lam Sgr	Kaus Borealis	0	2.8	4.0	276.99	-25.42",
-    "60	N21-UAsh	* sig Sgr	Nunki	1	2.1	5.0	283.82	-26.30",
-    "61	N21-UAsh	* phi Sgr	xxx	0	3.1	4.0	281.41	-26.99",
-    "62	N21-UAsh	* zet Sgr	Ascella	0	2.6	4.0	285.65	-29.88",
-    "63	N21-UAsh	* tau Sgr	xxx	0	3.3	4.0	286.74	-27.67",
-    "64	N22-Shr	* alf Aql	Altair	1	0.8	6.0	297.70	8.87",
-    "65	N22-Shr	* gam Aql	Tarazed	0	2.7	4.0	296.56	10.61",
-    "66	N22-Shr	* bet Aql	Alshain	0	3.7	3.0	298.83	6.41",
-    "67	N23-Dha	* alf Del	Sualocin	1	3.8	3.0	309.91	15.91",
-    "68	N23-Dha	* eps Del	Aldulfin	0	4.0	3.0	308.30	11.30",
-    "69	N23-Dha	* bet Del	Rotanev	0	3.6	3.0	309.39	14.60",
-    "70	N23-Dha	* del Del	xxx	0	4.4	3.0	310.86	15.07",
-    "71	N23-Dha	* gam Del	xxx	0	3.9	3.0	311.66	16.12",
-    "72	N24-Sha	* gam Aqr	Sadachbia	1	3.8	3.0	335.41	-1.39",
-    "73	N24-Sha	* kap Aqr	Situla	0	5.0	2.0	339.44	-4.23",
-    "74	N24-Sha	* lam Aqr	xxx	0	3.8	3.0	343.15	-7.58",
-    "75	N25-PBha	* alf Peg	Markab	1	2.5	5.0	346.19	15.21",
-    "76	N25-PBha	* bet Peg	Scheat	0	2.4	5.0	345.94	28.08",
-    "77	N26-UBha	* alf And	Alpheratz	1	2.1	5.0	2.10	29.09",
-    "78	N26-UBha	* gam Peg	Algenib	0	2.8	4.0	3.31	15.18",
-    "79	N27-Rev	* alf Psc	Alrescha	1	3.8	3.0	30.51	2.76",
-    "80	N28-Abh	* alf Lyr	Vega	1	0.0	7.0	279.23	38.78",
-    "81	N28-Abh	* eps01 Lyr	xxx	0	4.7	2.0	281.08	39.67",
-    "82	N28-Abh	* zet01 Lyr	xxx	0	4.4	3.0	281.19	37.61"
+    "41	N13-Has	* δ Crv	Algorab	1	2.9	4.0	187.47	-16.52",
+    "42	N13-Has	* α Crv	Alchiba	0	4.0	3.0	182.10	-24.73",
+    "43	N13-Has	* ε Crv	Minkar	0	3.0	4.0	182.53	-22.62",
+    "44	N13-Has	* γ Crv	Gienah	0	2.6	4.0	183.95	-17.54",
+    "45	N13-Has	* β Crv	Kraz	0	2.6	4.0	188.60	-23.40",
+    "46	N14-Chi	* α Vir	Spica	1	1.0	6.0	201.30	-11.16",
+    "47	N15-Swa	* α Boo	Arcturus	1	-0.1	7.0	213.92	19.18",
+    "48	N16-Vis	* α² Lib	Zubenelgenubi	1	2.8	4.0	222.72	-16.04",
+    "49	N17-Anu	* δ Sco	Dschubba	1	2.3	5.0	240.08	-22.62",
+    "50	N17-Anu	* π Sco	Fang	0	2.9	4.0	239.71	-26.11",
+    "51	N17-Anu	* β Sco	Acrab	0	2.5	4.0	241.36	-19.81",
+    "52	N17-Anu	* ω Sco	xxx	0	4.0	3.0	241.70	-20.67",
+    "53	N18-Jye	* α Sco	Antares	1	0.9	6.0	247.35	-26.43",
+    "54	N19-Mul	* λ Sco	Shaula	1	1.6	5.0	263.40	-37.10",
+    "55	N19-Mul	* θ Sco	Sargas	0	1.9	5.0	264.33	-43.00",
+    "56	N20-PAsh	* ε Sgr	Kaus Australis	1	1.9	5.0	276.04	-34.38",
+    "57	N20-PAsh	* γ² Sgr	Alnasl	0	3.0	4.0	271.45	-30.42",
+    "58	N20-PAsh	* δ Sgr	Kaus Media	0	2.7	4.0	275.25	-29.83",
+    "59	N20-PAsh	* λ Sgr	Kaus Borealis	0	2.8	4.0	276.99	-25.42",
+    "60	N21-UAsh	* σ Sgr	Nunki	1	2.1	5.0	283.82	-26.30",
+    "61	N21-UAsh	* φ Sgr	xxx	0	3.1	4.0	281.41	-26.99",
+    "62	N21-UAsh	* ζ Sgr	Ascella	0	2.6	4.0	285.65	-29.88",
+    "63	N21-UAsh	* τ Sgr	xxx	0	3.3	4.0	286.74	-27.67",
+    "64	N22-Shr	* α Aql	Altair	1	0.8	6.0	297.70	8.87",
+    "65	N22-Shr	* γ Aql	Tarazed	0	2.7	4.0	296.56	10.61",
+    "66	N22-Shr	* β Aql	Alshain	0	3.7	3.0	298.83	6.41",
+    "67	N23-Dha	* α Del	Sualocin	1	3.8	3.0	309.91	15.91",
+    "68	N23-Dha	* ε Del	Aldulfin	0	4.0	3.0	308.30	11.30",
+    "69	N23-Dha	* β Del	Rotanev	0	3.6	3.0	309.39	14.60",
+    "70	N23-Dha	* δ Del	xxx	0	4.4	3.0	310.86	15.07",
+    "71	N23-Dha	* γ Del	xxx	0	3.9	3.0	311.66	16.12",
+    "72	N24-Sha	* γ Aqr	Sadachbia	1	3.8	3.0	335.41	-1.39",
+    "73	N24-Sha	* κ Aqr	Situla	0	5.0	2.0	339.44	-4.23",
+    "74	N24-Sha	* λ Aqr	xxx	0	3.8	3.0	343.15	-7.58",
+    "75	N25-PBha	* α Peg	Markab	1	2.5	5.0	346.19	15.21",
+    "76	N25-PBha	* β Peg	Scheat	0	2.4	5.0	345.94	28.08",
+    "77	N26-UBha	* α And	Alpheratz	1	2.1	5.0	2.10	29.09",
+    "78	N26-UBha	* γ Peg	Algenib	0	2.8	4.0	3.31	15.18",
+    "79	N27-Rev	* α Psc	Alrescha	1	3.8	3.0	30.51	2.76",
+    "80	N28-Abh	* α Lyr	Vega	1	0.0	7.0	279.23	38.78",
+    "81	N28-Abh	* ε¹ Lyr	xxx	0	4.7	2.0	281.08	39.67",
+    "82	N28-Abh	* ζ¹ Lyr	xxx	0	4.4	3.0	281.19	37.61"
   ];
 
   naks = {};
@@ -560,83 +618,83 @@ function mid2hid() {
     "* 35 Ari": "HIP  12719",
     "* 41 Ari": "HIP  13209",
     "* 93 Leo": "HIP  57565",
-    "* alf And": "HIP    677",
-    "* alf Aql": "HIP  97649",
-    "* alf Ari": "HIP   9884",
-    "* alf Boo": "HIP  69673",
-    "* alf Crv": "HIP  59199",
-    "* alf Del": "HIP 101958",
-    "* alf Gem": "HIP  36850",
-    "* alf Leo": "HIP  49669",
-    "* alf Lyr": "HIP  91262",
-    "* alf Ori": "HIP  27989",
-    "* alf Peg": "HIP 113963",
-    "* alf Psc": "HIP   9487",
-    "* alf Sco": "HIP  80763",
-    "* alf Tau": "HIP  21421",
-    "* alf Vir": "HIP  65474",
-    "* bet Aql": "HIP  98036",
-    "* bet Ari": "HIP   8903",
-    "* bet Crv": "HIP  61359",
-    "* bet Del": "HIP 101769",
-    "* bet Gem": "HIP  37826",
-    "* bet Leo": "HIP  57632",
-    "* bet Peg": "HIP 113881",
-    "* del Cnc": "HIP  42911",
-    "* del Crv": "HIP  60965",
-    "* del Del": "HIP 102281",
-    "* del Hya": "HIP  42313",
-    "* del Leo": "HIP  54872",
-    "* del Sco": "HIP  78401",
-    "* del Sgr": "HIP  89931",
-    "* del Tau": "HIP  20455",
-    "* eps Crv": "HIP  59316",
-    "* eps Del": "HIP 101421",
-    "* eps Hya": "HIP  43109",
-    "* eps Leo": "HIP  47908",
-    "* eps Sgr": "HIP  90185",
-    "* eps Tau": "HIP  20889",
-    "* eps01 Lyr": "HIP  91919",
-    "* eta Hya": "HIP  42799",
-    "* eta Leo": "HIP  49583",
-    "* eta Tau": "HIP  17702",
-    "* gam Aql": "HIP  97278",
-    "* gam Aqr": "HIP 110395",
-    "* gam Crv": "HIP  59803",
-    "* gam Leo": "HIP  50583",
-    "* gam Ori": "HIP  25336",
-    "* gam Peg": "HIP   1067",
-    "* gam Tau": "HIP  20205",
-    "* gam02 Sgr": "HIP  88635",
-    "* kap Aqr": "HIP 111710",
-    "* lam Aqr": "HIP 112961",
-    "* lam Ori": "HIP  26207",
-    "* lam Sco": "HIP  85927",
-    "* lam Sgr": "HIP  90496",
-    "* mu. Leo": "HIP  48455",
-    "* ome Sco": "HIP  78933",
-    "* phi Sgr": "HIP  92041",
-    "* phi01 Ori": "HIP  26176",
-    "* pi. Sco": "HIP  78265",
+    "* α And": "HIP    677",
+    "* α Aql": "HIP  97649",
+    "* α Ari": "HIP   9884",
+    "* α Boo": "HIP  69673",
+    "* α Crv": "HIP  59199",
+    "* α Del": "HIP 101958",
+    "* α Gem": "HIP  36850",
+    "* α Leo": "HIP  49669",
+    "* α Lyr": "HIP  91262",
+    "* α Ori": "HIP  27989",
+    "* α Peg": "HIP 113963",
+    "* α Psc": "HIP   9487",
+    "* α Sco": "HIP  80763",
+    "* α Tau": "HIP  21421",
+    "* α Vir": "HIP  65474",
+    "* β Aql": "HIP  98036",
+    "* β Ari": "HIP   8903",
+    "* β Crv": "HIP  61359",
+    "* β Del": "HIP 101769",
+    "* β Gem": "HIP  37826",
+    "* β Leo": "HIP  57632",
+    "* β Peg": "HIP 113881",
+    "* δ Cnc": "HIP  42911",
+    "* δ Crv": "HIP  60965",
+    "* δ Del": "HIP 102281",
+    "* δ Hya": "HIP  42313",
+    "* δ Leo": "HIP  54872",
+    "* δ Sco": "HIP  78401",
+    "* δ Sgr": "HIP  89931",
+    "* δ Tau": "HIP  20455",
+    "* ε Crv": "HIP  59316",
+    "* ε Del": "HIP 101421",
+    "* ε Hya": "HIP  43109",
+    "* ε Leo": "HIP  47908",
+    "* ε Sgr": "HIP  90185",
+    "* ε Tau": "HIP  20889",
+    "* ε¹ Lyr": "HIP  91919",
+    "* η Hya": "HIP  42799",
+    "* η Leo": "HIP  49583",
+    "* η Tau": "HIP  17702",
+    "* γ Aql": "HIP  97278",
+    "* γ Aqr": "HIP 110395",
+    "* γ Crv": "HIP  59803",
+    "* γ Leo": "HIP  50583",
+    "* γ Ori": "HIP  25336",
+    "* γ Peg": "HIP   1067",
+    "* γ Tau": "HIP  20205",
+    "* γ² Sgr": "HIP  88635",
+    "* κ Aqr": "HIP 111710",
+    "* λ Aqr": "HIP 112961",
+    "* λ Ori": "HIP  26207",
+    "* λ Sco": "HIP  85927",
+    "* λ Sgr": "HIP  90496",
+    "* μ Leo": "HIP  48455",
+    "* ω Sco": "HIP  78933",
+    "* φ Sgr": "HIP  92041",
+    "* φ¹ Ori": "HIP  26176",
+    "* π Sco": "HIP  78265",
     "* q Tau": "HIP  17531",
-    "* rho Hya": "HIP  43234",
-    "* sig Hya": "HIP  42402",
-    "* sig Sgr": "HIP  92855",
-    "* tau Sgr": "HIP  93864",
-    "* tet Leo": "HIP  54879",
-    "* tet Sco": "HIP  86228",
-    "* tet02 Tau": "HIP  20894",
-    "* zet Hya": "HIP  43813",
-    "* zet Leo": "HIP  50335",
-    "* zet Sgr": "HIP  93506",
-    "* zet01 Lyr": "HIP  91971",
-    "* bet Sco": "HR 5984", //"HIP 78820 A", "WDS J16054-1948AB",
+    "* ρ Hya": "HIP  43234",
+    "* σ Hya": "HIP  42402",
+    "* σ Sgr": "HIP  92855",
+    "* τ Sgr": "HIP  93864",
+    "* θ Leo": "HIP  54879",
+    "* θ Sco": "HIP  86228",
+    "* θ² Tau": "HIP  20894",
+    "* ζ Hya": "HIP  43813",
+    "* ζ Leo": "HIP  50335",
+    "* ζ Sgr": "HIP  93506",
+    "* ζ¹ Lyr": "HIP  91971",
+    "* β Sco": "HR 5984", //"HIP 78820 A", "WDS J16054-1948AB",
 
-    "* alf Lib": "HIP 72622", // "WDS J14509-1603AB"
-    "* alf02 Lib": "HIP 72622",
+    "* α Lib": "HIP 72622", // "WDS J14509-1603AB"
+    "* α² Lib": "HIP 72622",
 
-    "* gam Del": "HR 7498", //"HIP 102532 A", "WDS J20467+1607AB",
-    "* gam02 Del": "HR 7498" //"HIP 102532 A",
+    "* γ Del": "HR 7498", //"HIP 102532 A", "WDS J20467+1607AB",
+    "* γ² Del": "HR 7498" //"HIP 102532 A",
   };
   return m2h;
 }

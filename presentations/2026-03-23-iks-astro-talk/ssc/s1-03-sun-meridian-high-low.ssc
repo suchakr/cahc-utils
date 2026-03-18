@@ -26,8 +26,8 @@ function label(text, x, y, size, color) {
 }
 
 var epochRuns = [
-  { year_name: "1800 BCE", year_num: 1800, arr: MERIDIANS_BCE_1800 },
   { year_name: "1350 BCE", year_num: 1350, arr: MERIDIANS_BCE_1350 },
+  { year_name: "1800 BCE", year_num: 1800, arr: MERIDIANS_BCE_1800 },
   { year_name: "2000 CE",  year_num: -2000, arr: MERIDIANS_CE_2000 }
 ];
 
@@ -40,7 +40,7 @@ for (var e = 0; e < epochRuns.length; e++) {
   for (var repeat_show = 0; repeat_show < 1; repeat_show++) {
     
     resetScene();
-    core.setGuiVisible(false);
+    core.setGuiVisible(!false);
     core.setObserverLocation("Ujjain, India", "Earth");
     
     LandscapeMgr.setFlagLandscape(repeat_show == 0 ? true : false);
@@ -50,23 +50,39 @@ for (var e = 0; e < epochRuns.length; e++) {
     LandscapeMgr.setFlagCardinalPoints(true);
     
     GridLinesMgr.setFlagAzimuthalGrid(true);
+    GridLinesMgr.setColorAzimuthalGrid(core.vec3f(.10, .10, .10));
     GridLinesMgr.setFlagEquatorGrid(false);
     GridLinesMgr.setFlagEclipticLine(false);
     GridLinesMgr.setFlagEquatorLine(false);
     GridLinesMgr.setFlagMeridianLine(true);
     
-    // Show constellation asterism lines
-    ConstellationMgr.setFlagLines(!true);
-    ConstellationMgr.setFlagLabels(!true);
+    // Show constellation asterism lines 
+    ConstellationMgr.setFlagLines(false);
+    ConstellationMgr.setFlagLabels(false);
     ConstellationMgr.setFlagBoundaries(true);
-    
+
+    // Turn on the Meridian Line , thickness and color 
+    GridLinesMgr.setFlagMeridianLine(true);
+    GridLinesMgr.setColorMeridianLine(core.vec3f(1.0, 0.5, 0.0));
+
+    // Turn on the Horizon Line , thickness and color
+    GridLinesMgr.setFlagHorizonLine(true);
+    GridLinesMgr.setLineThickness(3);
+    GridLinesMgr.setColorHorizonLine(core.vec3f(1.0, 1.0, 0.0));
+
     // Face South (azimuth 180) to observe noon transits
     // Ujjain lat=23.2°. Sun alt ranges ~43° (winter) to ~90° (summer).
     // Set camera to alt=65°, az=180°. Zoom to 90° so we see from 20° up to 110°.
-    var centerAlt = 88;
-    var targetFov = 180;
+    // var centerAlt = 88;
+    // var targetFov = 190;
+    // core.setProjectionMode("ProjectionFisheye");
+    // core.moveToAltAzi(centerAlt, 90+2*45, 0);
+    // StelMovementMgr.zoomTo(targetFov, 0);
+
+    var centerAlt = 88-70;
+    var targetFov = 190;
     core.setProjectionMode("ProjectionFisheye");
-    core.moveToAltAzi(centerAlt, 90+2*45, 0);
+    core.moveToAltAzi(centerAlt, 90-.15*45, 0);
     StelMovementMgr.zoomTo(targetFov, 0);
     
     // Scale Sun appropriately and try to turn off glare
@@ -93,6 +109,7 @@ for (var e = 0; e < epochRuns.length; e++) {
     for (var d = 0; d < MERIDIANS.length; d++) {
       JD(MERIDIANS[d]); // Time step already gives us exact peak altitude!
       W(0.1);
+      // StelMovementMgr.zoomTo(targetFov-d*5 * (d < MERIDIANS.length/2 ? 1 : -1), 2);
       
       var sunInfo = getOI("Sun");
       var kind = null;
@@ -101,22 +118,22 @@ for (var e = 0; e < epochRuns.length; e++) {
       // Look for elong = 90 (Summer solstice / Dakshinayana)
       if (!flagged.summer && Math.abs(sunInfo.elong - 90) < 1.0) { 
         kind = "Dakṣiṇāyana begins (High Noon Sun)"; 
-        color = "#FF3333"; // Bright Red down-trend
+        color = "#FF3333"; // Bright Red 
         flagged.summer = true; 
       }
       else if (!flagged.autumn && Math.abs(sunInfo.elong - 180) < 1.0) { 
         kind = "Autumn Equinox (Mid Noon Sun)"; 
-        color = "#FFD700"; // Bright Yellow/Gold
+        color = "#FFD700"; // Bright Yellow
         flagged.autumn = true; 
       }
       else if (!flagged.winter && Math.abs(sunInfo.elong - 270) < 1.0) { 
         kind = "Uttarāyaṇa begins (Low Noon Sun)"; 
-        color =  "#FF0000"; // Maroon 
+        color =  "#FF00FF"; // Magenta / Bright Pink
         flagged.winter = true; 
       }
       else if (!flagged.spring && (sunInfo.elong < 1.0 || sunInfo.elong > 359.0)) { 
         kind = "Spring Equinox (Mid Noon Sun)"; 
-        color = "#00FF00"; // Bright Lime Green
+        color = "#00FF00"; // Bright Green
         flagged.spring = true; 
         flagged.dip = true;
       }
@@ -125,27 +142,63 @@ for (var e = 0; e < epochRuns.length; e++) {
         var w = core.getScreenWidth();
         var h = core.getScreenHeight();
         
-        // At targetFov=180, radial distance from camera center (Altitude=centerAlt, Azimuth=camAzi)
-        var camAzi = 90 + 2*45; // 180
-        var altDiff = (centerAlt - sunInfo.altitude);
+        // --- Exact 3D Spherical Projection for Fisheye ---
+        var d2r = Math.PI / 180;
         
-        // Approximate radial distance in pixels (h/targetFov scales degrees to pixels)
-        // A direct FOV=180 touches the top/bottom edges of the screen at 90 degrees out
-        var r = altDiff * (h / targetFov) * 1.1; // 1.1 multiplier corrects for stereo stretching
+        // Our camera is facing: centerAlt, and azimuth = 90 - .15*45
+        var camAlt = centerAlt * d2r;
+        var camAzi = (90 - 0.15*45) * d2r;
         
-        var angle = (sunInfo.azimuth - camAzi) * Math.PI / 180;
-        var dx = r * Math.sin(angle);
-        var dy = r * Math.cos(angle);
+        var sunAlt = sunInfo.altitude * d2r;
+        var sunAzi = sunInfo.azimuth * d2r;
         
-        // Offset 30px to right, 15px up from sun center
+        // 1) Sun Cartesian vector (X=East, Y=North, Z=Up)
+        var sx = Math.cos(sunAlt) * Math.sin(sunAzi);
+        var sy = Math.cos(sunAlt) * Math.cos(sunAzi);
+        var sz = Math.sin(sunAlt);
+        
+        // 2) Camera Cartesian vector (Center of screen)
+        var cx = Math.cos(camAlt) * Math.sin(camAzi);
+        var cy = Math.cos(camAlt) * Math.cos(camAzi);
+        var cz = Math.sin(camAlt);
+        
+        // 3) Camera Right vector = Z_up(0,0,1) x CamVec
+        var rx = cy;
+        var ry = -cx;
+        var rz = 0;
+        var rLen = Math.sqrt(rx*rx + ry*ry);
+        if (rLen > 0) { rx /= rLen; ry /= rLen; }
+        
+        // 4) Camera Up vector = Right x CamVec
+        var ux = ry * cz - rz * cy;
+        var uy = rz * cx - rx * cz;
+        var uz = rx * cy - ry * cx;
+        
+        // 5) Project Sun onto Camera internal axes
+        var pX = sx*rx + sy*ry + sz*rz; // horizontal offset
+        var pY = sx*ux + sy*uy + sz*uz; // vertical offset
+        var pZ = sx*cx + sy*cy + sz*cz; // depth (dot product)
+        
+        // 6) Calculate polar angle from center
+        var theta = Math.acos(pZ); // radians
+        var phi = Math.atan2(pY, pX); 
+        
+        // For 180 Fisheye, edge of screen height = targetFov/2 degrees out
+        var max_theta = (targetFov / 2) * d2r;
+        var radius_pixels = (theta / max_theta) * (h / 2);
+        
+        var dx = radius_pixels * Math.cos(phi);
+        var dy = -radius_pixels * Math.sin(phi); // screen Y goes down
+
+        // Offset slightly right
         var xPos = (w / 2) + dx + 30; 
-        var yPos = (h / 2) + dy - 15;
+        var yPos = (h / 2) + dy;
         
         if (flagged.dip && kind.indexOf("Spring") !== -1) {
             yPos += 30; // slightly dip spring equinox so it doesn't cleanly overlap autumn
         }
-        
-        label(kind, xPos, yPos, 22, color);
+       
+        label(kind, xPos, yPos, 14, color);
       }
     }
     
@@ -154,4 +207,4 @@ for (var e = 0; e < epochRuns.length; e++) {
     W(10);
   }
 }
-W(25);
+W(15);

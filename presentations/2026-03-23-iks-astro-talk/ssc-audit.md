@@ -17,7 +17,6 @@ Recommended pattern:
 - `s1-03-main-sun-swing.ssc`
 - `s1-03-sun-meridian-high-low.ssc`
 - `s1-04-main-nakshatra-tour.ssc`
-- `s1-05-main-precession-sun-transit.ssc`
 - `s2-01-main-eqfm-window.ssc`
 - `s2-02-main-eclipse-demo.ssc`
 
@@ -45,7 +44,7 @@ This file must remain in the same working `ssc/` folder for any dependent script
 | `sun-transit-ayana.ssc` | Session 1 legacy Sun support demo | Moderate | Retain as backup/reference | `s1-03-sun-meridian-high-low.ssc` | A trimmed talk-specific support copy now exists for the meridian high/low contrast. |
 | `a2_sun_analemma.ssc` | Session 1 backup Sun demo | Moderate | Keep as backup | `s1-03-backup-sun-analemma.ssc` | Good backup when the main scripts do not land cleanly. Too busy to lead the section. |
 | `a4-tour-of-nakshatras.ssc` | Session 1 legacy Nakṣatra demo | Moderate | Retain as backup/reference | `s1-04-main-nakshatra-tour.ssc` | A talk-specific copy now exists with cleaner intro/outro and shorter waits. |
-| `sun-transit-precession.ssc` | Session 1 legacy precession bridge | Moderate | Retain as backup/reference | `s1-05-main-precession-sun-transit.ssc` | A talk-specific bridge copy now exists; it still needs rehearsal verification against the deck narrative. |
+| `sun-transit-precession.ssc` | Session 1 legacy precession bridge | Weak for current talk flow | Cut from active path; retain only historically if needed later | none | The dedicated bridge script was dropped because the Dhruva demo plus the paper/core figures carry the precession-to-dating transition more clearly. |
 | `naks-spot-check.ssc` | Technical contrast only | Weak for live use | Keep only as tech support | `s1-04-tech-nakshatra-spot-check.ssc` | Better for script-structure/runtime contrast than audience projection. |
 | `nakshatra-db.ssc` | Technical contrast only | Moderate as appendix | Keep only as tech support | `s1-04-tech-nakshatra-db.ssc` | Useful to show what Stellarium exposes for a single object. Not main-stage material. |
 | `moon_swing.ssc` | Session 2 Moon candidate | Weak | Likely replace with a more explicit eqfm script | `s2-01-candidate-moon-swing.ssc` | Too generic by itself for the BP equinoctial full-moon story. |
@@ -57,7 +56,7 @@ This file must remain in the same working `ssc/` folder for any dependent script
 
 ### Session 1
 
-- preferred Session 1 copies now exist for Dhruva, Sun, Nakṣatra, and the precession bridge
+- preferred Session 1 copies now exist for Dhruva, Sun, and Nakṣatra
 - additional new Session 1 scripts are not currently required unless rehearsal exposes gaps
 
 ### Session 2
@@ -81,7 +80,7 @@ The current Moon scripts do not yet look like a clean fit for the deck. Likely n
 2. rehearse `s1-03-sun-meridian-high-low.ssc`
 3. rehearse `s1-03-main-sun-swing.ssc`
 4. rehearse `s1-04-main-nakshatra-tour.ssc`
-5. rehearse `s1-05-main-precession-sun-transit.ssc`
+5. no dedicated Session 1 precession bridge script at present
 6. `a3-puri-demo.ssc`
 7. Session 2 Moon script decision: tune existing vs create new
 

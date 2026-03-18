@@ -310,11 +310,11 @@ Primary assets:
 
 Primary scripts:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s1-05-main-precession-sun-transit.ssc`
+- none; this section is better carried by the Dhruva script already shown plus the paper/core analytical figures
 
 Backup scripts:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s1-03-sun-meridian-high-low.ssc`
+- none by default
 
 Status:
 
@@ -325,6 +325,7 @@ Note:
 - `adityachara-naks-best-fit.png` is not a paper figure, but it is worth keeping because it clarifies the all-27 best-fit idea and is professor-approved
 - `sun-transit-transition-abhijit.png` should be presented after the main seasonal-fit charts, as a transition / adjustment figure rather than as the entry figure
 - the exact reason one chart visually reaches 0 while another does not should be verified from `vgj_ac_rs.py` before we state it confidently in the talk
+- the dedicated precession bridge script was cut because it did not add enough beyond the Dhruva demo and the paper figures
 
 ## Session 2
 

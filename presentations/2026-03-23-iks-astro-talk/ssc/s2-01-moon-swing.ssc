@@ -1,0 +1,183 @@
+// Session 2 · Moonrise swing demo
+// Shows 30 successive moonrises on the eastern horizon at Ujjain.
+//
+// Story setup:
+// - The audience faces East, with E near the center of the screen.
+// - Atmosphere is off, ground is on, so the horizon is visible but the sky stays uncluttered.
+// - Each frame advances to a few minutes after moonrise so the Moon is fully above the horizon.
+//
+// Story progression:
+// 1. The Moon does not rise at the same place each day.
+// 2. Over about a month, the rising point swings against the background stars / nakṣatra field.
+// 3. This visual fact helps motivate why Moon-based textual statements are meaningful.
+//
+// Notes for later tuning:
+// - This is a Moon-fundamentals script, not yet the BP chapter 21 case-study script.
+// - Moonrise is calculated in Stellarium using getObjectInfo(\"Moon\")[\"rise-dhr\"].
+// - If needed later, the start date and anchor labels can be changed without altering the overall logic.
+
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+function JD(x) { if (x) { core.setJDay(x); W(0.05); } return core.getJDay(); }
+function DT()  { return core.getDate("local"); }
+var getOI = core.getObjectInfo;
+
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+}
+
+function label(text, x, y, size, color) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  return id;
+}
+
+function horizonLabel(text, az, alt, size, color) {
+  try {
+    var id = LabelMgr.labelHorizon(text, az, alt, true, size, color);
+    LabelMgr.setLabelShow(id, true);
+    return id;
+  } catch (err) {
+    return null;
+  }
+}
+
+// A modern month is sufficient for the visual story; this is not yet the BP analytical case-study.
+var startLocal = "2021-06-25T00:00:00"; 
+var numRises = 39;
+var postRiseMinutes = 12*3;
+var anchorDays = { 0: true, 7: true, 14: true, 21: true, 29: true };
+
+resetScene();
+core.setGuiVisible(!false);
+core.setObserverLocation("Ujjain, India", "Earth");
+core.setDate(startLocal, "local");
+
+LandscapeMgr.setFlagLandscape(false);
+try { LandscapeMgr.setFlagGround(true); } catch (err) {}
+LandscapeMgr.setFlagAtmosphere(!false);
+LandscapeMgr.setFlagFog(!false);
+LandscapeMgr.setFlagCardinalPoints(true);
+
+GridLinesMgr.setFlagAzimuthalGrid(true);
+try { GridLinesMgr.setColorAzimuthalGrid(core.vec3f(0.12, 0.12, 0.12)); } catch (err) {}
+GridLinesMgr.setFlagEquatorGrid(false);
+GridLinesMgr.setFlagEclipticLine(false);
+GridLinesMgr.setFlagEquatorLine(false);
+GridLinesMgr.setFlagHorizonLine(true);
+GridLinesMgr.setColorHorizonLine(core.vec3f(1.0, 1.0, 0.0));
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+ConstellationMgr.setFlagBoundaries(false);
+ConstellationMgr.setFlagArt(false);
+try { core.setSkyCulture("vedic_25_codex"); } catch (err) {}
+
+// try {
+//   StelSkyDrawer.setFlagStarMagnitudeLimit(true);
+//   StelSkyDrawer.setCustomStarMagnitudeLimit(4.8);
+//   StelSkyDrawer.setFlagPlanetsScale(true);
+//   StelSkyDrawer.setPlanetsScale(10.0);
+// } catch (err) {}
+
+SolarSystem.setMoonScale(10)
+SolarSystem.setFlagMoonScale (true)
+
+
+// Face east and hold that view throughout the demo.
+core.moveToAltAzi(6, 90, 0);
+StelMovementMgr.zoomTo(60, 0);
+StelMovementMgr.setFlagTracking(false);
+W(1);
+
+// Intro sequence
+label("The Moon's Monthly Swing", 70, 150, 36, "#FFCCCC");
+W(2);
+label("30 successive moonrises.", 70, 220, 24, "#F8FAFC");
+W(2);
+label("Watch how the Moon shifts against the background star / nakṣatra field.", 70, 260, 24, "#F8FAFC");
+W(4);
+
+LabelMgr.deleteAllLabels();
+var startJd = JD();
+var illums = []
+var parva_count = 0;
+
+function illums_dir_changed() {
+  if (illums.length < 2) return 0;
+  var delta1 = (illums[day] - illums[day-1])<0?-1:1
+  var delta2 = (illums[day] - illums[day-2])<0?-1:1
+
+  return delta1 != delta2 ? 1 : 0;
+}
+
+for (var day = 0; day < numRises; day++) {
+  // Search step: Jump to midnight of the target day.
+  // We capture both rise-time and illumination here to ensure they are synchronized.
+  core.setJDay(startJd + day);
+  W(0.01); // Minimal synchronization wait (10ms) to force cache refresh without causing flicker
+
+  var info = getOI("Moon");
+
+  var riseHours = info["rise-dhr"];
+  var illum = info.illumination || 0.5; // Capture phase at midnight (safe proxy for rise phase)
+  illums.push(illum);
+  // parva_count += (illums_dir_changed()==0?0:1)
+  
+  if (riseHours === undefined || riseHours < 0 || riseHours > 30) {
+    continue;
+  }
+
+  // Jump directly to the moonrise position
+  var displayJd = (startJd + day) + riseHours / 24 + postRiseMinutes / (24 * 60);
+  core.setJDay(displayJd);
+
+  // Focus view on East horizon
+  core.moveToAltAzi(6, 90, 0);
+  StelMovementMgr.zoomTo(60, 0);
+  W(0.5); // Allow time for the frame to render before placing markers
+
+  var moon = getOI("Moon");
+  var az = moon.azimuth;
+  var alt = moon.altitude;
+  // (illum was captured above at midnight to avoid caching-related brightness anomalies)
+
+
+  // Normalize illumination to 0.0 - 1.0 range (handles both 0-1 and 0-100 scales)
+  // var normIllum = (illum > 1.0) ? (illum / 100.0) : illum;
+  var normIllum = illum/100;
+  parva_count += ( illum > 98) ? 1 : 0
+  parva_count += ( illum < 2) ? 1 : 0
+  
+  
+  // Leave a persistent marker for every moonrise so the monthly swing builds up on screen.
+  // var markalt_scale = ( day < numRises/2) ? -2 : -4 
+  var markalt_scale = (parva_count) * -1
+
+
+  // Dramatic phase scaling: low base + power curve (dimmer crescents, brighter full moons)
+  var v = Math.floor(30 + 225 * Math.pow(normIllum, 2));
+  
+  // Construct 6-digit hex color for maximum compatibility
+  var grayPart = v.toString(16);
+  if (grayPart.length < 2) grayPart = "0" + grayPart;
+  var markerColor = "#" + grayPart + grayPart + grayPart;
+  
+  // Note: markalt_scale * alt puts markers BELOW the horizon. 
+  // If setFlagGround is true, they will be hidden behind the landscape.
+  MarkerMgr.markerHorizon(az, markalt_scale * alt/3, true, "disk", markerColor, 10+illum/10);
+
+
+  // Label every marker subtly to identify them, while keeping the main anchor days bright.
+  var labelColor = anchorDays[day] ? "#FDE68A" : "#64748B";
+  var labelSize = anchorDays[day] ? 14 : 10;
+  horizonLabel("" + (day + 1)+ ":" + Math.round(100*normIllum), az, markalt_scale * (alt/3)+1, labelSize, labelColor);
+  core.debug("" + (day + 1)+ ":" + Math.round(100*normIllum) + " --  " + Math.round(100*illum) + " -- " + info.illumination);
+
+
+  W(0.7);
+}
+
+label("The Moon's rising point shifts rapidly from day to day.", 70, 1010, 20, "#F8FAFC");
+label("That swing against the background stars is the visual basis for Moon-and-nakṣatra statements.", 70, 1045, 20, "#F8FAFC");
+W(5);

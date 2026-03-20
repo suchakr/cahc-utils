@@ -19,8 +19,11 @@ core.setGuiVisible(true);
 
 //ConstellationMgr.setFlagBoundaries(true);
 ConstellationMgr.setFlagLines(true);
+// ConstellationMgr.deselectConstellations()
 ConstellationMgr.setFlagLabels(true);
 ConstellationMgr.setFlagIsolateSelected(true);
+ConstellationMgr.setConstellationLineThickness(1); 
+
 
 // Turn off the ground (makes stars below the horizon visible), atmosphere, fog
 LandscapeMgr.setFlagLandscape(false);
@@ -39,24 +42,23 @@ SolarSystem.setFlagOrbits(false);
 GridLinesMgr.setFlagEclipticLine(true);
 GridLinesMgr.setColorEclipticLine(core.vec3f(1.0, 0.0, 0.0));
 
-StelMovementMgr.zoomTo(220, 2);
-core.wait(1.5);
-core.moveToRaDec(45, 105, 1)
 core.setSkyCulture("vedic_25_codex")
-core.wait(1);
-var id = LabelMgr.labelScreen("A Tour of the 27 Nakṣatras", 420, 120, false, 30, "#F8FAFC");
-LabelMgr.setLabelShow(id, true);
-var id2 = LabelMgr.labelScreen("visible star-groups", 420, 165, false, 18, "#CBD5E1");
-LabelMgr.setLabelShow(id2, true);
-// var id3 = LabelMgr.labelScreen("Demo setup: Please switch SkyCulture to 'Vedic Codex'. Starts in 15 seconds...", 70, 790, false, 25, "#FFFFFF");
-// LabelMgr.setLabelShow(id3, true);
-core.wait(15);
-// LabelMgr.setLabelShow(id3, false);
-// LabelMgr.deleteLabel(id3);
-LabelMgr.setLabelShow(id, false);
-LabelMgr.deleteLabel(id);
-LabelMgr.setLabelShow(id2, false);
-LabelMgr.deleteLabel(id2);
+StelMovementMgr.zoomTo(220, 2); core.wait(1);
+core.moveToRaDec(90, 120, 1);  core.wait(1);
+var id = LabelMgr.labelScreen("A Tour of the 27 Nakṣatras", 220, 80, false, 30, "#F8FAFC");
+LabelMgr.setLabelShow(id, true); core.wait(2);
+var id2 = LabelMgr.labelScreen("Visible star-groups and sectors", 220, 120, false, 18, "#CBD5E1");
+LabelMgr.setLabelShow(id2, true); core.wait(2);
+var id3 = LabelMgr.labelScreen("Demo Note: Turn on the Skyculture/Nakshatra option in the GUI to see the ecliptic arc and the 27 sectors.", 120, 820, false,20, "#FF0000");
+LabelMgr.setLabelShow(id3, true); core.wait(3);
+LabelMgr.setLabelShow(id3, false); LabelMgr.deleteLabel(id3); core.wait(.3);
+id3 = LabelMgr.labelScreen("Demo Note: Turn on the Skyculture/Nakshatra option in the GUI to see the ecliptic arc and the 27 sectors.", 120, 820, false,20, "#FF0000");
+LabelMgr.setLabelShow(id3, true); core.wait(3);
+
+
+LabelMgr.setLabelShow(id, false); LabelMgr.deleteLabel(id); core.wait(.3);
+LabelMgr.setLabelShow(id2, false); LabelMgr.deleteLabel(id2); core.wait(.3);
+LabelMgr.setLabelShow(id3, false); LabelMgr.deleteLabel(id3); core.wait(.3);
 
 for (n in n28) {
   try {
@@ -69,6 +71,8 @@ for (n in n28) {
         return oi;
       }
     )
+
+    var coords = eclipticToEquatorial(23.5+ 13.33 * (n+1) - 13.33/2, 0);
 
     var cra = 0;
     var cdec = 0;
@@ -91,27 +95,40 @@ for (n in n28) {
     fov = fov < 2 ? 2 : fov;
 
     if (true) {
+      core.selectObjectByName(naks.sanskrit_name, true);
+
+      // Centers the view on the selected object over a duration of 2 seconds
+      // core.moveToObject(naks.sanskrit_name, 2);
       var id = LabelMgr.labelScreen(naks.sanskrit_name, 500, 500, false, 30);
       LabelMgr.setLabelShow(id, true);
-
+      core.wait(.3);
       var id1 = LabelMgr.labelScreen(naks.descr1, 500, 550, false, 15);
       LabelMgr.setLabelShow(id1, true);
+      core.wait(.3);
       var idShape = LabelMgr.labelScreen("Shape:: " + naks.shape, 500, 580, false, 20, "#FFD700");
       LabelMgr.setLabelShow(idShape, true);
-
+      core.wait(.3);
 
       StelMovementMgr.zoomTo(fov, 2.5);
-      core.wait(2.5*2);
+      core.wait(1)
+      ConstellationMgr.setConstellationLineThickness(4); core.wait(.3);
+      core.wait(4);
+      // core.moveToRaDec(coords.ra, coords.dec, 1);
+      // StelMovementMgr.zoomTo(35, 2);
+      // core.wait(2);
       StelMovementMgr.zoomTo(80, 1.5);
-      core.wait(0.8);
-
+      core.wait(.5); 
+      ConstellationMgr.setConstellationLineThickness(1); core.wait(0.1) 
       LabelMgr.setLabelShow(id, false);
       LabelMgr.deleteLabel(id);
+      core.wait(0.1) 
+
       LabelMgr.setLabelShow(id1, false);
       LabelMgr.deleteLabel(id1);
+      core.wait(0.1)
+
       LabelMgr.setLabelShow(idShape, false);
       LabelMgr.deleteLabel(idShape);
-
       core.wait(0.1)
     }
 
@@ -120,16 +137,16 @@ for (n in n28) {
     core.debug("skip " + n)
   }
 }
-
+// ConstellationMgr.selectAllConstellations ()
 StelMovementMgr.zoomTo(220, 2);
-core.wait(1.5);
-core.moveToRaDec(45, 105, 1)
 core.wait(1);
-var end1 = LabelMgr.labelScreen("The nakṣatras can be seen as visible star-groups and used as arc spans.", 420, 980, false, 20, "#F8FAFC");
+core.moveToRaDec(90, 120, 1)
+var end1 = LabelMgr.labelScreen("The nakṣatras can be seen as visible star-groups and ecliptic arc spans.", 300, 60, false, 30, "#F8FAFC");
 LabelMgr.setLabelShow(end1, true);
-var end2 = LabelMgr.labelScreen("That visual-to-analytical bridge is why they matter in this tutorial.", 420, 1020, false, 20, "#CBD5E1");
-LabelMgr.setLabelShow(end2, true);
-core.wait(20);
+// core.wait(1);
+// var end2 = LabelMgr.labelScreen("That visual-to-analytical bridge is why they matter in this tutorial.", 330, 100, false, 30, "#CBD5E1");
+// LabelMgr.setLabelShow(end2, true);
+core.wait(20); 
 
 
 function angleBetween(ra1, dec1, ra2, dec2) {
@@ -172,15 +189,30 @@ function naks_info(arr) {
   return ans;
 }
 
+// Function to convert Ecliptic (lon, lat) to RA/Dec J2000
+function eclipticToEquatorial(lon, lat) {
+    var e = 23.439 * (Math.PI / 180); // Obliquity of ecliptic in radians
+    var l = lon * (Math.PI / 180);    // Longitude to radians
+    var b = lat * (Math.PI / 180);    // Latitude to radians
+
+    var raRad = Math.atan2(Math.sin(l) * Math.cos(e) - Math.tan(b) * Math.sin(e), Math.cos(l));
+    var decRad = Math.asin(Math.sin(b) * Math.cos(e) + Math.cos(b) * Math.sin(e) * Math.sin(l));
+
+    return {
+        ra: (raRad * 180 / Math.PI + 360) % 360,
+        dec: decRad * 180 / Math.PI
+    };
+}
+
 
 function _n28() {
 
   var the_n28 = [
     [
-      '# N01-Ash   ,   2, 2',
-      '#    N01-Ash | β Ari   | +α Ari',
-      '#    N01-Ash | 8903      | 9884',
-      'N01  1 8903 9884',
+      '# N01-Ash   ,   3, 3',
+      '#    N01-Ash | α Ari   | γ Ari   | β Ari',
+      '#    N01-Ash | 9884      | 9153      | 8903',
+      'N01  3 9884 9153 9153 8903 8903 9884',
       "अश्विनी 01",
       "SCP: Horse-neck | VM: Horse-face (hayamukha)",
     ],
@@ -212,17 +244,17 @@ function _n28() {
     ],
     [
       '# N05-Mrg   ,   3, 20',
-      '#    N05-Mrg | λ Ori   | φ¹ Ori | +γ Ori',
-      '#    N05-Mrg | 26207     | 26176     | 25336',
-      'N05  3 26207 26176   26176 25336   25336 26207',
+      '#    N05-Mrg | γ Ori   | λ Ori   | α Ori',
+      '#    N05-Mrg | 25336     | 26207     | 27989',
+      'N05  3 25336 26207 26207 27989 27989 25336',
       "मृगशीर्षा 05",
       "SCP: Deer's Head | VM: Deer-head (mṛgottamāṅga)",
     ],
     [
       '# N06-Ard   ,   1, 21',
-      '#    N06-Ard | +α Ori',
-      '#    N06-Ard | 27989',
-      'N06  1 27989 27989',
+      '#    N06-Ard | φ² Ori',
+      '#    N06-Ard | 31681',
+      'N06  1 31681 31681',
       "आर्द्रा 06",
       "SCP: Bāhu (Arm) | VM: Jewel (maṇi)",
     ],
@@ -243,10 +275,10 @@ function _n28() {
       "SCP: Śarāva (Pot-lid) | VM: Arrow (śara)",
     ],
     [
-      '# N09-Asl   ,   6, 30',
-      '#    N09-Asl | ρ Hya   | η Hya   | δ Hya   | ε Hya   | ζ Hya   | σ Hya',
-      '#    N09-Asl | 43234     | 42799     | 42313     | 43109     | 43813     | 42402',
-      'N09 5 42402 42799    42799 43813   43813 43109    43109 42313     42313 42402',
+      '# N09-Asl   ,   7, 30',
+      '#    N09-Asl | σ Hya   | η Hya   | ε Hya   | δ Hya   | ζ Hya   | θ Hya   | ρ Hya',
+      '#    N09-Asl | 42402     | 42799     | 43109     | 42313     | 43813     | 47431     | 43234',
+      'N09 7 42402 42799  43109 42313 42313 42402  43813 47431  43109 43234 43234 42799  43234 43813',
       "आश्लेषा 09",
       "SCP: Snake Head / Flag* | VM: Wheel (cakra)",
     ],
@@ -276,9 +308,9 @@ function _n28() {
     ],
     [
       '# N13-Has   ,   5, 45',
-      '#    N13-Has | γ Crv   | β Crv   | +δ Crv  | ε Crv   | α Crv',
-      '#    N13-Has | 59803     | 61359     | 60965     | 59316     | 59199',
-      'N13   5 61359 60965   60965 59803   59803 59316    59316 59199    59199 61359',
+      '#    N13-Has | β Crv   | δ Crv   | γ Crv   | ε Crv   | α Crv   | η Crv',
+      '#    N13-Has | 61359     | 60965     | 59803     | 59316     | 59199     | 60425',
+      'N13   5 61359 60965   61359 59803   61359 59316   61359 59199    61359 60425',
       "हस्ता 13",
       "SCP: Hand | VM: Hand (kara)",
     ],
@@ -307,12 +339,10 @@ function _n28() {
       "SCP: Divider, Rope* | VM: Archway (toraṇa)",
     ],
     [
-      '# N17-Anu   ,   4, 52',
-      '#    N17-Anu | +δ Sco  | π Sco   | β Sco   | ω Sco',
-      '#    N17-Anu | 78401     | 78265     | 78220A    | 78933',
-      //'#N17  3 78401 78265 78265 "78220 A" "78220 A" 78933',
-      //'#N17  3 78401 78265 78265 78885 78885 78933',
-      'N17  4 78933 78885   78885 78401    78401 78265   78265 78933',
+      '# N17-Anu   ,   5, 52',
+      '#    N17-Anu | 18 Sco   | ω Sco   | β Sco   | δ Sco   | π Sco',
+      '#    N17-Anu | 80112     | 78933     | 78821     | 78401     | 78265',
+      'N17  5 80112 78933 80112 78821 80112 78401 80112 78265 80112 78933',
       "अनुराधा 17",
       "SCP: Necklace | VM: Three-curves (trivāli)",
     ],
@@ -325,10 +355,10 @@ function _n28() {
       "SCP: Elephant Tusk | VM: Earring (kuṇḍala)",
     ],
     [
-      '# N19-Mul   ,   2, 55',
-      '#    N19-Mul | θ Sco   | +λ Sco',
-      '#    N19-Mul | 86228     | 85927',
-      'N19  1 86228 85927',
+      '# N19-Mul   ,   3, 55',
+      '#    N19-Mul | θ Sco   | ζ² Sco  | η Sco   | λ Sco',
+      '#    N19-Mul | 86228     | 87073     | 86670     | 85927',
+      'N19  3 86228 87073 87073 86670 86670 85927',
       "मूला 19",
       "SCP: Root / Scorpion Tail* | VM: Lion-stride (mṛgapativikrama)",
     ],

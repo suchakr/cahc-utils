@@ -1,0 +1,239 @@
+// Session 2 · BP equinoctial full moon best-case demo
+//
+// Purpose:
+// - Show the strongest visual BP Chapter 21 cases from the equinoctial-full-moon scan.
+// - The audience sees the Sun low in the west and the full Moon low in the east.
+// - This is the visual plausibility step; the exhaustive proof still belongs to the plots/Astropy scan.
+//
+// Source dataset used to choose the dates:
+//   /Users/sunder/projects/cahc/cahc-utils/datasets/full_moons/fm_kv_eqfm_paper_submit_1.tsv
+//
+// Selected "best case" rows nearest the -1700 window:
+// - Vasanta : JD 1102785.22  | date -1693-03-23 | Sun in Kṛttikā sector, Moon in Viśākhā sector
+// - Śarat   : JD 1099683.70  | date -1702-09-24 | Sun in Viśākhā sector, Moon in Kṛttikā sector
+//
+// Tuned scenic overrides:
+// - Vasanta uses JD 1102785.04708 because this produces the desired sunset / moonrise opposition view.
+// - Śarat   uses JD 1099684.04002 for the same reason.
+//
+// Global toggles:
+// - SHOW_VASANTA and SHOW_SARAT control which half of the story is shown.
+// - Both default to true.
+
+var SHOW_VASANTA = true;
+var SHOW_SARAT   = true;
+
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+function JD(x) { if (x) { core.setJDay(x); W(0.05); } return core.getJDay(); }
+var getOI = core.getObjectInfo;
+
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+  CustomObjectMgr.removeCustomObjects();
+}
+
+function label(text, x, y, size, color) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  return id;
+}
+
+function horizonLabel(text, az, alt, size, color) {
+  try {
+    var id = LabelMgr.labelHorizon(text, az, alt, true, size, color);
+    LabelMgr.setLabelShow(id, true);
+    return id;
+  } catch (err) {
+    return null;
+  }
+}
+
+function setupPanorama() {
+  resetScene();
+  core.setGuiVisible(!false);
+  core.setObserverLocation("Kurukshetra, India", "Earth");
+  try { core.setSkyCulture("vedic_25_codex"); } catch (err) {}
+
+  LandscapeMgr.setFlagLandscape(false);
+  try { LandscapeMgr.setFlagGround(true); } catch (err) {}
+  LandscapeMgr.setFlagAtmosphere(false);
+  LandscapeMgr.setFlagFog(false);
+  LandscapeMgr.setFlagCardinalPoints(true);
+
+  // Keep the scene structurally clean.
+  try { StelSkyDrawer.setFlagStars(false); } catch (err) {}
+  try {
+    StelSkyDrawer.setFlagStarMagnitudeLimit(true);
+    StelSkyDrawer.setCustomStarMagnitudeLimit(-5.0);
+  } catch (err) {}
+
+  GridLinesMgr.setFlagAzimuthalGrid(false);
+  GridLinesMgr.setFlagEquatorGrid(false);
+  GridLinesMgr.setFlagEclipticLine(true);
+  GridLinesMgr.setFlagEquatorLine(true);
+  GridLinesMgr.setFlagHorizonLine(true);
+  try { GridLinesMgr.setColorHorizonLine(core.vec3f(1.0, 1.0, 0.0)); } catch (err) {}
+
+  ConstellationMgr.setFlagLines(true);
+  ConstellationMgr.setFlagLabels(true);
+  ConstellationMgr.setFlagBoundaries(false);
+  ConstellationMgr.setFlagArt(false);
+
+  try { SolarSystem.setMoonScale(20); SolarSystem.setFlagMoonScale(true); } catch (err) {}
+  try { SolarSystem.setSunScale(20); SolarSystem.setFlagSunScale(true); } catch (err) {}
+  try { StelSkyDrawer.setFlagSunGlare(false); } catch (err) {}
+  try { SolarSystem.setFlagGlare(false); } catch (err) {}
+
+  StelMovementMgr.setFlagTracking(false);
+
+  // The target presentation view: south centered, huge horizon panorama.
+  core.moveToAltAzi(-30, 180, 3);
+  StelMovementMgr.zoomTo(220, 0);
+}
+
+function introSequence(speed) {
+  setupPanorama();
+  speed = speed || 3;
+  var note;
+  note = label("Demo Note: Turn on the Skyculture/Nakṣatra option in the GUI to show the ecliptic arc and the 27 sectors.", 80, 820, 20, "#FF5555");
+
+  label("BP Chapter 21: Equinoctial Full Moons", 70, 120, 34, "#FFCCCC"); W(speed);
+  label("Watch one spring and one autumn case from the strongest window near 1700 BCE.", 70, 175, 24, "#F8FAFC"); W(speed);
+  label("Equinox Sun with ¼-kṛttikā or ¾-viśākhā.", 70, 210, 24, "#FDE68A"); W(speed);
+  label("Full Moon with ¾-viśākhā or ¼-kṛttikā.", 70, 240, 24, "#FDE68A"); W(speed);
+
+  LabelMgr.setLabelShow(note, false);
+  LabelMgr.deleteLabel(note);
+  W(0.2);
+  note = label("Demo Note: Turn on the Skyculture/Nakṣatra option in the GUI to show the ecliptic arc and the 27 sectors.", 80, 820, 20, "#FF5555");
+  W(2*speed);
+  resetScene();
+}
+
+function chooseOppositionMoment(baseJd, scenicJd) {
+  if (scenicJd !== undefined && scenicJd > 0) {
+    return scenicJd;
+  }
+
+  // Otherwise anchor on the exact JD from the Astropy/TSV row, then derive the best scenic moment nearby.
+  var base = JD(baseJd);
+  W(0.2);
+
+  var sun0 = getOI("Sun");
+  var moon0 = getOI("Moon");
+  var setH  = sun0["set-dhr"];
+  var riseH = moon0["rise-dhr"];
+
+  if (setH === undefined || riseH === undefined || setH < 0 || riseH < 0 || setH > 30 || riseH > 30) {
+    return base + ((setH !== undefined && setH > 0) ? setH / 24 : 18 / 24);
+  }
+
+  var centerMin = ((setH + riseH) / 2) * 60;
+  var bestJd = base + centerMin / (24 * 60);
+  var bestScore = 1e9;
+
+  for (var delta = -45; delta <= 45; delta += 5) {
+    var candJd = base + (centerMin + delta) / (24 * 60);
+    JD(candJd);
+    var sun  = getOI("Sun");
+    var moon = getOI("Moon");
+
+    var score = Math.abs(sun.altitude) + Math.abs(moon.altitude)
+              + 0.02 * (Math.abs(sun.azimuth - 270) + Math.abs(moon.azimuth - 90));
+
+    if (sun.altitude < -3)  score += 2.0;
+    if (moon.altitude < -3) score += 2.0;
+
+    if (score < bestScore) {
+      bestScore = score;
+      bestJd = candJd;
+    }
+  }
+
+  return bestJd;
+}
+
+function showCase(opts) {
+  setupPanorama();
+  var speed = opts.speed || 3;
+
+  var bestJd = chooseOppositionMoment(opts.jd, opts.scenicJd);
+  JD(bestJd);
+  StelMovementMgr.zoomTo(220, speed);
+  core.moveToAltAzi(30, 180, speed);
+  core.moveToAltAzi(-30, 180, speed);
+
+  var sun = getOI("Sun");
+  var moon = getOI("Moon");
+
+  // MarkerMgr.markerHorizon(sun.azimuth, sun.altitude, true, "cross", "#FDBA74", 10);
+  // MarkerMgr.markerHorizon(moon.azimuth, moon.altitude, true, "disk", "#93C5FD", 10);
+
+  for (var iter=0; iter <25; iter++) {
+    var colors = [  "#93C5FD",  "#FDBA74" ]
+    MarkerMgr.markerHorizon(moon.azimuth-10, moon.altitude, true, "disk", colors[iter%2], 10+iter%12,true,100);
+    MarkerMgr.markerHorizon(sun.azimuth+10, sun.altitude, true, "gear", colors[(iter+1)%2], 10+iter%12, true,100);
+    W(.14)
+  }
+
+
+  horizonLabel("Sun", sun.azimuth, sun.altitude + 3, 16, "#FDBA74");
+  horizonLabel("Moon", moon.azimuth, moon.altitude + 3, 16, "#93C5FD");
+
+
+  label(opts.title, 70, 58, 30, "#FFD166"); W(speed);
+  label(opts.subtitle, 70, 95, 18, "#E2E8F0"); W(speed);
+  // label(opts.setupLine, 70, 145, 22, "#F8FAFC"); W(speed);
+  label(opts.sunLine, 70, 182, 24, "#FDBA74"); W(speed);
+  label(opts.moonLine, 70, 220, 24, "#93C5FD"); W(speed);
+  label(opts.linkLine, 70, 258, 24, "#FDE68A"); W(speed);
+
+  // label("The equator is shown to keep the equinox visually explicit.", 70, 930, 20, "#CBD5E1"); W(1.0);
+  // label("The nakṣatra band is a manual overlay in this demo, not a script-controlled layer.", 70, 962, 20, "#CBD5E1"); W(1.0);
+
+  StelMovementMgr.zoomTo(138, speed);
+  W(4*speed);
+}
+
+for ( var iter = 0; iter < 2; iter++ ) {
+  introSequence(3-iter);
+
+  if (SHOW_VASANTA) {
+    showCase({
+      jd: 1102785.22,
+      scenicJd: 1102785.04708,
+      title: "Vasanta Best Case",
+      subtitle: "Kurukṣetra · 1693 BCE · scenic JD 1102785.04708 (row JD 1102785.22)",
+      setupLine: "BP 21 gives an equinoctial full-moon statement at quarter-nakṣatra precision.",
+      sunLine: "Here the Sun is low in the west, at ¼-kṛttikā.",
+      moonLine: "And the full Moon rises opposite, at ¾-viśākhā.",
+      linkLine: "That is the BP east–west axis made visible in one sky frame.",
+      speed: 3 - iter,
+    });
+  }
+
+  if (SHOW_SARAT) {
+    showCase({
+      jd: 1099683.70,
+      scenicJd: 1099684.04002,
+      title: "Śarat Best Case",
+      subtitle: "Kurukṣetra · 1702 BCE · scenic JD 1099684.04002 (row JD 1099683.70)",
+      setupLine: "Six months later, the same equinoctial axis appears in reverse.",
+      sunLine: "Now the Sun is low in the west, at ¾-viśākhā.",
+      moonLine: "And the full Moon rises opposite, at ¼-kṛttikā.",
+      linkLine: "The same BP relation is preserved, but seasonally reversed.",
+      speed: 3 - iter,
+    });
+  }
+
+  resetScene();
+}
+
+label("Brāhmaṇḍa Purāṇa equinoctial full moon visual intuition complete.", 500, 500, 24, "#FF0000"); W(2)
+label("Equinox Sun with ¼-kṛttikā or ¾-viśākhā.", 500, 530, 24, "#FDE68A"); W(2);
+label("Full Moon with ¾-viśākhā or ¼-kṛttikā.", 500, 560, 24, "#FDE68A"); W(2)
+label("Epoch of ~1700 BCE.", 500, 590, 24, "#FDE68A"); W(2)
+
+W(8);
+

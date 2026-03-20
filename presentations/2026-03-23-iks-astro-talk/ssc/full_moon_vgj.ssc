@@ -1,15 +1,29 @@
 
+/*
+ * Stellarium script to identify and log Full Moon events for historical research.
+ * Period: 24 years starting from 1401 BCE (Vedanga Jyotisha era).
+ * 
+ * Logic:
+ * 1. Sets time to Jan 1st, 1401 BCE.
+ * 2. Iterates through 288 potential Full Moons.
+ * 3. Uses dynamic stepping to jump closer to the next Full Moon based on phase.
+ * 4. Logs astronomical data (Date, Phase, Ecliptic Coords, RA/Dec, Size) when phase >= 0.99.
+ */
+
 include("nakshatras.inc");
+
 
 var tk = new TimeKeeper()
 var tk2 = new TimeKeeper()
 
 
-JD( BCE(1401)+.5 )
+JD( BCE(1401)+.5 ) // Start simulation: Noon on Jan 1st, 1401 BCE
 
 var z  = 0
 say(  ['dt' , 'phase' , 'lon', 'lat', 'ra', 'dec', 'sz'].join("\t" ) ) 
+// Main loop: Finds and logs 288 Full Moons (approx. 24 years)
 for ( var z = 0;  z <= 12*24 ;  )  {
+
    //warn( "nid ======== " + z + " :  " +  tk.secElapsed() + " : " + tk2.secElapsed() + " seconds")
    
 
@@ -20,8 +34,9 @@ for ( var z = 0;  z <= 12*24 ;  )  {
 
   oi = getOI("moon")
   ph = oi.phase
+  // Dynamic step: Jump ~14.5 days if New, smaller steps as it approaches Full
   var n = (1 - ph)*14.5
-  if ( ph >= 0.99 ) {
+  if ( ph >= 0.99 ) { // Detected Full Moon (Phase >= 99%)
      z++
      say(  [DT() , ph , oi.elong, oi.elat, oi.ra, oi.dec, oi['size-dd']].join("\t" ) ) 
      W(1)
@@ -40,6 +55,8 @@ for ( var z = 0;  z <= 12*24 ;  )  {
 
 //ddump(core.getObjectInfo('α Sco'))
 
+// n86: Curated list of stars for the 27 Nakshatras 
+// Each sub-array corresponds to one Nakshatra section
 var n86 = [
 ["17 Tau","19 Tau","20 Tau","23 Tau","η Tau","27 Tau",],
 ["γ Tau","δ1 Tau","θ2 Tau","ε Tau","α Tau",],
@@ -68,7 +85,6 @@ var n86 = [
 ["ε Psc",],
 ["γ Ari","β Ari","α Ari",],
 ["31 Ari","35 Ari","41 Ari",],
-
 ]
 
 /*

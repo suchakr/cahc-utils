@@ -98,7 +98,8 @@ MIGRATION_NOTES_MD = """# Migration Notes
 - Copied only the two legacy illustration assets referenced by `constellationsart.fab`
 - `C01`, `C02`, and `C04` remain unlabeled because the legacy folder does not provide active labels for them
 - `i3.json` is emitted as a compact mirror of `index.json` for compatibility with the installed Stellarium 25 package layout
-- `zodiac` and `lunar_system` were not invented in this pass because the legacy source does not contain active Stellarium 25-ready definitions for them
+- Added minimal `zodiac` and `lunar_system` band definitions modeled on Stellarium's bundled `indian` culture
+- The ecliptic band remains 27 equal nakshatra sectors; Abhijit remains visible as a sky object but does not receive its own equal band sector
 """
 
 
@@ -134,6 +135,75 @@ PRONOUNCE_MAP = {
     "Shim": "Shimshumara",
     "Matsya": "Matsya",
     "C03": "Saptarshi",
+}
+
+
+ZODIAC = {
+    "name": {
+        "native": "राशि-चक्रम्",
+        "pronounce": "Rāśi",
+        "english": "Rashi",
+    },
+    "partitions": [12, 30],
+    "extent": 9,
+    "context": "vedic zodiac sign",
+    "link": {"star": 65474, "offset": 180},
+    "names": [
+        {"symbol": "♈", "native": "मेषः", "pronounce": "Meṣa", "english": "Mesha"},
+        {"symbol": "♉", "native": "वृषः", "pronounce": "Vṛṣa", "english": "Vrisha"},
+        {"symbol": "♊", "native": "मिथुनम्", "pronounce": "Mithuna", "english": "Mithuna"},
+        {"symbol": "♋", "native": "कर्कटः", "pronounce": "Karkaṭa", "english": "Karkata"},
+        {"symbol": "♌", "native": "सिंहः", "pronounce": "Siṃha", "english": "Simha"},
+        {"symbol": "♍", "native": "कन्या", "pronounce": "Kanyā", "english": "Kanya"},
+        {"symbol": "♎", "native": "तुला", "pronounce": "Tulā", "english": "Tula"},
+        {"symbol": "♏", "native": "वृश्चिका", "pronounce": "Vṛścikā", "english": "Vrischika"},
+        {"symbol": "♐", "native": "धनुः", "pronounce": "Dhanuḥ", "english": "Dhanu"},
+        {"symbol": "♑", "native": "मकरः", "pronounce": "Makara", "english": "Makara"},
+        {"symbol": "♒", "native": "कुम्भः", "pronounce": "Kumbha", "english": "Kumbha"},
+        {"symbol": "♓", "native": "मीनः", "pronounce": "Mīna", "english": "Mina"},
+    ],
+}
+
+
+LUNAR_SYSTEM = {
+    "name": {
+        "native": "नक्षत्र-चक्रम्",
+        "pronounce": "Nakṣatra",
+        "english": "Nakshatras",
+    },
+    "partitions": [27, 4],
+    "extent": 5,
+    "context": "vedic lunar mansion",
+    "link": {"star": 65474, "offset": 180},
+    "names": [
+        {"symbol": "१", "native": "अश्विनी", "pronounce": "Aśvinī", "english": "Ashvini"},
+        {"symbol": "२", "native": "भरणी", "pronounce": "Bharaṇī", "english": "Bharani"},
+        {"symbol": "३", "native": "कृत्तिका", "pronounce": "Kṛttikā", "english": "Krittika"},
+        {"symbol": "४", "native": "रोहिणी", "pronounce": "Rohiṇī", "english": "Rohini"},
+        {"symbol": "५", "native": "मृगशिरा", "pronounce": "Mṛgaśirā", "english": "Mrigashira"},
+        {"symbol": "६", "native": "आर्द्रा", "pronounce": "Ārdrā", "english": "Ardra"},
+        {"symbol": "७", "native": "पुनर्वसू", "pronounce": "Punarvasū", "english": "Punarvasu"},
+        {"symbol": "८", "native": "पुष्या", "pronounce": "Puṣyā", "english": "Pushya"},
+        {"symbol": "९", "native": "आश्लेषा", "pronounce": "Āśleṣā", "english": "Ashlesha"},
+        {"symbol": "१०", "native": "मघा", "pronounce": "Maghā", "english": "Magha"},
+        {"symbol": "११", "native": "पूर्वफल्गुनी", "pronounce": "Pūrva phālgunī", "english": "Purva Phalguni"},
+        {"symbol": "१२", "native": "उत्तरफल्गुनी", "pronounce": "Uttara phālgunī", "english": "Uttara Phalguni"},
+        {"symbol": "१३", "native": "हस्ता", "pronounce": "Hasta", "english": "Hasta"},
+        {"symbol": "१४", "native": "चित्रा", "pronounce": "Chitrā", "english": "Chitra"},
+        {"symbol": "१५", "native": "स्वाती", "pronounce": "Svātī", "english": "Svati"},
+        {"symbol": "१६", "native": "विशाखे", "pronounce": "Viśākhā", "english": "Vishakha"},
+        {"symbol": "१७", "native": "अनुराधा", "pronounce": "Anurādhā", "english": "Anuradha"},
+        {"symbol": "१८", "native": "ज्येष्ठा", "pronounce": "Jyeṣṭhā", "english": "Jyeshtha"},
+        {"symbol": "१९", "native": "मूला", "pronounce": "Mūlā", "english": "Mula"},
+        {"symbol": "२०", "native": "पूर्वाषाढा", "pronounce": "Pūrvāṣāḍhā", "english": "Purva Ashadha"},
+        {"symbol": "२१", "native": "उत्तराषाढा", "pronounce": "Uttarāṣāḍhā", "english": "Uttara Ashadha"},
+        {"symbol": "२२", "native": "श्रवणा", "pronounce": "Śravaṇā", "english": "Shravana"},
+        {"symbol": "२३", "native": "धनिष्ठा", "pronounce": "Dhaniṣṭhā", "english": "Dhanishtha"},
+        {"symbol": "२४", "native": "शतभिषक्", "pronounce": "Śatabhiṣak", "english": "Shatabhisha"},
+        {"symbol": "२५", "native": "पूर्वभाद्रपदा", "pronounce": "Pūrva bhādrapadā", "english": "Purva Bhadrapada"},
+        {"symbol": "२६", "native": "उत्तरभाद्रपदा", "pronounce": "Uttara bhādrapadā", "english": "Uttara Bhadrapada"},
+        {"symbol": "२७", "native": "रेवती", "pronounce": "Revatī", "english": "Revati"},
+    ],
 }
 
 
@@ -355,6 +425,8 @@ def build_output() -> dict[str, object]:
         "native_lang": "sa",
         "classification": ["traditional"],
         "fallback_to_international_names": False,
+        "zodiac": ZODIAC,
+        "lunar_system": LUNAR_SYSTEM,
         "asterisms_comment": (
             "Port of legacy Stellarium 0.22 vedic_sky_culture. "
             "Active uncommented legacy records were preserved; unnamed legacy "

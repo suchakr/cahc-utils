@@ -47,9 +47,10 @@ This file must remain in the same working `ssc/` folder for any dependent script
 | `sun-transit-precession.ssc` | Session 1 legacy precession bridge | Weak for current talk flow | Cut from active path; retain only historically if needed later | none | The dedicated bridge script was dropped because the Dhruva demo plus the paper/core figures carry the precession-to-dating transition more clearly. |
 | `naks-spot-check.ssc` | Technical contrast only | Weak for live use | Keep only as tech support | `s1-04-tech-nakshatra-spot-check.ssc` | Better for script-structure/runtime contrast than audience projection. |
 | `nakshatra-db.ssc` | Technical contrast only | Moderate as appendix | Keep only as tech support | `s1-04-tech-nakshatra-db.ssc` | Useful to show what Stellarium exposes for a single object. Not main-stage material. |
-| `moon_swing.ssc` | Session 2 Moon candidate | Weak | Likely replace with a more explicit eqfm script | `s2-01-candidate-moon-swing.ssc` | Too generic by itself for the BP equinoctial full-moon story. |
+| `moon_swing.ssc` | Session 2 legacy Moon candidate | Weak | Retain only as historical reference | `s2-01-moon-swing.ssc` | The old file is too thin. A new talk-specific Moonrise swing script now exists for the fundamentals layer before the BP case-study material. |
 | `full_moon_vgj.ssc` | Session 2 Moon candidate | Weak | Likely replace or repurpose | `s2-01-candidate-full-moon-sample.ssc` | More like a sampling/extraction script than a clear tutorial demo. |
 | `a2_moon_analemma.ssc` | Session 2 Moon backup | Moderate | Keep as backup only | `s2-01-backup-moon-analemma.ssc` | May help visualize Moon motion, but is not tightly tied to the eqfm argument. |
+| `s2-01-bp-eqfm-best-case.ssc` | Session 2 BP best-case demo | Strong | Keep and rehearse | none | New talk-specific script using the TSV-selected best-case vasanta and śarat dates near the -1700 window. Complements `s2-01-moon-swing.ssc` by showing the BP east–west axis in a single sky frame. |
 | `a3-puri-demo.ssc` | Session 2 eclipse demo | Partial | Tune or fork to match talk framing | `s2-02-main-eclipse-demo.ssc` | Visually useful, but current script is anchored to Puri while the slide framing discusses PT and Jaipur/NASA JLEX. Needs alignment. |
 
 ## Likely New Scripts Needed
@@ -64,9 +65,8 @@ This file must remain in the same working `ssc/` folder for any dependent script
 The current Moon scripts do not yet look like a clean fit for the deck. Likely new scripts:
 
 - `s2-01-main-eqfm-window.ssc`
-  - show selected BP-supporting epochs only
-  - present Sun/Moon/nakṣatra geometry clearly
-  - avoid raw extraction feel
+  - may still be needed later if a wider good-vs-bad epoch comparison becomes necessary
+  - the new `s2-01-bp-eqfm-best-case.ssc` already covers the strongest positive-case visual illustration
 
 - `s2-01-support-maghadi-dial.ssc`
   - optional, only if a Stellarium-side dial demonstration proves worthwhile

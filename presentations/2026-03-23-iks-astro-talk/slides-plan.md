@@ -382,7 +382,8 @@ Primary assets:
 
 Primary scripts:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/moon_swing.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-01-moon-swing.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-01-bp-eqfm-best-case.ssc`
 
 Backup scripts:
 

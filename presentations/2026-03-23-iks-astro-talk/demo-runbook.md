@@ -48,8 +48,8 @@ These are the scripts from the original `stel_scripts` set that appear most usab
 - `nakshatra-db.ssc`
   - more database/inspection oriented than audience-friendly, but useful as support
 
-- `moon_swing.ssc`
-  - plausible first candidate for Moon section
+- `s2-01-moon-swing.ssc`
+  - preferred Moon-fundamentals demo for Session 2
 
 - `a2_moon_analemma.ssc`
   - useful visual Moon-motion support, but may be less directly tied to the equinoctial full-moon argument
@@ -223,9 +223,10 @@ Talking Point:
 
 ### 1. Precession, Moon, Equinoctial Full Moon, and Astropy Support
 
-Primary Candidate:
+Primary:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/moon_swing.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-01-moon-swing.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-01-bp-eqfm-best-case.ssc`
 
 Other Candidates to Evaluate:
 
@@ -247,6 +248,8 @@ Optional Enhancement:
 
 Talking Point:
 
+- first, establish the Moon's fast horizon swing against the background stars
+- then show one BP best-case sky frame for vasanta and one for śarat
 - precession plus textual longitude constraints turn the Moon section into a dating problem
 - Stellarium shows convincing cases; Astropy supports exhaustive search
 - if useful, show one compact comparison:

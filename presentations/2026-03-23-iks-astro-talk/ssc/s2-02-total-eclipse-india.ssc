@@ -1,0 +1,187 @@
+// Session 2 · Total solar eclipse in India
+//
+// Purpose:
+// - Show one dramatic total solar eclipse case over India.
+// - Then show that the same eclipse looks different from another location.
+// - This is the eclipse-intuition / wow script, distinct from the PT-sequence script.
+//
+// Story progression:
+// 1. Start with a total solar eclipse at Puri on 16-Feb-1980.
+// 2. Then shift west to Mumbai for the same eclipse date.
+// 3. The audience sees that eclipse appearance depends on location.
+
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+  CustomObjectMgr.removeCustomObjects();
+}
+
+// Memo:
+// This reveal-aware label helper is working well in s2-02.
+// If it holds up in rehearsal, consider propagating it manually to other
+// narration-driven scripts such as s2-01-bp-eqfm-best-case.ssc.
+function label(text, x, y, size, color, waitSec) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  if (waitSec === undefined) waitSec = 1.1;
+  if (waitSec > 0) W(waitSec);
+  return id;
+}
+
+function setupSolarEclipseView(siteName) {
+  resetScene();
+  core.setGuiVisible(false);
+  core.setObserverLocation(siteName, "Earth");
+
+  LandscapeMgr.setFlagLandscape(true);
+  try { LandscapeMgr.setFlagGround(true); } catch (err) {}
+  LandscapeMgr.setFlagAtmosphere(true);
+  LandscapeMgr.setFlagFog(false);
+  LandscapeMgr.setFlagCardinalPoints(true);
+
+  GridLinesMgr.setFlagAzimuthalGrid(false);
+  GridLinesMgr.setFlagEquatorGrid(false);
+  GridLinesMgr.setFlagEclipticLine(false);
+  GridLinesMgr.setFlagEquatorLine(false);
+  GridLinesMgr.setFlagHorizonLine(false);
+
+  ConstellationMgr.setFlagLines(false);
+  ConstellationMgr.setFlagLabels(false);
+  ConstellationMgr.setFlagBoundaries(false);
+  ConstellationMgr.setFlagArt(false);
+
+  // Keep stars on: they help the audience notice the sky darkening during maximum eclipse.
+  try { StelSkyDrawer.setFlagStars(true); } catch (err) {}
+  try { SolarSystem.setFlagScaleSun(true); SolarSystem.setSunScale(12); } catch (err) {}
+  try { StelSkyDrawer.setFlagSunGlare(false); } catch (err) {}
+  try { SolarSystem.setFlagGlare(false); } catch (err) {}
+
+  core.selectObjectByName("Sun", true);
+  StelMovementMgr.setFlagTracking(true);
+  // Start wide, then zoom in deliberately later.
+  StelMovementMgr.zoomTo(120.0, 3);
+  W(1);
+}
+
+function showIntro() {
+  setupSolarEclipseView("Puri, India");
+  core.setJDay(2444285.86459);
+  W(0.8);
+  label("A Total Solar Eclipse Over India", 70, 140, 36, "#FFCCCC", 1.6);
+  label("16 February 1980", 70, 205, 26, "#FDE68A", 1.2);
+  label("First: Puri, where the eclipse turns total.", 70, 245, 24, "#F8FAFC", 6);
+}
+
+function runUntilJd(targetJd, timeRate) {
+  core.setTimeRate(timeRate);
+  while (core.getJDay() < targetJd) {
+    W(0.05);
+  }
+  core.setTimeRate(0);
+}
+
+function runScene(opts) {
+  setupSolarEclipseView(opts.site);
+
+  label(opts.title, 70, 70, 30, "#FFD166", 1.4);
+  label(opts.subtitle, 70, 108, 20, "#E2E8F0", 2.5);
+
+  label(opts.line1, 70, 165, 24, "#F8FAFC", 1.2);
+  label(opts.line2, 70, 203, 24, "#FDE68A", 1.2);
+
+  core.setJDay(opts.startJd);
+  W(1.2);
+
+  // Establish the broader sky first, then move into the eclipse view.
+  StelMovementMgr.zoomTo(120.0, 5); W(2.2);
+  StelMovementMgr.zoomTo(2.0, 5); W(2.2);
+
+  // Move toward maximum eclipse at a calm pace using the tuned peak JD.
+  runUntilJd(opts.peakJd, opts.timeRate);
+  W(0.4);
+
+  // Around maximum eclipse, pause deliberately and widen the view briefly so faint stars can emerge.
+  label(opts.maxLine || "Pause near maximum eclipse.", 70, 830, 20, "#CBD5E1", 0.8);
+  if (opts.maxLocalTime) {
+    label("Local time: " + opts.maxLocalTime, 70, 865, 20, "#FDE68A", 0.8);
+  }
+  if (opts.atmosphereOffAtMax) {
+    LandscapeMgr.setFlagAtmosphere(false);
+    W(0.8);
+  }
+  StelMovementMgr.zoomTo(opts.maxPhaseWideFov, 3.0);
+  W(opts.maxPhaseHoldSeconds);
+  StelMovementMgr.zoomTo(2.0, 3.0);
+  W(2.6);
+  if (opts.atmosphereOffAtMax) {
+    LandscapeMgr.setFlagAtmosphere(true);
+    W(0.8);
+  }
+
+  // Continue a short way past the peak and let the audience see the event resolve.
+  runUntilJd(opts.afterJd, opts.timeRate);
+  W(1.0);
+
+  if (opts.endLine) {
+    label(opts.endLine, 70, 905, 22, "#A7F3D0", 4);
+  }
+  W(5.0)
+}
+
+function recapPeak(siteName, peakJd, lineText, lineY) {
+  resetScene();
+  setupSolarEclipseView(siteName);
+  core.setJDay(peakJd);
+  W(0.8);
+  label(lineText, 70, lineY, 24, "#FDE68A", 2.2);
+}
+
+showIntro();
+
+runScene({
+  site: "Puri, India",
+  title: "Puri — Total Solar Eclipse",
+  subtitle: "16-Feb-1980 · local time 14:15",
+  line1: "The Moon will shortly grasp the Sun.",
+  line2: "Resulting in a dramatic total-eclipse view.",
+  startJd: 2444285.86459,
+  timeRate: 400,
+  peakJd: 2444285.93334,
+  maxLine: "At Puri, we pause at totality.",
+  maxLocalTime: "15:54",
+  atmosphereOffAtMax: true,
+  maxPhaseWideFov: 60,
+  maxPhaseHoldSeconds: 10,
+  afterJd: 2444285.98097,
+  endLine: "At Puri, the eclipse reaches totality."
+});
+
+runScene({
+  site: "Mumbai, India",
+  title: "Mumbai — Partial Solar Eclipse",
+  subtitle: "16-Feb-1980 · local time 14:15 · same eclipse",
+  line1: "Now move west to Mumbai on the same date.",
+  line2: "The eclipse is still striking, but no longer total.",
+  startJd: 2444285.86459,
+  timeRate: 400,
+  peakJd: 2444285.92362,
+  maxLine: "At Mumbai, we pause at maximum eclipse.",
+  maxLocalTime: "15:40",
+  maxPhaseWideFov: 72,
+  maxPhaseHoldSeconds: 4,
+  afterJd: 2444285.97762,
+  endLine: "The same eclipse looks different because the observer has moved."
+});
+
+resetScene();
+recapPeak("Mumbai, India", 2444285.92362, "Mumbai: the eclipse is deep, but not total.", 120);
+recapPeak("Puri, India", 2444285.93334, "Puri: the same eclipse becomes total.", 120);
+resetScene();
+label("One eclipse. Two locations. Different experiences.", 70, 84, 24, "#FFD166", 1.4);
+label("This is what the presentation has shown.", 70, 120, 22, "#F8FAFC", 1.4);
+// label("One eclipse. Two locations. Different experiences.", 70, 684, 24, "#FFD166", 1.4);
+// label("This is what the presentation has shown.", 70, 720, 22, "#F8FAFC", 1.4);
+label("Venus at 63º altitude - Gift of total solar eclipse", 740, 170, 18, "#FFFF00", 1.4);
+label("Mercury at 41º altitude - another gift",  770, 335, 18, "#FFFF00", 1.4)
+label("Demo complete.", 670, 700, 30, "#A7F3D0", 8);

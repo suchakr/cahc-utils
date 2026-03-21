@@ -61,7 +61,7 @@ LandscapeMgr.setFlagCardinalPoints(true);
 
 GridLinesMgr.setFlagAzimuthalGrid(true);
 try { GridLinesMgr.setColorAzimuthalGrid(core.vec3f(0.12, 0.12, 0.12)); } catch (err) {}
-GridLinesMgr.setFlagEquatorGrid(false);
+GridLinesMgr.setFlagEquatorGrid(true);
 GridLinesMgr.setFlagEclipticLine(false);
 GridLinesMgr.setFlagEquatorLine(false);
 GridLinesMgr.setFlagHorizonLine(true);
@@ -71,7 +71,7 @@ ConstellationMgr.setFlagLines(true);
 ConstellationMgr.setFlagLabels(true);
 ConstellationMgr.setFlagBoundaries(false);
 ConstellationMgr.setFlagArt(false);
-try { core.setSkyCulture("vedic_25_codex"); } catch (err) {}
+try { core.setSkyCulture("vedic_25_codex"); } catch (err) { core.setSkyCulture("indian"); } 
 
 // try {
 //   StelSkyDrawer.setFlagStarMagnitudeLimit(true);
@@ -93,15 +93,25 @@ W(1);
 // Intro sequence
 label("The Moon's Monthly Swing", 70, 150, 36, "#FFCCCC");
 W(2);
-label("30 successive moonrises.", 70, 220, 24, "#F8FAFC");
+label("30+ successive moonrises.", 70, 220, 24, "#F8FAFC");
 W(2);
 label("Watch how the Moon shifts against the background star / nakṣatra field.", 70, 260, 24, "#F8FAFC");
-W(4);
+W(2); 
+label( "Demo Note: Turn the skyculture's nakshatra labels on to see the background stars.", 250, 810, 22, "#FF0000");
+W(10);
+
 
 LabelMgr.deleteAllLabels();
 var startJd = JD();
 var illums = []
 var parva_count = 0;
+var earlyNarration1 = null;
+var earlyNarration2 = null;
+var earlyNarration1Shown = false;
+var earlyNarration2Shown = false;
+var narration1Shown = false;
+var narration2Shown = false;
+var narration3Shown = false;
 
 function illums_dir_changed() {
   if (illums.length < 2) return 0;
@@ -174,10 +184,43 @@ for (var day = 0; day < numRises; day++) {
   horizonLabel("" + (day + 1)+ ":" + Math.round(100*normIllum), az, markalt_scale * (alt/3)+1, labelSize, labelColor);
   core.debug("" + (day + 1)+ ":" + Math.round(100*normIllum) + " --  " + Math.round(100*illum) + " -- " + info.illumination);
 
+  if (!earlyNarration1Shown && day >= 2) {
+    earlyNarration1 = label("The Moon returns to nearly the same nakṣatra in about 27.3 days.", 330, 70, 22, "#F8FAFC");
+    earlyNarration1Shown = true;
+  }
+  if (!earlyNarration2Shown && day >= 7) {
+    earlyNarration2 = label("It returns to nearly the same phase in about 29.5 days.", 390, 104, 22, "#FDE68A");
+    earlyNarration2Shown = true;
+  }
+  if (!narration1Shown && day >= 14) {
+    if (earlyNarration1 !== null) {
+      LabelMgr.setLabelShow(earlyNarration1, false);
+      LabelMgr.deleteLabel(earlyNarration1);
+      earlyNarration1 = null;
+    }
+    if (earlyNarration2 !== null) {
+      LabelMgr.setLabelShow(earlyNarration2, false);
+      LabelMgr.deleteLabel(earlyNarration2);
+      earlyNarration2 = null;
+    }
+    label("Moonrise points swing about ±30° around the equator in this period.", 420, 70, 22, "#F8FAFC");
+    narration1Shown = true;
+  }
+  if (!narration2Shown && day >= 20) {
+    label("That swing changes from about ±30° to ±20° and back over an 18-year cycle.", 300, 104, 22, "#FDE68A");
+    narration2Shown = true;
+  }
+  if (!narration3Shown && day >= 28) {
+    label("This differs from the Sun, whose swing stays near ±23°.", 470, 138, 22, "#FDBA74");
+    narration3Shown = true;
+  }
 
   W(0.7);
 }
 
-label("The Moon's rising point shifts rapidly from day to day.", 70, 1010, 20, "#F8FAFC");
-label("That swing against the background stars is the visual basis for Moon-and-nakṣatra statements.", 70, 1045, 20, "#F8FAFC");
-W(5);
+label("The Moon's horizon swing is larger and more variable than the Sun's.", 400, 810, 22, "#F8FAFC");
+W(2);
+label("That shifting relation to the background stars is why Moon-based textual statements matter.", 250, 850, 22, "#FDE68A");
+W(2);
+label("Demo complete.", 640, 890, 30, "#A7F3D0");
+W(6);

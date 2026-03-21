@@ -52,7 +52,7 @@ function horizonLabel(text, az, alt, size, color) {
 function setupPanorama() {
   resetScene();
   core.setGuiVisible(!false);
-  core.setObserverLocation("Kurukshetra, India", "Earth");
+  core.setObserverLocation(76.836944, 29.965833, 0, "Kurukshetra, India", "Earth");
   try { core.setSkyCulture("vedic_25_codex"); } catch (err) {}
 
   LandscapeMgr.setFlagLandscape(false);
@@ -109,6 +109,19 @@ function introSequence(speed) {
   note = label("Demo Note: Turn on the Skyculture/Nakṣatra option in the GUI to show the ecliptic arc and the 27 sectors.", 80, 820, 20, "#FF5555");
   W(2*speed);
   resetScene();
+}
+
+function setStarLimit(enabled, limit) {
+  try { StelSkyDrawer.setFlagStars(enabled); } catch (err) {}
+  try {
+    StelSkyDrawer.setFlagStarMagnitudeLimit(enabled);
+    if (limit !== undefined) StelSkyDrawer.setCustomStarMagnitudeLimit(limit);
+  } catch (err2) {}
+}
+
+function setBodyScale(scale) {
+  try { SolarSystem.setMoonScale(scale); SolarSystem.setFlagMoonScale(true); } catch (err) {}
+  try { SolarSystem.setSunScale(scale); SolarSystem.setFlagSunScale(true); } catch (err2) {}
 }
 
 function chooseOppositionMoment(baseJd, scenicJd) {
@@ -194,6 +207,30 @@ function showCase(opts) {
 
   StelMovementMgr.zoomTo(138, speed);
   W(4*speed);
+
+  // Then calmly inspect each side of the BP relation in turn.
+  setStarLimit(true, 1.0);
+  setBodyScale(5);
+
+  core.selectObjectByName("Sun", true);
+  StelMovementMgr.setFlagTracking(true);
+  StelMovementMgr.zoomTo(90, speed);
+  label(opts.sunFocusLine, 70, 860, 20, "#FDBA74"); W(4*speed);
+
+  core.selectObjectByName("Moon", true);
+  StelMovementMgr.setFlagTracking(true);
+  StelMovementMgr.zoomTo(90, speed);
+  label(opts.moonFocusLine, 70, 895, 20, "#93C5FD"); W(4*speed);
+
+  // Return to the wide opposition frame.
+  setStarLimit(false);
+  setBodyScale(20);
+  StelMovementMgr.setFlagTracking(false);
+  setupPanorama();
+  JD(bestJd);
+  StelMovementMgr.zoomTo(138, speed);
+  core.moveToAltAzi(-30, 180, speed);
+  W(3*speed);
 }
 
 for ( var iter = 0; iter < 2; iter++ ) {
@@ -209,6 +246,8 @@ for ( var iter = 0; iter < 2; iter++ ) {
       sunLine: "Here the Sun is low in the west, at ¼-kṛttikā.",
       moonLine: "And the full Moon rises opposite, at ¾-viśākhā.",
       linkLine: "That is the BP east–west axis made visible in one sky frame.",
+      sunFocusLine: "Close on the Sun: the fractional Kṛttikā sector is the key spring marker.",
+      moonFocusLine: "Close on the Moon: the opposite Viśākhā fraction completes the BP relation.",
       speed: 3 - iter,
     });
   }
@@ -223,6 +262,8 @@ for ( var iter = 0; iter < 2; iter++ ) {
       sunLine: "Now the Sun is low in the west, at ¾-viśākhā.",
       moonLine: "And the full Moon rises opposite, at ¼-kṛttikā.",
       linkLine: "The same BP relation is preserved, but seasonally reversed.",
+      sunFocusLine: "Close on the Sun: the Viśākhā fraction now carries the autumn relation.",
+      moonFocusLine: "Close on the Moon: the opposite Kṛttikā fraction completes the reversal.",
       speed: 3 - iter,
     });
   }
@@ -230,10 +271,7 @@ for ( var iter = 0; iter < 2; iter++ ) {
   resetScene();
 }
 
-label("Brāhmaṇḍa Purāṇa equinoctial full moon visual intuition complete.", 500, 500, 24, "#FF0000"); W(2)
-label("Equinox Sun with ¼-kṛttikā or ¾-viśākhā.", 500, 530, 24, "#FDE68A"); W(2);
-label("Full Moon with ¾-viśākhā or ¼-kṛttikā.", 500, 560, 24, "#FDE68A"); W(2)
-label("Epoch of ~1700 BCE.", 500, 590, 24, "#FDE68A"); W(2)
-
-W(8);
-
+label("Brāhmaṇḍa Purāṇa equinoctial full moon visual intuition complete.", 440, 500, 24, "#FFD166"); W(2);
+label("The Sun and Moon can be inspected separately, but the relation matters most.", 360, 534, 22, "#F8FAFC"); W(2);
+label("Near 1700 BCE, the BP seasonal fractions are visually plausible in the sky.", 380, 568, 22, "#FDE68A"); W(2);
+label("Demo complete.", 620, 608, 24, "#A7F3D0"); W(8);

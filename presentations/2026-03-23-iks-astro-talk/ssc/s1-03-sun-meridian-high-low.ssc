@@ -26,7 +26,7 @@ function label(text, x, y, size, color) {
 }
 
 var epochRuns = [
-  { year_name: "1350 BCE", year_num: 1350, arr: MERIDIANS_BCE_1350 },
+  // { year_name: "1350 BCE", year_num: 1350, arr: MERIDIANS_BCE_1350 },
   { year_name: "1800 BCE", year_num: 1800, arr: MERIDIANS_BCE_1800 },
   { year_name: "2000 CE",  year_num: -2000, arr: MERIDIANS_CE_2000 }
 ];
@@ -93,11 +93,11 @@ for (var e = 0; e < epochRuns.length; e++) {
     // Intro title sequence
     label("Translating the Meridian: High and Low Sun (" + year_label + ")", 70, 140, 36, "#FFAAAA");
     label("Ujjain: watch the noon Sun reach its highest and lowest peaks.", 70, 210, 30, "#FFFFFF");
-    label("Demo setup: Changing the viewing altitude... starts in 15 seconds.", 70, 790, 25, "#FFFFFF");
+    // label("Demo setup: Changing the viewing altitude... starts in 15 seconds.", 70, 790, 25, "#FFFFFF");
     
     // Prime the sky to the exact meridian time on the first day
     JD(MERIDIANS[0]);
-    W(15*2);
+    W(15/2);
     
     resetScene();
     label("Meridian High/Low Shift Through the Year " + year_label, 70, 50, 30, "#FFD166");
@@ -201,10 +201,11 @@ for (var e = 0; e < epochRuns.length; e++) {
         label(kind, xPos, yPos, 14, color);
       }
     }
-    
-    label("Together with the horizon-swing demo, this shows why Dakṣiṇāyana and Uttarāyaṇa are more than horizon labels.", 70, 1025, 20, "#FFFFFF");
-    label("They mathematically define the Sun's shifting meridian height over the year.", 70, 1065, 20, "#AABBFF");
-    W(10);
   }
+  label("At noon, the Sun's height changes strongly across the year.", 480, 760, 24, "#FFFFFF");
+  W(3);
+  label("It is high at Uttarāyaṇa start and low at Dakṣiṇāyana start.", 480, 805, 24, "#FFD166");
+  W(3);
 }
-W(15);
+label("Demo complete.", 700, 860, 24, "#AABBFF");
+W(8);

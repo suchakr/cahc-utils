@@ -50,6 +50,8 @@ ConstellationMgr.setFlagLines(true);
 ConstellationMgr.setFlagLabels(false);
 ConstellationMgr.setFlagArt(false);
 
+try { core.setSkyCulture("vedic_25_codex"); } catch (err) { core.setSkyCulture("indian"); } 
+
 
 // Switch to equatorial mount: view anchors to RA/Dec, ending sky-spin when JD advances.
 StelMovementMgr.setFlagTracking(false);
@@ -81,7 +83,7 @@ W(1);
 // ── Main epoch sweep ─────────────────────────────────────────────────────────
 var START    = -2850;  // earliest epoch
 var END      =  2200;  // final epoch
-var STEP     =  500;  // years between labelled frames
+var STEP     =  200;  // years between labelled frames
 var SUBSTEPS =     4;  // sub-steps for smooth inter-epoch transition
 var PAUSE    =   1.5;  // hold time at each labelled epoch (seconds)
 
@@ -162,4 +164,18 @@ label("Modern sky: Polaris is ~1° from the pole  —  Thuban is now ~40° away.
       80, 72, 20, "#FFD166");
 label("The identity of the pole star is historical, not timeless.",
       80, 106, 20, "#AAFFAA");
-W(60);
+W(2);
+label("Abhaya Dhruva is in the tail of Śiśumāra, as described in Viṣṇu Purāṇa.",
+      80, 170, 20, "#FFFFFF");
+W(2);
+label("It is the ancient pole star near 3000 BCE.",
+      80, 206, 20, "#FFFFFF");
+W(2);
+label("Modern Dhruva, the pole star, lies in the tail of Matsya from about 500 CE onward.",
+      80, 260, 20, "#FFD166");
+W(2);
+label("Between these periods, the pole position was not occupied by any bright star.",
+      80, 296, 20, "#AAFFAA");
+W(2);
+label("Demo complete.", 1180, 900, 24, "#AABBFF");
+W(50);

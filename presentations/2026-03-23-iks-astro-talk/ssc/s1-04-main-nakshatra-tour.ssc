@@ -43,6 +43,9 @@ GridLinesMgr.setFlagEclipticLine(true);
 GridLinesMgr.setColorEclipticLine(core.vec3f(1.0, 0.0, 0.0));
 
 core.setSkyCulture("vedic_25_codex")
+var zoneAyanamsa = 23.5;
+var zoneSector = 360 / 27;
+var zoneFov = 35;
 StelMovementMgr.zoomTo(220, 2); core.wait(1);
 core.moveToRaDec(90, 120, 1);  core.wait(1);
 var id = LabelMgr.labelScreen("A Tour of the 27 Nakṣatras", 220, 80, false, 30, "#F8FAFC");
@@ -53,7 +56,7 @@ var id3 = LabelMgr.labelScreen("Demo Note: Turn on the Skyculture/Nakshatra opti
 LabelMgr.setLabelShow(id3, true); core.wait(3);
 LabelMgr.setLabelShow(id3, false); LabelMgr.deleteLabel(id3); core.wait(.3);
 id3 = LabelMgr.labelScreen("Demo Note: Turn on the Skyculture/Nakshatra option in the GUI to see the ecliptic arc and the 27 sectors.", 120, 820, false,20, "#FF0000");
-LabelMgr.setLabelShow(id3, true); core.wait(3);
+LabelMgr.setLabelShow(id3, true); core.wait(10);
 
 
 LabelMgr.setLabelShow(id, false); LabelMgr.deleteLabel(id); core.wait(.3);
@@ -72,7 +75,8 @@ for (n in n28) {
       }
     )
 
-    var coords = eclipticToEquatorial(23.5+ 13.33 * (n+1) - 13.33/2, 0);
+    var zoneLon = zoneAyanamsa + (zoneSector * Number(n)) + zoneSector / 2;
+    var coords = eclipticToEquatorial(zoneLon, 0);
 
     var cra = 0;
     var cdec = 0;
@@ -113,9 +117,19 @@ for (n in n28) {
       core.wait(1)
       ConstellationMgr.setConstellationLineThickness(4); core.wait(.3);
       core.wait(4);
-      // core.moveToRaDec(coords.ra, coords.dec, 1);
-      // StelMovementMgr.zoomTo(35, 2);
-      // core.wait(2);
+
+      if (naks.sanskrit_name.indexOf("अभिजित") === -1) {
+        var idZone = LabelMgr.labelScreen("Now shift from the visible group to the ecliptic sector.", 360, 640, false, 18, "#CBD5E1");
+        LabelMgr.setLabelShow(idZone, true);
+        core.wait(.8);
+        core.moveToRaDec(coords.ra, coords.dec, 1.5);
+        StelMovementMgr.zoomTo(zoneFov, 2.0);
+        core.wait(2.5);
+        LabelMgr.setLabelShow(idZone, false);
+        LabelMgr.deleteLabel(idZone);
+        core.wait(0.2);
+      }
+
       StelMovementMgr.zoomTo(80, 1.5);
       core.wait(.5); 
       ConstellationMgr.setConstellationLineThickness(1); core.wait(0.1) 
@@ -143,10 +157,13 @@ core.wait(1);
 core.moveToRaDec(90, 120, 1)
 var end1 = LabelMgr.labelScreen("The nakṣatras can be seen as visible star-groups and ecliptic arc spans.", 300, 60, false, 30, "#F8FAFC");
 LabelMgr.setLabelShow(end1, true);
-// core.wait(1);
-// var end2 = LabelMgr.labelScreen("That visual-to-analytical bridge is why they matter in this tutorial.", 330, 100, false, 30, "#CBD5E1");
-// LabelMgr.setLabelShow(end2, true);
-core.wait(20); 
+core.wait(2);
+var end2 = LabelMgr.labelScreen("That visible-to-zonal shift is why they matter in this tutorial.", 320, 100, false, 24, "#CBD5E1");
+LabelMgr.setLabelShow(end2, true);
+core.wait(2);
+var end3 = LabelMgr.labelScreen("Demo complete.", 630, 600, false, 30, "#A7F3D0");
+LabelMgr.setLabelShow(end3, true);
+core.wait(16); 
 
 
 function angleBetween(ra1, dec1, ra2, dec2) {

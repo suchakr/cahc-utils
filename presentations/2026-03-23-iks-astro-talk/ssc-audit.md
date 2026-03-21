@@ -51,7 +51,9 @@ This file must remain in the same working `ssc/` folder for any dependent script
 | `full_moon_vgj.ssc` | Session 2 Moon candidate | Weak | Likely replace or repurpose | `s2-01-candidate-full-moon-sample.ssc` | More like a sampling/extraction script than a clear tutorial demo. |
 | `a2_moon_analemma.ssc` | Session 2 Moon backup | Moderate | Keep as backup only | `s2-01-backup-moon-analemma.ssc` | May help visualize Moon motion, but is not tightly tied to the eqfm argument. |
 | `s2-01-bp-eqfm-best-case.ssc` | Session 2 BP best-case demo | Strong | Keep and rehearse | none | New talk-specific script using the TSV-selected best-case vasanta and śarat dates near the -1700 window. Complements `s2-01-moon-swing.ssc` by showing the BP east–west axis in a single sky frame. |
-| `a3-puri-demo.ssc` | Session 2 eclipse demo | Partial | Tune or fork to match talk framing | `s2-02-main-eclipse-demo.ssc` | Visually useful, but current script is anchored to Puri while the slide framing discusses PT and Jaipur/NASA JLEX. Needs alignment. |
+| `a3-puri-demo.ssc` | Session 2 eclipse legacy source | Partial | Retain as historical source | none | Useful as seed material, but superseded by the cleaner talk-specific India-location demo. |
+| `s2-02-total-eclipse-india.ssc` | Session 2 eclipse wow/tutorial demo | Strong | Keep and rehearse | none | New talk-specific script: same 16-Feb-1980 eclipse, total at Puri and partial at Mumbai, with modern narration/stable end-state discipline. |
+| `s2-03-pt-eclipse-jaipur.ssc` | Session 2 PT eclipse-sequence illustration | Strong | Keep and rehearse | none | New Jaipur-fixed sequence demo using selected events from two runs discussed by R. N. Iyengar using NASA eclipse data. Illustrates the pattern; the PT table/JLEX carry the full chain. |
 
 ## Likely New Scripts Needed
 
@@ -71,8 +73,7 @@ The current Moon scripts do not yet look like a clean fit for the deck. Likely n
 - `s2-01-support-maghadi-dial.ssc`
   - optional, only if a Stellarium-side dial demonstration proves worthwhile
 
-- `s2-02-main-eclipse-demo.ssc`
-  - either tune `a3-puri-demo.ssc` or fork it into a talk-specific version matching the slide narrative
+- no further PT eclipse script is currently required unless rehearsal shows pacing or visibility problems
 
 ## Recommended Tuning Order
 
@@ -81,8 +82,8 @@ The current Moon scripts do not yet look like a clean fit for the deck. Likely n
 3. rehearse `s1-03-main-sun-swing.ssc`
 4. rehearse `s1-04-main-nakshatra-tour.ssc`
 5. no dedicated Session 1 precession bridge script at present
-6. `a3-puri-demo.ssc`
-7. Session 2 Moon script decision: tune existing vs create new
+6. rehearse `s2-02-total-eclipse-india.ssc`
+7. rehearse `s2-03-pt-eclipse-jaipur.ssc`
 
 ## Immediate Notes
 

@@ -261,7 +261,11 @@ Talking Point:
 
 Primary:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/a3-puri-demo.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-02-total-eclipse-india.ssc`
+
+Support / PT sequence script:
+
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-03-pt-eclipse-jaipur.ssc`
 
 Visual Anchors:
 
@@ -271,7 +275,10 @@ Visual Anchors:
 
 Talking Point:
 
-- modern searchable resources can test inherited claims about eclipse periodicity
+- first show that eclipse appearance changes with location
+- then use a Jaipur-sequence script to illustrate two representative PT runs
+- keep the source credit brief: PT -> R. N. Iyengar -> NASA/JLEX
+- use the table + JLEX to carry the exhaustive argument
 
 ### 3. Meru
 

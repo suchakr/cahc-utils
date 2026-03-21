@@ -391,7 +391,9 @@ AI tools speed up writing the code — not running it. Computation time is physi
 
 ### Stellarium support
 
-- Script: `ssc/a3-puri-demo.ssc`
+- Script path now splits in two:
+  - `ssc/s2-02-total-eclipse-india.ssc` for the visual/location demo
+  - `ssc/s2-03-pt-eclipse-jaipur.ssc` for the PT sequence support
 
 </div>
 </div>

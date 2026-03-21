@@ -421,7 +421,11 @@ Primary assets:
 
 Primary scripts:
 
-- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/a3-puri-demo.ssc`
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-02-total-eclipse-india.ssc`
+
+Follow-up sequence script:
+
+- `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/s2-03-pt-eclipse-jaipur.ssc`
 
 Backup:
 

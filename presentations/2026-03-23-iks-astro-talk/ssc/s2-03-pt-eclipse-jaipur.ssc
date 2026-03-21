@@ -1,0 +1,243 @@
+// Session 2 · PT eclipse runs at Jaipur
+//
+// Purpose:
+// - Show representative eclipses from two Jaipur-visible runs discussed in
+//   R. N. Iyengar's Parāśara Tantra study, using NASA eclipse data.
+// - This is a sequence-illustration script, not a spectacle script.
+//
+// Story progression:
+// 1. Fix the observing site at Jaipur.
+// 2. Briefly credit the source chain: text -> Iyengar -> NASA data.
+// 3. Show selected eclipses from two representative runs.
+// 4. Close by reminding the audience that the table/JLEX carries the full chain.
+
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+var currentDividerLabel = null;
+
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+  CustomObjectMgr.removeCustomObjects();
+}
+
+function label(text, x, y, size, color, waitSec) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  if (waitSec === undefined) waitSec = 1.1;
+  if (waitSec > 0) W(waitSec);
+  return id;
+}
+
+function restoreZenithView(speed) {
+  if (speed === undefined) speed = 0;
+  try { core.setMountMode("azimuthal"); } catch (err) {}
+  try { StelMovementMgr.setFlagTracking(false); } catch (err2) {}
+  core.moveToAltAzi(89.5, 90, speed);
+  StelMovementMgr.zoomTo(202.0, speed);
+}
+
+function setupJaipurMoonView() {
+  resetScene();
+  core.setGuiVisible(false);
+  core.setObserverLocation("Jaipur, India", "Earth");
+  try { core.setSkyCulture("vedic_25_codex"); } catch (err) {
+    try { core.setSkyCulture("indian"); } catch (err2) {}
+  }
+
+  LandscapeMgr.setFlagLandscape(true);
+  try { LandscapeMgr.setFlagGround(true); } catch (err) {}
+  LandscapeMgr.setFlagAtmosphere(true);
+  LandscapeMgr.setFlagFog(false);
+  LandscapeMgr.setFlagCardinalPoints(true);
+
+  GridLinesMgr.setFlagAzimuthalGrid(false);
+  GridLinesMgr.setFlagEquatorGrid(false);
+  GridLinesMgr.setFlagEclipticLine(false);
+  GridLinesMgr.setFlagEquatorLine(false);
+  GridLinesMgr.setFlagHorizonLine(false);
+
+  ConstellationMgr.setFlagLines(true);
+  ConstellationMgr.setFlagLabels(true);
+  ConstellationMgr.setFlagBoundaries(false);
+  ConstellationMgr.setFlagArt(false);
+  MeteorShowers.setEnableMarker (false)
+
+  try { StelSkyDrawer.setFlagStars(true); } catch (err) {}
+  try { StelSkyDrawer.setFlagNebulaMagnitudeLimit(true); } catch (err) {}
+  try { StelSkyDrawer.setCustomNebulaMagnitudeLimit(-5); } catch (err) {}
+  try { SolarSystem.setFlagMoonScale(true); } catch (err) {}
+  try { SolarSystem.setMoonScale(20); } catch (err) {}
+
+  core.selectObjectByName("Moon", true);
+  StelMovementMgr.setFlagTracking(true);
+  restoreZenithView(0);
+  W(0.8);
+}
+
+function showIntro() {
+  setupJaipurMoonView();
+  core.setDate("-1496-11-10T03:08:00", "local");
+  W(0.8);
+  label("Parāśara Tantra Eclipse Runs at Jaipur", 70, 90, 34, "#FFCCCC", 1.5);
+  label("Jaipur, fixed observing site", 70, 145, 24, "#FDE68A", 1.0);
+  label("Following R. N. Iyengar's study, using NASA eclipse data.", 70, 185, 20, "#F8FAFC", 1.6);
+  label("We now show selected eclipses from two representative runs.", 70, 225, 22, "#FDE68A", 4.8);
+}
+
+function showDivider(text) {
+  if (currentDividerLabel !== null) {
+    LabelMgr.setLabelShow(currentDividerLabel, false);
+    LabelMgr.deleteLabel(currentDividerLabel);
+    currentDividerLabel = null;
+    W(0.3);
+  }
+  currentDividerLabel = LabelMgr.labelScreen(text, 500, 70, false, 22, "#FFD166");
+  LabelMgr.setLabelShow(currentDividerLabel, true);
+  W(2.0);
+}
+
+function startRun(runTitle, x) {
+  label(runTitle, x, 410, 24, "#FFD166", 1.6);
+}
+
+function addEventLine(evt, index) {
+  var y = 448 + (index * 30);
+  label(evt.lineText, evt.textX, y, 16, "#E2E8F0", 1.2);
+}
+
+function focusMoonAndReturn() {
+  try { core.moveToObject("Moon", 5.0); } catch (err) {
+    core.selectObjectByName("Moon", true);
+    try { StelMovementMgr.setFlagTracking(true); } catch (err2) {}
+    W(3.0);
+  }
+  W(2.8);
+  StelMovementMgr.zoomTo(120.0, 4.0);
+  W(4.0);
+  StelMovementMgr.zoomTo(202.0, 4.0);
+  W(3.0);
+  restoreZenithView(5.0);
+  W(4.0);
+}
+
+function showEvent(evt, index) {
+  core.setDate(evt.whenLocal, "local");
+  W(1.8);
+
+  addEventLine(evt, index);
+  W(1.2);
+  focusMoonAndReturn();
+  W(1.8);
+}
+
+function showClosing() {
+  showDivider("Eclipse Sequences from Parāśara Tantra");
+  try { core.setMountMode("azimuthal"); } catch (err) {}
+  try { StelMovementMgr.setFlagTracking(false); } catch (err2) {}
+  LandscapeMgr.setFlagAtmosphere(true);
+  LandscapeMgr.setFlagFog(false);
+  LandscapeMgr.setFlagCardinalPoints(true);
+  try { StelSkyDrawer.setFlagStars(true); } catch (err3) {}
+  restoreZenithView(0);
+  StelMovementMgr.zoomTo(220.0, 0);
+  W(0.8);
+  label("These are representative eclipses, not the full chain.", 460, 802, 24, "#FFD166", 1.4);
+  label("The PT table and NASA/JLEX carry the complete verification story.", 400, 848, 22, "#F8FAFC", 1.4);
+  label("Demo complete.", 640, 894, 24, "#A7F3D0", 8.0);
+}
+
+showIntro();
+resetScene();
+setupJaipurMoonView();
+
+showDivider("Run 1 begins: a Jaipur-visible sequence from 1496 BCE.");
+startRun("Eclipse sequence 1", 100);
+showEvent({
+  lineText: "1 | 10 Nov 1496 BCE | N",
+  localTime: "03:08",
+  whenLocal: "-1496-11-10T03:08:00",
+  textX: 100
+}, 0);
+showEvent({
+  lineText: "2 | 05 May 1495 BCE | P",
+  localTime: "22:56",
+  whenLocal: "-1495-05-05T22:56:00",
+  textX: 100
+}, 1);
+showEvent({
+  lineText: "3 | 30 Oct 1495 BCE | P",
+  localTime: "18:38",
+  whenLocal: "-1495-10-30T18:38:00",
+  textX: 100
+}, 2);
+showEvent({
+  lineText: "4 | 25 Apr 1494 BCE | T",
+  localTime: "05:53",
+  whenLocal: "-1494-04-25T05:53:00",
+  textX: 100
+}, 3);
+showEvent({
+  lineText: "5 | 20 Oct 1494 BCE | T",
+  localTime: "00:48",
+  whenLocal: "-1494-10-20T00:48:00",
+  textX: 100
+}, 4);
+showEvent({
+  lineText: "6 | 14 Apr 1493 BCE | P",
+  localTime: "19:39",
+  whenLocal: "-1493-04-14T19:39:00",
+  textX: 100
+}, 5);
+showEvent({
+  lineText: "7 | 09 Oct 1493 BCE | N",
+  localTime: "02:00",
+  whenLocal: "-1493-10-09T02:00:00",
+  textX: 100
+}, 6);
+
+showDivider("Run 2 begins: a second Jaipur-visible sequence from 1442 BCE.");
+startRun("Eclipse sequence 2", 1180);
+showEvent({
+  lineText: "1 | 13 Dec 1442 BCE | N",
+  localTime: "06:03",
+  whenLocal: "-1442-12-13T06:03:00",
+  textX: 1180
+}, 0);
+showEvent({
+  lineText: "2 | 07 Jun 1441 BCE | N",
+  localTime: "20:02",
+  whenLocal: "-1441-06-07T20:02:00",
+  textX: 1180
+}, 1);
+showEvent({
+  lineText: "3 | 02 Dec 1441 BCE | T",
+  localTime: "19:13",
+  whenLocal: "-1441-12-02T19:13:00",
+  textX: 1180
+}, 2);
+showEvent({
+  lineText: "4 | 27 May 1440 BCE | T",
+  localTime: "03:14",
+  whenLocal: "-1440-05-27T03:14:00",
+  textX: 1180
+}, 3);
+showEvent({
+  lineText: "5 | 21 Nov 1440 BCE | T",
+  localTime: "01:49",
+  whenLocal: "-1440-11-21T01:49:00",
+  textX: 1180
+}, 4);
+showEvent({
+  lineText: "6 | 16 May 1439 BCE | P",
+  localTime: "19:29",
+  whenLocal: "-1439-05-16T19:29:00",
+  textX: 1180
+}, 5);
+showEvent({
+  lineText: "7 | 10 Nov 1439 BCE | N",
+  localTime: "01:52",
+  whenLocal: "-1439-11-10T01:52:00",
+  textX: 1180
+}, 6);
+
+showClosing();

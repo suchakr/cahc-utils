@@ -1,0 +1,91 @@
+// Benchmark: next N sunrises at Bengaluru/Bangalore from a fixed starting JD.
+//
+// Benchmark policy:
+// - Timed section computes only the sunrise JDs.
+// - Output formatting and core.output() happen after timing, so output I/O does
+//   not distort the Stellarium runtime number.
+// - This script is self-contained: it does not depend on TimeKeeper or any
+//   helper include from legacy/reference material.
+//
+// Notes:
+// - Start JD 2461120.2708333335 is 2026-03-21T00:00:00 local in Asia/Kolkata.
+// - We keep the location fixed at Bangalore.
+// - Because the start instant is local midnight, the "next N sunrises" are the
+//   sunrise events for the next N successive local days.
+
+function W(x)  { if (!x) x = 0.01; core.wait(x); }
+
+var START_JD = 2461120.2708333335;
+var COUNT = 100;
+var LOC_LON = 77.5946;
+var LOC_LAT = 12.9716;
+var LOC_ALT_M = 920;
+var LOC_NAME = "Bangalore, India";
+
+function fmtJd(jd) {
+  return (Math.round(jd * 1000000000) / 1000000000).toFixed(9);
+}
+
+function wallClockSec() {
+  // Use the built-in JS Date object for elapsed wall time so the benchmark
+  // remains self-contained. This is intentionally benchmarking script-side
+  // "compute next sunrise" calls, not UI work or output I/O.
+  return (new Date()).getTime() / 1000.0;
+}
+
+var CACHE = [];
+function flushCache() {
+  if (CACHE.length) {
+    core.output(CACHE.join("\r\n"));
+    CACHE = [];
+  }
+}
+
+function computeSunriseJds(startJd, count) {
+  var results = [];
+  for (var i = 0; i < count; i++) {
+    var anchorJd = startJd + i;
+    core.setJDay(anchorJd);
+    W(0.01); // force Stellarium to refresh object info for the new day
+    var info = core.getObjectInfo("Sun");
+    var riseHours = info["rise-dhr"];
+    if (riseHours === undefined || riseHours < 1 || riseHours > 24) {
+      // One retry keeps the benchmark self-contained while protecting against
+      // stale cache reads immediately after setJDay().
+      W(0.02);
+      info = core.getObjectInfo("Sun");
+      riseHours = info["rise-dhr"];
+    }
+    results.push(anchorJd + riseHours / 24.0);
+  }
+  return results;
+}
+
+LabelMgr.deleteAllLabels();
+MarkerMgr.deleteAllMarkers();
+core.setGuiVisible(false);
+core.setObserverLocation(LOC_LON, LOC_LAT, LOC_ALT_M, LOC_NAME, "Earth");
+
+var t0 = wallClockSec();
+var sunriseJds = computeSunriseJds(START_JD, COUNT);
+var elapsedSec = wallClockSec() - t0;
+
+for (var j = 0; j < sunriseJds.length; j++) {
+  var riseJd = sunriseJds[j];
+  core.setJDay(riseJd);
+  CACHE.push(
+    "SUNRISE\t" +
+    (j + 1) + "\t" +
+    fmtJd(riseJd) + "\t" +
+    core.getDate("local")
+  );
+}
+
+CACHE.push(
+  "SUMMARY\ttool=stellarium\tlocation=Bangalore" +
+  "\tstart_jd=" + fmtJd(START_JD) +
+  "\tcount=" + COUNT +
+  "\telapsed_sec=" + elapsedSec.toFixed(6) +
+  "\tms_per_sunrise=" + ((elapsedSec * 1000.0) / COUNT).toFixed(3)
+);
+flushCache();

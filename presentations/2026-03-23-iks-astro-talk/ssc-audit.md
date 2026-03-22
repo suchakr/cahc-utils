@@ -1,96 +1,72 @@
 # SSC Audit
 
-This file audits the local Stellarium scripts used for the 2026-03-23 IKS astro tutorial.
+This file records the active Stellarium scripts used in the 2026-03-23 IKS astro tutorial.
 
 ## Naming Convention
 
-Use explicit session, section, and role markers:
+Use unique per-session numbers:
 
-- `s1-01-...` Session 1, section 1
-- `s2-01-...` Session 2, section 1
-- role markers: `main`, `support`, `backup`, `tech`
+- `s11-...` Session 1, item 1
+- `s12-...` Session 1, item 2
+- `s21-...` Session 2, item 1
+- `s22-...` Session 2, item 2
 
-Recommended pattern:
+Recommended active pattern:
 
-- `s1-02-main-dhruva-pole-drift.ssc`
-- `s1-02-support-thuban-circumpolarity.ssc`
-- `s1-03-main-sun-swing.ssc`
-- `s1-03-sun-meridian-high-low.ssc`
-- `s1-04-main-nakshatra-tour.ssc`
-- `s2-01-main-eqfm-window.ssc`
-- `s2-02-main-eclipse-demo.ssc`
+- `s11-dhruva-pole-drift.ssc`
+- `s12-sun-swing.ssc`
+- `s13-sun-meridian-high-low.ssc`
+- `s14-nakshatra-tour.ssc`
+- `s21-moon-swing.ssc`
+- `s22-bp-eqfm-best-case.ssc`
+- `s23-total-eclipse-india.ssc`
+- `s24-pt-eclipse-jaipur.ssc`
 
 Rationale:
 - ordered in directory listings
 - easy to stop/restart during rehearsal
-- makes the talk role clear without opening the file
+- easy to say aloud during live presentation
+
+## Active Script Set
+
+| File | Role | Session use | Status | Notes |
+|---|---|---|---|---|
+| `s11-dhruva-pole-drift.ssc` | Dhruva / pole-star drift | Session 1 | Active | Main Dhruva intuition script: Thuban to Polaris. |
+| `s12-sun-swing.ssc` | Sunrise horizon swing | Session 1 | Active | Main Sun motion script. |
+| `s13-sun-meridian-high-low.ssc` | Noon Sun high/low contrast | Session 1 | Active | Short support script after the horizon swing. |
+| `s14-nakshatra-tour.ssc` | Nakṣatra visible-group and zonal tour | Session 1 | Active | Main Nakṣatra tutorial script. |
+| `s21-moon-swing.ssc` | Moonrise swing fundamentals | Session 2 | Active | Establishes Moon motion before BP eqfm. |
+| `s22-bp-eqfm-best-case.ssc` | BP eqfm best-case visual | Session 2 | Active | Strong positive-case BP illustration near the -1700 window. |
+| `s23-total-eclipse-india.ssc` | Eclipse intuition / wow demo | Session 2 | Active | Same 16-Feb-1980 eclipse, total at Puri and partial at Mumbai. |
+| `s24-pt-eclipse-jaipur.ssc` | PT eclipse-sequence support | Session 2 | Active | Jaipur-fixed sequence illustration using the Iyengar/NASA-backed runs. |
 
 ## Includes and Shared Dependencies
 
-Current include dependency seen in the localized working set:
+Current active scripts are self-contained.
 
-- `nakshatras.inc`
+- no active `s11`-`s24` script currently uses `include(...)`
 
-This file must remain in the same working `ssc/` folder for any dependent scripts.
+## Possible Future Additions
 
-## Audit Table
+- `s25-eqfm-search-visualizer.ssc`
+  - optional, if a one-minute coarse-to-fine search visualization would help bridge the BP plots and the best-case visual
 
-| Current file | Current role | Fit | Action | Proposed disciplined name | Notes |
-|---|---|---|---|---|---|
-| `two_dhruvas.ssc` | Session 1 legacy Dhruva demo | Weak as current main file | Retain as backup/reference | `s1-02-main-dhruva-pole-drift.ssc` | Legacy script is a static three-step comparison (`2022 CE`, `1019 CE`, `-2019 BCE`). A talk-specific finite sweep has now been created as the preferred main copy. |
-| `thuban-circumpolarity.ssc` | Session 1 support | Weak for live demo | Keep as support or convert to data/appendix mode | `s1-02-support-thuban-circumpolarity.ssc` | Produces tabular output by latitude/epoch. More useful for verification than projection. |
-| `matsya-sisumara-drift.ssc` | Session 1 backup | Weak | Demote or replace later | `s1-02-backup-sisumara-drift.ssc` | Currently thin on visible audience payoff. Good conceptually, but likely not worth live time unless improved. |
-| `sun-swing.ssc` | Session 1 legacy Sun demo | Moderate | Retain as backup/reference | `s1-03-main-sun-swing.ssc` | A talk-specific main copy now exists with clearer labels and faster pacing. Rehearsal should confirm readability on your box. |
-| `sun-transit-ayana.ssc` | Session 1 legacy Sun support demo | Moderate | Retain as backup/reference | `s1-03-sun-meridian-high-low.ssc` | A trimmed talk-specific support copy now exists for the meridian high/low contrast. |
-| `a2_sun_analemma.ssc` | Session 1 backup Sun demo | Moderate | Keep as backup | `s1-03-backup-sun-analemma.ssc` | Good backup when the main scripts do not land cleanly. Too busy to lead the section. |
-| `a4-tour-of-nakshatras.ssc` | Session 1 legacy Nakṣatra demo | Moderate | Retain as backup/reference | `s1-04-main-nakshatra-tour.ssc` | A talk-specific copy now exists with cleaner intro/outro and shorter waits. |
-| `sun-transit-precession.ssc` | Session 1 legacy precession bridge | Weak for current talk flow | Cut from active path; retain only historically if needed later | none | The dedicated bridge script was dropped because the Dhruva demo plus the paper/core figures carry the precession-to-dating transition more clearly. |
-| `naks-spot-check.ssc` | Technical contrast only | Weak for live use | Keep only as tech support | `s1-04-tech-nakshatra-spot-check.ssc` | Better for script-structure/runtime contrast than audience projection. |
-| `nakshatra-db.ssc` | Technical contrast only | Moderate as appendix | Keep only as tech support | `s1-04-tech-nakshatra-db.ssc` | Useful to show what Stellarium exposes for a single object. Not main-stage material. |
-| `moon_swing.ssc` | Session 2 legacy Moon candidate | Weak | Retain only as historical reference | `s2-01-moon-swing.ssc` | The old file is too thin. A new talk-specific Moonrise swing script now exists for the fundamentals layer before the BP case-study material. |
-| `full_moon_vgj.ssc` | Session 2 Moon candidate | Weak | Likely replace or repurpose | `s2-01-candidate-full-moon-sample.ssc` | More like a sampling/extraction script than a clear tutorial demo. |
-| `a2_moon_analemma.ssc` | Session 2 Moon backup | Moderate | Keep as backup only | `s2-01-backup-moon-analemma.ssc` | May help visualize Moon motion, but is not tightly tied to the eqfm argument. |
-| `s2-01-bp-eqfm-best-case.ssc` | Session 2 BP best-case demo | Strong | Keep and rehearse | none | New talk-specific script using the TSV-selected best-case vasanta and śarat dates near the -1700 window. Complements `s2-01-moon-swing.ssc` by showing the BP east–west axis in a single sky frame. |
-| `a3-puri-demo.ssc` | Session 2 eclipse legacy source | Partial | Retain as historical source | none | Useful as seed material, but superseded by the cleaner talk-specific India-location demo. |
-| `s2-02-total-eclipse-india.ssc` | Session 2 eclipse wow/tutorial demo | Strong | Keep and rehearse | none | New talk-specific script: same 16-Feb-1980 eclipse, total at Puri and partial at Mumbai, with modern narration/stable end-state discipline. |
-| `s2-03-pt-eclipse-jaipur.ssc` | Session 2 PT eclipse-sequence illustration | Strong | Keep and rehearse | none | New Jaipur-fixed sequence demo using selected events from two runs discussed by R. N. Iyengar using NASA eclipse data. Illustrates the pattern; the PT table/JLEX carry the full chain. |
+## Rehearsal Order
 
-## Likely New Scripts Needed
-
-### Session 1
-
-- preferred Session 1 copies now exist for Dhruva, Sun, and Nakṣatra
-- additional new Session 1 scripts are not currently required unless rehearsal exposes gaps
-
-### Session 2
-
-The current Moon scripts do not yet look like a clean fit for the deck. Likely new scripts:
-
-- `s2-01-main-eqfm-window.ssc`
-  - may still be needed later if a wider good-vs-bad epoch comparison becomes necessary
-  - the new `s2-01-bp-eqfm-best-case.ssc` already covers the strongest positive-case visual illustration
-
-- `s2-01-support-maghadi-dial.ssc`
-  - optional, only if a Stellarium-side dial demonstration proves worthwhile
-
-- no further PT eclipse script is currently required unless rehearsal shows pacing or visibility problems
-
-## Recommended Tuning Order
-
-1. rehearse `s1-02-main-dhruva-pole-drift.ssc`
-2. rehearse `s1-03-sun-meridian-high-low.ssc`
-3. rehearse `s1-03-main-sun-swing.ssc`
-4. rehearse `s1-04-main-nakshatra-tour.ssc`
-5. no dedicated Session 1 precession bridge script at present
-6. rehearse `s2-02-total-eclipse-india.ssc`
-7. rehearse `s2-03-pt-eclipse-jaipur.ssc`
+1. rehearse `s11-dhruva-pole-drift.ssc`
+2. rehearse `s12-sun-swing.ssc`
+3. rehearse `s13-sun-meridian-high-low.ssc`
+4. rehearse `s14-nakshatra-tour.ssc`
+5. rehearse `s21-moon-swing.ssc`
+6. rehearse `s22-bp-eqfm-best-case.ssc`
+7. rehearse `s23-total-eclipse-india.ssc`
+8. rehearse `s24-pt-eclipse-jaipur.ssc`
 
 ## Immediate Notes
 
-- The preferred Session 1 copies have now been created under the disciplined naming scheme.
-- Keep the older files in place as backups until the preferred copies are smell-tested in Stellarium 25.1.
-- House style for the preferred `s1-*` copies:
-  - remove `nakshatras.inc` dependency when the script only needs a small helper subset
+- The active presentation set is now the `s11`-`s24` series.
+- House style for the active scripts:
+  - keep scripts self-contained when practical
   - begin with a short title/expectation sequence
   - end in a stable, meaningful final state instead of a blank reset
 - Benchmark scripts in `bm/` should come after the core demo scripts are stable enough that the deck language will not move again.

@@ -196,6 +196,7 @@ CAHC, Jain University
 
 ## Session 1
 
+- Meru — cosmographic visualization
 - Stellarium basics and sky culture
 - Dhruva, Sun, and Nakṣatra demonstrations
 - Precession as a visual and textual dating aid
@@ -207,7 +208,7 @@ CAHC, Jain University
 
 - BP chapter 21 and equinoctial full moon
 - Astropy-supported scanning
-- Eclipses, Meru, and digital research aids
+- Eclipses and digital research aids
 
 </div>
 </div>
@@ -220,11 +221,12 @@ Session 1 emphasizes visual and observational foundations. Session 2 extends the
 
 # Session 1 Roadmap
 
-1. Stellarium basics, coordinates, and sky culture
-2. Dhruva, Thuban, and Śiśumāra
-3. Sun: daily and annual motion
-4. Nakṣatras: stars, shapes, and zones
-5. Precession and textual dating
+1. Meru Cosmology
+2. Stellarium basics, coordinates, and sky culture
+3. Dhruva, Thuban, and Śiśumāra
+4. Sun: daily and annual motion
+5. Nakṣatras: stars, shapes, and zones
+6. Precession and textual dating
 
 # Why Stellarium?
 
@@ -232,6 +234,46 @@ Session 1 emphasizes visual and observational foundations. Session 2 extends the
 - It lets us change location, epoch, and viewing frame.
 - It helps _connect text_ to **sky appearance**.
 - Prepared scripts improve repeatability and reduce demo friction.
+
+---
+
+# Meru — Cosmographic Visualization
+
+<div class="cols wide-right">
+<div class="col">
+
+### What it is
+
+- An interactive 3-D cosmographic visualization of the Meru model.
+- Draws from multiple textual sources — not tied to one text.
+
+- Built to explore and explain, not to prove.
+
+### What it shows
+
+- Meru as the polar axis of a concentric world model.
+- Dhruva at the apex; the nakṣatra wheel rotating around it.
+
+- Seasons and geographic zones as concentric rings.
+
+### Access
+
+- Live: [meru-cosmos.netlify.app](https://meru-cosmos.netlify.app/)
+
+</div>
+<div class="col">
+
+### Notes
+
+- Useful for connecting the textual descriptions of cardinal directions, Dhruva, and the nakṣatra wheel.
+
+- The same precession intuition from Stellarium applies here in a cosmographic frame.
+
+</div>
+</div>
+<div class="callout">
+The app is a visualization aid — it makes an older descriptive cosmology navigable and discussable.
+</div>
 
 ---
 
@@ -276,17 +318,12 @@ These controls establish the visual vocabulary for the rest of the session.
 
 - The identity of the **pole star** is historical, not timeless.
 
-### Main script - `ssc/s1-02-main-dhruva-pole-drift.ssc`
+### Main script - `ssc/s11-dhruva-pole-drift.ssc`
 
 - Location: about 30°N
 - 2830 BCE, **Abhaya Dhruva** (Thuban) of Śiśumāra close to the north celestial pole
 - Step forward in time and watch the pole drift away from Thuban
 - End in the modern sky, with the pole near **Polaris**
-
-### Other scripts
-
-- Support: `ssc/thuban-circumpolarity.ssc`
-- Backup: `ssc/matsya-sisumara-drift.ssc`
 
 </div>
 <div class="col img-col">
@@ -304,9 +341,9 @@ These controls establish the visual vocabulary for the rest of the session.
 ### Topics
 
 - **Daily path:** The Sun rises, culminates, and sets in a regular daily pattern.
-- **Sunrise shift on the horizon:** The rising point moves north and south through the year, the sun's **annual swing** best seen with `ssc/s1-03-main-sun-swing.ssc`.
-- **High and low Sun:** The Sun also changes in noon/meridian height, appearing higher in summer and lower in winter, best seen with `ssc/s1-03-sun-meridian-high-low.ssc`.
-- **Dakṣiṇāyana and Uttarāyaṇa:** The turning points of the annual swing can be explained with `ssc/s1-03-sun-meridian-high-low.ssc`, with `ssc/a2_sun_analemma.ssc` as backup.
+- **Sunrise shift on the horizon:** The rising point moves north and south through the year, the sun's **annual swing** best seen with `ssc/s12-sun-swing.ssc`.
+- **High and low Sun:** The Sun also changes in noon/meridian height, appearing higher in summer and lower in winter, best seen with `ssc/s13-sun-meridian-high-low.ssc`.
+- **Dakṣiṇāyana and Uttarāyaṇa:** The turning points of the annual swing can be explained with `ssc/s13-sun-meridian-high-low.ssc`.
 
 </div>
 <div class="col">
@@ -347,7 +384,7 @@ Nakṣatras are <b>not lunar mansions</b>
 
 ### Stellarium Script
 
-- `ssc/s1-04-main-nakshatra-tour.ssc` - tour of the 27 nakṣatras.
+- `ssc/s14-nakshatra-tour.ssc` - tour of the 27 nakṣatras.
 
 </div>
 </div>

@@ -173,7 +173,13 @@ style: |
 
   .full-image img {
     max-width: 96%;
-    max-height: 580px;
+    max-height: 560px;
+    object-fit: contain;
+  }
+
+  .dial-image img {
+    max-width: 86%;
+    max-height: 560px;
     object-fit: contain;
   }
 ---
@@ -196,6 +202,7 @@ CAHC, Jain University
 
 ## Session 1 covered
 
+- Meru — cosmographic visualization
 - Stellarium basics and sky culture
 - Dhruva, Thuban, and precession intuition
 - Sun: daily and annual motion
@@ -210,9 +217,8 @@ CAHC, Jain University
 1. Moon and the equinoctial full-moon problem
 2. The dial plot and Maghādi scheme
 3. Eclipses — Parāśara Tantra and NASA/JLEX
-4. Meru — cosmographic visualization
-5. Digital tools and CAHC resources
-6. AI-assisted chores
+4. Digital tools and CAHC resources
+5. AI-assisted chores
 
 </div>
 </div>
@@ -237,6 +243,10 @@ Session 2 extends the same precession arc from the Sun to the Moon, then broaden
 - These two stars were in the correct equinoctial sectors only during a specific window.
 - Astropy epoch scan over −2400 to −800 locates that window.
 
+### Stellarium demo
+
+- `ssc/s21-moon-swing.ssc` — 30+ successive moonrises showing the monthly horizon swing
+
 <div class="callout">
 The same precession logic — now applied to the full moon rather than the seasonal sun.
 </div>
@@ -257,6 +267,10 @@ The same precession logic — now applied to the full moon rather than the seaso
 - Sun ¾-Viśākhā, Moon head-Kṛttikā — **Śarat Full Moon**
 
 - The BP text is in its present form from early CE, but these astronomical statements belong to a much older observational layer.
+
+### Stellarium demo
+
+- `ssc/s22-bp-eqfm-best-case.ssc` — vasanta and śarat best-case views near 1700 BCE
 
 </div>
 </div>
@@ -284,8 +298,9 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
   - **Red line**: drift of η-Tau (Kṛttikā)
   - **Blue line**: drift of α¹-Lib (Viśākhā)
 
-- The **shaded window** ~ 1980–1610 BCE is where the stars sit in their respective equinoctial sectors.
-- Narrowing to spring equinox (the sharper text constraint): **~1700–1600 BCE**.
+- The **shaded window** ~ 1980–1610 BCE - stars in their equinoctial sectors. The sharper spring equinox constraint **~1700–1600 BCE**.
+
+- `ssc/s25-eqfm-search-visualizer.ssc` — epoch-by-epoch traversal of 2400–800 BCE candidates
 
 </div>
 </div>
@@ -344,6 +359,18 @@ Precession rotates the outer star dial. The season boundaries stay fixed.
 
 ---
 
+# Seasonal Nakṣatra Drift: 2400 to 1000 BCE
+
+<div class="dial-image">
+<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_1.gif" alt="dial animation" style="scale: 0.8;">
+</div>
+
+<div class="callout">
+Animation shows precession rotating the star positions through the fixed season-domain framework, −2400 to −1000 BCE.
+</div>
+
+---
+
 # Stellarium , Astropy - Contrast
 
 - Stellarium GUI
@@ -351,11 +378,11 @@ Precession rotates the outer star dial. The season boundaries stay fixed.
   - Allows for targeted exploration of specific dates.
   - Scripting is possible but not as efficient as Astropy.
 
-- Astropy scans efficiently
-  - 1600 years exhaustive full moon scans
-  - Filter ~220 equinoctial full moons
-  - _Astropy code run time: ~30 minutes_
-  - _Stellarium code run time : many hours_
+- Astropy supports repeatable computation
+  - Measured example: next 1000 sunrise queries from a fixed Bangalore start JD
+  - _Astropy/Astroplan: 10.4 s_
+  - _Stellarium script: 19.3 s_
+  - About _1.85×_ faster on this repeated-query task
 
 | Method            | Best For            |
 | ----------------- | ------------------- |
@@ -385,15 +412,13 @@ AI tools speed up writing the code — not running it. Computation time is physi
 ### Verification with NASA/JLEX
 
 - [NASA/JLEX eclipse search](http://eclipse.gsfc.nasa.gov/JLEX/JLEX-AS.html) is a free, browser-accessible tool.
-- Query by location, date range, type.
 
-- The PT claim can be tested directly.
+- Query by location, date range, type.
 
 ### Stellarium support
 
-- Script path now splits in two:
-  - `ssc/s2-02-total-eclipse-india.ssc` for the visual/location demo
-  - `ssc/s2-03-pt-eclipse-jaipur.ssc` for the PT sequence support
+- `ssc/s23-total-eclipse-india.ssc` for the visual/location demo
+- `ssc/s24-pt-eclipse-jaipur.ssc` for the PT sequence support
 
 </div>
 </div>
@@ -565,23 +590,14 @@ The arithmetic derivation is correct and checkable. The unit interpretation (nav
 
 - Stellarium makes ancient sky visible and testable.
 - Precession turns visible sky change into a dating instrument.
-- The same logic applies to Sun (Session 1) and Moon (Session 2).
+- In both sessions, a textual sky description becomes a dating clue:
+  - in Session 1 through the Sun,
+  - in Session 2 through the Moon.
 - Astropy extends individual visual checks into exhaustive epoch scans.
-- Meru, eclipses, and digital tools widen the research toolkit.
+- Eclipses can be checked with NASA/JLEX and Stellarium.
+- Digital tools widen the research toolkit.
 - AI helps with drudgery — never with final interpretation.
 
-### The closing principle
-
-> _These tools are most useful when they reduce repetitive effort and leave more time for careful scholarly thinking._
-
----
-
-# Dial Animation — For Reference
-
-<div class="full-image">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_1.gif" alt="dial animation">
-</div>
-
 <div class="callout">
-Animation shows precession rotating the star positions through the fixed season-domain framework, −2400 to −1000 BCE.
+These tools are most useful when they reduce repetitive effort and leave more time for careful scholarly thinking.
 </div>

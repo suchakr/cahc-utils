@@ -1,0 +1,276 @@
+// Session 2 · BP equinoctial full-moon search visualizer
+//
+// Purpose:
+// - Visualize a sampled, precomputed BP equinoctial full-moon search.
+// - Keep the sky frame stable and let the annotation layer carry the search logic.
+// - Green = strong match → Red = far from window (traffic-light spectrum).
+//
+// Current status:
+// - Three bugs fixed (2026-03-22):
+//   1. Removed ProjectionFisheye — this was the primary cause of 0/NaN cursor and black screen.
+//   2. Replaced near-zenith view (alt=89.5, FOV=170) with south-facing view (alt=30, FOV=130)
+//      so the equinox Sun and Moon are actually on-screen.
+//   3. Added W(0.2) after JD() in showSearchRow so the view settles before getOI() is called.
+// - The script correctly uses exact TSV JDs from the BP dataset.
+//
+// Next debugging path when we resume:
+// 1. Keep the exact TSV JD source unchanged.
+// 2. Reduce the scene setup further:
+//    - start from a known-good default projection and camera state
+//    - add one visual layer at a time
+// 3. First verify that Sun and Moon are visible at row.jd with:
+//    - no custom skyculture
+//    - no special projection
+//    - no marker logic
+// 4. Only after that, reintroduce:
+//    - skyculture
+//    - grid lines
+//    - markers
+//    - wider FOV choices
+// 5. If needed, fall back to a simpler object-tracking model:
+//    - select Sun or Moon
+//    - verify raw visibility
+//    - then widen to a two-body analytical view
+//
+// Data source:
+//   /Users/sunder/projects/cahc/cahc-utils/datasets/full_moons/fm_kv_eqfm_paper_submit_1.tsv
+//
+// Data model used here:
+// - Only the vasanta side is shown live.
+// - Candidate epochs run from about 2400 BCE to 800 BCE.
+// - This is a sampled traversal, not an exhaustive display of all candidate rows.
+// - The autumn side is asserted in the closing narration as behaving similarly.
+// - Sampling is intentionally coarse-to-fine so a future live demo can stay near one minute.
+
+function W(x)  { if (!x) x = 0.1; core.wait(x); }
+function JD(x) { if (x) { core.setJDay(x); W(0.03); } return core.getJDay(); }
+var getOI = core.getObjectInfo;
+
+var SEARCH_ROWS = [
+  // Sampled vasanta rows from fm_kv_eqfm_paper_submit_1.tsv.
+  // These are not every candidate row.
+  // They were chosen to give:
+  // - broad search coverage away from the fit window
+  // - denser inspection nearer the stronger BP window around ~1700 BCE
+  //
+  // score is a simple visual-ranking helper, not the full analytical proof:
+  //   abs(sun_lon_adj) + abs(moon_lon_adj_packed - 45.0)
+  // Lower score => greener color (Green→Yellow→Orange→Red = Strong→Probable→Weak→Far).
+  { jd: 844923.52,  date: "22 Mar 2399 BCE", year: "2399 BCE", score: 2.04 },
+  { jd: 886562.06,  date: "23 Mar 2285 BCE", year: "2285 BCE", score: 0.86 },
+  { jd: 925276.62,  date: "22 Mar 2179 BCE", year: "2179 BCE", score: 2.37 },
+  { jd: 955958.59,  date: "24 Mar 2095 BCE", year: "2095 BCE", score: 1.92 },
+  { jd: 1005629.59, date: "21 Mar 1959 BCE", year: "1959 BCE", score: 2.37 },
+  { jd: 1029371.46, date: "22 Mar 1894 BCE", year: "1894 BCE", score: 0.36 },
+  { jd: 1043251.01, date: "22 Mar 1856 BCE", year: "1856 BCE", score: 0.75 },
+  { jd: 1047267.72, date: "22 Mar 1845 BCE", year: "1845 BCE", score: 0.85 },
+  { jd: 1054207.42, date: "21 Mar 1826 BCE", year: "1826 BCE", score: 0.90 },
+  { jd: 1075025.70, date: "22 Mar 1769 BCE", year: "1769 BCE", score: 1.81 },
+  { jd: 1077949.28, date: "23 Mar 1761 BCE", year: "1761 BCE", score: 1.50 },
+  { jd: 1081965.63, date: "22 Mar 1750 BCE", year: "1750 BCE", score: 0.64 },
+  { jd: 1084888.97, date: "23 Mar 1742 BCE", year: "1742 BCE", score: 1.73 },
+  { jd: 1088905.66, date: "22 Mar 1731 BCE", year: "1731 BCE", score: 0.41 },
+  { jd: 1095845.56, date: "22 Mar 1712 BCE", year: "1712 BCE", score: 0.40 },
+  { jd: 1102785.22, date: "23 Mar 1693 BCE", year: "1693 BCE", score: 0.64 },
+  { jd: 1109724.50, date: "23 Mar 1674 BCE", year: "1674 BCE", score: 0.57 },
+  { jd: 1116663.94, date: "22 Mar 1655 BCE", year: "1655 BCE", score: 0.52 },
+  { jd: 1123603.54, date: "22 Mar 1636 BCE", year: "1636 BCE", score: 0.32 },
+  { jd: 1130543.49, date: "22 Mar 1617 BCE", year: "1617 BCE", score: 0.66 },
+  { jd: 1134560.15, date: "21 Mar 1606 BCE", year: "1606 BCE", score: 1.53 },
+  { jd: 1137483.52, date: "23 Mar 1598 BCE", year: "1598 BCE", score: 1.46 },
+  { jd: 1148439.22, date: "20 Mar 1568 BCE", year: "1568 BCE", score: 1.67 },
+  { jd: 1165241.64, date: "22 Mar 1522 BCE", year: "1522 BCE", score: 0.53 },
+  { jd: 1169258.05, date: "20 Mar 1511 BCE", year: "1511 BCE", score: 1.83 },
+  { jd: 1210896.00, date: "22 Mar 1397 BCE", year: "1397 BCE", score: 0.89 },
+  { jd: 1263490.56, date: "22 Mar 1253 BCE", year: "1253 BCE", score: 1.16 },
+  { jd: 1298188.44, date: "20 Mar 1158 BCE", year: "1158 BCE", score: 1.57 },
+  { jd: 1339826.51, date: "21 Mar 1044 BCE", year: "1044 BCE", score: 0.90 },
+  { jd: 1381464.89, date: "22 Mar 930 BCE",  year: "930 BCE",  score: 1.68 },
+  { jd: 1420179.43, date: "20 Mar 824 BCE",  year: "824 BCE",  score: 1.56 }
+];
+
+function resetScene() {
+  LabelMgr.deleteAllLabels();
+  MarkerMgr.deleteAllMarkers();
+  CustomObjectMgr.removeCustomObjects();
+}
+
+function label(text, x, y, size, color) {
+  var id = LabelMgr.labelScreen(text, x, y, false, size, color);
+  LabelMgr.setLabelShow(id, true);
+  return id;
+}
+
+function horizonLabel(text, az, alt, size, color) {
+  try {
+    var id = LabelMgr.labelHorizon(text, az, alt, true, size, color);
+    LabelMgr.setLabelShow(id, true);
+    return id;
+  } catch (err) {
+    return null;
+  }
+}
+
+// Scenic JD helper: Math.floor(jd) + 0.5271
+// 0.5271 fractional JD ≈ 06:09 IST at Kurukshetra — equinox sunrise / full-moon-set moment.
+// Using a fixed offset avoids a JD round-trip to read set-dhr and eliminates flicker.
+function scenicJdFor(rowJd) {
+  // return Math.floor(rowJd) + 0.5271;
+  return Math.floor(rowJd) + 0.54;
+}
+
+// Center a label horizontally. Estimates text width as size * 0.58 * charCount.
+// Falls back to a minimum left margin of 40px.
+function centeredLabel(text, y, size, color) {
+  var w = core.getScreenWidth();
+  var estimatedWidth = text.length * size * 0.58;
+  var x = Math.max(40, Math.round((w - estimatedWidth) / 2));
+  return label(text, x, y, size, color);
+}
+
+function setupPanorama() {
+  resetScene();
+  core.setGuiVisible(true);
+  core.setObserverLocation(76.836944, 29.965833, 0, "Kurukshetra, India", "Earth");
+  try { core.setSkyCulture("vedic_25_codex"); } catch (err) {}
+
+  LandscapeMgr.setFlagLandscape(false);
+  try { LandscapeMgr.setFlagGround(false); } catch (err) {}
+  LandscapeMgr.setFlagAtmosphere(false);
+  LandscapeMgr.setFlagFog(false);
+  LandscapeMgr.setFlagCardinalPoints(true);
+
+  try { StelSkyDrawer.setFlagStars(true); } catch (err) {}
+  try {
+    StelSkyDrawer.setFlagStarMagnitudeLimit(true);
+    StelSkyDrawer.setCustomStarMagnitudeLimit(4.0);
+  } catch (err2) {}
+
+  GridLinesMgr.setFlagAzimuthalGrid(false);
+  GridLinesMgr.setFlagEquatorGrid(false);
+  GridLinesMgr.setFlagEclipticLine(true);
+  GridLinesMgr.setFlagEquatorLine(true);
+  GridLinesMgr.setFlagHorizonLine(true);
+
+  ConstellationMgr.setFlagLines(true);
+  ConstellationMgr.setFlagLabels(false);
+  ConstellationMgr.setFlagBoundaries(false);
+  ConstellationMgr.setFlagArt(false);
+
+  try { SolarSystem.setMoonScale(20); SolarSystem.setFlagMoonScale(true); } catch (err4) {}
+  try { SolarSystem.setSunScale(20); SolarSystem.setFlagSunScale(true); } catch (err5) {}
+  try { StelSkyDrawer.setFlagSunGlare(false); } catch (err6) {}
+  try { SolarSystem.setFlagGlare(false); } catch (err7) {}
+
+  // Fixed south-facing view: alt=-60 puts the horizon at a natural position
+  // with East on the left and West on the right at mid-frame.
+  StelMovementMgr.setFlagTracking(false);
+  core.moveToAltAzi(-50, 180, 0);
+  StelMovementMgr.zoomTo(150, 0);
+}
+
+function statusForScore(score) {
+  // Traffic-light spectrum: Green (best) → Yellow → Orange → Red (worst).
+  if (score <= 0.45) return { text: "Strong BP candidate", color: "#4ADE80" };  // green
+  if (score <= 0.75) return { text: "Probable BP match",   color: "#FACC15" };  // yellow
+  if (score <= 1.35) return { text: "Weak BP match",       color: "#FB923C" };  // orange
+  return              { text: "Outside BP window",   color: "#F87171" };  // red
+}
+
+function holdForIndex(i, score) {
+  if (score <= 0.45) return 1.8;
+  if (score <= 0.75) return 1.35;
+  if (i < 5 || i > SEARCH_ROWS.length - 5) return 0.95;
+  return 1.05;
+}
+
+function introSequence() {
+  // Use the first SEARCH_ROW's scenic moment as the live sky backdrop for the intro.
+  setupPanorama();
+  JD(scenicJdFor(SEARCH_ROWS[0].jd));
+  W(0.2);
+
+  label("Demo Note: Turn on the BP skyculture / nakṣatra-sector overlay if not already active.", 70, 820, 20, "#FF5555");
+  label("Adjust any non-scriptable Stellarium settings now. Demo starts in 15 seconds.", 70, 854, 20, "#FF9999");
+  W(1.0);
+  centeredLabel("BP Equinoctial Full-Moon Search", 120, 34, "#FFCCCC"); W(2.0);
+  centeredLabel("We now visualize a precomputed BP equinoctial full-moon search.", 175, 23, "#F8FAFC"); W(1.8);
+  centeredLabel("This is a sampled traversal of candidate epochs from about 2400 BCE to 800 BCE.", 210, 23, "#F8FAFC"); W(1.8);
+  centeredLabel("Each stop is an equinoctial full moon, with the Sun near the equinox.", 245, 23, "#F8FAFC"); W(1.8);
+  centeredLabel("Green = strong BP match → Red = far from window.", 280, 23, "#FACC15"); W(2.4);
+  W(8.0);
+  resetScene();
+}
+
+// --- search-phase state (module-level) ---
+var _titleLabelId  = null;  // persistent title
+var _epochLabelId  = null;  // current epoch date+status (replaced each row)
+var _sampleLabelId = null;  // "Sample X/N" counter  (replaced each row)
+var _logY     = 0;          // y cursor for running log
+var _logLineH = 0;          // log entry line height
+var _logX     = 40;         // left-edge x for the log block (centered in scene)
+
+function initSearchPhase() {
+  // Called ONCE before the search loop.
+  setupPanorama();
+
+  // Fit all rows in ~500px (y 140 to ~640), then closing text below.
+  var maxRows = SEARCH_ROWS.length;
+  _logLineH = Math.max(12, Math.min(16, Math.floor(500 / maxRows)));
+  _logY = 140;
+
+  // Center the log block for a typical ~25-char line at size 14.
+  _logX = Math.max(40, Math.round((core.getScreenWidth() - 300) / 2));
+
+  _titleLabelId = centeredLabel("Equinoctial Full-Moon Search", 58, 28, "#FFD166");
+}
+
+function showSearchRow(row, index, total) {
+  JD(scenicJdFor(row.jd));
+  W(0.2);
+
+  var status = statusForScore(row.score);
+
+  // Hide previous epoch label and sample counter before placing new ones (no clobbering).
+  if (_epochLabelId  !== null) { try { LabelMgr.setLabelShow(_epochLabelId,  false); } catch(e) {} }
+  if (_sampleLabelId !== null) { try { LabelMgr.setLabelShow(_sampleLabelId, false); } catch(e) {} }
+
+  _epochLabelId  = centeredLabel(row.date + "  |  " + status.text, 100, 22, status.color);
+  _sampleLabelId = label("Sample " + (index + 1) + " / " + total, 900, 60, 16, "#CBD5E1");
+
+  // Append one left-aligned log entry in the centered log block.
+  label(row.year + "  " + status.text, _logX, _logY, _logLineH, status.color);
+  _logY += _logLineH + 1;
+
+  W(holdForIndex(index, row.score));
+}
+
+function closingSequence() {
+  // Do NOT call setupPanorama/resetScene — the running log must stay visible.
+  // Jump to the last row's scenic JD (scene is already correct from initSearchPhase).
+  JD(scenicJdFor(SEARCH_ROWS[SEARCH_ROWS.length - 1].jd));
+  W(0.2);
+
+  // Clear only the live epoch label before closing text.
+  if (_epochLabelId  !== null) { try { LabelMgr.setLabelShow(_epochLabelId,  false); } catch(e) {} }
+  if (_sampleLabelId !== null) { try { LabelMgr.setLabelShow(_sampleLabelId, false); } catch(e) {} }
+
+  // Append closing text below the last log entry.
+  var cy = _logY + 20;
+  centeredLabel("The fit strengthens near the BP window around 1700 BCE.", cy,      24, "#FBBF24"); W(2.0);
+  centeredLabel("The autumn side behaves similarly.",                        cy + 32, 22, "#F8FAFC"); W(1.8);
+  centeredLabel("The plot and scan carry the full argument.",                cy + 62, 22, "#F8FAFC"); W(1.8);
+  centeredLabel("Demo complete.",                                            cy + 92, 24, "#AABBFF");
+
+  // Gentle zoom in and back.
+  StelMovementMgr.zoomTo(200, 4.0); W(3.0);
+  StelMovementMgr.zoomTo(150, 4.0); W(5.0);
+}
+
+introSequence();
+// Set up scene once; title label placed once and stays for the whole search.
+initSearchPhase();
+for (var i = 0; i < SEARCH_ROWS.length; i++) {
+  showSearchRow(SEARCH_ROWS[i], i, SEARCH_ROWS.length);
+}
+closingSequence();

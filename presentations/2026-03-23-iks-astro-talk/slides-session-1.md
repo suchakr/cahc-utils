@@ -237,37 +237,38 @@ Session 1 emphasizes visual and observational foundations. Session 2 extends the
 
 ---
 
-# Meru — Cosmographic Visualization
+# [Meru — Cosmographic Visualization](https://meru-cosmos.netlify.app/)
 
 <div class="cols wide-right">
 <div class="col">
 
-### What it is
-
-- An interactive 3-D cosmographic visualization of the Meru model.
-- Draws from multiple textual sources — not tied to one text.
-
+- An 3-D cosmographic visual of the Meru model.
+- Draws from:
+  - Taittirīya Āraṇyaka 1.7; Aitareya Brāhmaṇa 3.44;
+  - Brāhmaṇḍa/Viṣṇu/Vāyu/Liṅga Purāṇas;
+  - Mahāsailam
+  - and others.
 - Built to explore and explain, not to prove.
 
-### What it shows
+### It shows
 
 - Meru as the polar axis of a concentric world model.
 - Dhruva at the apex; the nakṣatra wheel rotating around it.
-
 - Seasons and geographic zones as concentric rings.
-
-### Access
-
-- Live: [meru-cosmos.netlify.app](https://meru-cosmos.netlify.app/)
 
 </div>
 <div class="col">
 
-### Notes
+### Story line
 
-- Useful for connecting the textual descriptions of cardinal directions, Dhruva, and the nakṣatra wheel.
+https://meru-cosmos.netlify.app/
 
-- The same precession intuition from Stellarium applies here in a cosmographic frame.
+1. महासलिलम् → पृथ्वी / ध्रुवः emerge
+2. द्वीपाः emerge
+3. मेरु rises, with ध्रुव above its center
+4. नक्षत्राणि and सूर्यः emerge
+5. सूर्यः creates day and night
+6. अयने, विषुवे, and ऋतुवः
 
 </div>
 </div>
@@ -422,6 +423,7 @@ Nakṣatras are <b>not lunar mansions</b>
 - **Brāhmaṇḍa Purāṇa Chapter 21** _(about 1800 BCE)_
 - **Vṛddhagārgīya Jyotiṣa / Ādityacāra** _(about 1350 BCE)_
 - **Vṛddhagārgīya Jyotiṣa / Ṛtusvabhāva** _(about 500 BCE)_
+- [Precession Movie](https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/02_precession-movie.mp4)
 
 ### The Analytical Method
 

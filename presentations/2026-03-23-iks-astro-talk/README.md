@@ -2,6 +2,12 @@
 
 This repository contains the slide decks, Stellarium scripts, support assets, and operational helpers for the 2026-03-23 IKS astronomy tutorial sessions.
 
+## Published Tutorial Page
+
+For the polished public version of this tutorial, see:
+
+- [CAHC tutorial page](https://cahc.jainuniversity.ac.in/tutorial/astronomy/cosmography/2026/03/23/iabc-tutorial.html)
+
 If you are browsing the material, start with:
 
 - `slides-session-1.md`

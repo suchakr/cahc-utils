@@ -36,6 +36,32 @@ Why keep this note here:
 - we had already resolved the environment once and then lost that context
 - this README keeps the benchmark run path next to the benchmark files
 
+## User Query Script: Pole Stars Over Time
+
+This script handles the first student-driven follow-up topic:
+
+- method note:
+  `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/docs/user-01-pole-stars-over-time.md`
+- Python/Astropy scan:
+  `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/scripts/user_01_pole_stars_over_time.py`
+- generated Stellarium script target:
+  `/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/ssc/user-01-pole-stars-over-time.ssc`
+
+Run it from the existing `jyotisha` uv-managed environment:
+
+```bash
+cd /Users/sunder/projects/cahc/cahc-utils/jyotisha
+ASTROPY_IERS_AUTO_DOWNLOAD=0 uv run --with-requirements requirements.txt \
+  python ../presentations/2026-03-23-iks-astro-talk/scripts/user_01_pole_stars_over_time.py
+```
+
+The script:
+
+- fetches Hipparcos once from Vizier if `data/hip_main_vizier.tsv` is missing
+- caches a normalized local TSV for repeatable runs
+- scans candidate stars with Astropy across the chosen epoch range
+- emits a self-contained Stellarium script with one best-fit row per HIP
+
 ## Timing policy
 
 For both benchmark scripts:

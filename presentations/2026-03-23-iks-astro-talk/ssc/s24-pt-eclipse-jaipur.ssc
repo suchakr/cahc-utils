@@ -241,3 +241,4 @@ showEvent({
 }, 6);
 
 showClosing();
+W(5);

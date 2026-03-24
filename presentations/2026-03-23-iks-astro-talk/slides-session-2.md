@@ -245,7 +245,7 @@ Session 2 extends the same precession arc from the Sun to the Moon, then broaden
 
 ### Stellarium demo
 
-- `ssc/s21-moon-swing.ssc` — 30+ successive moonrises showing the monthly horizon swing
+- [`ssc/s21-moon-swing.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s21.mp4) — 30+ successive moonrises showing the monthly horizon swing
 
 <div class="callout">
 The same precession logic — now applied to the full moon rather than the seasonal sun.
@@ -270,7 +270,7 @@ The same precession logic — now applied to the full moon rather than the seaso
 
 ### Stellarium demo
 
-- `ssc/s22-bp-eqfm-best-case.ssc` — vasanta and śarat best-case views near 1700 BCE
+- [`ssc/s22-bp-eqfm-best-case.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s22.mp4) — vasanta and śarat best-case views near 1700 BCE
 
 </div>
 </div>
@@ -284,7 +284,7 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
 
 <div class="cols">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/bp-equinoctial-full-moon-better.png" alt="equinoctial full moon chart">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/bp-equinoctial-full-moon-better.jpg" alt="equinoctial full moon chart">
 </div>
 <div class="col wide-right">
 
@@ -300,7 +300,7 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
 
 - The **shaded window** ~ 1980–1610 BCE - stars in their equinoctial sectors. The sharper spring equinox constraint **~1700–1600 BCE**.
 
-- `ssc/s25-eqfm-search-visualizer.ssc` — epoch-by-epoch traversal of 2400–800 BCE candidates
+- [`ssc/s25-eqfm-search-visualizer.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s25.mp4) — epoch-by-epoch traversal of 2400–800 BCE candidates
 
 </div>
 </div>
@@ -311,7 +311,9 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
 
 <div class="cols wide-left">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_kuru_07_-1800.png" alt="dial ~1800 BCE">
+<!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_kuru_07_-1800.png" alt="dial ~1800 BCE"> -->
+
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/daynum-dial-season-1700-bce.jpg" alt="dial ~1800 BCE">
 <!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/mau-magha-scheme.png" alt="magha scheme dial"> -->
 </div>
 <div class="col">
@@ -339,7 +341,8 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
 
 <div class="cols">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_kuru_12_-1300.png" alt="dial ~1300 BCE">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/daynum-dial-season-1200-bce.jpg" alt="dial ~1200 BCE">
+<!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_kuru_12_-1300.png" alt="dial ~1300 BCE"> -->
 </div>
 <div class="col">
 
@@ -362,7 +365,9 @@ Precession rotates the outer star dial. The season boundaries stay fixed.
 # Seasonal Nakṣatra Drift: 2400 to 1000 BCE
 
 <div class="dial-image">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_1.gif" alt="dial animation" style="scale: 0.8;">
+<!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_1.gif" alt="dial animation" style="scale: 0.8;/"> -->
+
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2024-09-09-ju-iks/seasonal_naks_drift.gif" alt="seasonal naks drift"/>
 </div>
 
 <div class="callout">
@@ -417,8 +422,8 @@ AI tools speed up writing the code — not running it. Computation time is physi
 
 ### Stellarium support
 
-- `ssc/s23-total-eclipse-india.ssc` for the visual/location demo
-- `ssc/s24-pt-eclipse-jaipur.ssc` for the PT sequence support
+- [`ssc/s23-total-eclipse-india.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s23.mp4) for the visual/location demo
+- [`ssc/s24-pt-eclipse-jaipur.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s24.mp4) for the PT sequence support
 
 </div>
 </div>

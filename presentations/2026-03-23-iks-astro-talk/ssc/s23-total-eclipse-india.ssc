@@ -184,4 +184,4 @@ label("This is what the presentation has shown.", 70, 120, 22, "#F8FAFC", 1.4);
 // label("This is what the presentation has shown.", 70, 720, 22, "#F8FAFC", 1.4);
 label("Venus at 63º altitude - Gift of total solar eclipse", 740, 170, 18, "#FFFF00", 1.4);
 label("Mercury at 41º altitude - another gift",  770, 335, 18, "#FFFF00", 1.4)
-label("Demo complete.", 670, 700, 30, "#A7F3D0", 8);
+label("Demo complete.", 670, 700, 30, "#A7F3D0", 8);W(5);

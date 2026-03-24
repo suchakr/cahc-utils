@@ -274,4 +274,4 @@ for ( var iter = 0; iter < 2; iter++ ) {
 label("Brāhmaṇḍa Purāṇa equinoctial full moon visual intuition complete.", 440, 500, 24, "#FFD166"); W(2);
 label("The Sun and Moon can be inspected separately, but the relation matters most.", 360, 534, 22, "#F8FAFC"); W(2);
 label("Near 1700 BCE, the BP seasonal fractions are visually plausible in the sky.", 380, 568, 22, "#FDE68A"); W(2);
-label("Demo complete.", 620, 608, 24, "#A7F3D0"); W(8);
+label("Demo complete.", 620, 608, 24, "#A7F3D0"); W(5);

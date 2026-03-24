@@ -208,4 +208,4 @@ for (var e = 0; e < epochRuns.length; e++) {
   W(3);
 }
 label("Demo complete.", 700, 860, 24, "#AABBFF");
-W(8);
+W(5);

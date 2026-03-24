@@ -171,11 +171,12 @@ W(2);
 label("It is the ancient pole star near 3000 BCE.",
       80, 206, 20, "#FFFFFF");
 W(2);
-label("Modern Dhruva, the pole star, lies in the tail of Matsya from about 500 CE onward.",
+label("Modern Dhruva, the pole star, lies in the mouth of Matsya from about 500 CE onward.",
       80, 260, 20, "#FFD166");
 W(2);
 label("Between these periods, the pole position was not occupied by any bright star.",
       80, 296, 20, "#AAFFAA");
 W(2);
-label("Demo complete.", 1180, 900, 24, "#AABBFF");
-W(50);
+label("Demo complete.", 640, 894, 24, "#A7F3D0", 8.0);
+// label("Demo complete.", 1180, 900, 24, "#AABBFF");
+W(4);

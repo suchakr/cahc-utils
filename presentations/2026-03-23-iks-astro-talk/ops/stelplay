@@ -1,0 +1,376 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import argparse
+import os
+import re
+import shutil
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+
+STELLARIUM_BIN = Path("/Applications/Stellarium.app/Contents/MacOS/stellarium")
+FFMPEG_CMD = ["ffmpeg", "-y", "-f", "avfoundation", "-i", "1:none", "-vcodec", "libx264", "-pix_fmt", "yuv420p"]
+DEFAULT_RECORD_SENTINEL = "__DEFAULT_RECORD_NAME__"
+OPS_DIR = Path(__file__).resolve().parent
+REPO_ROOT = OPS_DIR.parent
+RECORD_FFMPEG_START_DELAY_SECONDS = 10
+RECORD_SCRIPT_LEAD_SECONDS = 10
+RECORD_END_TRIM_SECONDS = 0.75
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="./ops/stelplay",
+        description=(
+            "Play a Stellarium .ssc script from this repo's ./ssc directory using a short sXX reference. "
+            "Plain playback launches the original script unchanged. "
+            "Managed playback uses a temporary wrapper to exit Stellarium after the script completes."
+        ),
+        formatter_class=argparse.RawTextHelpFormatter,
+        epilog=(
+            "No script ref:\n"
+            "  Print usage and list available sXX scripts under ./ssc.\n\n"
+            "Examples:\n"
+            "  ./ops/stelplay s11\n"
+            "  ./ops/stelplay s14 --exit\n"
+            "  ./ops/stelplay s23 --record\n"
+            "  ./ops/stelplay s25 --record=eqfm-demo\n"
+            "  ./ops/stelplay s25 --record=out/takes/eqfm-take-2.mp4\n"
+        ),
+    )
+    parser.add_argument("script_ref", nargs="?", help="Short script reference such as s11, s14, or s25")
+    parser.add_argument("--exit", action="store_true", dest="auto_exit", help="Auto-exit Stellarium after the script completes")
+    parser.add_argument(
+        "--record",
+        nargs="?",
+        const=DEFAULT_RECORD_SENTINEL,
+        help="Record to ./out/work-videos/hires/<script-ref>.mp4, or override with a name or path",
+    )
+    return parser
+
+
+def shorthand_for(path: Path) -> str:
+    match = re.match(r"^([A-Za-z]+\d+)", path.stem)
+    return match.group(1) if match else path.stem
+
+
+def list_scripts(ssc_dir: Path) -> list[Path]:
+    return sorted(ssc_dir.glob("*.ssc"), key=lambda path: (shorthand_for(path), path.name))
+
+
+def print_available_scripts(ssc_dir: Path) -> None:
+    scripts = list_scripts(ssc_dir)
+    if not scripts:
+        print("Available scripts: none found under ./ssc")
+        return
+
+    print("Available scripts:")
+    for script in scripts:
+        print(f"  {shorthand_for(script):<4} -> {script.name}")
+
+
+def fail(message: str, code: int = 1) -> int:
+    print(message, file=sys.stderr)
+    return code
+
+
+def resolve_script(ssc_dir: Path, script_ref: str) -> Path:
+    matches = [path for path in list_scripts(ssc_dir) if path.stem == script_ref or path.name == script_ref or path.stem.startswith(script_ref)]
+    if not matches:
+        raise ValueError(f"No script matched '{script_ref}' under ./ssc")
+    if len(matches) > 1:
+        rendered = ", ".join(path.name for path in matches)
+        raise ValueError(f"Multiple scripts matched '{script_ref}': {rendered}")
+    return matches[0]
+
+
+def build_output_path(repo_root: Path, script_ref: str, record_value: str | None) -> Path | None:
+    if record_value is None:
+        return None
+
+    out_dir = repo_root / "out" / "work-videos" / "hires"
+    if record_value == DEFAULT_RECORD_SENTINEL or record_value == "":
+        return out_dir / f"{script_ref}.mp4"
+
+    if "/" in record_value or record_value.endswith(".mp4"):
+        raw_path = Path(record_value).expanduser()
+        return raw_path if raw_path.is_absolute() else repo_root / raw_path
+
+    return out_dir / f"{record_value}.mp4"
+
+
+def debug_output_paths(output_path: Path) -> tuple[Path, Path]:
+    suffix = output_path.suffix or ".mp4"
+    stem = output_path.stem
+    return (
+        output_path.with_name(f"{stem}.pretrim{suffix}"),
+        output_path.with_name(f"{stem}.posttrim{suffix}"),
+    )
+
+
+def render_wrapper(
+    target_script: Path,
+    record_script_lead_seconds: float = 0.0,
+) -> str:
+    original = target_script.read_text(encoding="utf-8")
+    if not original.endswith("\n"):
+        original += "\n"
+    prefix_lines: list[str] = []
+    if record_script_lead_seconds > 0:
+        prefix_lines.append(f"core.wait({record_script_lead_seconds:.1f});")
+    prefix = ("\n".join(prefix_lines) + "\n\n") if prefix_lines else ""
+    return prefix + original + "\ncore.quitStellarium();\n"
+
+
+def make_wrapper(
+    target_script: Path,
+    record_script_lead_seconds: float = 0.0,
+) -> Path:
+    fd, wrapper_name = tempfile.mkstemp(prefix="stelplay-", suffix=".ssc")
+    os.close(fd)
+    wrapper_path = Path(wrapper_name)
+    wrapper_path.write_text(
+        render_wrapper(
+            target_script,
+            record_script_lead_seconds=record_script_lead_seconds,
+        ),
+        encoding="utf-8",
+    )
+    return wrapper_path
+
+
+def ensure_dependencies(recording: bool) -> None:
+    if not STELLARIUM_BIN.exists():
+        raise FileNotFoundError(f"Stellarium binary not found at {STELLARIUM_BIN}")
+    if recording and shutil.which("ffmpeg") is None:
+        raise FileNotFoundError("ffmpeg not found; recording requires ffmpeg on PATH")
+    if recording and shutil.which("ffprobe") is None:
+        raise FileNotFoundError("ffprobe not found; recording trim requires ffprobe on PATH")
+
+
+def stellarium_command(startup_script: Path) -> list[str]:
+    return [str(STELLARIUM_BIN), f"--startup-script={startup_script.resolve()}"]
+
+
+def ffmpeg_command(output_path: Path) -> list[str]:
+    return [*FFMPEG_CMD, str(output_path)]
+
+
+def ffprobe_duration_seconds(path: Path) -> float:
+    command = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "default=noprint_wrappers=1:nokey=1",
+        str(path),
+    ]
+    completed = subprocess.run(command, check=True, capture_output=True, text=True)
+    return float(completed.stdout.strip())
+
+
+def trim_tail_fast(source_path: Path, dest_path: Path, trim_seconds: float) -> None:
+    if not source_path.exists():
+        return
+
+    if trim_seconds <= 0:
+        shutil.copy2(source_path, dest_path)
+        return
+
+    duration = ffprobe_duration_seconds(source_path)
+    trimmed_duration = duration - trim_seconds
+    if trimmed_duration <= 0:
+        shutil.copy2(source_path, dest_path)
+        return
+
+    fd, temp_name = tempfile.mkstemp(prefix="stelplay-trim-", suffix=".mp4", dir=str(dest_path.parent))
+    os.close(fd)
+    temp_path = Path(temp_name)
+
+    try:
+        command = [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(source_path),
+            "-t",
+            f"{trimmed_duration:.3f}",
+            "-c",
+            "copy",
+            str(temp_path),
+        ]
+        subprocess.run(command, check=True, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        temp_path.replace(dest_path)
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+
+def finalize_recording(pretrim_path: Path, posttrim_path: Path, output_path: Path, trim_seconds: float) -> tuple[bool, str]:
+    if not pretrim_path.exists():
+        return False, f"Recording finished but no video artifact was created at {pretrim_path}"
+
+    try:
+        trim_tail_fast(pretrim_path, posttrim_path, trim_seconds)
+    except subprocess.CalledProcessError:
+        shutil.copy2(pretrim_path, posttrim_path)
+
+    if not posttrim_path.exists():
+        shutil.copy2(pretrim_path, posttrim_path)
+
+    shutil.copy2(posttrim_path, output_path)
+    return True, f"Saved recording to {output_path}"
+
+
+def run_child(command: list[str], quiet: bool = False) -> subprocess.Popen[bytes]:
+    kwargs: dict[str, object] = {}
+    if quiet:
+        kwargs["stdin"] = subprocess.DEVNULL
+        kwargs["stdout"] = subprocess.DEVNULL
+        kwargs["stderr"] = subprocess.DEVNULL
+    return subprocess.Popen(command, **kwargs)
+
+
+def stop_ffmpeg(ffmpeg_proc: subprocess.Popen[bytes] | None) -> None:
+    if ffmpeg_proc is None:
+        return
+    if ffmpeg_proc.poll() is not None:
+        return
+
+    ffmpeg_proc.send_signal(signal.SIGINT)
+    try:
+        ffmpeg_proc.wait(timeout=15)
+    except subprocess.TimeoutExpired:
+        ffmpeg_proc.terminate()
+        try:
+            ffmpeg_proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            ffmpeg_proc.kill()
+            ffmpeg_proc.wait(timeout=5)
+
+
+def stop_stellarium(stellarium_proc: subprocess.Popen[bytes] | None) -> None:
+    if stellarium_proc is None:
+        return
+    if stellarium_proc.poll() is not None:
+        return
+
+    stellarium_proc.terminate()
+    try:
+        stellarium_proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        stellarium_proc.kill()
+        stellarium_proc.wait(timeout=5)
+
+
+def run_managed(startup_script: Path, output_path: Path | None, ffmpeg_start_delay_seconds: float = 0.0) -> int:
+    ffmpeg_proc: subprocess.Popen[bytes] | None = None
+    stellarium_proc: subprocess.Popen[bytes] | None = None
+
+    try:
+        stellarium_proc = run_child(stellarium_command(startup_script), quiet=output_path is not None)
+
+        if output_path is not None:
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            if ffmpeg_start_delay_seconds > 0:
+                time.sleep(ffmpeg_start_delay_seconds)
+                if stellarium_proc.poll() is not None:
+                    return stellarium_proc.wait()
+            ffmpeg_proc = run_child(ffmpeg_command(output_path), quiet=True)
+
+        exit_code = stellarium_proc.wait()
+        stop_ffmpeg(ffmpeg_proc)
+        return exit_code
+    except KeyboardInterrupt:
+        stop_stellarium(stellarium_proc)
+        stop_ffmpeg(ffmpeg_proc)
+        return 130
+    except Exception:
+        stop_stellarium(stellarium_proc)
+        stop_ffmpeg(ffmpeg_proc)
+        raise
+
+
+def run_plain(startup_script: Path) -> int:
+    try:
+        return subprocess.run(stellarium_command(startup_script), check=False).returncode
+    except KeyboardInterrupt:
+        return 130
+
+
+def main(argv: list[str]) -> int:
+    repo_root = REPO_ROOT
+    ssc_dir = repo_root / "ssc"
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    if args.script_ref is None:
+        parser.print_help()
+        print()
+        if ssc_dir.exists():
+            print_available_scripts(ssc_dir)
+        else:
+            print(f"Available scripts: {ssc_dir} directory not found")
+        return 1
+
+    if not ssc_dir.is_dir():
+        return fail(f"{ssc_dir} directory not found; expected repo layout next to ./ops/stelplay")
+
+    recording = args.record is not None
+    auto_exit = bool(args.auto_exit or recording)
+
+    try:
+        ensure_dependencies(recording=recording)
+        target_script = resolve_script(ssc_dir, args.script_ref)
+    except (FileNotFoundError, ValueError) as exc:
+        return fail(str(exc))
+
+    startup_script = target_script
+    wrapper_path: Path | None = None
+    output_path = build_output_path(repo_root, shorthand_for(target_script), args.record)
+    pretrim_path: Path | None = None
+    posttrim_path: Path | None = None
+
+    if output_path is not None:
+        pretrim_path, posttrim_path = debug_output_paths(output_path)
+
+    try:
+        if auto_exit:
+            wrapper_path = make_wrapper(
+                target_script,
+                record_script_lead_seconds=RECORD_SCRIPT_LEAD_SECONDS if recording else 0.0,
+            )
+            startup_script = wrapper_path
+
+        exit_code = (
+            run_managed(
+                startup_script,
+                pretrim_path or output_path,
+                ffmpeg_start_delay_seconds=RECORD_FFMPEG_START_DELAY_SECONDS if recording else 0.0,
+            )
+            if auto_exit
+            else run_plain(startup_script)
+        )
+    finally:
+        if wrapper_path is not None:
+            wrapper_path.unlink(missing_ok=True)
+
+    if output_path is not None and exit_code == 0:
+        ok, message = finalize_recording(pretrim_path, posttrim_path, output_path, RECORD_END_TRIM_SECONDS)
+        if not ok:
+            return fail(message)
+        print(message)
+        print(f"Kept debug artifacts: {pretrim_path.name}, {posttrim_path.name}")
+
+    return exit_code
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

@@ -1,10 +1,12 @@
 #!/opt/homebrew/bin/bash
 set -euo pipefail
 
-cd "$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$REPO_ROOT"
 
 MARP_BIN="${MARP_BIN:-/opt/homebrew/bin/marp}"
-OUT_DIR="${OUT_DIR:-out}"
+OUT_DIR="${OUT_DIR:-$REPO_ROOT/out}"
 
 if [[ ! -x "$MARP_BIN" ]]; then
   echo "marp not found at: $MARP_BIN" >&2
@@ -14,14 +16,14 @@ fi
 
 build_one() {
   local stem="$1"
-  local src="${stem}.md"
+  local src="${REPO_ROOT}/${stem}.md"
   local html="${OUT_DIR}/${stem}.html"
   local pdf="${OUT_DIR}/${stem}.pdf"
 
-  echo "Building $src -> $html"
+  echo "Building ${stem}.md -> $html"
   "$MARP_BIN" --html --allow-local-files "$src" -o "$html"
 
-  echo "Building $src -> $pdf"
+  echo "Building ${stem}.md -> $pdf"
   "$MARP_BIN" --pdf --allow-local-files "$src" -o "$pdf"
 }
 

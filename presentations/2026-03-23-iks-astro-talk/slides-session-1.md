@@ -2,7 +2,7 @@
 marp: true
 theme: gaia
 paginate: true
-header: CAHC Tutorial
+header: CAHC Tutorial - Session 1
 backgroundColor: #fcfbf7
 color: #1f2937
 style: |
@@ -319,7 +319,7 @@ These controls establish the visual vocabulary for the rest of the session.
 
 - The identity of the **pole star** is historical, not timeless.
 
-### Main script - `ssc/s11-dhruva-pole-drift.ssc`
+### Main script - [`ssc/s11-dhruva-pole-drift.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s11.mp4)
 
 - Location: about 30°N
 - 2830 BCE, **Abhaya Dhruva** (Thuban) of Śiśumāra close to the north celestial pole
@@ -328,7 +328,7 @@ These controls establish the visual vocabulary for the rest of the session.
 
 </div>
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-precession.png" alt="precession">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-precession.png" alt="precession">
 </div>
 </div>
 
@@ -342,9 +342,9 @@ These controls establish the visual vocabulary for the rest of the session.
 ### Topics
 
 - **Daily path:** The Sun rises, culminates, and sets in a regular daily pattern.
-- **Sunrise shift on the horizon:** The rising point moves north and south through the year, the sun's **annual swing** best seen with `ssc/s12-sun-swing.ssc`.
-- **High and low Sun:** The Sun also changes in noon/meridian height, appearing higher in summer and lower in winter, best seen with `ssc/s13-sun-meridian-high-low.ssc`.
-- **Dakṣiṇāyana and Uttarāyaṇa:** The turning points of the annual swing can be explained with `ssc/s13-sun-meridian-high-low.ssc`.
+- **Sunrise shift on the horizon:** The rising point moves north and south through the year, the sun's **annual swing** best seen with [`ssc/s12-sun-swing.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s12.mp4).
+- **High and low Sun:** The Sun also changes in noon/meridian height, appearing higher in summer and lower in winter, best seen with [`ssc/s13-sun-meridian-high-low.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s13.mp4).
+- **Dakṣiṇāyana and Uttarāyaṇa:** The turning points of the annual swing can be explained with [`ssc/s13-sun-meridian-high-low.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s13.mp4).
 
 </div>
 <div class="col">
@@ -366,7 +366,7 @@ This is clearer in live motion than in a static figure.
 
 <div class="cols img-col">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-nakshatra-table.png" alt="nakshatra table">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-nakshatra-table.png" alt="nakshatra table">
 </div>
 
 <div class="col">
@@ -385,7 +385,7 @@ Nakṣatras are <b>not lunar mansions</b>
 
 ### Stellarium Script
 
-- `ssc/s14-nakshatra-tour.ssc` - tour of the 27 nakṣatras.
+- [`ssc/s14-nakshatra-tour.ssc`](https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/s14.mp4) - tour of the 27 nakṣatras.
 
 </div>
 </div>
@@ -396,7 +396,7 @@ Nakṣatras are <b>not lunar mansions</b>
 
 <div class="cols">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-astrographs.png" alt="astrographs">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-astrographs.png" alt="astrographs">
 </div>
 <div class="col">
 
@@ -423,7 +423,7 @@ Nakṣatras are <b>not lunar mansions</b>
 - **Brāhmaṇḍa Purāṇa Chapter 21** _(about 1800 BCE)_
 - **Vṛddhagārgīya Jyotiṣa / Ādityacāra** _(about 1350 BCE)_
 - **Vṛddhagārgīya Jyotiṣa / Ṛtusvabhāva** _(about 500 BCE)_
-- [Precession Movie](https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/02_precession-movie.mp4)
+- [🎥 Watch: Precession Movie](https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/02_precession-movie.mp4)
 
 ### The Analytical Method
 
@@ -442,7 +442,7 @@ Automation reduces repetitive checking and makes comparison across epochs practi
 
 <div class="cols wide-right">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/jyotisha/images/ms-book/pg29-eqfm_paper_submit.png" alt="eqfm chart">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/bp-equinoctial-full-moon-better.jpg" alt="eqfm chart">
 </div>
 <div class="col">
 
@@ -464,7 +464,7 @@ Automation reduces repetitive checking and makes comparison across epochs practi
 <div class="cols">
 
 <div class="col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-adityacara-charts.png" alt="adityacara charts">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-adityacara-charts.png" alt="adityacara charts">
 </div>
 
 <div class="col wide">
@@ -484,7 +484,7 @@ Automation reduces repetitive checking and makes comparison across epochs practi
 <div class="cols wide-right">
 
 <div class="col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-rtusvabhava-charts.png" alt="rtusvabhava charts">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-rtusvabhava-charts.png" alt="rtusvabhava charts">
 </div>
 
 <div class="col">
@@ -512,7 +512,7 @@ Automation reduces repetitive checking and makes comparison across epochs practi
 
 <div class="cols wide-right">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/sun-transit/sun-transit-transition-abhijit.png" alt="transition abhijit">
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/bihs/sun-transit/sun-transit-transition-abhijit.png" alt="transition abhijit">
 </div>
 <div class="col">
 

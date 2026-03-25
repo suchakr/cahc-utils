@@ -253,15 +253,18 @@ The same precession logic — now applied to the full moon rather than the seaso
 
 ---
 
-# BP 21 — The Text
+# [BP 21 - The Text](https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/05_brahmanda-movie.mp4)
 
 <div class="cols">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/bp-२१-१४२-१४९-devanaagari.jpeg" alt="BP 21 text">
+
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/05_brahmanda-movie.gif">
+
+<!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/bp-२१-१४२-१४९-devanaagari.jpeg" alt="BP 21 text"> -->
 </div>
 <div class="col">
 
-- Equinoctial full moons in terms of named nakṣatra sectors.
+- [Equinoctial full moons in terms of named nakṣatra sectors](https://cahc.jainuniversity.ac.in/assets/talks/2024-03-17-mythic/05_brahmanda-movie.mp4)
 - Day and night are equal - **Equinox**
 - Sun ¼Kṛttikā, Moon ¾-Viśākhā — **Vasanta Full Moon**
 - Sun ¾-Viśākhā, Moon head-Kṛttikā — **Śarat Full Moon**
@@ -342,7 +345,6 @@ They belong to an observational layer earlier than PT, VGJ, and Lagadha's Jyoti�
 <div class="cols">
 <div class="col img-col">
 <img src="https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/daynum-dial-season-1200-bce.jpg" alt="dial ~1200 BCE">
-<!-- <img src="/Users/sunder/projects/cahc/cahc-utils/presentations/equinoctial-full-moon/ndial_kuru_12_-1300.png" alt="dial ~1300 BCE"> -->
 </div>
 <div class="col">
 
@@ -405,7 +407,9 @@ AI tools speed up writing the code — not running it. Computation time is physi
 
 <div class="cols wide-right">
 <div class="col img-col">
-<img src="/Users/sunder/projects/cahc/cahc-utils/presentations/2026-03-23-iks-astro-talk/pics/pt-eclipse-table.jpg" alt="PT eclipse table">
+
+<img src="https://cahc.jainuniversity.ac.in/assets/talks/2026-03-23-iabc/pt-eclipse-table.jpg" alt="PT eclipse table">
+
 </div>
 <div class="col">
 

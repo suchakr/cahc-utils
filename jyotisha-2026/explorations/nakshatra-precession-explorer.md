@@ -37,8 +37,7 @@ How can precessional time be shown clearly by separating the fixed sidereal naks
 - joined exploration dataset combining nakshatra metadata and asterism geometry
 - epoch slider shared by all current views
 - `Table` view with seasonal alignment cues and marker-in-sector annotations
-- `2D Sky` view with stars, nakshatra shapes, ecliptic band, 27 sectors, Abhijit, equator, seasonal belt, equinoxes, solstices, pole position, and codex overlays for Shiṁśumāra, Matsya, and Agastya
-- guided `Set Stage` and `Time Travel` modes in the 2D view, with `Time Travel` pausing at curated epoch anchors
+- `2D Sky` view with stars, nakshatra shapes, ecliptic band, 27 sectors, Abhijit, equator, seasonal belt, equinoxes, solstices, and pole position
 - short interpretive notes explaining the fixed-versus-drifting-frame model
 
 ## Open Questions

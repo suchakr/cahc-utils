@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nakshatra Precession Explorer</title>
     <link rel="stylesheet" href="../shared/css/site.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
     <style>
       .epoch-strip {
         display: flex;
@@ -406,6 +414,7 @@
         <div class="tabs" role="tablist" aria-label="Explorer views">
           <button class="tab-button active" type="button" data-tab="table" role="tab" aria-selected="true">Table</button>
           <button class="tab-button" type="button" data-tab="sky" role="tab" aria-selected="false">2D Sky</button>
+          <button class="tab-button" type="button" data-tab="three" role="tab" aria-selected="false">3D Sky</button>
         </div>
       </section>
 
@@ -477,6 +486,27 @@
         </p>
       </section>
 
+      <section class="flat-section tab-panel" id="tab-three" role="tabpanel">
+        <div class="epoch-strip">
+          <label for="epoch-slider-three">Epoch</label>
+          <div class="epoch-controls">
+            <button class="epoch-chip" type="button" id="play-three">Play</button>
+            <button class="epoch-chip" type="button" id="pause-three">Pause</button>
+            <button class="epoch-chip" type="button" id="reset-three">Reset</button>
+          </div>
+          <input class="epoch-slider" id="epoch-slider-three" type="range">
+          <div class="epoch-readout" id="epoch-readout-three"></div>
+        </div>
+        <div class="three-container" id="three-container" style="width:100%; height:600px; background:#111; border-radius:12px; overflow:hidden; position:relative;">
+          <div id="three-overlay" style="position:absolute; top:1rem; left:1rem; pointer-events:none; color:#eee; font-family:var(--font-mono); font-size:0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
+            3D CELESTIAL SPHERE · <span id="three-epoch-label"></span>
+          </div>
+        </div>
+        <p class="inline-note">
+          Drag to rotate, scroll to zoom. The white grid is the fixed J2000 ecliptic. The drifting seasonal frame (equator, equinoxes) moves relative to the stars.
+        </p>
+      </section>
+
       <section class="flat-section">
         <h2>Interpretive Notes</h2>
         <ul class="explanation-list">
@@ -493,15 +523,17 @@
       const epochSliders = [
         document.getElementById("epoch-slider-table"),
         document.getElementById("epoch-slider-sky"),
+        document.getElementById("epoch-slider-three"),
       ];
       const epochReadouts = [
         document.getElementById("epoch-readout-table"),
         document.getElementById("epoch-readout-sky"),
+        document.getElementById("epoch-readout-three"),
       ];
       const epochButtons = {
-        play: [document.getElementById("play-table"), document.getElementById("play-sky")],
-        pause: [document.getElementById("pause-table"), document.getElementById("pause-sky")],
-        reset: [document.getElementById("reset-table"), document.getElementById("reset-sky")],
+        play: [document.getElementById("play-table"), document.getElementById("play-sky"), document.getElementById("play-three")],
+        pause: [document.getElementById("pause-table"), document.getElementById("pause-sky"), document.getElementById("pause-three")],
+        reset: [document.getElementById("reset-table"), document.getElementById("reset-sky"), document.getElementById("reset-three")],
       };
       const tableMarkerStrip = document.getElementById("table-marker-strip");
       const tableWrap = document.getElementById("table-wrap");
@@ -518,6 +550,7 @@
       const tabPanels = {
         table: document.getElementById("tab-table"),
         sky: document.getElementById("tab-sky"),
+        three: document.getElementById("tab-three"),
       };
       const toggles = {
         seasons: document.getElementById("toggle-seasons"),
@@ -548,6 +581,7 @@
           lastPausedEpochIndex: null,
         },
       };
+      window.explorerState = state;
       let playTimer = null;
 
       const sectorRows = data.nakshatras.filter((row) => row.sector_index_27 !== null);
@@ -805,6 +839,9 @@
         Object.entries(tabPanels).forEach(([name, panel]) => {
           panel.classList.toggle("active", name === tabName);
         });
+        if (tabName === "three") {
+          window.dispatchEvent(new Event('resize'));
+        }
         render();
       }
 
@@ -1314,5 +1351,471 @@
 
       render();
     </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+      const data = JSON.parse(document.getElementById("explorer-data").textContent);
+      const container = document.getElementById("three-container");
+      const overlayLabel = document.getElementById("three-epoch-label");
+
+      const R = 100;
+      const BAND_HALF = data.meta.ecliptic_band_half_width_deg;
+      let scene, camera, renderer, controls;
+      let siderealGroup, seasonalGroup;
+      let equatorLine, equinoxMarkers, poleDot;
+
+      /* ── helpers ─────────────────────────────────────────── */
+      function toCart(lonDeg, latDeg, r) {
+        const lon = lonDeg * Math.PI / 180;
+        const lat = latDeg * Math.PI / 180;
+        return new THREE.Vector3(
+          r * Math.cos(lat) * Math.cos(lon),
+          r * Math.sin(lat),
+          r * Math.cos(lat) * Math.sin(lon)
+        );
+      }
+
+      function circlePoints(latDeg, r, n) {
+        const pts = [];
+        for (let i = 0; i <= n; i++) pts.push(toCart(i * 360 / n, latDeg, r));
+        return pts;
+      }
+
+      function meridianPoints(lonDeg, r, n) {
+        const pts = [];
+        for (let i = 0; i <= n; i++) pts.push(toCart(lonDeg, -90 + i * 180 / n, r));
+        return pts;
+      }
+
+      function makeTextSprite(text, opts) {
+        const fontSize = opts.fontSize || 48;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.font = `${opts.bold ? 'bold ' : ''}${fontSize}px sans-serif`;
+        const metrics = ctx.measureText(text);
+        const w = Math.ceil(metrics.width) + 12;
+        const h = fontSize + 12;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.font = `${opts.bold ? 'bold ' : ''}${fontSize}px sans-serif`;
+        ctx.fillStyle = opts.color || '#ffffff';
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, w / 2, h / 2);
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.minFilter = THREE.LinearFilter;
+        const mat = new THREE.SpriteMaterial({
+          map: tex, transparent: true, opacity: opts.opacity || 0.85,
+          depthWrite: false, depthTest: false
+        });
+        const sprite = new THREE.Sprite(mat);
+        const scale = (opts.scale || 0.12) * w / fontSize;
+        sprite.scale.set(scale * 3, scale * 3 * h / w, 1);
+        return sprite;
+      }
+
+      function sectorHSL(index) {
+        const h = (index * 360 / 27 + 15) % 360;
+        return `hsl(${h}, 38%, 52%)`;
+      }
+
+      function sectorHex(index) {
+        const h = (index * 360 / 27 + 15) % 360;
+        const c = new THREE.Color();
+        c.setHSL(h / 360, 0.38, 0.52);
+        return c;
+      }
+
+      /* ── init ────────────────────────────────────────────── */
+      function initThree() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x080810);
+
+        camera = new THREE.PerspectiveCamera(
+          45, container.clientWidth / container.clientHeight, 1, 2000
+        );
+        camera.position.set(0, 70, 240);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 130;
+        controls.maxDistance = 600;
+        controls.enablePan = false;
+
+        siderealGroup = new THREE.Group();
+        scene.add(siderealGroup);
+        seasonalGroup = new THREE.Group();
+        scene.add(seasonalGroup);
+
+        buildSphereGrid();
+        buildEclipticBand();
+        buildEclipticCircle();
+        buildStars();
+        buildNakshatraLines();
+        buildNakshatraLabels();
+        buildCodexFigures();
+        buildSpecialStars();
+        buildPoleTrack();
+        buildSeasonalFrame();
+
+        window.addEventListener('resize', onResize);
+        animate();
+      }
+
+      /* ── A1. Sphere wireframe ───────────────────────────── */
+      function buildSphereGrid() {
+        const parMat = new THREE.LineBasicMaterial({ color: 0x667788, transparent: true, opacity: 0.50 });
+        const merMat = new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.38 });
+        for (let lat = -60; lat <= 60; lat += 30) {
+          if (lat === 0) continue;
+          const g = new THREE.BufferGeometry().setFromPoints(circlePoints(lat, R * 0.995, 72));
+          siderealGroup.add(new THREE.Line(g, parMat));
+        }
+        for (let lon = 0; lon < 360; lon += 30) {
+          const g = new THREE.BufferGeometry().setFromPoints(meridianPoints(lon, R * 0.995, 72));
+          siderealGroup.add(new THREE.Line(g, merMat));
+        }
+        // ecliptic poles
+        const poleMat = new THREE.MeshBasicMaterial({ color: 0x8899aa });
+        const poleGeom = new THREE.SphereGeometry(1.2, 8, 8);
+        const nep = new THREE.Mesh(poleGeom, poleMat);
+        nep.position.copy(toCart(0, 90, R * 0.995));
+        siderealGroup.add(nep);
+        const sep = new THREE.Mesh(poleGeom.clone(), poleMat);
+        sep.position.copy(toCart(0, -90, R * 0.995));
+        siderealGroup.add(sep);
+        const nepLabel = makeTextSprite('NEP', { color: '#8899aa', fontSize: 36, scale: 0.08, opacity: 0.6 });
+        nepLabel.position.copy(toCart(15, 85, R * 1.04));
+        siderealGroup.add(nepLabel);
+        const sepLabel = makeTextSprite('SEP', { color: '#8899aa', fontSize: 36, scale: 0.08, opacity: 0.6 });
+        sepLabel.position.copy(toCart(15, -85, R * 1.04));
+        siderealGroup.add(sepLabel);
+      }
+
+      /* ── A2. Ecliptic band — colored + labeled sectors ─── */
+      function buildEclipticBand() {
+        const sectorRows = data.nakshatras.filter(n => n.sector_index_27 !== null);
+        const step = 2;
+
+        sectorRows.forEach((row, idx) => {
+          const lonStart = row.sector_start_lon_deg;
+          const lonEnd   = row.sector_end_lon_deg;
+          const span = ((lonEnd - lonStart) % 360 + 360) % 360 || (360 / 27);
+          const nSteps = Math.max(2, Math.round(span / step));
+          const color = sectorHex(idx);
+
+          const positions = [];
+          const indices   = [];
+          for (let i = 0; i <= nSteps; i++) {
+            const lon = lonStart + (i / nSteps) * span;
+            const pTop = toCart(lon,  BAND_HALF, R * 0.998);
+            const pBot = toCart(lon, -BAND_HALF, R * 0.998);
+            positions.push(pTop.x, pTop.y, pTop.z);
+            positions.push(pBot.x, pBot.y, pBot.z);
+            if (i < nSteps) {
+              const b = i * 2;
+              indices.push(b, b + 1, b + 2, b + 1, b + 3, b + 2);
+            }
+          }
+          const geom = new THREE.BufferGeometry();
+          geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+          geom.setIndex(indices);
+          geom.computeVertexNormals();
+          const mat = new THREE.MeshBasicMaterial({
+            color: color, transparent: true, opacity: 0.18,
+            side: THREE.DoubleSide, depthWrite: false
+          });
+          siderealGroup.add(new THREE.Mesh(geom, mat));
+
+          const divPts = [];
+          for (let lat = -BAND_HALF; lat <= BAND_HALF; lat += 1) {
+            divPts.push(toCart(lonStart, lat, R * 0.999));
+          }
+          const divGeom = new THREE.BufferGeometry().setFromPoints(divPts);
+          const divMat = new THREE.LineBasicMaterial({ color: 0xd4a56a, transparent: true, opacity: 0.32 });
+          siderealGroup.add(new THREE.Line(divGeom, divMat));
+
+          const midLon = lonStart + span / 2;
+          const abbr = row.nid.split('-')[1] || '';
+          const label = makeTextSprite(abbr, {
+            color: sectorHSL(idx), fontSize: 36, scale: 0.07, opacity: 0.72, bold: true
+          });
+          label.position.copy(toCart(midLon, 0, R * 1.025));
+          siderealGroup.add(label);
+        });
+      }
+
+      /* ── Ecliptic great circle ──────────────────────────── */
+      function buildEclipticCircle() {
+        const pts = circlePoints(0, R * 1.001, 144);
+        const geom = new THREE.BufferGeometry().setFromPoints(pts);
+        const mat = new THREE.LineBasicMaterial({ color: 0xd4a56a, transparent: true, opacity: 0.65 });
+        siderealGroup.add(new THREE.Line(geom, mat));
+      }
+
+      /* ── Stars ──────────────────────────────────────────── */
+      function buildStars() {
+        const positions = [];
+        const colors = [];
+        data.stars.forEach(star => {
+          const p = toCart(star.lon_deg, star.lat_deg, R);
+          positions.push(p.x, p.y, p.z);
+          colors.push(0.92, 0.92, 1.0);
+        });
+        const geom = new THREE.BufferGeometry();
+        geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        const mat = new THREE.PointsMaterial({
+          size: 2.8, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true
+        });
+        siderealGroup.add(new THREE.Points(geom, mat));
+      }
+
+      /* ── Nakshatra asterism lines ───────────────────────── */
+      function buildNakshatraLines() {
+        const mat = new THREE.LineBasicMaterial({ color: 0x7799bb, transparent: true, opacity: 0.82 });
+        data.nakshatras.forEach(naks => {
+          naks.asterism_lines.forEach(line => {
+            const pts = [];
+            line.forEach(hip => {
+              const star = data.stars.find(s => s.hip === hip);
+              if (star) pts.push(toCart(star.lon_deg, star.lat_deg, R * 0.999));
+            });
+            if (pts.length > 1) {
+              const geom = new THREE.BufferGeometry().setFromPoints(pts);
+              siderealGroup.add(new THREE.Line(geom, mat));
+            }
+          });
+        });
+      }
+
+      /* ── Nakshatra labels ───────────────────────────────── */
+      function buildNakshatraLabels() {
+        data.nakshatras.forEach(naks => {
+          if (!naks.stars || naks.stars.length === 0) return;
+          const cLon = naks.stars.reduce((s, st) => s + st.lon_deg, 0) / naks.stars.length;
+          const cLat = naks.stars.reduce((s, st) => s + st.lat_deg, 0) / naks.stars.length;
+          const label = makeTextSprite(naks.enaks, {
+            color: '#99aabb', fontSize: 32, scale: 0.06, opacity: 0.55
+          });
+          label.position.copy(toCart(cLon, cLat + 3, R * 1.03));
+          siderealGroup.add(label);
+        });
+      }
+
+      /* ── Polar figures ────────────────────────────────────── */
+      function buildCodexFigures() {
+        const figMat = new THREE.LineBasicMaterial({ color: 0x6f86a1, transparent: true, opacity: 0.55 });
+        const figDotMat = new THREE.MeshBasicMaterial({ color: 0x6f86a1 });
+        const figDotGeom = new THREE.SphereGeometry(0.7, 6, 6);
+
+        const specialStarLookup = {};
+        data.special_figures.forEach(fig => {
+          fig.stars.forEach(s => { specialStarLookup[s.hip] = s; });
+        });
+        data.special_stars.forEach(s => { specialStarLookup[s.hip] = s; });
+
+        data.special_figures.forEach(fig => {
+          fig.lines.forEach(line => {
+            const pts = [];
+            line.forEach(hip => {
+              const s = specialStarLookup[hip];
+              if (s) pts.push(toCart(s.lon_deg, s.lat_deg, R * 1.002));
+            });
+            if (pts.length > 1) {
+              const geom = new THREE.BufferGeometry().setFromPoints(pts);
+              siderealGroup.add(new THREE.Line(geom, figMat));
+            }
+          });
+          fig.stars.forEach(s => {
+            const dot = new THREE.Mesh(figDotGeom.clone(), figDotMat);
+            dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.002));
+            siderealGroup.add(dot);
+          });
+          const cLon = fig.stars.reduce((a, s) => a + s.lon_deg, 0) / fig.stars.length;
+          const cLat = fig.stars.reduce((a, s) => a + s.lat_deg, 0) / fig.stars.length;
+          const figName = fig.id.includes('Shim') ? 'Śiśumāra' : fig.id.includes('Matsya') ? 'Matsya' : fig.label;
+          const label = makeTextSprite(figName, {
+            color: '#7a94b0', fontSize: 34, scale: 0.07, opacity: 0.65
+          });
+          label.position.copy(toCart(cLon, cLat + (fig.id.includes('Shim') ? 3 : -3), R * 1.04));
+          siderealGroup.add(label);
+        });
+      }
+
+      /* ── Special stars (Agastya, Polaris, Thuban) ──────── */
+      function buildSpecialStars() {
+        const dotGeom = new THREE.SphereGeometry(1.0, 8, 8);
+        const dotMat = new THREE.MeshBasicMaterial({ color: 0x6f86a1 });
+
+        data.special_stars.forEach(s => {
+          const dot = new THREE.Mesh(dotGeom.clone(), dotMat);
+          dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.002));
+          siderealGroup.add(dot);
+          const label = makeTextSprite(s.label, {
+            color: '#7a94b0', fontSize: 30, scale: 0.06, opacity: 0.6
+          });
+          label.position.copy(toCart(s.lon_deg + 3, s.lat_deg - 3, R * 1.04));
+          siderealGroup.add(label);
+        });
+
+        const specialStarLookup = {};
+        data.special_figures.forEach(fig => {
+          fig.stars.forEach(s => { specialStarLookup[s.hip] = s; });
+        });
+
+        const poleStarDefs = [
+          { hip: 'HIP 11767', label: 'Polaris', color: '#5577aa' },
+          { hip: 'HIP 68756', label: 'Thuban', color: '#5577aa' }
+        ];
+        poleStarDefs.forEach(def => {
+          const s = specialStarLookup[def.hip] || data.stars.find(st => st.hip === def.hip);
+          if (!s) return;
+          const psMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(def.color) });
+          const dot = new THREE.Mesh(dotGeom.clone(), psMat);
+          dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.003));
+          siderealGroup.add(dot);
+          const label = makeTextSprite(def.label, {
+            color: def.color, fontSize: 28, scale: 0.055, opacity: 0.6
+          });
+          label.position.copy(toCart(s.lon_deg + 4, s.lat_deg - 3, R * 1.04));
+          siderealGroup.add(label);
+        });
+      }
+
+      /* ── Precession circle ────────────────────────────────── */
+      function buildPoleTrack() {
+        // Full geometric precession circle: small circle at ecliptic lat = 90° − mean obliquity
+        const meanObliquity = data.epochs[Math.floor(data.epochs.length / 2)].obliquity_deg || 23.44;
+        const precLat = 90 - meanObliquity;
+        const fullCirclePts = circlePoints(precLat, R * 1.005, 144);
+        const fullGeom = new THREE.BufferGeometry().setFromPoints(fullCirclePts);
+        const fullMat = new THREE.LineBasicMaterial({ color: 0x6a7b91, transparent: true, opacity: 0.40 });
+        siderealGroup.add(new THREE.Line(fullGeom, fullMat));
+
+        // Epoch-sampled arc overlay (brighter, shows covered range)
+        const arcPts = data.epochs.map(e => toCart(e.north_pole_lon_deg, e.north_pole_lat_deg, R * 1.006));
+        const arcGeom = new THREE.BufferGeometry().setFromPoints(arcPts);
+        const arcMat = new THREE.LineBasicMaterial({ color: 0x8899bb, transparent: true, opacity: 0.65 });
+        siderealGroup.add(new THREE.Line(arcGeom, arcMat));
+
+        // Label
+        const labelPos = toCart(180, precLat + 4, R * 1.05);
+        const trackLabel = makeTextSprite('Precession Circle', {
+          color: '#8899bb', fontSize: 30, scale: 0.07, opacity: 0.6
+        });
+        trackLabel.position.copy(labelPos);
+        siderealGroup.add(trackLabel);
+
+        // Moving pole dot
+        const poleGeom = new THREE.SphereGeometry(1.5, 10, 10);
+        const poleMat = new THREE.MeshBasicMaterial({ color: 0x44566c });
+        poleDot = new THREE.Mesh(poleGeom, poleMat);
+        seasonalGroup.add(poleDot);
+
+        const poleLabel = makeTextSprite('North Pole', {
+          color: '#44566c', fontSize: 28, scale: 0.06, opacity: 0.7
+        });
+        poleLabel.name = 'poleLabel';
+        seasonalGroup.add(poleLabel);
+      }
+
+      /* ── Seasonal frame (red equator + 4 markers) ──────── */
+      function buildSeasonalFrame() {
+        const eqGeom = new THREE.BufferGeometry();
+        const eqMat = new THREE.LineBasicMaterial({ color: 0xcc3333, transparent: true, opacity: 0.78 });
+        equatorLine = new THREE.Line(eqGeom, eqMat);
+        seasonalGroup.add(equatorLine);
+
+        equinoxMarkers = new THREE.Group();
+        seasonalGroup.add(equinoxMarkers);
+        const labels = ['VE', 'SS', 'AE', 'WS'];
+        const mColors = [0xcc3333, 0xcc8833, 0xcc3333, 0x3388cc];
+        labels.forEach((lbl, i) => {
+          const mg = new THREE.SphereGeometry(1.5, 12, 12);
+          const mm = new THREE.MeshBasicMaterial({ color: mColors[i] });
+          const mesh = new THREE.Mesh(mg, mm);
+          mesh.name = lbl;
+          equinoxMarkers.add(mesh);
+          const sprite = makeTextSprite(lbl, {
+            color: '#' + mColors[i].toString(16).padStart(6, '0'),
+            fontSize: 36, scale: 0.07, opacity: 0.8, bold: true
+          });
+          sprite.name = lbl + '_label';
+          equinoxMarkers.add(sprite);
+        });
+      }
+
+      /* ── update drifting frame ──────────────────────────── */
+      function updateSeasonalFrame() {
+        const st = window.explorerState;
+        if (!st) return;
+        const epoch = data.epochs[st.epochIndex];
+        overlayLabel.textContent = epoch.label;
+
+        const pts = [];
+        for (let lon = 0; lon <= 360; lon += 2) {
+          const rel = (lon - epoch.vernal_equinox_lon_deg) * Math.PI / 180;
+          const lat = Math.atan(
+            -Math.tan(epoch.obliquity_deg * Math.PI / 180) * Math.sin(rel)
+          ) * 180 / Math.PI;
+          pts.push(toCart(lon, lat, R * 1.002));
+        }
+        equatorLine.geometry.dispose();
+        equatorLine.geometry = new THREE.BufferGeometry().setFromPoints(pts);
+
+        const cardinals = [
+          epoch.vernal_equinox_lon_deg,
+          epoch.summer_solstice_lon_deg,
+          epoch.autumnal_equinox_lon_deg,
+          epoch.winter_solstice_lon_deg
+        ];
+        const labels = ['VE', 'SS', 'AE', 'WS'];
+        cardinals.forEach((lonDeg, i) => {
+          const p = toCart(lonDeg, 0, R * 1.006);
+          const mesh = equinoxMarkers.getObjectByName(labels[i]);
+          if (mesh) mesh.position.copy(p);
+          const sprite = equinoxMarkers.getObjectByName(labels[i] + '_label');
+          if (sprite) sprite.position.copy(toCart(lonDeg, 4, R * 1.04));
+        });
+
+        if (poleDot) {
+          const pp = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, R * 1.006);
+          poleDot.position.copy(pp);
+          const poleLabel = seasonalGroup.getObjectByName('poleLabel');
+          if (poleLabel) poleLabel.position.copy(toCart(epoch.north_pole_lon_deg + 5, epoch.north_pole_lat_deg - 3, R * 1.04));
+        }
+      }
+
+      /* ── resize / animate ──────────────────────────────── */
+      function onResize() {
+        if (!renderer) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        updateSeasonalFrame();
+        renderer.render(scene, camera);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !scene) {
+          initThree();
+        }
+      });
+      observer.observe(container);
+    </script>
+
   </body>
 </html>

@@ -801,6 +801,77 @@ def page_html(dataset: dict[str, object]) -> str:
         font-size: 0.92rem;
       }}
 
+      .three-toolbar {{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.7rem 1rem;
+        margin: 0.15rem 0 0.7rem;
+      }}
+
+      .three-control {{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }}
+
+      .three-select {{
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.72);
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.88rem;
+        padding: 0.25rem 0.55rem;
+      }}
+
+      .three-debug-panel {{
+        position: relative;
+        margin-left: auto;
+      }}
+
+      .three-debug-popover {{
+        min-width: 30rem;
+      }}
+
+      .three-debug-flags {{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.4rem 0.8rem;
+        margin-top: 0.6rem;
+      }}
+
+      .three-debug-flag {{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.42rem;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }}
+
+      .three-debug-textarea {{
+        width: 100%;
+        min-height: 16rem;
+        margin-top: 0.55rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.84);
+        color: var(--ink);
+        font: 0.82rem/1.45 var(--font-mono);
+        padding: 0.75rem 0.85rem;
+        resize: vertical;
+        box-sizing: border-box;
+      }}
+
+      .three-debug-status {{
+        margin-top: 0.45rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        min-height: 1.1rem;
+      }}
+
       .sky-figure {{
         margin: 0;
       }}
@@ -897,7 +968,7 @@ def page_html(dataset: dict[str, object]) -> str:
           <details class="debug-panel" id="trail-debug-panel">
             <summary>More visual toggles</summary>
             <div class="debug-popover">
-              <div class="debug-subhead">Codex figures</div>
+              <div class="debug-subhead">Polar items visibility</div>
               <div class="debug-grid" id="codex-debug-grid"></div>
               <div class="debug-subhead">Nakṣatra visibility</div>
               <div class="debug-actions">
@@ -937,9 +1008,32 @@ def page_html(dataset: dict[str, object]) -> str:
           <input class="epoch-slider" id="epoch-slider-three" type="range">
           <div class="epoch-readout" id="epoch-readout-three"></div>
         </div>
+        <div class="three-toolbar">
+          <label class="three-control">Light
+            <select class="three-select" id="three-light-preset">
+              <option value="night" selected>Night</option>
+              <option value="twilight">Twilight</option>
+              <option value="day">Day</option>
+            </select>
+          </label>
+          <details class="debug-panel three-debug-panel" id="three-debug-panel">
+            <summary>3D debug</summary>
+            <div class="debug-popover three-debug-popover">
+              <div class="debug-actions">
+                <button class="debug-button" type="button" id="three-debug-capture">Capture</button>
+                <button class="debug-button" type="button" id="three-debug-apply">Apply</button>
+                <button class="debug-button" type="button" id="three-debug-copy">Copy</button>
+                <button class="debug-button" type="button" id="three-debug-reset">Reset defaults</button>
+              </div>
+              <div class="three-debug-flags" id="three-debug-toggles"></div>
+              <textarea class="three-debug-textarea" id="three-debug-json" spellcheck="false"></textarea>
+              <div class="three-debug-status" id="three-debug-status"></div>
+            </div>
+          </details>
+        </div>
         <div class="three-container" id="three-container" style="width:100%; height:600px; background:#111; border-radius:12px; overflow:hidden; position:relative;">
           <div id="three-overlay" style="position:absolute; top:1rem; left:1rem; pointer-events:none; color:#eee; font-family:var(--font-mono); font-size:0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
-            3D CELESTIAL SPHERE · <span id="three-epoch-label"></span>
+            <span id="three-epoch-label"></span>
           </div>
         </div>
         <p class="inline-note">
@@ -1712,7 +1806,7 @@ def page_html(dataset: dict[str, object]) -> str:
           '<li class="legend-item"><span class="swatch" style="background:rgba(211, 176, 129, 0.20)"></span>Ecliptic belt centered on 0° ecliptic latitude</li>',
           '<li class="legend-item"><span class="swatch" style="background:#8f4a21"></span>Equinox / solstice markers</li>',
           '<li class="legend-item"><span class="swatch" style="background:#8f4a21"></span>Dashed line = celestial equator</li>',
-          '<li class="legend-item"><span class="swatch" style="background:#5b728f"></span>Codex figures</li>',
+          '<li class="legend-item"><span class="swatch" style="background:#5b728f"></span>Polar items</li>',
           '<li class="legend-item"><span class="swatch" style="background:#44566c"></span>Pole position</li>',
         ].join("");
       }}
@@ -1731,6 +1825,7 @@ def page_html(dataset: dict[str, object]) -> str:
         renderVisualToggles();
         renderSky();
       }}
+      window.explorerRender = render;
 
       epochSliders.forEach((slider) => {{
         slider.addEventListener("input", () => {{
@@ -1798,12 +1893,126 @@ def page_html(dataset: dict[str, object]) -> str:
       const data = JSON.parse(document.getElementById("explorer-data").textContent);
       const container = document.getElementById("three-container");
       const overlayLabel = document.getElementById("three-epoch-label");
+      const threeLightPreset = document.getElementById("three-light-preset");
+      const threeDebugJson = document.getElementById("three-debug-json");
+      const threeDebugStatus = document.getElementById("three-debug-status");
+      const threeDebugCapture = document.getElementById("three-debug-capture");
+      const threeDebugApply = document.getElementById("three-debug-apply");
+      const threeDebugCopy = document.getElementById("three-debug-copy");
+      const threeDebugReset = document.getElementById("three-debug-reset");
+      const threeDebugToggles = document.getElementById("three-debug-toggles");
 
       const R = 100;
       const BAND_HALF = data.meta.ecliptic_band_half_width_deg;
       let scene, camera, renderer, controls;
       let siderealGroup, seasonalGroup;
       let equatorLine, equinoxMarkers, poleDot;
+      let eclipticCircle;
+      let starPoints;
+      let poleTrackCircle, poleTrackArc, poleTrackLabel;
+      let movingPoleLabel = null;
+      const eclipticPoleLabels = [];
+      const gridRefs = {{ parallels: [], meridians: [] }};
+      const bandRefs = {{ meshes: [], dividers: [], labels: [] }};
+      const nakshatraLineRefs = [];
+      const nakshatraLabelRefs = [];
+      const polarItemRefs = [];
+      const seasonalMarkerRefs = [];
+      const threeDebugUiFields = [
+        ["showGrid", "Grid"],
+        ["showEclipticBand", "Ecliptic band"],
+        ["showEclipticDividers", "Sector dividers"],
+        ["showEclipticLabels", "Sector labels"],
+        ["showStars", "Stars"],
+        ["showNakshatraLines", "Nakshatra lines"],
+        ["showNakshatraLabels", "Nakshatra labels"],
+        ["showPolarItems", "Polar items"],
+        ["showPoleTrack", "Pole track"],
+        ["showSeasonalFrame", "Seasonal frame"],
+        ["showOverlay", "Overlay caption"],
+      ];
+      const defaultThreeSettings = {{
+        lightPreset: "night",
+        epochYear: -1800,
+        camera: {{
+          position: {{ x: -147.464, y: 73.504, z: 234.757 }},
+          target: {{ x: 0, y: 0, z: 0 }},
+          fov: 45,
+          minDistance: 130,
+          maxDistance: 600,
+        }},
+        grid: {{
+          parallelColor: "#667788",
+          parallelOpacity: 0.4,
+          meridianColor: "#556677",
+          meridianOpacity: 0.4,
+        }},
+        ecliptic: {{
+          bandOpacity: 0.18,
+          dividerOpacity: 0.32,
+          circleColor: "#d4a56a",
+          circleOpacity: 0.65,
+          sectorLabelSize: 5.0,
+          sectorLabelOpacity: 0.72,
+          poleLabelSize: 5.0,
+          poleLabelOpacity: 0.3,
+        }},
+        stars: {{
+          size: 2.8,
+          opacity: 0.88,
+        }},
+        nakshatras: {{
+          color: "#8eaccb",
+          opacity: 0.88,
+          selectedColor: "#d6b27a",
+          selectedOpacity: 1.0,
+          labelOpacity: 0.5,
+          labelSize: 5.0,
+        }},
+        polarItems: {{
+          color: "#6f86a1",
+          opacity: 0.55,
+          labelOpacity: 0.65,
+          starOpacity: 0.72,
+          labelSize: 5.0,
+        }},
+        poleTrack: {{
+          color: "#6a7b91",
+          opacity: 0.4,
+          arcColor: "#8899bb",
+          arcOpacity: 0.05,
+          dotColor: "#944566",
+          trackLabelSize: 4.5,
+          trackLabelOpacity: 0.4,
+          movingPoleLabelSize: 5.0,
+          movingPoleLabelOpacity: 0.7,
+        }},
+        seasonal: {{
+          equatorColor: "#cc3333",
+          equatorOpacity: 0.78,
+          markerScale: 1.0,
+          markerLabelSize: 7.5,
+          markerLabelOpacity: 0.8,
+        }},
+        overlay: {{
+          fontSizeRem: 1.8,
+          opacity: 1.0,
+        }},
+        ui: {{
+          showGrid: true,
+          showEclipticBand: true,
+          showEclipticDividers: true,
+          showEclipticLabels: true,
+          showStars: true,
+          showNakshatraLines: true,
+          showNakshatraLabels: true,
+          showPolarItems: true,
+          showPoleTrack: true,
+          showSeasonalFrame: true,
+          showOverlay: true,
+        }},
+      }};
+      let threeSettings = JSON.parse(JSON.stringify(defaultThreeSettings));
 
       /* ── helpers ─────────────────────────────────────────── */
       function toCart(lonDeg, latDeg, r) {{
@@ -1850,9 +2059,16 @@ def page_html(dataset: dict[str, object]) -> str:
           depthWrite: false, depthTest: false
         }});
         const sprite = new THREE.Sprite(mat);
-        const scale = (opts.scale || 0.12) * w / fontSize;
-        sprite.scale.set(scale * 3, scale * 3 * h / w, 1);
+        // Change: Use absolute world units for height, then scale width proportionally
+        const hUnits = opts.size || 8.0; 
+        sprite.scale.set(hUnits * w / h, hUnits, 1);
+        sprite.userData.aspect = w / h;
         return sprite;
+      }}
+
+      function setSpriteHeight(sprite, height) {{
+        const aspect = sprite?.userData?.aspect || 1;
+        sprite.scale.set(height * aspect, height, 1);
       }}
 
       function sectorHSL(index) {{
@@ -1867,15 +2083,245 @@ def page_html(dataset: dict[str, object]) -> str:
         return c;
       }}
 
+      function setDebugStatus(text) {{
+        if (threeDebugStatus) threeDebugStatus.textContent = text;
+      }}
+
+      function cloneSettings(settings) {{
+        return JSON.parse(JSON.stringify(settings));
+      }}
+
+      function captureThreeSettings() {{
+        if (!camera || !controls) return cloneSettings(threeSettings);
+        return {{
+          ...cloneSettings(threeSettings),
+          epochYear: data.epochs[window.explorerState?.epochIndex ?? 0]?.year ?? threeSettings.epochYear,
+          camera: {{
+            ...cloneSettings(threeSettings).camera,
+            position: {{
+              x: Number(camera.position.x.toFixed(3)),
+              y: Number(camera.position.y.toFixed(3)),
+              z: Number(camera.position.z.toFixed(3)),
+            }},
+            target: {{
+              x: Number(controls.target.x.toFixed(3)),
+              y: Number(controls.target.y.toFixed(3)),
+              z: Number(controls.target.z.toFixed(3)),
+            }},
+            fov: Number(camera.fov.toFixed(3)),
+            minDistance: Number(controls.minDistance.toFixed(3)),
+            maxDistance: Number(controls.maxDistance.toFixed(3)),
+          }},
+        }};
+      }}
+
+      function syncDebugTextareaFromLive() {{
+        if (threeDebugJson) {{
+          threeDebugJson.value = JSON.stringify(captureThreeSettings(), null, 2);
+        }}
+      }}
+
+      function renderThreeDebugToggles() {{
+        if (!threeDebugToggles) return;
+        threeDebugToggles.innerHTML = threeDebugUiFields
+          .map(([key, label]) => `
+            <label class="three-debug-flag">
+              <input type="checkbox" data-ui-flag="${{key}}">
+              <span>${{label}}</span>
+            </label>
+          `)
+          .join("");
+        threeDebugToggles.querySelectorAll("input[data-ui-flag]").forEach((input) => {{
+          input.addEventListener("change", () => {{
+            const key = input.getAttribute("data-ui-flag");
+            threeSettings.ui[key] = input.checked;
+            applyThreeSettings({{ preserveEpoch: true, preserveCamera: true }});
+            syncDebugTextareaFromLive();
+            setDebugStatus(`${{input.checked ? "Show" : "Hide"}}: ${{key}}`);
+          }});
+        }});
+      }}
+
+      function syncThreeDebugTogglesFromSettings() {{
+        if (!threeDebugToggles) return;
+        threeDebugUiFields.forEach(([key]) => {{
+          const input = threeDebugToggles.querySelector(`input[data-ui-flag="${{key}}"]`);
+          if (input) input.checked = threeSettings.ui[key] !== false;
+        }});
+      }}
+
+      function applyLightPreset() {{
+        if (!scene) return;
+        const preset = threeSettings.lightPreset || "night";
+        const background = preset === "day" ? 0xdfe8f2 : preset === "twilight" ? 0x1b2436 : 0x080810;
+        scene.background = new THREE.Color(background);
+      }}
+
+      function applyThreeSettings(options = {{}}) {{
+        if (!scene || !camera || !controls) return;
+        const preserveEpoch = options.preserveEpoch === true;
+        const preserveCamera = options.preserveCamera === true;
+        if (!preserveEpoch && typeof threeSettings.epochYear === "number" && window.explorerState && typeof window.explorerRender === "function") {{
+          let bestIndex = 0;
+          let bestDistance = Number.POSITIVE_INFINITY;
+          data.epochs.forEach((epoch, index) => {{
+            const distance = Math.abs(epoch.year - threeSettings.epochYear);
+            if (distance < bestDistance) {{
+              bestDistance = distance;
+              bestIndex = index;
+            }}
+          }});
+          window.explorerState.epochIndex = bestIndex;
+          window.explorerRender();
+        }}
+        if (!preserveCamera) {{
+          camera.fov = threeSettings.camera.fov;
+          camera.position.set(
+            threeSettings.camera.position.x,
+            threeSettings.camera.position.y,
+            threeSettings.camera.position.z
+          );
+          camera.updateProjectionMatrix();
+          controls.target.set(
+            threeSettings.camera.target.x,
+            threeSettings.camera.target.y,
+            threeSettings.camera.target.z
+          );
+          controls.minDistance = threeSettings.camera.minDistance;
+          controls.maxDistance = threeSettings.camera.maxDistance;
+        }}
+        applyLightPreset();
+
+        gridRefs.parallels.forEach((line) => {{
+          line.material.color.set(threeSettings.grid.parallelColor);
+          line.material.opacity = threeSettings.grid.parallelOpacity;
+        }});
+        gridRefs.meridians.forEach((line) => {{
+          line.material.color.set(threeSettings.grid.meridianColor);
+          line.material.opacity = threeSettings.grid.meridianOpacity;
+        }});
+
+        bandRefs.meshes.forEach((mesh) => {{
+          mesh.visible = threeSettings.ui.showEclipticBand;
+          mesh.material.opacity = threeSettings.ecliptic.bandOpacity;
+        }});
+        bandRefs.dividers.forEach((line) => {{
+          line.visible = threeSettings.ui.showEclipticDividers;
+          line.material.opacity = threeSettings.ecliptic.dividerOpacity;
+        }});
+        bandRefs.labels.forEach((label) => {{
+          label.visible = threeSettings.ui.showEclipticLabels;
+          label.material.opacity = threeSettings.ecliptic.sectorLabelOpacity;
+          setSpriteHeight(label, threeSettings.ecliptic.sectorLabelSize);
+        }});
+        eclipticPoleLabels.forEach((label) => {{
+          label.material.opacity = threeSettings.ecliptic.poleLabelOpacity;
+          setSpriteHeight(label, threeSettings.ecliptic.poleLabelSize);
+        }});
+        if (eclipticCircle) {{
+          eclipticCircle.visible = threeSettings.ui.showEclipticBand;
+          eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
+          eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+        }}
+
+        if (starPoints) {{
+          starPoints.visible = threeSettings.ui.showStars;
+          starPoints.material.size = threeSettings.stars.size;
+          starPoints.material.opacity = threeSettings.stars.opacity;
+        }}
+
+        if (poleTrackCircle) {{
+          poleTrackCircle.visible = threeSettings.ui.showPoleTrack;
+          poleTrackCircle.material.color.set(threeSettings.poleTrack.color);
+          poleTrackCircle.material.opacity = threeSettings.poleTrack.opacity;
+        }}
+        if (poleTrackArc) {{
+          poleTrackArc.visible = threeSettings.ui.showPoleTrack;
+          poleTrackArc.material.color.set(threeSettings.poleTrack.arcColor);
+          poleTrackArc.material.opacity = threeSettings.poleTrack.arcOpacity;
+        }}
+        if (poleTrackLabel) {{
+          poleTrackLabel.visible = threeSettings.ui.showPoleTrack;
+          poleTrackLabel.material.opacity = threeSettings.poleTrack.trackLabelOpacity;
+          setSpriteHeight(poleTrackLabel, threeSettings.poleTrack.trackLabelSize);
+        }}
+        if (poleDot) {{
+          poleDot.visible = threeSettings.ui.showSeasonalFrame;
+          poleDot.material.color.set(threeSettings.poleTrack.dotColor);
+        }}
+        if (movingPoleLabel) {{
+          movingPoleLabel.visible = threeSettings.ui.showSeasonalFrame;
+          movingPoleLabel.material.opacity = threeSettings.poleTrack.movingPoleLabelOpacity;
+          setSpriteHeight(movingPoleLabel, threeSettings.poleTrack.movingPoleLabelSize);
+        }}
+        if (equatorLine) {{
+          equatorLine.visible = threeSettings.ui.showSeasonalFrame;
+          equatorLine.material.color.set(threeSettings.seasonal.equatorColor);
+          equatorLine.material.opacity = threeSettings.seasonal.equatorOpacity;
+        }}
+        seasonalMarkerRefs.forEach((entry) => {{
+          entry.mesh.visible = threeSettings.ui.showSeasonalFrame;
+          entry.sprite.visible = threeSettings.ui.showSeasonalFrame;
+          entry.mesh.scale.setScalar(threeSettings.seasonal.markerScale);
+          entry.sprite.material.opacity = threeSettings.seasonal.markerLabelOpacity;
+          setSpriteHeight(entry.sprite, threeSettings.seasonal.markerLabelSize * threeSettings.seasonal.markerScale);
+        }});
+
+        gridRefs.parallels.forEach((line) => {{ line.visible = threeSettings.ui.showGrid; }});
+        gridRefs.meridians.forEach((line) => {{ line.visible = threeSettings.ui.showGrid; }});
+        if (overlayLabel) {{
+          overlayLabel.parentElement.style.display = threeSettings.ui.showOverlay ? "" : "none";
+          overlayLabel.parentElement.style.fontSize = `${{threeSettings.overlay.fontSizeRem}}rem`;
+          overlayLabel.parentElement.style.opacity = String(threeSettings.overlay.opacity);
+        }}
+
+        syncThreeDebugTogglesFromSettings();
+        updateThreeState();
+      }}
+
+      function updateThreeState() {{
+        if (!window.explorerState) return;
+        const st = window.explorerState;
+        nakshatraLineRefs.forEach((entry) => {{
+          const active = entry.metaIndex === st.selectedMetaIndex;
+          const visible = threeSettings.ui.showNakshatraLines && st.visibleNakshatras[entry.nid] !== false;
+          entry.line.visible = visible;
+          entry.line.material.color.set(active ? threeSettings.nakshatras.selectedColor : threeSettings.nakshatras.color);
+          entry.line.material.opacity = visible ? (active ? threeSettings.nakshatras.selectedOpacity : threeSettings.nakshatras.opacity) : 0;
+        }});
+        nakshatraLabelRefs.forEach((entry) => {{
+          const visible = threeSettings.ui.showNakshatraLabels && st.visibleNakshatras[entry.nid] !== false;
+          entry.sprite.visible = visible;
+          entry.sprite.material.opacity = visible ? threeSettings.nakshatras.labelOpacity : 0;
+          setSpriteHeight(entry.sprite, threeSettings.nakshatras.labelSize);
+        }});
+        polarItemRefs.forEach((entry) => {{
+          const visible = threeSettings.ui.showPolarItems && st.visibleCodex[entry.id] !== false;
+          entry.object.visible = visible;
+          if (entry.object.material) {{
+            if (entry.kind === "line") entry.object.material.opacity = threeSettings.polarItems.opacity;
+            if (entry.kind === "dot") entry.object.material.opacity = threeSettings.polarItems.starOpacity;
+            if (entry.kind === "label") {{
+              entry.object.material.opacity = threeSettings.polarItems.labelOpacity;
+              setSpriteHeight(entry.object, threeSettings.polarItems.labelSize);
+            }}
+          }}
+        }});
+      }}
+
       /* ── init ────────────────────────────────────────────── */
       function initThree() {{
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x080810);
+        applyLightPreset();
 
         camera = new THREE.PerspectiveCamera(
-          45, container.clientWidth / container.clientHeight, 1, 2000
+          threeSettings.camera.fov, container.clientWidth / container.clientHeight, 1, 2000
         );
-        camera.position.set(0, 70, 240);
+        camera.position.set(
+          threeSettings.camera.position.x,
+          threeSettings.camera.position.y,
+          threeSettings.camera.position.z
+        );
 
         renderer = new THREE.WebGLRenderer({{ antialias: true, alpha: false }});
         renderer.setSize(container.clientWidth, container.clientHeight);
@@ -1885,8 +2331,13 @@ def page_html(dataset: dict[str, object]) -> str:
         controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.06;
-        controls.minDistance = 130;
-        controls.maxDistance = 600;
+        controls.target.set(
+          threeSettings.camera.target.x,
+          threeSettings.camera.target.y,
+          threeSettings.camera.target.z
+        );
+        controls.minDistance = threeSettings.camera.minDistance;
+        controls.maxDistance = threeSettings.camera.maxDistance;
         controls.enablePan = false;
 
         siderealGroup = new THREE.Group();
@@ -1904,6 +2355,8 @@ def page_html(dataset: dict[str, object]) -> str:
         buildSpecialStars();
         buildPoleTrack();
         buildSeasonalFrame();
+        applyThreeSettings();
+        syncDebugTextareaFromLive();
 
         window.addEventListener('resize', onResize);
         animate();
@@ -1911,16 +2364,20 @@ def page_html(dataset: dict[str, object]) -> str:
 
       /* ── A1. Sphere wireframe ───────────────────────────── */
       function buildSphereGrid() {{
-        const parMat = new THREE.LineBasicMaterial({{ color: 0x667788, transparent: true, opacity: 0.50 }});
-        const merMat = new THREE.LineBasicMaterial({{ color: 0x556677, transparent: true, opacity: 0.38 }});
+        const parMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.grid.parallelColor), transparent: true, opacity: threeSettings.grid.parallelOpacity }});
+        const merMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.grid.meridianColor), transparent: true, opacity: threeSettings.grid.meridianOpacity }});
         for (let lat = -60; lat <= 60; lat += 30) {{
           if (lat === 0) continue;
           const g = new THREE.BufferGeometry().setFromPoints(circlePoints(lat, R * 0.995, 72));
-          siderealGroup.add(new THREE.Line(g, parMat));
+          const line = new THREE.Line(g, parMat.clone());
+          gridRefs.parallels.push(line);
+          siderealGroup.add(line);
         }}
         for (let lon = 0; lon < 360; lon += 30) {{
           const g = new THREE.BufferGeometry().setFromPoints(meridianPoints(lon, R * 0.995, 72));
-          siderealGroup.add(new THREE.Line(g, merMat));
+          const line = new THREE.Line(g, merMat.clone());
+          gridRefs.meridians.push(line);
+          siderealGroup.add(line);
         }}
         // ecliptic poles
         const poleMat = new THREE.MeshBasicMaterial({{ color: 0x8899aa }});
@@ -1931,11 +2388,13 @@ def page_html(dataset: dict[str, object]) -> str:
         const sep = new THREE.Mesh(poleGeom.clone(), poleMat);
         sep.position.copy(toCart(0, -90, R * 0.995));
         siderealGroup.add(sep);
-        const nepLabel = makeTextSprite('NEP', {{ color: '#8899aa', fontSize: 36, scale: 0.08, opacity: 0.6 }});
+        const nepLabel = makeTextSprite('NEP', {{ color: '#8899aa', fontSize: 36, size: 7.0, opacity: 0.6 }});
         nepLabel.position.copy(toCart(15, 85, R * 1.04));
+        eclipticPoleLabels.push(nepLabel);
         siderealGroup.add(nepLabel);
-        const sepLabel = makeTextSprite('SEP', {{ color: '#8899aa', fontSize: 36, scale: 0.08, opacity: 0.6 }});
+        const sepLabel = makeTextSprite('SEP', {{ color: '#8899aa', fontSize: 36, size: 7.0, opacity: 0.6 }});
         sepLabel.position.copy(toCart(15, -85, R * 1.04));
+        eclipticPoleLabels.push(sepLabel);
         siderealGroup.add(sepLabel);
       }}
 
@@ -1969,25 +2428,30 @@ def page_html(dataset: dict[str, object]) -> str:
           geom.setIndex(indices);
           geom.computeVertexNormals();
           const mat = new THREE.MeshBasicMaterial({{
-            color: color, transparent: true, opacity: 0.18,
+            color: color, transparent: true, opacity: threeSettings.ecliptic.bandOpacity,
             side: THREE.DoubleSide, depthWrite: false
           }});
-          siderealGroup.add(new THREE.Mesh(geom, mat));
+          const mesh = new THREE.Mesh(geom, mat);
+          bandRefs.meshes.push(mesh);
+          siderealGroup.add(mesh);
 
           const divPts = [];
           for (let lat = -BAND_HALF; lat <= BAND_HALF; lat += 1) {{
             divPts.push(toCart(lonStart, lat, R * 0.999));
           }}
           const divGeom = new THREE.BufferGeometry().setFromPoints(divPts);
-          const divMat = new THREE.LineBasicMaterial({{ color: 0xd4a56a, transparent: true, opacity: 0.32 }});
-          siderealGroup.add(new THREE.Line(divGeom, divMat));
+          const divMat = new THREE.LineBasicMaterial({{ color: 0xd4a56a, transparent: true, opacity: threeSettings.ecliptic.dividerOpacity }});
+          const divider = new THREE.Line(divGeom, divMat);
+          bandRefs.dividers.push(divider);
+          siderealGroup.add(divider);
 
           const midLon = lonStart + span / 2;
           const abbr = row.nid.split('-')[1] || '';
           const label = makeTextSprite(abbr, {{
-            color: sectorHSL(idx), fontSize: 36, scale: 0.07, opacity: 0.72, bold: true
+            color: sectorHSL(idx), fontSize: 36, size: 7.5, opacity: 0.82, bold: true
           }});
           label.position.copy(toCart(midLon, 0, R * 1.025));
+          bandRefs.labels.push(label);
           siderealGroup.add(label);
         }});
       }}
@@ -1996,8 +2460,9 @@ def page_html(dataset: dict[str, object]) -> str:
       function buildEclipticCircle() {{
         const pts = circlePoints(0, R * 1.001, 144);
         const geom = new THREE.BufferGeometry().setFromPoints(pts);
-        const mat = new THREE.LineBasicMaterial({{ color: 0xd4a56a, transparent: true, opacity: 0.65 }});
-        siderealGroup.add(new THREE.Line(geom, mat));
+        const mat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.ecliptic.circleColor), transparent: true, opacity: threeSettings.ecliptic.circleOpacity }});
+        eclipticCircle = new THREE.Line(geom, mat);
+        siderealGroup.add(eclipticCircle);
       }}
 
       /* ── Stars ──────────────────────────────────────────── */
@@ -2013,14 +2478,14 @@ def page_html(dataset: dict[str, object]) -> str:
         geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
         geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
         const mat = new THREE.PointsMaterial({{
-          size: 2.8, vertexColors: true, transparent: true, opacity: 0.88, sizeAttenuation: true
+          size: threeSettings.stars.size, vertexColors: true, transparent: true, opacity: threeSettings.stars.opacity, sizeAttenuation: true
         }});
-        siderealGroup.add(new THREE.Points(geom, mat));
+        starPoints = new THREE.Points(geom, mat);
+        siderealGroup.add(starPoints);
       }}
 
       /* ── Nakshatra asterism lines ───────────────────────── */
       function buildNakshatraLines() {{
-        const mat = new THREE.LineBasicMaterial({{ color: 0x7799bb, transparent: true, opacity: 0.82 }});
         data.nakshatras.forEach(naks => {{
           naks.asterism_lines.forEach(line => {{
             const pts = [];
@@ -2030,7 +2495,9 @@ def page_html(dataset: dict[str, object]) -> str:
             }});
             if (pts.length > 1) {{
               const geom = new THREE.BufferGeometry().setFromPoints(pts);
-              siderealGroup.add(new THREE.Line(geom, mat));
+              const lineObj = new THREE.Line(geom, new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.nakshatras.color), transparent: true, opacity: threeSettings.nakshatras.opacity }}));
+              nakshatraLineRefs.push({{ nid: naks.nid, metaIndex: naks.meta_index_28, line: lineObj }});
+              siderealGroup.add(lineObj);
             }}
           }});
         }});
@@ -2043,17 +2510,18 @@ def page_html(dataset: dict[str, object]) -> str:
           const cLon = naks.stars.reduce((s, st) => s + st.lon_deg, 0) / naks.stars.length;
           const cLat = naks.stars.reduce((s, st) => s + st.lat_deg, 0) / naks.stars.length;
           const label = makeTextSprite(naks.enaks, {{
-            color: '#99aabb', fontSize: 32, scale: 0.06, opacity: 0.55
+            color: '#99aabb', fontSize: 32, size: 6.5, opacity: threeSettings.nakshatras.labelOpacity
           }});
           label.position.copy(toCart(cLon, cLat + 3, R * 1.03));
+          nakshatraLabelRefs.push({{ nid: naks.nid, metaIndex: naks.meta_index_28, sprite: label }});
           siderealGroup.add(label);
         }});
       }}
 
       /* ── Polar figures ────────────────────────────────────── */
       function buildCodexFigures() {{
-        const figMat = new THREE.LineBasicMaterial({{ color: 0x6f86a1, transparent: true, opacity: 0.55 }});
-        const figDotMat = new THREE.MeshBasicMaterial({{ color: 0x6f86a1 }});
+        const figMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.polarItems.color), transparent: true, opacity: threeSettings.polarItems.opacity }});
+        const figDotMat = new THREE.MeshBasicMaterial({{ color: new THREE.Color(threeSettings.polarItems.color), transparent: true, opacity: threeSettings.polarItems.starOpacity }});
         const figDotGeom = new THREE.SphereGeometry(0.7, 6, 6);
 
         const specialStarLookup = {{}};
@@ -2071,21 +2539,25 @@ def page_html(dataset: dict[str, object]) -> str:
             }});
             if (pts.length > 1) {{
               const geom = new THREE.BufferGeometry().setFromPoints(pts);
-              siderealGroup.add(new THREE.Line(geom, figMat));
+              const lineObj = new THREE.Line(geom, figMat.clone());
+              polarItemRefs.push({{ id: fig.id, kind: "line", object: lineObj }});
+              siderealGroup.add(lineObj);
             }}
           }});
           fig.stars.forEach(s => {{
             const dot = new THREE.Mesh(figDotGeom.clone(), figDotMat);
             dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.002));
+            polarItemRefs.push({{ id: fig.id, kind: "dot", object: dot }});
             siderealGroup.add(dot);
           }});
           const cLon = fig.stars.reduce((a, s) => a + s.lon_deg, 0) / fig.stars.length;
           const cLat = fig.stars.reduce((a, s) => a + s.lat_deg, 0) / fig.stars.length;
           const figName = fig.id.includes('Shim') ? 'Śiśumāra' : fig.id.includes('Matsya') ? 'Matsya' : fig.label;
           const label = makeTextSprite(figName, {{
-            color: '#7a94b0', fontSize: 34, scale: 0.07, opacity: 0.65
+            color: '#7a94b0', fontSize: 34, size: 8.5, opacity: threeSettings.polarItems.labelOpacity
           }});
           label.position.copy(toCart(cLon, cLat + (fig.id.includes('Shim') ? 3 : -3), R * 1.04));
+          polarItemRefs.push({{ id: fig.id, kind: "label", object: label }});
           siderealGroup.add(label);
         }});
       }}
@@ -2093,16 +2565,18 @@ def page_html(dataset: dict[str, object]) -> str:
       /* ── Special stars (Agastya, Polaris, Thuban) ──────── */
       function buildSpecialStars() {{
         const dotGeom = new THREE.SphereGeometry(1.0, 8, 8);
-        const dotMat = new THREE.MeshBasicMaterial({{ color: 0x6f86a1 }});
+        const dotMat = new THREE.MeshBasicMaterial({{ color: new THREE.Color(threeSettings.polarItems.color), transparent: true, opacity: threeSettings.polarItems.starOpacity }});
 
         data.special_stars.forEach(s => {{
           const dot = new THREE.Mesh(dotGeom.clone(), dotMat);
           dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.002));
+          polarItemRefs.push({{ id: s.hip, kind: "dot", object: dot }});
           siderealGroup.add(dot);
           const label = makeTextSprite(s.label, {{
-            color: '#7a94b0', fontSize: 30, scale: 0.06, opacity: 0.6
+            color: '#7a94b0', fontSize: 30, size: 7.0, opacity: threeSettings.polarItems.labelOpacity
           }});
           label.position.copy(toCart(s.lon_deg + 3, s.lat_deg - 3, R * 1.04));
+          polarItemRefs.push({{ id: s.hip, kind: "label", object: label }});
           siderealGroup.add(label);
         }});
 
@@ -2121,11 +2595,13 @@ def page_html(dataset: dict[str, object]) -> str:
           const psMat = new THREE.MeshBasicMaterial({{ color: new THREE.Color(def.color) }});
           const dot = new THREE.Mesh(dotGeom.clone(), psMat);
           dot.position.copy(toCart(s.lon_deg, s.lat_deg, R * 1.003));
+          polarItemRefs.push({{ id: def.hip, kind: "dot", object: dot }});
           siderealGroup.add(dot);
           const label = makeTextSprite(def.label, {{
-            color: def.color, fontSize: 28, scale: 0.055, opacity: 0.6
+            color: def.color, fontSize: 28, size: 6.5, opacity: 0.6
           }});
           label.position.copy(toCart(s.lon_deg + 4, s.lat_deg - 3, R * 1.04));
+          polarItemRefs.push({{ id: def.hip, kind: "label", object: label }});
           siderealGroup.add(label);
         }});
       }}
@@ -2137,40 +2613,57 @@ def page_html(dataset: dict[str, object]) -> str:
         const precLat = 90 - meanObliquity;
         const fullCirclePts = circlePoints(precLat, R * 1.005, 144);
         const fullGeom = new THREE.BufferGeometry().setFromPoints(fullCirclePts);
-        const fullMat = new THREE.LineBasicMaterial({{ color: 0x6a7b91, transparent: true, opacity: 0.40 }});
-        siderealGroup.add(new THREE.Line(fullGeom, fullMat));
+        const fullMat = new THREE.LineBasicMaterial({{
+          color: new THREE.Color(threeSettings.poleTrack.color),
+          transparent: true,
+          opacity: threeSettings.poleTrack.opacity,
+          depthTest: false,
+          depthWrite: false,
+        }});
+        poleTrackCircle = new THREE.Line(fullGeom, fullMat);
+        poleTrackCircle.renderOrder = 22;
+        siderealGroup.add(poleTrackCircle);
 
         // Epoch-sampled arc overlay (brighter, shows covered range)
         const arcPts = data.epochs.map(e => toCart(e.north_pole_lon_deg, e.north_pole_lat_deg, R * 1.006));
         const arcGeom = new THREE.BufferGeometry().setFromPoints(arcPts);
-        const arcMat = new THREE.LineBasicMaterial({{ color: 0x8899bb, transparent: true, opacity: 0.65 }});
-        siderealGroup.add(new THREE.Line(arcGeom, arcMat));
+        const arcMat = new THREE.LineBasicMaterial({{
+          color: new THREE.Color(threeSettings.poleTrack.arcColor),
+          transparent: true,
+          opacity: threeSettings.poleTrack.arcOpacity,
+          depthTest: false,
+          depthWrite: false,
+        }});
+        poleTrackArc = new THREE.Line(arcGeom, arcMat);
+        poleTrackArc.renderOrder = 23;
+        siderealGroup.add(poleTrackArc);
 
         // Label
         const labelPos = toCart(180, precLat + 4, R * 1.05);
-        const trackLabel = makeTextSprite('Precession Circle', {{
-          color: '#8899bb', fontSize: 30, scale: 0.07, opacity: 0.6
+        poleTrackLabel = makeTextSprite('Precession Circle', {{
+          color: '#8899bb', fontSize: 30, size: 8.5, opacity: 0.6
         }});
-        trackLabel.position.copy(labelPos);
-        siderealGroup.add(trackLabel);
+        poleTrackLabel.position.copy(labelPos);
+        siderealGroup.add(poleTrackLabel);
 
         // Moving pole dot
         const poleGeom = new THREE.SphereGeometry(1.5, 10, 10);
-        const poleMat = new THREE.MeshBasicMaterial({{ color: 0x44566c }});
+        const poleMat = new THREE.MeshBasicMaterial({{ color: new THREE.Color(threeSettings.poleTrack.dotColor) }});
         poleDot = new THREE.Mesh(poleGeom, poleMat);
         seasonalGroup.add(poleDot);
 
         const poleLabel = makeTextSprite('North Pole', {{
-          color: '#44566c', fontSize: 28, scale: 0.06, opacity: 0.7
+          color: '#44566c', fontSize: 28, size: 7.0, opacity: 0.7
         }});
         poleLabel.name = 'poleLabel';
+        movingPoleLabel = poleLabel;
         seasonalGroup.add(poleLabel);
       }}
 
       /* ── Seasonal frame (red equator + 4 markers) ──────── */
       function buildSeasonalFrame() {{
         const eqGeom = new THREE.BufferGeometry();
-        const eqMat = new THREE.LineBasicMaterial({{ color: 0xcc3333, transparent: true, opacity: 0.78 }});
+        const eqMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.seasonal.equatorColor), transparent: true, opacity: threeSettings.seasonal.equatorOpacity }});
         equatorLine = new THREE.Line(eqGeom, eqMat);
         seasonalGroup.add(equatorLine);
 
@@ -2186,9 +2679,10 @@ def page_html(dataset: dict[str, object]) -> str:
           equinoxMarkers.add(mesh);
           const sprite = makeTextSprite(lbl, {{
             color: '#' + mColors[i].toString(16).padStart(6, '0'),
-            fontSize: 36, scale: 0.07, opacity: 0.8, bold: true
+            fontSize: 36, size: 8.5, opacity: 0.8, bold: true
           }});
           sprite.name = lbl + '_label';
+          seasonalMarkerRefs.push({{ key: lbl, mesh, sprite, baseScale: sprite.scale.clone() }});
           equinoxMarkers.add(sprite);
         }});
       }}
@@ -2245,9 +2739,72 @@ def page_html(dataset: dict[str, object]) -> str:
       function animate() {{
         requestAnimationFrame(animate);
         controls.update();
+        updateThreeState();
         updateSeasonalFrame();
         renderer.render(scene, camera);
       }}
+
+      function applyThreeSettingsFromTextarea() {{
+        if (!threeDebugJson) return;
+        try {{
+          const parsed = JSON.parse(threeDebugJson.value);
+          threeSettings = parsed;
+          if (threeLightPreset && threeSettings.lightPreset) {{
+            threeLightPreset.value = threeSettings.lightPreset;
+          }}
+          applyThreeSettings();
+          syncDebugTextareaFromLive();
+          setDebugStatus("Applied.");
+        }} catch (error) {{
+          setDebugStatus(`Invalid JSON: ${{error.message}}`);
+        }}
+      }}
+
+      if (threeLightPreset) {{
+        threeLightPreset.value = threeSettings.lightPreset;
+        threeLightPreset.addEventListener('change', () => {{
+          threeSettings.lightPreset = threeLightPreset.value;
+          applyThreeSettings();
+          syncDebugTextareaFromLive();
+          setDebugStatus(`Light preset: ${{threeSettings.lightPreset}}`);
+        }});
+      }}
+
+      if (threeDebugCapture) {{
+        threeDebugCapture.addEventListener('click', () => {{
+          syncDebugTextareaFromLive();
+          setDebugStatus("Captured current view.");
+        }});
+      }}
+
+      if (threeDebugApply) {{
+        threeDebugApply.addEventListener('click', applyThreeSettingsFromTextarea);
+      }}
+
+      if (threeDebugCopy) {{
+        threeDebugCopy.addEventListener('click', async () => {{
+          try {{
+            await navigator.clipboard.writeText(threeDebugJson.value);
+            setDebugStatus("Copied JSON.");
+          }} catch (_error) {{
+            setDebugStatus("Copy failed.");
+          }}
+        }});
+      }}
+
+      if (threeDebugReset) {{
+        threeDebugReset.addEventListener('click', () => {{
+          threeSettings = cloneSettings(defaultThreeSettings);
+          if (threeLightPreset) threeLightPreset.value = threeSettings.lightPreset;
+          applyThreeSettings();
+          syncDebugTextareaFromLive();
+          setDebugStatus("Restored defaults.");
+        }});
+      }}
+
+      renderThreeDebugToggles();
+      syncThreeDebugTogglesFromSettings();
+      syncDebugTextareaFromLive();
 
       const observer = new IntersectionObserver((entries) => {{
         if (entries[0].isIntersecting && !scene) {{

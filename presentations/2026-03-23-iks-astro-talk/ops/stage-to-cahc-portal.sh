@@ -11,16 +11,35 @@ echo "Staging built assets from $SOURCE_DIR to $TARGET_DIR..."
 mkdir -p "$TARGET_DIR"
 
 staged_any=0
+copied_any=0
+
+copy_if_changed() {
+  src="$1"
+  dest_dir="$2"
+  dest="$dest_dir/$(basename "$src")"
+
+  if [ -e "$dest" ] && cmp -s "$src" "$dest"; then
+    return 1
+  fi
+
+  cp "$src" "$dest"
+  return 0
+}
+
 for path in "$SOURCE_DIR"/*.mp4 "$SOURCE_DIR"/*.pdf "$SOURCE_DIR"/*.html; do
   [ -e "$path" ] || continue
-  cp "$path" "$TARGET_DIR/"
   staged_any=1
+  if copy_if_changed "$path" "$TARGET_DIR"; then
+    copied_any=1
+  fi
 done
 
 for path in "$PICS_DIR"/*; do
   [ -e "$path" ] || continue
-  cp "$path" "$TARGET_DIR/"
   staged_any=1
+  if copy_if_changed "$path" "$TARGET_DIR"; then
+    copied_any=1
+  fi
 done
 
 if [ "$staged_any" -eq 0 ]; then
@@ -29,7 +48,11 @@ if [ "$staged_any" -eq 0 ]; then
   exit 1
 fi
 
-echo "Done staging!"
+if [ "$copied_any" -eq 1 ]; then
+  echo "Done staging changed assets."
+else
+  echo "No asset contents changed; portal staging is already up to date."
+fi
 echo ""
 echo "---------------------------------------------------------"
 echo "NEXT STEPS:"

@@ -10,10 +10,38 @@ FINAL_DIR="$REPO_ROOT/out"
 
 mkdir -p "$WEB_DIR"
 
-for f in "$HIRES_DIR"/s11.mp4 "$HIRES_DIR"/s12.mp4 "$HIRES_DIR"/s13.mp4 "$HIRES_DIR"/s14.mp4 "$HIRES_DIR"/s21.mp4 "$HIRES_DIR"/s22.mp4 "$HIRES_DIR"/s23.mp4 "$HIRES_DIR"/s24.mp4 "$HIRES_DIR"/s25.mp4
+find_input_videos() {
+  found=0
+
+  for f in "$HIRES_DIR"/*.posttrim.mp4; do
+    [ -f "$f" ] || continue
+    found=1
+    printf '%s\n' "$f"
+  done
+
+  for f in "$HIRES_DIR"/*.mp4; do
+    [ -f "$f" ] || continue
+    case "$f" in
+      *.pretrim.mp4|*.posttrim.mp4) continue ;;
+    esac
+
+    stem=$(basename "$f" .mp4)
+    [ -f "$HIRES_DIR/$stem.posttrim.mp4" ] && continue
+
+    found=1
+    printf '%s\n' "$f"
+  done
+
+  [ "$found" -eq 1 ]
+}
+
+find_input_videos | while IFS= read -r f
 do
-  [ -f "$f" ] || continue
-  name=$(basename "$f" .mp4)
+  case "$f" in
+    *.posttrim.mp4) name=$(basename "$f" .posttrim.mp4) ;;
+    *.mp4) name=$(basename "$f" .mp4) ;;
+    *) continue ;;
+  esac
   web_out="$WEB_DIR/${name}.mp4"
   final_out="$FINAL_DIR/${name}.mp4"
 

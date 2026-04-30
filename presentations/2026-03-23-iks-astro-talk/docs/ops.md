@@ -62,24 +62,17 @@ Convert the high-resolution recordings under `out/work-videos/hires/` into light
 
 Inputs:
 
-- `out/work-videos/hires/s11.mp4`
-- `out/work-videos/hires/s12.mp4`
-- `out/work-videos/hires/s13.mp4`
-- `out/work-videos/hires/s14.mp4`
-- `out/work-videos/hires/s21.mp4`
-- `out/work-videos/hires/s22.mp4`
-- `out/work-videos/hires/s23.mp4`
-- `out/work-videos/hires/s24.mp4`
-- `out/work-videos/hires/s25.mp4`
+- `out/work-videos/hires/*.posttrim.mp4` when present
+- otherwise, `out/work-videos/hires/*.mp4` excluding `.pretrim.mp4` and `.posttrim.mp4`
 
 Outputs:
 
 - `out/work-videos/web/*.mp4`
-- `out/s11.mp4` through `out/s25.mp4` as available
+- `out/*.mp4` matching the discovered video stems
 
 Notes:
 
-- The trim offsets are currently hard-coded per video.
+- The trim offsets are currently hard-coded for the `s11` through `s25` clips; other videos default to no additional start trim.
 - Safe to rerun; existing final outputs are skipped.
 
 ### `./ops/stage-to-cahc-portal.sh`

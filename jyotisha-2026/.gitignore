@@ -1,0 +1,24 @@
+.venv/
+.uv-cache/
+__pycache__/
+*.pyc
+.DS_Store
+tmp/
+lab/**/plots/
+lab/**/tables/
+lab/**/narration/
+
+**/.*playwright-mcp/
+**/*.log
+**/*.txt
+**/*.whl
+**/*.egg-info
+
+## netlify
+.netlify
+.env
+.env*
+.agent
+.envrc
+
+## local

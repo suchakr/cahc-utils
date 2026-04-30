@@ -1,0 +1,28 @@
+[project]
+name = "jyotisha-2026"
+version = "0.1.0"
+description = "Agentic astronomy exploration workspace using astropy, stellarium, and uv."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "astropy",
+  "matplotlib",
+  "numpy",
+  "pandas",
+]
+
+[dependency-groups]
+dev = [
+  "ruff",
+]
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

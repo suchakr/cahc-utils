@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jyotisha 2026 Lab</title>
+    <link rel="stylesheet" href="shared/css/site.css">
+  </head>
+  <body class="lab-browser">
+    <div class="app-shell" id="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <div>
+            <p class="eyebrow">Jyotisha 2026</p>
+            <h1 class="app-title">Lab</h1>
+          </div>
+          <button class="ghost-button" id="collapse-button" type="button" aria-label="Collapse sidebar">Hide</button>
+        </div>
+
+        <div class="sidebar-controls">
+          <input id="search-input" class="search-input" type="search" placeholder="Search explorations">
+          <button class="ghost-button" id="about-button" type="button">About</button>
+        </div>
+
+        <nav class="exploration-list" aria-label="Explorations">
+          <button
+            class="exploration-link active"
+            type="button"
+            data-title="Nakshatra Precession Explorer"
+            data-slug="nakshatra-precession-explorer"
+            data-path="nakshatra-precession-explorer/index.html"
+            data-description="Joined 27/28 nakshatra metadata and 2D precession view with a shared epoch slider."
+          >
+            <span class="exploration-title">Nakshatra Precession Explorer</span>
+            <span class="exploration-meta">Fixed sidereal geometry against the drifting seasonal frame</span>
+          </button>
+          <button
+            class="exploration-link"
+            type="button"
+            data-title="27 Nakshatra Heliacal Rising"
+            data-slug="heliacal-rising-27-naks"
+            data-path="heliacal-rising-27-naks/index.html"
+            data-description="Rising azimuth and declination across -1500, -1000, and -500 at 30°N."
+          >
+            <span class="exploration-title">27 Nakshatra Heliacal Rising</span>
+            <span class="exploration-meta">Azimuth and declination across three BCE epochs</span>
+          </button>
+        </nav>
+      </aside>
+
+      <div class="resize-handle" id="resize-handle" aria-hidden="true"></div>
+
+      <main class="viewer">
+        <header class="viewer-topbar">
+          <button class="ghost-button viewer-mobile-toggle" id="show-sidebar-button" type="button">Browse</button>
+          <button class="ghost-button viewer-restore-toggle" id="restore-sidebar-button" type="button">Show List</button>
+          <div class="viewer-heading">
+            <p class="eyebrow">Exploration</p>
+            <h2 id="viewer-title">Nakshatra Precession Explorer</h2>
+            <p class="viewer-subtitle" id="viewer-subtitle">
+              Joined 27/28 nakshatra metadata and a projected precession view of the drifting seasonal frame.
+            </p>
+          </div>
+        </header>
+
+        <section class="viewer-canvas">
+          <iframe
+            id="exploration-frame"
+            title="Exploration view"
+            src="nakshatra-precession-explorer/index.html"
+          ></iframe>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="about-dialog" id="about-dialog">
+      <div class="about-copy">
+        <div class="dialog-top">
+          <h2>About This Lab</h2>
+          <button class="ghost-button" id="close-about-button" type="button">Close</button>
+        </div>
+        <p>
+          This is a browsing surface for astronomy explorations. Titles are shown in the list;
+          slugs stay in the path for stable sharing and filesystem identity.
+        </p>
+        <p>
+          Each exploration can expose plots, a table preview, rendered notes, and download links inside
+          the right-hand canvas.
+        </p>
+      </div>
+    </dialog>
+
+    <script>
+      const shell = document.getElementById("app-shell");
+      const frame = document.getElementById("exploration-frame");
+      const viewerTitle = document.getElementById("viewer-title");
+      const viewerSubtitle = document.getElementById("viewer-subtitle");
+      const links = Array.from(document.querySelectorAll(".exploration-link"));
+      const searchInput = document.getElementById("search-input");
+      const collapseButton = document.getElementById("collapse-button");
+      const showSidebarButton = document.getElementById("show-sidebar-button");
+      const restoreSidebarButton = document.getElementById("restore-sidebar-button");
+      const resizeHandle = document.getElementById("resize-handle");
+      const aboutButton = document.getElementById("about-button");
+      const aboutDialog = document.getElementById("about-dialog");
+      const closeAboutButton = document.getElementById("close-about-button");
+      const storageKey = "jyotisha-2026-sidebar-width";
+
+      function setActive(button) {
+        links.forEach((link) => link.classList.toggle("active", link === button));
+        viewerTitle.textContent = button.dataset.title;
+        viewerSubtitle.textContent = button.dataset.description;
+        frame.src = button.dataset.path;
+        if (window.innerWidth <= 860) {
+          shell.classList.remove("sidebar-open");
+        }
+      }
+
+      links.forEach((button) => {
+        button.addEventListener("click", () => setActive(button));
+      });
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim().toLowerCase();
+        links.forEach((button) => {
+          const haystack = [
+            button.dataset.title,
+            button.dataset.slug,
+            button.dataset.description
+          ].join(" ").toLowerCase();
+          button.hidden = !haystack.includes(query);
+        });
+      });
+
+      collapseButton.addEventListener("click", () => {
+        shell.classList.toggle("sidebar-collapsed");
+      });
+
+      showSidebarButton.addEventListener("click", () => {
+        shell.classList.toggle("sidebar-open");
+      });
+
+      restoreSidebarButton.addEventListener("click", () => {
+        shell.classList.remove("sidebar-collapsed");
+      });
+
+      aboutButton.addEventListener("click", () => aboutDialog.showModal());
+      closeAboutButton.addEventListener("click", () => aboutDialog.close());
+
+      aboutDialog.addEventListener("click", (event) => {
+        const rect = aboutDialog.getBoundingClientRect();
+        const inDialog =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (!inDialog) aboutDialog.close();
+      });
+
+      const storedWidth = localStorage.getItem(storageKey);
+      if (storedWidth) {
+        shell.style.setProperty("--sidebar-width", storedWidth);
+      }
+
+      let resizing = false;
+      resizeHandle.addEventListener("pointerdown", () => {
+        resizing = true;
+        document.body.classList.add("is-resizing");
+      });
+
+      window.addEventListener("pointermove", (event) => {
+        if (!resizing || window.innerWidth <= 860) return;
+        const width = Math.min(420, Math.max(220, event.clientX));
+        const value = `${width}px`;
+        shell.style.setProperty("--sidebar-width", value);
+        localStorage.setItem(storageKey, value);
+      });
+
+      window.addEventListener("pointerup", () => {
+        resizing = false;
+        document.body.classList.remove("is-resizing");
+      });
+    </script>
+  </body>
+</html>

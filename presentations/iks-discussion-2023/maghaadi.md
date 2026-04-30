@@ -724,7 +724,7 @@ The direction of precession is opposite to the direction of the  sun's annual tr
     table tr:nth-child(1) td:nth-child(1) img { filter: invert(80%); }
 </style>
 
-|Epoch|Spring Equinox|Dakṣiṇāyana|Uttaryāṇa | Pole Star|Image|
+|Epoch|Spring Equinox|Dakṣiṇāyana|Uttarāyaṇa | Pole Star|Image|
 |---|---|---|---|---|--|
 |Present|Uttara Bhādrapadā|Ārdrā|Mūla|Polaris|![](prec-01-2000-ce.jpg)
 |1000 years ago|Revatī|Punarvasu|Pūrva Aṣāḍhā|-|![](prec-02-1000-ce.jpg)

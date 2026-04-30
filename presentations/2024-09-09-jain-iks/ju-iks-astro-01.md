@@ -442,13 +442,13 @@ There are texts that associate specific nakṣatras with the ṛtus - seasonal n
 ### Every ~366 days
 Sunrise completes one full swing along the eastern hor
 izon 
-- A northern swing called *uttaryāṇa* for 183 sunrises
+- A northern swing called *uttarāyaṇa* for 183 sunrises
 - A southern swing called *dakṣiṇāyana* for 183 sunrises
   
 |||
 |:-:|:-:|
-|Start of uttaryāṇa/dakṣiṇāyana | solstice winter/summer
-|Mid of *uttaryāṇa*/dakṣiṇāyana | *equinox spring*/autumn
+|Start of uttarāyaṇa/dakṣiṇāyana | solstice winter/summer
+|Mid of *uttarāyaṇa*/dakṣiṇāyana | *equinox spring*/autumn
   
 Sun cycles through 
 - *6 ṛtu-s* of 61 sunrises each vasanta, grīṣma,  varṣā, śarat, hemanta, śiśira
@@ -484,7 +484,7 @@ Sun cycles through
     table tr:nth-child(1) td:nth-child(1) img { filter: invert(80%); }
 </style>
 
-|Epoch|Spring Equinox|Dakṣiṇāyana|Uttaryāṇa | Pole Star|Image|
+|Epoch|Spring Equinox|Dakṣiṇāyana|Uttarāyaṇa | Pole Star|Image|
 |---|---|---|---|---|--|
 |Present|Uttara Bhādrapadā|Ārdrā|Mūla|Polaris|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/prec-01-2000-ce.jpg)
 |1000 years ago|Revatī|Punarvasu|Pūrva Aṣāḍhā|-|![](https://cahc.jainuniversity.ac.in/assets/talks/2023-12-05-iks-cahc/maghaadi/prec-02-1000-ce.jpg)

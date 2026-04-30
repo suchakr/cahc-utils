@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>27 Nakshatra Heliacal Rising</title>
+    <link rel="stylesheet" href="../shared/css/site.css">
+  </head>
+  <body class="exploration-body">
+    <main class="content">
+      <section class="flat-section">
+        <h2>Azimuth</h2>
+        <p class="small-note">At fixed latitude, setting azimuth is largely the complementary horizon expression of the same declination signal driving rising azimuth.</p>
+        <div class="comparison-grid">
+          <div>
+            <h3>Rising</h3>
+            <p><img class="asset-preview" src="plots/rising-azimuth-by-nakshatra.png" alt="Rising azimuth by nakshatra and epoch"></p>
+          </div>
+          <div>
+            <h3>Setting</h3>
+            <p><img class="asset-preview" src="plots/setting-azimuth-by-nakshatra.png" alt="Setting azimuth by nakshatra and epoch"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flat-section">
+        <h2>Declination</h2>
+        <p class="small-note">Rise and set declination are expected to be very close here, because declination is primarily a property of the star at the event date rather than a separate horizon-side measurement.</p>
+        <div class="comparison-grid">
+          <div>
+            <h3>Rising</h3>
+            <p><img class="asset-preview" src="plots/rising-declination-by-nakshatra.png" alt="Rising declination by nakshatra and epoch"></p>
+          </div>
+          <div>
+            <h3>Setting</h3>
+            <p><img class="asset-preview" src="plots/setting-declination-by-nakshatra.png" alt="Setting declination by nakshatra and epoch"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flat-section">
+        <h2>Azimuth by Veethi</h2>
+        <div class="comparison-grid">
+          <div>
+            <h3>Rising</h3>
+            <p><img class="asset-preview" src="plots/rising-azimuth-by-nakshatra-veethi.png" alt="Rising azimuth by nakshatra and veethi"></p>
+          </div>
+          <div>
+            <h3>Setting</h3>
+            <p><img class="asset-preview" src="plots/setting-azimuth-by-nakshatra-veethi.png" alt="Setting azimuth by nakshatra and veethi"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flat-section">
+        <h2>Declination by Veethi</h2>
+        <div class="comparison-grid">
+          <div>
+            <h3>Rising</h3>
+            <p><img class="asset-preview" src="plots/rising-declination-by-nakshatra-veethi.png" alt="Rising declination by nakshatra and veethi"></p>
+          </div>
+          <div>
+            <h3>Setting</h3>
+            <p><img class="asset-preview" src="plots/setting-declination-by-nakshatra-veethi.png" alt="Setting declination by nakshatra and veethi"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flat-section">
+        <div class="section-title-row">
+          <h2>Table Preview</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>epoch</th>
+      <th>enaks</th>
+      <th>event_date_utc</th>
+      <th>jd_utc</th>
+      <th>rising_azimuth_deg</th>
+      <th>setting_event_date_utc</th>
+      <th>setting_jd_utc</th>
+      <th>setting_azimuth_deg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-1500</td>
+      <td>Aśvayuk</td>
+      <td>-1500-03-13T05:30:12.810</td>
+      <td>1173267.729315</td>
+      <td>87.95</td>
+      <td>-1500-09-19T05:04:45.852</td>
+      <td>1173457.711642</td>
+      <td>272.05</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Bharaṇī</td>
+      <td>-1500-03-25T05:14:14.253</td>
+      <td>1173279.718221</td>
+      <td>79.43</td>
+      <td>-1500-10-03T05:14:55.778</td>
+      <td>1173471.718701</td>
+      <td>280.58</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Kṛttikā</td>
+      <td>-1500-04-16T04:44:39.886</td>
+      <td>1173301.697684</td>
+      <td>80.78</td>
+      <td>-1500-10-14T05:22:59.008</td>
+      <td>1173482.724294</td>
+      <td>279.23</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Rohiṇī</td>
+      <td>-1500-05-08T04:18:59.943</td>
+      <td>1173323.679860</td>
+      <td>86.56</td>
+      <td>-1500-10-23T05:29:48.981</td>
+      <td>1173491.729039</td>
+      <td>273.44</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Mṛgaśira</td>
+      <td>-1500-05-30T04:02:31.420</td>
+      <td>1173345.668419</td>
+      <td>89.49</td>
+      <td>-1500-11-03T05:38:34.295</td>
+      <td>1173502.735119</td>
+      <td>270.51</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Ārdrā</td>
+      <td>-1500-06-06T03:59:59.208</td>
+      <td>1173352.666657</td>
+      <td>76.95</td>
+      <td>-1500-11-19T05:51:46.847</td>
+      <td>1173518.744292</td>
+      <td>283.05</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Punarvasu</td>
+      <td>-1500-06-06T03:59:59.208</td>
+      <td>1173352.666657</td>
+      <td>57.67</td>
+      <td>-1500-12-08T06:06:32.106</td>
+      <td>1173537.754538</td>
+      <td>302.33</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Puṣya</td>
+      <td>-1500-06-28T04:01:24.907</td>
+      <td>1173374.667649</td>
+      <td>62.94</td>
+      <td>-1500-12-21T06:14:07.594</td>
+      <td>1173550.759810</td>
+      <td>297.06</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Āśleṣā</td>
+      <td>-1500-07-10T04:07:36.591</td>
+      <td>1173386.671951</td>
+      <td>75.53</td>
+      <td>-1500-12-21T06:14:07.594</td>
+      <td>1173550.759810</td>
+      <td>284.47</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>Maghā</td>
+      <td>-1500-07-08T04:06:22.055</td>
+      <td>1173384.671089</td>
+      <td>48.37</td>
+      <td>-1500-01-21T06:16:25.613</td>
+      <td>1173216.761408</td>
+      <td>311.63</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>P Phalgunī</td>
+      <td>-1500-07-22T04:16:21.780</td>
+      <td>1173398.678030</td>
+      <td>47.44</td>
+      <td>-1500-02-11T06:03:31.048</td>
+      <td>1173237.752443</td>
+      <td>312.56</td>
+    </tr>
+    <tr>
+      <td>-1500</td>
+      <td>U Phalgunī</td>
+      <td>-1500-08-04T04:27:22.962</td>
+      <td>1173411.685682</td>
+      <td>52.72</td>
+      <td>-1500-02-21T05:53:55.807</td>
+      <td>1173247.745785</td>
+      <td>307.28</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+        <p class="small-note">Preview truncated to the first 12 rows. Use the CSV link above for the full table.</p>
+      </section>
+
+      <section class="flat-section">
+        <h2>Narration</h2>
+        <h3>Summary</h3><ul><li>Computed for latitude 30°N with symmetric heliacal criteria: first morning rise and last evening setting with the Sun at -10° altitude.</li><li>In the -1500 series, the northernmost rising azimuth is Svātī, while the southernmost is Mūla.</li><li>In the -1500 setting series, the westernmost setting azimuth is Mūla, while the easternmost is Svātī.</li><li>Largest azimuth shifts from -1500 to -500 are Svātī +7.10°, Bharaṇī +6.54°, Viśākhā +6.48°.</li><li>Largest setting-azimuth shifts from -1500 to -500 are Svātī +7.10°, Bharaṇī +6.54°, Viśākhā +6.48°.</li><li>Largest declination shifts from -1500 to -500 are Bharaṇī +5.62°, Svātī +5.62°, Viśākhā +5.61°.</li><li>The rise/set expansion is geometrically constrained: for a fixed latitude and flat horizon, setting azimuth is largely the complementary horizon expression of the same declination signal, and rise/set declination will often look nearly identical.</li><li>The table includes UTC ISO timestamps and Julian Dates so the event moments can be reused directly in Stellarium or related tools.</li></ul>
+      </section>
+    </main>
+  </body>
+</html>

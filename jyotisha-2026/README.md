@@ -55,4 +55,7 @@ This repository uses `uv` discipline for agent work.
 
 ## Current Status
 
-The scaffold is intentionally lightweight. The first workflow test is expected to be the 27-nakshatra heliacal-rising comparison across selected BCE epochs.
+The lab is intentionally lightweight, but no longer empty:
+
+- `heliacal-rising-27-naks` is the first completed plotting exploration.
+- `nakshatra-precession-explorer` is the current active foundation, with accepted `Table` and `2D Sky` views and a `3D Sky` view that exists as a development baseline rather than final live polish.

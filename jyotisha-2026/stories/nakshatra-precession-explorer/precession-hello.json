@@ -44,12 +44,12 @@
     {
       "at": 1000,
       "action": "reveal",
-      "target": "grid"
+      "target": "eclipticGrid"
     },
     {
       "at": "+200",
       "action": "reveal",
-      "target": "ecliptic"
+      "target": "eclipticNakSegments"
     },
     {
       "at": "+200",

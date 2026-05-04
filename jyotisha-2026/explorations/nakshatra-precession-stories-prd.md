@@ -83,5 +83,5 @@ Phase 1 note: `set` cue `duration` is accepted as part of the schema, but `set` 
 
 - start with most layers hidden
 - show a centered title
-- reveal grid, ecliptic, stars, nakshatra line art, seasonal frame, pole track, and overlay
+- reveal grid, ecliptic, stars, nakshatra line art, seasonal frame, precession circle, and overlay
 - animate epoch from `-1800` to `-800`

@@ -623,6 +623,17 @@
         cursor: pointer;
         font: 0.78rem/1 var(--font-mono);
         padding: 0.35rem 0.55rem;
+        opacity: 0.88;
+        transition: opacity 700ms ease;
+      }
+
+      .three-container.theater-mode .three-fullscreen-button {
+        opacity: 0;
+      }
+
+      .three-container.theater-mode:hover .three-fullscreen-button,
+      .three-container.theater-mode .three-fullscreen-button:focus-visible {
+        opacity: 0.86;
       }
 
       .three-container.theater-mode {
@@ -735,7 +746,7 @@
           <label class="sky-toggle"><input type="checkbox" id="toggle-equator" checked> Equator</label>
           <label class="sky-toggle"><input type="checkbox" id="toggle-sectors" checked> 27 sectors</label>
           <label class="sky-toggle"><input type="checkbox" id="toggle-labels" checked> Nakshatra labels</label>
-          <label class="sky-toggle"><input type="checkbox" id="toggle-pole" checked> Pole track</label>
+          <label class="sky-toggle"><input type="checkbox" id="toggle-pole" checked> Precession circle</label>
           <details class="debug-panel" id="trail-debug-panel">
             <summary>More visual toggles</summary>
             <div class="debug-popover">
@@ -827,7 +838,7 @@
                 <summary>VyomaSutra help</summary>
                 <pre>Short form:
 caption "Text" 1200:250:350
-show eclipticGrid ; wait 200 ; rollout naks
+show eclipticNakSegments ; wait 200 ; rollout naks
 flash precessionCircle 1500:
 fullscreen ; wait 500 ; exitFullscreen
 
@@ -885,17 +896,22 @@ duration       = DURATION:FADE_IN:FADE_OUT | DURATION: | NUMBER
 mode           = instant | fade | stagger | rollout
 order          = ecliptic | reverse-ecliptic | forward | reverse
 
-coarse targets = grid, eclipticGrid, stars, naks, seasonalFrame, poleTrack, overlay
+coarse targets = eclipticGrid, equatorialGrid, eclipticNakSegments, stars, naks, seasonalFrame, poleTrack, overlay
 reference      = referencePlanes, eclipticPlane, equatorialPlane, nsAxis, precessionCircle
 polar targets  = polarItems, northPolarItems, southPolarItems, NEP, SEP, NP, SP
 nak sigils     = $ash sector only, *ash star/stick group, @ash sector plus star/stick group
+style          = style target color COLOR alpha %50 fontSize NUMBER starSize NUMBER
+grid density   = grid ecliptic 15 blue ; grid equatorial 15 red
 
 Examples:
 stage blank night year -1800
 caption "Visualize Precession" 1200:250:350
-show grid ; wait 200 ; show eclipticGrid
+show eclipticGrid ; wait 200 ; show eclipticNakSegments
+grid ecliptic 15 blue ; grid equatorial 15 red
+show equatorialGrid ; style equatorialGrid color red alpha %28
 rollout stars ; rollout naks
 flash @ash 650:
+style naks color #8eaccb alpha .8 fontSize 5
 camera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900
 travel -3000 to 2000 9000: step 100
 fullscreen ; wait 500 ; exitFullscreen</pre>
@@ -903,7 +919,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
     </main>
 
     <script id="explorer-data" type="application/json">{"meta": {"slug": "nakshatra-precession-explorer", "title": "Nakshatra Precession Explorer", "subtitle": "Fixed sidereal nakshatra geometry against the drifting seasonal frame, tested through a shared epoch slider, table view, and projected 2D sky.", "epoch_min": -5000, "epoch_max": 3000, "epoch_step": 100, "default_epoch": -1500, "ecliptic_band_half_width_deg": 5.0, "sector_width_deg": 13.333333, "sector_start_lon_deg": 23.84, "lunar_system_link_hip": "HIP 65474", "lunar_system_link_offset_deg": 180.0, "rtus": [{"name": "Vasanta", "color": "#d4aa4d"}, {"name": "Grishma", "color": "#d38754"}, {"name": "Varsha", "color": "#6f9fb7"}, {"name": "Sharat", "color": "#d8c27a"}, {"name": "Hemanta", "color": "#b07b5d"}, {"name": "Shishira", "color": "#8da0c9"}], "season_name_map": {"Vasanta": "वसन्त", "Grishma": "ग्रीष्म", "Varsha": "वर्षा", "Sharat": "शरत्", "Hemanta": "हेमन्त", "Shishira": "शिशिर"}}, "epochs": [{"year": -5000, "label": "5000 BCE", "vernal_equinox_lon_deg": 96.42562603808443, "summer_solstice_lon_deg": 186.42562603808443, "autumnal_equinox_lon_deg": 276.42562603808443, "winter_solstice_lon_deg": 6.425626038084431, "north_pole_lon_deg": 188.54765633015583, "north_pole_lat_deg": 65.89338207313016, "obliquity_deg": 24.106617926869845}, {"year": -4900, "label": "4900 BCE", "vernal_equinox_lon_deg": 95.06331274687963, "summer_solstice_lon_deg": 185.06331274687963, "autumnal_equinox_lon_deg": 275.06331274687966, "winter_solstice_lon_deg": 5.06331274687966, "north_pole_lon_deg": 187.15182476960385, "north_pole_lat_deg": 65.91732877489075, "obliquity_deg": 24.08267122510925}, {"year": -4800, "label": "4800 BCE", "vernal_equinox_lon_deg": 93.70071327467605, "summer_solstice_lon_deg": 183.70071327467605, "autumnal_equinox_lon_deg": 273.70071327467605, "winter_solstice_lon_deg": 3.7007132746760476, "north_pole_lon_deg": 185.7549610574994, "north_pole_lat_deg": 65.94082851912738, "obliquity_deg": 24.05917148087262}, {"year": -4700, "label": "4700 BCE", "vernal_equinox_lon_deg": 92.33781944642726, "summer_solstice_lon_deg": 182.33781944642726, "autumnal_equinox_lon_deg": 272.33781944642726, "winter_solstice_lon_deg": 2.337819446427261, "north_pole_lon_deg": 184.35709526466258, "north_pole_lat_deg": 65.96387729751466, "obliquity_deg": 24.036122702485343}, {"year": -4600, "label": "4600 BCE", "vernal_equinox_lon_deg": 90.97462313687429, "summer_solstice_lon_deg": 180.9746231368743, "autumnal_equinox_lon_deg": 270.9746231368743, "winter_solstice_lon_deg": 0.9746231368742997, "north_pole_lon_deg": 182.95825772864754, "north_pole_lat_deg": 65.9864714084814, "obliquity_deg": 24.013528591518593}, {"year": -4500, "label": "4500 BCE", "vernal_equinox_lon_deg": 89.61111627301185, "summer_solstice_lon_deg": 179.61111627301185, "autumnal_equinox_lon_deg": 269.6111162730118, "winter_solstice_lon_deg": 359.6111162730118, "north_pole_lon_deg": 181.55847903874354, "north_pole_lat_deg": 66.00860745909947, "obliquity_deg": 23.991392540900534}, {"year": -4400, "label": "4400 BCE", "vernal_equinox_lon_deg": 88.24729083656983, "summer_solstice_lon_deg": 178.24729083656985, "autumnal_equinox_lon_deg": 268.24729083656985, "winter_solstice_lon_deg": 358.24729083656985, "north_pole_lon_deg": 180.15779002045397, "north_pole_lat_deg": 66.03028236696963, "obliquity_deg": 23.96971763303037}, {"year": -4300, "label": "4300 BCE", "vernal_equinox_lon_deg": 86.88313886650761, "summer_solstice_lon_deg": 176.8831388665076, "autumnal_equinox_lon_deg": 266.8831388665076, "winter_solstice_lon_deg": 356.8831388665076, "north_pole_lon_deg": 178.7562217194467, "north_pole_lat_deg": 66.05149336209315, "obliquity_deg": 23.948506637906846}, {"year": -4200, "label": "4200 BCE", "vernal_equinox_lon_deg": 85.51865246151903, "summer_solstice_lon_deg": 175.51865246151903, "autumnal_equinox_lon_deg": 265.518652461519, "winter_solstice_lon_deg": 355.518652461519, "north_pole_lon_deg": 177.35380538497324, "north_pole_lat_deg": 66.07223798871748, "obliquity_deg": 23.927762011282525}, {"year": -4100, "label": "4100 BCE", "vernal_equinox_lon_deg": 84.15382378254618, "summer_solstice_lon_deg": 174.15382378254617, "autumnal_equinox_lon_deg": 264.15382378254617, "winter_solstice_lon_deg": 354.15382378254617, "north_pole_lon_deg": 175.9505724527534, "north_pole_lat_deg": 66.09251410714386, "obliquity_deg": 23.907485892856144}, {"year": -4000, "label": "4000 BCE", "vernal_equinox_lon_deg": 82.78864505529911, "summer_solstice_lon_deg": 172.78864505529913, "autumnal_equinox_lon_deg": 262.7886450552991, "winter_solstice_lon_deg": 352.7886450552991, "north_pole_lon_deg": 174.54655452732734, "north_pole_lat_deg": 66.11231989548497, "obliquity_deg": 23.887680104515027}, {"year": -3900, "label": "3900 BCE", "vernal_equinox_lon_deg": 81.4231085727802, "summer_solstice_lon_deg": 171.4231085727802, "autumnal_equinox_lon_deg": 261.42310857278017, "winter_solstice_lon_deg": 351.42310857278017, "north_pole_lon_deg": 173.14178336387707, "north_pole_lat_deg": 66.13165385135996, "obliquity_deg": 23.868346148640043}, {"year": -3800, "label": "3800 BCE", "vernal_equinox_lon_deg": 80.05720669781012, "summer_solstice_lon_deg": 170.0572066978101, "autumnal_equinox_lon_deg": 260.0572066978101, "winter_solstice_lon_deg": 350.0572066978101, "north_pole_lon_deg": 171.73629084952208, "north_pole_lat_deg": 66.15051479351439, "obliquity_deg": 23.84948520648561}, {"year": -3700, "label": "3700 BCE", "vernal_equinox_lon_deg": 78.69093186555446, "summer_solstice_lon_deg": 168.69093186555446, "autumnal_equinox_lon_deg": 258.6909318655545, "winter_solstice_lon_deg": 348.6909318655545, "north_pole_lon_deg": 170.33010898409748, "north_pole_lat_deg": 66.16890186335276, "obliquity_deg": 23.831098136647242}, {"year": -3600, "label": "3600 BCE", "vernal_equinox_lon_deg": 77.3242765860474, "summer_solstice_lon_deg": 167.3242765860474, "autumnal_equinox_lon_deg": 257.3242765860474, "winter_solstice_lon_deg": 347.3242765860474, "north_pole_lon_deg": 168.92326986042292, "north_pole_lat_deg": 66.18681452637044, "obliquity_deg": 23.81318547362956}, {"year": -3500, "label": "3500 BCE", "vernal_equinox_lon_deg": 75.95723344671144, "summer_solstice_lon_deg": 165.95723344671143, "autumnal_equinox_lon_deg": 255.95723344671143, "winter_solstice_lon_deg": 345.9572334467114, "north_pole_lon_deg": 167.51580564407485, "north_pole_lat_deg": 66.20425257347284, "obliquity_deg": 23.795747426527157}, {"year": -3400, "label": "3400 BCE", "vernal_equinox_lon_deg": 74.58979511487063, "summer_solstice_lon_deg": 164.58979511487064, "autumnal_equinox_lon_deg": 254.58979511487064, "winter_solstice_lon_deg": 344.58979511487064, "north_pole_lon_deg": 166.1077485526758, "north_pole_lat_deg": 66.2212161221687, "obliquity_deg": 23.7787838778313}, {"year": -3300, "label": "3300 BCE", "vernal_equinox_lon_deg": 73.22195434025515, "summer_solstice_lon_deg": 163.22195434025514, "autumnal_equinox_lon_deg": 253.22195434025514, "winter_solstice_lon_deg": 343.22195434025514, "north_pole_lon_deg": 164.69913083471738, "north_pole_lat_deg": 66.2377056176254, "obliquity_deg": 23.762294382374606}, {"year": -3200, "label": "3200 BCE", "vernal_equinox_lon_deg": 71.85370395749497, "summer_solstice_lon_deg": 161.853703957495, "autumnal_equinox_lon_deg": 251.853703957495, "winter_solstice_lon_deg": 341.853703957495, "north_pole_lon_deg": 163.28998474793516, "north_pole_lat_deg": 66.2537218335733, "obliquity_deg": 23.746278166426706}, {"year": -3100, "label": "3100 BCE", "vernal_equinox_lon_deg": 70.48503688860086, "summer_solstice_lon_deg": 160.48503688860086, "autumnal_equinox_lon_deg": 250.48503688860086, "winter_solstice_lon_deg": 340.48503688860086, "north_pole_lon_deg": 161.88034253725624, "north_pole_lat_deg": 66.26926587304735, "obliquity_deg": 23.730734126952655}, {"year": -3000, "label": "3000 BCE", "vernal_equinox_lon_deg": 69.11594614543003, "summer_solstice_lon_deg": 159.11594614543003, "autumnal_equinox_lon_deg": 249.11594614543003, "winter_solstice_lon_deg": 339.11594614543003, "north_pole_lon_deg": 160.4702364123423, "north_pole_lat_deg": 66.2843391689535, "obliquity_deg": 23.715660831046506}, {"year": -2900, "label": "2900 BCE", "vernal_equinox_lon_deg": 67.74642483213476, "summer_solstice_lon_deg": 157.74642483213478, "autumnal_equinox_lon_deg": 247.74642483213478, "winter_solstice_lon_deg": 337.7464248321348, "north_pole_lon_deg": 159.05969852475337, "north_pole_lat_deg": 66.29894348444849, "obliquity_deg": 23.701056515551514}, {"year": -2800, "label": "2800 BCE", "vernal_equinox_lon_deg": 66.3764661475916, "summer_solstice_lon_deg": 156.3764661475916, "autumnal_equinox_lon_deg": 246.3764661475916, "winter_solstice_lon_deg": 336.3764661475916, "north_pole_lon_deg": 157.6487609447584, "north_pole_lat_deg": 66.31308091312076, "obliquity_deg": 23.686919086879243}, {"year": -2700, "label": "2700 BCE", "vernal_equinox_lon_deg": 65.00606338780908, "summer_solstice_lon_deg": 155.0060633878091, "autumnal_equinox_lon_deg": 245.0060633878091, "winter_solstice_lon_deg": 335.0060633878091, "north_pole_lon_deg": 156.23745563782253, "north_pole_lat_deg": 66.3267538789625, "obliquity_deg": 23.673246121037494}, {"year": -2600, "label": "2600 BCE", "vernal_equinox_lon_deg": 63.635209948311584, "summer_solstice_lon_deg": 153.63520994831157, "autumnal_equinox_lon_deg": 243.63520994831157, "winter_solstice_lon_deg": 333.63520994831157, "north_pole_lon_deg": 154.82581444080066, "north_pole_lat_deg": 66.3399651361207, "obliquity_deg": 23.660034863879304}, {"year": -2500, "label": "2500 BCE", "vernal_equinox_lon_deg": 62.26389932649771, "summer_solstice_lon_deg": 152.26389932649772, "autumnal_equinox_lon_deg": 242.26389932649772, "winter_solstice_lon_deg": 332.2638993264977, "north_pole_lon_deg": 153.41386903787017, "north_pole_lat_deg": 66.35271776841783, "obliquity_deg": 23.647282231582167}, {"year": -2400, "label": "2400 BCE", "vernal_equinox_lon_deg": 60.89212512397068, "summer_solstice_lon_deg": 150.8921251239707, "autumnal_equinox_lon_deg": 240.8921251239707, "winter_solstice_lon_deg": 330.8921251239707, "north_pole_lon_deg": 152.00165093623698, "north_pole_lat_deg": 66.36501518863173, "obliquity_deg": 23.63498481136827}, {"year": -2300, "label": "2300 BCE", "vernal_equinox_lon_deg": 59.519881048838585, "summer_solstice_lon_deg": 149.51988104883858, "autumnal_equinox_lon_deg": 239.51988104883858, "winter_solstice_lon_deg": 329.51988104883856, "north_pole_lon_deg": 150.58919144165034, "north_pole_lat_deg": 66.37686113752544, "obliquity_deg": 23.623138862474562}, {"year": -2200, "label": "2200 BCE", "vernal_equinox_lon_deg": 58.14716091798298, "summer_solstice_lon_deg": 148.14716091798297, "autumnal_equinox_lon_deg": 238.14716091798297, "winter_solstice_lon_deg": 328.147160917983, "north_pole_lon_deg": 149.17652163376272, "north_pole_lat_deg": 66.38825968261801, "obliquity_deg": 23.611740317381987}, {"year": -2100, "label": "2100 BCE", "vernal_equinox_lon_deg": 56.773958659292916, "summer_solstice_lon_deg": 146.77395865929293, "autumnal_equinox_lon_deg": 236.77395865929293, "winter_solstice_lon_deg": 326.77395865929293, "north_pole_lon_deg": 147.763672341374, "north_pole_lat_deg": 66.39921521668792, "obliquity_deg": 23.60078478331208}, {"year": -2000, "label": "2000 BCE", "vernal_equinox_lon_deg": 55.4002683138634, "summer_solstice_lon_deg": 145.4002683138634, "autumnal_equinox_lon_deg": 235.4002683138634, "winter_solstice_lon_deg": 325.4002683138634, "north_pole_lon_deg": 146.35067411759852, "north_pole_lat_deg": 66.40973245600156, "obliquity_deg": 23.590267543998436}, {"year": -1900, "label": "1900 BCE", "vernal_equinox_lon_deg": 54.02608403815547, "summer_solstice_lon_deg": 144.02608403815546, "autumnal_equinox_lon_deg": 234.02608403815546, "winter_solstice_lon_deg": 324.0260840381555, "north_pole_lon_deg": 144.9375572149959, "north_pole_lat_deg": 66.4198164382593, "obliquity_deg": 23.580183561740697}, {"year": -1800, "label": "1800 BCE", "vernal_equinox_lon_deg": 52.651400106116604, "summer_solstice_lon_deg": 142.6514001061166, "autumnal_equinox_lon_deg": 232.6514001061166, "winter_solstice_lon_deg": 322.6514001061166, "north_pole_lon_deg": 143.52435156070663, "north_pole_lat_deg": 66.42947252025307, "obliquity_deg": 23.57052747974693}, {"year": -1700, "label": "1700 BCE", "vernal_equinox_lon_deg": 51.27621091125911, "summer_solstice_lon_deg": 141.2762109112591, "autumnal_equinox_lon_deg": 231.2762109112591, "winter_solstice_lon_deg": 321.2762109112591, "north_pole_lon_deg": 142.11108673163406, "north_pole_lat_deg": 66.43870637522932, "obliquity_deg": 23.561293624770684}, {"year": -1600, "label": "1600 BCE", "vernal_equinox_lon_deg": 49.90051096869516, "summer_solstice_lon_deg": 139.90051096869516, "autumnal_equinox_lon_deg": 229.90051096869516, "winter_solstice_lon_deg": 319.90051096869513, "north_pole_lon_deg": 140.69779192971623, "north_pole_lat_deg": 66.44752398995233, "obliquity_deg": 23.55247601004767}, {"year": -1500, "label": "1500 BCE", "vernal_equinox_lon_deg": 48.52429491712642, "summer_solstice_lon_deg": 138.5242949171264, "autumnal_equinox_lon_deg": 228.5242949171264, "winter_solstice_lon_deg": 318.52429491712644, "north_pole_lon_deg": 139.28449595732982, "north_pole_lat_deg": 66.45593166146361, "obliquity_deg": 23.54406833853639}, {"year": -1400, "label": "1400 BCE", "vernal_equinox_lon_deg": 47.14755752078669, "summer_solstice_lon_deg": 137.14755752078668, "autumnal_equinox_lon_deg": 227.14755752078668, "winter_solstice_lon_deg": 317.1475575207867, "north_pole_lon_deg": 137.87122719286967, "north_pole_lat_deg": 66.46393599353365, "obliquity_deg": 23.536064006466347}, {"year": -1300, "label": "1300 BCE", "vernal_equinox_lon_deg": 45.770293671336226, "summer_solstice_lon_deg": 135.77029367133622, "autumnal_equinox_lon_deg": 225.77029367133622, "winter_solstice_lon_deg": 315.7702936713362, "north_pole_lon_deg": 136.45801356654724, "north_pole_lat_deg": 66.47154389280283, "obliquity_deg": 23.528456107197172}, {"year": -1200, "label": "1200 BCE", "vernal_equinox_lon_deg": 44.392498389705885, "summer_solstice_lon_deg": 134.39249838970588, "autumnal_equinox_lon_deg": 224.39249838970588, "winter_solstice_lon_deg": 314.3924983897059, "north_pole_lon_deg": 135.0448825364517, "north_pole_lat_deg": 66.47876256460978, "obliquity_deg": 23.52123743539022}, {"year": -1100, "label": "1100 BCE", "vernal_equinox_lon_deg": 43.014166827890016, "summer_solstice_lon_deg": 133.01416682789002, "autumnal_equinox_lon_deg": 223.01416682789002, "winter_solstice_lon_deg": 313.01416682789, "north_pole_lon_deg": 133.63186106491645, "north_pole_lat_deg": 66.48559950850554, "obliquity_deg": 23.514400491494456}, {"year": -1000, "label": "1000 BCE", "vernal_equinox_lon_deg": 41.63529427068677, "summer_solstice_lon_deg": 131.63529427068676, "autumnal_equinox_lon_deg": 221.63529427068676, "winter_solstice_lon_deg": 311.63529427068676, "north_pole_lon_deg": 132.21897559523413, "north_pole_lat_deg": 66.49206251345271, "obliquity_deg": 23.50793748654729}, {"year": -900, "label": "900 BCE", "vernal_equinox_lon_deg": 40.25587613738456, "summer_solstice_lon_deg": 130.25587613738458, "autumnal_equinox_lon_deg": 220.25587613738458, "winter_solstice_lon_deg": 310.2558761373846, "north_pole_lon_deg": 130.8062520287624, "north_pole_lat_deg": 66.49815965271021, "obliquity_deg": 23.501840347289786}, {"year": -800, "label": "800 BCE", "vernal_equinox_lon_deg": 38.87590798339377, "summer_solstice_lon_deg": 128.87590798339377, "autumnal_equinox_lon_deg": 218.87590798339377, "winter_solstice_lon_deg": 308.87590798339374, "north_pole_lon_deg": 129.393715702463, "north_pole_lat_deg": 66.50389927840398, "obliquity_deg": 23.496100721596022}, {"year": -700, "label": "700 BCE", "vernal_equinox_lon_deg": 37.49538550182269, "summer_solstice_lon_deg": 127.49538550182268, "autumnal_equinox_lon_deg": 217.49538550182268, "winter_solstice_lon_deg": 307.4953855018227, "north_pole_lon_deg": 127.9813913669135, "north_pole_lat_deg": 66.50929001578587, "obliquity_deg": 23.490709984214135}, {"year": -600, "label": "600 BCE", "vernal_equinox_lon_deg": 36.11430452499703, "summer_solstice_lon_deg": 126.11430452499704, "autumnal_equinox_lon_deg": 216.11430452499704, "winter_solstice_lon_deg": 306.114304524997, "north_pole_lon_deg": 126.56930316483404, "north_pole_lat_deg": 66.5143407571829, "obliquity_deg": 23.485659242817107}, {"year": -500, "label": "500 BCE", "vernal_equinox_lon_deg": 34.73266102592228, "summer_solstice_lon_deg": 124.73266102592228, "autumnal_equinox_lon_deg": 214.73266102592228, "winter_solstice_lon_deg": 304.7326610259223, "north_pole_lon_deg": 125.15747461016632, "north_pole_lat_deg": 66.51906065563998, "obliquity_deg": 23.480939344360024}, {"year": -400, "label": "400 BCE", "vernal_equinox_lon_deg": 33.35045111968844, "summer_solstice_lon_deg": 123.35045111968844, "autumnal_equinox_lon_deg": 213.35045111968844, "winter_solstice_lon_deg": 303.35045111968844, "north_pole_lon_deg": 123.74592856774383, "north_pole_lat_deg": 66.52345911826053, "obliquity_deg": 23.476540881739467}, {"year": -300, "label": "300 BCE", "vernal_equinox_lon_deg": 31.96767106481691, "summer_solstice_lon_deg": 121.96767106481691, "autumnal_equinox_lon_deg": 211.9676710648169, "winter_solstice_lon_deg": 301.9676710648169, "north_pole_lon_deg": 122.33468723358992, "north_pole_lat_deg": 66.52754579924924, "obliquity_deg": 23.47245420075076}, {"year": -200, "label": "200 BCE", "vernal_equinox_lon_deg": 30.584317264549128, "summer_solstice_lon_deg": 120.58431726454913, "autumnal_equinox_lon_deg": 210.58431726454913, "winter_solstice_lon_deg": 300.5843172645491, "north_pole_lon_deg": 120.9237721158785, "north_pole_lat_deg": 66.53133059266288, "obliquity_deg": 23.468669407337117}, {"year": -100, "label": "100 BCE", "vernal_equinox_lon_deg": 29.200386268077203, "summer_solstice_lon_deg": 119.20038626807721, "autumnal_equinox_lon_deg": 209.2003862680772, "winter_solstice_lon_deg": 299.2003862680772, "north_pole_lon_deg": 119.513204016592, "north_pole_lat_deg": 66.53482362487495, "obliquity_deg": 23.465176375125054}, {"year": 0, "label": "0", "vernal_equinox_lon_deg": 27.81587477171652, "summer_solstice_lon_deg": 117.81587477171652, "autumnal_equinox_lon_deg": 207.81587477171652, "winter_solstice_lon_deg": 297.8158747717165, "north_pole_lon_deg": 118.1030030139083, "north_pole_lat_deg": 66.53803524676137, "obliquity_deg": 23.461964753238632}, {"year": 100, "label": "100 CE", "vernal_equinox_lon_deg": 26.430779620020775, "summer_solstice_lon_deg": 116.43077962002077, "autumnal_equinox_lon_deg": 206.4307796200208, "winter_solstice_lon_deg": 296.43077962002076, "north_pole_lon_deg": 116.69318844534718, "north_pole_lat_deg": 66.54097602561454, "obliquity_deg": 23.45902397438546}, {"year": 200, "label": "200 CE", "vernal_equinox_lon_deg": 25.04509780683983, "summer_solstice_lon_deg": 115.04509780683983, "autumnal_equinox_lon_deg": 205.04509780683983, "winter_solstice_lon_deg": 295.0450978068398, "north_pole_lon_deg": 115.28377889170544, "north_pole_lat_deg": 66.54365673679426, "obliquity_deg": 23.45634326320574}, {"year": 300, "label": "300 CE", "vernal_equinox_lon_deg": 23.658826476321156, "summer_solstice_lon_deg": 113.65882647632115, "autumnal_equinox_lon_deg": 203.65882647632117, "winter_solstice_lon_deg": 293.65882647632117, "north_pole_lon_deg": 113.87479216180776, "north_pole_lat_deg": 66.54608835512398, "obliquity_deg": 23.453911644876015}, {"year": 400, "label": "400 CE", "vernal_equinox_lon_deg": 22.271962923855654, "summer_solstice_lon_deg": 112.27196292385565, "autumnal_equinox_lon_deg": 202.27196292385565, "winter_solstice_lon_deg": 292.27196292385565, "north_pole_lon_deg": 112.4662452780977, "north_pole_lat_deg": 66.54828204604229, "obliquity_deg": 23.45171795395771}, {"year": 500, "label": "500 CE", "vernal_equinox_lon_deg": 20.884504596969062, "summer_solstice_lon_deg": 110.88450459696907, "autumnal_equinox_lon_deg": 200.88450459696907, "winter_solstice_lon_deg": 290.88450459696907, "north_pole_lon_deg": 111.05815446309292, "north_pole_lat_deg": 66.55024915651933, "obliquity_deg": 23.449750843480672}, {"year": 600, "label": "600 CE", "vernal_equinox_lon_deg": 19.496449096159896, "summer_solstice_lon_deg": 109.49644909615989, "autumnal_equinox_lon_deg": 199.4964490961599, "winter_solstice_lon_deg": 289.4964490961599, "north_pole_lon_deg": 109.65053512672486, "north_pole_lat_deg": 66.55200120574891, "obliquity_deg": 23.44799879425109}, {"year": 700, "label": "700 CE", "vernal_equinox_lon_deg": 18.107794175685665, "summer_solstice_lon_deg": 108.10779417568567, "autumnal_equinox_lon_deg": 198.10779417568565, "winter_solstice_lon_deg": 288.1077941756857, "north_pole_lon_deg": 108.24340185458324, "north_pole_lat_deg": 66.55354987562751, "obliquity_deg": 23.44645012437249}, {"year": 800, "label": "800 CE", "vernal_equinox_lon_deg": 16.718537744298647, "summer_solstice_lon_deg": 106.71853774429864, "autumnal_equinox_lon_deg": 196.71853774429866, "winter_solstice_lon_deg": 286.71853774429866, "north_pole_lon_deg": 106.83676839708075, "north_pole_lat_deg": 66.55490700103167, "obliquity_deg": 23.445092998968335}, {"year": 900, "label": "900 CE", "vernal_equinox_lon_deg": 15.328677865933217, "summer_solstice_lon_deg": 105.32867786593322, "autumnal_equinox_lon_deg": 195.32867786593323, "winter_solstice_lon_deg": 285.32867786593323, "north_pole_lon_deg": 105.4306476595546, "north_pole_lat_deg": 66.55608455990587, "obliquity_deg": 23.44391544009413}, {"year": 1000, "label": "1000 CE", "vernal_equinox_lon_deg": 13.938212760346577, "summer_solstice_lon_deg": 103.93821276034657, "autumnal_equinox_lon_deg": 193.93821276034657, "winter_solstice_lon_deg": 283.9382127603466, "north_pole_lon_deg": 104.02505169331648, "north_pole_lat_deg": 66.55709466317359, "obliquity_deg": 23.442905336826414}, {"year": 1100, "label": "1100 CE", "vernal_equinox_lon_deg": 12.547140803714996, "summer_solstice_lon_deg": 102.547140803715, "autumnal_equinox_lon_deg": 192.547140803715, "winter_solstice_lon_deg": 282.547140803715, "north_pole_lon_deg": 102.61999168766285, "north_pole_lat_deg": 66.55794954448417, "obliquity_deg": 23.442050455515826}, {"year": 1200, "label": "1200 CE", "vernal_equinox_lon_deg": 11.155460529187922, "summer_solstice_lon_deg": 101.15546052918792, "autumnal_equinox_lon_deg": 191.15546052918793, "winter_solstice_lon_deg": 281.1554605291879, "north_pole_lon_deg": 101.21547796285314, "north_pole_lat_deg": 66.55866154980934, "obliquity_deg": 23.441338450190656}, {"year": 1300, "label": "1300 CE", "vernal_equinox_lon_deg": 9.763170627402323, "summer_solstice_lon_deg": 99.76317062740232, "autumnal_equinox_lon_deg": 189.76317062740233, "winter_solstice_lon_deg": 279.7631706274023, "north_pole_lon_deg": 99.81151996406346, "north_pole_lat_deg": 66.55924312690217, "obliquity_deg": 23.440756873097826}, {"year": 1400, "label": "1400 CE", "vernal_equinox_lon_deg": 8.370269946959988, "summer_solstice_lon_deg": 98.37026994696, "autumnal_equinox_lon_deg": 188.37026994695998, "winter_solstice_lon_deg": 278.37026994696, "north_pole_lon_deg": 98.40812625631952, "north_pole_lat_deg": 66.5597068146334, "obliquity_deg": 23.4402931853666}, {"year": 1500, "label": "1500 CE", "vernal_equinox_lon_deg": 6.9767574948704025, "summer_solstice_lon_deg": 96.9767574948704, "autumnal_equinox_lon_deg": 186.9767574948704, "winter_solstice_lon_deg": 276.9767574948704, "north_pole_lon_deg": 97.00530452041211, "north_pole_lat_deg": 66.56006523221842, "obliquity_deg": 23.43993476778158}, {"year": 1600, "label": "1600 CE", "vernal_equinox_lon_deg": 5.582632436962238, "summer_solstice_lon_deg": 95.58263243696224, "autumnal_equinox_lon_deg": 185.58263243696223, "winter_solstice_lon_deg": 275.58263243696223, "north_pole_lon_deg": 95.60306154979486, "north_pole_lat_deg": 66.56033106835008, "obliquity_deg": 23.43966893164992}, {"year": 1700, "label": "1700 CE", "vernal_equinox_lon_deg": 4.187894098266453, "summer_solstice_lon_deg": 94.18789409826645, "autumnal_equinox_lon_deg": 184.18789409826644, "winter_solstice_lon_deg": 274.18789409826644, "north_pole_lon_deg": 94.20140324846348, "north_pole_lat_deg": 66.56051707025148, "obliquity_deg": 23.43948292974852}, {"year": 1800, "label": "1800 CE", "vernal_equinox_lon_deg": 2.7925419633741373, "summer_solstice_lon_deg": 92.79254196337413, "autumnal_equinox_lon_deg": 182.79254196337413, "winter_solstice_lon_deg": 272.79254196337416, "north_pole_lon_deg": 92.80033462981257, "north_pole_lat_deg": 66.56063603266372, "obliquity_deg": 23.439363967336277}, {"year": 1900, "label": "1900 CE", "vernal_equinox_lon_deg": 1.3965756767724264, "summer_solstice_lon_deg": 91.39657567677243, "autumnal_equinox_lon_deg": 181.39657567677241, "winter_solstice_lon_deg": 271.39657567677244, "north_pole_lon_deg": 91.39985981646537, "north_pole_lat_deg": 66.5607007867836, "obliquity_deg": 23.4392992132164}, {"year": 2000, "label": "2000 CE", "vernal_equinox_lon_deg": 359.99999504316185, "summer_solstice_lon_deg": 89.99999504316185, "autumnal_equinox_lon_deg": 179.9999950431618, "winter_solstice_lon_deg": 269.9999950431618, "north_pole_lon_deg": 89.99998204106885, "north_pole_lat_deg": 66.56072418916617, "obliquity_deg": 23.439275810833834}, {"year": 2100, "label": "2100 CE", "vernal_equinox_lon_deg": 358.60280002775875, "summer_solstice_lon_deg": 88.60280002775875, "autumnal_equinox_lon_deg": 178.6028000277588, "winter_solstice_lon_deg": 268.6028000277588, "north_pole_lon_deg": 88.60070364804595, "north_pole_lat_deg": 66.56071911060734, "obliquity_deg": 23.439280889392663}, {"year": 2200, "label": "2200 CE", "vernal_equinox_lon_deg": 357.20499075658563, "summer_solstice_lon_deg": 87.20499075658563, "autumnal_equinox_lon_deg": 177.20499075658563, "winter_solstice_lon_deg": 267.20499075658563, "north_pole_lon_deg": 87.20202609629388, "north_pole_lat_deg": 66.5606984250216, "obliquity_deg": 23.4393015749784}, {"year": 2300, "label": "2300 CE", "vernal_equinox_lon_deg": 355.80656751675497, "summer_solstice_lon_deg": 85.80656751675497, "autumnal_equinox_lon_deg": 175.80656751675497, "winter_solstice_lon_deg": 265.80656751675497, "north_pole_lon_deg": 85.80394996281717, "north_pole_lat_deg": 66.56067499833006, "obliquity_deg": 23.439325001669943}, {"year": 2400, "label": "2400 CE", "vernal_equinox_lon_deg": 354.40753075674706, "summer_solstice_lon_deg": 84.40753075674706, "autumnal_equinox_lon_deg": 174.40753075674706, "winter_solstice_lon_deg": 264.40753075674706, "north_pole_lon_deg": 84.40647494728125, "north_pole_lat_deg": 66.56066167737383, "obliquity_deg": 23.43933832262617}, {"year": 2500, "label": "2500 CE", "vernal_equinox_lon_deg": 353.0078810866889, "summer_solstice_lon_deg": 83.00788108668888, "autumnal_equinox_lon_deg": 173.00788108668894, "winter_solstice_lon_deg": 263.00788108668894, "north_pole_lon_deg": 83.0095998774719, "north_pole_lat_deg": 66.56067127886786, "obliquity_deg": 23.439328721132142}, {"year": 2600, "label": "2600 CE", "vernal_equinox_lon_deg": 351.6076192786356, "summer_solstice_lon_deg": 81.60761927863558, "autumnal_equinox_lon_deg": 171.60761927863564, "winter_solstice_lon_deg": 261.60761927863564, "north_pole_lon_deg": 81.6133227156442, "north_pole_lat_deg": 66.56071657841017, "obliquity_deg": 23.439283421589835}, {"year": 2700, "label": "2700 CE", "vernal_equinox_lon_deg": 350.2067462668596, "summer_solstice_lon_deg": 80.20674626685962, "autumnal_equinox_lon_deg": 170.20674626685968, "winter_solstice_lon_deg": 260.2067462668597, "north_pole_lon_deg": 80.21764056574263, "north_pole_lat_deg": 66.56081029956133, "obliquity_deg": 23.439189700438675}, {"year": 2800, "label": "2800 CE", "vernal_equinox_lon_deg": 348.80526314815, "summer_solstice_lon_deg": 78.80526314815, "autumnal_equinox_lon_deg": 168.80526314815006, "winter_solstice_lon_deg": 258.80526314815006, "north_pole_lon_deg": 78.82254968147441, "north_pole_lat_deg": 66.56096510300868, "obliquity_deg": 23.439034896991316}, {"year": 2900, "label": "2900 CE", "vernal_equinox_lon_deg": 347.4031711821271, "summer_solstice_lon_deg": 77.4031711821271, "autumnal_equinox_lon_deg": 167.40317118212715, "winter_solstice_lon_deg": 257.40317118212715, "north_pole_lon_deg": 77.428045475215, "north_pole_lat_deg": 66.56119357583037, "obliquity_deg": 23.438806424169627}, {"year": 3000, "label": "3000 CE", "vernal_equinox_lon_deg": 346.0004717915754, "summer_solstice_lon_deg": 76.00047179157542, "autumnal_equinox_lon_deg": 166.00047179157536, "winter_solstice_lon_deg": 256.00047179157536, "north_pole_lon_deg": 76.03412252772517, "north_pole_lat_deg": 66.56150822087272, "obliquity_deg": 23.438491779127276}], "nakshatras": [{"meta_index_28": 1, "sector_index_27": 1, "geometry_index": 1, "nid": "N01-Ash", "enaks": "Aśvayuk", "naks": "अश्विनी", "daivata": "Aśvini", "marga": "Madhyama", "veethi": "Go", "shape": "Horseneck", "vgj_stars": "(α,β,γ) Ari", "proxy": "β Ari", "hip": "HIP 8903", "sector_start_lon_deg": 23.84, "sector_end_lon_deg": 37.173, "sector_center_lon_deg": 30.507, "sector_label": "1", "asterism_lines": [["HIP 9884", "HIP 9153", "HIP 8903", "HIP 9884"]], "stars": [{"hip": "HIP 8903", "label": "Sheratan", "lon_deg": 33.97, "lat_deg": 8.49, "size_hint": 5.4}, {"hip": "HIP 9153", "label": "λ Ari", "lon_deg": 35.69, "lat_deg": 10.828, "size_hint": 3.4}, {"hip": "HIP 9884", "label": "Hamal", "lon_deg": 37.66, "lat_deg": 9.97, "size_hint": 3.9}]}, {"meta_index_28": 2, "sector_index_27": 2, "geometry_index": 2, "nid": "N02-Bha", "enaks": "Bharaṇī", "naks": "भरणी", "daivata": "Yama", "marga": "Uttara", "veethi": "Naga", "shape": "Bhaga (Perineum)", "vgj_stars": "(35,39,41) Ari", "proxy": "* 41 Ari", "hip": "HIP 13209", "sector_start_lon_deg": 37.173, "sector_end_lon_deg": 50.507, "sector_center_lon_deg": 43.84, "sector_label": "2", "asterism_lines": [["HIP 12719", "HIP 13061", "HIP 13209"]], "stars": [{"hip": "HIP 12719", "label": "Barani II", "lon_deg": 46.93, "lat_deg": 11.31, "size_hint": 3.9}, {"hip": "HIP 13061", "label": "39Ari", "lon_deg": 48.37, "lat_deg": 12.48, "size_hint": 3.9}, {"hip": "HIP 13209", "label": "Bharani", "lon_deg": 48.2, "lat_deg": 10.45, "size_hint": 5.4}]}, {"meta_index_28": 3, "sector_index_27": 3, "geometry_index": 3, "nid": "N03-Kri", "enaks": "Kṛttikā", "naks": "क्रित्तिका", "daivata": " Agni", "marga": "Uttara", "veethi": "Naga", "shape": "Knife/Cleaver", "vgj_stars": "(17,19,20,23,27,η) Tau", "proxy": "η Tau", "hip": "HIP 17702", "sector_start_lon_deg": 50.507, "sector_end_lon_deg": 63.84, "sector_center_lon_deg": 57.173, "sector_label": "3", "asterism_lines": [["HIP 17499", "HIP 17608", "HIP 17847", "HIP 17702", "HIP 17531", "HIP 17499"]], "stars": [{"hip": "HIP 17499", "label": "Electra", "lon_deg": 59.41, "lat_deg": 4.19, "size_hint": 3.9}, {"hip": "HIP 17531", "label": "Taygeta", "lon_deg": 59.57, "lat_deg": 4.52, "size_hint": 3.9}, {"hip": "HIP 17608", "label": "Merope", "lon_deg": 59.7, "lat_deg": 3.96, "size_hint": 3.9}, {"hip": "HIP 17702", "label": "Alcyone", "lon_deg": 59.99, "lat_deg": 4.05, "size_hint": 5.4}, {"hip": "HIP 17847", "label": "Atlas", "lon_deg": 60.36, "lat_deg": 3.92, "size_hint": 3.9}]}, {"meta_index_28": 4, "sector_index_27": 4, "geometry_index": 4, "nid": "N04-Roh", "enaks": "Rohiṇī", "naks": "रोहिणी", "daivata": "Prajāpati", "marga": "Uttara", "veethi": "Gaja", "shape": "Cart", "vgj_stars": "(α,γ,λ) Ori", "proxy": "α Tau", "hip": "HIP  21421", "sector_start_lon_deg": 63.84, "sector_end_lon_deg": 77.173, "sector_center_lon_deg": 70.507, "sector_label": "4", "asterism_lines": [["HIP 21421", "HIP 20894", "HIP 20205", "HIP 20455", "HIP 20889", "HIP 21421"]], "stars": [{"hip": "HIP 20205", "label": "Prima Hyadum", "lon_deg": 65.81, "lat_deg": -5.73, "size_hint": 3.9}, {"hip": "HIP 20455", "label": "Secunda Hyadum", "lon_deg": 66.87, "lat_deg": -3.97, "size_hint": 3.9}, {"hip": "HIP 20889", "label": "Ain", "lon_deg": 68.47, "lat_deg": -2.57, "size_hint": 3.9}, {"hip": "HIP 20894", "label": "Chamukuy", "lon_deg": 67.96, "lat_deg": -5.84, "size_hint": 3.9}, {"hip": "HIP 21421", "label": "Aldebaran", "lon_deg": 69.79, "lat_deg": -5.47, "size_hint": 5.4}]}, {"meta_index_28": 5, "sector_index_27": 5, "geometry_index": 5, "nid": "N05-Mrg", "enaks": "Mṛgaśira", "naks": "मृगशीर्षा", "daivata": "Soma", "marga": "Uttara", "veethi": "Gaja", "shape": "Deer’s Head", "vgj_stars": "(γ) Gem", "proxy": "λ Ori", "hip": "HIP  26207", "sector_start_lon_deg": 77.173, "sector_end_lon_deg": 90.507, "sector_center_lon_deg": 83.84, "sector_label": "5", "asterism_lines": [["HIP 25336", "HIP 26207", "HIP 27989", "HIP 25336"]], "stars": [{"hip": "HIP 25336", "label": "Bellatrix", "lon_deg": 80.95, "lat_deg": -16.82, "size_hint": 3.9}, {"hip": "HIP 26207", "label": "Meissa(Heka)", "lon_deg": 83.71, "lat_deg": -13.37, "size_hint": 5.4}, {"hip": "HIP 27989", "label": "Betelgeuse", "lon_deg": 88.76, "lat_deg": -16.03, "size_hint": 3.9}]}, {"meta_index_28": 6, "sector_index_27": 6, "geometry_index": 6, "nid": "N06-Ard", "enaks": "Ārdrā", "naks": "आर्द्रा", "daivata": "Rudra", "marga": "Uttara", "veethi": "Gaja", "shape": "Bāhuḥ (Arm)/Red Dot", "vgj_stars": "(α,γ,δ1,ε,θ2) Tau", "proxy": "γ Gem", "hip": "HIP 31681", "sector_start_lon_deg": 90.507, "sector_end_lon_deg": 103.84, "sector_center_lon_deg": 97.173, "sector_label": "6", "asterism_lines": [["HIP 31681", "HIP 31681"]], "stars": [{"hip": "HIP 31681", "label": "Alhena(Almeisan)", "lon_deg": 99.11, "lat_deg": -6.74, "size_hint": 5.4}]}, {"meta_index_28": 7, "sector_index_27": 7, "geometry_index": 7, "nid": "N07-Pun", "enaks": "Punarvasu", "naks": "पुनर्वसू", "daivata": "Aditi", "marga": "Uttara", "veethi": "Airavati", "shape": "Balance", "vgj_stars": "(α,β) Gem", "proxy": "β Gem", "hip": "HIP  37826", "sector_start_lon_deg": 103.84, "sector_end_lon_deg": 117.173, "sector_center_lon_deg": 110.507, "sector_label": "7", "asterism_lines": [["HIP 37826", "HIP 36850"]], "stars": [{"hip": "HIP 36850", "label": "Castor", "lon_deg": 110.24, "lat_deg": 10.1, "size_hint": 3.9}, {"hip": "HIP 37826", "label": "Pollux", "lon_deg": 113.22, "lat_deg": 6.68, "size_hint": 5.4}]}, {"meta_index_28": 8, "sector_index_27": 8, "geometry_index": 8, "nid": "N08-Pus", "enaks": "Puṣya", "naks": "पुष्य", "daivata": "Bṛhaspati", "marga": "Uttara", "veethi": "Airavati", "shape": "Śarāva (Pot-lid)", "vgj_stars": "(δ) Cnc", "proxy": "δ Cnc", "hip": "HIP  42911", "sector_start_lon_deg": 117.173, "sector_end_lon_deg": 130.507, "sector_center_lon_deg": 123.84, "sector_label": "8", "asterism_lines": [["HIP 42911", "HIP 42911"]], "stars": [{"hip": "HIP 42911", "label": "Asellus Australis", "lon_deg": 128.72, "lat_deg": 0.08, "size_hint": 5.4}]}, {"meta_index_28": 9, "sector_index_27": 9, "geometry_index": 9, "nid": "N09-Asl", "enaks": "Āśleṣā", "naks": "आश्लेषा", "daivata": "Sarpa", "marga": "Uttara", "veethi": "Airavati", "shape": "Snake Head/Flag", "vgj_stars": "(δ,ε,ζ,η,ρ,σ) Hya", "proxy": "ζ Hya", "hip": "HIP 43813", "sector_start_lon_deg": 130.507, "sector_end_lon_deg": 143.84, "sector_center_lon_deg": 137.173, "sector_label": "9", "asterism_lines": [["HIP 42402", "HIP 42799"], ["HIP 43109", "HIP 42313", "HIP 42402"], ["HIP 43813", "HIP 47431"], ["HIP 43109", "HIP 43234", "HIP 42799"], ["HIP 43234", "HIP 43813"]], "stars": [{"hip": "HIP 42313", "label": "Minazal I", "lon_deg": 130.31, "lat_deg": -12.39, "size_hint": 3.9}, {"hip": "HIP 42402", "label": "Minchir", "lon_deg": 131.21, "lat_deg": -14.6, "size_hint": 3.9}, {"hip": "HIP 42799", "label": "Minazal II", "lon_deg": 132.31, "lat_deg": -14.25, "size_hint": 3.9}, {"hip": "HIP 43109", "label": "Ashlesha", "lon_deg": 132.35, "lat_deg": -11.1, "size_hint": 3.9}, {"hip": "HIP 43234", "label": "Minazal IV", "lon_deg": 132.91, "lat_deg": -11.55, "size_hint": 3.9}, {"hip": "HIP 43813", "label": "Minazal V", "lon_deg": 134.58, "lat_deg": -10.97, "size_hint": 5.4}, {"hip": "HIP 47431", "label": "ι Hya", "lon_deg": 147.642, "lat_deg": -14.277, "size_hint": 4.0}]}, {"meta_index_28": 10, "sector_index_27": 10, "geometry_index": 10, "nid": "N10-Mag", "enaks": "Maghā", "naks": "मघा", "daivata": "Pitṛ", "marga": "Uttara", "veethi": "Airavati", "shape": "Enclosure", "vgj_stars": "(α,γ1,ε,ζ,η,μ) Leo", "proxy": "ζ Leo", "hip": "HIP 50335", "sector_start_lon_deg": 143.84, "sector_end_lon_deg": 157.173, "sector_center_lon_deg": 150.507, "sector_label": "10", "asterism_lines": [["HIP 50583", "HIP 50335", "HIP 48455", "HIP 47908"], ["HIP 49669", "HIP 49583", "HIP 50583"]], "stars": [{"hip": "HIP 47908", "label": "Algenubi", "lon_deg": 140.71, "lat_deg": 9.71, "size_hint": 3.9}, {"hip": "HIP 48455", "label": "Rasalas", "lon_deg": 141.43, "lat_deg": 12.35, "size_hint": 3.9}, {"hip": "HIP 49583", "label": "Al Jabah", "lon_deg": 147.91, "lat_deg": 4.87, "size_hint": 3.9}, {"hip": "HIP 49669", "label": "Regulus", "lon_deg": 149.83, "lat_deg": 0.46, "size_hint": 3.9}, {"hip": "HIP 50335", "label": "Adhafera", "lon_deg": 147.57, "lat_deg": 11.86, "size_hint": 5.4}, {"hip": "HIP 50583", "label": "Algieba", "lon_deg": 149.61, "lat_deg": 8.81, "size_hint": 3.9}]}, {"meta_index_28": 11, "sector_index_27": 11, "geometry_index": 11, "nid": "N11-PPal", "enaks": "P Phalgunī", "naks": "पूर्वफल्गुनी", "daivata": "Bhaga", "marga": "Madhyama", "veethi": "Arshabi", "shape": "Half-chair", "vgj_stars": "(δ,θ) Leo", "proxy": "δ Leo", "hip": "HIP  54872", "sector_start_lon_deg": 157.173, "sector_end_lon_deg": 170.507, "sector_center_lon_deg": 163.84, "sector_label": "11", "asterism_lines": [["HIP 54879", "HIP 54872"]], "stars": [{"hip": "HIP 54872", "label": "Zosma", "lon_deg": 161.32, "lat_deg": 14.33, "size_hint": 5.4}, {"hip": "HIP 54879", "label": "Chertan", "lon_deg": 163.42, "lat_deg": 9.67, "size_hint": 3.9}]}, {"meta_index_28": 12, "sector_index_27": 12, "geometry_index": 12, "nid": "N12-UPal", "enaks": "U Phalgunī", "naks": "उत्तरफल्गुनी", "daivata": "Aryaman", "marga": "Madhyama", "veethi": "Arshabi", "shape": "Half-chair", "vgj_stars": "(93,β) Leo", "proxy": "β Leo", "hip": "HIP  57632", "sector_start_lon_deg": 170.507, "sector_end_lon_deg": 183.84, "sector_center_lon_deg": 177.173, "sector_label": "12", "asterism_lines": [["HIP 57632", "HIP 57565"]], "stars": [{"hip": "HIP 57565", "label": "93Leo", "lon_deg": 168.97, "lat_deg": 17.31, "size_hint": 3.9}, {"hip": "HIP 57632", "label": "Denebola", "lon_deg": 171.62, "lat_deg": 12.27, "size_hint": 5.4}]}, {"meta_index_28": 13, "sector_index_27": 13, "geometry_index": 13, "nid": "N13-Has", "enaks": "Hasta", "naks": "हस्तः", "daivata": "Savitṛ", "marga": "Dakshina", "veethi": "Mrga", "shape": "Hasta (hand)", "vgj_stars": "(α,β,γ,δ,ε) Crv", "proxy": "δ Crv", "hip": "HIP  60965", "sector_start_lon_deg": 183.84, "sector_end_lon_deg": 197.173, "sector_center_lon_deg": 190.507, "sector_label": "13", "asterism_lines": [["HIP 61359", "HIP 60965"], ["HIP 61359", "HIP 59803"], ["HIP 61359", "HIP 59316"], ["HIP 61359", "HIP 59199"], ["HIP 61359", "HIP 60425"]], "stars": [{"hip": "HIP 59199", "label": "Alchiba", "lon_deg": 192.24, "lat_deg": -21.75, "size_hint": 3.9}, {"hip": "HIP 59316", "label": "Minkar", "lon_deg": 191.66, "lat_deg": -19.67, "size_hint": 3.9}, {"hip": "HIP 59803", "label": "Gienah", "lon_deg": 190.72, "lat_deg": -14.5, "size_hint": 3.9}, {"hip": "HIP 60425", "label": "6 Crv", "lon_deg": 195.586, "lat_deg": -20.408, "size_hint": 3.4}, {"hip": "HIP 60965", "label": "Algorab", "lon_deg": 193.45, "lat_deg": -12.2, "size_hint": 5.4}, {"hip": "HIP 61359", "label": "Kraz", "lon_deg": 197.36, "lat_deg": -18.04, "size_hint": 3.9}]}, {"meta_index_28": 14, "sector_index_27": 14, "geometry_index": 14, "nid": "N14-Chi", "enaks": "Citrā", "naks": "चित्रा", "daivata": "Tvaṣṭṛ", "marga": "Dakshina", "veethi": "Mrga", "shape": "Madhupuṣpa (Flower)", "vgj_stars": "(α) Vir", "proxy": "α Vir", "hip": "HIP  65474", "sector_start_lon_deg": 197.173, "sector_end_lon_deg": 210.507, "sector_center_lon_deg": 203.84, "sector_label": "14", "asterism_lines": [["HIP 65474", "HIP 65474"]], "stars": [{"hip": "HIP 65474", "label": "Spica", "lon_deg": 203.84, "lat_deg": -2.05, "size_hint": 5.4}]}, {"meta_index_28": 15, "sector_index_27": 15, "geometry_index": 15, "nid": "N15-Swa", "enaks": "Svātī", "naks": "स्वाती", "daivata": "Vāyu", "marga": "Uttara", "veethi": "Naga", "shape": "Kīlaka (Wedge)", "vgj_stars": "(α) Boo", "proxy": "α Boo", "hip": "HIP  69673", "sector_start_lon_deg": 210.507, "sector_end_lon_deg": 223.84, "sector_center_lon_deg": 217.173, "sector_label": "15", "asterism_lines": [["HIP 69673", "HIP 69673"]], "stars": [{"hip": "HIP 69673", "label": "Arcturus", "lon_deg": 204.23, "lat_deg": 30.73, "size_hint": 5.4}]}, {"meta_index_28": 16, "sector_index_27": 16, "geometry_index": 16, "nid": "N16-Vis", "enaks": "Viśākhā", "naks": "विशाखे", "daivata": "Indrāgnī", "marga": "Dakshina", "veethi": "Ajaavika", "shape": "Divider Rope", "vgj_stars": "(α1,α2) Lib", "proxy": "α2 Lib", "hip": "HIP 72622", "sector_start_lon_deg": 223.84, "sector_end_lon_deg": 237.173, "sector_center_lon_deg": 230.507, "sector_label": "16", "asterism_lines": [["HIP 72622", "HIP 72622"]], "stars": [{"hip": "HIP 72622", "label": "Zubenelgenubi", "lon_deg": 225.08, "lat_deg": 0.33, "size_hint": 5.4}]}, {"meta_index_28": 17, "sector_index_27": 17, "geometry_index": 17, "nid": "N17-Anu", "enaks": "Anūrādhā", "naks": "अनूराधा", "daivata": "Mitra", "marga": "Dakshina", "veethi": "Ajaavika", "shape": "Necklace", "vgj_stars": "(β1,δ,π,ω1) Sco", "proxy": "δ Sco", "hip": "HIP  78401", "sector_start_lon_deg": 237.173, "sector_end_lon_deg": 250.507, "sector_center_lon_deg": 243.84, "sector_label": "17", "asterism_lines": [["HIP 80112", "HIP 78933"], ["HIP 80112", "HIP 78821"], ["HIP 80112", "HIP 78401"], ["HIP 80112", "HIP 78265"], ["HIP 80112", "HIP 78933"]], "stars": [{"hip": "HIP 78265", "label": "Fang", "lon_deg": 242.93, "lat_deg": -5.48, "size_hint": 3.9}, {"hip": "HIP 78401", "label": "Dschubba", "lon_deg": 242.56, "lat_deg": -1.99, "size_hint": 5.4}, {"hip": "HIP 78821", "label": "β2 Sco", "lon_deg": 243.191, "lat_deg": 1.012, "size_hint": 3.4}, {"hip": "HIP 78933", "label": "Jabhat Acrabi I", "lon_deg": 243.66, "lat_deg": 0.22, "size_hint": 3.9}, {"hip": "HIP 80112", "label": "Alniyat", "lon_deg": 247.79, "lat_deg": -4.04, "size_hint": 3.9}]}, {"meta_index_28": 18, "sector_index_27": 18, "geometry_index": 18, "nid": "N18-Jye", "enaks": "Jyeṣṭhā", "naks": "ज्येष्ठा", "daivata": "Indra", "marga": "Dakshina", "veethi": "Vaishvaanari", "shape": "Elephant Tusk", "vgj_stars": "(α,ε,σ,(τ)) Sco", "proxy": "ε Sco", "hip": "HIP  82396", "sector_start_lon_deg": 250.507, "sector_end_lon_deg": 263.84, "sector_center_lon_deg": 257.173, "sector_label": "18", "asterism_lines": [["HIP 80763", "HIP 80763"]], "stars": [{"hip": "HIP 80763", "label": "Antares", "lon_deg": 249.75, "lat_deg": -4.57, "size_hint": 3.9}]}, {"meta_index_28": 19, "sector_index_27": 19, "geometry_index": 19, "nid": "N19-Mul", "enaks": "Mūla", "naks": "मूल", "daivata": " Nirṛti", "marga": "Dakshina", "veethi": "Vaishvaanari", "shape": "Root/Scorpion Tail\"", "vgj_stars": "(ζ2,θ,ι1,κ,λ,ν) Sco", "proxy": "κ Sco", "hip": "HIP  86670", "sector_start_lon_deg": 263.84, "sector_end_lon_deg": 277.173, "sector_center_lon_deg": 270.507, "sector_label": "19", "asterism_lines": [["HIP 86228", "HIP 87073", "HIP 86670", "HIP 85927"]], "stars": [{"hip": "HIP 85927", "label": "Shaula", "lon_deg": 264.58, "lat_deg": -13.79, "size_hint": 3.9}, {"hip": "HIP 86228", "label": "Sargas", "lon_deg": 265.59, "lat_deg": -19.64, "size_hint": 3.9}, {"hip": "HIP 86670", "label": "Mula", "lon_deg": 266.46, "lat_deg": -15.64, "size_hint": 5.4}, {"hip": "HIP 87073", "label": "Girtab", "lon_deg": 267.51, "lat_deg": -16.71, "size_hint": 3.9}]}, {"meta_index_28": 20, "sector_index_27": 20, "geometry_index": 20, "nid": "N20-PAsh", "enaks": "P Aṣāḍhā", "naks": "पूर्वाषाढा", "daivata": "Ap", "marga": "Dakshina", "veethi": "Vaishvaanari", "shape": "Gajavikrama (Elephant Step)", "vgj_stars": "(γ,δ,ε,λ) Sgr", "proxy": "λ Sgr", "hip": "HIP 90496", "sector_start_lon_deg": 277.173, "sector_end_lon_deg": 290.507, "sector_center_lon_deg": 283.84, "sector_label": "20", "asterism_lines": [["HIP 88635", "HIP 90185", "HIP 89931", "HIP 90496", "HIP 88635"]], "stars": [{"hip": "HIP 88635", "label": "Alnasl", "lon_deg": 271.25, "lat_deg": -6.99, "size_hint": 3.9}, {"hip": "HIP 89931", "label": "Kaus Media", "lon_deg": 274.57, "lat_deg": -6.47, "size_hint": 3.9}, {"hip": "HIP 90185", "label": "Kaus Australis", "lon_deg": 275.07, "lat_deg": -11.05, "size_hint": 3.9}, {"hip": "HIP 90496", "label": "Kaus Borealis", "lon_deg": 276.31, "lat_deg": -2.14, "size_hint": 5.4}]}, {"meta_index_28": 21, "sector_index_27": 21, "geometry_index": 21, "nid": "N21-UAsh", "enaks": "U Aṣāḍhā", "naks": "उत्तराषाढा", "daivata": "Viśvedevā", "marga": "Dakshina", "veethi": "Vaishvaanari", "shape": "Siṁhaniṣadya (Lion seat)", "vgj_stars": "(ζ,σ,τ,φ) Sgr", "proxy": "τ Sgr", "hip": "HIP  93864", "sector_start_lon_deg": 290.507, "sector_end_lon_deg": 303.84, "sector_center_lon_deg": 297.173, "sector_label": "21", "asterism_lines": [["HIP 92041", "HIP 93506", "HIP 93864", "HIP 92855", "HIP 92041"]], "stars": [{"hip": "HIP 92041", "label": "Namalsadirah I", "lon_deg": 280.17, "lat_deg": -3.95, "size_hint": 3.9}, {"hip": "HIP 92855", "label": "Nunki", "lon_deg": 282.38, "lat_deg": -3.45, "size_hint": 3.9}, {"hip": "HIP 93506", "label": "Ascella", "lon_deg": 283.63, "lat_deg": -7.18, "size_hint": 3.9}, {"hip": "HIP 93864", "label": "Namalsadirah II", "lon_deg": 284.82, "lat_deg": -5.09, "size_hint": 5.4}]}, {"meta_index_28": 22, "sector_index_27": null, "geometry_index": 28, "nid": "N22-Abi", "enaks": "Abhijīt", "naks": "अभिजित्", "daivata": "ब्रह्मा", "marga": "margaX", "veethi": "veethiX", "shape": "Unspecified", "vgj_stars": "(α) Lyr", "proxy": "α Lyr", "hip": "HIP 91262", "sector_start_lon_deg": null, "sector_end_lon_deg": null, "sector_center_lon_deg": null, "sector_label": "Abhijit", "asterism_lines": [["HIP 91971", "HIP 91262", "HIP 91919", "HIP 91971"]], "stars": [{"hip": "HIP 91262", "label": "Vega", "lon_deg": 285.308, "lat_deg": 61.73, "size_hint": 4.6}, {"hip": "HIP 91919", "label": "eps01 Lyr", "lon_deg": 288.617, "lat_deg": 62.395, "size_hint": 3.6}, {"hip": "HIP 91971", "label": "zet01 Lyr", "lon_deg": 288.104, "lat_deg": 60.348, "size_hint": 3.6}]}, {"meta_index_28": 23, "sector_index_27": 22, "geometry_index": 22, "nid": "N23-Shr", "enaks": "Śravaṇa", "naks": "श्रवण", "daivata": "Viṣṇu", "marga": "Madhyama", "veethi": "Jaradgavi", "shape": "Ear/Yavamadhya (Barleyseed)", "vgj_stars": "(α,β,γ) Aql", "proxy": "α Aql", "hip": "HIP  97649", "sector_start_lon_deg": 303.84, "sector_end_lon_deg": 317.173, "sector_center_lon_deg": 310.507, "sector_label": "22", "asterism_lines": [["HIP 97649", "HIP 97278", "HIP 98036", "HIP 97649"]], "stars": [{"hip": "HIP 97278", "label": "Tarazed", "lon_deg": 300.93, "lat_deg": 31.24, "size_hint": 3.9}, {"hip": "HIP 97649", "label": "Altair", "lon_deg": 301.77, "lat_deg": 29.3, "size_hint": 5.4}, {"hip": "HIP 98036", "label": "Alshain", "lon_deg": 302.41, "lat_deg": 26.66, "size_hint": 3.9}]}, {"meta_index_28": 24, "sector_index_27": 23, "geometry_index": 23, "nid": "N24-Dha", "enaks": "Dhaniṣṭhā", "naks": "धनिष्ठा", "daivata": "Vasu", "marga": "Madhyama", "veethi": "Jaradgavi", "shape": "Śakuni-pañjara (Bird cage)", "vgj_stars": "(α,β,γ2,δ) Del", "proxy": "β Del", "hip": "HIP 101769", "sector_start_lon_deg": 317.173, "sector_end_lon_deg": 330.507, "sector_center_lon_deg": 323.84, "sector_label": "23", "asterism_lines": [["HIP 102281", "HIP 102532", "HIP 101958", "HIP 101769", "HIP 102281"]], "stars": [{"hip": "HIP 101769", "label": "Rotanev", "lon_deg": 316.33, "lat_deg": 31.92, "size_hint": 5.4}, {"hip": "HIP 101958", "label": "Sualocin", "lon_deg": 317.37, "lat_deg": 33.02, "size_hint": 3.9}, {"hip": "HIP 102281", "label": "Al Ukud", "lon_deg": 318.11, "lat_deg": 31.95, "size_hint": 3.9}, {"hip": "HIP 102532", "label": "Al Salib", "lon_deg": 319.36, "lat_deg": 32.7, "size_hint": 3.9}]}, {"meta_index_28": 25, "sector_index_27": 24, "geometry_index": 24, "nid": "N25-Sha", "enaks": "Śatabhiṣak", "naks": "शतभिषक्", "daivata": "Varuṇa", "marga": "Madhyama", "veethi": "Jaradgavi", "shape": "Puṣpopacāra (Flower Boquet)", "vgj_stars": "(λ) Aqr", "proxy": "λ Aqr", "hip": "HIP 112961", "sector_start_lon_deg": 330.507, "sector_end_lon_deg": 343.84, "sector_center_lon_deg": 337.173, "sector_label": "24", "asterism_lines": [["HIP 110395", "HIP 111710", "HIP 112961", "HIP 110395"]], "stars": [{"hip": "HIP 110395", "label": "Sadachbia", "lon_deg": 336.709, "lat_deg": 8.234, "size_hint": 4.6}, {"hip": "HIP 111710", "label": "Situla", "lon_deg": 339.416, "lat_deg": 4.108, "size_hint": 3.6}, {"hip": "HIP 112961", "label": "Hydor", "lon_deg": 341.57, "lat_deg": -0.39, "size_hint": 5.4}]}, {"meta_index_28": 26, "sector_index_27": 25, "geometry_index": 25, "nid": "N26-PBha", "enaks": "P Proṣṭapada", "naks": "पूर्वाभाद्रपदा", "daivata": "Aja", "marga": "Madhyama", "veethi": "Go", "shape": "Cow’s Foot", "vgj_stars": "(α,β) Peg", "proxy": "α Peg", "hip": "HIP 113963", "sector_start_lon_deg": 343.84, "sector_end_lon_deg": 357.173, "sector_center_lon_deg": 350.507, "sector_label": "25", "asterism_lines": [["HIP 113881", "HIP 113963"]], "stars": [{"hip": "HIP 113881", "label": "Scheat", "lon_deg": 359.37, "lat_deg": 31.14, "size_hint": 3.9}, {"hip": "HIP 113963", "label": "Markab", "lon_deg": 353.48, "lat_deg": 19.41, "size_hint": 5.4}]}, {"meta_index_28": 27, "sector_index_27": 26, "geometry_index": 26, "nid": "N27-UBha", "enaks": "U Proṣṭapada", "naks": "उत्तराभाद्रपदा", "daivata": "Ahirbudhnya", "marga": "Madhyama", "veethi": "Go", "shape": "Cow’s Foot", "vgj_stars": "(γ) Peg (α) And", "proxy": "γ Peg", "hip": "HIP 1067", "sector_start_lon_deg": 357.173, "sector_end_lon_deg": 10.507, "sector_center_lon_deg": 3.84, "sector_label": "26", "asterism_lines": [["HIP 677", "HIP 1067"]], "stars": [{"hip": "HIP 677", "label": "Alpheratz", "lon_deg": 14.31, "lat_deg": 25.68, "size_hint": 5.4}, {"hip": "HIP 1067", "label": "Algenib", "lon_deg": 9.15, "lat_deg": 12.6, "size_hint": 3.9}]}, {"meta_index_28": 28, "sector_index_27": 27, "geometry_index": 27, "nid": "N28-Rev", "enaks": "Revatī", "naks": "रेवती", "daivata": "Pūṣan", "marga": "Madhyama", "veethi": "Go", "shape": "Boat2", "vgj_stars": "(ε,(α,ζ)) Psc", "proxy": "ε Psc", "hip": "HIP 4906", "sector_start_lon_deg": 10.507, "sector_end_lon_deg": 23.84, "sector_center_lon_deg": 17.173, "sector_label": "27", "asterism_lines": [["HIP 9487", "HIP 9487"]], "stars": [{"hip": "HIP 9487", "label": "Alrescha", "lon_deg": 29.376, "lat_deg": -9.064, "size_hint": 4.6}]}], "stars": [{"hip": "HIP 677", "label": "Alpheratz", "lon_deg": 14.31, "lat_deg": 25.68, "size_hint": 5.4}, {"hip": "HIP 1067", "label": "Algenib", "lon_deg": 9.15, "lat_deg": 12.6, "size_hint": 3.9}, {"hip": "HIP 8903", "label": "Sheratan", "lon_deg": 33.97, "lat_deg": 8.49, "size_hint": 5.4}, {"hip": "HIP 9153", "label": "λ Ari", "lon_deg": 35.69, "lat_deg": 10.828, "size_hint": 3.4}, {"hip": "HIP 9487", "label": "Alrescha", "lon_deg": 29.376, "lat_deg": -9.064, "size_hint": 4.6}, {"hip": "HIP 9884", "label": "Hamal", "lon_deg": 37.66, "lat_deg": 9.97, "size_hint": 3.9}, {"hip": "HIP 12719", "label": "Barani II", "lon_deg": 46.93, "lat_deg": 11.31, "size_hint": 3.9}, {"hip": "HIP 13061", "label": "39Ari", "lon_deg": 48.37, "lat_deg": 12.48, "size_hint": 3.9}, {"hip": "HIP 13209", "label": "Bharani", "lon_deg": 48.2, "lat_deg": 10.45, "size_hint": 5.4}, {"hip": "HIP 17499", "label": "Electra", "lon_deg": 59.41, "lat_deg": 4.19, "size_hint": 3.9}, {"hip": "HIP 17531", "label": "Taygeta", "lon_deg": 59.57, "lat_deg": 4.52, "size_hint": 3.9}, {"hip": "HIP 17573", "label": "Maia", "lon_deg": 59.68, "lat_deg": 4.39, "size_hint": 3.9}, {"hip": "HIP 17608", "label": "Merope", "lon_deg": 59.7, "lat_deg": 3.96, "size_hint": 3.9}, {"hip": "HIP 17702", "label": "Alcyone", "lon_deg": 59.99, "lat_deg": 4.05, "size_hint": 5.4}, {"hip": "HIP 17847", "label": "Atlas", "lon_deg": 60.36, "lat_deg": 3.92, "size_hint": 3.9}, {"hip": "HIP 17851", "label": "Pleione", "lon_deg": 60.383, "lat_deg": 4.0, "size_hint": 3.6}, {"hip": "HIP 20205", "label": "Prima Hyadum", "lon_deg": 65.81, "lat_deg": -5.73, "size_hint": 3.9}, {"hip": "HIP 20455", "label": "Secunda Hyadum", "lon_deg": 66.87, "lat_deg": -3.97, "size_hint": 3.9}, {"hip": "HIP 20889", "label": "Ain", "lon_deg": 68.47, "lat_deg": -2.57, "size_hint": 3.9}, {"hip": "HIP 20894", "label": "Chamukuy", "lon_deg": 67.96, "lat_deg": -5.84, "size_hint": 3.9}, {"hip": "HIP 21421", "label": "Aldebaran", "lon_deg": 69.79, "lat_deg": -5.47, "size_hint": 5.4}, {"hip": "HIP 25336", "label": "Bellatrix", "lon_deg": 80.95, "lat_deg": -16.82, "size_hint": 3.9}, {"hip": "HIP 26207", "label": "Meissa(Heka)", "lon_deg": 83.71, "lat_deg": -13.37, "size_hint": 5.4}, {"hip": "HIP 27989", "label": "Betelgeuse", "lon_deg": 88.76, "lat_deg": -16.03, "size_hint": 3.9}, {"hip": "HIP 31681", "label": "Alhena(Almeisan)", "lon_deg": 99.11, "lat_deg": -6.74, "size_hint": 5.4}, {"hip": "HIP 36850", "label": "Castor", "lon_deg": 110.24, "lat_deg": 10.1, "size_hint": 3.9}, {"hip": "HIP 37826", "label": "Pollux", "lon_deg": 113.22, "lat_deg": 6.68, "size_hint": 5.4}, {"hip": "HIP 42313", "label": "Minazal I", "lon_deg": 130.31, "lat_deg": -12.39, "size_hint": 3.9}, {"hip": "HIP 42402", "label": "Minchir", "lon_deg": 131.21, "lat_deg": -14.6, "size_hint": 3.9}, {"hip": "HIP 42799", "label": "Minazal II", "lon_deg": 132.31, "lat_deg": -14.25, "size_hint": 3.9}, {"hip": "HIP 42911", "label": "Asellus Australis", "lon_deg": 128.72, "lat_deg": 0.08, "size_hint": 5.4}, {"hip": "HIP 43109", "label": "Ashlesha", "lon_deg": 132.35, "lat_deg": -11.1, "size_hint": 3.9}, {"hip": "HIP 43234", "label": "Minazal IV", "lon_deg": 132.91, "lat_deg": -11.55, "size_hint": 3.9}, {"hip": "HIP 43813", "label": "Minazal V", "lon_deg": 134.58, "lat_deg": -10.97, "size_hint": 5.4}, {"hip": "HIP 47431", "label": "ι Hya", "lon_deg": 147.642, "lat_deg": -14.277, "size_hint": 4.0}, {"hip": "HIP 47908", "label": "Algenubi", "lon_deg": 140.71, "lat_deg": 9.71, "size_hint": 3.9}, {"hip": "HIP 48455", "label": "Rasalas", "lon_deg": 141.43, "lat_deg": 12.35, "size_hint": 3.9}, {"hip": "HIP 49583", "label": "Al Jabah", "lon_deg": 147.91, "lat_deg": 4.87, "size_hint": 3.9}, {"hip": "HIP 49669", "label": "Regulus", "lon_deg": 149.83, "lat_deg": 0.46, "size_hint": 3.9}, {"hip": "HIP 50335", "label": "Adhafera", "lon_deg": 147.57, "lat_deg": 11.86, "size_hint": 5.4}, {"hip": "HIP 50583", "label": "Algieba", "lon_deg": 149.61, "lat_deg": 8.81, "size_hint": 3.9}, {"hip": "HIP 54872", "label": "Zosma", "lon_deg": 161.32, "lat_deg": 14.33, "size_hint": 5.4}, {"hip": "HIP 54879", "label": "Chertan", "lon_deg": 163.42, "lat_deg": 9.67, "size_hint": 3.9}, {"hip": "HIP 57565", "label": "93Leo", "lon_deg": 168.97, "lat_deg": 17.31, "size_hint": 3.9}, {"hip": "HIP 57632", "label": "Denebola", "lon_deg": 171.62, "lat_deg": 12.27, "size_hint": 5.4}, {"hip": "HIP 59199", "label": "Alchiba", "lon_deg": 192.24, "lat_deg": -21.75, "size_hint": 3.9}, {"hip": "HIP 59316", "label": "Minkar", "lon_deg": 191.66, "lat_deg": -19.67, "size_hint": 3.9}, {"hip": "HIP 59803", "label": "Gienah", "lon_deg": 190.72, "lat_deg": -14.5, "size_hint": 3.9}, {"hip": "HIP 60425", "label": "6 Crv", "lon_deg": 195.586, "lat_deg": -20.408, "size_hint": 3.4}, {"hip": "HIP 60965", "label": "Algorab", "lon_deg": 193.45, "lat_deg": -12.2, "size_hint": 5.4}, {"hip": "HIP 61359", "label": "Kraz", "lon_deg": 197.36, "lat_deg": -18.04, "size_hint": 3.9}, {"hip": "HIP 65474", "label": "Spica", "lon_deg": 203.84, "lat_deg": -2.05, "size_hint": 5.4}, {"hip": "HIP 69673", "label": "Arcturus", "lon_deg": 204.23, "lat_deg": 30.73, "size_hint": 5.4}, {"hip": "HIP 72622", "label": "Zubenelgenubi", "lon_deg": 225.08, "lat_deg": 0.33, "size_hint": 5.4}, {"hip": "HIP 78265", "label": "Fang", "lon_deg": 242.93, "lat_deg": -5.48, "size_hint": 3.9}, {"hip": "HIP 78401", "label": "Dschubba", "lon_deg": 242.56, "lat_deg": -1.99, "size_hint": 5.4}, {"hip": "HIP 78821", "label": "β2 Sco", "lon_deg": 243.191, "lat_deg": 1.012, "size_hint": 3.4}, {"hip": "HIP 78933", "label": "Jabhat Acrabi I", "lon_deg": 243.66, "lat_deg": 0.22, "size_hint": 3.9}, {"hip": "HIP 80112", "label": "Alniyat", "lon_deg": 247.79, "lat_deg": -4.04, "size_hint": 3.9}, {"hip": "HIP 80763", "label": "Antares", "lon_deg": 249.75, "lat_deg": -4.57, "size_hint": 3.9}, {"hip": "HIP 85927", "label": "Shaula", "lon_deg": 264.58, "lat_deg": -13.79, "size_hint": 3.9}, {"hip": "HIP 86228", "label": "Sargas", "lon_deg": 265.59, "lat_deg": -19.64, "size_hint": 3.9}, {"hip": "HIP 86670", "label": "Mula", "lon_deg": 266.46, "lat_deg": -15.64, "size_hint": 5.4}, {"hip": "HIP 87073", "label": "Girtab", "lon_deg": 267.51, "lat_deg": -16.71, "size_hint": 3.9}, {"hip": "HIP 88635", "label": "Alnasl", "lon_deg": 271.25, "lat_deg": -6.99, "size_hint": 3.9}, {"hip": "HIP 89931", "label": "Kaus Media", "lon_deg": 274.57, "lat_deg": -6.47, "size_hint": 3.9}, {"hip": "HIP 90185", "label": "Kaus Australis", "lon_deg": 275.07, "lat_deg": -11.05, "size_hint": 3.9}, {"hip": "HIP 90496", "label": "Kaus Borealis", "lon_deg": 276.31, "lat_deg": -2.14, "size_hint": 5.4}, {"hip": "HIP 91262", "label": "Vega", "lon_deg": 285.308, "lat_deg": 61.73, "size_hint": 4.6}, {"hip": "HIP 91919", "label": "eps01 Lyr", "lon_deg": 288.617, "lat_deg": 62.395, "size_hint": 3.6}, {"hip": "HIP 91971", "label": "zet01 Lyr", "lon_deg": 288.104, "lat_deg": 60.348, "size_hint": 3.6}, {"hip": "HIP 92041", "label": "Namalsadirah I", "lon_deg": 280.17, "lat_deg": -3.95, "size_hint": 3.9}, {"hip": "HIP 92855", "label": "Nunki", "lon_deg": 282.38, "lat_deg": -3.45, "size_hint": 3.9}, {"hip": "HIP 93506", "label": "Ascella", "lon_deg": 283.63, "lat_deg": -7.18, "size_hint": 3.9}, {"hip": "HIP 93864", "label": "Namalsadirah II", "lon_deg": 284.82, "lat_deg": -5.09, "size_hint": 5.4}, {"hip": "HIP 97278", "label": "Tarazed", "lon_deg": 300.93, "lat_deg": 31.24, "size_hint": 3.9}, {"hip": "HIP 97649", "label": "Altair", "lon_deg": 301.77, "lat_deg": 29.3, "size_hint": 5.4}, {"hip": "HIP 98036", "label": "Alshain", "lon_deg": 302.41, "lat_deg": 26.66, "size_hint": 3.9}, {"hip": "HIP 101421", "label": "Aldulfin", "lon_deg": 314.057, "lat_deg": 29.071, "size_hint": 3.6}, {"hip": "HIP 101769", "label": "Rotanev", "lon_deg": 316.33, "lat_deg": 31.92, "size_hint": 5.4}, {"hip": "HIP 101958", "label": "Sualocin", "lon_deg": 317.37, "lat_deg": 33.02, "size_hint": 3.9}, {"hip": "HIP 102281", "label": "Al Ukud", "lon_deg": 318.11, "lat_deg": 31.95, "size_hint": 3.9}, {"hip": "HIP 102532", "label": "Al Salib", "lon_deg": 319.36, "lat_deg": 32.7, "size_hint": 3.9}, {"hip": "HIP 110395", "label": "Sadachbia", "lon_deg": 336.709, "lat_deg": 8.234, "size_hint": 4.6}, {"hip": "HIP 111710", "label": "Situla", "lon_deg": 339.416, "lat_deg": 4.108, "size_hint": 3.6}, {"hip": "HIP 112961", "label": "Hydor", "lon_deg": 341.57, "lat_deg": -0.39, "size_hint": 5.4}, {"hip": "HIP 113881", "label": "Scheat", "lon_deg": 359.37, "lat_deg": 31.14, "size_hint": 3.9}, {"hip": "HIP 113963", "label": "Markab", "lon_deg": 353.48, "lat_deg": 19.41, "size_hint": 5.4}], "special_figures": [{"id": "CON vedic_25_codex Shim", "label": "Shiṁśumāra", "native": "शिशुमारः", "lines": [["HIP 87585", "HIP 87833", "HIP 85670", "HIP 85829", "HIP 87585", "HIP 94376", "HIP 97433", "HIP 94648", "HIP 89937", "HIP 83895", "HIP 80331", "HIP 78527", "HIP 75458", "HIP 68756"]], "stars": [{"hip": "HIP 68756", "label": "α Dra", "lon_deg": 157.456, "lat_deg": 66.362, "size_hint": 4.0}, {"hip": "HIP 75458", "label": "ι Dra", "lon_deg": 184.95, "lat_deg": 71.094, "size_hint": 4.0}, {"hip": "HIP 78527", "label": "θ Dra", "lon_deg": 196.67, "lat_deg": 74.437, "size_hint": 4.0}, {"hip": "HIP 80331", "label": "η Dra", "lon_deg": 194.488, "lat_deg": 78.441, "size_hint": 4.8}, {"hip": "HIP 83895", "label": "ζ Dra", "lon_deg": 183.381, "lat_deg": 84.762, "size_hint": 4.0}, {"hip": "HIP 85670", "label": "β Dra", "lon_deg": 251.967, "lat_deg": 75.278, "size_hint": 4.8}, {"hip": "HIP 85829", "label": "ν2 Dra", "lon_deg": 250.4, "lat_deg": 78.14, "size_hint": 3.4}, {"hip": "HIP 87585", "label": "ξ Dra", "lon_deg": 264.754, "lat_deg": 80.282, "size_hint": 4.0}, {"hip": "HIP 87833", "label": "γ Dra", "lon_deg": 267.969, "lat_deg": 74.922, "size_hint": 4.8}, {"hip": "HIP 89937", "label": "χ Dra", "lon_deg": 75.944, "lat_deg": 83.568, "size_hint": 4.0}, {"hip": "HIP 94376", "label": "δ Dra", "lon_deg": 17.16, "lat_deg": 82.887, "size_hint": 4.0}, {"hip": "HIP 94648", "label": "τ Dra", "lon_deg": 55.006, "lat_deg": 80.695, "size_hint": 4.0}, {"hip": "HIP 97433", "label": "ε Dra", "lon_deg": 32.694, "lat_deg": 79.49, "size_hint": 4.0}]}, {"id": "CON vedic_25_codex Matsya", "label": "Matsya", "native": "मत्स्यः", "lines": [["HIP 11767", "HIP 85822", "HIP 82080", "HIP 77055", "HIP 79822", "HIP 75097", "HIP 72607", "HIP 77055"]], "stars": [{"hip": "HIP 11767", "label": "α UMi", "lon_deg": 88.567, "lat_deg": 66.102, "size_hint": 4.8}, {"hip": "HIP 72607", "label": "β UMi", "lon_deg": 133.32, "lat_deg": 72.988, "size_hint": 4.8}, {"hip": "HIP 75097", "label": "γ UMi", "lon_deg": 141.598, "lat_deg": 75.241, "size_hint": 4.8}, {"hip": "HIP 77055", "label": "ζ UMi", "lon_deg": 117.405, "lat_deg": 75.122, "size_hint": 4.0}, {"hip": "HIP 79822", "label": "η UMi", "lon_deg": 120.317, "lat_deg": 77.83, "size_hint": 3.4}, {"hip": "HIP 82080", "label": "ε UMi", "lon_deg": 99.137, "lat_deg": 73.923, "size_hint": 4.0}, {"hip": "HIP 85822", "label": "δ UMi", "lon_deg": 91.203, "lat_deg": 69.945, "size_hint": 4.0}]}], "special_stars": [{"hip": "HIP 30438", "label": "Agastya", "native": "अगस्त्यः", "lon_deg": 104.96, "lat_deg": -75.824, "size_hint": 5.6}]}</script>
-    <script id="story-data" type="application/json">[{"id": "precession-hello", "title": "Visualize Precession", "version": 1, "initial": {"lightPreset": "night", "epochYear": -1800, "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}}, "ui": {"showGrid": false, "showEclipticBand": false, "showEclipticDividers": false, "showEclipticLabels": false, "showEclipticPoles": false, "showStars": false, "showNakshatraLines": false, "showNakshatraLabels": false, "showPolarItems": false, "showPoleTrack": false, "showSeasonalFrame": false, "showOverlay": false}}, "cues": [{"at": 300, "action": "caption", "text": "Visualize Precession", "duration": 1200, "fadeIn": 250, "fadeOut": 350}, {"at": 1000, "action": "reveal", "target": "grid"}, {"at": "+200", "action": "reveal", "target": "ecliptic"}, {"at": "+200", "action": "reveal", "target": "stars"}, {"at": "+100", "action": "reveal", "target": "nakshatras"}, {"at": "+200", "action": "reveal", "target": "seasonalFrame"}, {"at": "+100", "action": "reveal", "target": "poleTrack"}, {"at": "+100", "action": "reveal", "target": "overlay"}, {"at": "+300", "action": "caption", "text": "1800 BCE", "duration": 1000, "fadeIn": 200, "fadeOut": 300}, {"at": "+200", "action": "epochTravel", "from": -1800, "to": -800, "step": 100, "duration": 5000}]}, {"id": "tour-of-nakshatras", "title": "Tour of Nakshatras", "version": 1, "vysu": "# Draft generated tour. JSON is canonical; this VySu is a tunable source sketch.\nstage blank night year -1800\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 48\nshow eclipticGrid ; show stars ; show naks\ncaption \"Tour of the 27 Nakshatras\" 1300:250:350\ncamera pos 215.392,18.0,126.911 target 56.002,0,32.997 fov 38 650\ncaption \"01 · Aśvayuk\" 850:160:240\nflash @ash 650:\ncamera pos 180.319,18.0,173.162 target 46.883,0,45.022 fov 38 650\ncaption \"02 · Bharaṇī\" 850:160:240\nflash @bha 650:\ncamera pos 135.526,18.0,210.078 target 35.237,0,54.62 fov 38 650\ncaption \"03 · Kṛttikā\" 850:160:240\nflash @kri 650:\ncamera pos 83.423,18.0,235.671 target 21.69,0,61.274 fov 38 650\ncaption \"04 · Rohiṇī\" 850:160:240\nflash @roh 650:\ncamera pos 26.826,18.0,248.557 target 6.975,0,64.625 fov 38 650\ncaption \"05 · Mṛgaśira\" 850:160:240\nflash @mrg 650:\ncamera pos -31.216,18.0,248.043 target -8.116,0,64.491 fov 38 650\ncaption \"06 · Ārdrā\" 850:160:240\nflash @ard 650:\ncamera pos -87.58,18.0,234.157 target -22.771,0,60.881 fov 38 650\ncaption \"07 · Punarvasu\" 850:160:240\nflash @pun 650:\ncamera pos -139.219,18.0,207.649 target -36.197,0,53.989 fov 38 650\ncaption \"08 · Puṣya\" 850:160:240\nflash @pus 650:\ncamera pos -183.352,18.0,169.947 target -47.672,0,44.186 fov 38 650\ncaption \"09 · Āśleṣā\" 850:160:240\nflash @asl 650:\ncamera pos -217.604,18.0,123.079 target -56.577,0,32.001 fov 38 650\ncaption \"10 · Maghā\" 850:160:240\nflash @mag 650:\ncamera pos -240.122,18.0,69.58 target -62.432,0,18.091 fov 38 650\ncaption \"11 · P Phalgunī\" 850:160:240\nflash @ppal 650:\ncamera pos -249.696,18.0,12.33 target -64.921,0,3.206 fov 38 650\ncaption \"12 · U Phalgunī\" 850:160:240\nflash @upal 650:\ncamera pos -245.808,18.0,-45.589 target -63.91,0,-11.853 fov 38 650\ncaption \"13 · Hasta\" 850:160:240\nflash @has 650:\ncamera pos -228.669,18.0,-101.046 target -59.454,0,-26.272 fov 38 650\ncaption \"14 · Citrā\" 850:160:240\nflash @chi 650:\ncamera pos -199.204,18.0,-151.056 target -51.793,0,-39.275 fov 38 650\ncaption \"15 · Svātī\" 850:160:240\nflash @swa 650:\ncamera pos -158.996,18.0,-192.926 target -41.339,0,-50.161 fov 38 650\ncaption \"16 · Viśākhā\" 850:160:240\nflash @vis 650:\ncamera pos -110.22,18.0,-224.392 target -28.657,0,-58.342 fov 38 650\ncaption \"17 · Anūrādhā\" 850:160:240\nflash @anu 650:\ncamera pos -55.502,18.0,-243.761 target -14.431,0,-63.378 fov 38 650\ncaption \"18 · Jyeṣṭhā\" 850:160:240\nflash @jye 650:\ncamera pos 2.212,18.0,-249.99 target 0.575,0,-64.997 fov 38 650\ncaption \"19 · Mūla\" 850:160:240\nflash @mul 650:\ncamera pos 59.803,18.0,-242.742 target 15.549,0,-63.113 fov 38 650\ncaption \"20 · P Aṣāḍhā\" 850:160:240\nflash @pash 650:\ncamera pos 114.17,18.0,-222.408 target 29.684,0,-57.826 fov 38 650\ncaption \"21 · U Aṣāḍhā\" 850:160:240\nflash @uash 650:\ncamera pos 162.385,18.0,-190.082 target 42.22,0,-49.421 fov 38 650\ncaption \"22 · Śravaṇa\" 850:160:240\nflash @shr 650:\ncamera pos 201.843,18.0,-147.511 target 52.479,0,-38.353 fov 38 650\ncaption \"23 · Dhaniṣṭhā\" 850:160:240\nflash @dha 650:\ncamera pos 230.42,18.0,-96.987 target 59.909,0,-25.217 fov 38 650\ncaption \"24 · Śatabhiṣak\" 850:160:240\nflash @sha 650:\ncamera pos 246.576,18.0,-41.232 target 64.11,0,-10.72 fov 38 650\ncaption \"25 · P Proṣṭapada\" 850:160:240\nflash @pbha 650:\ncamera pos 249.439,18.0,16.743 target 64.854,0,4.353 fov 38 650\ncaption \"26 · U Proṣṭapada\" 850:160:240\nflash @ubha 650:\ncamera pos 238.854,18.0,73.814 target 62.102,0,19.192 fov 38 650\ncaption \"27 · Revatī\" 850:160:240\nflash @rev 650:\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900\ncaption \"The ring remains fixed; time changes the seasonal frame.\" 1400:250:350", "cues": [{"at": 0, "action": "set", "state": {"lightPreset": "night", "epochYear": -1800, "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 48}, "ui": {"showGrid": false, "showReferencePlanes": false, "showEclipticBand": true, "showEclipticDividers": true, "showEclipticLabels": true, "showEclipticPoles": false, "showStars": true, "showNakshatraLines": true, "showNakshatraLabels": true, "showPolarItems": false, "showPoleTrack": false, "showSeasonalFrame": false, "showOverlay": false}, "ecliptic": {"sectorLabelSize": 7.0, "sectorLabelOpacity": 0.84}, "nakshatras": {"labelSize": 7.0, "labelOpacity": 0.72}}}, {"at": "+200", "action": "caption", "text": "Tour of the 27 Nakshatras", "duration": 1300, "fadeIn": 250, "fadeOut": 350}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 215.392, "y": 18.0, "z": 126.911}, "target": {"x": 56.002, "y": 0, "z": 32.997}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "01 · Aśvayuk", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 180.319, "y": 18.0, "z": 173.162}, "target": {"x": 46.883, "y": 0, "z": 45.022}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "02 · Bharaṇī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@bha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 135.526, "y": 18.0, "z": 210.078}, "target": {"x": 35.237, "y": 0, "z": 54.62}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "03 · Kṛttikā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@kri", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 83.423, "y": 18.0, "z": 235.671}, "target": {"x": 21.69, "y": 0, "z": 61.274}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "04 · Rohiṇī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@roh", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 26.826, "y": 18.0, "z": 248.557}, "target": {"x": 6.975, "y": 0, "z": 64.625}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "05 · Mṛgaśira", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mrg", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -31.216, "y": 18.0, "z": 248.043}, "target": {"x": -8.116, "y": 0, "z": 64.491}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "06 · Ārdrā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ard", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -87.58, "y": 18.0, "z": 234.157}, "target": {"x": -22.771, "y": 0, "z": 60.881}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "07 · Punarvasu", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pun", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -139.219, "y": 18.0, "z": 207.649}, "target": {"x": -36.197, "y": 0, "z": 53.989}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "08 · Puṣya", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pus", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -183.352, "y": 18.0, "z": 169.947}, "target": {"x": -47.672, "y": 0, "z": 44.186}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "09 · Āśleṣā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@asl", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -217.604, "y": 18.0, "z": 123.079}, "target": {"x": -56.577, "y": 0, "z": 32.001}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "10 · Maghā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mag", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -240.122, "y": 18.0, "z": 69.58}, "target": {"x": -62.432, "y": 0, "z": 18.091}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "11 · P Phalgunī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ppal", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -249.696, "y": 18.0, "z": 12.33}, "target": {"x": -64.921, "y": 0, "z": 3.206}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "12 · U Phalgunī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@upal", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -245.808, "y": 18.0, "z": -45.589}, "target": {"x": -63.91, "y": 0, "z": -11.853}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "13 · Hasta", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@has", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -228.669, "y": 18.0, "z": -101.046}, "target": {"x": -59.454, "y": 0, "z": -26.272}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "14 · Citrā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@chi", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -199.204, "y": 18.0, "z": -151.056}, "target": {"x": -51.793, "y": 0, "z": -39.275}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "15 · Svātī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@swa", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -158.996, "y": 18.0, "z": -192.926}, "target": {"x": -41.339, "y": 0, "z": -50.161}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "16 · Viśākhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@vis", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -110.22, "y": 18.0, "z": -224.392}, "target": {"x": -28.657, "y": 0, "z": -58.342}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "17 · Anūrādhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@anu", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -55.502, "y": 18.0, "z": -243.761}, "target": {"x": -14.431, "y": 0, "z": -63.378}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "18 · Jyeṣṭhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@jye", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 2.212, "y": 18.0, "z": -249.99}, "target": {"x": 0.575, "y": 0, "z": -64.997}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "19 · Mūla", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mul", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 59.803, "y": 18.0, "z": -242.742}, "target": {"x": 15.549, "y": 0, "z": -63.113}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "20 · P Aṣāḍhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 114.17, "y": 18.0, "z": -222.408}, "target": {"x": 29.684, "y": 0, "z": -57.826}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "21 · U Aṣāḍhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@uash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 162.385, "y": 18.0, "z": -190.082}, "target": {"x": 42.22, "y": 0, "z": -49.421}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "22 · Śravaṇa", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@shr", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 201.843, "y": 18.0, "z": -147.511}, "target": {"x": 52.479, "y": 0, "z": -38.353}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "23 · Dhaniṣṭhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@dha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 230.42, "y": 18.0, "z": -96.987}, "target": {"x": 59.909, "y": 0, "z": -25.217}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "24 · Śatabhiṣak", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@sha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 246.576, "y": 18.0, "z": -41.232}, "target": {"x": 64.11, "y": 0, "z": -10.72}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "25 · P Proṣṭapada", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pbha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 249.439, "y": 18.0, "z": 16.743}, "target": {"x": 64.854, "y": 0, "z": 4.353}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "26 · U Proṣṭapada", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ubha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 238.854, "y": 18.0, "z": 73.814}, "target": {"x": 62.102, "y": 0, "z": 19.192}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "27 · Revatī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@rev", "duration": 650}, {"at": "+250", "action": "camera", "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 45}, "duration": 900}, {"at": "+100", "action": "caption", "text": "The ring remains fixed; time changes the seasonal frame.", "duration": 1400, "fadeIn": 250, "fadeOut": 350}]}, {"id": "top-view-precession", "title": "Top View of Precession", "version": 1, "initial": {"lightPreset": "night", "epochYear": -3000, "camera": {"position": {"x": 0, "y": 325, "z": 0.1}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 42, "minDistance": 120, "maxDistance": 700}, "ui": {"showGrid": false, "showReferencePlanes": false, "showEclipticBand": true, "showEclipticDividers": true, "showEclipticLabels": true, "showEclipticPoles": true, "showStars": true, "showNakshatraLines": true, "showNakshatraLabels": false, "showPolarItems": true, "showNorthPolarItems": true, "showSouthPolarItems": false, "showPoleTrack": true, "showSeasonalFrame": true, "showOverlay": true}, "ecliptic": {"sectorLabelSize": 9.5, "sectorLabelOpacity": 0.95}, "poleTrack": {"opacity": 0.72, "arcOpacity": 0.0, "trackLabelOpacity": 0.35, "movingPoleLabelSize": 5.5}, "seasonal": {"markerLabelSize": 8.8, "markerLabelOpacity": 0.9}}, "cues": [{"at": 0, "action": "caption", "text": "Precession from above the ecliptic pole", "duration": 1600, "fadeIn": 300, "fadeOut": 450}, {"at": "+100", "action": "flash", "target": "precessionCircle", "duration": 1500}, {"at": "+300", "action": "caption", "text": "The pole track approaches Thuban around 2300 BCE", "duration": 2100, "fadeIn": 350, "fadeOut": 500}, {"at": "+100", "action": "epochTravel", "from": -3000, "to": 2000, "duration": 9000, "step": 100}, {"at": "+200", "action": "caption", "text": "Polaris becomes the later north-pole marker near 1900 CE", "duration": 2200, "fadeIn": 350, "fadeOut": 500}], "vysu": "# Top-down draft for reviewing precession against the fixed nakshatra ring.\nstage blank night year -3000\ncamera pos 0,325,0.1 target 0,0,0 fov 42\nshow eclipticGrid ; show eclipticPoles ; show stars ; show naks\nshow northPolarItems ; hide southPolarItems\nshow poleTrack ; show seasonalFrame ; show overlay\ncaption \"Precession from above the ecliptic pole\" 1600:300:450\nflash precessionCircle 1500:\ncaption \"The pole track approaches Thuban around 2300 BCE\" 2100:350:500\ntravel -3000 to 2000 9000: step 100\ncaption \"Polaris becomes the later north-pole marker near 1900 CE\" 2200:350:500"}]</script>
+    <script id="story-data" type="application/json">[{"id": "precession-hello", "title": "Visualize Precession", "version": 1, "initial": {"lightPreset": "night", "epochYear": -1800, "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}}, "ui": {"showGrid": false, "showEclipticBand": false, "showEclipticDividers": false, "showEclipticLabels": false, "showEclipticPoles": false, "showStars": false, "showNakshatraLines": false, "showNakshatraLabels": false, "showPolarItems": false, "showPoleTrack": false, "showSeasonalFrame": false, "showOverlay": false}}, "cues": [{"at": 300, "action": "caption", "text": "Visualize Precession", "duration": 1200, "fadeIn": 250, "fadeOut": 350}, {"at": 1000, "action": "reveal", "target": "eclipticGrid"}, {"at": "+200", "action": "reveal", "target": "eclipticNakSegments"}, {"at": "+200", "action": "reveal", "target": "stars"}, {"at": "+100", "action": "reveal", "target": "nakshatras"}, {"at": "+200", "action": "reveal", "target": "seasonalFrame"}, {"at": "+100", "action": "reveal", "target": "poleTrack"}, {"at": "+100", "action": "reveal", "target": "overlay"}, {"at": "+300", "action": "caption", "text": "1800 BCE", "duration": 1000, "fadeIn": 200, "fadeOut": 300}, {"at": "+200", "action": "epochTravel", "from": -1800, "to": -800, "step": 100, "duration": 5000}]}, {"id": "tour-of-nakshatras", "title": "Tour of Nakshatras", "version": 1, "vysu": "# Draft generated tour. JSON is canonical; this VySu is a tunable source sketch.\nstage blank night year -1800\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 48\nshow eclipticNakSegments ; show stars ; show naks\ncaption \"Tour of the 27 Nakshatras\" 1300:250:350\ncamera pos 215.392,18.0,126.911 target 56.002,0,32.997 fov 38 650\ncaption \"01 · Aśvayuk\" 850:160:240\nflash @ash 650:\ncamera pos 180.319,18.0,173.162 target 46.883,0,45.022 fov 38 650\ncaption \"02 · Bharaṇī\" 850:160:240\nflash @bha 650:\ncamera pos 135.526,18.0,210.078 target 35.237,0,54.62 fov 38 650\ncaption \"03 · Kṛttikā\" 850:160:240\nflash @kri 650:\ncamera pos 83.423,18.0,235.671 target 21.69,0,61.274 fov 38 650\ncaption \"04 · Rohiṇī\" 850:160:240\nflash @roh 650:\ncamera pos 26.826,18.0,248.557 target 6.975,0,64.625 fov 38 650\ncaption \"05 · Mṛgaśira\" 850:160:240\nflash @mrg 650:\ncamera pos -31.216,18.0,248.043 target -8.116,0,64.491 fov 38 650\ncaption \"06 · Ārdrā\" 850:160:240\nflash @ard 650:\ncamera pos -87.58,18.0,234.157 target -22.771,0,60.881 fov 38 650\ncaption \"07 · Punarvasu\" 850:160:240\nflash @pun 650:\ncamera pos -139.219,18.0,207.649 target -36.197,0,53.989 fov 38 650\ncaption \"08 · Puṣya\" 850:160:240\nflash @pus 650:\ncamera pos -183.352,18.0,169.947 target -47.672,0,44.186 fov 38 650\ncaption \"09 · Āśleṣā\" 850:160:240\nflash @asl 650:\ncamera pos -217.604,18.0,123.079 target -56.577,0,32.001 fov 38 650\ncaption \"10 · Maghā\" 850:160:240\nflash @mag 650:\ncamera pos -240.122,18.0,69.58 target -62.432,0,18.091 fov 38 650\ncaption \"11 · P Phalgunī\" 850:160:240\nflash @ppal 650:\ncamera pos -249.696,18.0,12.33 target -64.921,0,3.206 fov 38 650\ncaption \"12 · U Phalgunī\" 850:160:240\nflash @upal 650:\ncamera pos -245.808,18.0,-45.589 target -63.91,0,-11.853 fov 38 650\ncaption \"13 · Hasta\" 850:160:240\nflash @has 650:\ncamera pos -228.669,18.0,-101.046 target -59.454,0,-26.272 fov 38 650\ncaption \"14 · Citrā\" 850:160:240\nflash @chi 650:\ncamera pos -199.204,18.0,-151.056 target -51.793,0,-39.275 fov 38 650\ncaption \"15 · Svātī\" 850:160:240\nflash @swa 650:\ncamera pos -158.996,18.0,-192.926 target -41.339,0,-50.161 fov 38 650\ncaption \"16 · Viśākhā\" 850:160:240\nflash @vis 650:\ncamera pos -110.22,18.0,-224.392 target -28.657,0,-58.342 fov 38 650\ncaption \"17 · Anūrādhā\" 850:160:240\nflash @anu 650:\ncamera pos -55.502,18.0,-243.761 target -14.431,0,-63.378 fov 38 650\ncaption \"18 · Jyeṣṭhā\" 850:160:240\nflash @jye 650:\ncamera pos 2.212,18.0,-249.99 target 0.575,0,-64.997 fov 38 650\ncaption \"19 · Mūla\" 850:160:240\nflash @mul 650:\ncamera pos 59.803,18.0,-242.742 target 15.549,0,-63.113 fov 38 650\ncaption \"20 · P Aṣāḍhā\" 850:160:240\nflash @pash 650:\ncamera pos 114.17,18.0,-222.408 target 29.684,0,-57.826 fov 38 650\ncaption \"21 · U Aṣāḍhā\" 850:160:240\nflash @uash 650:\ncamera pos 162.385,18.0,-190.082 target 42.22,0,-49.421 fov 38 650\ncaption \"22 · Śravaṇa\" 850:160:240\nflash @shr 650:\ncamera pos 201.843,18.0,-147.511 target 52.479,0,-38.353 fov 38 650\ncaption \"23 · Dhaniṣṭhā\" 850:160:240\nflash @dha 650:\ncamera pos 230.42,18.0,-96.987 target 59.909,0,-25.217 fov 38 650\ncaption \"24 · Śatabhiṣak\" 850:160:240\nflash @sha 650:\ncamera pos 246.576,18.0,-41.232 target 64.11,0,-10.72 fov 38 650\ncaption \"25 · P Proṣṭapada\" 850:160:240\nflash @pbha 650:\ncamera pos 249.439,18.0,16.743 target 64.854,0,4.353 fov 38 650\ncaption \"26 · U Proṣṭapada\" 850:160:240\nflash @ubha 650:\ncamera pos 238.854,18.0,73.814 target 62.102,0,19.192 fov 38 650\ncaption \"27 · Revatī\" 850:160:240\nflash @rev 650:\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900\ncaption \"The ring remains fixed; time changes the seasonal frame.\" 1400:250:350", "cues": [{"at": 0, "action": "set", "state": {"lightPreset": "night", "epochYear": -1800, "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 48}, "ui": {"showGrid": false, "showReferencePlanes": false, "showEclipticBand": true, "showEclipticDividers": true, "showEclipticLabels": true, "showEclipticPoles": false, "showStars": true, "showNakshatraLines": true, "showNakshatraLabels": true, "showPolarItems": false, "showPoleTrack": false, "showSeasonalFrame": false, "showOverlay": false}, "ecliptic": {"sectorLabelSize": 7.0, "sectorLabelOpacity": 0.84}, "nakshatras": {"labelSize": 7.0, "labelOpacity": 0.72}}}, {"at": "+200", "action": "caption", "text": "Tour of the 27 Nakshatras", "duration": 1300, "fadeIn": 250, "fadeOut": 350}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 215.392, "y": 18.0, "z": 126.911}, "target": {"x": 56.002, "y": 0, "z": 32.997}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "01 · Aśvayuk", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 180.319, "y": 18.0, "z": 173.162}, "target": {"x": 46.883, "y": 0, "z": 45.022}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "02 · Bharaṇī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@bha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 135.526, "y": 18.0, "z": 210.078}, "target": {"x": 35.237, "y": 0, "z": 54.62}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "03 · Kṛttikā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@kri", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 83.423, "y": 18.0, "z": 235.671}, "target": {"x": 21.69, "y": 0, "z": 61.274}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "04 · Rohiṇī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@roh", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 26.826, "y": 18.0, "z": 248.557}, "target": {"x": 6.975, "y": 0, "z": 64.625}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "05 · Mṛgaśira", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mrg", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -31.216, "y": 18.0, "z": 248.043}, "target": {"x": -8.116, "y": 0, "z": 64.491}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "06 · Ārdrā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ard", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -87.58, "y": 18.0, "z": 234.157}, "target": {"x": -22.771, "y": 0, "z": 60.881}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "07 · Punarvasu", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pun", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -139.219, "y": 18.0, "z": 207.649}, "target": {"x": -36.197, "y": 0, "z": 53.989}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "08 · Puṣya", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pus", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -183.352, "y": 18.0, "z": 169.947}, "target": {"x": -47.672, "y": 0, "z": 44.186}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "09 · Āśleṣā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@asl", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -217.604, "y": 18.0, "z": 123.079}, "target": {"x": -56.577, "y": 0, "z": 32.001}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "10 · Maghā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mag", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -240.122, "y": 18.0, "z": 69.58}, "target": {"x": -62.432, "y": 0, "z": 18.091}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "11 · P Phalgunī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ppal", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -249.696, "y": 18.0, "z": 12.33}, "target": {"x": -64.921, "y": 0, "z": 3.206}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "12 · U Phalgunī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@upal", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -245.808, "y": 18.0, "z": -45.589}, "target": {"x": -63.91, "y": 0, "z": -11.853}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "13 · Hasta", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@has", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -228.669, "y": 18.0, "z": -101.046}, "target": {"x": -59.454, "y": 0, "z": -26.272}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "14 · Citrā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@chi", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -199.204, "y": 18.0, "z": -151.056}, "target": {"x": -51.793, "y": 0, "z": -39.275}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "15 · Svātī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@swa", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -158.996, "y": 18.0, "z": -192.926}, "target": {"x": -41.339, "y": 0, "z": -50.161}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "16 · Viśākhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@vis", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -110.22, "y": 18.0, "z": -224.392}, "target": {"x": -28.657, "y": 0, "z": -58.342}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "17 · Anūrādhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@anu", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": -55.502, "y": 18.0, "z": -243.761}, "target": {"x": -14.431, "y": 0, "z": -63.378}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "18 · Jyeṣṭhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@jye", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 2.212, "y": 18.0, "z": -249.99}, "target": {"x": 0.575, "y": 0, "z": -64.997}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "19 · Mūla", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@mul", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 59.803, "y": 18.0, "z": -242.742}, "target": {"x": 15.549, "y": 0, "z": -63.113}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "20 · P Aṣāḍhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 114.17, "y": 18.0, "z": -222.408}, "target": {"x": 29.684, "y": 0, "z": -57.826}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "21 · U Aṣāḍhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@uash", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 162.385, "y": 18.0, "z": -190.082}, "target": {"x": 42.22, "y": 0, "z": -49.421}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "22 · Śravaṇa", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@shr", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 201.843, "y": 18.0, "z": -147.511}, "target": {"x": 52.479, "y": 0, "z": -38.353}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "23 · Dhaniṣṭhā", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@dha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 230.42, "y": 18.0, "z": -96.987}, "target": {"x": 59.909, "y": 0, "z": -25.217}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "24 · Śatabhiṣak", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@sha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 246.576, "y": 18.0, "z": -41.232}, "target": {"x": 64.11, "y": 0, "z": -10.72}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "25 · P Proṣṭapada", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@pbha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 249.439, "y": 18.0, "z": 16.743}, "target": {"x": 64.854, "y": 0, "z": 4.353}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "26 · U Proṣṭapada", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@ubha", "duration": 650}, {"at": "+0", "action": "camera", "camera": {"position": {"x": 238.854, "y": 18.0, "z": 73.814}, "target": {"x": 62.102, "y": 0, "z": 19.192}, "fov": 38}, "duration": 650}, {"at": "+80", "action": "caption", "text": "27 · Revatī", "duration": 850, "fadeIn": 160, "fadeOut": 240}, {"at": "+0", "action": "flash", "target": "@rev", "duration": 650}, {"at": "+250", "action": "camera", "camera": {"position": {"x": -147.464, "y": 73.504, "z": 234.757}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 45}, "duration": 900}, {"at": "+100", "action": "caption", "text": "The ring remains fixed; time changes the seasonal frame.", "duration": 1400, "fadeIn": 250, "fadeOut": 350}]}, {"id": "top-view-precession", "title": "Top View of Precession", "version": 1, "initial": {"lightPreset": "night", "epochYear": -3000, "camera": {"position": {"x": 0, "y": 325, "z": 0.1}, "target": {"x": 0, "y": 0, "z": 0}, "fov": 42, "minDistance": 120, "maxDistance": 700}, "ui": {"showGrid": false, "showReferencePlanes": false, "showEclipticBand": true, "showEclipticDividers": true, "showEclipticLabels": true, "showEclipticPoles": true, "showStars": true, "showNakshatraLines": true, "showNakshatraLabels": false, "showPolarItems": true, "showNorthPolarItems": true, "showSouthPolarItems": false, "showPoleTrack": true, "showSeasonalFrame": true, "showOverlay": true}, "ecliptic": {"sectorLabelSize": 9.5, "sectorLabelOpacity": 0.95}, "poleTrack": {"opacity": 0.72, "arcOpacity": 0.0, "trackLabelOpacity": 0.35, "movingPoleLabelSize": 5.5}, "seasonal": {"markerLabelSize": 8.8, "markerLabelOpacity": 0.9}}, "cues": [{"at": 0, "action": "caption", "text": "Precession from above the ecliptic pole", "duration": 1600, "fadeIn": 300, "fadeOut": 450}, {"at": "+100", "action": "flash", "target": "precessionCircle", "duration": 1500}, {"at": "+300", "action": "caption", "text": "The pole marker approaches Thuban around 2300 BCE", "duration": 2100, "fadeIn": 350, "fadeOut": 500}, {"at": "+100", "action": "epochTravel", "from": -3000, "to": 2000, "duration": 9000, "step": 100}, {"at": "+200", "action": "caption", "text": "Polaris becomes the north-pole marker near 1900 CE", "duration": 2200, "fadeIn": 350, "fadeOut": 500}], "vysu": "# Top-down draft for reviewing precession against the fixed nakshatra ring.\nstage blank night year -3000\ncamera pos 0,325,0.1 target 0,0,0 fov 42\nshow eclipticNakSegments ; show eclipticPoles ; show stars ; show naks\nshow northPolarItems ; hide southPolarItems\nshow poleTrack ; show seasonalFrame ; show overlay\ncaption \"Precession from above the ecliptic pole\" 1600:300:450\nflash precessionCircle 1500:\ncaption \"The pole marker approaches Thuban around 2300 BCE\" 2100:350:500\ntravel -3000 to 2000 9000: step 100\ncaption \"Polaris becomes the north-pole marker near 1900 CE\" 2200:350:500"}]</script>
     <script>
       const data = JSON.parse(document.getElementById("explorer-data").textContent);
       const epochSliders = [
@@ -1497,7 +1513,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
 
         const poleTrack = toggles.pole.checked && guideLayers.showPole
           ? `<path d="${poleTrackPath(bounds)}" fill="none" stroke="#6a7b91" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.58" />
-             <text x="${bounds.left + bounds.width - 4}" y="${skyPoint(0, 67, bounds).y - 8}" text-anchor="end" font-size="12" fill="#6a7b91">Pole track</text>`
+             <text x="${bounds.left + bounds.width - 4}" y="${skyPoint(0, 67, bounds).y - 8}" text-anchor="end" font-size="12" fill="#6a7b91">Precession circle</text>`
           : "";
 
         const polePoint = toggles.pole.checked && guideLayers.showPole ? (() => {
@@ -1788,7 +1804,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const eclipticPoleDots = [];
       const eclipticPoleLabels = [];
       const eclipticPoleRefs = [];
-      const gridRefs = { parallels: [], meridians: [] };
+      const gridRefs = { parallels: [], meridians: [], equatorialParallels: [], equatorialMeridians: [] };
       const bandRefs = { meshes: [], dividers: [], labels: [] };
       const nakshatraLineRefs = [];
       const nakshatraLabelRefs = [];
@@ -1797,9 +1813,13 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const activeStoryTimers = [];
       let activeStoryId = null;
       let activeStoryFrame = null;
+      let builtEclipticGridStep = null;
+      let builtEquatorialGridStep = null;
       const activeTransitionTargets = new Set();
+      const activeTransitionObjects = new Set();
       const threeDebugUiFields = [
-        ["showGrid", "Grid"],
+        ["showGrid", "Ecliptic grid"],
+        ["showEquatorialGrid", "Equatorial grid"],
         ["showReferencePlanes", "Reference planes"],
         ["showNsAxis", "NS axis"],
         ["showEclipticBand", "Ecliptic band"],
@@ -1812,7 +1832,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         ["showPolarItems", "Polar items"],
         ["showNorthPolarItems", "North polar items"],
         ["showSouthPolarItems", "South polar items"],
-        ["showPoleTrack", "Pole track"],
+        ["showPoleTrack", "Precession circle"],
         ["showSeasonalFrame", "Seasonal frame"],
         ["showOverlay", "Overlay caption"],
       ];
@@ -1827,10 +1847,14 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
           maxDistance: 600,
         },
         grid: {
+          eclipticStepDeg: 30,
+          equatorialStepDeg: 30,
           parallelColor: "#667788",
           parallelOpacity: 0.4,
           meridianColor: "#556677",
           meridianOpacity: 0.4,
+          equatorialColor: "#884444",
+          equatorialOpacity: 0.28,
         },
         ecliptic: {
           bandOpacity: 0.18,
@@ -1893,6 +1917,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         },
         ui: {
           showGrid: true,
+          showEquatorialGrid: false,
           showReferencePlanes: false,
           showEclipticPlane: true,
           showEquatorialPlane: true,
@@ -1939,6 +1964,20 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         const pts = [];
         for (let i = 0; i <= n; i++) pts.push(toCart(lonDeg, -90 + i * 180 / n, r));
         return pts;
+      }
+
+      function gridStep(value) {
+        const numeric = Number(value);
+        if (!Number.isFinite(numeric)) return 30;
+        return Math.min(90, Math.max(5, numeric));
+      }
+
+      function removeObjects(refs, group) {
+        refs.splice(0).forEach((object) => {
+          group.remove(object);
+          object.geometry?.dispose?.();
+          if (object.material) object.material.dispose?.();
+        });
       }
 
       function makeTextSprite(text, opts) {
@@ -2008,7 +2047,7 @@ stage blank night year -1800
 camera pos -147.464,73.504,234.757 target 0,0,0
 
 caption "Visualize Precession" 1200:250:350
-show grid ; wait 200 ; show eclipticGrid
+show eclipticGrid ; wait 200 ; show eclipticNakSegments
 wait 200 ; fade stars
 wait 100 ; rollout naks
 wait 200 ; show seasonalFrame
@@ -2019,10 +2058,14 @@ wait 300 ; caption "1800 BCE" 1000:200:300
 wait 200 ; travel -1800 to -800 5000: step 100`;
 
       const vysuTargetAliases = {
-        ecl: "ecliptic",
-        ecliptic: "ecliptic",
-        eclipticgrid: "ecliptic",
-        eclgrid: "ecliptic",
+        eclipticgrid: "eclipticGrid",
+        eclgrid: "eclipticGrid",
+        eclgridwire: "eclipticGrid",
+        eclipticnaksegments: "eclipticNakSegments",
+        eclipticnakssegments: "eclipticNakSegments",
+        naksegments: "eclipticNakSegments",
+        nakssegments: "eclipticNakSegments",
+        eclipticsegments: "eclipticNakSegments",
         eclipticband: "eclipticBand",
         eclipticdividers: "eclipticDividers",
         sectordividers: "eclipticDividers",
@@ -2031,6 +2074,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticpoles: "eclipticPoles",
         eclipticplane: "eclipticPlane",
         equatorialplane: "equatorialPlane",
+        equatorialgrid: "equatorialGrid",
+        equatorgrid: "equatorialGrid",
+        eqgrid: "equatorialGrid",
+        eq: "equatorialGrid",
         referenceplanes: "referencePlanes",
         refs: "referencePlanes",
         nsaxis: "nsAxis",
@@ -2039,7 +2086,6 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         sep: "SEP",
         np: "NP",
         sp: "SP",
-        grid: "grid",
         stars: "stars",
         naks: "nakshatras",
         nak: "nakshatras",
@@ -2122,6 +2168,26 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return { x: parts[0], y: parts[1], z: parts[2] };
       }
 
+      function parseVysuAlpha(token) {
+        const raw = String(token || "").trim();
+        let value = null;
+        if (/^%\d+(?:\.\d+)?$/.test(raw)) value = Number(raw.slice(1)) / 100;
+        else if (/^\d+(?:\.\d+)?%$/.test(raw)) value = Number(raw.slice(0, -1)) / 100;
+        else if (/^(?:0?\.\d+|1(?:\.0+)?)$/.test(raw)) value = Number(raw);
+        else if (/^\d+(?:\.\d+)?$/.test(raw)) {
+          const number = Number(raw);
+          if (number <= 1) value = number;
+        }
+        return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : null;
+      }
+
+      function parseVysuColor(token) {
+        const raw = String(token || "").trim();
+        if (/^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?$/.test(raw)) return raw;
+        if (/^[a-zA-Z]+$/.test(raw)) return raw.toLowerCase();
+        return null;
+      }
+
       function normalizeVysuTarget(token, warnings, lineNumber) {
         const raw = String(token || "").trim();
         if (!raw) return null;
@@ -2129,8 +2195,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const key = raw.replace(/[._-]/g, "").toLowerCase();
         const target = vysuTargetAliases[key] || raw;
         const supported = new Set([
-          "grid", "referencePlanes", "eclipticPlane", "equatorialPlane", "nsAxis",
-          "ecliptic", "eclipticBand", "eclipticDividers", "eclipticLabels", "eclipticPoles",
+          "eclipticGrid", "equatorialGrid", "referencePlanes", "eclipticPlane", "equatorialPlane", "nsAxis",
+          "eclipticNakSegments", "eclipticBand", "eclipticDividers", "eclipticLabels", "eclipticPoles",
           "stars", "nakshatras", "seasonalFrame", "poleTrack", "precessionCircle",
           "overlay", "polarItems", "northPolarItems", "southPolarItems", "NEP", "SEP", "NP", "SP"
         ]);
@@ -2141,6 +2207,103 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return target;
       }
 
+      function stylePatchForTarget(target, style) {
+        const patch = {};
+        const put = (path, value) => {
+          let cursor = patch;
+          path.slice(0, -1).forEach((key) => {
+            if (!cursor[key]) cursor[key] = {};
+            cursor = cursor[key];
+          });
+          cursor[path[path.length - 1]] = value;
+        };
+        const color = style.color || style.lineColor;
+        const alpha = style.alpha ?? style.opacity;
+        const fontSize = style.fontSize;
+        const pointSize = style.pointSize ?? style.starSize;
+
+        if (target === "eclipticGrid") {
+          if (color) {
+            put(["grid", "parallelColor"], color);
+            put(["grid", "meridianColor"], color);
+          }
+          if (alpha !== undefined) {
+            put(["grid", "parallelOpacity"], alpha);
+            put(["grid", "meridianOpacity"], alpha);
+          }
+        } else if (target === "equatorialGrid") {
+          if (color) put(["grid", "equatorialColor"], color);
+          if (alpha !== undefined) put(["grid", "equatorialOpacity"], alpha);
+        } else if (target === "nsAxis") {
+          if (color) put(["reference", "nsAxisColor"], color);
+          if (alpha !== undefined) put(["reference", "nsAxisOpacity"], alpha);
+        } else if (target === "eclipticPlane") {
+          if (color) put(["reference", "eclipticPlaneColor"], color);
+          if (alpha !== undefined) put(["reference", "eclipticPlaneOpacity"], alpha);
+        } else if (target === "equatorialPlane") {
+          if (color) put(["reference", "equatorialPlaneColor"], color);
+          if (alpha !== undefined) put(["reference", "equatorialPlaneOpacity"], alpha);
+        } else if (target === "stars") {
+          if (alpha !== undefined) put(["stars", "opacity"], alpha);
+          if (pointSize !== undefined) put(["stars", "size"], pointSize);
+        } else if (target === "nakshatras") {
+          if (color) put(["nakshatras", "color"], color);
+          if (alpha !== undefined) put(["nakshatras", "opacity"], alpha);
+          if (fontSize !== undefined) put(["nakshatras", "labelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["nakshatras", "labelOpacity"], style.labelAlpha);
+        } else if (target === "polarItems" || target === "northPolarItems" || target === "southPolarItems") {
+          if (color) put(["polarItems", "color"], color);
+          if (alpha !== undefined) put(["polarItems", "opacity"], alpha);
+          if (fontSize !== undefined) put(["polarItems", "labelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["polarItems", "labelOpacity"], style.labelAlpha);
+        } else if (target === "poleTrack" || target === "precessionCircle") {
+          if (color) put(["poleTrack", "color"], color);
+          if (alpha !== undefined) put(["poleTrack", "opacity"], alpha);
+          if (fontSize !== undefined) put(["poleTrack", "trackLabelSize"], fontSize);
+        } else if (target === "seasonalFrame") {
+          if (color) put(["seasonal", "equatorColor"], color);
+          if (alpha !== undefined) put(["seasonal", "equatorOpacity"], alpha);
+          if (fontSize !== undefined) put(["seasonal", "markerLabelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["seasonal", "markerLabelOpacity"], style.labelAlpha);
+        } else if (target === "eclipticNakSegments" || target === "eclipticBand" || target === "eclipticLabels") {
+          if (color) put(["ecliptic", "circleColor"], color);
+          if (alpha !== undefined) put(["ecliptic", "circleOpacity"], alpha);
+          if (fontSize !== undefined) put(["ecliptic", "sectorLabelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["ecliptic", "sectorLabelOpacity"], style.labelAlpha);
+        } else if (target === "overlay") {
+          if (alpha !== undefined) put(["overlay", "opacity"], alpha);
+          if (fontSize !== undefined) put(["overlay", "fontSizeRem"], fontSize);
+        }
+        return Object.keys(patch).length ? patch : null;
+      }
+
+      function gridPatchForVySu(args, warnings, lineNumber) {
+        const kind = String(args[0] || "").toLowerCase();
+        const step = Number(args[1]);
+        const color = parseVysuColor(args[2]);
+        const patch = { grid: {}, ui: {} };
+        if (!Number.isFinite(step)) {
+          warnings.push(`Line ${lineNumber}: grid needs a numeric step, e.g. grid ecliptic 15 blue.`);
+          return null;
+        }
+        if (kind === "ecliptic" || kind === "ecl") {
+          patch.grid.eclipticStepDeg = step;
+          if (color) {
+            patch.grid.parallelColor = color;
+            patch.grid.meridianColor = color;
+          }
+          patch.ui.showGrid = true;
+        } else if (kind === "equatorial" || kind === "equator" || kind === "eq") {
+          patch.grid.equatorialStepDeg = step;
+          if (color) patch.grid.equatorialColor = color;
+          patch.ui.showEquatorialGrid = true;
+        } else {
+          warnings.push(`Line ${lineNumber}: grid kind must be ecliptic or equatorial.`);
+          return null;
+        }
+        return patch;
+      }
+
       function compileVyomaSutra(source) {
         const warnings = [];
         const cues = [];
@@ -2149,6 +2312,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         let emitted = 0;
         const blankUi = {
           showGrid: false,
+          showEquatorialGrid: false,
           showReferencePlanes: false,
           showEclipticPlane: false,
           showEquatorialPlane: false,
@@ -2215,6 +2379,12 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
               return;
             }
 
+            if (directive === "grid") {
+              const patch = gridPatchForVySu(args, warnings, lineNumber);
+              if (patch) addCue({ action: "set", state: patch });
+              return;
+            }
+
             if (directive === "fullscreen" || directive === "theater") {
               addCue({ action: "fullscreen" });
               return;
@@ -2255,6 +2425,51 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                 else if (["ecliptic", "reverse-ecliptic", "reverse", "forward", "north-to-south", "south-to-north"].includes(lower)) cue.order = lower;
               });
               addCue(cue);
+              return;
+            }
+
+            if (directive === "style") {
+              const target = normalizeVysuTarget(args[0], warnings, lineNumber);
+              if (!target) return;
+              const style = {};
+              for (let i = 1; i < args.length; i += 1) {
+                const key = args[i].toLowerCase();
+                const next = args[i + 1];
+                if (["color", "linecolor"].includes(key)) {
+                  const color = parseVysuColor(next);
+                  if (color) {
+                    style[key === "linecolor" ? "lineColor" : "color"] = color;
+                    i += 1;
+                  } else warnings.push(`Line ${lineNumber}: ${args[i]} needs a color.`);
+                } else if (["alpha", "opacity", "labelalpha"].includes(key)) {
+                  const alpha = parseVysuAlpha(next);
+                  if (alpha !== null) {
+                    style[key === "labelalpha" ? "labelAlpha" : key] = alpha;
+                    i += 1;
+                  } else warnings.push(`Line ${lineNumber}: ${args[i]} needs alpha like %50 or .5.`);
+                } else if (["fontsize", "font", "starsize", "pointsize"].includes(key)) {
+                  const size = Number(next);
+                  if (Number.isFinite(size)) {
+                    if (key === "starsize") style.starSize = size;
+                    else if (key === "pointsize") style.pointSize = size;
+                    else style.fontSize = size;
+                    i += 1;
+                  } else warnings.push(`Line ${lineNumber}: ${args[i]} needs a numeric size.`);
+                } else if (key === "font+" || key === "font-") {
+                  const delta = Number.isFinite(Number(next)) ? Number(next) : 1;
+                  style.fontSize = Math.max(1, (style.fontSize || 5) + (key === "font+" ? delta : -delta));
+                  if (Number.isFinite(Number(next))) i += 1;
+                } else {
+                  const color = parseVysuColor(args[i]);
+                  const alpha = parseVysuAlpha(args[i]);
+                  if (color) style.color = color;
+                  else if (alpha !== null) style.alpha = alpha;
+                  else warnings.push(`Line ${lineNumber}: unsupported style token "${args[i]}".`);
+                }
+              }
+              const patch = stylePatchForTarget(target, style);
+              if (patch) addCue({ action: "set", state: patch });
+              else warnings.push(`Line ${lineNumber}: no supported style knobs for ${target}.`);
               return;
             }
 
@@ -2365,6 +2580,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }
         activeStoryId = null;
         activeTransitionTargets.clear();
+        activeTransitionObjects.clear();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {
@@ -2387,7 +2603,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           container.classList.remove("theater-mode");
         }
         if (threeFullscreenToggle) {
-          threeFullscreenToggle.textContent = enabled ? "Minimize" : "Fullscreen";
+          threeFullscreenToggle.textContent = enabled ? "Esc to Minimize" : "Fullscreen";
         }
         window.setTimeout(onResize, 80);
       }
@@ -2538,7 +2754,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }
 
       const transitionDefaults = {
-        grid: { mode: "stagger", order: "default", duration: 1000 },
+        eclipticGrid: { mode: "stagger", order: "default", duration: 1000 },
         referencePlanes: { mode: "fade", order: "default", duration: 700 },
         eclipticPlane: { mode: "fade", order: "default", duration: 700 },
         equatorialPlane: { mode: "fade", order: "default", duration: 700 },
@@ -2547,6 +2763,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticDividers: { mode: "rollout", order: "ecliptic", duration: 1200 },
         eclipticLabels: { mode: "stagger", order: "ecliptic", duration: 1200 },
         eclipticPoles: { mode: "fade", order: "default", duration: 600 },
+        eclipticNakSegments: { mode: "rollout", order: "ecliptic", duration: 1300 },
         stars: { mode: "fade", order: "default", duration: 900 },
         nakshatras: { mode: "rollout", order: "ecliptic", duration: 1800 },
         polarItems: { mode: "rollout", order: "default", duration: 1600 },
@@ -2561,7 +2778,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
       function transitionPatchForTarget(target, visible) {
         const patches = {
-          grid: { ui: { showGrid: visible } },
+          eclipticGrid: { ui: { showGrid: visible } },
+          equatorialGrid: { ui: { showEquatorialGrid: visible } },
           referencePlanes: { ui: { showReferencePlanes: visible, showEclipticPlane: visible, showEquatorialPlane: visible } },
           eclipticPlane: { ui: { showReferencePlanes: true, showEclipticPlane: visible } },
           equatorialPlane: { ui: { showReferencePlanes: true, showEquatorialPlane: visible } },
@@ -2572,7 +2790,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           eclipticPoles: { ui: { showEclipticPoles: visible } },
           NEP: { ui: { showNEP: visible } },
           SEP: { ui: { showSEP: visible } },
-          ecliptic: { ui: { showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible } },
+          eclipticNakSegments: { ui: { showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible } },
           stars: { ui: { showStars: visible } },
           nakshatras: { ui: { showNakshatraLines: visible, showNakshatraLabels: visible } },
           nakshatraLines: { ui: { showNakshatraLines: visible } },
@@ -2650,6 +2868,15 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         entry.items.forEach((item) => setObjectOpacity(item.object, item.opacity * progress));
       }
 
+      function markTransitionObjects(descriptors, active) {
+        descriptors.forEach((entry) => {
+          entry.items.forEach((item) => {
+            if (active) activeTransitionObjects.add(item.object);
+            else activeTransitionObjects.delete(item.object);
+          });
+        });
+      }
+
       function transitionDescriptorsForTarget(target) {
         const nakTarget = resolveNakshatraTarget(target);
         if (nakTarget) {
@@ -2677,10 +2904,16 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           }
           return items.length ? [transitionGroup(items, 0)] : [];
         }
-        if (target === "grid") {
+        if (target === "eclipticGrid") {
           return [
             ...gridRefs.parallels.map((line, index) => transitionDescriptor(line, threeSettings.grid.parallelOpacity, index)),
             ...gridRefs.meridians.map((line, index) => transitionDescriptor(line, threeSettings.grid.meridianOpacity, index + gridRefs.parallels.length)),
+          ];
+        }
+        if (target === "equatorialGrid") {
+          return [
+            ...gridRefs.equatorialParallels.map((line, index) => transitionDescriptor(line, threeSettings.grid.equatorialOpacity, index)),
+            ...gridRefs.equatorialMeridians.map((line, index) => transitionDescriptor(line, threeSettings.grid.equatorialOpacity, index + gridRefs.equatorialParallels.length)),
           ];
         }
         if (target === "referencePlanes") {
@@ -2721,7 +2954,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             .filter((entry) => entry.key === target)
             .map((entry, index) => transitionDescriptor(entry.object, entry.kind === "label" ? threeSettings.ecliptic.poleLabelOpacity : 1, index));
         }
-        if (target === "ecliptic") {
+        if (target === "eclipticNakSegments") {
           return [
             ...transitionDescriptorsForTarget("eclipticBand"),
             ...transitionDescriptorsForTarget("eclipticDividers"),
@@ -2823,8 +3056,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         overlayLabel.parentElement.style.opacity = String((threeSettings.overlay.opacity ?? 1) * progress);
       }
 
-      function finalizeTransition(target, visible) {
+      function finalizeTransition(target, visible, descriptors = null) {
         activeTransitionTargets.delete(target);
+        if (descriptors) markTransitionObjects(descriptors, false);
         const patch = transitionPatchForTarget(target, visible);
         if (patch) mergeSettings(threeSettings, patch);
         applyThreeSettings({ preserveEpoch: true, preserveCamera: true });
@@ -2862,6 +3096,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           finalizeTransition(target, visible);
           return;
         }
+        markTransitionObjects(descriptors, true);
 
         if (visible) {
           mergeSettings(threeSettings, patch);
@@ -2884,7 +3119,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                 setTransitionEntryVisible(entry, progress > 0);
                 setTransitionEntryOpacity(entry, progress);
               });
-              if (step === steps) finalizeTransition(target, visible);
+              if (step === steps) finalizeTransition(target, visible, descriptors);
             }, delay));
           }
           return;
@@ -2899,7 +3134,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             setTransitionEntryOpacity(entry, visible ? 1 : 0);
           }, delay));
         });
-        activeStoryTimers.push(window.setTimeout(() => finalizeTransition(target, visible), duration));
+        activeStoryTimers.push(window.setTimeout(() => finalizeTransition(target, visible, descriptors), duration));
       }
 
       function resolveCueTime(token, previousEnd) {
@@ -3193,14 +3428,32 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           controls.maxDistance = threeSettings.camera.maxDistance;
         }
         applyLightPreset();
+        if (siderealGroup && builtEclipticGridStep !== gridStep(threeSettings.grid.eclipticStepDeg)) {
+          buildSphereGrid();
+        }
+        if (seasonalGroup && builtEquatorialGridStep !== gridStep(threeSettings.grid.equatorialStepDeg)) {
+          buildEquatorialGrid();
+        }
 
         gridRefs.parallels.forEach((line) => {
+          if (activeTransitionObjects.has(line)) return;
           line.material.color.set(threeSettings.grid.parallelColor);
           line.material.opacity = threeSettings.grid.parallelOpacity;
         });
         gridRefs.meridians.forEach((line) => {
+          if (activeTransitionObjects.has(line)) return;
           line.material.color.set(threeSettings.grid.meridianColor);
           line.material.opacity = threeSettings.grid.meridianOpacity;
+        });
+        gridRefs.equatorialParallels.forEach((line) => {
+          if (activeTransitionObjects.has(line)) return;
+          line.material.color.set(threeSettings.grid.equatorialColor);
+          line.material.opacity = threeSettings.grid.equatorialOpacity;
+        });
+        gridRefs.equatorialMeridians.forEach((line) => {
+          if (activeTransitionObjects.has(line)) return;
+          line.material.color.set(threeSettings.grid.equatorialColor);
+          line.material.opacity = threeSettings.grid.equatorialOpacity;
         });
 
         if (eclipticPlane) {
@@ -3220,35 +3473,43 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }
 
         bandRefs.meshes.forEach((mesh) => {
+          if (activeTransitionObjects.has(mesh)) return;
           mesh.visible = threeSettings.ui.showEclipticBand;
           mesh.material.opacity = threeSettings.ecliptic.bandOpacity;
         });
         bandRefs.dividers.forEach((line) => {
+          if (activeTransitionObjects.has(line)) return;
           line.visible = threeSettings.ui.showEclipticDividers;
           line.material.opacity = threeSettings.ecliptic.dividerOpacity;
         });
         bandRefs.labels.forEach((label) => {
+          if (activeTransitionObjects.has(label)) return;
           label.visible = threeSettings.ui.showEclipticLabels;
           label.material.opacity = threeSettings.ecliptic.sectorLabelOpacity;
           setSpriteHeight(label, threeSettings.ecliptic.sectorLabelSize);
         });
         eclipticPoleLabels.forEach((label) => {
+          if (activeTransitionObjects.has(label)) return;
           const isSep = label.name === "SEP";
           label.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
           label.material.opacity = threeSettings.ecliptic.poleLabelOpacity;
           setSpriteHeight(label, threeSettings.ecliptic.poleLabelSize);
         });
         eclipticPoleDots.forEach((dot) => {
+          if (activeTransitionObjects.has(dot)) return;
           const isSep = dot.name === "SEP";
           dot.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
         });
         if (eclipticCircle) {
-          eclipticCircle.visible = threeSettings.ui.showEclipticBand;
-          eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
-          eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+          if (!activeTransitionObjects.has(eclipticCircle)) {
+            eclipticCircle.visible = threeSettings.ui.showEclipticBand;
+            eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
+            eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+          }
         }
 
         starGroupRefs.forEach((entry) => {
+          if (activeTransitionObjects.has(entry.points)) return;
           entry.points.visible = threeSettings.ui.showStars;
           entry.points.material.size = threeSettings.stars.size;
           entry.points.material.opacity = threeSettings.stars.opacity;
@@ -3300,8 +3561,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           setSpriteHeight(entry.sprite, threeSettings.seasonal.markerLabelSize * threeSettings.seasonal.markerScale);
         });
 
-        gridRefs.parallels.forEach((line) => { line.visible = threeSettings.ui.showGrid; });
-        gridRefs.meridians.forEach((line) => { line.visible = threeSettings.ui.showGrid; });
+        gridRefs.parallels.forEach((line) => { if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showGrid; });
+        gridRefs.meridians.forEach((line) => { if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showGrid; });
+        gridRefs.equatorialParallels.forEach((line) => { if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showEquatorialGrid; });
+        gridRefs.equatorialMeridians.forEach((line) => { if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showEquatorialGrid; });
         if (overlayLabel) {
           overlayLabel.parentElement.style.display = threeSettings.ui.showOverlay ? "" : "none";
           overlayLabel.parentElement.style.fontSize = `${threeSettings.overlay.fontSizeRem}rem`;
@@ -3318,6 +3581,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const transitioningNakshatras = activeTransitionTargets.has("nakshatras");
         if (!transitioningNakshatras && !activeTransitionTargets.has("nakshatraLines")) {
           nakshatraLineRefs.forEach((entry) => {
+            if (activeTransitionObjects.has(entry.line)) return;
             const active = entry.metaIndex === st.selectedMetaIndex;
             const visible = threeSettings.ui.showNakshatraLines && st.visibleNakshatras[entry.nid] !== false;
             entry.line.visible = visible;
@@ -3327,6 +3591,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }
         if (!transitioningNakshatras && !activeTransitionTargets.has("nakshatraLabels")) {
           nakshatraLabelRefs.forEach((entry) => {
+            if (activeTransitionObjects.has(entry.sprite)) return;
             const visible = threeSettings.ui.showNakshatraLabels && st.visibleNakshatras[entry.nid] !== false;
             entry.sprite.visible = visible;
             entry.sprite.material.opacity = visible ? threeSettings.nakshatras.labelOpacity : 0;
@@ -3335,6 +3600,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }
         if (!activeTransitionTargets.has("stars")) {
           starGroupRefs.forEach((entry) => {
+            if (activeTransitionObjects.has(entry.points)) return;
             const visible = threeSettings.ui.showStars && (entry.nid === "__special__" || st.visibleNakshatras[entry.nid] !== false);
             entry.points.visible = visible;
             entry.points.material.opacity = visible ? threeSettings.stars.opacity : 0;
@@ -3387,7 +3653,6 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         controls.minDistance = threeSettings.camera.minDistance;
         controls.maxDistance = threeSettings.camera.maxDistance;
         controls.enablePan = false;
-        controls.addEventListener('start', () => stopStory());
 
         siderealGroup = new THREE.Group();
         scene.add(siderealGroup);
@@ -3395,6 +3660,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         scene.add(seasonalGroup);
 
         buildSphereGrid();
+        buildEquatorialGrid();
         buildReferencePrimitives();
         buildEclipticBand();
         buildEclipticCircle();
@@ -3414,21 +3680,26 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
       /* ── A1. Sphere wireframe ───────────────────────────── */
       function buildSphereGrid() {
+        removeObjects(gridRefs.parallels, siderealGroup);
+        removeObjects(gridRefs.meridians, siderealGroup);
         const parMat = new THREE.LineBasicMaterial({ color: new THREE.Color(threeSettings.grid.parallelColor), transparent: true, opacity: threeSettings.grid.parallelOpacity });
         const merMat = new THREE.LineBasicMaterial({ color: new THREE.Color(threeSettings.grid.meridianColor), transparent: true, opacity: threeSettings.grid.meridianOpacity });
-        for (let lat = -60; lat <= 60; lat += 30) {
+        const step = gridStep(threeSettings.grid.eclipticStepDeg);
+        builtEclipticGridStep = step;
+        for (let lat = -90 + step; lat < 90; lat += step) {
           if (lat === 0) continue;
           const g = new THREE.BufferGeometry().setFromPoints(circlePoints(lat, R * 0.995, 72));
           const line = new THREE.Line(g, parMat.clone());
           gridRefs.parallels.push(line);
           siderealGroup.add(line);
         }
-        for (let lon = 0; lon < 360; lon += 30) {
+        for (let lon = 0; lon < 360; lon += step) {
           const g = new THREE.BufferGeometry().setFromPoints(meridianPoints(lon, R * 0.995, 72));
           const line = new THREE.Line(g, merMat.clone());
           gridRefs.meridians.push(line);
           siderealGroup.add(line);
         }
+        if (eclipticPoleDots.length > 0) return;
         // ecliptic poles
         const poleMat = new THREE.MeshBasicMaterial({ color: 0x8899aa });
         const poleGeom = new THREE.SphereGeometry(1.2, 8, 8);
@@ -3456,6 +3727,33 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticPoleLabels.push(sepLabel);
         eclipticPoleRefs.push({ key: 'SEP', kind: 'label', object: sepLabel });
         siderealGroup.add(sepLabel);
+      }
+
+      function buildEquatorialGrid() {
+        removeObjects(gridRefs.equatorialParallels, seasonalGroup);
+        removeObjects(gridRefs.equatorialMeridians, seasonalGroup);
+        const mat = new THREE.LineBasicMaterial({
+          color: new THREE.Color(threeSettings.grid.equatorialColor),
+          transparent: true,
+          opacity: threeSettings.grid.equatorialOpacity,
+        });
+        const step = gridStep(threeSettings.grid.equatorialStepDeg);
+        builtEquatorialGridStep = step;
+        for (let dec = -90 + step; dec < 90; dec += step) {
+          if (dec === 0) continue;
+          const line = new THREE.Line(new THREE.BufferGeometry(), mat.clone());
+          line.userData.gridKind = "parallel";
+          line.userData.decDeg = dec;
+          gridRefs.equatorialParallels.push(line);
+          seasonalGroup.add(line);
+        }
+        for (let ra = 0; ra < 360; ra += step) {
+          const line = new THREE.Line(new THREE.BufferGeometry(), mat.clone());
+          line.userData.gridKind = "meridian";
+          line.userData.raDeg = ra;
+          gridRefs.equatorialMeridians.push(line);
+          seasonalGroup.add(line);
+        }
       }
 
       function buildDiscFromRing(points) {
@@ -3826,6 +4124,31 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         if (!st) return;
         const epoch = data.epochs[st.epochIndex];
         overlayLabel.textContent = epoch.label;
+        const xAxis = toCart(epoch.vernal_equinox_lon_deg, 0, 1).normalize();
+        const zAxis = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 1).normalize();
+        const yAxis = new THREE.Vector3().crossVectors(zAxis, xAxis).normalize();
+        const equatorialPoint = (raDeg, decDeg, radius) => {
+          const ra = raDeg * Math.PI / 180;
+          const dec = decDeg * Math.PI / 180;
+          return new THREE.Vector3()
+            .addScaledVector(xAxis, Math.cos(dec) * Math.cos(ra))
+            .addScaledVector(yAxis, Math.cos(dec) * Math.sin(ra))
+            .addScaledVector(zAxis, Math.sin(dec))
+            .normalize()
+            .multiplyScalar(radius);
+        };
+        const updateEquatorialLine = (line) => {
+          const pts = [];
+          if (line.userData.gridKind === "parallel") {
+            for (let ra = 0; ra <= 360; ra += 3) pts.push(equatorialPoint(ra, line.userData.decDeg, R * 0.993));
+          } else {
+            for (let dec = -90; dec <= 90; dec += 3) pts.push(equatorialPoint(line.userData.raDeg, dec, R * 0.993));
+          }
+          line.geometry.dispose();
+          line.geometry = new THREE.BufferGeometry().setFromPoints(pts);
+        };
+        gridRefs.equatorialParallels.forEach(updateEquatorialLine);
+        gridRefs.equatorialMeridians.forEach(updateEquatorialLine);
 
         const pts = [];
         for (let lon = 0; lon <= 360; lon += 2) {
@@ -3922,7 +4245,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         });
         document.addEventListener("fullscreenchange", () => {
           container.classList.toggle("theater-mode", document.fullscreenElement === container);
-          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Minimize" : "Fullscreen";
+          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Esc to Minimize" : "Fullscreen";
           onResize();
         });
       }

@@ -118,8 +118,9 @@ Order = "default" | "ecliptic" | "reverse-ecliptic"
 Direction = "forward" | "reverse"
 
 Target =
-  "grid" | "referencePlanes" | "eclipticPlane" | "equatorialPlane" |
-  "nsAxis" | "ecliptic" | "eclipticBand" | "eclipticDividers" |
+  "eclipticGrid" | "equatorialGrid" | "eclipticNakSegments" |
+  "referencePlanes" | "eclipticPlane" | "equatorialPlane" |
+  "nsAxis" | "eclipticBand" | "eclipticDividers" |
   "eclipticLabels" | "eclipticPoles" | "stars" | "nakshatras" |
   "nakshatraLines" | "nakshatraLabels" | "polarItems" |
   "northPolarItems" | "southPolarItems" | "poleTrack" |
@@ -157,6 +158,8 @@ Do not invent actions. Do not include JavaScript.
 
 Every cue must have an `action`. A cue with a `camera` object but no `"action": "camera"` is invalid and will not run.
 
+VyomaSutra also supports `style ...`; it compiles to JSON `set` cues, not a separate runtime action.
+
 ## Defaults
 
 Action defaults:
@@ -175,7 +178,9 @@ Transition defaults:
 
 | Target | Default mode | Default order | Default duration |
 | --- | --- | --- | ---: |
-| `grid` | `stagger` | `default` | `1000` |
+| `eclipticGrid` | `stagger` | `default` | `1000` |
+| `equatorialGrid` | `stagger` | `default` | `1000` |
+| `eclipticNakSegments` | composite | `ecliptic` | target parts |
 | `referencePlanes` | `fade` | `default` | `700` |
 | `eclipticPlane` | `fade` | `default` | `700` |
 | `equatorialPlane` | `fade` | `default` | `700` |
@@ -228,12 +233,13 @@ Optional overrides:
 
 Supported targets:
 
-- `grid`
+- `eclipticGrid`
+- `equatorialGrid`
+- `eclipticNakSegments`
 - `referencePlanes`
 - `eclipticPlane`
 - `equatorialPlane`
 - `nsAxis`
-- `ecliptic`
 - `eclipticBand`
 - `eclipticDividers`
 - `eclipticLabels`
@@ -265,6 +271,7 @@ Supported modes are `instant`, `fade`, `stagger`, and `rollout`. Most stories sh
   "state": {
     "ui": {
       "showGrid": true,
+      "showEquatorialGrid": false,
       "showReferencePlanes": false,
       "showNsAxis": false,
       "showEclipticBand": true,
@@ -319,6 +326,7 @@ CameraPatch =
 UiPatch =
   {
     "showGrid"?: boolean,
+    "showEquatorialGrid"?: boolean,
     "showReferencePlanes"?: boolean,
     "showEclipticPlane"?: boolean,
     "showEquatorialPlane"?: boolean,
@@ -348,6 +356,37 @@ Use `set` for instant state changes. Prefer explicit actions when behavior matte
 - instant year jump: `set.state.epochYear`
 - animated year travel: `epochTravel`
 - instant camera jump: `set.state.camera`
+
+Grid density is a debug/settings property, not a separate story action:
+
+```json
+{
+  "grid": {
+    "eclipticStepDeg": 30,
+    "equatorialStepDeg": 30
+  }
+}
+```
+
+Lower step values make denser grids. Keep values in the practical `5` to `90` degree range.
+
+VyomaSutra also supports compact grid tuning:
+
+```text
+grid ecliptic 15 blue
+grid equatorial 15 red
+```
+
+These compile to `set` patches for grid density/color and turn on the chosen grid.
+
+VyomaSutra safe style examples:
+
+```text
+style equatorialGrid color red alpha %28
+style nsAxis color #a7b4c7 alpha .35
+style naks color #8eaccb alpha .8 fontSize 5
+style stars alpha %80 starSize 2.6
+```
 - animated camera move: `camera`
 - instant visibility change: `set.state.ui.show...`
 - staged visibility change: `reveal` or `hide`

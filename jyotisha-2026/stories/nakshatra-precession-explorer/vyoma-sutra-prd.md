@@ -29,7 +29,7 @@ Humans should be able to write compact, forgiving lines such as:
 
 ```text
 caption "Visualize Precession"
-show eclipticGrid
+show eclipticNakSegments
 rollout stars
 rollout naks
 camera topDome 1200:
@@ -122,8 +122,8 @@ Each line compiles to one or more JSON cues.
 stage blank night year -1800
 
 caption "Visualize Precession" 1200:
-show grid
 show eclipticGrid
+show eclipticNakSegments
 rollout stars
 rollout naks
 
@@ -134,7 +134,7 @@ travel -1800 to -800 5000: step 100
 ```text
 # Tune visual style
 style naks color #8eaccb alpha .8 font+ 2
-style eclipticGrid alpha .25
+style eclipticNakSegments alpha .25
 style northPolarItems lineColor #6f86a1 lineThin label-
 flash VE
 ```
@@ -165,6 +165,7 @@ polarItems
 northPolarItems
 southPolarItems
 eclipticGrid
+eclipticNakSegments
 equatorialGrid
 seasonalFrame
 poleTrack
@@ -250,7 +251,8 @@ Examples:
 | Canonical | Aliases |
 | --- | --- |
 | `nakshatras` | `naks`, `nak`, `nakshatra` |
-| `eclipticGrid` | `eclGrid`, `ecliptic`, `ecl` |
+| `eclipticGrid` | fixed ecliptic longitude/latitude wire grid |
+| `eclipticNakSegments` | `nakSegments`, `naksSegments`, `eclipticSegments` |
 | `equatorialGrid` | `eqGrid`, `equatorGrid`, `eq` |
 | `northPolarItems` | `northPolar`, `nPolar`, `npItems` |
 | `southPolarItems` | `southPolar`, `sPolar`, `spItems` |
@@ -339,6 +341,7 @@ statement      ::= stageStmt
                  | styleStmt
                  | cameraStmt
                  | travelStmt
+                 | gridStmt
                  | captionStmt
                  | waitStmt
                  | fullscreenStmt
@@ -369,6 +372,7 @@ cameraPreset   ::= identifier
 cameraArgs     ::= ("pos" vec3)? ("target" vec3)? ("fov" number)?
 
 travelStmt     ::= ("travel" | "epochTravel") number "to" number durationArg? ("step" number)?
+gridStmt       ::= "grid" ("ecliptic" | "ecl" | "equatorial" | "equator" | "eq") number colorSpec?
 captionStmt    ::= ("caption" | "say" | "title") captionArg*
 captionArg     ::= quotedText | durationArg | colorSpec | sizeSpec | alphaSpec | locationSpec | fadeArg
 fadeArg        ::= "fadeIn" number | "fadeOut" number
@@ -405,9 +409,22 @@ Style:
 
 ```text
 style naks color #8eaccb alpha .8
+style equatorialGrid color red alpha %28
+style stars alpha %80 starSize 2.6
 ```
 
 compiles to a partial `set.state` patch against the canonical settings block.
+
+Phase 1 implemented style knobs are intentionally safe: `color`, `lineColor`, `alpha`, `opacity`, `labelAlpha`, `fontSize`, `font+`, `font-`, `starSize`, and `pointSize`. True line width remains pending because WebGL line width is unreliable without fat-line geometry.
+
+Grid density:
+
+```text
+grid ecliptic 15 blue
+grid equatorial 15 red
+```
+
+compiles to grid density/color `set` patches and turns on the chosen grid. Lower step values make denser grids.
 
 Caption:
 
@@ -506,7 +523,7 @@ Use rbdraw as the model:
 ## Acceptance Criteria
 
 - A human can author a basic precession story in fewer than 15 lines.
-- Common aliases like `naks`, `eclGrid`, `rtus`, `Agastya`, `NEP`, `NP` compile correctly.
+- Common aliases like `naks`, `eclipticGrid`, `eclipticNakSegments`, `rtus`, `Agastya`, `NEP`, `NP` compile correctly.
 - Every primitive in the target hierarchy is addressable by canonical name.
 - The compiler emits strict story JSON accepted by the existing runner.
 - Compilation warnings are readable and line-specific.

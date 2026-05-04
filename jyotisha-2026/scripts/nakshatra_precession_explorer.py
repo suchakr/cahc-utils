@@ -475,6 +475,14 @@ def validate_story(story: dict[str, Any], path: Path) -> dict[str, Any]:
         raise ValueError(f"{path}: cues must be a list or keyed object")
 
     valid_actions = {"caption", "set", "reveal", "hide", "camera", "epochTravel", "flash", "fullscreen", "exitFullscreen"}
+    valid_targets = {
+        "eclipticGrid", "equatorialGrid", "eclipticNakSegments", "eclipticBand",
+        "eclipticDividers", "eclipticLabels", "eclipticPoles", "stars",
+        "nakshatras", "nakshatraLines", "nakshatraLabels", "polarItems",
+        "northPolarItems", "southPolarItems", "poleTrack", "precessionCircle",
+        "seasonalFrame", "overlay", "referencePlanes", "eclipticPlane",
+        "equatorialPlane", "nsAxis", "NEP", "SEP", "NP", "SP",
+    }
     if isinstance(story["cues"], list):
         cues = list(enumerate(story["cues"]))
     else:
@@ -497,6 +505,10 @@ def validate_story(story: dict[str, Any], path: Path) -> dict[str, Any]:
             raise ValueError(f"{path}: cue {index} set needs state")
         if action in {"reveal", "hide"} and "target" not in cue:
             raise ValueError(f"{path}: cue {index} {action} needs target")
+        if action in {"reveal", "hide", "flash"} and "target" in cue:
+            target = cue["target"]
+            if isinstance(target, str) and not target.startswith(("$", "*", "@")) and target not in valid_targets:
+                raise ValueError(f"{path}: cue {index} has unknown target {target!r}")
         if action == "flash" and "target" not in cue:
             raise ValueError(f"{path}: cue {index} flash needs target")
         if action == "camera" and "camera" not in cue:
@@ -526,7 +538,7 @@ def built_in_stories(dataset: dict[str, object]) -> list[dict[str, Any]]:
         "# Draft generated tour. JSON is canonical; this VySu is a tunable source sketch.",
         "stage blank night year -1800",
         "camera pos -147.464,73.504,234.757 target 0,0,0 fov 48",
-        "show eclipticGrid ; show stars ; show naks",
+        "show eclipticNakSegments ; show stars ; show naks",
         'caption "Tour of the 27 Nakshatras" 1300:250:350',
     ]
 
@@ -603,14 +615,14 @@ def built_in_stories(dataset: dict[str, object]) -> list[dict[str, Any]]:
         "# Top-down draft for reviewing precession against the fixed nakshatra ring.",
         "stage blank night year -3000",
         "camera pos 0,325,0.1 target 0,0,0 fov 42",
-        "show eclipticGrid ; show eclipticPoles ; show stars ; show naks",
+        "show eclipticNakSegments ; show eclipticPoles ; show stars ; show naks",
         "show northPolarItems ; hide southPolarItems",
         "show poleTrack ; show seasonalFrame ; show overlay",
         'caption "Precession from above the ecliptic pole" 1600:300:450',
         "flash precessionCircle 1500:",
-        'caption "The pole track approaches Thuban around 2300 BCE" 2100:350:500',
+        'caption "The pole marker approaches Thuban around 2300 BCE" 2100:350:500',
         "travel -3000 to 2000 9000: step 100",
-        'caption "Polaris becomes the later north-pole marker near 1900 CE" 2200:350:500',
+        'caption "Polaris becomes the north-pole marker near 1900 CE" 2200:350:500',
     ])
 
     top_story = {
@@ -651,9 +663,9 @@ def built_in_stories(dataset: dict[str, object]) -> list[dict[str, Any]]:
         "cues": [
             {"at": 0, "action": "caption", "text": "Precession from above the ecliptic pole", "duration": 1600, "fadeIn": 300, "fadeOut": 450},
             {"at": "+100", "action": "flash", "target": "precessionCircle", "duration": 1500},
-            {"at": "+300", "action": "caption", "text": "The pole track approaches Thuban around 2300 BCE", "duration": 2100, "fadeIn": 350, "fadeOut": 500},
+            {"at": "+300", "action": "caption", "text": "The pole marker approaches Thuban around 2300 BCE", "duration": 2100, "fadeIn": 350, "fadeOut": 500},
             {"at": "+100", "action": "epochTravel", "from": -3000, "to": 2000, "duration": 9000, "step": 100},
-            {"at": "+200", "action": "caption", "text": "Polaris becomes the later north-pole marker near 1900 CE", "duration": 2200, "fadeIn": 350, "fadeOut": 500},
+            {"at": "+200", "action": "caption", "text": "Polaris becomes the north-pole marker near 1900 CE", "duration": 2200, "fadeIn": 350, "fadeOut": 500},
         ],
     }
 
@@ -1302,6 +1314,17 @@ def page_html(dataset: dict[str, object]) -> str:
         cursor: pointer;
         font: 0.78rem/1 var(--font-mono);
         padding: 0.35rem 0.55rem;
+        opacity: 0.88;
+        transition: opacity 700ms ease;
+      }}
+
+      .three-container.theater-mode .three-fullscreen-button {{
+        opacity: 0;
+      }}
+
+      .three-container.theater-mode:hover .three-fullscreen-button,
+      .three-container.theater-mode .three-fullscreen-button:focus-visible {{
+        opacity: 0.86;
       }}
 
       .three-container.theater-mode {{
@@ -1414,7 +1437,7 @@ def page_html(dataset: dict[str, object]) -> str:
           <label class="sky-toggle"><input type="checkbox" id="toggle-equator" checked> Equator</label>
           <label class="sky-toggle"><input type="checkbox" id="toggle-sectors" checked> 27 sectors</label>
           <label class="sky-toggle"><input type="checkbox" id="toggle-labels" checked> Nakshatra labels</label>
-          <label class="sky-toggle"><input type="checkbox" id="toggle-pole" checked> Pole track</label>
+          <label class="sky-toggle"><input type="checkbox" id="toggle-pole" checked> Precession circle</label>
           <details class="debug-panel" id="trail-debug-panel">
             <summary>More visual toggles</summary>
             <div class="debug-popover">
@@ -1506,7 +1529,7 @@ def page_html(dataset: dict[str, object]) -> str:
                 <summary>VyomaSutra help</summary>
                 <pre>Short form:
 caption "Text" 1200:250:350
-show eclipticGrid ; wait 200 ; rollout naks
+show eclipticNakSegments ; wait 200 ; rollout naks
 flash precessionCircle 1500:
 fullscreen ; wait 500 ; exitFullscreen
 
@@ -1564,17 +1587,22 @@ duration       = DURATION:FADE_IN:FADE_OUT | DURATION: | NUMBER
 mode           = instant | fade | stagger | rollout
 order          = ecliptic | reverse-ecliptic | forward | reverse
 
-coarse targets = grid, eclipticGrid, stars, naks, seasonalFrame, poleTrack, overlay
+coarse targets = eclipticGrid, equatorialGrid, eclipticNakSegments, stars, naks, seasonalFrame, poleTrack, overlay
 reference      = referencePlanes, eclipticPlane, equatorialPlane, nsAxis, precessionCircle
 polar targets  = polarItems, northPolarItems, southPolarItems, NEP, SEP, NP, SP
 nak sigils     = $ash sector only, *ash star/stick group, @ash sector plus star/stick group
+style          = style target color COLOR alpha %50 fontSize NUMBER starSize NUMBER
+grid density   = grid ecliptic 15 blue ; grid equatorial 15 red
 
 Examples:
 stage blank night year -1800
 caption "Visualize Precession" 1200:250:350
-show grid ; wait 200 ; show eclipticGrid
+show eclipticGrid ; wait 200 ; show eclipticNakSegments
+grid ecliptic 15 blue ; grid equatorial 15 red
+show equatorialGrid ; style equatorialGrid color red alpha %28
 rollout stars ; rollout naks
 flash @ash 650:
+style naks color #8eaccb alpha .8 fontSize 5
 camera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900
 travel -3000 to 2000 9000: step 100
 fullscreen ; wait 500 ; exitFullscreen</pre>
@@ -2176,7 +2204,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
 
         const poleTrack = toggles.pole.checked && guideLayers.showPole
           ? `<path d="${{poleTrackPath(bounds)}}" fill="none" stroke="#6a7b91" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.58" />
-             <text x="${{bounds.left + bounds.width - 4}}" y="${{skyPoint(0, 67, bounds).y - 8}}" text-anchor="end" font-size="12" fill="#6a7b91">Pole track</text>`
+             <text x="${{bounds.left + bounds.width - 4}}" y="${{skyPoint(0, 67, bounds).y - 8}}" text-anchor="end" font-size="12" fill="#6a7b91">Precession circle</text>`
           : "";
 
         const polePoint = toggles.pole.checked && guideLayers.showPole ? (() => {{
@@ -2467,7 +2495,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const eclipticPoleDots = [];
       const eclipticPoleLabels = [];
       const eclipticPoleRefs = [];
-      const gridRefs = {{ parallels: [], meridians: [] }};
+      const gridRefs = {{ parallels: [], meridians: [], equatorialParallels: [], equatorialMeridians: [] }};
       const bandRefs = {{ meshes: [], dividers: [], labels: [] }};
       const nakshatraLineRefs = [];
       const nakshatraLabelRefs = [];
@@ -2476,9 +2504,13 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const activeStoryTimers = [];
       let activeStoryId = null;
       let activeStoryFrame = null;
+      let builtEclipticGridStep = null;
+      let builtEquatorialGridStep = null;
       const activeTransitionTargets = new Set();
+      const activeTransitionObjects = new Set();
       const threeDebugUiFields = [
-        ["showGrid", "Grid"],
+        ["showGrid", "Ecliptic grid"],
+        ["showEquatorialGrid", "Equatorial grid"],
         ["showReferencePlanes", "Reference planes"],
         ["showNsAxis", "NS axis"],
         ["showEclipticBand", "Ecliptic band"],
@@ -2491,7 +2523,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         ["showPolarItems", "Polar items"],
         ["showNorthPolarItems", "North polar items"],
         ["showSouthPolarItems", "South polar items"],
-        ["showPoleTrack", "Pole track"],
+        ["showPoleTrack", "Precession circle"],
         ["showSeasonalFrame", "Seasonal frame"],
         ["showOverlay", "Overlay caption"],
       ];
@@ -2506,10 +2538,14 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
           maxDistance: 600,
         }},
         grid: {{
+          eclipticStepDeg: 30,
+          equatorialStepDeg: 30,
           parallelColor: "#667788",
           parallelOpacity: 0.4,
           meridianColor: "#556677",
           meridianOpacity: 0.4,
+          equatorialColor: "#884444",
+          equatorialOpacity: 0.28,
         }},
         ecliptic: {{
           bandOpacity: 0.18,
@@ -2572,6 +2608,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         }},
         ui: {{
           showGrid: true,
+          showEquatorialGrid: false,
           showReferencePlanes: false,
           showEclipticPlane: true,
           showEquatorialPlane: true,
@@ -2618,6 +2655,20 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         const pts = [];
         for (let i = 0; i <= n; i++) pts.push(toCart(lonDeg, -90 + i * 180 / n, r));
         return pts;
+      }}
+
+      function gridStep(value) {{
+        const numeric = Number(value);
+        if (!Number.isFinite(numeric)) return 30;
+        return Math.min(90, Math.max(5, numeric));
+      }}
+
+      function removeObjects(refs, group) {{
+        refs.splice(0).forEach((object) => {{
+          group.remove(object);
+          object.geometry?.dispose?.();
+          if (object.material) object.material.dispose?.();
+        }});
       }}
 
       function makeTextSprite(text, opts) {{
@@ -2687,7 +2738,7 @@ stage blank night year -1800
 camera pos -147.464,73.504,234.757 target 0,0,0
 
 caption "Visualize Precession" 1200:250:350
-show grid ; wait 200 ; show eclipticGrid
+show eclipticGrid ; wait 200 ; show eclipticNakSegments
 wait 200 ; fade stars
 wait 100 ; rollout naks
 wait 200 ; show seasonalFrame
@@ -2698,10 +2749,14 @@ wait 300 ; caption "1800 BCE" 1000:200:300
 wait 200 ; travel -1800 to -800 5000: step 100`;
 
       const vysuTargetAliases = {{
-        ecl: "ecliptic",
-        ecliptic: "ecliptic",
-        eclipticgrid: "ecliptic",
-        eclgrid: "ecliptic",
+        eclipticgrid: "eclipticGrid",
+        eclgrid: "eclipticGrid",
+        eclgridwire: "eclipticGrid",
+        eclipticnaksegments: "eclipticNakSegments",
+        eclipticnakssegments: "eclipticNakSegments",
+        naksegments: "eclipticNakSegments",
+        nakssegments: "eclipticNakSegments",
+        eclipticsegments: "eclipticNakSegments",
         eclipticband: "eclipticBand",
         eclipticdividers: "eclipticDividers",
         sectordividers: "eclipticDividers",
@@ -2710,6 +2765,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticpoles: "eclipticPoles",
         eclipticplane: "eclipticPlane",
         equatorialplane: "equatorialPlane",
+        equatorialgrid: "equatorialGrid",
+        equatorgrid: "equatorialGrid",
+        eqgrid: "equatorialGrid",
+        eq: "equatorialGrid",
         referenceplanes: "referencePlanes",
         refs: "referencePlanes",
         nsaxis: "nsAxis",
@@ -2718,7 +2777,6 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         sep: "SEP",
         np: "NP",
         sp: "SP",
-        grid: "grid",
         stars: "stars",
         naks: "nakshatras",
         nak: "nakshatras",
@@ -2801,6 +2859,26 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return {{ x: parts[0], y: parts[1], z: parts[2] }};
       }}
 
+      function parseVysuAlpha(token) {{
+        const raw = String(token || "").trim();
+        let value = null;
+        if (/^%\\d+(?:\\.\\d+)?$/.test(raw)) value = Number(raw.slice(1)) / 100;
+        else if (/^\\d+(?:\\.\\d+)?%$/.test(raw)) value = Number(raw.slice(0, -1)) / 100;
+        else if (/^(?:0?\\.\\d+|1(?:\\.0+)?)$/.test(raw)) value = Number(raw);
+        else if (/^\\d+(?:\\.\\d+)?$/.test(raw)) {{
+          const number = Number(raw);
+          if (number <= 1) value = number;
+        }}
+        return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : null;
+      }}
+
+      function parseVysuColor(token) {{
+        const raw = String(token || "").trim();
+        if (/^#[0-9a-fA-F]{{3}}(?:[0-9a-fA-F]{{3}})?$/.test(raw)) return raw;
+        if (/^[a-zA-Z]+$/.test(raw)) return raw.toLowerCase();
+        return null;
+      }}
+
       function normalizeVysuTarget(token, warnings, lineNumber) {{
         const raw = String(token || "").trim();
         if (!raw) return null;
@@ -2808,8 +2886,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const key = raw.replace(/[._-]/g, "").toLowerCase();
         const target = vysuTargetAliases[key] || raw;
         const supported = new Set([
-          "grid", "referencePlanes", "eclipticPlane", "equatorialPlane", "nsAxis",
-          "ecliptic", "eclipticBand", "eclipticDividers", "eclipticLabels", "eclipticPoles",
+          "eclipticGrid", "equatorialGrid", "referencePlanes", "eclipticPlane", "equatorialPlane", "nsAxis",
+          "eclipticNakSegments", "eclipticBand", "eclipticDividers", "eclipticLabels", "eclipticPoles",
           "stars", "nakshatras", "seasonalFrame", "poleTrack", "precessionCircle",
           "overlay", "polarItems", "northPolarItems", "southPolarItems", "NEP", "SEP", "NP", "SP"
         ]);
@@ -2820,6 +2898,103 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return target;
       }}
 
+      function stylePatchForTarget(target, style) {{
+        const patch = {{}};
+        const put = (path, value) => {{
+          let cursor = patch;
+          path.slice(0, -1).forEach((key) => {{
+            if (!cursor[key]) cursor[key] = {{}};
+            cursor = cursor[key];
+          }});
+          cursor[path[path.length - 1]] = value;
+        }};
+        const color = style.color || style.lineColor;
+        const alpha = style.alpha ?? style.opacity;
+        const fontSize = style.fontSize;
+        const pointSize = style.pointSize ?? style.starSize;
+
+        if (target === "eclipticGrid") {{
+          if (color) {{
+            put(["grid", "parallelColor"], color);
+            put(["grid", "meridianColor"], color);
+          }}
+          if (alpha !== undefined) {{
+            put(["grid", "parallelOpacity"], alpha);
+            put(["grid", "meridianOpacity"], alpha);
+          }}
+        }} else if (target === "equatorialGrid") {{
+          if (color) put(["grid", "equatorialColor"], color);
+          if (alpha !== undefined) put(["grid", "equatorialOpacity"], alpha);
+        }} else if (target === "nsAxis") {{
+          if (color) put(["reference", "nsAxisColor"], color);
+          if (alpha !== undefined) put(["reference", "nsAxisOpacity"], alpha);
+        }} else if (target === "eclipticPlane") {{
+          if (color) put(["reference", "eclipticPlaneColor"], color);
+          if (alpha !== undefined) put(["reference", "eclipticPlaneOpacity"], alpha);
+        }} else if (target === "equatorialPlane") {{
+          if (color) put(["reference", "equatorialPlaneColor"], color);
+          if (alpha !== undefined) put(["reference", "equatorialPlaneOpacity"], alpha);
+        }} else if (target === "stars") {{
+          if (alpha !== undefined) put(["stars", "opacity"], alpha);
+          if (pointSize !== undefined) put(["stars", "size"], pointSize);
+        }} else if (target === "nakshatras") {{
+          if (color) put(["nakshatras", "color"], color);
+          if (alpha !== undefined) put(["nakshatras", "opacity"], alpha);
+          if (fontSize !== undefined) put(["nakshatras", "labelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["nakshatras", "labelOpacity"], style.labelAlpha);
+        }} else if (target === "polarItems" || target === "northPolarItems" || target === "southPolarItems") {{
+          if (color) put(["polarItems", "color"], color);
+          if (alpha !== undefined) put(["polarItems", "opacity"], alpha);
+          if (fontSize !== undefined) put(["polarItems", "labelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["polarItems", "labelOpacity"], style.labelAlpha);
+        }} else if (target === "poleTrack" || target === "precessionCircle") {{
+          if (color) put(["poleTrack", "color"], color);
+          if (alpha !== undefined) put(["poleTrack", "opacity"], alpha);
+          if (fontSize !== undefined) put(["poleTrack", "trackLabelSize"], fontSize);
+        }} else if (target === "seasonalFrame") {{
+          if (color) put(["seasonal", "equatorColor"], color);
+          if (alpha !== undefined) put(["seasonal", "equatorOpacity"], alpha);
+          if (fontSize !== undefined) put(["seasonal", "markerLabelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["seasonal", "markerLabelOpacity"], style.labelAlpha);
+        }} else if (target === "eclipticNakSegments" || target === "eclipticBand" || target === "eclipticLabels") {{
+          if (color) put(["ecliptic", "circleColor"], color);
+          if (alpha !== undefined) put(["ecliptic", "circleOpacity"], alpha);
+          if (fontSize !== undefined) put(["ecliptic", "sectorLabelSize"], fontSize);
+          if (style.labelAlpha !== undefined) put(["ecliptic", "sectorLabelOpacity"], style.labelAlpha);
+        }} else if (target === "overlay") {{
+          if (alpha !== undefined) put(["overlay", "opacity"], alpha);
+          if (fontSize !== undefined) put(["overlay", "fontSizeRem"], fontSize);
+        }}
+        return Object.keys(patch).length ? patch : null;
+      }}
+
+      function gridPatchForVySu(args, warnings, lineNumber) {{
+        const kind = String(args[0] || "").toLowerCase();
+        const step = Number(args[1]);
+        const color = parseVysuColor(args[2]);
+        const patch = {{ grid: {{}}, ui: {{}} }};
+        if (!Number.isFinite(step)) {{
+          warnings.push(`Line ${{lineNumber}}: grid needs a numeric step, e.g. grid ecliptic 15 blue.`);
+          return null;
+        }}
+        if (kind === "ecliptic" || kind === "ecl") {{
+          patch.grid.eclipticStepDeg = step;
+          if (color) {{
+            patch.grid.parallelColor = color;
+            patch.grid.meridianColor = color;
+          }}
+          patch.ui.showGrid = true;
+        }} else if (kind === "equatorial" || kind === "equator" || kind === "eq") {{
+          patch.grid.equatorialStepDeg = step;
+          if (color) patch.grid.equatorialColor = color;
+          patch.ui.showEquatorialGrid = true;
+        }} else {{
+          warnings.push(`Line ${{lineNumber}}: grid kind must be ecliptic or equatorial.`);
+          return null;
+        }}
+        return patch;
+      }}
+
       function compileVyomaSutra(source) {{
         const warnings = [];
         const cues = [];
@@ -2828,6 +3003,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         let emitted = 0;
         const blankUi = {{
           showGrid: false,
+          showEquatorialGrid: false,
           showReferencePlanes: false,
           showEclipticPlane: false,
           showEquatorialPlane: false,
@@ -2894,6 +3070,12 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
               return;
             }}
 
+            if (directive === "grid") {{
+              const patch = gridPatchForVySu(args, warnings, lineNumber);
+              if (patch) addCue({{ action: "set", state: patch }});
+              return;
+            }}
+
             if (directive === "fullscreen" || directive === "theater") {{
               addCue({{ action: "fullscreen" }});
               return;
@@ -2934,6 +3116,51 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                 else if (["ecliptic", "reverse-ecliptic", "reverse", "forward", "north-to-south", "south-to-north"].includes(lower)) cue.order = lower;
               }});
               addCue(cue);
+              return;
+            }}
+
+            if (directive === "style") {{
+              const target = normalizeVysuTarget(args[0], warnings, lineNumber);
+              if (!target) return;
+              const style = {{}};
+              for (let i = 1; i < args.length; i += 1) {{
+                const key = args[i].toLowerCase();
+                const next = args[i + 1];
+                if (["color", "linecolor"].includes(key)) {{
+                  const color = parseVysuColor(next);
+                  if (color) {{
+                    style[key === "linecolor" ? "lineColor" : "color"] = color;
+                    i += 1;
+                  }} else warnings.push(`Line ${{lineNumber}}: ${{args[i]}} needs a color.`);
+                }} else if (["alpha", "opacity", "labelalpha"].includes(key)) {{
+                  const alpha = parseVysuAlpha(next);
+                  if (alpha !== null) {{
+                    style[key === "labelalpha" ? "labelAlpha" : key] = alpha;
+                    i += 1;
+                  }} else warnings.push(`Line ${{lineNumber}}: ${{args[i]}} needs alpha like %50 or .5.`);
+                }} else if (["fontsize", "font", "starsize", "pointsize"].includes(key)) {{
+                  const size = Number(next);
+                  if (Number.isFinite(size)) {{
+                    if (key === "starsize") style.starSize = size;
+                    else if (key === "pointsize") style.pointSize = size;
+                    else style.fontSize = size;
+                    i += 1;
+                  }} else warnings.push(`Line ${{lineNumber}}: ${{args[i]}} needs a numeric size.`);
+                }} else if (key === "font+" || key === "font-") {{
+                  const delta = Number.isFinite(Number(next)) ? Number(next) : 1;
+                  style.fontSize = Math.max(1, (style.fontSize || 5) + (key === "font+" ? delta : -delta));
+                  if (Number.isFinite(Number(next))) i += 1;
+                }} else {{
+                  const color = parseVysuColor(args[i]);
+                  const alpha = parseVysuAlpha(args[i]);
+                  if (color) style.color = color;
+                  else if (alpha !== null) style.alpha = alpha;
+                  else warnings.push(`Line ${{lineNumber}}: unsupported style token "${{args[i]}}".`);
+                }}
+              }}
+              const patch = stylePatchForTarget(target, style);
+              if (patch) addCue({{ action: "set", state: patch }});
+              else warnings.push(`Line ${{lineNumber}}: no supported style knobs for ${{target}}.`);
               return;
             }}
 
@@ -3044,6 +3271,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
         activeStoryId = null;
         activeTransitionTargets.clear();
+        activeTransitionObjects.clear();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {{
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {{
@@ -3066,7 +3294,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           container.classList.remove("theater-mode");
         }}
         if (threeFullscreenToggle) {{
-          threeFullscreenToggle.textContent = enabled ? "Minimize" : "Fullscreen";
+          threeFullscreenToggle.textContent = enabled ? "Esc to Minimize" : "Fullscreen";
         }}
         window.setTimeout(onResize, 80);
       }}
@@ -3217,7 +3445,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }}
 
       const transitionDefaults = {{
-        grid: {{ mode: "stagger", order: "default", duration: 1000 }},
+        eclipticGrid: {{ mode: "stagger", order: "default", duration: 1000 }},
         referencePlanes: {{ mode: "fade", order: "default", duration: 700 }},
         eclipticPlane: {{ mode: "fade", order: "default", duration: 700 }},
         equatorialPlane: {{ mode: "fade", order: "default", duration: 700 }},
@@ -3226,6 +3454,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticDividers: {{ mode: "rollout", order: "ecliptic", duration: 1200 }},
         eclipticLabels: {{ mode: "stagger", order: "ecliptic", duration: 1200 }},
         eclipticPoles: {{ mode: "fade", order: "default", duration: 600 }},
+        eclipticNakSegments: {{ mode: "rollout", order: "ecliptic", duration: 1300 }},
         stars: {{ mode: "fade", order: "default", duration: 900 }},
         nakshatras: {{ mode: "rollout", order: "ecliptic", duration: 1800 }},
         polarItems: {{ mode: "rollout", order: "default", duration: 1600 }},
@@ -3240,7 +3469,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
       function transitionPatchForTarget(target, visible) {{
         const patches = {{
-          grid: {{ ui: {{ showGrid: visible }} }},
+          eclipticGrid: {{ ui: {{ showGrid: visible }} }},
+          equatorialGrid: {{ ui: {{ showEquatorialGrid: visible }} }},
           referencePlanes: {{ ui: {{ showReferencePlanes: visible, showEclipticPlane: visible, showEquatorialPlane: visible }} }},
           eclipticPlane: {{ ui: {{ showReferencePlanes: true, showEclipticPlane: visible }} }},
           equatorialPlane: {{ ui: {{ showReferencePlanes: true, showEquatorialPlane: visible }} }},
@@ -3251,7 +3481,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           eclipticPoles: {{ ui: {{ showEclipticPoles: visible }} }},
           NEP: {{ ui: {{ showNEP: visible }} }},
           SEP: {{ ui: {{ showSEP: visible }} }},
-          ecliptic: {{ ui: {{ showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible }} }},
+          eclipticNakSegments: {{ ui: {{ showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible }} }},
           stars: {{ ui: {{ showStars: visible }} }},
           nakshatras: {{ ui: {{ showNakshatraLines: visible, showNakshatraLabels: visible }} }},
           nakshatraLines: {{ ui: {{ showNakshatraLines: visible }} }},
@@ -3329,6 +3559,15 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         entry.items.forEach((item) => setObjectOpacity(item.object, item.opacity * progress));
       }}
 
+      function markTransitionObjects(descriptors, active) {{
+        descriptors.forEach((entry) => {{
+          entry.items.forEach((item) => {{
+            if (active) activeTransitionObjects.add(item.object);
+            else activeTransitionObjects.delete(item.object);
+          }});
+        }});
+      }}
+
       function transitionDescriptorsForTarget(target) {{
         const nakTarget = resolveNakshatraTarget(target);
         if (nakTarget) {{
@@ -3356,10 +3595,16 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           }}
           return items.length ? [transitionGroup(items, 0)] : [];
         }}
-        if (target === "grid") {{
+        if (target === "eclipticGrid") {{
           return [
             ...gridRefs.parallels.map((line, index) => transitionDescriptor(line, threeSettings.grid.parallelOpacity, index)),
             ...gridRefs.meridians.map((line, index) => transitionDescriptor(line, threeSettings.grid.meridianOpacity, index + gridRefs.parallels.length)),
+          ];
+        }}
+        if (target === "equatorialGrid") {{
+          return [
+            ...gridRefs.equatorialParallels.map((line, index) => transitionDescriptor(line, threeSettings.grid.equatorialOpacity, index)),
+            ...gridRefs.equatorialMeridians.map((line, index) => transitionDescriptor(line, threeSettings.grid.equatorialOpacity, index + gridRefs.equatorialParallels.length)),
           ];
         }}
         if (target === "referencePlanes") {{
@@ -3400,7 +3645,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             .filter((entry) => entry.key === target)
             .map((entry, index) => transitionDescriptor(entry.object, entry.kind === "label" ? threeSettings.ecliptic.poleLabelOpacity : 1, index));
         }}
-        if (target === "ecliptic") {{
+        if (target === "eclipticNakSegments") {{
           return [
             ...transitionDescriptorsForTarget("eclipticBand"),
             ...transitionDescriptorsForTarget("eclipticDividers"),
@@ -3502,8 +3747,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         overlayLabel.parentElement.style.opacity = String((threeSettings.overlay.opacity ?? 1) * progress);
       }}
 
-      function finalizeTransition(target, visible) {{
+      function finalizeTransition(target, visible, descriptors = null) {{
         activeTransitionTargets.delete(target);
+        if (descriptors) markTransitionObjects(descriptors, false);
         const patch = transitionPatchForTarget(target, visible);
         if (patch) mergeSettings(threeSettings, patch);
         applyThreeSettings({{ preserveEpoch: true, preserveCamera: true }});
@@ -3541,6 +3787,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           finalizeTransition(target, visible);
           return;
         }}
+        markTransitionObjects(descriptors, true);
 
         if (visible) {{
           mergeSettings(threeSettings, patch);
@@ -3563,7 +3810,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                 setTransitionEntryVisible(entry, progress > 0);
                 setTransitionEntryOpacity(entry, progress);
               }});
-              if (step === steps) finalizeTransition(target, visible);
+              if (step === steps) finalizeTransition(target, visible, descriptors);
             }}, delay));
           }}
           return;
@@ -3578,7 +3825,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             setTransitionEntryOpacity(entry, visible ? 1 : 0);
           }}, delay));
         }});
-        activeStoryTimers.push(window.setTimeout(() => finalizeTransition(target, visible), duration));
+        activeStoryTimers.push(window.setTimeout(() => finalizeTransition(target, visible, descriptors), duration));
       }}
 
       function resolveCueTime(token, previousEnd) {{
@@ -3872,14 +4119,32 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           controls.maxDistance = threeSettings.camera.maxDistance;
         }}
         applyLightPreset();
+        if (siderealGroup && builtEclipticGridStep !== gridStep(threeSettings.grid.eclipticStepDeg)) {{
+          buildSphereGrid();
+        }}
+        if (seasonalGroup && builtEquatorialGridStep !== gridStep(threeSettings.grid.equatorialStepDeg)) {{
+          buildEquatorialGrid();
+        }}
 
         gridRefs.parallels.forEach((line) => {{
+          if (activeTransitionObjects.has(line)) return;
           line.material.color.set(threeSettings.grid.parallelColor);
           line.material.opacity = threeSettings.grid.parallelOpacity;
         }});
         gridRefs.meridians.forEach((line) => {{
+          if (activeTransitionObjects.has(line)) return;
           line.material.color.set(threeSettings.grid.meridianColor);
           line.material.opacity = threeSettings.grid.meridianOpacity;
+        }});
+        gridRefs.equatorialParallels.forEach((line) => {{
+          if (activeTransitionObjects.has(line)) return;
+          line.material.color.set(threeSettings.grid.equatorialColor);
+          line.material.opacity = threeSettings.grid.equatorialOpacity;
+        }});
+        gridRefs.equatorialMeridians.forEach((line) => {{
+          if (activeTransitionObjects.has(line)) return;
+          line.material.color.set(threeSettings.grid.equatorialColor);
+          line.material.opacity = threeSettings.grid.equatorialOpacity;
         }});
 
         if (eclipticPlane) {{
@@ -3899,35 +4164,43 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
 
         bandRefs.meshes.forEach((mesh) => {{
+          if (activeTransitionObjects.has(mesh)) return;
           mesh.visible = threeSettings.ui.showEclipticBand;
           mesh.material.opacity = threeSettings.ecliptic.bandOpacity;
         }});
         bandRefs.dividers.forEach((line) => {{
+          if (activeTransitionObjects.has(line)) return;
           line.visible = threeSettings.ui.showEclipticDividers;
           line.material.opacity = threeSettings.ecliptic.dividerOpacity;
         }});
         bandRefs.labels.forEach((label) => {{
+          if (activeTransitionObjects.has(label)) return;
           label.visible = threeSettings.ui.showEclipticLabels;
           label.material.opacity = threeSettings.ecliptic.sectorLabelOpacity;
           setSpriteHeight(label, threeSettings.ecliptic.sectorLabelSize);
         }});
         eclipticPoleLabels.forEach((label) => {{
+          if (activeTransitionObjects.has(label)) return;
           const isSep = label.name === "SEP";
           label.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
           label.material.opacity = threeSettings.ecliptic.poleLabelOpacity;
           setSpriteHeight(label, threeSettings.ecliptic.poleLabelSize);
         }});
         eclipticPoleDots.forEach((dot) => {{
+          if (activeTransitionObjects.has(dot)) return;
           const isSep = dot.name === "SEP";
           dot.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
         }});
         if (eclipticCircle) {{
-          eclipticCircle.visible = threeSettings.ui.showEclipticBand;
-          eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
-          eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+          if (!activeTransitionObjects.has(eclipticCircle)) {{
+            eclipticCircle.visible = threeSettings.ui.showEclipticBand;
+            eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
+            eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+          }}
         }}
 
         starGroupRefs.forEach((entry) => {{
+          if (activeTransitionObjects.has(entry.points)) return;
           entry.points.visible = threeSettings.ui.showStars;
           entry.points.material.size = threeSettings.stars.size;
           entry.points.material.opacity = threeSettings.stars.opacity;
@@ -3979,8 +4252,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           setSpriteHeight(entry.sprite, threeSettings.seasonal.markerLabelSize * threeSettings.seasonal.markerScale);
         }});
 
-        gridRefs.parallels.forEach((line) => {{ line.visible = threeSettings.ui.showGrid; }});
-        gridRefs.meridians.forEach((line) => {{ line.visible = threeSettings.ui.showGrid; }});
+        gridRefs.parallels.forEach((line) => {{ if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showGrid; }});
+        gridRefs.meridians.forEach((line) => {{ if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showGrid; }});
+        gridRefs.equatorialParallels.forEach((line) => {{ if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showEquatorialGrid; }});
+        gridRefs.equatorialMeridians.forEach((line) => {{ if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showEquatorialGrid; }});
         if (overlayLabel) {{
           overlayLabel.parentElement.style.display = threeSettings.ui.showOverlay ? "" : "none";
           overlayLabel.parentElement.style.fontSize = `${{threeSettings.overlay.fontSizeRem}}rem`;
@@ -3997,6 +4272,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const transitioningNakshatras = activeTransitionTargets.has("nakshatras");
         if (!transitioningNakshatras && !activeTransitionTargets.has("nakshatraLines")) {{
           nakshatraLineRefs.forEach((entry) => {{
+            if (activeTransitionObjects.has(entry.line)) return;
             const active = entry.metaIndex === st.selectedMetaIndex;
             const visible = threeSettings.ui.showNakshatraLines && st.visibleNakshatras[entry.nid] !== false;
             entry.line.visible = visible;
@@ -4006,6 +4282,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
         if (!transitioningNakshatras && !activeTransitionTargets.has("nakshatraLabels")) {{
           nakshatraLabelRefs.forEach((entry) => {{
+            if (activeTransitionObjects.has(entry.sprite)) return;
             const visible = threeSettings.ui.showNakshatraLabels && st.visibleNakshatras[entry.nid] !== false;
             entry.sprite.visible = visible;
             entry.sprite.material.opacity = visible ? threeSettings.nakshatras.labelOpacity : 0;
@@ -4014,6 +4291,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
         if (!activeTransitionTargets.has("stars")) {{
           starGroupRefs.forEach((entry) => {{
+            if (activeTransitionObjects.has(entry.points)) return;
             const visible = threeSettings.ui.showStars && (entry.nid === "__special__" || st.visibleNakshatras[entry.nid] !== false);
             entry.points.visible = visible;
             entry.points.material.opacity = visible ? threeSettings.stars.opacity : 0;
@@ -4066,7 +4344,6 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         controls.minDistance = threeSettings.camera.minDistance;
         controls.maxDistance = threeSettings.camera.maxDistance;
         controls.enablePan = false;
-        controls.addEventListener('start', () => stopStory());
 
         siderealGroup = new THREE.Group();
         scene.add(siderealGroup);
@@ -4074,6 +4351,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         scene.add(seasonalGroup);
 
         buildSphereGrid();
+        buildEquatorialGrid();
         buildReferencePrimitives();
         buildEclipticBand();
         buildEclipticCircle();
@@ -4093,21 +4371,26 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
       /* ── A1. Sphere wireframe ───────────────────────────── */
       function buildSphereGrid() {{
+        removeObjects(gridRefs.parallels, siderealGroup);
+        removeObjects(gridRefs.meridians, siderealGroup);
         const parMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.grid.parallelColor), transparent: true, opacity: threeSettings.grid.parallelOpacity }});
         const merMat = new THREE.LineBasicMaterial({{ color: new THREE.Color(threeSettings.grid.meridianColor), transparent: true, opacity: threeSettings.grid.meridianOpacity }});
-        for (let lat = -60; lat <= 60; lat += 30) {{
+        const step = gridStep(threeSettings.grid.eclipticStepDeg);
+        builtEclipticGridStep = step;
+        for (let lat = -90 + step; lat < 90; lat += step) {{
           if (lat === 0) continue;
           const g = new THREE.BufferGeometry().setFromPoints(circlePoints(lat, R * 0.995, 72));
           const line = new THREE.Line(g, parMat.clone());
           gridRefs.parallels.push(line);
           siderealGroup.add(line);
         }}
-        for (let lon = 0; lon < 360; lon += 30) {{
+        for (let lon = 0; lon < 360; lon += step) {{
           const g = new THREE.BufferGeometry().setFromPoints(meridianPoints(lon, R * 0.995, 72));
           const line = new THREE.Line(g, merMat.clone());
           gridRefs.meridians.push(line);
           siderealGroup.add(line);
         }}
+        if (eclipticPoleDots.length > 0) return;
         // ecliptic poles
         const poleMat = new THREE.MeshBasicMaterial({{ color: 0x8899aa }});
         const poleGeom = new THREE.SphereGeometry(1.2, 8, 8);
@@ -4135,6 +4418,33 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticPoleLabels.push(sepLabel);
         eclipticPoleRefs.push({{ key: 'SEP', kind: 'label', object: sepLabel }});
         siderealGroup.add(sepLabel);
+      }}
+
+      function buildEquatorialGrid() {{
+        removeObjects(gridRefs.equatorialParallels, seasonalGroup);
+        removeObjects(gridRefs.equatorialMeridians, seasonalGroup);
+        const mat = new THREE.LineBasicMaterial({{
+          color: new THREE.Color(threeSettings.grid.equatorialColor),
+          transparent: true,
+          opacity: threeSettings.grid.equatorialOpacity,
+        }});
+        const step = gridStep(threeSettings.grid.equatorialStepDeg);
+        builtEquatorialGridStep = step;
+        for (let dec = -90 + step; dec < 90; dec += step) {{
+          if (dec === 0) continue;
+          const line = new THREE.Line(new THREE.BufferGeometry(), mat.clone());
+          line.userData.gridKind = "parallel";
+          line.userData.decDeg = dec;
+          gridRefs.equatorialParallels.push(line);
+          seasonalGroup.add(line);
+        }}
+        for (let ra = 0; ra < 360; ra += step) {{
+          const line = new THREE.Line(new THREE.BufferGeometry(), mat.clone());
+          line.userData.gridKind = "meridian";
+          line.userData.raDeg = ra;
+          gridRefs.equatorialMeridians.push(line);
+          seasonalGroup.add(line);
+        }}
       }}
 
       function buildDiscFromRing(points) {{
@@ -4505,6 +4815,31 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         if (!st) return;
         const epoch = data.epochs[st.epochIndex];
         overlayLabel.textContent = epoch.label;
+        const xAxis = toCart(epoch.vernal_equinox_lon_deg, 0, 1).normalize();
+        const zAxis = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 1).normalize();
+        const yAxis = new THREE.Vector3().crossVectors(zAxis, xAxis).normalize();
+        const equatorialPoint = (raDeg, decDeg, radius) => {{
+          const ra = raDeg * Math.PI / 180;
+          const dec = decDeg * Math.PI / 180;
+          return new THREE.Vector3()
+            .addScaledVector(xAxis, Math.cos(dec) * Math.cos(ra))
+            .addScaledVector(yAxis, Math.cos(dec) * Math.sin(ra))
+            .addScaledVector(zAxis, Math.sin(dec))
+            .normalize()
+            .multiplyScalar(radius);
+        }};
+        const updateEquatorialLine = (line) => {{
+          const pts = [];
+          if (line.userData.gridKind === "parallel") {{
+            for (let ra = 0; ra <= 360; ra += 3) pts.push(equatorialPoint(ra, line.userData.decDeg, R * 0.993));
+          }} else {{
+            for (let dec = -90; dec <= 90; dec += 3) pts.push(equatorialPoint(line.userData.raDeg, dec, R * 0.993));
+          }}
+          line.geometry.dispose();
+          line.geometry = new THREE.BufferGeometry().setFromPoints(pts);
+        }};
+        gridRefs.equatorialParallels.forEach(updateEquatorialLine);
+        gridRefs.equatorialMeridians.forEach(updateEquatorialLine);
 
         const pts = [];
         for (let lon = 0; lon <= 360; lon += 2) {{
@@ -4601,7 +4936,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }});
         document.addEventListener("fullscreenchange", () => {{
           container.classList.toggle("theater-mode", document.fullscreenElement === container);
-          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Minimize" : "Fullscreen";
+          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Esc to Minimize" : "Fullscreen";
           onResize();
         }});
       }}

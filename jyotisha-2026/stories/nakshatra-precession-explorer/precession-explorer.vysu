@@ -1,0 +1,101 @@
+# title: Precession Explorer
+# version: 2
+# featured: true
+# group: Precession
+# tags: pole-track, top-view, thuban, polaris
+# order: 30
+# Top-down review of precession against the fixed nakshatra ring.
+
+# --- SECTION 1: Initialization & Staging ---
+# Transition to immersive mode and set the starting era.
+theater
+stage blank night year -4000
+camera pos 0,325,0.1 target 0,0,0 fov 42
+
+caption "Precession and Pole Star" 2000:300:450
+
+# --- SECTION 2: Celestial Landscape Build-up ---
+# Gradually reveal the stars and the nakshatra (asterism) line art.
+rollout stars 5000:
+rollout naks 5000:
+hide stars
+hide naks
+
+# Highlight the Ecliptic Band with its 27 segments.
+rollout eclipticNakSegments 5000:
+rollout stars 1000:
+rollout naks 1000:
+
+# Reveal mythical polar constellations (Shishumara and Matsya Dhruva).
+rollout sisumara 3000:
+rollout matsya 3000:
+
+# Set up polar reference markers.
+show northPolarItems 
+hide southPolarItems
+show poleTrack # The circle traced by the Earth's axis over ~26,000 years.
+
+show NP; # Current North Pole marker.
+show seasonalFrame # The Equator and Equinox/Solstice markers.
+
+flash precessionCircle 1500:
+
+# --- SECTION 3: The Drift of Time (Pole Star Transition) ---
+caption "The pole marker drifts as centuries pass" 3000:350:500
+
+flash NP 2000:
+flash seasonalFrame 2000:
+
+show overlay # Show the time/coordinate HUD.
+
+# Animation: 4000 BCE to 2800 BCE.
+travel -4000 to -2800 7000: step 100
+caption "Thuban becomes the north-pole marker near 2800 BCE" 5000:1000:500
+flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+
+# Animation: 2800 BCE to 2100 CE.
+travel -2800 to 2100 15000: step 100
+caption "Polaris becomes the north-pole marker near 2100 CE" 5000:1000:500
+flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+
+wait 5000
+
+# --- SECTION 4: Perspective View Exploration ---
+# Reset camera to a 3D perspective to see the tilt of the axis.
+stage blank night year -4000
+camera pos -147.464,73.504,234.757 target 0,0,0 fov 45
+
+caption "Visualize Precession" 1200:250:350
+ 
+rollout stars 5000:
+rollout naks 5000:
+hide eclipticGrid
+grid equatorial 10 red
+rollout equatorialGrid 5000:
+style nsAxis yellow
+rollout nsAxis 2000: # North-South physical axis of Earth.
+flash nsAxis
+wait 500
+show eclipticNakSegments 3000:
+show seasonalFrame
+flash seasonalFrame
+flash AE; hide AE; show AE; flash AE # Autumnal Equinox.
+flash SS; hide SS; show SS; flash SS # Summer Solstice.
+flash VE; hide VE; show VE; flash VE # Vernal Equinox.
+flash WS; hide WS; show WS; flash WS # Winter Solstice.
+show poleTrack
+
+show overlay
+# Repeat time drift in perspective view.
+travel -4000 to -2800 7000: step 100
+caption "Thuban becomes the north-pole marker near 2800 BCE" 5000:1000:500
+flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+
+travel -2800 to 2100 15000: step 100
+caption "Polaris becomes the north-pole marker near 2100 CE" 5000:1000:500
+flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+
+wait 5000
+
+# Exit theater mode and return to interactive canvas.
+canvas

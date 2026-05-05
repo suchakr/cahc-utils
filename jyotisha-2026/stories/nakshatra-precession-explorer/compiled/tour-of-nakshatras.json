@@ -1,0 +1,1157 @@
+{
+  "id": "tour-of-nakshatras",
+  "title": "Tour of Nakshatras",
+  "version": 1,
+  "vysu": "# title: Tour of Nakshatras\n# version: 1\n# featured: true\n# group: Tours\n# tags: nakshatra, sectors, star-shapes\n# order: 20\n# Tuned nakshatra tour source.\nstage blank twilight year -1800\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 48\ntheater\ncaption \"Tour of the 27 Nakshatras\" 3000:250:350\nwait 2000\ngrid ecliptic 10 blue\nwait 2000\n\nrollout stars 3000:\nrollout naks 3000:\nrollout eclipticNakSegments 3000:\n\ncamera pos 215.392,18.0,126.911 target 56.002,0,32.997 fov 38 650\ncaption \"01 · Aśvayuk\" 850:160:240\nflash $ash 650:\nflash *ash 650:\ncamera pos 180.319,18.0,173.162 target 46.883,0,45.022 fov 38 650\ncaption \"02 · Bharaṇī\" 850:160:240\nflash $bha 650:\nflash *bha 650:\ncamera pos 135.526,18.0,210.078 target 35.237,0,54.62 fov 38 650\ncaption \"03 · Kṛttikā\" 850:160:240\nflash $kri 650:\nflash *kri 650:\ncamera pos 83.423,18.0,235.671 target 21.69,0,61.274 fov 38 650\ncaption \"04 · Rohiṇī\" 850:160:240\nflash $roh 650:\nflash *roh 650:\ncamera pos 26.826,18.0,248.557 target 6.975,0,64.625 fov 38 650\ncaption \"05 · Mṛgaśira\" 850:160:240\nflash $mrg 650:\nflash *mrg 650:\ncamera pos -31.216,18.0,248.043 target -8.116,0,64.491 fov 38 650\ncaption \"06 · Ārdrā\" 850:160:240\nflash $ard 650:\nflash *ard 650:\ncamera pos -87.58,18.0,234.157 target -22.771,0,60.881 fov 38 650\ncaption \"07 · Punarvasu\" 850:160:240\nflash $pun 650:\nflash *pun 650:\ncamera pos -139.219,18.0,207.649 target -36.197,0,53.989 fov 38 650\ncaption \"08 · Puṣya\" 850:160:240\nflash $pus 650:\nflash *pus 650:\ncamera pos -183.352,18.0,169.947 target -47.672,0,44.186 fov 38 650\ncaption \"09 · Āśleṣā\" 850:160:240\nflash $asl 650:\nflash *asl 650:\ncamera pos -217.604,18.0,123.079 target -56.577,0,32.001 fov 38 650\ncaption \"10 · Maghā\" 850:160:240\nflash $mag 650:\nflash *mag 650:\ncamera pos -240.122,18.0,69.58 target -62.432,0,18.091 fov 38 650\ncaption \"11 · P Phalgunī\" 850:160:240\nflash $ppal 650:\nflash *ppal 650:\ncamera pos -249.696,18.0,12.33 target -64.921,0,3.206 fov 38 650\ncaption \"12 · U Phalgunī\" 850:160:240\nflash $upal 650:\nflash *upal 650:\ncamera pos -245.808,18.0,-45.589 target -63.91,0,-11.853 fov 38 650\ncaption \"13 · Hasta\" 850:160:240\nflash $has 650:\nflash *has 650:\ncamera pos -228.669,18.0,-101.046 target -59.454,0,-26.272 fov 38 650\ncaption \"14 · Citrā\" 850:160:240\nflash $chi 650:\nflash *chi 650:\ncamera pos -199.204,18.0,-151.056 target -51.793,0,-39.275 fov 38 650\ncaption \"15 · Svātī\" 850:160:240\nflash $swa 650:\nflash *swa 650:\ncamera pos -158.996,18.0,-192.926 target -41.339,0,-50.161 fov 38 650\ncaption \"16 · Viśākhā\" 850:160:240\nflash $vis 650:\nflash *vis 650:\ncamera pos -110.22,18.0,-224.392 target -28.657,0,-58.342 fov 38 650\ncaption \"17 · Anūrādhā\" 850:160:240\nflash $anu 650:\nflash *anu 650:\ncamera pos -55.502,18.0,-243.761 target -14.431,0,-63.378 fov 38 650\ncaption \"18 · Jyeṣṭhā\" 850:160:240\nflash $jye 650:\nflash *jye 650:\ncamera pos 2.212,18.0,-249.99 target 0.575,0,-64.997 fov 38 650\ncaption \"19 · Mūla\" 850:160:240\nflash $mul 650:\nflash *mul 650:\ncamera pos 59.803,18.0,-242.742 target 15.549,0,-63.113 fov 38 650\ncaption \"20 · P Aṣāḍhā\" 850:160:240\nflash $pash 650:\nflash *pash 650:\ncamera pos 114.17,18.0,-222.408 target 29.684,0,-57.826 fov 38 650\ncaption \"21 · U Aṣāḍhā\" 850:160:240\nflash $uash 650:\nflash *uash 650:\ncamera pos 162.385,18.0,-190.082 target 42.22,0,-49.421 fov 38 650\ncaption \"22 · Śravaṇa\" 850:160:240\nflash $shr 650:\nflash *shr 650:\ncamera pos 201.843,18.0,-147.511 target 52.479,0,-38.353 fov 38 650\ncaption \"23 · Dhaniṣṭhā\" 850:160:240\nflash $dha 650:\nflash *dha 650:\ncamera pos 230.42,18.0,-96.987 target 59.909,0,-25.217 fov 38 650\ncaption \"24 · Śatabhiṣak\" 850:160:240\nflash $sha 650:\nflash *sha 650:\ncamera pos 246.576,18.0,-41.232 target 64.11,0,-10.72 fov 38 650\ncaption \"25 · P Proṣṭapada\" 850:160:240\nflash $pbha 650:\nflash *pbha 650:\ncamera pos 249.439,18.0,16.743 target 64.854,0,4.353 fov 38 650\ncaption \"26 · U Proṣṭapada\" 850:160:240\nflash $ubha 650:\nflash *ubha 650:\ncamera pos 238.854,18.0,73.814 target 62.102,0,19.192 fov 38 650\ncaption \"27 · Revatī\" 850:160:240\nflash $rev 650:\nflash *rev 650:\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900\ncaption \"Nakṣatra 27 equal sectors and 27 star shapes\" 9000:250:350\n",
+  "cues": [
+    {
+      "at": 0,
+      "action": "fullscreen"
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 3000,
+      "fadeIn": 250,
+      "fadeOut": 350,
+      "text": "Tour of the 27 Nakshatras"
+    },
+    {
+      "at": "+2000",
+      "action": "set",
+      "state": {
+        "grid": {
+          "eclipticStepDeg": 10.0,
+          "parallelColor": "blue",
+          "meridianColor": "blue"
+        },
+        "ui": {
+          "showGrid": true
+        }
+      }
+    },
+    {
+      "at": "+2000",
+      "action": "reveal",
+      "target": "stars",
+      "mode": "rollout",
+      "duration": 3000
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "nakshatras",
+      "mode": "rollout",
+      "duration": 3000
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "eclipticNakSegments",
+      "mode": "rollout",
+      "duration": 3000
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 215.392,
+          "y": 18.0,
+          "z": 126.911
+        },
+        "target": {
+          "x": 56.002,
+          "y": 0.0,
+          "z": 32.997
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "01 · Aśvayuk"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$ash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*ash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 180.319,
+          "y": 18.0,
+          "z": 173.162
+        },
+        "target": {
+          "x": 46.883,
+          "y": 0.0,
+          "z": 45.022
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "02 · Bharaṇī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$bha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*bha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 135.526,
+          "y": 18.0,
+          "z": 210.078
+        },
+        "target": {
+          "x": 35.237,
+          "y": 0.0,
+          "z": 54.62
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "03 · Kṛttikā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$kri",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*kri",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 83.423,
+          "y": 18.0,
+          "z": 235.671
+        },
+        "target": {
+          "x": 21.69,
+          "y": 0.0,
+          "z": 61.274
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "04 · Rohiṇī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$roh",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*roh",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 26.826,
+          "y": 18.0,
+          "z": 248.557
+        },
+        "target": {
+          "x": 6.975,
+          "y": 0.0,
+          "z": 64.625
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "05 · Mṛgaśira"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$mrg",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*mrg",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -31.216,
+          "y": 18.0,
+          "z": 248.043
+        },
+        "target": {
+          "x": -8.116,
+          "y": 0.0,
+          "z": 64.491
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "06 · Ārdrā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$ard",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*ard",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -87.58,
+          "y": 18.0,
+          "z": 234.157
+        },
+        "target": {
+          "x": -22.771,
+          "y": 0.0,
+          "z": 60.881
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "07 · Punarvasu"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$pun",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*pun",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -139.219,
+          "y": 18.0,
+          "z": 207.649
+        },
+        "target": {
+          "x": -36.197,
+          "y": 0.0,
+          "z": 53.989
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "08 · Puṣya"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$pus",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*pus",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -183.352,
+          "y": 18.0,
+          "z": 169.947
+        },
+        "target": {
+          "x": -47.672,
+          "y": 0.0,
+          "z": 44.186
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "09 · Āśleṣā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$asl",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*asl",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -217.604,
+          "y": 18.0,
+          "z": 123.079
+        },
+        "target": {
+          "x": -56.577,
+          "y": 0.0,
+          "z": 32.001
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "10 · Maghā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$mag",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*mag",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -240.122,
+          "y": 18.0,
+          "z": 69.58
+        },
+        "target": {
+          "x": -62.432,
+          "y": 0.0,
+          "z": 18.091
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "11 · P Phalgunī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$ppal",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*ppal",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -249.696,
+          "y": 18.0,
+          "z": 12.33
+        },
+        "target": {
+          "x": -64.921,
+          "y": 0.0,
+          "z": 3.206
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "12 · U Phalgunī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$upal",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*upal",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -245.808,
+          "y": 18.0,
+          "z": -45.589
+        },
+        "target": {
+          "x": -63.91,
+          "y": 0.0,
+          "z": -11.853
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "13 · Hasta"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$has",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*has",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -228.669,
+          "y": 18.0,
+          "z": -101.046
+        },
+        "target": {
+          "x": -59.454,
+          "y": 0.0,
+          "z": -26.272
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "14 · Citrā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$chi",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*chi",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -199.204,
+          "y": 18.0,
+          "z": -151.056
+        },
+        "target": {
+          "x": -51.793,
+          "y": 0.0,
+          "z": -39.275
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "15 · Svātī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$swa",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*swa",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -158.996,
+          "y": 18.0,
+          "z": -192.926
+        },
+        "target": {
+          "x": -41.339,
+          "y": 0.0,
+          "z": -50.161
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "16 · Viśākhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$vis",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*vis",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -110.22,
+          "y": 18.0,
+          "z": -224.392
+        },
+        "target": {
+          "x": -28.657,
+          "y": 0.0,
+          "z": -58.342
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "17 · Anūrādhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$anu",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*anu",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -55.502,
+          "y": 18.0,
+          "z": -243.761
+        },
+        "target": {
+          "x": -14.431,
+          "y": 0.0,
+          "z": -63.378
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "18 · Jyeṣṭhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$jye",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*jye",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 2.212,
+          "y": 18.0,
+          "z": -249.99
+        },
+        "target": {
+          "x": 0.575,
+          "y": 0.0,
+          "z": -64.997
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "19 · Mūla"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$mul",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*mul",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 59.803,
+          "y": 18.0,
+          "z": -242.742
+        },
+        "target": {
+          "x": 15.549,
+          "y": 0.0,
+          "z": -63.113
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "20 · P Aṣāḍhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$pash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*pash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 114.17,
+          "y": 18.0,
+          "z": -222.408
+        },
+        "target": {
+          "x": 29.684,
+          "y": 0.0,
+          "z": -57.826
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "21 · U Aṣāḍhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$uash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*uash",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 162.385,
+          "y": 18.0,
+          "z": -190.082
+        },
+        "target": {
+          "x": 42.22,
+          "y": 0.0,
+          "z": -49.421
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "22 · Śravaṇa"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$shr",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*shr",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 201.843,
+          "y": 18.0,
+          "z": -147.511
+        },
+        "target": {
+          "x": 52.479,
+          "y": 0.0,
+          "z": -38.353
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "23 · Dhaniṣṭhā"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$dha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*dha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 230.42,
+          "y": 18.0,
+          "z": -96.987
+        },
+        "target": {
+          "x": 59.909,
+          "y": 0.0,
+          "z": -25.217
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "24 · Śatabhiṣak"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$sha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*sha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 246.576,
+          "y": 18.0,
+          "z": -41.232
+        },
+        "target": {
+          "x": 64.11,
+          "y": 0.0,
+          "z": -10.72
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "25 · P Proṣṭapada"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$pbha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*pbha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 249.439,
+          "y": 18.0,
+          "z": 16.743
+        },
+        "target": {
+          "x": 64.854,
+          "y": 0.0,
+          "z": 4.353
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "26 · U Proṣṭapada"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$ubha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*ubha",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 238.854,
+          "y": 18.0,
+          "z": 73.814
+        },
+        "target": {
+          "x": 62.102,
+          "y": 0.0,
+          "z": 19.192
+        },
+        "fov": 38.0
+      },
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 850,
+      "fadeIn": 160,
+      "fadeOut": 240,
+      "text": "27 · Revatī"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "$rev",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "*rev",
+      "duration": 650
+    },
+    {
+      "at": "+0",
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -147.464,
+          "y": 73.504,
+          "z": 234.757
+        },
+        "target": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "fov": 45.0
+      },
+      "duration": 900
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 9000,
+      "fadeIn": 250,
+      "fadeOut": 350,
+      "text": "Nakṣatra 27 equal sectors and 27 star shapes"
+    }
+  ],
+  "featured": true,
+  "group": "Tours",
+  "tags": [
+    "nakshatra",
+    "sectors",
+    "star-shapes"
+  ],
+  "order": 20.0,
+  "initial": {
+    "ui": {
+      "showGrid": false,
+      "showEquatorialGrid": false,
+      "showReferencePlanes": false,
+      "showEclipticPlane": false,
+      "showEquatorialPlane": false,
+      "showNsAxis": false,
+      "showEclipticBand": false,
+      "showEclipticDividers": false,
+      "showEclipticLabels": false,
+      "showEclipticPoles": false,
+      "showStars": false,
+      "showNakshatraLines": false,
+      "showNakshatraLabels": false,
+      "showPolarItems": false,
+      "showNorthPolarItems": false,
+      "showSouthPolarItems": false,
+      "showNEP": false,
+      "showSEP": false,
+      "showNP": false,
+      "showSP": false,
+      "showPoleTrack": false,
+      "showSeasonalFrame": false,
+      "showOverlay": false
+    },
+    "lightPreset": "twilight",
+    "epochYear": -1800,
+    "camera": {
+      "position": {
+        "x": -147.464,
+        "y": 73.504,
+        "z": 234.757
+      },
+      "target": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "fov": 48.0
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "top-view-precession",
+  "title": "Top View of Precession",
+  "version": 1,
+  "vysu": "# title: Top View of Precession\n# version: 1\n# featured: false\n# group: Precession\n# tags: pole-track, top-view, thuban, polaris\n# order: 30\n# Top-down review of precession against the fixed nakshatra ring.\nstage blank night year -3000\ncamera pos 0,325,0.1 target 0,0,0 fov 42\nshow eclipticNakSegments ; show eclipticPoles ; show stars ; show naks\nshow northPolarItems ; hide southPolarItems\nshow poleTrack ; show seasonalFrame ; show overlay\ncaption \"Precession from above the ecliptic pole\" 1600:300:450\nflash precessionCircle 1500:\ncaption \"The pole marker approaches Thuban around 2300 BCE\" 2100:350:500\ntravel -3000 to 2000 9000: step 100\ncaption \"Polaris becomes the north-pole marker near 1900 CE\" 2200:350:500\n",
+  "cues": [
+    {
+      "at": 0,
+      "action": "reveal",
+      "target": "eclipticNakSegments"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "eclipticPoles"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "stars"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "nakshatras"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "northPolarItems"
+    },
+    {
+      "at": "+0",
+      "action": "hide",
+      "target": "southPolarItems"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "poleTrack"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "seasonalFrame"
+    },
+    {
+      "at": "+0",
+      "action": "reveal",
+      "target": "overlay"
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 1600,
+      "fadeIn": 300,
+      "fadeOut": 450,
+      "text": "Precession from above the ecliptic pole"
+    },
+    {
+      "at": "+0",
+      "action": "flash",
+      "target": "precessionCircle",
+      "duration": 1500
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 2100,
+      "fadeIn": 350,
+      "fadeOut": 500,
+      "text": "The pole marker approaches Thuban around 2300 BCE"
+    },
+    {
+      "at": "+0",
+      "action": "epochTravel",
+      "from": -3000,
+      "to": 2000,
+      "duration": 9000,
+      "step": 100
+    },
+    {
+      "at": "+0",
+      "action": "caption",
+      "duration": 2200,
+      "fadeIn": 350,
+      "fadeOut": 500,
+      "text": "Polaris becomes the north-pole marker near 1900 CE"
+    }
+  ],
+  "group": "Precession",
+  "tags": [
+    "pole-track",
+    "top-view",
+    "thuban",
+    "polaris"
+  ],
+  "order": 30.0,
+  "initial": {
+    "ui": {
+      "showGrid": false,
+      "showEquatorialGrid": false,
+      "showReferencePlanes": false,
+      "showEclipticPlane": false,
+      "showEquatorialPlane": false,
+      "showNsAxis": false,
+      "showEclipticBand": false,
+      "showEclipticDividers": false,
+      "showEclipticLabels": false,
+      "showEclipticPoles": false,
+      "showStars": false,
+      "showNakshatraLines": false,
+      "showNakshatraLabels": false,
+      "showPolarItems": false,
+      "showNorthPolarItems": false,
+      "showSouthPolarItems": false,
+      "showNEP": false,
+      "showSEP": false,
+      "showNP": false,
+      "showSP": false,
+      "showPoleTrack": false,
+      "showSeasonalFrame": false,
+      "showOverlay": false
+    },
+    "lightPreset": "night",
+    "epochYear": -3000,
+    "camera": {
+      "position": {
+        "x": 0.0,
+        "y": 325.0,
+        "z": 0.1
+      },
+      "target": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "fov": 42.0
+    }
+  }
+}

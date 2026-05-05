@@ -4,14 +4,19 @@ Use this when authoring or editing build-time 3D stories for the `nakshatra-prec
 
 ## Goal
 
-Create valid story JSON that drives the existing 3D sky without writing JavaScript. Stories should be small, readable, and easy to tune in the page's Stories dock.
+Create valid VyomaSutra or story JSON that drives the existing 3D sky without writing JavaScript. Stories should be small, readable, and easy to tune in the page's Stories dock.
 
 ## Files
 
-- Put stories in `stories/nakshatra-precession-explorer/`.
-- Name each file `<id>.json`.
-- The JSON top-level `id` must exactly match the filename stem.
-- Regenerate the lab page after adding or editing story files.
+- Put author-facing stories in `stories/nakshatra-precession-explorer/`.
+- Prefer `<id>.vysu` as source. Use `# title: ...`, `# version: 1`, and optional discovery metadata comments such as `# featured: true`, `# group: Tours`, `# tags: nakshatra, sectors`, and `# order: 20`.
+- Generated JSON lives in `stories/nakshatra-precession-explorer/compiled/`; do not hand-edit compiled files.
+- Legacy `<id>.json` files are still accepted and copied into `compiled/`.
+- Run `uv run python scripts/compile_stories.py nakshatra-precession-explorer` after story-only edits. This avoids the astropy-heavy page rebuild and patches the existing lab page story payload.
+- The fast compiler treats current `.vysu`/root `.json` files as the source of truth: stale compiled files and stale embedded page stories are removed from the generated story inventory.
+- Run `uv run python scripts/nakshatra_precession_explorer.py` only when data, page structure, generated stories, or major assets change.
+- The generated deployable page emits `assets/css/explorer.css` as the live CSS and `assets/js/three-explorer.js` as an inspectable copy of the inline 3D/VyomaSutra module. The module stays inline in `index.html` so `file://` viewing remains functional.
+- Run the lab through `netlify dev --dir lab` from the `jyotisha-2026` repo root for behavior closest to deploy.
 
 ## Required Shape
 
@@ -26,6 +31,26 @@ Create valid story JSON that drives the existing 3D sky without writing JavaScri
 ```
 
 Required keys are `id`, `title`, `version`, and `cues`. `initial` is optional.
+
+For `.vysu`, `id` comes from the filename stem and `title` comes from `# title: ...`.
+
+## Discovery Metadata
+
+Build-time `.vysu` files can start with metadata comments:
+
+```text
+# title: Tour of Nakshatras
+# version: 1
+# featured: true
+# group: Tours
+# tags: nakshatra, sectors, star-shapes
+# order: 20
+```
+
+- `# featured: true` makes the story eligible for the top 3D story pill row.
+- The pill row shows at most five featured stories after applying the search filter.
+- The Stories dock select uses the same searchable story inventory.
+- `# group:`, `# tags:`, `# order:`, title, and id are searchable or sortable metadata only; they do not change runtime behavior.
 
 ## Formal-ish Grammar
 
@@ -125,7 +150,10 @@ Target =
   "nakshatraLines" | "nakshatraLabels" | "polarItems" |
   "northPolarItems" | "southPolarItems" | "poleTrack" |
   "precessionCircle" | "seasonalFrame" | "overlay" |
-  "NEP" | "SEP" | "NP" | "SP" | sigil-nakshatra-target
+  "NEP" | "SEP" | "NP" | "SP" |
+  "equator" | "VE" | "SS" | "AE" | "WS" |
+  "agastya" | "thuban" | "polaris" | "matsya" | "sisumara" |
+  sigil-nakshatra-target
 ```
 
 Use array `cues` for real stories. `CueMap` is accepted for compact experiments, but JSON cannot repeat keys like `"+500"`.
@@ -256,6 +284,8 @@ Supported targets:
 - `seasonalFrame`
 - `overlay`
 - `NEP`, `SEP`, `NP`, `SP`
+- `equator`, `VE`, `SS`, `AE`, `WS`
+- `agastya`, `thuban`, `polaris`, `matsya`, `sisumara`
 - sigil nakshatra targets such as `$ash`, `*ash`, and `@ash` for flash/focus-style cues
 
 Supported modes are `instant`, `fade`, `stagger`, and `rollout`. Most stories should omit `mode`, `order`, `direction`, and `duration`; defaults are target-specific.
@@ -438,6 +468,8 @@ For tolerance while tuning, `camera` cues also accept `state.camera`, but prefer
 Keep captions short. They should support the visual, not narrate everything.
 
 `fadeIn` and `fadeOut` set the actual opacity-transition duration in milliseconds. `duration` is the total caption lifetime from cue start; fade-out begins at `duration - fadeOut`.
+
+VyomaSutra captions accept color names/hex colors and `size NUMBER`, for example `caption "Thuban era" gold size 4 1500:300:300`.
 
 ## Epoch Travel
 

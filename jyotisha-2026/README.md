@@ -46,6 +46,19 @@ This repository uses `uv` discipline for agent work.
 - Manage dependencies with `uv add` and `uv sync`
 - Keep dependency truth in `pyproject.toml`
 
+## Story Authoring
+
+For `nakshatra-precession-explorer`, build-time 3D stories are authored as VyomaSutra source files:
+
+- Source: `stories/nakshatra-precession-explorer/*.vysu`
+- Compiled JSON: `stories/nakshatra-precession-explorer/compiled/*.json`
+- Fast story-only update: `uv run python scripts/compile_stories.py nakshatra-precession-explorer`
+- Heavy astronomy/page rebuild: `uv run python scripts/nakshatra_precession_explorer.py`
+
+Use the fast compiler for story wording, timing, camera, and target changes. Use the heavy generator only when data, page structure, generated stories, or shared visual assets change.
+
+Story inventory is file-backed. Add or edit a `.vysu` file, run the fast compiler, and the lab page story list is replaced from current sources. Add `# featured: true` to make a story eligible for the top 3D pill row; the UI shows up to five featured matches, with search available for larger sets.
+
 ## Publishing
 
 `lab/` is the publish root for both local browsing and Netlify CLI deploys.

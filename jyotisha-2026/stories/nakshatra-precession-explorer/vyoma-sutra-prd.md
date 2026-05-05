@@ -1,6 +1,6 @@
 # VyomaSutra PRD
 
-Status: proposed
+Status: implemented baseline; evolving grammar
 Parent exploration: `nakshatra-precession-explorer`
 Compiled target: story JSON described in `SKILL.md`
 
@@ -74,10 +74,15 @@ VyomaSutra should let the user express intent quickly, then compile into strict 
 Phase 1:
 
 - user writes or pastes VyomaSutra text in a scratch/editor surface
+- build-time story sources may live as `stories/nakshatra-precession-explorer/<id>.vysu`
+- `uv run python scripts/compile_stories.py nakshatra-precession-explorer` compiles `.vysu` to `stories/nakshatra-precession-explorer/compiled/*.json` without astropy
+- the fast compiler also patches `lab/nakshatra-precession-explorer/index.html` story data and writes `lab/nakshatra-precession-explorer/stories.json`
+- story inventory is file-backed: current `.vysu`/root `.json` sources replace the generated story list, so stale compiled or embedded stories do not remain visible
 - browser interpreter compiles it just in time to story JSON
 - compiled JSON is shown for inspection
 - user runs compiled JSON in the existing story runner
-- no precompile step and no save semantics beyond existing manual file edits
+- no browser-side save semantics beyond existing manual file edits
+- generated CSS is emitted under `lab/nakshatra-precession-explorer/assets/css/`; an inspectable copy of the 3D/VyomaSutra module is emitted under `assets/js/`, while the executable module remains inline for `file://` compatibility
 
 Phase 2:
 
@@ -86,6 +91,7 @@ Phase 2:
 - inline warnings
 - alias suggestions
 - copy compiled JSON button
+- fuller grammar extraction so browser and Python compilers share one spec/test corpus
 
 Phase 3:
 
@@ -114,6 +120,19 @@ VyomaSutra has five kinds of line:
 - `wait/comment`: pacing and annotation
 
 Each line compiles to one or more JSON cues.
+
+Build-time files may include discovery metadata comments:
+
+```text
+# title: Visualize Precession
+# version: 1
+# featured: true
+# group: Precession
+# tags: intro, seasonal-frame
+# order: 10
+```
+
+`featured` makes the story eligible for the top 3D story pill row. The UI shows up to five featured matches and uses the same search text for the top pills and the Stories dock select. If the project grows to dozens or hundreds of stories, this keeps the visible chrome small while preserving quick lookup by title, id, group, or tags.
 
 ## Quick Examples
 
@@ -203,6 +222,7 @@ NEP
 SEP
 
 equator.line
+equator
 equator.grid
 equatorialPlane
 eclipticPlane
@@ -229,6 +249,11 @@ polarItems.north.stars
 polarItems.south.lines
 polarItems.south.labels
 polarItems.south.stars
+matsya
+sisumara
+thuban
+polaris
+agastya
 ```
 
 Required individual addressability:
@@ -241,6 +266,8 @@ Required individual addressability:
 - each nakshatra star group
 - each nakshatra line/label group
 - each special star, including `Agastya`
+- named polar figures/stars: `matsya`, `sisumara`, `thuban`, `polaris`
+- seasonal primitives: `equator`, `VE`, `SS`, `AE`, `WS`
 
 ## Alias Policy
 
@@ -261,6 +288,10 @@ Examples:
 | `stars.specialStars` | `specialStars` |
 | `stars.nakshatraStars` | `nakStars`, `naksStars` |
 | `Agastya` | `agastya`, `canopus` |
+| `Thuban` | `thuban`, `abhayaDhruva` |
+| `Polaris` | `polaris`, `matsyaDhruva` |
+| `Matsya` | `matsya` |
+| `Śiśumāra` | `sisumara`, `shishumara`, `shimshumara` |
 
 Nakshatra aliases should support:
 
@@ -374,7 +405,7 @@ cameraArgs     ::= ("pos" vec3)? ("target" vec3)? ("fov" number)?
 travelStmt     ::= ("travel" | "epochTravel") number "to" number durationArg? ("step" number)?
 gridStmt       ::= "grid" ("ecliptic" | "ecl" | "equatorial" | "equator" | "eq") number colorSpec?
 captionStmt    ::= ("caption" | "say" | "title") captionArg*
-captionArg     ::= quotedText | durationArg | colorSpec | sizeSpec | alphaSpec | locationSpec | fadeArg
+captionArg     ::= quotedText | durationArg | colorSpec | "size" number | alphaSpec | locationSpec | fadeArg
 fadeArg        ::= "fadeIn" number | "fadeOut" number
 waitStmt       ::= "wait" number ("ms")?
 flashStmt      ::= "flash" targetSpec durationArg?

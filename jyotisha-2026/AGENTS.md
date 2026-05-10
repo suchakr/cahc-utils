@@ -9,6 +9,8 @@ This repository is an agentic exploration lab. Prefer low-churn execution: turn 
 - Use `uv` for environment and dependency discipline.
 - Prefer `uv run python ...` for runnable scripts.
 - Prefer `uv add ...` and `uv sync` for dependency changes.
+- Use Node only for interactive app explorations that need a frontend build step.
+- Keep Node app source under `apps/<slug>/`; build its static output into `lab/<slug>/`.
 - Do not create ad hoc virtualenv workflows unless explicitly asked.
 - Treat `lab/` as the publishable browsing surface.
 - Keep repo structure lightweight. Add architecture only when repeated reuse justifies it.
@@ -25,6 +27,13 @@ When the user proposes a new study or visualization:
 6. Create or update a runnable script in `scripts/`.
 7. Put outputs in `lab/<slug>/`.
 8. Add an entry to `lab/index.html`.
+
+For interactive JSX/React app explorations:
+
+1. Put source in `apps/<slug>/`.
+2. Keep app-specific PRDs and implementation notes beside the app source.
+3. Configure the app build to emit static files into `lab/<slug>/`.
+4. Keep `lab/<slug>/` as generated publish output, not the source of truth.
 
 ## Titles, Slugs, and Paths
 

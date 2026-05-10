@@ -37,6 +37,17 @@
           <button
             class="exploration-link"
             type="button"
+            data-title="Jyotiṣa Bodha"
+            data-slug="phalita-intro"
+            data-path="phalita-intro/index.html"
+            data-description="Pedagogic phalita Jyotiṣa widget showing rāśi schema, lagna transformation, LOYAKS, and life-area synthesis."
+          >
+            <span class="exploration-title">Jyotiṣa Bodha</span>
+            <span class="exploration-meta">Phalita as a layered algorithmic teaching widget</span>
+          </button>
+          <button
+            class="exploration-link"
+            type="button"
             data-title="27 Nakshatra Heliacal Rising"
             data-slug="heliacal-rising-27-naks"
             data-path="heliacal-rising-27-naks/index.html"
@@ -60,6 +71,10 @@
             <p class="viewer-subtitle" id="viewer-subtitle">
               Joined 27/28 nakshatra metadata and a projected precession view of the drifting seasonal frame.
             </p>
+          </div>
+          <div class="viewer-actions">
+            <a class="ghost-button" id="focused-link" href="nakshatra-precession-explorer/index.html">Focused</a>
+            <button class="ghost-button" id="copy-focused-button" type="button">Copy URL</button>
           </div>
         </header>
 
@@ -95,6 +110,8 @@
       const frame = document.getElementById("exploration-frame");
       const viewerTitle = document.getElementById("viewer-title");
       const viewerSubtitle = document.getElementById("viewer-subtitle");
+      const focusedLink = document.getElementById("focused-link");
+      const copyFocusedButton = document.getElementById("copy-focused-button");
       const links = Array.from(document.querySelectorAll(".exploration-link"));
       const searchInput = document.getElementById("search-input");
       const collapseButton = document.getElementById("collapse-button");
@@ -106,19 +123,61 @@
       const closeAboutButton = document.getElementById("close-about-button");
       const storageKey = "jyotisha-2026-sidebar-width";
 
-      function setActive(button) {
+      function directUrl(button) {
+        return new URL(button.dataset.path, window.location.href).href;
+      }
+
+      function shellUrl(button) {
+        const url = new URL(window.location.href);
+        url.hash = button.dataset.slug;
+        return url.href;
+      }
+
+      function setActive(button, options = {}) {
+        const { updateHash = true } = options;
         links.forEach((link) => link.classList.toggle("active", link === button));
         viewerTitle.textContent = button.dataset.title;
         viewerSubtitle.textContent = button.dataset.description;
         frame.src = button.dataset.path;
+        focusedLink.href = button.dataset.path;
+        focusedLink.title = `Open ${button.dataset.title} without the lab shell`;
+        copyFocusedButton.dataset.url = directUrl(button);
+        copyFocusedButton.textContent = "Copy URL";
+        if (updateHash && window.location.hash !== `#${button.dataset.slug}`) {
+          history.replaceState(null, "", shellUrl(button));
+        }
         if (window.innerWidth <= 860) {
           shell.classList.remove("sidebar-open");
         }
       }
 
+      function activeFromHash() {
+        const slug = decodeURIComponent(window.location.hash.replace(/^#/, "").trim());
+        return links.find((button) => button.dataset.slug === slug) || links.find((button) => button.classList.contains("active")) || links[0];
+      }
+
       links.forEach((button) => {
         button.addEventListener("click", () => setActive(button));
       });
+
+      copyFocusedButton.addEventListener("click", async () => {
+        const url = copyFocusedButton.dataset.url;
+        try {
+          await navigator.clipboard.writeText(url);
+          copyFocusedButton.textContent = "Copied";
+          window.setTimeout(() => {
+            copyFocusedButton.textContent = "Copy URL";
+          }, 1400);
+        } catch {
+          window.prompt("Focused exploration URL", url);
+        }
+      });
+
+      window.addEventListener("hashchange", () => {
+        setActive(activeFromHash(), { updateHash: false });
+      });
+
+      setActive(activeFromHash(), { updateHash: !window.location.hash });
 
       searchInput.addEventListener("input", () => {
         const query = searchInput.value.trim().toLowerCase();

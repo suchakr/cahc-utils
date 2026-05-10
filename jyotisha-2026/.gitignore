@@ -3,6 +3,11 @@
 __pycache__/
 *.pyc
 .DS_Store
+*~*
+node_modules/
+.npm/
+.vite/
+dist/
 tmp/
 lab/**/plots/
 lab/**/tables/

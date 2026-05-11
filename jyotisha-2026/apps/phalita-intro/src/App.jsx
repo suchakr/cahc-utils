@@ -195,7 +195,7 @@ export default function App() {
   const vislesanaSpeedMs = 2500*speedMult;
 
   return (
-    <div style={{ minHeight:"100vh", background:th.bg, color:th.text,
+    <div className={`app-root ${showChart ? "has-chart" : "no-chart"}`} style={{ minHeight:"100vh", background:th.bg, color:th.text,
       fontFamily:"Georgia,serif", transition:"background 0.4s" }}>
       <style>{`
         *{box-sizing:border-box;}
@@ -228,7 +228,20 @@ export default function App() {
           .rail-sub{display:none;}
           .main-grid{grid-template-columns:1fr!important;}
           .chart-col{max-width:100%;position:sticky;top:0;z-index:2;}
-          .panel-col{padding:10px;max-height:46vh;overflow-y:auto;}
+          .panel-col{padding:8px;max-height:calc(100dvh - 112px);overflow-y:auto;}
+          .has-chart .panel-col{max-height:52vh;}
+          .sandarbha-panel{line-height:1.35;}
+          .sandarbha-heading{margin-bottom:5px!important;letter-spacing:1px!important;}
+          .sandarbha-tabs{margin-bottom:8px!important;}
+          .sandarbha-tab{padding:4px 7px!important;font-size:13px!important;}
+          .sandarbha-panel table th,
+          .sandarbha-panel table td{padding:4px 5px!important;line-height:1.25!important;}
+          .sandarbha-note{margin-bottom:7px!important;line-height:1.35!important;}
+          .sandarbha-card-grid{gap:7px!important;margin-bottom:8px!important;}
+          .sandarbha-card{padding:7px!important;min-width:132px!important;}
+          .sandarbha-card-title{margin-bottom:3px!important;}
+          .sandarbha-paddhati{line-height:1.45!important;}
+          .sandarbha-paddhati-item{margin-bottom:10px!important;padding-left:8px!important;}
           .static-narrator{margin-bottom:7px!important;padding-left:6px!important;line-height:1.4!important;}
           .narration-log{padding:7px 8px!important;}
           .narration-entry{padding-left:7px!important;margin-bottom:8px!important;}

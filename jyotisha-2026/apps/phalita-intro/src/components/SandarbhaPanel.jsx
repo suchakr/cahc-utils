@@ -10,15 +10,15 @@ export function SandarbhaPanel({ th }) {
   const tdS = (extra={}) => ({ padding:"7px 8px", fontSize:15, borderBottom:`1px solid ${th.tabBorder}`, ...extra });
 
   return (
-    <div>
-      <div style={{ fontSize:13, color:th.textDim, letterSpacing:2, marginBottom:8 }}>SANDARBHA KOŚA · Universal Reference</div>
+    <div className="sandarbha-panel">
+      <div className="sandarbha-heading" style={{ fontSize:13, color:th.textDim, letterSpacing:2, marginBottom:8 }}>SANDARBHA KOŚA · Universal Reference</div>
       <div className="static-narrator" style={{ fontSize:14, color:th.textFaint, marginBottom:10, fontStyle:"italic",
         borderLeft:`2px solid ${th.panelBorder}`, paddingLeft:8 }}>
         Sthira (fixed) constants — birth-independent. Every chart shares this substrate.
       </div>
-      <div style={{ display:"flex", borderBottom:`1px solid ${th.tabBorder}`, marginBottom:16, flexWrap:"wrap" }}>
+      <div className="sandarbha-tabs" style={{ display:"flex", borderBottom:`1px solid ${th.tabBorder}`, marginBottom:16, flexWrap:"wrap" }}>
         {tabs.map(t=>(
-          <button key={t} onClick={()=>setSec(t)} style={{
+          <button className="sandarbha-tab" key={t} onClick={()=>setSec(t)} style={{
             background:"none", border:"none",
             borderBottom:sec===t?`2px solid ${th.accent}`:"2px solid transparent",
             color:sec===t?th.text:th.textDim,
@@ -74,18 +74,18 @@ export function SandarbhaPanel({ th }) {
 
       {sec==="bhāva"&&(
         <div style={{ overflowX:"auto" }}>
-          <div style={{ fontSize:15, color:th.textFaint, marginBottom:12, lineHeight:1.7 }}>
+          <div className="sandarbha-note" style={{ fontSize:15, color:th.textFaint, marginBottom:12, lineHeight:1.7 }}>
             The three fundamental classifications determine a bhāva's functional character. A bhāva can belong to more than one class.
           </div>
-          <div style={{ display:"flex", gap:16, marginBottom:16, flexWrap:"wrap" }}>
+          <div className="sandarbha-card-grid" style={{ display:"flex", gap:16, marginBottom:16, flexWrap:"wrap" }}>
             {[
               { Icon:KendraIcon, label:"Kendra", desc:"Angular houses (1,4,7,10) — the pillars of the chart. Strong planets here have maximum impact.", houses:"1, 4, 7, 10" },
               { Icon:TrikonaIcon, label:"Trikona", desc:"Trine houses (1,5,9) — houses of fortune, dharma, and merit. Considered the most auspicious.", houses:"1, 5, 9" },
               { Icon:DusthanaIcon, label:"Dusthāna", desc:"Difficult houses (6,8,12) — houses of challenge, transformation, and dissolution.", houses:"6, 8, 12" },
             ].map(({Icon,label,desc,houses})=>(
-              <div key={label} style={{ flex:1, minWidth:160, border:`1px solid ${th.panelBorder}`,
+              <div className="sandarbha-card" key={label} style={{ flex:1, minWidth:160, border:`1px solid ${th.panelBorder}`,
                 borderRadius:6, padding:"12px", background:th.inputBg }}>
-                <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
+                <div className="sandarbha-card-title" style={{ display:"flex", alignItems:"center", gap:8, marginBottom:6 }}>
                   <Icon size={18}/>
                   <span style={{ fontSize:16, color:th.text, fontWeight:"bold" }}>{label}</span>
                 </div>
@@ -118,7 +118,7 @@ export function SandarbhaPanel({ th }) {
 
       {sec==="daśā"&&(
         <div>
-          <div style={{ fontSize:15, color:th.textFaint, marginBottom:14, lineHeight:1.8 }}>
+          <div className="sandarbha-note" style={{ fontSize:15, color:th.textFaint, marginBottom:14, lineHeight:1.8 }}>
             Vimśottarī assigns each of the 9 grahas a period of governance totalling 120 varṣas. Entry point is determined by the nakṣatra of Candra at birth.
           </div>
           <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:"Georgia,serif" }}>
@@ -136,7 +136,7 @@ export function SandarbhaPanel({ th }) {
       )}
 
       {sec==="paddhati"&&(
-        <div style={{ fontSize:15, color:th.textDim, lineHeight:1.9 }}>
+        <div className="sandarbha-paddhati" style={{ fontSize:15, color:th.textDim, lineHeight:1.9 }}>
           <div style={{ fontSize:17, color:th.text, fontWeight:"bold", marginBottom:12 }}>Paddhati — The Algorithmic Framework</div>
           {[
             { layer:"Layer 0 · Sthira Kośa", title:"The Universal Schema",
@@ -150,7 +150,7 @@ export function SandarbhaPanel({ th }) {
             { layer:"Viśleṣaṇa", title:"Life-Area Synthesis",
               body:"A life area (career, health, marriage, wealth) is governed by multiple bhāvas. Viśleṣaṇa applies LOYAKS across all relevant bhāvas and aggregates the signals. The Kāraka factor in each bhāva is a bridge back to the Sandarbha — it is a birth-independent anchor that qualifies every chart-specific finding." },
           ].map(({layer,title,body})=>(
-            <div key={layer} style={{ marginBottom:18, borderLeft:`3px solid ${th.accent}`, paddingLeft:12 }}>
+            <div className="sandarbha-paddhati-item" key={layer} style={{ marginBottom:18, borderLeft:`3px solid ${th.accent}`, paddingLeft:12 }}>
               <div style={{ fontSize:13, color:th.textFaint, letterSpacing:1, marginBottom:2 }}>{layer}</div>
               <div style={{ fontSize:16, color:th.text, fontWeight:"bold", marginBottom:6 }}>{title}</div>
               <div style={{ fontSize:15, color:th.textDim, lineHeight:1.8 }}>{body}</div>

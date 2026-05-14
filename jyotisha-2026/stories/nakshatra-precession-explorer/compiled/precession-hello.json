@@ -2,7 +2,7 @@
   "id": "precession-hello",
   "title": "Hello Precession",
   "version": 1,
-  "vysu": "# title: Hello Precession\n# version: 1\n# featured: false\n# group: Precession\n# tags: intro, precession, seasonal-frame\n# order: 10\n# Visualize axial precession against the fixed nakshatra sky\nstage blank night year -1800\ncamera pos -147.464,73.504,234.757 target 0,0,0\n\ncaption \"Visualize Precession\" 1200:250:350\nshow eclipticGrid ; wait 200 ; show eclipticNakSegments\nwait 200 ; fade stars\nwait 100 ; rollout naks\nwait 200 ; show seasonalFrame\nwait 100 ; show poleTrack\nwait 100 ; show overlay\nwait 300 ; caption \"1800 BCE\" 1000:200:300\nwait 200 ; travel -1800 to -800 5000: step 100\n",
+  "vysu": "# title: Hello Precession\n# version: 1\n# featured: true\n# group: Precession\n# tags: intro, precession, seasonal-frame\n# order: 10\n# Visualize axial precession against the fixed nakshatra sky\nstage blank night year -2800\ncamera pos -147.464,73.504,234.757 target 0,0,0\n\nseq 1000 \ncaption \"Visualize Precession\" 1200:250:350\n\nat 2000 {\n\tshow eclipticGrid ; \n\tshow eclipticNakSegments\n\tfade stars\n\trollout naks\n\tshow seasonalFrame\n\tshow poleTrack\n\tshow overlay\n\tshow thuban\n\tshow polaris\n\tcaption \"2800 BCE\" 1000:200:300\n\ttravel -2800 to 2100 15000: step 100\n\twait 8000\n\tcamera pos -0,286.809,0 target 0,0,0 fov 45 over 900\n\twait 8000\n\tcamera pos -147.464,73.504,234.757 target 0,0,0 fov 45 over 900\n}\n",
   "cues": [
     {
       "at": 0,
@@ -13,66 +13,113 @@
       "text": "Visualize Precession"
     },
     {
-      "at": "+0",
+      "at": 3000,
       "action": "reveal",
       "target": "eclipticGrid"
     },
     {
-      "at": "+200",
+      "at": 4000,
       "action": "reveal",
       "target": "eclipticNakSegments"
     },
     {
-      "at": "+200",
+      "at": 5000,
       "action": "reveal",
-      "target": "stars",
-      "mode": "fade"
+      "mode": "fade",
+      "target": "stars"
     },
     {
-      "at": "+100",
+      "at": 6000,
       "action": "reveal",
-      "target": "nakshatras",
-      "mode": "rollout"
+      "mode": "rollout",
+      "target": "nakshatras"
     },
     {
-      "at": "+200",
+      "at": 7000,
       "action": "reveal",
       "target": "seasonalFrame"
     },
     {
-      "at": "+100",
+      "at": 8000,
       "action": "reveal",
       "target": "poleTrack"
     },
     {
-      "at": "+100",
+      "at": 9000,
       "action": "reveal",
       "target": "overlay"
     },
     {
-      "at": "+300",
+      "at": 10000,
+      "action": "reveal",
+      "target": "thuban"
+    },
+    {
+      "at": 11000,
+      "action": "reveal",
+      "target": "polaris"
+    },
+    {
+      "at": 12000,
       "action": "caption",
       "duration": 1000,
       "fadeIn": 200,
       "fadeOut": 300,
-      "text": "1800 BCE"
+      "text": "2800 BCE"
     },
     {
-      "at": "+200",
+      "at": 13000,
       "action": "epochTravel",
-      "from": -1800,
-      "to": -800,
-      "duration": 5000,
+      "from": -2800,
+      "to": 2100,
+      "duration": 15000,
       "step": 100
+    },
+    {
+      "at": 22000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 0,
+          "y": 286.809,
+          "z": 0
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 31000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -147.464,
+          "y": 73.504,
+          "z": 234.757
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
     }
   ],
+  "featured": true,
   "group": "Precession",
   "tags": [
     "intro",
     "precession",
     "seasonal-frame"
   ],
-  "order": 10.0,
+  "order": 10,
   "initial": {
     "ui": {
       "showGrid": false,
@@ -86,6 +133,7 @@
       "showEclipticLabels": false,
       "showEclipticPoles": false,
       "showStars": false,
+      "showNakshatraStars": false,
       "showNakshatraLines": false,
       "showNakshatraLabels": false,
       "showPolarItems": false,
@@ -100,7 +148,7 @@
       "showOverlay": false
     },
     "lightPreset": "night",
-    "epochYear": -1800,
+    "epochYear": -2800,
     "camera": {
       "position": {
         "x": -147.464,
@@ -108,9 +156,9 @@
         "z": 234.757
       },
       "target": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 0,
+        "y": 0,
+        "z": 0
       }
     }
   }

@@ -1,129 +1,203 @@
-# title: Tour of Nakshatras
-# version: 1
+# title   : Tour of Nakshatras
+# version : 1
 # featured: true
-# group: Tours
-# tags: nakshatra, sectors, star-shapes
-# order: 20
+# group   : Tours
+# tags    : nakshatra, sectors, star-shapes
+# order   : 20
 # Tuned nakshatra tour source.
-stage blank twilight year -1800
-camera pos -147.464,73.504,234.757 target 0,0,0 fov 48
-theater
-caption "Tour of the 27 Nakshatras" 3000:250:350
-wait 2000
-grid ecliptic 10 blue
-wait 2000
 
-rollout stars 3000:
-rollout naks 3000:
-rollout eclipticNakSegments 3000:
+seq 1500
 
-camera pos 215.392,18.0,126.911 target 56.002,0,32.997 fov 38 650
-caption "01 · Aśvayuk" 850:160:240
-flash $ash 650:
-flash *ash 650:
-camera pos 180.319,18.0,173.162 target 46.883,0,45.022 fov 38 650
-caption "02 · Bharaṇī" 850:160:240
-flash $bha 650:
-flash *bha 650:
-camera pos 135.526,18.0,210.078 target 35.237,0,54.62 fov 38 650
-caption "03 · Kṛttikā" 850:160:240
-flash $kri 650:
-flash *kri 650:
-camera pos 83.423,18.0,235.671 target 21.69,0,61.274 fov 38 650
-caption "04 · Rohiṇī" 850:160:240
-flash $roh 650:
-flash *roh 650:
-camera pos 26.826,18.0,248.557 target 6.975,0,64.625 fov 38 650
-caption "05 · Mṛgaśira" 850:160:240
-flash $mrg 650:
-flash *mrg 650:
-camera pos -31.216,18.0,248.043 target -8.116,0,64.491 fov 38 650
-caption "06 · Ārdrā" 850:160:240
-flash $ard 650:
-flash *ard 650:
-camera pos -87.58,18.0,234.157 target -22.771,0,60.881 fov 38 650
-caption "07 · Punarvasu" 850:160:240
-flash $pun 650:
-flash *pun 650:
-camera pos -139.219,18.0,207.649 target -36.197,0,53.989 fov 38 650
-caption "08 · Puṣya" 850:160:240
-flash $pus 650:
-flash *pus 650:
-camera pos -183.352,18.0,169.947 target -47.672,0,44.186 fov 38 650
-caption "09 · Āśleṣā" 850:160:240
-flash $asl 650:
-flash *asl 650:
-camera pos -217.604,18.0,123.079 target -56.577,0,32.001 fov 38 650
-caption "10 · Maghā" 850:160:240
-flash $mag 650:
-flash *mag 650:
-camera pos -240.122,18.0,69.58 target -62.432,0,18.091 fov 38 650
-caption "11 · P Phalgunī" 850:160:240
-flash $ppal 650:
-flash *ppal 650:
-camera pos -249.696,18.0,12.33 target -64.921,0,3.206 fov 38 650
-caption "12 · U Phalgunī" 850:160:240
-flash $upal 650:
-flash *upal 650:
-camera pos -245.808,18.0,-45.589 target -63.91,0,-11.853 fov 38 650
-caption "13 · Hasta" 850:160:240
-flash $has 650:
-flash *has 650:
-camera pos -228.669,18.0,-101.046 target -59.454,0,-26.272 fov 38 650
-caption "14 · Citrā" 850:160:240
-flash $chi 650:
-flash *chi 650:
-camera pos -199.204,18.0,-151.056 target -51.793,0,-39.275 fov 38 650
-caption "15 · Svātī" 850:160:240
-flash $swa 650:
-flash *swa 650:
-camera pos -158.996,18.0,-192.926 target -41.339,0,-50.161 fov 38 650
-caption "16 · Viśākhā" 850:160:240
-flash $vis 650:
-flash *vis 650:
-camera pos -110.22,18.0,-224.392 target -28.657,0,-58.342 fov 38 650
-caption "17 · Anūrādhā" 850:160:240
-flash $anu 650:
-flash *anu 650:
-camera pos -55.502,18.0,-243.761 target -14.431,0,-63.378 fov 38 650
-caption "18 · Jyeṣṭhā" 850:160:240
-flash $jye 650:
-flash *jye 650:
-camera pos 2.212,18.0,-249.99 target 0.575,0,-64.997 fov 38 650
-caption "19 · Mūla" 850:160:240
-flash $mul 650:
-flash *mul 650:
-camera pos 59.803,18.0,-242.742 target 15.549,0,-63.113 fov 38 650
-caption "20 · P Aṣāḍhā" 850:160:240
-flash $pash 650:
-flash *pash 650:
-camera pos 114.17,18.0,-222.408 target 29.684,0,-57.826 fov 38 650
-caption "21 · U Aṣāḍhā" 850:160:240
-flash $uash 650:
-flash *uash 650:
-camera pos 162.385,18.0,-190.082 target 42.22,0,-49.421 fov 38 650
-caption "22 · Śravaṇa" 850:160:240
-flash $shr 650:
-flash *shr 650:
-camera pos 201.843,18.0,-147.511 target 52.479,0,-38.353 fov 38 650
-caption "23 · Dhaniṣṭhā" 850:160:240
-flash $dha 650:
-flash *dha 650:
-camera pos 230.42,18.0,-96.987 target 59.909,0,-25.217 fov 38 650
-caption "24 · Śatabhiṣak" 850:160:240
-flash $sha 650:
-flash *sha 650:
-camera pos 246.576,18.0,-41.232 target 64.11,0,-10.72 fov 38 650
-caption "25 · P Proṣṭapada" 850:160:240
-flash $pbha 650:
-flash *pbha 650:
-camera pos 249.439,18.0,16.743 target 64.854,0,4.353 fov 38 650
-caption "26 · U Proṣṭapada" 850:160:240
-flash $ubha 650:
-flash *ubha 650:
-camera pos 238.854,18.0,73.814 target 62.102,0,19.192 fov 38 650
-caption "27 · Revatī" 850:160:240
-flash $rev 650:
-flash *rev 650:
-camera pos -147.464,73.504,234.757 target 0,0,0 fov 45 900
-caption "Nakṣatra 27 equal sectors and 27 star shapes" 9000:250:350
+# ─── Setup Block ───────────────────────────────────────────────
+at 10 {
+    stage blank twilight year -1800
+    camera pos 310.725,28.766,183.082 target 56.002,0,32.997 fov 38 over 900
+    theater
+    caption "Tour of the 27 Nakshatras" 3000:250:350
+    grid ecliptic 10 blue
+    rollout stars 1000:
+    rollout naks 1000:
+    rollout eclipticNakSegments 3000:
+}
+
++5000 {
+    wait 200
+}
+
+
+# ─── Nakshatra Tour ────────────────────────────────────────────
++1500 {
+    #camera pos 298.113,27.342,175.651 target 56.002,0,32.997 fov 38 over 900
+    camera pos 298.113,27.342,175.651 target 56.002,0,32.997 fov 55 over 900
+    caption "01 · Aśvayuk" 850:160:240
+    flash @ash 650:
+    flash sector.ash 650:
+}
+
++1500 {
+    camera pos 180.319,18.0,173.162 target 46.883,0,45.022 fov 55 over 900
+    caption "02 · Bharaṇī" 850:160:240
+    flash @bha 650:
+    flash sector.bha 650:
+}
+
++1500 {
+    camera pos 135.526,18.0,210.078 target 35.237,0,54.62 fov 55 650
+    caption "03 · Kṛttikā" 850:160:240
+    flash @kri 650:
+    flash sector.kri 650:
+}
+
++1500 {
+    camera pos 83.423,18.0,235.671 target 21.69,0,61.274 fov 55 650
+    caption "04 · Rohiṇī" 850:160:240
+    flash @roh 650:
+    flash sector.roh 650:
+}
+
++1500 {
+    camera pos 26.826,18.0,248.557 target 6.975,0,64.625 fov 55 650
+    caption "05 · Mṛgaśira" 850:160:240
+    flash @mrg 650:
+    flash sector.mrg 650:
+}
+
++1500 {
+    camera pos -31.216,18.0,248.043 target -8.116,0,64.491 fov 55 650
+    caption "06 · Ārdrā" 850:160:240
+    flash @ard 650:
+    flash sector.ard 650:
+}
+
++1500 {
+    camera pos -87.58,18.0,234.157 target -22.771,0,60.881 fov 55 650
+    caption "07 · Punarvasu" 850:160:240
+    flash @pun 650:
+    flash sector.pun 650:
+}
+
++1500 {
+    camera pos -139.219,18.0,207.649 target -36.197,0,53.989 fov 55 650
+    caption "08 · Puṣya" 850:160:240
+    flash @pus 650:
+    flash sector.pus 650:
+}
+
++1500 {
+    camera pos -183.352,18.0,169.947 target -47.672,0,44.186 fov 55 650
+    caption "09 · Āśleṣā" 850:160:240
+    flash @asl 650:
+    flash sector.asl 650:
+}
+
++1500 {
+    camera pos -217.604,18.0,123.079 target -56.577,0,32.001 fov 55 650
+    caption "10 · Maghā" 850:160:240
+    flash @mag 650:
+    flash sector.mag 650:
+}
+
++1500 {
+    camera pos -240.122,18.0,69.58 target -62.432,0,18.091 fov 55 650
+    caption "11 · P Phalgunī" 850:160:240
+    flash @ppal 650:
+    flash sector.ppal 650:
+}
+
++1500 {
+    camera pos -249.696,18.0,12.33 target -64.921,0,3.206 fov 55 650
+    caption "12 · U Phalgunī" 850:160:240
+    flash @upal 650:
+    flash sector.upal 650:
+}
+
++1500 {
+    camera pos -245.808,18.0,-45.589 target -63.91,0,-11.853 fov 55 650
+    caption "13 · Hasta" 850:160:240
+    flash @has 650:
+    flash sector.has 650:
+}
+
++1500 {
+    camera pos -228.669,18.0,-101.046 target -59.454,0,-26.272 fov 55 650
+    caption "14 · Citrā" 850:160:240
+    flash @chi 650:
+    flash sector.chi 650:
+}
+
++1500 {
+    camera pos -199.204,18.0,-151.056 target -51.793,0,-39.275 fov 55 650
+    caption "15 · Svātī" 850:160:240
+    flash @swa 650:
+    flash sector.swa 650:
+}
+
++1500 {
+    camera pos -158.996,18.0,-192.926 target -41.339,0,-50.161 fov 55 650
+    caption "16 · Viśākhā" 850:160:240
+    flash @vis 650:
+    flash sector.vis 650:
+}
+
++1500 {
+    camera pos -110.22,18.0,-224.392 target -28.657,0,-58.342 fov 55 650
+    caption "17 · Anūrādhā" 850:160:240
+    flash @anu 650:
+    flash sector.anu 650:
+}
+
++1500 {
+    camera pos -55.502,18.0,-243.761 target -14.431,0,-63.378 fov 55 650
+    caption "18 · Jyeṣṭhā" 850:160:240
+    flash @jye 650:
+    flash sector.jye 650:
+}
+
++1500 {
+    camera pos 2.212,18.0,-249.99 target 0.575,0,-64.997 fov 55 650
+    caption "19 · Mūla" 850:160:240
+    flash @mul 650:
+    flash sector.mul 650:
+}
+
++1500 {
+    camera pos 59.803,18.0,-242.742 target 15.549,0,-63.113 fov 55 650
+    caption "20 · P Aṣāḍhā" 850:160:240
+    flash @pash 650:
+    flash sector.pash 650:
+}
+
++1500 {
+    camera pos 114.17,18.0,-222.408 target 29.684,0,-57.826 fov 55 650
+    caption "21 · U Aṣāḍhā" 850:160:240
+    flash @uash 650:
+    flash sector.uash 650:
+}
+
++1500 {
+    camera pos 162.385,18.0,-190.082 target 42.22,0,-49.421 fov 55 650
+    caption "22 · Śravaṇa" 850:160:240
+    flash @shr 650:
+    flash sector.shr 650:
+}
+
++1500 {
+    camera pos 201.843,18.0,-147.511 target 52.479,0,-38.353 fov 55 650
+    caption "23 · Dhaniṣṭhā" 850:160:240
+    flash @dha 650:
+    flash sector.dha 650:
+}
+
++1500 {
+    camera pos 230.42,18.0,-96.987 target 59.909,0,-25.217 fov 55 650
+    caption "24 · Śatabhiṣak" 850:160:240
+    flash @sha 650:
+    flash sector.sha 650:
+}
+
++1500 {
+    camera pos 246.576,18.0,-41.232 target 64.11,0,-10.72 fov 55 650
+    caption "25 · P Proṣṭapada" 850:160:240
+    flash @pbha 650:
+    flash sector.pbha 650:
+}

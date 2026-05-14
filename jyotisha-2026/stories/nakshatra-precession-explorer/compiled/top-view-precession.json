@@ -10,47 +10,47 @@
       "target": "eclipticNakSegments"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "eclipticPoles"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "stars"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "nakshatras"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "northPolarItems"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "hide",
       "target": "southPolarItems"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "poleTrack"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "seasonalFrame"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "reveal",
       "target": "overlay"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "caption",
       "duration": 1600,
       "fadeIn": 300,
@@ -58,13 +58,13 @@
       "text": "Precession from above the ecliptic pole"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "flash",
-      "target": "precessionCircle",
-      "duration": 1500
+      "duration": 1500,
+      "target": "precessionCircle"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "caption",
       "duration": 2100,
       "fadeIn": 350,
@@ -72,7 +72,7 @@
       "text": "The pole marker approaches Thuban around 2300 BCE"
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "epochTravel",
       "from": -3000,
       "to": 2000,
@@ -80,7 +80,7 @@
       "step": 100
     },
     {
-      "at": "+0",
+      "at": 0,
       "action": "caption",
       "duration": 2200,
       "fadeIn": 350,
@@ -95,7 +95,7 @@
     "thuban",
     "polaris"
   ],
-  "order": 30.0,
+  "order": 30,
   "initial": {
     "ui": {
       "showGrid": false,
@@ -109,6 +109,7 @@
       "showEclipticLabels": false,
       "showEclipticPoles": false,
       "showStars": false,
+      "showNakshatraStars": false,
       "showNakshatraLines": false,
       "showNakshatraLabels": false,
       "showPolarItems": false,
@@ -126,16 +127,16 @@
     "epochYear": -3000,
     "camera": {
       "position": {
-        "x": 0.0,
-        "y": 325.0,
+        "x": 0,
+        "y": 325,
         "z": 0.1
       },
       "target": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 0,
+        "y": 0,
+        "z": 0
       },
-      "fov": 42.0
+      "fov": 42
     }
   }
 }

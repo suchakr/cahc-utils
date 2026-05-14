@@ -4,6 +4,7 @@ import csv
 import json
 import math
 import re
+import subprocess
 import warnings
 from typing import Any
 from dataclasses import dataclass
@@ -15,7 +16,6 @@ from astropy.time import Time
 from astropy.utils import iers
 
 from jyotisha_2026.paths import EXPLORATIONS_ROOT, LAB_ROOT, REPO_ROOT, upstream_dataset_path
-from jyotisha_2026.vysu import compile_vysu_file, validate_story, write_json
 
 
 iers.conf.auto_download = False
@@ -470,36 +470,25 @@ def build_dataset() -> dict[str, object]:
 def load_stories() -> list[dict[str, Any]]:
     if not STORIES_ROOT.exists():
         return []
-    stories: list[dict[str, Any]] = []
-    expected_outputs: set[Path] = set()
-    COMPILED_STORIES_ROOT.mkdir(parents=True, exist_ok=True)
-    for path in sorted(STORIES_ROOT.glob("*.vysu")):
-        story = compile_vysu_file(path)
-        out_path = COMPILED_STORIES_ROOT / f"{story['id']}.json"
-        expected_outputs.add(out_path)
-        write_json(out_path, story)
-        stories.append(validate_story(story, out_path))
-    for path in sorted(STORIES_ROOT.glob("*.json")):
-        story = json.loads(path.read_text(encoding="utf-8"))
-        out_path = COMPILED_STORIES_ROOT / path.name
-        expected_outputs.add(out_path)
-        write_json(out_path, story)
-        stories.append(validate_story(story, path))
-    for stale_path in COMPILED_STORIES_ROOT.glob("*.json"):
-        if stale_path not in expected_outputs:
-            stale_path.unlink()
-    if stories:
-        return sorted(stories, key=lambda story: (float(story.get("order", 9999)), str(story.get("title", story["id"]))))
-    for path in sorted(COMPILED_STORIES_ROOT.glob("*.json")):
-        story = json.loads(path.read_text(encoding="utf-8"))
-        stories.append(validate_story(story, path))
-    return sorted(stories, key=lambda story: (float(story.get("order", 9999)), str(story.get("title", story["id"]))))
+    command = ["node", str(REPO_ROOT / "scripts" / "compile-vysu.mjs"), SLUG]
+    result = subprocess.run(command, cwd=REPO_ROOT, check=True, capture_output=True, text=True)
+    return json.loads(result.stdout)
 
 
 
 def all_stories(_dataset: dict[str, object]) -> list[dict[str, Any]]:
     # Story inventory is intentionally file-based under stories/<slug>/, not generated here.
     return load_stories()
+
+
+def browser_vysu_compiler_source() -> str:
+    source = (REPO_ROOT / "scripts" / "vysu-compiler.mjs").read_text(encoding="utf-8")
+    source = source.replace(
+        "export function compileVyomaSutra(source, options = {}) {",
+        "compileVyomaSutra = function compileVyomaSutraStage1(source, options = {}) {",
+    )
+    source = source.replace("export function ", "function ")
+    return "// BEGIN VYOMASUTRA COMPILER\n{\n" + source + "\n}\n// END VYOMASUTRA COMPILER"
 
 
 
@@ -909,6 +898,62 @@ def page_html(dataset: dict[str, object]) -> str:
         padding: 0.28rem 0.62rem;
       }}
 
+      .story-search-row {{
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin: 0.1rem 0 0.45rem;
+      }}
+
+      .story-search-row .three-story-search {{
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+      }}
+
+      .story-mode-label {{
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }}
+
+      .camera-directive-row {{
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.45rem;
+      }}
+
+      .camera-directive-field {{
+        flex: 1 1 auto;
+        min-width: 0;
+        box-sizing: border-box;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.74);
+        color: var(--muted);
+        font: 0.76rem/1.2 var(--font-mono);
+        padding: 0.45rem 0.55rem;
+      }}
+
+      .icon-button {{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.1rem;
+        min-width: 2.1rem;
+        height: 2.1rem;
+        padding: 0;
+      }}
+
+      .icon-button svg {{
+        width: 1rem;
+        height: 1rem;
+        stroke: currentColor;
+      }}
+
       .three-story-pill {{
         border: 1px solid rgba(73,61,36,0.22);
         border-radius: 999px;
@@ -1145,6 +1190,22 @@ def page_html(dataset: dict[str, object]) -> str:
         opacity: 1;
       }}
 
+      .three-label-layer {{
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 4;
+      }}
+
+      .three-story-label {{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        color: rgba(240, 246, 255, 0.94);
+        font: 600 0.92rem var(--font-sans);
+        text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+        white-space: nowrap;
+      }}
+
       .three-fullscreen-button {{
         position: absolute;
         right: 0.75rem;
@@ -1345,6 +1406,7 @@ def page_html(dataset: dict[str, object]) -> str:
               <div id="three-overlay" style="position:absolute; top:1rem; left:1rem; pointer-events:none; color:#eee; font-family:var(--font-mono); font-size:0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
                 <span id="three-epoch-label"></span>
               </div>
+              <div class="three-label-layer" id="three-label-layer"></div>
               <div class="three-story-caption" id="three-story-caption"></div>
             </div>
           </div>
@@ -1365,11 +1427,20 @@ def page_html(dataset: dict[str, object]) -> str:
               <div class="three-debug-status" id="three-debug-status"></div>
             </div>
             <div class="three-dock-panel" id="three-dock-stories">
-          <input class="three-story-search" id="three-story-search" type="search" placeholder="Search stories" aria-label="Search 3D stories">
-              <select class="three-story-select" id="three-story-select"></select>
-              <div class="story-subhead">
-                <span>VyomaSutra</span>
+              <div class="story-search-row">
+                <input class="three-story-search" id="three-story-search" type="search" placeholder="Search stories" aria-label="Search 3D stories">
+                <span class="story-mode-label">VyomaSutra</span>
                 <button class="debug-button" type="button" id="three-vysu-run">Run VySu</button>
+              </div>
+              <select class="three-story-select" id="three-story-select"></select>
+              <div class="camera-directive-row">
+                <input class="camera-directive-field" id="three-camera-directive" type="text" readonly aria-label="Current camera as VyomaSutra" value="camera pos 0,0,0 target 0,0,0 fov 45 over 900">
+                <button class="debug-button icon-button" type="button" id="three-camera-grab" title="Grab camera" aria-label="Grab camera">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M14.5 4l1.5 2h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l1.5-2z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                </button>
               </div>
               <textarea class="three-story-editor vyoma-editor" id="three-vysu-editor" spellcheck="false"></textarea>
               <details class="story-help" id="three-vysu-help">
@@ -2307,6 +2378,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
+      const storyLabelLayer = document.getElementById("three-label-layer");
       const threeDock = document.getElementById("three-dock");
       const threeDockToggle = document.getElementById("three-dock-toggle");
       const threeDockTabs = Array.from(document.querySelectorAll(".three-dock-tab"));
@@ -2325,6 +2397,8 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const threeVysuEditor = document.getElementById("three-vysu-editor");
       const threeVysuRun = document.getElementById("three-vysu-run");
       const threeVysuStatus = document.getElementById("three-vysu-status");
+      const threeCameraDirective = document.getElementById("three-camera-directive");
+      const threeCameraGrab = document.getElementById("three-camera-grab");
       const threeLightPreset = document.getElementById("three-light-preset");
       const threeDebugJson = document.getElementById("three-debug-json");
       const threeDebugStatus = document.getElementById("three-debug-status");
@@ -2356,11 +2430,14 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const activeStoryTimers = [];
       let activeStoryId = null;
       let activeStoryFrame = null;
+      let storyLabels = {{}};
       let builtEclipticGridStep = null;
       let builtEquatorialGridStep = null;
       const activeTransitionTargets = new Set();
       const activeTransitionObjects = new Set();
       const targetVisibilityOverrides = new Map();
+      const focusedPolarTargets = {{ north: new Set(), south: new Set() }};
+      const focusedSeasonalTargets = new Set();
       const threeDebugUiFields = [
         ["showGrid", "Ecliptic grid"],
         ["showEquatorialGrid", "Equatorial grid"],
@@ -2371,6 +2448,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         ["showEclipticLabels", "Sector labels"],
         ["showEclipticPoles", "Ecliptic poles"],
         ["showStars", "Stars"],
+        ["showNakshatraStars", "Nakshatra stars"],
         ["showNakshatraLines", "Nakshatra lines"],
         ["showNakshatraLabels", "Nakshatra labels"],
         ["showPolarItems", "Polar items"],
@@ -2471,6 +2549,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
           showEclipticLabels: true,
           showEclipticPoles: true,
           showStars: true,
+          showNakshatraStars: true,
           showNakshatraLines: true,
           showNakshatraLabels: true,
           showPolarItems: true,
@@ -2580,6 +2659,30 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
 
       function setVysuStatus(text) {{
         if (threeVysuStatus) threeVysuStatus.textContent = text;
+      }}
+
+      function formatCameraNumber(value) {{
+        return Number(value || 0).toFixed(3).replace(/\\.?0+$/, "");
+      }}
+
+      function currentCameraDirective() {{
+        if (!camera || !controls) return "camera pos 0,0,0 target 0,0,0 fov 45 over 900";
+        const pos = [camera.position.x, camera.position.y, camera.position.z].map(formatCameraNumber).join(",");
+        const target = [controls.target.x, controls.target.y, controls.target.z].map(formatCameraNumber).join(",");
+        const fov = formatCameraNumber(camera.fov || 45);
+        return `camera pos ${{pos}} target ${{target}} fov ${{fov}} over 900`;
+      }}
+
+      async function grabCameraDirective() {{
+        const directive = currentCameraDirective();
+        if (threeCameraDirective) threeCameraDirective.value = directive;
+        try {{
+          if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+          await navigator.clipboard.writeText(directive);
+          setVysuStatus("Copied camera directive.");
+        }} catch (error) {{
+          setVysuStatus("Camera directive ready.");
+        }}
       }}
 
       function cloneSettings(settings) {{
@@ -2883,6 +2986,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           showEclipticLabels: false,
           showEclipticPoles: false,
           showStars: false,
+          showNakshatraStars: false,
           showNakshatraLines: false,
           showNakshatraLabels: false,
           showPolarItems: false,
@@ -3127,6 +3231,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }};
       }}
 
+      {browser_vysu_compiler_source()}
+
       function mergeSettings(target, patch) {{
         Object.entries(patch || {{}}).forEach(([key, value]) => {{
           if (value && typeof value === "object" && !Array.isArray(value)) {{
@@ -3150,6 +3256,90 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         storyCaption.classList.toggle("visible", Boolean(visible && text));
       }}
 
+      function clearStoryLabels() {{
+        storyLabels = {{}};
+        if (storyLabelLayer) storyLabelLayer.innerHTML = "";
+      }}
+
+      function applyStoryLabelsPatch(labelsPatch) {{
+        if (!labelsPatch || typeof labelsPatch !== "object") return;
+        if (Object.keys(labelsPatch).length === 0) {{
+          clearStoryLabels();
+          return;
+        }}
+        Object.entries(labelsPatch).forEach(([id, label]) => {{
+          if (label === null) delete storyLabels[id];
+          else storyLabels[id] = {{ ...(label || {{}}), id }};
+        }});
+        renderStoryLabels();
+      }}
+
+      function storyLabelAnchor(anchor) {{
+        const key = String(anchor || "5").toUpperCase();
+        return {{
+          "1": [16, 84], "2": [50, 84], "3": [84, 84],
+          "4": [16, 50], "5": [50, 50], "6": [84, 50],
+          "7": [16, 16], "8": [50, 16], "9": [84, 16],
+          SW: [16, 84], S: [50, 84], SE: [84, 84],
+          W: [16, 50], C: [50, 50], E: [84, 50],
+          NW: [16, 16], N: [50, 16], NE: [84, 16],
+        }}[key] || [50, 50];
+      }}
+
+      function storyTargetObject(target) {{
+        if (target === "NP") return poleDot;
+        if (target === "SP") return southPoleDot;
+        if (["VE", "SS", "AE", "WS"].includes(target)) {{
+          return seasonalMarkerRefs.find((entry) => entry.key === target)?.mesh || null;
+        }}
+        return transitionDescriptorsForTarget(target)?.[0]?.items?.[0]?.object || null;
+      }}
+
+      function renderStoryLabels() {{
+        if (!storyLabelLayer) return;
+        storyLabelLayer.innerHTML = "";
+        Object.values(storyLabels).forEach((label) => {{
+          const element = document.createElement("div");
+          element.className = `three-story-label ${{label.className || ""}}`;
+          element.dataset.labelId = label.id;
+          element.textContent = label.text || "";
+          element.style.color = label.color || "";
+          element.style.opacity = label.opacity ?? "";
+          element.style.fontSize = label.sizeRem ? `${{label.sizeRem}}rem` : "";
+          storyLabelLayer.appendChild(element);
+        }});
+        updateStoryLabels();
+      }}
+
+      function updateStoryLabels() {{
+        if (!storyLabelLayer || !camera || !renderer) return;
+        storyLabelLayer.querySelectorAll(".three-story-label").forEach((element) => {{
+          const label = storyLabels[element.dataset.labelId];
+          if (!label) return;
+          let x = 50;
+          let y = 50;
+          let visible = true;
+          if (label.mode === "target" && label.target) {{
+            const object = storyTargetObject(label.target);
+            if (object) {{
+              const pos = new THREE.Vector3();
+              object.getWorldPosition(pos);
+              pos.project(camera);
+              visible = pos.z >= -1 && pos.z <= 1;
+              x = ((pos.x + 1) / 2) * 100;
+              y = ((1 - pos.y) / 2) * 100;
+            }} else {{
+              visible = false;
+            }}
+          }} else {{
+            [x, y] = storyLabelAnchor(label.screen);
+          }}
+          element.style.left = `calc(${{x}}% + ${{Number(label.dx || 0)}}px)`;
+          element.style.top = `calc(${{y}}% + ${{Number(label.dy || 0)}}px)`;
+          element.style.display = visible ? "" : "none";
+        }});
+      }}
+
       function stopStory(clearCaption = true) {{
         activeStoryTimers.splice(0).forEach((timer) => window.clearTimeout(timer));
         if (activeStoryFrame !== null) {{
@@ -3160,6 +3350,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         activeTransitionTargets.clear();
         activeTransitionObjects.clear();
         targetVisibilityOverrides.clear();
+        focusedPolarTargets.north.clear();
+        focusedPolarTargets.south.clear();
+        focusedSeasonalTargets.clear();
+        clearStoryLabels();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {{
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {{
@@ -3188,9 +3382,13 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }}
 
       function applyStoryState(patch) {{
+        const labelPatch = patch?.labels;
+        const settingsPatch = cloneSettings(patch || {{}});
+        if (Object.prototype.hasOwnProperty.call(settingsPatch, "labels")) delete settingsPatch.labels;
         const preserveEpoch = !Object.prototype.hasOwnProperty.call(patch || {{}}, "epochYear");
         const preserveCamera = !(patch || {{}}).camera;
-        mergeSettings(threeSettings, patch || {{}});
+        mergeSettings(threeSettings, settingsPatch);
+        applyStoryLabelsPatch(labelPatch);
         if (threeLightPreset && threeSettings.lightPreset) {{
           threeLightPreset.value = threeSettings.lightPreset;
         }}
@@ -3345,6 +3543,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticPoles: {{ mode: "fade", order: "default", duration: 600 }},
         eclipticNakSegments: {{ mode: "rollout", order: "ecliptic", duration: 1300 }},
         stars: {{ mode: "fade", order: "default", duration: 900 }},
+        nakshatraStars: {{ mode: "rollout", order: "ecliptic", duration: 1200 }},
         nakshatras: {{ mode: "rollout", order: "ecliptic", duration: 1800 }},
         polarItems: {{ mode: "rollout", order: "default", duration: 1600 }},
         northPolarItems: {{ mode: "rollout", order: "default", duration: 1200 }},
@@ -3368,10 +3567,11 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           eclipticDividers: {{ ui: {{ showEclipticDividers: visible }} }},
           eclipticLabels: {{ ui: {{ showEclipticLabels: visible }} }},
           eclipticPoles: {{ ui: {{ showEclipticPoles: visible }} }},
-          NEP: {{ ui: {{ showNEP: visible }} }},
-          SEP: {{ ui: {{ showSEP: visible }} }},
+          NEP: {{ ui: {{ showEclipticPoles: true, showNEP: visible }} }},
+          SEP: {{ ui: {{ showEclipticPoles: true, showSEP: visible }} }},
           eclipticNakSegments: {{ ui: {{ showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible }} }},
           stars: {{ ui: {{ showStars: visible }} }},
+          nakshatraStars: {{ ui: {{ showNakshatraStars: visible }} }},
           nakshatras: {{ ui: {{ showNakshatraLines: visible, showNakshatraLabels: visible }} }},
           nakshatraLines: {{ ui: {{ showNakshatraLines: visible }} }},
           nakshatraLabels: {{ ui: {{ showNakshatraLabels: visible }} }},
@@ -3381,10 +3581,23 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           poleTrack: {{ ui: {{ showPoleTrack: visible }} }},
           precessionCircle: {{ ui: {{ showPoleTrack: visible }} }},
           seasonalFrame: {{ ui: {{ showSeasonalFrame: visible }} }},
-          NP: {{ ui: {{ showNP: visible }} }},
-          SP: {{ ui: {{ showSP: visible }} }},
+          equator: {{ ui: {{ showSeasonalFrame: true }} }},
+          VE: {{ ui: {{ showSeasonalFrame: true }} }},
+          SS: {{ ui: {{ showSeasonalFrame: true }} }},
+          AE: {{ ui: {{ showSeasonalFrame: true }} }},
+          WS: {{ ui: {{ showSeasonalFrame: true }} }},
+          NP: {{ ui: {{ showSeasonalFrame: true, showNP: visible }} }},
+          SP: {{ ui: {{ showSeasonalFrame: true, showSP: visible }} }},
           overlay: {{ ui: {{ showOverlay: visible }} }},
         }};
+        const polarMatches = polarMatchesForTarget(target);
+        if (polarMatches.length) {{
+          const regions = new Set(polarMatches.map((entry) => entry.region));
+          const patch = visible ? {{ ui: {{ showPolarItems: true }} }} : {{ ui: {{}} }};
+          if (visible && regions.has("north")) patch.ui.showNorthPolarItems = true;
+          if (visible && regions.has("south")) patch.ui.showSouthPolarItems = true;
+          return patch;
+        }}
         return patches[target] || null;
       }}
 
@@ -3488,6 +3701,48 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return targetVisibilityOverrides.get(target) !== false;
       }}
 
+      function isSeasonalLeafTarget(target) {{
+        return ["equator", "VE", "SS", "AE", "WS", "NP", "SP"].includes(target);
+      }}
+
+      function seasonalTargetVisible(target) {{
+        if (focusedSeasonalTargets.size && !focusedSeasonalTargets.has(target)) return false;
+        return targetVisible(target);
+      }}
+
+      function setFocusedSeasonalTarget(target, visible) {{
+        if (visible && isSeasonalLeafTarget(target)) focusedSeasonalTargets.add(target);
+      }}
+
+      function clearFocusedSeasonalTarget(target) {{
+        if (target === "seasonalFrame") focusedSeasonalTargets.clear();
+      }}
+
+      function focusedPolarVisible(entry) {{
+        const focused = focusedPolarTargets[entry.region];
+        if (!focused || focused.size === 0) return true;
+        return (entry.aliases || []).some((alias) => focused.has(alias));
+      }}
+
+      function polarMatchesForTarget(target) {{
+        return polarItemRefs.filter((entry) => (entry.aliases || []).includes(target));
+      }}
+
+      function setFocusedPolarTarget(target, visible) {{
+        polarMatchesForTarget(target).forEach((entry) => {{
+          const focused = focusedPolarTargets[entry.region];
+          (entry.aliases || []).forEach((alias) => {{
+            if (visible) focused.add(alias);
+            else focused.delete(alias);
+          }});
+        }});
+      }}
+
+      function clearFocusedPolarTarget(target) {{
+        if (target === "northPolarItems" || target === "polarItems") focusedPolarTargets.north.clear();
+        if (target === "southPolarItems" || target === "polarItems") focusedPolarTargets.south.clear();
+      }}
+
       function aliasesVisible(aliases = []) {{
         return aliases.every((alias) => targetVisible(alias));
       }}
@@ -3505,22 +3760,11 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         if (nakTarget) {{
           const items = [];
           if (nakTarget.sigil === "$" || nakTarget.sigil === "@") {{
-            const row = data.nakshatras.find((item) => item.nid === nakTarget.nid);
-            const sectorIndex = row?.sector_index_27;
-            if (sectorIndex !== null && sectorIndex !== undefined) {{
-              const index = data.nakshatras.filter((item) => item.sector_index_27 !== null).findIndex((item) => item.nid === nakTarget.nid);
-              if (bandRefs.meshes[index]) items.push({{ object: bandRefs.meshes[index], opacity: threeSettings.ecliptic.bandOpacity }});
-              if (bandRefs.dividers[index]) items.push({{ object: bandRefs.dividers[index], opacity: threeSettings.ecliptic.dividerOpacity }});
-              if (bandRefs.labels[index]) items.push({{ object: bandRefs.labels[index], opacity: threeSettings.ecliptic.sectorLabelOpacity }});
-            }}
-          }}
-          if (nakTarget.sigil === "*" || nakTarget.sigil === "@") {{
             nakshatraLineRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {{
               items.push({{ object: entry.line, opacity: threeSettings.nakshatras.selectedOpacity }});
             }});
-            nakshatraLabelRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {{
-              items.push({{ object: entry.sprite, opacity: threeSettings.nakshatras.labelOpacity }});
-            }});
+          }}
+          if (nakTarget.sigil === "*" || nakTarget.sigil === "@") {{
             starGroupRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {{
               items.push({{ object: entry.points, opacity: threeSettings.stars.opacity }});
             }});
@@ -3587,6 +3831,12 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
         if (target === "stars") {{
           return starGroupRefs
+            .map((entry) => transitionDescriptor(entry.points, threeSettings.stars.opacity, entry.metaIndex ?? 0))
+            .sort((a, b) => a.order - b.order);
+        }}
+        if (target === "nakshatraStars") {{
+          return starGroupRefs
+            .filter((entry) => entry.nid !== "__special__")
             .map((entry) => transitionDescriptor(entry.points, threeSettings.stars.opacity, entry.metaIndex ?? 0))
             .sort((a, b) => a.order - b.order);
         }}
@@ -3687,6 +3937,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       function finalizeTransition(target, visible, descriptors = null, hasPatch = false) {{
         activeTransitionTargets.delete(target);
         if (descriptors) markTransitionObjects(descriptors, false);
+        if (polarMatchesForTarget(target).length) setFocusedPolarTarget(target, visible);
+        clearFocusedPolarTarget(target);
+        setFocusedSeasonalTarget(target, visible);
+        clearFocusedSeasonalTarget(target);
         targetVisibilityOverrides.set(target, visible);
         const patch = transitionPatchForTarget(target, visible);
         if (patch) mergeSettings(threeSettings, patch);
@@ -3702,6 +3956,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const duration = Number(cue.duration ?? defaults.duration);
         const order = cue.order || defaults.order;
         const direction = cue.direction || (visible ? "forward" : "reverse");
+        if (visible && polarMatchesForTarget(target).length) setFocusedPolarTarget(target, true);
+        if (visible) clearFocusedPolarTarget(target);
+        if (visible) setFocusedSeasonalTarget(target, true);
+        if (visible) clearFocusedSeasonalTarget(target);
         activeTransitionTargets.add(target);
 
         if (target === "overlay") {{
@@ -4191,30 +4449,30 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           setSpriteHeight(poleTrackLabel, threeSettings.poleTrack.trackLabelSize);
         }}
         if (poleDot) {{
-          poleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false;
+          poleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false && seasonalTargetVisible("NP");
           poleDot.material.color.set(threeSettings.poleTrack.dotColor);
         }}
         if (movingPoleLabel) {{
-          movingPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false;
+          movingPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false && seasonalTargetVisible("NP");
           movingPoleLabel.material.opacity = threeSettings.poleTrack.movingPoleLabelOpacity;
           setSpriteHeight(movingPoleLabel, threeSettings.poleTrack.movingPoleLabelSize);
         }}
         if (southPoleDot) {{
-          southPoleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false;
+          southPoleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false && seasonalTargetVisible("SP");
           southPoleDot.material.color.set(threeSettings.poleTrack.dotColor);
         }}
         if (southPoleLabel) {{
-          southPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false;
+          southPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false && seasonalTargetVisible("SP");
           southPoleLabel.material.opacity = threeSettings.poleTrack.movingPoleLabelOpacity * 0.72;
           setSpriteHeight(southPoleLabel, threeSettings.poleTrack.movingPoleLabelSize * 0.9);
         }}
         if (equatorLine) {{
-          equatorLine.visible = threeSettings.ui.showSeasonalFrame && targetVisible("equator");
+          equatorLine.visible = threeSettings.ui.showSeasonalFrame && seasonalTargetVisible("equator");
           equatorLine.material.color.set(threeSettings.seasonal.equatorColor);
           equatorLine.material.opacity = threeSettings.seasonal.equatorOpacity;
         }}
         seasonalMarkerRefs.forEach((entry) => {{
-          const markerVisible = threeSettings.ui.showSeasonalFrame && targetVisible(entry.key);
+          const markerVisible = threeSettings.ui.showSeasonalFrame && seasonalTargetVisible(entry.key);
           entry.mesh.visible = markerVisible;
           entry.sprite.visible = markerVisible;
           entry.mesh.scale.setScalar(threeSettings.seasonal.markerScale);
@@ -4259,10 +4517,12 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             setSpriteHeight(entry.sprite, threeSettings.nakshatras.labelSize);
           }});
         }}
-        if (!activeTransitionTargets.has("stars")) {{
+        if (!activeTransitionTargets.has("stars") && !activeTransitionTargets.has("nakshatraStars")) {{
           starGroupRefs.forEach((entry) => {{
             if (activeTransitionObjects.has(entry.points)) return;
-            const visible = threeSettings.ui.showStars && (entry.nid === "__special__" || st.visibleNakshatras[entry.nid] !== false);
+            const visible = entry.nid === "__special__"
+              ? threeSettings.ui.showStars
+              : (threeSettings.ui.showStars || threeSettings.ui.showNakshatraStars) && st.visibleNakshatras[entry.nid] !== false;
             entry.points.visible = visible;
             entry.points.material.opacity = visible ? threeSettings.stars.opacity : 0;
           }});
@@ -4271,7 +4531,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           const regionVisible = entry.region === "south"
             ? threeSettings.ui.showSouthPolarItems !== false
             : threeSettings.ui.showNorthPolarItems !== false;
-          const visible = threeSettings.ui.showPolarItems && regionVisible && aliasesVisible(entry.aliases) && st.visibleCodex[entry.id] !== false;
+          const visible = threeSettings.ui.showPolarItems && regionVisible && focusedPolarVisible(entry) && aliasesVisible(entry.aliases) && st.visibleCodex[entry.id] !== false;
           entry.object.visible = visible;
           if (entry.object.material) {{
             if (entry.kind === "line") entry.object.material.opacity = threeSettings.polarItems.opacity;
@@ -4872,6 +5132,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         controls.update();
         updateThreeState();
         updateSeasonalFrame();
+        updateStoryLabels();
         renderer.render(scene, camera);
       }}
 
@@ -5013,6 +5274,13 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }});
       }}
 
+      if (threeCameraGrab) {{
+        threeCameraGrab.addEventListener("click", () => {{
+          if (!scene) initThree();
+          grabCameraDirective();
+        }});
+      }}
+
       if (threeStoryStop) {{
         threeStoryStop.addEventListener("click", () => {{
           stopStory();
@@ -5093,6 +5361,10 @@ def write_outputs(dataset: dict[str, object]) -> None:
     (page_root / "index.html").write_text(index_html, encoding="utf-8")
     (css_root / "explorer.css").write_text(css_text, encoding="utf-8")
     (js_root / "three-explorer.js").write_text(three_module, encoding="utf-8")
+    (js_root / "vysu-compiler.mjs").write_text(
+        (REPO_ROOT / "scripts" / "vysu-compiler.mjs").read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
     story_match = re.search(
         r'(<script id="story-data" type="application/json">)(.*?)(</script>)',
         index_html,

@@ -8,8 +8,10 @@
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
+      const storyLabelLayer = document.getElementById("three-label-layer");
       const threeDock = document.getElementById("three-dock");
       const threeDockToggle = document.getElementById("three-dock-toggle");
+      const threeDockResizer = document.getElementById("three-dock-resizer");
       const threeDockTabs = Array.from(document.querySelectorAll(".three-dock-tab"));
       const threeDockPanels = {
         static: document.getElementById("three-dock-static"),
@@ -24,8 +26,12 @@
       const threeStoryReset = document.getElementById("three-story-reset");
       const threeStoryCopy = document.getElementById("three-story-copy");
       const threeVysuEditor = document.getElementById("three-vysu-editor");
+      const threeVysuLines = document.getElementById("three-vysu-lines");
+      const threeVysuFontSize = document.getElementById("three-vysu-font-size");
       const threeVysuRun = document.getElementById("three-vysu-run");
       const threeVysuStatus = document.getElementById("three-vysu-status");
+      const threeCameraDirective = document.getElementById("three-camera-directive");
+      const threeCameraGrab = document.getElementById("three-camera-grab");
       const threeLightPreset = document.getElementById("three-light-preset");
       const threeDebugJson = document.getElementById("three-debug-json");
       const threeDebugStatus = document.getElementById("three-debug-status");
@@ -57,11 +63,14 @@
       const activeStoryTimers = [];
       let activeStoryId = null;
       let activeStoryFrame = null;
+      let storyLabels = {};
       let builtEclipticGridStep = null;
       let builtEquatorialGridStep = null;
       const activeTransitionTargets = new Set();
       const activeTransitionObjects = new Set();
       const targetVisibilityOverrides = new Map();
+      const focusedPolarTargets = { north: new Set(), south: new Set() };
+      const focusedSeasonalTargets = new Set();
       const threeDebugUiFields = [
         ["showGrid", "Ecliptic grid"],
         ["showEquatorialGrid", "Equatorial grid"],
@@ -72,6 +81,7 @@
         ["showEclipticLabels", "Sector labels"],
         ["showEclipticPoles", "Ecliptic poles"],
         ["showStars", "Stars"],
+        ["showNakshatraStars", "Nakshatra stars"],
         ["showNakshatraLines", "Nakshatra lines"],
         ["showNakshatraLabels", "Nakshatra labels"],
         ["showPolarItems", "Polar items"],
@@ -160,6 +170,7 @@
           fontSizeRem: 1.8,
           opacity: 1.0,
         },
+        targetStyles: {},
         ui: {
           showGrid: true,
           showEquatorialGrid: false,
@@ -172,6 +183,7 @@
           showEclipticLabels: true,
           showEclipticPoles: true,
           showStars: true,
+          showNakshatraStars: true,
           showNakshatraLines: true,
           showNakshatraLabels: true,
           showPolarItems: true,
@@ -187,6 +199,7 @@
         },
       };
       let threeSettings = JSON.parse(JSON.stringify(defaultThreeSettings));
+      const runtimePreciseStyleRegistry = new Set();
 
       /* ── helpers ─────────────────────────────────────────── */
       function toCart(lonDeg, latDeg, r) {
@@ -251,12 +264,46 @@
         const hUnits = opts.size || 8.0; 
         sprite.scale.set(hUnits * w / h, hUnits, 1);
         sprite.userData.aspect = w / h;
+        sprite.userData.text = text;
+        sprite.userData.textStyle = {
+          color: opts.color || '#ffffff',
+          fontSize,
+          bold: Boolean(opts.bold),
+        };
         return sprite;
       }
 
       function setSpriteHeight(sprite, height) {
         const aspect = sprite?.userData?.aspect || 1;
         sprite.scale.set(height * aspect, height, 1);
+      }
+
+      function setSpriteTextColor(sprite, color) {
+        if (!sprite || !color || sprite.userData?.textStyle?.color === color) return;
+        const text = sprite.userData?.text || "";
+        const textStyle = { ...(sprite.userData?.textStyle || {}), color };
+        const fontSize = textStyle.fontSize || 48;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.font = `${textStyle.bold ? 'bold ' : ''}${fontSize}px sans-serif`;
+        const metrics = ctx.measureText(text);
+        const w = Math.ceil(metrics.width) + 12;
+        const h = fontSize + 12;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.font = `${textStyle.bold ? 'bold ' : ''}${fontSize}px sans-serif`;
+        ctx.fillStyle = color;
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, w / 2, h / 2);
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.minFilter = THREE.LinearFilter;
+        const oldMap = sprite.material?.map;
+        sprite.material.map = tex;
+        sprite.material.needsUpdate = true;
+        oldMap?.dispose?.();
+        sprite.userData.aspect = w / h;
+        sprite.userData.textStyle = textStyle;
       }
 
       function sectorHSL(index) {
@@ -281,6 +328,104 @@
 
       function setVysuStatus(text) {
         if (threeVysuStatus) threeVysuStatus.textContent = text;
+      }
+
+      function syncVysuLineNumbers() {
+        if (!threeVysuEditor || !threeVysuLines) return;
+        const count = Math.max(1, threeVysuEditor.value.split(/\r?\n/).length);
+        let text = "";
+        for (let i = 1; i <= count; i += 1) text += `${i}\n`;
+        threeVysuLines.textContent = text;
+        threeVysuLines.scrollTop = threeVysuEditor.scrollTop;
+      }
+
+      function setVysuEditorFontSize(sizePx) {
+        if (!threeVysuEditor) return;
+        const size = Math.min(24, Math.max(11, Number(sizePx) || 13));
+        const lineHeight = Math.round(size * 1.42 * 100) / 100;
+        const shell = threeVysuEditor.closest(".vysu-editor-shell");
+        if (shell) {
+          shell.style.setProperty("--vysu-editor-font-size", `${size}px`);
+          shell.style.setProperty("--vysu-editor-line-height", `${lineHeight}px`);
+        }
+        if (threeVysuFontSize) threeVysuFontSize.value = String(size);
+        try { window.localStorage.setItem("vysuEditorFontSize", String(size)); } catch (error) {}
+        syncVysuLineNumbers();
+      }
+
+      function initVysuEditorChrome() {
+        if (!threeVysuEditor) return;
+        let savedSize = 13;
+        try { savedSize = Number(window.localStorage.getItem("vysuEditorFontSize")) || 13; } catch (error) {}
+        setVysuEditorFontSize(savedSize);
+        threeVysuEditor.addEventListener("input", syncVysuLineNumbers);
+        threeVysuEditor.addEventListener("scroll", syncVysuLineNumbers);
+        if (threeVysuFontSize) {
+          threeVysuFontSize.addEventListener("change", () => setVysuEditorFontSize(threeVysuFontSize.value));
+          threeVysuFontSize.addEventListener("input", () => setVysuEditorFontSize(threeVysuFontSize.value));
+        }
+        syncVysuLineNumbers();
+      }
+
+      function setDockWidth(widthPx) {
+        if (!threeDock) return;
+        const workspace = threeDock.closest(".three-workspace");
+        if (!workspace || workspace.classList.contains("dock-collapsed")) return;
+        const workspaceWidth = workspace.getBoundingClientRect().width || window.innerWidth;
+        const max = Math.max(360, Math.min(760, workspaceWidth - 520));
+        const width = Math.min(max, Math.max(360, Math.round(Number(widthPx) || 440)));
+        workspace.style.gridTemplateColumns = `minmax(28rem, 1fr) ${width}px`;
+        try { window.localStorage.setItem("threeDockWidth", String(width)); } catch (error) {}
+        window.dispatchEvent(new Event("resize"));
+      }
+
+      function initDockResizer() {
+        if (!threeDock || !threeDockResizer) return;
+        let savedWidth = null;
+        try { savedWidth = Number(window.localStorage.getItem("threeDockWidth")) || null; } catch (error) {}
+        if (savedWidth) setDockWidth(savedWidth);
+        threeDockResizer.addEventListener("pointerdown", (event) => {
+          if (window.matchMedia("(max-width: 900px)").matches) return;
+          event.preventDefault();
+          threeDockResizer.setPointerCapture(event.pointerId);
+          const onMove = (moveEvent) => {
+            const workspace = threeDock.closest(".three-workspace");
+            if (!workspace) return;
+            const rect = workspace.getBoundingClientRect();
+            setDockWidth(rect.right - moveEvent.clientX);
+          };
+          const onUp = (upEvent) => {
+            threeDockResizer.releasePointerCapture(upEvent.pointerId);
+            window.removeEventListener("pointermove", onMove);
+            window.removeEventListener("pointerup", onUp);
+          };
+          window.addEventListener("pointermove", onMove);
+          window.addEventListener("pointerup", onUp);
+        });
+      }
+
+      function formatCameraNumber(value) {
+        return Number(value || 0).toFixed(3).replace(/\.?0+$/, "");
+      }
+
+      function currentCameraDirective() {
+        if (!camera || !controls) return "camera pos 0,0,0 target 0,0,0 fov 45 over 900";
+        const pos = [camera.position.x, camera.position.y, camera.position.z].map(formatCameraNumber).join(",");
+        const target = [controls.target.x, controls.target.y, controls.target.z].map(formatCameraNumber).join(",");
+        const fov = formatCameraNumber(camera.fov || 45);
+        return `camera pos ${pos} target ${target} fov ${fov} over 900`;
+      }
+
+      async function grabCameraDirective() {
+        const directive = currentCameraDirective();
+        if (threeCameraDirective) threeCameraDirective.value = directive;
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+          await navigator.clipboard.writeText(directive);
+          setVysuStatus("Copied camera directive.");
+        } catch (error) {
+          setVysuStatus("Camera directive ready.");
+        }
       }
 
       function cloneSettings(settings) {
@@ -584,6 +729,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           showEclipticLabels: false,
           showEclipticPoles: false,
           showStars: false,
+          showNakshatraStars: false,
           showNakshatraLines: false,
           showNakshatraLabels: false,
           showPolarItems: false,
@@ -828,6 +974,1051 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         };
       }
 
+      // BEGIN VYOMASUTRA COMPILER
+{
+const VALID_ACTIONS = new Set([
+  "caption",
+  "set",
+  "reveal",
+  "hide",
+  "camera",
+  "epochTravel",
+  "flash",
+  "fullscreen",
+  "exitFullscreen",
+]);
+
+const VALID_TARGETS = new Set([
+  "eclipticGrid",
+  "equatorialGrid",
+  "eclipticNakSegments",
+  "eclipticBand",
+  "eclipticDividers",
+  "eclipticLabels",
+  "eclipticPoles",
+  "stars",
+  "nakshatraStars",
+  "nakshatras",
+  "nakshatraLines",
+  "nakshatraLabels",
+  "polarItems",
+  "northPolarItems",
+  "southPolarItems",
+  "poleTrack",
+  "precessionCircle",
+  "seasonalFrame",
+  "overlay",
+  "referencePlanes",
+  "eclipticPlane",
+  "equatorialPlane",
+  "nsAxis",
+  "NEP",
+  "SEP",
+  "NP",
+  "SP",
+  "equator",
+  "VE",
+  "SS",
+  "AE",
+  "WS",
+  "agastya",
+  "thuban",
+  "polaris",
+  "matsya",
+  "sisumara",
+]);
+
+const TARGET_ALIASES = {
+  eclipticgrid: "eclipticGrid",
+  eclgrid: "eclipticGrid",
+  eclgridwire: "eclipticGrid",
+  eclipticnaksegments: "eclipticNakSegments",
+  eclipticnakssegments: "eclipticNakSegments",
+  naksegments: "eclipticNakSegments",
+  nakssegments: "eclipticNakSegments",
+  eclipticsegments: "eclipticNakSegments",
+  eclipticband: "eclipticBand",
+  eclipticdividers: "eclipticDividers",
+  sectordividers: "eclipticDividers",
+  eclipticlabels: "eclipticLabels",
+  sectorlabels: "eclipticLabels",
+  eclipticpoles: "eclipticPoles",
+  eclipticplane: "eclipticPlane",
+  equatorialplane: "equatorialPlane",
+  equatorialgrid: "equatorialGrid",
+  equatorgrid: "equatorialGrid",
+  eqgrid: "equatorialGrid",
+  eq: "equatorialGrid",
+  referenceplanes: "referencePlanes",
+  refs: "referencePlanes",
+  nsaxis: "nsAxis",
+  axis: "nsAxis",
+  nep: "NEP",
+  sep: "SEP",
+  np: "NP",
+  sp: "SP",
+  stars: "stars",
+  nakshatrastars: "nakshatraStars",
+  nakstars: "nakshatraStars",
+  naksstars: "nakshatraStars",
+  naks: "nakshatras",
+  nak: "nakshatras",
+  nakshatra: "nakshatras",
+  nakshatras: "nakshatras",
+  nakshatralines: "nakshatraLines",
+  nakshatralabels: "nakshatraLabels",
+  seasonalframe: "seasonalFrame",
+  seasons: "seasonalFrame",
+  rtus: "seasonalFrame",
+  rtu: "seasonalFrame",
+  poletrack: "poleTrack",
+  polepath: "poleTrack",
+  precessioncircle: "precessionCircle",
+  precession: "precessionCircle",
+  overlay: "overlay",
+  polaritems: "polarItems",
+  northpolaritems: "northPolarItems",
+  northpolar: "northPolarItems",
+  southpolaritems: "southPolarItems",
+  southpolar: "southPolarItems",
+  equator: "equator",
+  ve: "VE",
+  ss: "SS",
+  ae: "AE",
+  ws: "WS",
+  agastya: "agastya",
+  canopus: "agastya",
+  thuban: "thuban",
+  abhayadhruva: "thuban",
+  polaris: "polaris",
+  matsyadhruva: "polaris",
+  matsya: "matsya",
+  sisumara: "sisumara",
+  shishumara: "sisumara",
+  shimshumara: "sisumara",
+};
+
+const GROUP_TARGETS = {
+  guides: ["equator", "ecliptic.circle", "nsAxis"],
+};
+
+const DOTTED_ALIASES = {
+  eclipticcircle: "eclipticNakSegments",
+  eclipticband: "eclipticBand",
+  eclipticdividers: "eclipticDividers",
+  eclipticlabels: "eclipticLabels",
+  eclipticpoles: "eclipticPoles",
+};
+
+const SYMBOLIC_GROUP_ALIASES = {
+  "*nak": ["nakshatraStars"],
+  "*naks": ["nakshatraStars"],
+  "*nakshatra": ["nakshatraStars"],
+  "*nakshatras": ["nakshatraStars"],
+  "$nak": ["nakshatraLines"],
+  "$naks": ["nakshatraLines"],
+  "$nakshatra": ["nakshatraLines"],
+  "$nakshatras": ["nakshatraLines"],
+  "@nak": ["nakshatraStars", "nakshatraLines"],
+  "@naks": ["nakshatraStars", "nakshatraLines"],
+  "@nakshatra": ["nakshatraStars", "nakshatraLines"],
+  "@nakshatras": ["nakshatraStars", "nakshatraLines"],
+};
+
+const BLANK_UI = {
+  showGrid: false,
+  showEquatorialGrid: false,
+  showReferencePlanes: false,
+  showEclipticPlane: false,
+  showEquatorialPlane: false,
+  showNsAxis: false,
+  showEclipticBand: false,
+  showEclipticDividers: false,
+  showEclipticLabels: false,
+  showEclipticPoles: false,
+  showStars: false,
+  showNakshatraStars: false,
+  showNakshatraLines: false,
+  showNakshatraLabels: false,
+  showPolarItems: false,
+  showNorthPolarItems: false,
+  showSouthPolarItems: false,
+  showNEP: false,
+  showSEP: false,
+  showNP: false,
+  showSP: false,
+  showPoleTrack: false,
+  showSeasonalFrame: false,
+  showOverlay: false,
+};
+
+const COLOR_NAMES = new Set([
+  "white",
+  "black",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "cyan",
+  "teal",
+  "purple",
+  "magenta",
+  "pink",
+  "gray",
+  "grey",
+  "gold",
+  "brown",
+]);
+
+const STAGE2_COMMANDS = new Set(["draw", "blink", "glow"]);
+const STAGE2_GROUPS = new Set(["sky", "poles"]);
+const TRANSITION_MODES = new Set(["instant", "fade", "stagger", "rollout"]);
+const TRANSITION_ORDERS = new Set(["default", "ecliptic", "reverse-ecliptic", "north-to-south", "south-to-north"]);
+const DIRECTIONS = new Set(["forward", "reverse"]);
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function lineWarning(lineNumber, message) {
+  return `Line ${lineNumber}: ${message}`;
+}
+
+function normalizeKey(value) {
+  return String(value || "").replace(/[._-]/g, "").toLowerCase();
+}
+
+function parseMetadata(source) {
+  const metadata = {};
+  source.split(/\r?\n/).forEach((line) => {
+    const match = line.match(/^\s*#\s*([a-zA-Z][\w-]*)\s*:\s*(.*?)\s*$/);
+    if (match) metadata[match[1].toLowerCase()] = match[2];
+  });
+  return metadata;
+}
+
+function stripComment(line) {
+  let quote = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') quote = !quote;
+    if (!quote && ch === "#") {
+      const hex = line.slice(i).match(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(\b|\s|$)/);
+      if (hex) {
+        i += hex[1].length;
+        continue;
+      }
+      return line.slice(0, i);
+    }
+  }
+  return line;
+}
+
+function splitStatements(line) {
+  const statements = [];
+  let quote = false;
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') quote = !quote;
+    if (!quote && ch === "{") depth += 1;
+    if (!quote && ch === "}") depth = Math.max(0, depth - 1);
+    if (!quote && depth === 0 && ch === ";") {
+      const part = line.slice(start, i).trim();
+      if (part) statements.push(part);
+      start = i + 1;
+    }
+  }
+  const tail = line.slice(start).trim();
+  if (tail) statements.push(tail);
+  return statements;
+}
+
+function tokenize(statement) {
+  const tokens = [];
+  const pattern = /"[^"]*"|\{|\}|,|\S+/g;
+  let match;
+  while ((match = pattern.exec(statement)) !== null) {
+    tokens.push(match[0]);
+  }
+  return tokens;
+}
+
+function parseNumberToken(token) {
+  const raw = String(token || "").replace(/y\/s$/i, "").replace(/[a-zA-Z]+$/g, "");
+  const number = Number(raw);
+  return Number.isFinite(number) ? number : null;
+}
+
+function parseDuration(token) {
+  const raw = String(token || "").trim();
+  const tuple = raw.match(/^(\d+(?:\.\d+)?):(\d*)?(?::(\d*)?)?$/);
+  if (tuple) {
+    const out = { duration: Number(tuple[1]) };
+    if (tuple[2]) out.fadeIn = Number(tuple[2]);
+    if (tuple[3]) out.fadeOut = Number(tuple[3]);
+    return out;
+  }
+  const simple = raw.match(/^(-?\d+(?:\.\d+)?)(ms|s)?$/);
+  if (!simple) return null;
+  const scale = simple[2] === "s" ? 1000 : 1;
+  return { duration: Math.round(Number(simple[1]) * scale) };
+}
+
+function parseSignedDuration(token) {
+  const raw = String(token || "").trim();
+  const match = raw.match(/^([+-])(.+)$/);
+  if (!match) return null;
+  const parsed = parseDuration(match[2]);
+  if (!parsed) return null;
+  return { sign: match[1], duration: parsed.duration };
+}
+
+function parseVec3(token) {
+  const parts = String(token || "").split(",").map(Number);
+  if (parts.length !== 3 || parts.some((part) => !Number.isFinite(part))) return null;
+  return { x: parts[0], y: parts[1], z: parts[2] };
+}
+
+function parseVec2(token) {
+  const parts = String(token || "").split(",").map(Number);
+  if (parts.length !== 2 || parts.some((part) => !Number.isFinite(part))) return null;
+  return { x: parts[0], y: parts[1] };
+}
+
+function parseAlpha(token) {
+  const raw = String(token || "").trim();
+  let value = null;
+  if (/^%\d+(?:\.\d+)?$/.test(raw)) value = Number(raw.slice(1)) / 100;
+  else if (/^\d+(?:\.\d+)?%$/.test(raw)) value = Number(raw.slice(0, -1)) / 100;
+  else if (/^(?:0?\.\d+|1(?:\.0+)?)$/.test(raw)) value = Number(raw);
+  else if (/^\d+(?:\.\d+)?$/.test(raw) && Number(raw) <= 1) value = Number(raw);
+  return Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : null;
+}
+
+function parseColor(token) {
+  const raw = String(token || "").trim();
+  if (/^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?$/.test(raw)) return raw;
+  const lower = raw.toLowerCase();
+  return COLOR_NAMES.has(lower) ? lower : null;
+}
+
+function durationFromArgs(args, index) {
+  const arg = String(args[index] || "");
+  if (arg.toLowerCase() === "over" && args[index + 1]) {
+    const duration = parseDuration(args[index + 1]);
+    return duration ? { ...duration, nextIndex: index + 1 } : null;
+  }
+  const duration = parseDuration(arg);
+  return duration ? { ...duration, nextIndex: index } : null;
+}
+
+function resolveTargetAtom(token, lineNumber, warnings) {
+  const raw = String(token || "").trim().replace(/,$/, "");
+  if (!raw) {
+    warnings.push(lineWarning(lineNumber, "missing target."));
+    return [];
+  }
+  if (raw.includes("..")) {
+    warnings.push(lineWarning(lineNumber, `target ranges are Stage 2 only: "${raw}".`));
+    return [];
+  }
+  const symbolicGroup = SYMBOLIC_GROUP_ALIASES[normalizeKey(raw)];
+  if (symbolicGroup) return symbolicGroup;
+  if (/^[$*@][A-Za-z_][\w-]*$/.test(raw)) return [raw];
+  if (GROUP_TARGETS[raw]) return GROUP_TARGETS[raw].flatMap((target) => resolveTargetAtom(target, lineNumber, warnings));
+  if (STAGE2_GROUPS.has(raw)) {
+    warnings.push(lineWarning(lineNumber, `group target "${raw}" is Stage 2 only; no canonical expansion yet.`));
+    return [];
+  }
+  const dotted = DOTTED_ALIASES[normalizeKey(raw)];
+  const target = dotted || TARGET_ALIASES[normalizeKey(raw)] || raw;
+  if (!VALID_TARGETS.has(target)) {
+    warnings.push(lineWarning(lineNumber, `unsupported target "${raw}".`));
+    return [];
+  }
+  return [target];
+}
+
+function readTargetList(args, lineNumber, warnings) {
+  const atoms = [];
+  let i = 0;
+  while (i < args.length) {
+    let token = args[i];
+    const lower = String(token).toLowerCase();
+    if (token === "," || lower === "and") {
+      i += 1;
+      continue;
+    }
+    if (isPropertyStart(args, i)) break;
+    const hadTrailingComma = String(token).endsWith(",");
+    if (hadTrailingComma) token = String(token).slice(0, -1);
+    const resolved = resolveTargetAtom(token, lineNumber, warnings);
+    if (resolved.length) atoms.push(...resolved);
+    i += 1;
+    const next = args[i];
+    if (!next || hadTrailingComma || next === "," || String(next).toLowerCase() === "and" || isPropertyStart(args, i)) continue;
+    if (resolved.length) {
+      warnings.push(lineWarning(lineNumber, `target lists need commas or "and"; stopped before "${next}".`));
+    }
+    break;
+  }
+  return { targets: atoms, nextIndex: i };
+}
+
+function isPropertyStart(args, index) {
+  const lower = String(args[index] || "").toLowerCase();
+  if (["over", "instant", "fade", "stagger", "rollout", "default", "ecliptic", "reverse-ecliptic", "north-to-south", "south-to-north", "forward", "reverse", "ease", "step", "rate", "gap", "color", "linecolor", "alpha", "opacity", "labelalpha", "fontsize", "font", "starsize", "pointsize", "font+", "font-", "size", "fadein", "fadeout", "screen", "dx", "dy", "class"].includes(lower)) return true;
+  if (/^\d+(?:\.\d+)?(?::|\s*$)/.test(lower)) return true;
+  if (/^\d+(?:\.\d+)?(ms|s)?$/.test(lower)) return true;
+  if (/^\d+x$/i.test(lower)) return true;
+  if (parseColor(args[index]) || parseAlpha(args[index]) !== null) return true;
+  return false;
+}
+
+function put(patch, path, value) {
+  let cursor = patch;
+  path.slice(0, -1).forEach((key) => {
+    if (!cursor[key]) cursor[key] = {};
+    cursor = cursor[key];
+  });
+  cursor[path[path.length - 1]] = value;
+}
+
+function mergePatch(target, patch) {
+  Object.entries(patch || {}).forEach(([key, value]) => {
+    if (value && typeof value === "object" && !Array.isArray(value) && target[key] && typeof target[key] === "object" && !Array.isArray(target[key])) {
+      mergePatch(target[key], value);
+    } else {
+      target[key] = clone(value);
+    }
+  });
+  return target;
+}
+
+function stylePatchForTarget(target, style) {
+  const patch = {};
+  const color = style.color || style.lineColor;
+  const alpha = style.alpha ?? style.opacity;
+  const fontSize = style.fontSize;
+  const pointSize = style.pointSize ?? style.starSize;
+  if (target === "eclipticGrid") {
+    if (color) {
+      put(patch, ["grid", "parallelColor"], color);
+      put(patch, ["grid", "meridianColor"], color);
+    }
+    if (alpha !== undefined) {
+      put(patch, ["grid", "parallelOpacity"], alpha);
+      put(patch, ["grid", "meridianOpacity"], alpha);
+    }
+  } else if (target === "equatorialGrid") {
+    if (color) put(patch, ["grid", "equatorialColor"], color);
+    if (alpha !== undefined) put(patch, ["grid", "equatorialOpacity"], alpha);
+  } else if (target === "nsAxis") {
+    if (color) put(patch, ["reference", "nsAxisColor"], color);
+    if (alpha !== undefined) put(patch, ["reference", "nsAxisOpacity"], alpha);
+  } else if (target === "eclipticPlane") {
+    if (color) put(patch, ["reference", "eclipticPlaneColor"], color);
+    if (alpha !== undefined) put(patch, ["reference", "eclipticPlaneOpacity"], alpha);
+  } else if (target === "equatorialPlane") {
+    if (color) put(patch, ["reference", "equatorialPlaneColor"], color);
+    if (alpha !== undefined) put(patch, ["reference", "equatorialPlaneOpacity"], alpha);
+  } else if (target === "stars" || target === "nakshatraStars") {
+    if (alpha !== undefined) put(patch, ["stars", "opacity"], alpha);
+    if (pointSize !== undefined) put(patch, ["stars", "size"], pointSize);
+  } else if (target === "nakshatras" || target === "nakshatraLines" || target === "nakshatraLabels") {
+    if (color) put(patch, ["nakshatras", "color"], color);
+    if (alpha !== undefined) put(patch, ["nakshatras", "opacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["nakshatras", "labelSize"], fontSize);
+    if (style.labelAlpha !== undefined) put(patch, ["nakshatras", "labelOpacity"], style.labelAlpha);
+  } else if (target === "polarItems" || target === "northPolarItems" || target === "southPolarItems") {
+    if (color) put(patch, ["polarItems", "color"], color);
+    if (alpha !== undefined) put(patch, ["polarItems", "opacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["polarItems", "labelSize"], fontSize);
+    if (style.labelAlpha !== undefined) put(patch, ["polarItems", "labelOpacity"], style.labelAlpha);
+  } else if (target === "poleTrack" || target === "precessionCircle") {
+    if (color) put(patch, ["poleTrack", "color"], color);
+    if (alpha !== undefined) put(patch, ["poleTrack", "opacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["poleTrack", "trackLabelSize"], fontSize);
+  } else if (target === "seasonalFrame") {
+    if (color) put(patch, ["seasonal", "equatorColor"], color);
+    if (alpha !== undefined) put(patch, ["seasonal", "equatorOpacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["seasonal", "markerLabelSize"], fontSize);
+    if (style.labelAlpha !== undefined) put(patch, ["seasonal", "markerLabelOpacity"], style.labelAlpha);
+  } else if (target === "eclipticNakSegments" || target === "eclipticBand" || target === "eclipticLabels") {
+    if (color) put(patch, ["ecliptic", "circleColor"], color);
+    if (alpha !== undefined) put(patch, ["ecliptic", "circleOpacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["ecliptic", "sectorLabelSize"], fontSize);
+    if (style.labelAlpha !== undefined) put(patch, ["ecliptic", "sectorLabelOpacity"], style.labelAlpha);
+  } else if (target === "overlay") {
+    if (alpha !== undefined) put(patch, ["overlay", "opacity"], alpha);
+    if (fontSize !== undefined) put(patch, ["overlay", "fontSizeRem"], fontSize);
+  }
+  return Object.keys(patch).length ? patch : null;
+}
+
+function gridPatch(args, lineNumber, warnings) {
+  if (args.length < 2) {
+    warnings.push(lineWarning(lineNumber, "grid needs kind and step."));
+    return null;
+  }
+  const kind = String(args[0]).toLowerCase();
+  const step = Number(args[1]);
+  if (!Number.isFinite(step)) {
+    warnings.push(lineWarning(lineNumber, "grid step must be numeric."));
+    return null;
+  }
+  const color = parseColor(args[2]);
+  const patch = { grid: {}, ui: {} };
+  if (kind === "ecliptic" || kind === "ecl") {
+    patch.grid.eclipticStepDeg = step;
+    if (color) {
+      patch.grid.parallelColor = color;
+      patch.grid.meridianColor = color;
+    }
+    patch.ui.showGrid = true;
+  } else if (kind === "equatorial" || kind === "equator" || kind === "eq") {
+    patch.grid.equatorialStepDeg = step;
+    if (color) patch.grid.equatorialColor = color;
+    patch.ui.showEquatorialGrid = true;
+  } else {
+    warnings.push(lineWarning(lineNumber, "grid kind must be ecliptic or equatorial."));
+    return null;
+  }
+  return patch;
+}
+
+function parseTiming(tokens) {
+  if (!tokens.length) return { timing: null, tokens };
+  const first = String(tokens[0]).toLowerCase();
+  if (first === "at" && tokens[1]) {
+    const duration = parseDuration(tokens[1]);
+    return duration ? { timing: { kind: "at", value: duration.duration }, tokens: tokens.slice(2) } : { timing: null, tokens };
+  }
+  if (first === "after" && tokens[1]) {
+    const duration = parseDuration(tokens[1]);
+    return duration ? { timing: { kind: "after", value: duration.duration }, tokens: tokens.slice(2) } : { timing: null, tokens };
+  }
+  const signed = parseSignedDuration(tokens[0]);
+  if (signed) return { timing: { kind: "after", value: signed.sign === "-" ? -signed.duration : signed.duration }, tokens: tokens.slice(1) };
+  return { timing: null, tokens };
+}
+
+function screenLocation(args, index, cue, lineNumber, warnings) {
+  const anchor = args[index + 1];
+  if (!anchor) {
+    warnings.push(lineWarning(lineNumber, "screen needs an anchor."));
+    return index;
+  }
+  cue.screen = anchor;
+  return index + 1;
+}
+
+function parseQuotedText(token) {
+  return /^"[^"]*"$/.test(String(token || "")) ? String(token).slice(1, -1) : null;
+}
+
+function applyStageArgs(args, patch, lineNumber, warnings) {
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = String(args[i]).toLowerCase();
+    if (arg === "blank") {
+      if (!patch.ui) patch.ui = {};
+      Object.assign(patch.ui, BLANK_UI);
+    } else if (arg === "all") {
+      warnings.push(lineWarning(lineNumber, 'stage "all" is not implemented; use explicit show commands.'));
+    } else if (arg === "night" || arg === "twilight" || arg === "day") {
+      patch.lightPreset = arg;
+    } else if ((arg === "year" || arg === "epoch") && args[i + 1]) {
+      const year = Number(args[i + 1]);
+      if (Number.isFinite(year)) {
+        patch.epochYear = Math.trunc(year);
+        i += 1;
+      } else {
+        warnings.push(lineWarning(lineNumber, `stage ${arg} needs numeric value.`));
+      }
+    } else if (arg) {
+      warnings.push(lineWarning(lineNumber, `unknown stage token "${args[i]}".`));
+    }
+  }
+}
+
+function removeEmptyInitial(initial) {
+  const out = clone(initial);
+  if (out.ui && Object.keys(out.ui).length === 0) delete out.ui;
+  return Object.keys(out).length ? out : null;
+}
+
+compileVyomaSutra = function compileVyomaSutraStage1(source, options = {}) {
+  const metadata = parseMetadata(source);
+  const storyId = options.storyId || "vyoma-sutra-scratch";
+  const warnings = [];
+  const story = {
+    id: storyId,
+    title: options.title || metadata.title || (storyId === "vyoma-sutra-scratch" ? "VyomaSutra Scratch" : storyId.replace(/-/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase())),
+    version: Number(metadata.version || 1),
+    vysu: source.replace(/\s*$/, "\n"),
+    cues: [],
+  };
+  if (/^(1|true|yes|y)$/i.test(metadata.featured || "")) story.featured = true;
+  if (metadata.group) story.group = metadata.group;
+  if (metadata.tags) story.tags = metadata.tags.split(",").map((tag) => tag.trim()).filter(Boolean);
+  if (metadata.order && Number.isFinite(Number(metadata.order))) story.order = Number(metadata.order);
+
+  const initial = { ui: {} };
+  let defaultBlockSeq = 0;
+  const timingStack = [{ base: 0, time: 0, seq: 0 }];
+  let emitted = 0;
+  let activeCommand = null;
+
+  const current = () => timingStack[timingStack.length - 1];
+  const inTimedBlock = () => timingStack.length > 1;
+  const scheduleCommandAt = (timing) => {
+    if (timing?.kind === "at") return current().base + timing.value;
+    if (timing?.kind === "after") {
+      current().time += timing.value;
+      return current().base + current().time;
+    }
+    if (inTimedBlock()) current().time += current().seq || 0;
+    return current().base + current().time;
+  };
+  const commandAt = () => {
+    if (!activeCommand) return scheduleCommandAt(null);
+    if (activeCommand.at === null) activeCommand.at = scheduleCommandAt(activeCommand.timing);
+    return activeCommand.at;
+  };
+  const addCue = (cue, timing = null) => {
+    const at = timing ? scheduleCommandAt(timing) : commandAt();
+    story.cues.push({ at, ...cue });
+    emitted += 1;
+    return at;
+  };
+  const addCueAt = (cue, at) => {
+    story.cues.push({ at, ...cue });
+    emitted += 1;
+  };
+  const applyStage = (args, lineNumber, timing = null) => {
+    const patch = { ui: {} };
+    applyStageArgs(args, patch, lineNumber, warnings);
+    if (!patch.ui || Object.keys(patch.ui).length === 0) delete patch.ui;
+    if (emitted === 0 && !timing && !inTimedBlock()) mergePatch(initial, patch);
+    else if (Object.keys(patch).length) addCue({ action: "set", state: patch });
+  };
+
+  const compileCommand = (rawTokens, lineNumber, inheritedTiming = null) => {
+    const parsedTiming = parseTiming(rawTokens);
+    const timing = parsedTiming.timing || inheritedTiming;
+    const tokens = parsedTiming.tokens;
+    if (!tokens.length) return;
+    const directive = String(tokens[0]).toLowerCase();
+    const args = tokens.slice(1);
+    const previousCommand = activeCommand;
+    activeCommand = { timing, at: null };
+
+    try {
+      if (STAGE2_COMMANDS.has(directive)) {
+        warnings.push(lineWarning(lineNumber, `${tokens[0]} is Stage 2 only and was ignored.`));
+        return;
+      }
+      if (directive === "effects") {
+        warnings.push(lineWarning(lineNumber, "effects defaults are accepted as warnings only in Stage 1."));
+        return;
+      }
+      if (directive === "defaults") {
+        warnings.push(lineWarning(lineNumber, "defaults are accepted as warnings only in Stage 1."));
+        return;
+      }
+      if (directive === "stage" || directive === "scene") {
+        applyStage(args, lineNumber, timing);
+        return;
+      }
+      if (directive === "seq" || directive === "sequence") {
+        const duration = parseDuration(args[0]);
+        if (!duration) {
+          warnings.push(lineWarning(lineNumber, "seq needs a duration."));
+        } else if (inTimedBlock()) {
+          current().seq = duration.duration;
+        } else {
+          defaultBlockSeq = duration.duration;
+        }
+        return;
+      }
+      if (directive === "wait") {
+        const duration = parseDuration(args[0]);
+        if (duration) current().time += duration.duration;
+        else warnings.push(lineWarning(lineNumber, "wait needs a duration."));
+        return;
+      }
+      if (directive === "grid") {
+      const patch = gridPatch(args, lineNumber, warnings);
+      if (patch) addCue({ action: "set", state: patch });
+      return;
+    }
+    if (directive === "fullscreen" || directive === "theater") {
+      addCue({ action: "fullscreen" });
+      return;
+    }
+    if (directive === "exitfullscreen" || directive === "canvas") {
+      addCue({ action: "exitFullscreen" });
+      return;
+    }
+    if (directive === "caption" || directive === "say" || directive === "title") {
+      const cue = { action: "caption", duration: 1200, fadeIn: 300, fadeOut: 300 };
+      for (let i = 0; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        const text = parseQuotedText(args[i]);
+        const duration = durationFromArgs(args, i);
+        const color = parseColor(args[i]);
+        const alpha = parseAlpha(args[i]);
+        if (text !== null) cue.text = text;
+        else if (duration) {
+          cue.duration = duration.duration;
+          if (duration.fadeIn !== undefined) cue.fadeIn = duration.fadeIn;
+          if (duration.fadeOut !== undefined) cue.fadeOut = duration.fadeOut;
+          i = duration.nextIndex;
+        } else if (lower === "fade" && args[i + 1]) {
+          const fade = String(args[i + 1]).match(/^(\d+)(?::(\d+))?$/);
+          if (fade) {
+            cue.fadeIn = Number(fade[1]);
+            cue.fadeOut = Number(fade[2] || fade[1]);
+            i += 1;
+          }
+        } else if ((lower === "fadein" || lower === "fadeout") && args[i + 1]) {
+          const fade = parseDuration(args[i + 1]);
+          if (fade) {
+            cue[lower === "fadein" ? "fadeIn" : "fadeOut"] = fade.duration;
+            i += 1;
+          }
+        } else if ((lower === "size" || lower === "font") && Number.isFinite(Number(args[i + 1]))) {
+          cue.sizeRem = Number(args[i + 1]);
+          i += 1;
+        } else if (/^\d+(?:\.\d+)?px$/.test(lower)) {
+          cue.sizePx = Number(lower.slice(0, -2));
+        } else if (lower === "screen") {
+          i = screenLocation(args, i, cue, lineNumber, warnings);
+        } else if ((lower === "dx" || lower === "dy") && Number.isFinite(Number(args[i + 1]))) {
+          cue[lower] = Number(args[i + 1]);
+          i += 1;
+        } else if (color) cue.color = color;
+        else if (alpha !== null) cue.opacity = alpha;
+        else warnings.push(lineWarning(lineNumber, `unsupported caption token "${args[i]}".`));
+      }
+      if (!cue.text) warnings.push(lineWarning(lineNumber, "caption needs quoted text."));
+      else addCue(cue);
+      return;
+    }
+    if (["show", "reveal", "rollout", "fade", "hide"].includes(directive)) {
+      const targetList = readTargetList(args, lineNumber, warnings);
+      if (!targetList.targets.length) return;
+      const cueBase = { action: directive === "hide" ? "hide" : "reveal" };
+      if (directive === "rollout" || directive === "fade") cueBase.mode = directive;
+      for (let i = targetList.nextIndex; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        const duration = durationFromArgs(args, i);
+        if (duration) {
+          cueBase.duration = duration.duration;
+          if (duration.fadeIn !== undefined || duration.fadeOut !== undefined) {
+            warnings.push(lineWarning(lineNumber, `extra tuple fields on ${directive} duration were ignored.`));
+          }
+          i = duration.nextIndex;
+        } else if (TRANSITION_MODES.has(lower)) cueBase.mode = lower;
+        else if (TRANSITION_ORDERS.has(lower)) cueBase.order = lower;
+        else if (DIRECTIONS.has(lower)) cueBase.direction = lower;
+        else if (lower === "ease" && args[i + 1]) {
+          cueBase.ease = args[i + 1];
+          i += 1;
+        } else warnings.push(lineWarning(lineNumber, `unsupported transition token "${args[i]}".`));
+      }
+      targetList.targets.forEach((target) => addCue({ ...cueBase, target }));
+      return;
+    }
+    if (directive === "style") {
+      const targetList = readTargetList(args, lineNumber, warnings);
+      if (!targetList.targets.length) return;
+      const style = {};
+      for (let i = targetList.nextIndex; i < args.length; i += 1) {
+        const key = String(args[i]).toLowerCase();
+        const next = args[i + 1];
+        const color = parseColor(args[i]);
+        const alpha = parseAlpha(args[i]);
+        if (["color", "linecolor"].includes(key)) {
+          const parsed = parseColor(next);
+          if (parsed) {
+            style[key === "linecolor" ? "lineColor" : "color"] = parsed;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, `${args[i]} needs a color.`));
+        } else if (["alpha", "opacity", "labelalpha"].includes(key)) {
+          const parsed = parseAlpha(next);
+          if (parsed !== null) {
+            style[key === "labelalpha" ? "labelAlpha" : key] = parsed;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, `${args[i]} needs alpha like %50 or .5.`));
+        } else if (["fontsize", "font", "starsize", "pointsize"].includes(key)) {
+          const size = Number(next);
+          if (Number.isFinite(size)) {
+            if (key === "starsize") style.starSize = size;
+            else if (key === "pointsize") style.pointSize = size;
+            else style.fontSize = size;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, `${args[i]} needs a numeric size.`));
+        } else if (key === "font+" || key === "font-") {
+          const delta = Number.isFinite(Number(next)) ? Number(next) : 1;
+          style.fontSize = Math.max(1, (style.fontSize || 5) + (key === "font+" ? delta : -delta));
+          if (Number.isFinite(Number(next))) i += 1;
+        } else if (color) style.color = color;
+        else if (alpha !== null) style.alpha = alpha;
+        else warnings.push(lineWarning(lineNumber, `unsupported style token "${args[i]}".`));
+      }
+      targetList.targets.forEach((target) => {
+        const patch = stylePatchForTarget(target, style);
+        if (patch) addCue({ action: "set", state: patch });
+        else warnings.push(lineWarning(lineNumber, `no supported style knobs for ${target}.`));
+      });
+      return;
+    }
+    if (directive === "flash" || directive === "pulse") {
+      const targetList = readTargetList(args, lineNumber, warnings);
+      if (!targetList.targets.length) return;
+      const cue = { action: "flash", duration: 900 };
+      let repeat = directive === "pulse" ? 3 : 1;
+      let gap = 120;
+      for (let i = targetList.nextIndex; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        const duration = durationFromArgs(args, i);
+        if (duration) {
+          cue.duration = duration.duration;
+          i = duration.nextIndex;
+        } else if (/^\d+x$/i.test(lower)) repeat = Math.max(1, Number(lower.slice(0, -1)));
+        else if (lower === "gap" && args[i + 1]) {
+          const parsed = parseDuration(args[i + 1]);
+          if (parsed) {
+            gap = parsed.duration;
+            i += 1;
+          }
+        } else {
+          const color = parseColor(args[i]);
+          const alpha = parseAlpha(args[i]);
+          if (color) cue.color = color;
+          else if (alpha !== null) cue.opacity = alpha;
+          else warnings.push(lineWarning(lineNumber, `unsupported effect token "${args[i]}".`));
+        }
+      }
+      const firstAt = commandAt();
+      for (let r = 0; r < repeat; r += 1) {
+        targetList.targets.forEach((target) => addCueAt({ ...cue, target }, firstAt + gap * r));
+      }
+      return;
+    }
+    if (directive === "camera" || directive === "move" || directive === "cut") {
+      const cue = { action: "camera", camera: {}, duration: directive === "cut" ? 0 : 1000 };
+      for (let i = 0; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        if (lower === "pos" || lower === "position") {
+          const vec = parseVec3(args[i + 1]);
+          if (vec) {
+            cue.camera.position = vec;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, "camera pos needs x,y,z."));
+        } else if (lower === "target") {
+          const vec = parseVec3(args[i + 1]);
+          if (vec) {
+            cue.camera.target = vec;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, "camera target needs x,y,z."));
+        } else if (lower === "fov" && args[i + 1]) {
+          const fov = Number(args[i + 1]);
+          if (Number.isFinite(fov)) {
+            cue.camera.fov = fov;
+            i += 1;
+          } else warnings.push(lineWarning(lineNumber, "camera fov needs a number."));
+        } else {
+          const duration = durationFromArgs(args, i);
+          if (duration) {
+            cue.duration = duration.duration;
+            i = duration.nextIndex;
+          } else if (i === 0) warnings.push(lineWarning(lineNumber, `camera preset "${args[i]}" is not implemented yet.`));
+          else warnings.push(lineWarning(lineNumber, `unsupported camera token "${args[i]}".`));
+        }
+      }
+      if (!Object.keys(cue.camera).length) warnings.push(lineWarning(lineNumber, "camera needs pos, target, or fov."));
+      else if (emitted === 0 && !timing && !inTimedBlock()) mergePatch(initial, { camera: cue.camera });
+      else addCue(cue);
+      return;
+    }
+    if (directive === "travel" || directive === "epochtravel") {
+      let argsStart = 0;
+      if (["year", "epoch"].includes(String(args[0] || "").toLowerCase())) argsStart = 1;
+      const from = Number(args[argsStart]);
+      const toIndex = args.findIndex((arg) => String(arg).toLowerCase() === "to");
+      const to = Number(args[toIndex + 1]);
+      const cue = { action: "epochTravel", from: Math.trunc(from), to: Math.trunc(to), duration: 5000, step: 100 };
+      for (let i = argsStart + 1; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        const duration = durationFromArgs(args, i);
+        if (duration) {
+          cue.duration = duration.duration;
+          i = duration.nextIndex;
+        } else if (lower === "step" && args[i + 1]) {
+          const step = parseNumberToken(args[i + 1]);
+          if (step !== null) {
+            cue.step = step;
+            i += 1;
+          }
+        } else if (lower === "rate" && args[i + 1]) {
+          cue.rate = args[i + 1];
+          i += 1;
+        }
+      }
+      if (!Number.isFinite(from) || toIndex < 0 || !Number.isFinite(to)) warnings.push(lineWarning(lineNumber, 'travel needs "FROM to TO".'));
+      else addCue(cue);
+      return;
+    }
+    if (directive === "label") {
+      const id = args[0];
+      const text = parseQuotedText(args[1]);
+      if (!id || text === null) {
+        warnings.push(lineWarning(lineNumber, "label needs an id and quoted text."));
+        return;
+      }
+      const label = { id, text };
+      for (let i = 2; i < args.length; i += 1) {
+        const lower = String(args[i]).toLowerCase();
+        const color = parseColor(args[i]);
+        const alpha = parseAlpha(args[i]);
+        if (lower === "at" && String(args[i + 1]).toLowerCase() === "screen") {
+          label.mode = "screen";
+          label.screen = args[i + 2];
+          i += 2;
+        } else if (lower === "at" && String(args[i + 1]).toLowerCase() === "target") {
+          const target = resolveTargetAtom(args[i + 2], lineNumber, warnings)[0];
+          if (target) {
+            label.mode = "target";
+            label.target = target;
+          }
+          i += 2;
+        } else if ((lower === "dx" || lower === "dy") && Number.isFinite(Number(args[i + 1]))) {
+          label[lower] = Number(args[i + 1]);
+          i += 1;
+        } else if (lower === "class" && args[i + 1]) {
+          label.className = args[i + 1];
+          i += 1;
+        } else if ((lower === "size" || lower === "font") && Number.isFinite(Number(args[i + 1]))) {
+          label.sizeRem = Number(args[i + 1]);
+          i += 1;
+        } else if (parseVec2(args[i])) {
+          const vec = parseVec2(args[i]);
+          label.dx = vec.x;
+          label.dy = vec.y;
+        } else if (color) label.color = color;
+        else if (alpha !== null) label.opacity = alpha;
+        else warnings.push(lineWarning(lineNumber, `unsupported label token "${args[i]}".`));
+      }
+      addCue({ action: "set", state: { labels: { [id]: label } } });
+      return;
+    }
+    if (directive === "clear") {
+      const lower = String(args[0] || "").toLowerCase();
+      if (lower === "labels") addCue({ action: "set", state: { labels: {} } });
+      else if (lower === "label" && args[1]) addCue({ action: "set", state: { labels: { [args[1]]: null } } });
+      else warnings.push(lineWarning(lineNumber, 'clear needs "labels" or "label ID".'));
+      return;
+    }
+      warnings.push(lineWarning(lineNumber, `unknown directive "${tokens[0]}".`));
+    } finally {
+      activeCommand = previousCommand;
+    }
+  };
+
+  const compileStatement = (statement, lineNumber) => {
+    const tokens = tokenize(statement);
+    if (!tokens.length) return;
+    const timed = parseTiming(tokens);
+    if (timed.timing && timed.tokens[0] === "{") {
+      const close = timed.tokens.lastIndexOf("}");
+      if (close < 0) {
+        warnings.push(lineWarning(lineNumber, "timed block needs closing }."));
+        return;
+      }
+      const body = timed.tokens.slice(1, close).join(" ");
+      const parent = current();
+      const blockBase = scheduleCommandAt(timed.timing);
+      const blockFrame = { base: blockBase, time: 0, seq: defaultBlockSeq };
+      timingStack.push(blockFrame);
+      splitStatements(body).forEach((part) => compileCommand(tokenize(part), lineNumber, null));
+      timingStack.pop();
+      parent.time = Math.max(parent.time, blockBase + blockFrame.time - parent.base);
+      return;
+    }
+    compileCommand(tokens, lineNumber, null);
+  };
+
+  let block = null;
+  for (const [index, line] of source.split(/\r?\n/).entries()) {
+    if (/^\s*__(?:END|DATA)__\s*$/.test(line)) break;
+    if (/^\s*#\s*[a-zA-Z][\w-]*\s*:/.test(line)) continue;
+    const uncommented = stripComment(line).trim();
+    if (!uncommented) continue;
+
+    if (block) {
+      if (uncommented === "}") {
+        compileStatement(`${block.header} { ${block.body.join("; ")} }`, block.lineNumber);
+        block = null;
+      } else {
+        block.body.push(uncommented);
+      }
+      continue;
+    }
+
+    const blockStart = uncommented.match(/^((?:at|after)\s+\S+|[+-][^\s{]+)\s*\{\s*$/);
+    if (blockStart) {
+      block = { header: blockStart[1], body: [], lineNumber: index + 1 };
+      continue;
+    }
+
+    splitStatements(uncommented).forEach((statement) => compileStatement(statement, index + 1));
+  }
+  if (block) warnings.push(lineWarning(block.lineNumber, "timed block needs closing }."));
+
+  const cleanedInitial = removeEmptyInitial(initial);
+  if (cleanedInitial) story.initial = cleanedInitial;
+  if (warnings.length) story.warnings = warnings;
+  validateStory(story);
+  return { story, warnings };
+}
+
+function validateStory(story) {
+  ["id", "title", "version", "cues"].forEach((key) => {
+    if (!(key in story)) throw new Error(`story missing required key: ${key}`);
+  });
+  if (!Array.isArray(story.cues)) throw new Error("story cues must be an array.");
+  story.cues.forEach((cue, index) => {
+    if (!cue || typeof cue !== "object" || Array.isArray(cue)) throw new Error(`cue ${index} must be an object.`);
+    if (!("at" in cue) && !("after" in cue)) throw new Error(`cue ${index} needs at or after.`);
+    if (!VALID_ACTIONS.has(cue.action)) throw new Error(`cue ${index} has unknown action ${JSON.stringify(cue.action)}.`);
+    if (cue.action === "caption" && !("text" in cue)) throw new Error(`cue ${index} caption needs text.`);
+    if (cue.action === "set" && !("state" in cue)) throw new Error(`cue ${index} set needs state.`);
+    if ((cue.action === "reveal" || cue.action === "hide" || cue.action === "flash") && !("target" in cue)) throw new Error(`cue ${index} ${cue.action} needs target.`);
+    if ((cue.action === "reveal" || cue.action === "hide" || cue.action === "flash") && typeof cue.target === "string" && !/^[$*@]/.test(cue.target) && !VALID_TARGETS.has(cue.target)) {
+      throw new Error(`cue ${index} has unknown target ${JSON.stringify(cue.target)}.`);
+    }
+    if (cue.action === "camera" && !cue.camera) throw new Error(`cue ${index} camera needs camera.`);
+    if (cue.action === "epochTravel") {
+      ["from", "to", "duration"].forEach((key) => {
+        if (!(key in cue)) throw new Error(`cue ${index} epochTravel needs ${key}.`);
+      });
+    }
+  });
+  return story;
+}
+
+function compileVyomaSutraFile(source, storyId) {
+  return compileVyomaSutra(source, { storyId }).story;
+}
+
+}
+// END VYOMASUTRA COMPILER
+
       function mergeSettings(target, patch) {
         Object.entries(patch || {}).forEach(([key, value]) => {
           if (value && typeof value === "object" && !Array.isArray(value)) {
@@ -851,6 +2042,90 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         storyCaption.classList.toggle("visible", Boolean(visible && text));
       }
 
+      function clearStoryLabels() {
+        storyLabels = {};
+        if (storyLabelLayer) storyLabelLayer.innerHTML = "";
+      }
+
+      function applyStoryLabelsPatch(labelsPatch) {
+        if (!labelsPatch || typeof labelsPatch !== "object") return;
+        if (Object.keys(labelsPatch).length === 0) {
+          clearStoryLabels();
+          return;
+        }
+        Object.entries(labelsPatch).forEach(([id, label]) => {
+          if (label === null) delete storyLabels[id];
+          else storyLabels[id] = { ...(storyLabels[id] || {}), ...(label || {}), id };
+        });
+        renderStoryLabels();
+      }
+
+      function storyLabelAnchor(anchor) {
+        const key = String(anchor || "5").toUpperCase();
+        return {
+          "1": [16, 84], "2": [50, 84], "3": [84, 84],
+          "4": [16, 50], "5": [50, 50], "6": [84, 50],
+          "7": [16, 16], "8": [50, 16], "9": [84, 16],
+          SW: [16, 84], S: [50, 84], SE: [84, 84],
+          W: [16, 50], C: [50, 50], E: [84, 50],
+          NW: [16, 16], N: [50, 16], NE: [84, 16],
+        }[key] || [50, 50];
+      }
+
+      function storyTargetObject(target) {
+        if (target === "NP") return poleDot;
+        if (target === "SP") return southPoleDot;
+        if (["VE", "SS", "AE", "WS"].includes(target)) {
+          return seasonalMarkerRefs.find((entry) => entry.key === target)?.mesh || null;
+        }
+        return transitionDescriptorsForTarget(target)?.[0]?.items?.[0]?.object || null;
+      }
+
+      function renderStoryLabels() {
+        if (!storyLabelLayer) return;
+        storyLabelLayer.innerHTML = "";
+        Object.values(storyLabels).forEach((label) => {
+          const element = document.createElement("div");
+          element.className = `three-story-label ${label.className || ""}`;
+          element.dataset.labelId = label.id;
+          element.textContent = label.text || "";
+          element.style.color = label.color || "";
+          element.style.opacity = label.opacity ?? "";
+          element.style.fontSize = label.sizeRem ? `${label.sizeRem}rem` : "";
+          storyLabelLayer.appendChild(element);
+        });
+        updateStoryLabels();
+      }
+
+      function updateStoryLabels() {
+        if (!storyLabelLayer || !camera || !renderer) return;
+        storyLabelLayer.querySelectorAll(".three-story-label").forEach((element) => {
+          const label = storyLabels[element.dataset.labelId];
+          if (!label) return;
+          let x = 50;
+          let y = 50;
+          let visible = true;
+          if (label.mode === "target" && label.target) {
+            const object = storyTargetObject(label.target);
+            if (object) {
+              const pos = new THREE.Vector3();
+              object.getWorldPosition(pos);
+              pos.project(camera);
+              visible = pos.z >= -1 && pos.z <= 1;
+              x = ((pos.x + 1) / 2) * 100;
+              y = ((1 - pos.y) / 2) * 100;
+            } else {
+              visible = false;
+            }
+          } else {
+            [x, y] = storyLabelAnchor(label.screen);
+          }
+          element.style.left = `calc(${x}% + ${Number(label.dx || 0)}px)`;
+          element.style.top = `calc(${y}% + ${Number(label.dy || 0)}px)`;
+          element.style.display = visible ? "" : "none";
+        });
+      }
+
       function stopStory(clearCaption = true) {
         activeStoryTimers.splice(0).forEach((timer) => window.clearTimeout(timer));
         if (activeStoryFrame !== null) {
@@ -861,6 +2136,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         activeTransitionTargets.clear();
         activeTransitionObjects.clear();
         targetVisibilityOverrides.clear();
+        focusedPolarTargets.north.clear();
+        focusedPolarTargets.south.clear();
+        focusedSeasonalTargets.clear();
+        clearStoryLabels();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {
@@ -889,9 +2168,13 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }
 
       function applyStoryState(patch) {
+        const labelPatch = patch?.labels;
+        const settingsPatch = cloneSettings(patch || {});
+        if (Object.prototype.hasOwnProperty.call(settingsPatch, "labels")) delete settingsPatch.labels;
         const preserveEpoch = !Object.prototype.hasOwnProperty.call(patch || {}, "epochYear");
         const preserveCamera = !(patch || {}).camera;
-        mergeSettings(threeSettings, patch || {});
+        mergeSettings(threeSettings, settingsPatch);
+        applyStoryLabelsPatch(labelPatch);
         if (threeLightPreset && threeSettings.lightPreset) {
           threeLightPreset.value = threeSettings.lightPreset;
         }
@@ -1001,6 +2284,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const duration = cue.duration ?? 900;
         const steps = 12;
         const baseScales = new WeakMap();
+        markTransitionObjects(descriptors, true);
         descriptors.forEach((entry) => {
           setTransitionEntryVisible(entry, true);
           entry.items.forEach((item) => {
@@ -1016,7 +2300,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                 setObjectOpacity(item.object, item.opacity + Math.max(0.25, item.opacity) * wave);
                 if (item.object.scale) {
                   const baseScale = baseScales.get(item.object);
-                  const scale = 1 + 0.18 * wave;
+                  const scale = 1 + (item.flashScale ?? 0.18) * wave;
                   if (baseScale) item.object.scale.copy(baseScale).multiplyScalar(scale);
                 }
               });
@@ -1029,6 +2313,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
                   if (baseScale) item.object.scale.copy(baseScale);
                 });
               });
+              markTransitionObjects(descriptors, false);
+              applyThreeSettings({ preserveEpoch: true, preserveCamera: true });
             }
           }, delay));
         }
@@ -1046,6 +2332,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         eclipticPoles: { mode: "fade", order: "default", duration: 600 },
         eclipticNakSegments: { mode: "rollout", order: "ecliptic", duration: 1300 },
         stars: { mode: "fade", order: "default", duration: 900 },
+        nakshatraStars: { mode: "rollout", order: "ecliptic", duration: 1200 },
         nakshatras: { mode: "rollout", order: "ecliptic", duration: 1800 },
         polarItems: { mode: "rollout", order: "default", duration: 1600 },
         northPolarItems: { mode: "rollout", order: "default", duration: 1200 },
@@ -1069,23 +2356,37 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           eclipticDividers: { ui: { showEclipticDividers: visible } },
           eclipticLabels: { ui: { showEclipticLabels: visible } },
           eclipticPoles: { ui: { showEclipticPoles: visible } },
-          NEP: { ui: { showNEP: visible } },
-          SEP: { ui: { showSEP: visible } },
+          NEP: { ui: { showEclipticPoles: true, showNEP: visible } },
+          SEP: { ui: { showEclipticPoles: true, showSEP: visible } },
           eclipticNakSegments: { ui: { showEclipticBand: visible, showEclipticDividers: visible, showEclipticLabels: visible, showEclipticPoles: visible } },
           stars: { ui: { showStars: visible } },
+          nakshatraStars: { ui: { showNakshatraStars: visible } },
           nakshatras: { ui: { showNakshatraLines: visible, showNakshatraLabels: visible } },
           nakshatraLines: { ui: { showNakshatraLines: visible } },
           nakshatraLabels: { ui: { showNakshatraLabels: visible } },
           polarItems: { ui: { showPolarItems: visible } },
           northPolarItems: { ui: { showPolarItems: true, showNorthPolarItems: visible } },
           southPolarItems: { ui: { showPolarItems: true, showSouthPolarItems: visible } },
-          poleTrack: { ui: { showPoleTrack: visible } },
+          poleTrack: { ui: { showPoleTrack: visible, showNP: visible, showSP: visible } },
           precessionCircle: { ui: { showPoleTrack: visible } },
           seasonalFrame: { ui: { showSeasonalFrame: visible } },
-          NP: { ui: { showNP: visible } },
-          SP: { ui: { showSP: visible } },
+          equator: { ui: { showSeasonalFrame: true } },
+          VE: { ui: { showSeasonalFrame: true } },
+          SS: { ui: { showSeasonalFrame: true } },
+          AE: { ui: { showSeasonalFrame: true } },
+          WS: { ui: { showSeasonalFrame: true } },
+          NP: { ui: { showPoleTrack: true, showNP: visible } },
+          SP: { ui: { showPoleTrack: true, showSP: visible } },
           overlay: { ui: { showOverlay: visible } },
         };
+        const polarMatches = polarMatchesForTarget(target);
+        if (polarMatches.length) {
+          const regions = new Set(polarMatches.map((entry) => entry.region));
+          const patch = visible ? { ui: { showPolarItems: true } } : { ui: {} };
+          if (visible && regions.has("north")) patch.ui.showNorthPolarItems = true;
+          if (visible && regions.has("south")) patch.ui.showSouthPolarItems = true;
+          return patch;
+        }
         return patches[target] || null;
       }
 
@@ -1143,12 +2444,15 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }
 
       const nakAliasMap = new Map();
+      const nakSectorAliasMap = new Map();
       data.nakshatras.forEach((row) => {
         const abbr = normalizeNakKey((row.nid || "").split("-").pop());
         const english = normalizeNakKey(row.enaks);
         const index = String(row.sector_index_27 || row.meta_index_28).padStart(2, "0");
+        const sector = Number(row.sector_index_27 || row.meta_index_28);
         [abbr, english, `n${index}`].forEach((alias) => {
           if (alias) nakAliasMap.set(alias, row.nid);
+          if (alias && Number.isFinite(sector)) nakSectorAliasMap.set(alias, sector);
         });
       });
       Object.entries({
@@ -1157,14 +2461,50 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         abh: "N28-Abh", n28: "N28-Abh",
       }).forEach(([alias, nid]) => nakAliasMap.set(alias, nid));
 
+      function resolveNakAlias(queryRaw) {
+        const query = normalizeNakKey(queryRaw);
+        if (nakAliasMap.has(query)) return { nid: nakAliasMap.get(query) };
+        const matches = Array.from(nakAliasMap.entries()).filter(([alias]) => alias.startsWith(query));
+        if (matches.length === 1) return { nid: matches[0][1] };
+        return null;
+      }
+
+      function sectorForNakNid(nid) {
+        const row = data.nakshatras.find((item) => item.nid === nid);
+        const sector = Number(row?.sector_index_27 || row?.meta_index_28);
+        return Number.isFinite(sector) ? sector : null;
+      }
+
+      function resolveSectorQuery(queryRaw) {
+        const raw = String(queryRaw || "");
+        const numeric = Number(raw);
+        if (Number.isInteger(numeric)) return numeric;
+        const resolved = resolveNakAlias(raw);
+        return resolved ? sectorForNakNid(resolved.nid) : null;
+      }
+
       function resolveNakshatraTarget(target) {
         const raw = String(target || "");
         if (!/^[$*@]/.test(raw)) return null;
         const sigil = raw[0];
-        const query = normalizeNakKey(raw.slice(1));
-        if (nakAliasMap.has(query)) return { sigil, nid: nakAliasMap.get(query) };
-        const matches = Array.from(nakAliasMap.entries()).filter(([alias]) => alias.startsWith(query));
-        if (matches.length === 1) return { sigil, nid: matches[0][1] };
+        const resolved = resolveNakAlias(raw.slice(1));
+        return resolved ? { sigil, nid: resolved.nid } : null;
+      }
+
+      function resolvePreciseTarget(target) {
+        const match = String(target || "").match(/^(nak|sector)\.([\w-]+)(?:\.(stars|lines|label))?$/i);
+        if (!match) return null;
+        const family = match[1].toLowerCase();
+        const query = match[2];
+        const part = (match[3] || (family === "nak" ? "all" : "")).toLowerCase();
+        if (family === "nak") {
+          const resolved = resolveNakAlias(query);
+          return resolved ? { family, nid: resolved.nid, part } : null;
+        }
+        if (family === "sector") {
+          const sector = resolveSectorQuery(query);
+          return Number.isFinite(sector) ? { family, sector, part: part || "label" } : null;
+        }
         return null;
       }
 
@@ -1189,6 +2529,128 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         return targetVisibilityOverrides.get(target) !== false;
       }
 
+      function targetStyle(target, part) {
+        return threeSettings.targetStyles?.[target]?.[part] || {};
+      }
+
+      function registerRuntimeStyleTarget(target) {
+        if (target) runtimePreciseStyleRegistry.add(target);
+      }
+
+      function firstDefined(...values) {
+        return values.find((value) => value !== undefined && value !== null);
+      }
+
+      function setMeshStyle(mesh, style, fallbackColor = null, fallbackOpacity = null, fallbackSize = null) {
+        if (!mesh) return;
+        if (!mesh.userData.baseScale) mesh.userData.baseScale = mesh.scale.clone();
+        if (mesh.material) {
+          const color = firstDefined(style.color, fallbackColor);
+          const opacity = firstDefined(style.alpha, fallbackOpacity);
+          if (color && mesh.material.color) mesh.material.color.set(color);
+          if (opacity !== undefined) {
+            mesh.material.transparent = true;
+            mesh.material.opacity = opacity;
+          }
+        }
+        const size = firstDefined(style.size, fallbackSize);
+        if (size !== undefined && Number.isFinite(Number(size))) {
+          mesh.scale.copy(mesh.userData.baseScale).multiplyScalar(Number(size));
+        }
+      }
+
+      function setLineStyle(line, style, fallbackColor = null, fallbackOpacity = null) {
+        if (!line?.material) return;
+        const color = firstDefined(style.color, fallbackColor);
+        const opacity = firstDefined(style.alpha, fallbackOpacity);
+        if (color && line.material.color) line.material.color.set(color);
+        if (opacity !== undefined) {
+          line.material.transparent = true;
+          line.material.opacity = opacity;
+        }
+        if (style.width !== undefined) line.material.linewidth = Number(style.width) || 1;
+      }
+
+      function setSpriteStyle(sprite, style, fallbackOpacity = null, fallbackSize = null, fallbackColor = null) {
+        if (!sprite) return;
+        const color = firstDefined(style.color, fallbackColor);
+        const opacity = firstDefined(style.alpha, fallbackOpacity);
+        const size = firstDefined(style.size, fallbackSize);
+        if (color) setSpriteTextColor(sprite, color);
+        if (opacity !== undefined && sprite.material) sprite.material.opacity = opacity;
+        if (size !== undefined) setSpriteHeight(sprite, Number(size));
+      }
+
+      function styleTargetsForPolarEntry(entry) {
+        const out = [];
+        (entry.aliases || []).forEach((alias) => {
+          const key = normalizeNakKey(alias);
+          const canonical = {
+            agastya: "agastya",
+            canopus: "agastya",
+            thuban: "thuban",
+            abhayadhruva: "thuban",
+            polaris: "polaris",
+            matsyadhruva: "polaris",
+            matsya: "matsya",
+            sisumara: "sisumara",
+            shishumara: "sisumara",
+            shimshumara: "sisumara",
+          }[key] || alias;
+          if (!out.includes(canonical)) out.push(canonical);
+        });
+        return out;
+      }
+
+      function polarEntryStyle(entry) {
+        const part = entry.kind === "label" ? "label" : entry.kind === "dot" ? "dot" : "line";
+        const merged = {};
+        styleTargetsForPolarEntry(entry).forEach((target) => Object.assign(merged, targetStyle(target, part)));
+        return merged;
+      }
+
+      function isSeasonalLeafTarget(target) {
+        return ["equator", "VE", "SS", "AE", "WS"].includes(target);
+      }
+
+      function seasonalTargetVisible(target) {
+        if (focusedSeasonalTargets.size && !focusedSeasonalTargets.has(target)) return false;
+        return targetVisible(target);
+      }
+
+      function setFocusedSeasonalTarget(target, visible) {
+        if (visible && isSeasonalLeafTarget(target)) focusedSeasonalTargets.add(target);
+      }
+
+      function clearFocusedSeasonalTarget(target) {
+        if (target === "seasonalFrame") focusedSeasonalTargets.clear();
+      }
+
+      function focusedPolarVisible(entry) {
+        const focused = focusedPolarTargets[entry.region];
+        if (!focused || focused.size === 0) return true;
+        return (entry.aliases || []).some((alias) => focused.has(alias));
+      }
+
+      function polarMatchesForTarget(target) {
+        return polarItemRefs.filter((entry) => (entry.aliases || []).includes(target));
+      }
+
+      function setFocusedPolarTarget(target, visible) {
+        polarMatchesForTarget(target).forEach((entry) => {
+          const focused = focusedPolarTargets[entry.region];
+          (entry.aliases || []).forEach((alias) => {
+            if (visible) focused.add(alias);
+            else focused.delete(alias);
+          });
+        });
+      }
+
+      function clearFocusedPolarTarget(target) {
+        if (target === "northPolarItems" || target === "polarItems") focusedPolarTargets.north.clear();
+        if (target === "southPolarItems" || target === "polarItems") focusedPolarTargets.south.clear();
+      }
+
       function aliasesVisible(aliases = []) {
         return aliases.every((alias) => targetVisible(alias));
       }
@@ -1202,26 +2664,50 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }
 
       function transitionDescriptorsForTarget(target) {
+        const preciseTarget = resolvePreciseTarget(target);
+        if (preciseTarget) {
+          const items = [];
+          if (preciseTarget.family === "nak") {
+            if (preciseTarget.part === "all" || preciseTarget.part === "lines") {
+              nakshatraLineRefs.filter((entry) => entry.nid === preciseTarget.nid).forEach((entry) => {
+                registerRuntimeStyleTarget(`nak.${preciseTarget.nid}.lines`);
+                Object.assign(targetStyle(`nak.${preciseTarget.nid}.lines`, "line"), targetStyle(target, "line"));
+                items.push({ object: entry.line, opacity: threeSettings.nakshatras.selectedOpacity });
+              });
+            }
+            if (preciseTarget.part === "all" || preciseTarget.part === "stars") {
+              starGroupRefs.filter((entry) => entry.nid === preciseTarget.nid).forEach((entry) => {
+                registerRuntimeStyleTarget(`nak.${preciseTarget.nid}.stars`);
+                Object.assign(targetStyle(`nak.${preciseTarget.nid}.stars`, "dot"), targetStyle(target, "dot"));
+                items.push({ object: entry.points, opacity: threeSettings.stars.opacity });
+              });
+            }
+            if (preciseTarget.part === "all" || preciseTarget.part === "label") {
+              nakshatraLabelRefs.filter((entry) => entry.nid === preciseTarget.nid).forEach((entry) => {
+                registerRuntimeStyleTarget(`nak.${preciseTarget.nid}.label`);
+                Object.assign(targetStyle(`nak.${preciseTarget.nid}.label`, "label"), targetStyle(target, "label"));
+                items.push({ object: entry.sprite, opacity: 1, flashScale: 0.45 });
+              });
+            }
+          } else if (preciseTarget.family === "sector") {
+            if (preciseTarget.part && preciseTarget.part !== "label") return [];
+            bandRefs.labels.filter((entry) => entry.userData?.sectorIndex === preciseTarget.sector).forEach((label) => {
+              registerRuntimeStyleTarget(`sector.${preciseTarget.sector}.label`);
+              Object.assign(targetStyle(`sector.${preciseTarget.sector}.label`, "label"), targetStyle(target, "label"));
+              items.push({ object: label, opacity: 1, flashScale: 0.45 });
+            });
+          }
+          return items.length ? [transitionGroup(items, 0)] : [];
+        }
         const nakTarget = resolveNakshatraTarget(target);
         if (nakTarget) {
           const items = [];
           if (nakTarget.sigil === "$" || nakTarget.sigil === "@") {
-            const row = data.nakshatras.find((item) => item.nid === nakTarget.nid);
-            const sectorIndex = row?.sector_index_27;
-            if (sectorIndex !== null && sectorIndex !== undefined) {
-              const index = data.nakshatras.filter((item) => item.sector_index_27 !== null).findIndex((item) => item.nid === nakTarget.nid);
-              if (bandRefs.meshes[index]) items.push({ object: bandRefs.meshes[index], opacity: threeSettings.ecliptic.bandOpacity });
-              if (bandRefs.dividers[index]) items.push({ object: bandRefs.dividers[index], opacity: threeSettings.ecliptic.dividerOpacity });
-              if (bandRefs.labels[index]) items.push({ object: bandRefs.labels[index], opacity: threeSettings.ecliptic.sectorLabelOpacity });
-            }
-          }
-          if (nakTarget.sigil === "*" || nakTarget.sigil === "@") {
             nakshatraLineRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {
               items.push({ object: entry.line, opacity: threeSettings.nakshatras.selectedOpacity });
             });
-            nakshatraLabelRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {
-              items.push({ object: entry.sprite, opacity: threeSettings.nakshatras.labelOpacity });
-            });
+          }
+          if (nakTarget.sigil === "*" || nakTarget.sigil === "@") {
             starGroupRefs.filter((entry) => entry.nid === nakTarget.nid).forEach((entry) => {
               items.push({ object: entry.points, opacity: threeSettings.stars.opacity });
             });
@@ -1291,6 +2777,12 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             .map((entry) => transitionDescriptor(entry.points, threeSettings.stars.opacity, entry.metaIndex ?? 0))
             .sort((a, b) => a.order - b.order);
         }
+        if (target === "nakshatraStars") {
+          return starGroupRefs
+            .filter((entry) => entry.nid !== "__special__")
+            .map((entry) => transitionDescriptor(entry.points, threeSettings.stars.opacity, entry.metaIndex ?? 0))
+            .sort((a, b) => a.order - b.order);
+        }
         if (target === "nakshatraLines") {
           return nakshatraLineRefs
             .map((entry) => transitionDescriptor(entry.line, threeSettings.nakshatras.opacity, entry.metaIndex ?? 0))
@@ -1337,6 +2829,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             ...(poleTrackCircle ? [transitionDescriptor(poleTrackCircle, threeSettings.poleTrack.opacity, 0)] : []),
             ...(poleTrackArc ? [transitionDescriptor(poleTrackArc, threeSettings.poleTrack.arcOpacity, 1)] : []),
             ...(poleTrackLabel ? [transitionDescriptor(poleTrackLabel, threeSettings.poleTrack.trackLabelOpacity, 2)] : []),
+            ...(poleDot ? [transitionDescriptor(poleDot, 1, 3)] : []),
+            ...(movingPoleLabel ? [transitionDescriptor(movingPoleLabel, threeSettings.poleTrack.movingPoleLabelOpacity, 4)] : []),
+            ...(southPoleDot ? [transitionDescriptor(southPoleDot, 1, 5)] : []),
+            ...(southPoleLabel ? [transitionDescriptor(southPoleLabel, threeSettings.poleTrack.movingPoleLabelOpacity, 6)] : []),
           ];
         }
         if (target === "precessionCircle") {
@@ -1345,11 +2841,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         if (target === "seasonalFrame") {
           return [
             ...(equatorLine ? [transitionDescriptor(equatorLine, threeSettings.seasonal.equatorOpacity, 0)] : []),
-            ...(poleDot ? [transitionDescriptor(poleDot, 1, 1)] : []),
-            ...(movingPoleLabel ? [transitionDescriptor(movingPoleLabel, threeSettings.poleTrack.movingPoleLabelOpacity, 2)] : []),
             ...seasonalMarkerRefs.flatMap((entry, index) => [
-              transitionDescriptor(entry.mesh, 1, index + 3),
-              transitionDescriptor(entry.sprite, threeSettings.seasonal.markerLabelOpacity, index + 3.1),
+              transitionDescriptor(entry.mesh, 1, index + 1),
+              transitionDescriptor(entry.sprite, threeSettings.seasonal.markerLabelOpacity, index + 1.1),
             ]),
           ];
         }
@@ -1388,6 +2882,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       function finalizeTransition(target, visible, descriptors = null, hasPatch = false) {
         activeTransitionTargets.delete(target);
         if (descriptors) markTransitionObjects(descriptors, false);
+        if (polarMatchesForTarget(target).length) setFocusedPolarTarget(target, visible);
+        clearFocusedPolarTarget(target);
+        setFocusedSeasonalTarget(target, visible);
+        clearFocusedSeasonalTarget(target);
         targetVisibilityOverrides.set(target, visible);
         const patch = transitionPatchForTarget(target, visible);
         if (patch) mergeSettings(threeSettings, patch);
@@ -1403,6 +2901,10 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const duration = Number(cue.duration ?? defaults.duration);
         const order = cue.order || defaults.order;
         const direction = cue.direction || (visible ? "forward" : "reverse");
+        if (visible && polarMatchesForTarget(target).length) setFocusedPolarTarget(target, true);
+        if (visible) clearFocusedPolarTarget(target);
+        if (visible) setFocusedSeasonalTarget(target, true);
+        if (visible) clearFocusedSeasonalTarget(target);
         activeTransitionTargets.add(target);
 
         if (target === "overlay") {
@@ -1596,6 +3098,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         if (!story) return;
         if (threeStoryEditor) threeStoryEditor.value = JSON.stringify(story, null, 2);
         if (threeVysuEditor) threeVysuEditor.value = storyVysuSource(story);
+        syncVysuLineNumbers();
       }
 
       function renderStoryEditorOptions() {
@@ -1614,6 +3117,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         } else {
           threeStoryEditor.value = "";
           if (threeVysuEditor && !threeVysuEditor.value.trim()) threeVysuEditor.value = defaultVyomaSutra;
+          syncVysuLineNumbers();
           setStoryStatus("No build-time stories found.");
         }
       }
@@ -1798,88 +3302,81 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
         gridRefs.parallels.forEach((line) => {
           if (activeTransitionObjects.has(line)) return;
-          line.material.color.set(threeSettings.grid.parallelColor);
-          line.material.opacity = threeSettings.grid.parallelOpacity;
+          setLineStyle(line, targetStyle("eclipticGrid", "line"), threeSettings.grid.parallelColor, threeSettings.grid.parallelOpacity);
         });
         gridRefs.meridians.forEach((line) => {
           if (activeTransitionObjects.has(line)) return;
-          line.material.color.set(threeSettings.grid.meridianColor);
-          line.material.opacity = threeSettings.grid.meridianOpacity;
+          setLineStyle(line, targetStyle("eclipticGrid", "line"), threeSettings.grid.meridianColor, threeSettings.grid.meridianOpacity);
         });
         gridRefs.equatorialParallels.forEach((line) => {
           if (activeTransitionObjects.has(line)) return;
-          line.material.color.set(threeSettings.grid.equatorialColor);
-          line.material.opacity = threeSettings.grid.equatorialOpacity;
+          setLineStyle(line, targetStyle("equatorialGrid", "line"), threeSettings.grid.equatorialColor, threeSettings.grid.equatorialOpacity);
         });
         gridRefs.equatorialMeridians.forEach((line) => {
           if (activeTransitionObjects.has(line)) return;
-          line.material.color.set(threeSettings.grid.equatorialColor);
-          line.material.opacity = threeSettings.grid.equatorialOpacity;
+          setLineStyle(line, targetStyle("equatorialGrid", "line"), threeSettings.grid.equatorialColor, threeSettings.grid.equatorialOpacity);
         });
 
         if (eclipticPlane) {
           eclipticPlane.visible = threeSettings.ui.showReferencePlanes && threeSettings.ui.showEclipticPlane !== false;
-          eclipticPlane.material.color.set(threeSettings.reference.eclipticPlaneColor);
-          eclipticPlane.material.opacity = threeSettings.reference.eclipticPlaneOpacity;
+          setMeshStyle(eclipticPlane, targetStyle("eclipticPlane", "fill"), threeSettings.reference.eclipticPlaneColor, threeSettings.reference.eclipticPlaneOpacity);
         }
         if (equatorialPlane) {
           equatorialPlane.visible = threeSettings.ui.showReferencePlanes && threeSettings.ui.showEquatorialPlane !== false;
-          equatorialPlane.material.color.set(threeSettings.reference.equatorialPlaneColor);
-          equatorialPlane.material.opacity = threeSettings.reference.equatorialPlaneOpacity;
+          setMeshStyle(equatorialPlane, targetStyle("equatorialPlane", "fill"), threeSettings.reference.equatorialPlaneColor, threeSettings.reference.equatorialPlaneOpacity);
         }
         if (nsAxisLine) {
           nsAxisLine.visible = threeSettings.ui.showNsAxis;
-          nsAxisLine.material.color.set(threeSettings.reference.nsAxisColor);
-          nsAxisLine.material.opacity = threeSettings.reference.nsAxisOpacity;
+          setLineStyle(nsAxisLine, targetStyle("nsAxis", "line"), threeSettings.reference.nsAxisColor, threeSettings.reference.nsAxisOpacity);
         }
 
         bandRefs.meshes.forEach((mesh) => {
           if (activeTransitionObjects.has(mesh)) return;
           mesh.visible = threeSettings.ui.showEclipticBand;
-          mesh.material.opacity = threeSettings.ecliptic.bandOpacity;
+          setMeshStyle(mesh, targetStyle("eclipticBand", "fill"), null, threeSettings.ecliptic.bandOpacity);
         });
         bandRefs.dividers.forEach((line) => {
           if (activeTransitionObjects.has(line)) return;
           line.visible = threeSettings.ui.showEclipticDividers;
-          line.material.opacity = threeSettings.ecliptic.dividerOpacity;
+          setLineStyle(line, targetStyle("eclipticDividers", "line"), threeSettings.ecliptic.circleColor, threeSettings.ecliptic.dividerOpacity);
         });
         bandRefs.labels.forEach((label) => {
           if (activeTransitionObjects.has(label)) return;
           label.visible = threeSettings.ui.showEclipticLabels;
-          label.material.opacity = threeSettings.ecliptic.sectorLabelOpacity;
-          setSpriteHeight(label, threeSettings.ecliptic.sectorLabelSize);
+          const style = { ...targetStyle("eclipticLabels", "label"), ...targetStyle(`sector.${label.userData?.sectorIndex}.label`, "label") };
+          setSpriteStyle(label, style, threeSettings.ecliptic.sectorLabelOpacity, threeSettings.ecliptic.sectorLabelSize);
         });
         eclipticPoleLabels.forEach((label) => {
           if (activeTransitionObjects.has(label)) return;
           const isSep = label.name === "SEP";
+          const style = targetStyle(isSep ? "SEP" : "NEP", "label");
           label.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
-          label.material.opacity = threeSettings.ecliptic.poleLabelOpacity;
-          setSpriteHeight(label, threeSettings.ecliptic.poleLabelSize);
+          setSpriteStyle(label, style, threeSettings.ecliptic.poleLabelOpacity, threeSettings.ecliptic.poleLabelSize);
         });
         eclipticPoleDots.forEach((dot) => {
           if (activeTransitionObjects.has(dot)) return;
           const isSep = dot.name === "SEP";
           dot.visible = threeSettings.ui.showEclipticPoles && (isSep ? threeSettings.ui.showSEP !== false : threeSettings.ui.showNEP !== false);
+          setMeshStyle(dot, targetStyle(isSep ? "SEP" : "NEP", "dot"));
         });
         if (eclipticCircle) {
           if (!activeTransitionObjects.has(eclipticCircle)) {
             eclipticCircle.visible = threeSettings.ui.showEclipticBand;
-            eclipticCircle.material.color.set(threeSettings.ecliptic.circleColor);
-            eclipticCircle.material.opacity = threeSettings.ecliptic.circleOpacity;
+            setLineStyle(eclipticCircle, targetStyle("eclipticBand", "line"), threeSettings.ecliptic.circleColor, threeSettings.ecliptic.circleOpacity);
           }
         }
 
         starGroupRefs.forEach((entry) => {
           if (activeTransitionObjects.has(entry.points)) return;
           entry.points.visible = threeSettings.ui.showStars;
-          entry.points.material.size = threeSettings.stars.size;
-          entry.points.material.opacity = threeSettings.stars.opacity;
+          const style = targetStyle(entry.nid === "__special__" ? "stars" : "nakshatraStars", "dot");
+          entry.points.material.size = firstDefined(style.size, threeSettings.stars.size);
+          entry.points.material.opacity = firstDefined(style.alpha, threeSettings.stars.opacity);
         });
 
         if (poleTrackCircle) {
           poleTrackCircle.visible = threeSettings.ui.showPoleTrack;
-          poleTrackCircle.material.color.set(threeSettings.poleTrack.color);
-          poleTrackCircle.material.opacity = threeSettings.poleTrack.opacity;
+          setLineStyle(poleTrackCircle, targetStyle("precessionCircle", "line"), threeSettings.poleTrack.color, threeSettings.poleTrack.opacity);
         }
         if (poleTrackArc) {
           poleTrackArc.visible = threeSettings.ui.showPoleTrack;
@@ -1888,39 +3385,34 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }
         if (poleTrackLabel) {
           poleTrackLabel.visible = threeSettings.ui.showPoleTrack;
-          poleTrackLabel.material.opacity = threeSettings.poleTrack.trackLabelOpacity;
-          setSpriteHeight(poleTrackLabel, threeSettings.poleTrack.trackLabelSize);
+          setSpriteStyle(poleTrackLabel, targetStyle("precessionCircle", "label"), threeSettings.poleTrack.trackLabelOpacity, threeSettings.poleTrack.trackLabelSize);
         }
         if (poleDot) {
-          poleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false;
-          poleDot.material.color.set(threeSettings.poleTrack.dotColor);
+          poleDot.visible = threeSettings.ui.showPoleTrack && threeSettings.ui.showNP !== false;
+          setMeshStyle(poleDot, targetStyle("NP", "dot"), threeSettings.poleTrack.dotColor);
         }
         if (movingPoleLabel) {
-          movingPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showNP !== false;
-          movingPoleLabel.material.opacity = threeSettings.poleTrack.movingPoleLabelOpacity;
-          setSpriteHeight(movingPoleLabel, threeSettings.poleTrack.movingPoleLabelSize);
+          movingPoleLabel.visible = threeSettings.ui.showPoleTrack && threeSettings.ui.showNP !== false;
+          setSpriteStyle(movingPoleLabel, targetStyle("NP", "label"), threeSettings.poleTrack.movingPoleLabelOpacity, threeSettings.poleTrack.movingPoleLabelSize);
         }
         if (southPoleDot) {
-          southPoleDot.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false;
-          southPoleDot.material.color.set(threeSettings.poleTrack.dotColor);
+          southPoleDot.visible = threeSettings.ui.showPoleTrack && threeSettings.ui.showSP !== false;
+          setMeshStyle(southPoleDot, targetStyle("SP", "dot"), threeSettings.poleTrack.dotColor);
         }
         if (southPoleLabel) {
-          southPoleLabel.visible = threeSettings.ui.showSeasonalFrame && threeSettings.ui.showSP !== false;
-          southPoleLabel.material.opacity = threeSettings.poleTrack.movingPoleLabelOpacity * 0.72;
-          setSpriteHeight(southPoleLabel, threeSettings.poleTrack.movingPoleLabelSize * 0.9);
+          southPoleLabel.visible = threeSettings.ui.showPoleTrack && threeSettings.ui.showSP !== false;
+          setSpriteStyle(southPoleLabel, targetStyle("SP", "label"), threeSettings.poleTrack.movingPoleLabelOpacity * 0.72, threeSettings.poleTrack.movingPoleLabelSize * 0.9);
         }
         if (equatorLine) {
-          equatorLine.visible = threeSettings.ui.showSeasonalFrame && targetVisible("equator");
-          equatorLine.material.color.set(threeSettings.seasonal.equatorColor);
-          equatorLine.material.opacity = threeSettings.seasonal.equatorOpacity;
+          equatorLine.visible = threeSettings.ui.showSeasonalFrame && seasonalTargetVisible("equator");
+          setLineStyle(equatorLine, targetStyle("equator", "line"), threeSettings.seasonal.equatorColor, threeSettings.seasonal.equatorOpacity);
         }
         seasonalMarkerRefs.forEach((entry) => {
-          const markerVisible = threeSettings.ui.showSeasonalFrame && targetVisible(entry.key);
+          const markerVisible = threeSettings.ui.showSeasonalFrame && seasonalTargetVisible(entry.key);
           entry.mesh.visible = markerVisible;
           entry.sprite.visible = markerVisible;
-          entry.mesh.scale.setScalar(threeSettings.seasonal.markerScale);
-          entry.sprite.material.opacity = threeSettings.seasonal.markerLabelOpacity;
-          setSpriteHeight(entry.sprite, threeSettings.seasonal.markerLabelSize * threeSettings.seasonal.markerScale);
+          setMeshStyle(entry.mesh, targetStyle(entry.key, "dot"), null, null, threeSettings.seasonal.markerScale);
+          setSpriteStyle(entry.sprite, targetStyle(entry.key, "label"), threeSettings.seasonal.markerLabelOpacity, threeSettings.seasonal.markerLabelSize * threeSettings.seasonal.markerScale);
         });
 
         gridRefs.parallels.forEach((line) => { if (!activeTransitionObjects.has(line)) line.visible = threeSettings.ui.showGrid; });
@@ -1946,9 +3438,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             if (activeTransitionObjects.has(entry.line)) return;
             const active = entry.metaIndex === st.selectedMetaIndex;
             const visible = threeSettings.ui.showNakshatraLines && st.visibleNakshatras[entry.nid] !== false;
+            const style = { ...targetStyle("nakshatraLines", "line"), ...targetStyle(`nak.${entry.nid}.lines`, "line") };
             entry.line.visible = visible;
-            entry.line.material.color.set(active ? threeSettings.nakshatras.selectedColor : threeSettings.nakshatras.color);
-            entry.line.material.opacity = visible ? (active ? threeSettings.nakshatras.selectedOpacity : threeSettings.nakshatras.opacity) : 0;
+            setLineStyle(entry.line, style, active ? threeSettings.nakshatras.selectedColor : threeSettings.nakshatras.color, visible ? (active ? threeSettings.nakshatras.selectedOpacity : threeSettings.nakshatras.opacity) : 0);
           });
         }
         if (!transitioningNakshatras && !activeTransitionTargets.has("nakshatraLabels")) {
@@ -1956,30 +3448,34 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             if (activeTransitionObjects.has(entry.sprite)) return;
             const visible = threeSettings.ui.showNakshatraLabels && st.visibleNakshatras[entry.nid] !== false;
             entry.sprite.visible = visible;
-            entry.sprite.material.opacity = visible ? threeSettings.nakshatras.labelOpacity : 0;
-            setSpriteHeight(entry.sprite, threeSettings.nakshatras.labelSize);
+            const style = { ...targetStyle("nakshatraLabels", "label"), ...targetStyle(`nak.${entry.nid}.label`, "label") };
+            setSpriteStyle(entry.sprite, style, visible ? threeSettings.nakshatras.labelOpacity : 0, threeSettings.nakshatras.labelSize);
           });
         }
-        if (!activeTransitionTargets.has("stars")) {
+        if (!activeTransitionTargets.has("stars") && !activeTransitionTargets.has("nakshatraStars")) {
           starGroupRefs.forEach((entry) => {
             if (activeTransitionObjects.has(entry.points)) return;
-            const visible = threeSettings.ui.showStars && (entry.nid === "__special__" || st.visibleNakshatras[entry.nid] !== false);
+            const visible = entry.nid === "__special__"
+              ? threeSettings.ui.showStars
+              : (threeSettings.ui.showStars || threeSettings.ui.showNakshatraStars) && st.visibleNakshatras[entry.nid] !== false;
+            const style = entry.nid === "__special__" ? targetStyle("stars", "dot") : { ...targetStyle("nakshatraStars", "dot"), ...targetStyle(`nak.${entry.nid}.stars`, "dot") };
             entry.points.visible = visible;
-            entry.points.material.opacity = visible ? threeSettings.stars.opacity : 0;
+            entry.points.material.opacity = visible ? firstDefined(style.alpha, threeSettings.stars.opacity) : 0;
+            entry.points.material.size = firstDefined(style.size, threeSettings.stars.size);
           });
         }
         polarItemRefs.forEach((entry) => {
           const regionVisible = entry.region === "south"
             ? threeSettings.ui.showSouthPolarItems !== false
             : threeSettings.ui.showNorthPolarItems !== false;
-          const visible = threeSettings.ui.showPolarItems && regionVisible && aliasesVisible(entry.aliases) && st.visibleCodex[entry.id] !== false;
+          const visible = threeSettings.ui.showPolarItems && regionVisible && focusedPolarVisible(entry) && aliasesVisible(entry.aliases) && st.visibleCodex[entry.id] !== false;
+          const style = polarEntryStyle(entry);
           entry.object.visible = visible;
           if (entry.object.material) {
-            if (entry.kind === "line") entry.object.material.opacity = threeSettings.polarItems.opacity;
-            if (entry.kind === "dot") entry.object.material.opacity = threeSettings.polarItems.starOpacity;
+            if (entry.kind === "line") setLineStyle(entry.object, style, threeSettings.polarItems.color, threeSettings.polarItems.opacity);
+            if (entry.kind === "dot") setMeshStyle(entry.object, style, threeSettings.polarItems.color, threeSettings.polarItems.starOpacity);
             if (entry.kind === "label") {
-              entry.object.material.opacity = threeSettings.polarItems.labelOpacity;
-              setSpriteHeight(entry.object, threeSettings.polarItems.labelSize);
+              setSpriteStyle(entry.object, style, threeSettings.polarItems.labelOpacity, threeSettings.polarItems.labelSize);
             }
           }
         });
@@ -2212,6 +3708,8 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             color: sectorHSL(idx), fontSize: 36, size: 7.5, opacity: 0.82, bold: true
           });
           label.position.copy(toCart(midLon, 0, R * 1.025));
+          label.userData.sectorIndex = row.sector_index_27;
+          label.userData.nid = row.nid;
           bandRefs.labels.push(label);
           siderealGroup.add(label);
         });
@@ -2573,6 +4071,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         controls.update();
         updateThreeState();
         updateSeasonalFrame();
+        updateStoryLabels();
         renderer.render(scene, camera);
       }
 
@@ -2654,7 +4153,14 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       if (threeDockToggle && threeDock) {
         const syncDockLayout = () => {
           const collapsed = threeDock.classList.contains("collapsed");
-          threeDock.closest(".three-workspace")?.classList.toggle("dock-collapsed", collapsed);
+          const workspace = threeDock.closest(".three-workspace");
+          workspace?.classList.toggle("dock-collapsed", collapsed);
+          if (collapsed && workspace) workspace.style.gridTemplateColumns = "";
+          else {
+            let savedWidth = null;
+            try { savedWidth = Number(window.localStorage.getItem("threeDockWidth")) || null; } catch (error) {}
+            if (savedWidth) setDockWidth(savedWidth);
+          }
           threeDockToggle.textContent = collapsed ? "Show dock" : "Hide dock";
           window.dispatchEvent(new Event("resize"));
         };
@@ -2664,6 +4170,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         });
         syncDockLayout();
       }
+
+      initDockResizer();
+      initVysuEditorChrome();
 
       threeDockTabs.forEach((button) => {
         button.addEventListener("click", () => setDockTab(button.dataset.dockTab));
@@ -2711,6 +4220,13 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           } catch (error) {
             setVysuStatus(`Invalid VyomaSutra: ${error.message}`);
           }
+        });
+      }
+
+      if (threeCameraGrab) {
+        threeCameraGrab.addEventListener("click", () => {
+          if (!scene) initThree();
+          grabCameraDirective();
         });
       }
 

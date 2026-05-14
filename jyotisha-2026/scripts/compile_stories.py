@@ -3,11 +3,11 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
 from typing import Any
 
 from jyotisha_2026.paths import LAB_ROOT, REPO_ROOT
-from jyotisha_2026.vysu import compile_vysu_file, validate_story, write_json
 
 
 SLUG = "nakshatra-precession-explorer"
@@ -19,30 +19,65 @@ def story_roots(slug: str) -> tuple[Path, Path]:
 
 
 def compile_story_sources(slug: str) -> list[dict[str, Any]]:
-    root, compiled_root = story_roots(slug)
-    compiled_root.mkdir(parents=True, exist_ok=True)
-    stories: list[dict[str, Any]] = []
-    expected_outputs: set[Path] = set()
+    _root, _compiled_root = story_roots(slug)
+    command = ["node", str(REPO_ROOT / "scripts" / "compile-vysu.mjs"), slug]
+    result = subprocess.run(command, cwd=REPO_ROOT, check=True, capture_output=True, text=True)
+    return json.loads(result.stdout)
 
-    for path in sorted(root.glob("*.vysu")):
-        story = compile_vysu_file(path)
-        out_path = compiled_root / f"{story['id']}.json"
-        expected_outputs.add(out_path)
-        write_json(out_path, story)
-        stories.append(validate_story(story, out_path))
 
-    for path in sorted(root.glob("*.json")):
-        story = json.loads(path.read_text(encoding="utf-8"))
-        out_path = compiled_root / path.name
-        expected_outputs.add(out_path)
-        write_json(out_path, story)
-        stories.append(validate_story(story, out_path))
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    for stale_path in compiled_root.glob("*.json"):
-        if stale_path not in expected_outputs:
-            stale_path.unlink()
 
-    return stories
+def browser_vysu_compiler_source() -> str:
+    source = (REPO_ROOT / "scripts" / "vysu-compiler.mjs").read_text(encoding="utf-8")
+    source = source.replace(
+        "export function compileVyomaSutra(source, options = {}) {",
+        "compileVyomaSutra = function compileVyomaSutraStage1(source, options = {}) {",
+    )
+    source = source.replace("export function ", "function ")
+    return "// BEGIN VYOMASUTRA COMPILER\n{\n" + source + "\n}\n// END VYOMASUTRA COMPILER"
+
+
+def patch_embedded_compiler(text: str) -> tuple[str, bool]:
+    compiler = browser_vysu_compiler_source()
+    marked_pattern = re.compile(
+        r"// BEGIN VYOMASUTRA COMPILER\n.*?\n// END VYOMASUTRA COMPILER",
+        re.DOTALL,
+    )
+    if marked_pattern.search(text):
+        return marked_pattern.sub(lambda _match: compiler, text, count=1), True
+
+    legacy_pattern = re.compile(
+        r"\n      \{\nconst VALID_ACTIONS = new Set\(\[.*?\n\}\n\n(?=      function mergeSettings)",
+        re.DOTALL,
+    )
+    if legacy_pattern.search(text):
+        replacement = "\n      " + compiler + "\n\n"
+        return legacy_pattern.sub(lambda _match: replacement, text, count=1), True
+    return text, False
+
+
+def refresh_browser_compiler_assets(slug: str) -> bool:
+    page_root = LAB_ROOT / slug
+    source_path = REPO_ROOT / "scripts" / "vysu-compiler.mjs"
+    changed = False
+
+    js_path = page_root / "assets" / "js" / "vysu-compiler.mjs"
+    if js_path.exists():
+        js_path.write_text(source_path.read_text(encoding="utf-8"), encoding="utf-8")
+        changed = True
+
+    for path in [page_root / "index.html", page_root / "assets" / "js" / "three-explorer.js"]:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        patched, did_patch = patch_embedded_compiler(text)
+        if did_patch:
+            path.write_text(patched, encoding="utf-8")
+            changed = True
+    return changed
 
 
 def patch_lab_story_data(slug: str, compiled_stories: list[dict[str, Any]]) -> bool:
@@ -66,6 +101,7 @@ def patch_lab_story_data(slug: str, compiled_stories: list[dict[str, Any]]) -> b
     replacement = match.group(1) + json.dumps(ordered, ensure_ascii=False) + match.group(3)
     page_path.write_text(pattern.sub(lambda _match: replacement, text, count=1), encoding="utf-8")
     write_json(LAB_ROOT / slug / "stories.json", ordered)
+    refresh_browser_compiler_assets(slug)
     return True
 
 

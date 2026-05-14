@@ -385,6 +385,62 @@
         padding: 0.28rem 0.62rem;
       }
 
+      .story-search-row {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin: 0.1rem 0 0.45rem;
+      }
+
+      .story-search-row .three-story-search {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+      }
+
+      .story-mode-label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .camera-directive-row {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.45rem;
+      }
+
+      .camera-directive-field {
+        flex: 1 1 auto;
+        min-width: 0;
+        box-sizing: border-box;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.74);
+        color: var(--muted);
+        font: 0.76rem/1.2 var(--font-mono);
+        padding: 0.45rem 0.55rem;
+      }
+
+      .icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.1rem;
+        min-width: 2.1rem;
+        height: 2.1rem;
+        padding: 0;
+      }
+
+      .icon-button svg {
+        width: 1rem;
+        height: 1rem;
+        stroke: currentColor;
+      }
+
       .three-story-pill {
         border: 1px solid rgba(73,61,36,0.22);
         border-radius: 999px;
@@ -444,10 +500,38 @@
         border-left: 1px solid var(--line);
         padding-left: 0.9rem;
         min-width: 0;
+        position: relative;
       }
 
       .three-dock.collapsed {
         display: none;
+      }
+
+      .three-dock-resizer {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -0.7rem;
+        width: 0.8rem;
+        border: 0;
+        border-left: 1px solid transparent;
+        background: transparent;
+        cursor: col-resize;
+        padding: 0;
+      }
+
+      .three-dock-resizer::after {
+        content: "";
+        position: absolute;
+        top: 0.4rem;
+        bottom: 0.4rem;
+        left: 0.35rem;
+        border-left: 2px solid rgba(90, 103, 122, 0.28);
+      }
+
+      .three-dock-resizer:hover::after,
+      .three-dock-resizer:focus-visible::after {
+        border-left-color: var(--accent);
       }
 
       .three-dock-tabs {
@@ -515,10 +599,70 @@
 
       .three-story-editor.vyoma-editor {
         min-height: 14rem;
+        margin-top: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        line-height: var(--vysu-editor-line-height, 1.42rem);
+        font-size: var(--vysu-editor-font-size, 0.8rem);
+        overflow: auto;
+        white-space: pre;
+        overflow-wrap: normal;
       }
 
       .three-story-editor.json-editor {
         min-height: 18rem;
+      }
+
+      .vysu-editor-toolbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0.45rem 0 0.25rem;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .vysu-editor-toolbar label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .vysu-font-size {
+        width: 4.4rem;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: rgba(255,255,255,0.78);
+        color: var(--ink);
+        font: inherit;
+        padding: 0.16rem 0.3rem;
+      }
+
+      .vysu-editor-shell {
+        display: grid;
+        grid-template-columns: 3.1rem minmax(0, 1fr);
+        min-height: 14rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.84);
+        overflow: hidden;
+      }
+
+      .vysu-line-gutter {
+        margin: 0;
+        padding: 0.7rem 0.45rem 0.7rem 0.25rem;
+        border-right: 1px solid rgba(90, 103, 122, 0.18);
+        background: rgba(244, 247, 251, 0.72);
+        color: rgba(73, 84, 101, 0.72);
+        font-family: var(--font-mono);
+        font-size: var(--vysu-editor-font-size, 0.8rem);
+        line-height: var(--vysu-editor-line-height, 1.42rem);
+        text-align: right;
+        user-select: none;
+        overflow: hidden;
+        white-space: pre;
       }
 
       .story-subhead {
@@ -621,6 +765,22 @@
         opacity: 1;
       }
 
+      .three-label-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .three-story-label {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        color: rgba(240, 246, 255, 0.94);
+        font: 600 0.92rem var(--font-sans);
+        text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+        white-space: nowrap;
+      }
+
       .three-fullscreen-button {
         position: absolute;
         right: 0.75rem;
@@ -710,5 +870,8 @@
           border-top: 1px solid var(--line);
           padding-left: 0;
           padding-top: 0.8rem;
+        }
+        .three-dock-resizer {
+          display: none;
         }
       }

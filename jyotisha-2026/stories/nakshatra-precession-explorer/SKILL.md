@@ -4,35 +4,20 @@ Use this when authoring or editing build-time 3D stories for the `nakshatra-prec
 
 ## Goal
 
-Create valid VyomaSutra or story JSON that drives the existing 3D sky without writing JavaScript. Stories should be small, readable, and easy to tune in the page's Stories dock.
+Create valid VyomaSutra that drives the existing 3D sky without writing JavaScript or hand-authored JSON. Stories should be small, readable, and easy to tune in the page's Stories dock.
 
 ## Files
 
 - Put author-facing stories in `stories/nakshatra-precession-explorer/`.
 - Prefer `<id>.vysu` as source. Use `# title: ...`, `# version: 1`, and optional discovery metadata comments such as `# featured: true`, `# group: Tours`, `# tags: nakshatra, sectors`, and `# order: 20`.
-- Generated JSON lives in `stories/nakshatra-precession-explorer/compiled/`; do not hand-edit compiled files.
-- Legacy `<id>.json` files are still accepted and copied into `compiled/`.
-- Run `uv run python scripts/compile_stories.py nakshatra-precession-explorer` after story-only edits. This avoids the astropy-heavy page rebuild and patches the existing lab page story payload.
-- The fast compiler treats current `.vysu`/root `.json` files as the source of truth: stale compiled files and stale embedded page stories are removed from the generated story inventory.
+- JSON is an internal runner/debug format, not the authoring target for this skill.
+- Legacy `<id>.json` files may exist, but do not create new stories in JSON unless explicitly asked.
+- The accepted vNext compiler is TypeScript-first and Node-based. Use the project Node compile command after it lands, expected shape: `node scripts/compile-vysu.mjs nakshatra-precession-explorer`.
+- The old Python compiler should be removed after the Node compiler and compatibility fixtures pass; do not add new VyomaSutra grammar features to Python.
+- The fast compiler treats current `.vysu` files as the authoring source of truth and should prevent stale embedded stories from remaining visible.
 - Run `uv run python scripts/nakshatra_precession_explorer.py` only when data, page structure, generated stories, or major assets change.
 - The generated deployable page emits `assets/css/explorer.css` as the live CSS and `assets/js/three-explorer.js` as an inspectable copy of the inline 3D/VyomaSutra module. The module stays inline in `index.html` so `file://` viewing remains functional.
 - Run the lab through `netlify dev --dir lab` from the `jyotisha-2026` repo root for behavior closest to deploy.
-
-## Required Shape
-
-```json
-{
-  "id": "story-id",
-  "title": "Story Title",
-  "version": 1,
-  "initial": {},
-  "cues": []
-}
-```
-
-Required keys are `id`, `title`, `version`, and `cues`. `initial` is optional.
-
-For `.vysu`, `id` comes from the filename stem and `title` comes from `# title: ...`.
 
 ## Discovery Metadata
 
@@ -52,445 +37,279 @@ Build-time `.vysu` files can start with metadata comments:
 - The Stories dock select uses the same searchable story inventory.
 - `# group:`, `# tags:`, `# order:`, title, and id are searchable or sortable metadata only; they do not change runtime behavior.
 
-## Formal-ish Grammar
+## VyomaSutra Stage 1 Grammar
+
+Use this authoring surface for new `.vysu` work. Stage 2 ideas such as `draw`, target ranges, `blink`, `glow`, primitive target hierarchy, and numeric vector math should warn until implemented.
 
 ```text
-Story =
-  {
-    "id": string,
-    "title": string,
-    "version": number,
-    "initial"?: StatePatch,
-    "cues": Cue[] | CueMap
-  }
+program          ::= line*
+line             ::= statementList? comment? newline
+statementList    ::= statement (";" statement)*
+statement        ::= timedStatement | command | timedBlock
 
-CueMap =
-  { Time: CueWithoutTime }
+timedStatement   ::= timing command
+timedBlock       ::= timing "{" statementList "}"
+timing           ::= "at" time | "after" duration | signedDuration
 
-Cue =
-  CaptionCue | SetCue | RevealCue | HideCue | CameraCue | EpochTravelCue |
-  FlashCue | FullscreenCue
+command          ::= stageStmt | visibilityStmt | styleStmt | cameraStmt |
+                     travelStmt | gridStmt | captionStmt | labelStmt |
+                     clearStmt | waitStmt | seqStmt | flashStmt | effectStmt |
+                     fullscreenStmt | defaultsStmt
 
-Time =
-  number | numeric-string | signed-relative-string
+visibilityStmt   ::= visibilityVerb targetList transitionArg*
+visibilityVerb   ::= "show" | "hide" | "reveal" | "rollout" | "fade"
+styleStmt        ::= "style" targetList styleArg+
+flashStmt        ::= ("flash" | "pulse") targetList effectArg*
+captionStmt      ::= ("caption" | "say" | "title") quotedText captionArg*
+labelStmt        ::= "label" identifier quotedText labelArg*
+clearStmt        ::= "clear" ("label" identifier | "labels")
 
-CueBase =
-  { "at"?: Time, "after"?: number }
-
-CaptionCue =
-  CueBase & {
-    "action": "caption",
-    "text": string,
-    "duration"?: ms,
-    "fadeIn"?: ms,
-    "fadeOut"?: ms
-  }
-
-SetCue =
-  CueBase & {
-    "action": "set",
-    "state": StatePatch,
-    "duration"?: ms
-  }
-
-RevealCue =
-  CueBase & {
-    "action": "reveal",
-    "target": Target,
-    "mode"?: Mode,
-    "order"?: Order,
-    "direction"?: Direction,
-    "duration"?: ms
-  }
-
-HideCue =
-  RevealCue with "action": "hide"
-
-CameraCue =
-  CueBase & {
-    "action": "camera",
-    "camera": CameraPatch,
-    "duration"?: ms
-  }
-
-EpochTravelCue =
-  CueBase & {
-    "action": "epochTravel",
-    "from": year,
-    "to": year,
-    "step"?: years,
-    "duration"?: ms
-  }
-
-FlashCue =
-  CueBase & {
-    "action": "flash",
-    "target": Target,
-    "duration"?: ms
-  }
-
-FullscreenCue =
-  CueBase & {
-    "action": "fullscreen" | "exitFullscreen"
-  }
+targetList       ::= targetAtom (("," | "and") targetAtom)*
+targetAtom       ::= sigilNak | namedTarget | dottedTarget | groupTarget
+groupTarget      ::= "guides" | "sky" | "poles" | "seasons"
+durationArg      ::= "over" duration | legacyDurationTuple | bareDuration
+seqStmt          ::= ("seq" | "sequence") duration
 ```
 
-Types:
-
-```text
-Mode = "instant" | "fade" | "stagger" | "rollout"
-Order = "default" | "ecliptic" | "reverse-ecliptic"
-Direction = "forward" | "reverse"
-
-Target =
-  "eclipticGrid" | "equatorialGrid" | "eclipticNakSegments" |
-  "referencePlanes" | "eclipticPlane" | "equatorialPlane" |
-  "nsAxis" | "eclipticBand" | "eclipticDividers" |
-  "eclipticLabels" | "eclipticPoles" | "stars" | "nakshatras" |
-  "nakshatraLines" | "nakshatraLabels" | "polarItems" |
-  "northPolarItems" | "southPolarItems" | "poleTrack" |
-  "precessionCircle" | "seasonalFrame" | "overlay" |
-  "NEP" | "SEP" | "NP" | "SP" |
-  "equator" | "VE" | "SS" | "AE" | "WS" |
-  "agastya" | "thuban" | "polaris" | "matsya" | "sisumara" |
-  sigil-nakshatra-target
-```
-
-Use array `cues` for real stories. `CueMap` is accepted for compact experiments, but JSON cannot repeat keys like `"+500"`.
+Target lists require commas. `and` is readability sugar. Do not use bare-space target lists, because command properties become ambiguous.
 
 ## Timing
 
-Prefer ordered array cues.
+- Each scope has a timing cursor. Top-level starts at `0`; each timed block starts with a local cursor at its block base.
+- No timing means "start at the current scope cursor" and does not advance the cursor.
+- `;` separates statements but does not sequence them.
+- `wait 500` advances the current scope cursor by 500 ms and emits nothing.
+- `seq 200` at top level sets the default sequence step for later timed blocks.
+- `seq 200` inside a timed block advances the block clock by 200 ms before each following emitted command.
+- `seq 0` disables sequence stepping in that scope.
+- `+500 command` advances the current scope cursor by 500 ms, then schedules the command there.
+- `after 500 command` is canonical relative timing and behaves like `+500 command`.
+- `at 12000 command` is absolute timing in the current scope and does not move the cursor.
+- `over 900` is duration, never cue position.
+- Timing operators can apply to blocks. Inside a timed block, `at N` is local to the block base, while `+N` and `after N` advance the block-local cursor.
 
-- `3000` or `"3000"` means absolute milliseconds from story start.
-- `"+500"` means 500ms after the previous cue ends.
-- `"-300"` means 300ms before the previous cue ends.
-- If a cue omits `duration`, scheduling still uses the action's default duration.
-- `after` is supported as legacy relative timing, but prefer signed `at`.
-- Keyed-object cues are accepted for quick experiments, but avoid them for real stories because JSON cannot repeat keys like `"+500"`.
+```text
+at 0 {
+  caption "Start" over 1000
+  reveal $naks
+  +50 reveal *naks
+}
 
-## Actions
+at 1000 {
+  show equator, ecliptic.circle, nsAxis
+  +100 flash NP
+  at 50 caption "local block time" over 800
+}
 
-Use only these actions:
+after 1111 { caption "relative block A" }
+after 2222 { caption "relative block B at 3333 ms" }
 
-- `caption`: show centered fading text.
-- `set`: apply a partial 3D settings patch.
-- `reveal`: transition a named visual layer to visible.
+seq 333
+at 2000 {
+  stage blank twilight year -1800
+  camera pos -147.464,73.504,234.757 target 0,0,0 fov 48
+  seq 100
+  caption "Sequenced caption"
+}
+```
+
+## Commands
+
+Use VyomaSutra commands, not JSON action objects:
+
+- `caption`: show fading text.
+- `show` / `reveal`: transition a named visual layer to visible.
 - `hide`: transition a named visual layer to hidden.
-- `camera`: animate camera position and/or target.
-- `epochTravel`: animate epoch from one year to another.
+- `style`: apply visual styling and persist until changed, cleared, or reset.
+- `camera` / `move`: animate camera position and/or target.
+- `travel` / `epochTravel`: animate epoch from one year to another.
 - `flash`: briefly emphasize a target without changing durable visibility.
+- `pulse`: repeated flash emphasis.
+- `label`, `clear label`, `clear labels`: persistent annotations.
 - `fullscreen` / `exitFullscreen`: enter or leave theater view for the 3D canvas.
+- `cut <preset>` is sugar for `camera <preset> over 0`.
+- `show` and `reveal` are aliases in Stage 1; use explicit modes such as `show naks rollout`, `show stars fade`, or `show grid instant` when intent matters.
 
-Do not invent actions. Do not include JavaScript.
-
-Every cue must have an `action`. A cue with a `camera` object but no `"action": "camera"` is invalid and will not run.
-
-VyomaSutra also supports `style ...`; it compiles to JSON `set` cues, not a separate runtime action.
+Do not invent commands. Do not include JavaScript.
 
 ## Defaults
 
-Action defaults:
+Command defaults:
 
-| Action | Default duration |
-| --- | ---: |
-| `caption` | `1200` |
-| `set` | `0` |
-| `reveal` | target-specific |
-| `hide` | target-specific |
-| `camera` | `1000` |
-| `epochTravel` | `5000` |
-| `flash` | `900` |
+| Command       | Default duration |
+| ------------- | ---------------: |
+| `caption`     |           `1200` |
+| `reveal`      |  target-specific |
+| `hide`        |  target-specific |
+| `camera`      |           `1000` |
+| `epochTravel` |           `5000` |
+| `flash`       |            `900` |
 
 Transition defaults:
 
-| Target | Default mode | Default order | Default duration |
-| --- | --- | --- | ---: |
-| `eclipticGrid` | `stagger` | `default` | `1000` |
-| `equatorialGrid` | `stagger` | `default` | `1000` |
-| `eclipticNakSegments` | composite | `ecliptic` | target parts |
-| `referencePlanes` | `fade` | `default` | `700` |
-| `eclipticPlane` | `fade` | `default` | `700` |
-| `equatorialPlane` | `fade` | `default` | `700` |
-| `nsAxis` | `fade` | `default` | `700` |
-| `ecliptic` | composite | `ecliptic` | target parts |
-| `eclipticBand` | `fade` | `ecliptic` | `900` |
-| `eclipticDividers` | `rollout` | `ecliptic` | `1200` |
-| `eclipticLabels` | `stagger` | `ecliptic` | `1200` |
-| `eclipticPoles` | `fade` | `default` | `600` |
-| `stars` | `fade` | `default` | `900` |
-| `nakshatras` | `rollout` | `ecliptic` | `1800` |
-| `nakshatraLines` | `rollout` | `ecliptic` | `1800` |
-| `nakshatraLabels` | `stagger` | `ecliptic` | `1200` |
-| `polarItems` | `rollout` | `default` | `1600` |
-| `northPolarItems` | `rollout` | `default` | `1200` |
-| `southPolarItems` | `rollout` | `default` | `1200` |
-| `poleTrack` | `rollout` | `default` | `1100` |
-| `precessionCircle` | `fade` | `default` | `900` |
-| `seasonalFrame` | `rollout` | `default` | `1300` |
-| `overlay` | `fade` | `default` | `500` |
+| Target                | Default mode | Default order | Default duration |
+| --------------------- | ------------ | ------------- | ---------------: |
+| `eclipticGrid`        | `stagger`    | `default`     |           `1000` |
+| `equatorialGrid`      | `stagger`    | `default`     |           `1000` |
+| `eclipticNakSegments` | composite    | `ecliptic`    |     target parts |
+| `referencePlanes`     | `fade`       | `default`     |            `700` |
+| `eclipticPlane`       | `fade`       | `default`     |            `700` |
+| `equatorialPlane`     | `fade`       | `default`     |            `700` |
+| `nsAxis`              | `fade`       | `default`     |            `700` |
+| `ecliptic`            | composite    | `ecliptic`    |     target parts |
+| `eclipticBand`        | `fade`       | `ecliptic`    |            `900` |
+| `eclipticDividers`    | `rollout`    | `ecliptic`    |           `1200` |
+| `eclipticLabels`      | `stagger`    | `ecliptic`    |           `1200` |
+| `eclipticPoles`       | `fade`       | `default`     |            `600` |
+| `stars`               | `fade`       | `default`     |            `900` |
+| `nakshatras`          | `rollout`    | `ecliptic`    |           `1800` |
+| `nakshatraLines`      | `rollout`    | `ecliptic`    |           `1800` |
+| `nakshatraLabels`     | `stagger`    | `ecliptic`    |           `1200` |
+| `polarItems`          | `rollout`    | `default`     |           `1600` |
+| `northPolarItems`     | `rollout`    | `default`     |           `1200` |
+| `southPolarItems`     | `rollout`    | `default`     |           `1200` |
+| `poleTrack`           | `rollout`    | `default`     |           `1100` |
+| `precessionCircle`    | `fade`       | `default`     |            `900` |
+| `seasonalFrame`       | `rollout`    | `default`     |           `1300` |
+| `overlay`             | `fade`       | `default`     |            `500` |
 
 Implementation note: `rollout` currently stages objects or groups in order; it is not yet true geometric line drawing along each polyline. For `stars`, rollout reveals one nakshatra star group at a time, followed by special stars such as Agastya. For `nakshatras`, rollout reveals one complete stick figure at a time.
 
 ## Reveal and Hide
 
-Prefer `reveal`/`hide` when a story should stage visual layers. They update the underlying `ui.show...` state when the transition finishes.
+Prefer `reveal`/`hide` when a story should stage visual layers:
 
-Minimal form:
-
-```json
-{
-  "at": "+300",
-  "action": "reveal",
-  "target": "nakshatras"
-}
-```
-
-Optional overrides:
-
-```json
-{
-  "at": "+300",
-  "action": "hide",
-  "target": "nakshatras",
-  "mode": "rollout",
-  "direction": "reverse",
-  "duration": 1200
-}
+```text
+reveal nakshatras
+hide nakshatras rollout reverse over 1200
+show equator, ecliptic.circle, nsAxis
 ```
 
 Supported targets:
 
 - `eclipticGrid`
 - `equatorialGrid`
-- `eclipticNakSegments`
-- `referencePlanes`
+- `@referencePlanes` (`referencePlanes`, `refs`)
 - `eclipticPlane`
 - `equatorialPlane`
 - `nsAxis`
-- `eclipticBand`
-- `eclipticDividers`
-- `eclipticLabels`
-- `eclipticPoles`
+- `@eclipticNakSegments` (`eclipticNakSegments`, `nakSegments`, `naksSegments`, `eclipticSegments`)
+- `eclipticBand`, `eclipticDividers`, `eclipticLabels`
+- `@eclipticPoles` (`eclipticPoles`), `NEP`, `SEP`
 - `stars`
-- `nakshatras`
-- `nakshatraLines`
+- `@naks` (`naks`, `nak`, `nakshatra`, `nakshatras`) = stars + lines + labels
+- `*naks` = nakshatra stars/dots
+- `$naks` = nakshatra stick/line figures
 - `nakshatraLabels`
-- `polarItems`
-- `northPolarItems`
-- `southPolarItems`
-- `poleTrack`
+- `@polarItems` (`polarItems`)
+- `@northPolarItems` (`northPolarItems`, `northPolar`)
+- `@southPolarItems` (`southPolarItems`, `southPolar`)
+- `@poleTrack` (`poleTrack`, `polePath`)
 - `precessionCircle`
-- `seasonalFrame`
+- `@seasonalFrame` (`seasonalFrame`, `seasons`, `rtu`, `rtus`)
 - `overlay`
-- `NEP`, `SEP`, `NP`, `SP`
+- `NP`, `SP`
 - `equator`, `VE`, `SS`, `AE`, `WS`
 - `agastya`, `thuban`, `polaris`, `matsya`, `sisumara`
 - sigil nakshatra targets such as `$ash`, `*ash`, and `@ash` for flash/focus-style cues
 
-Supported modes are `instant`, `fade`, `stagger`, and `rollout`. Most stories should omit `mode`, `order`, `direction`, and `duration`; defaults are target-specific.
+Stage 2 memory: dotted forms such as `nak.ash`, `nak.ash.stars`, `sector.1.label`, `star.thuban`, and `poleTrack.circle` are intentionally not implemented yet. They should warn in Stage 1.
 
-## Useful State Patches
-
-`set` cues accept partial patches under `state`.
-
-```json
-{
-  "at": "+300",
-  "action": "set",
-  "state": {
-    "ui": {
-      "showGrid": true,
-      "showEquatorialGrid": false,
-      "showReferencePlanes": false,
-      "showNsAxis": false,
-      "showEclipticBand": true,
-      "showEclipticDividers": true,
-      "showEclipticLabels": true,
-      "showEclipticPoles": true,
-      "showStars": true,
-      "showNakshatraLines": true,
-      "showNakshatraLabels": true,
-      "showPolarItems": true,
-      "showNorthPolarItems": true,
-      "showSouthPolarItems": true,
-      "showPoleTrack": true,
-      "showSeasonalFrame": true,
-      "showOverlay": true
-    }
-  }
-}
-```
-
-Patch only what changes. Avoid dumping the full settings object unless the story intentionally resets the scene.
-
-`StatePatch` may include:
+Any command that accepts a target may accept a comma-separated target list:
 
 ```text
-StatePatch =
-  {
-    "lightPreset"?: "night" | "twilight" | "day",
-    "epochYear"?: number,
-    "camera"?: CameraPatch,
-    "ui"?: UiPatch,
-    "grid"?: object,
-    "reference"?: object,
-    "ecliptic"?: object,
-    "stars"?: object,
-    "nakshatras"?: object,
-    "polarItems"?: object,
-    "poleTrack"?: object,
-    "seasonal"?: object,
-    "overlay"?: object
-  }
-
-CameraPatch =
-  {
-    "position"?: { "x"?: number, "y"?: number, "z"?: number },
-    "target"?: { "x"?: number, "y"?: number, "z"?: number },
-    "fov"?: number,
-    "minDistance"?: number,
-    "maxDistance"?: number
-  }
-
-UiPatch =
-  {
-    "showGrid"?: boolean,
-    "showEquatorialGrid"?: boolean,
-    "showReferencePlanes"?: boolean,
-    "showEclipticPlane"?: boolean,
-    "showEquatorialPlane"?: boolean,
-    "showNsAxis"?: boolean,
-    "showEclipticBand"?: boolean,
-    "showEclipticDividers"?: boolean,
-    "showEclipticLabels"?: boolean,
-    "showEclipticPoles"?: boolean,
-    "showStars"?: boolean,
-    "showNakshatraLines"?: boolean,
-    "showNakshatraLabels"?: boolean,
-    "showPolarItems"?: boolean,
-    "showNorthPolarItems"?: boolean,
-    "showSouthPolarItems"?: boolean,
-    "showNEP"?: boolean,
-    "showSEP"?: boolean,
-    "showNP"?: boolean,
-    "showSP"?: boolean,
-    "showPoleTrack"?: boolean,
-    "showSeasonalFrame"?: boolean,
-    "showOverlay"?: boolean
-  }
+show equator, nsAxis
+flash $ash, *ash over 650
+style NP, SP yellow alpha .8
 ```
 
-Use `set` for instant state changes. Prefer explicit actions when behavior matters:
+Supported modes are `instant`, `fade`, `stagger`, and `rollout`. Most stories should omit `mode`, `order`, `direction`, and `duration`; defaults are target-specific.
 
-- instant year jump: `set.state.epochYear`
-- animated year travel: `epochTravel`
-- instant camera jump: `set.state.camera`
+## Stage and Style
 
-Grid density is a debug/settings property, not a separate story action:
+Use `stage` for scene setup and `style` for visual tuning:
 
-```json
-{
-  "grid": {
-    "eclipticStepDeg": 30,
-    "equatorialStepDeg": 30
-  }
-}
+```text
+stage blank night year -1800
+style equatorialGrid color red alpha %28
+style nsAxis, equator color #a7b4c7 alpha .35
+style @naks color #8eaccb alpha .8 labelSize 5
+style *naks dotSize 2.6 dotAlpha %80
+show NP color gold labelSize 5 labelAlpha %80 over 900
 ```
 
-Lower step values make denser grids. Keep values in the practical `5` to `90` degree range.
-
-VyomaSutra also supports compact grid tuning:
+Use compact grid tuning when needed:
 
 ```text
 grid ecliptic 15 blue
 grid equatorial 15 red
 ```
 
-These compile to `set` patches for grid density/color and turn on the chosen grid.
+Lower step values make denser grids. Keep values in the practical `5` to `90` degree range.
 
-VyomaSutra safe style examples:
+## Camera
+
+Camera commands may be partial. Missing coordinates keep their current values.
 
 ```text
-style equatorialGrid color red alpha %28
-style nsAxis color #a7b4c7 alpha .35
-style naks color #8eaccb alpha .8 fontSize 5
-style stars alpha %80 starSize 2.6
-```
-- animated camera move: `camera`
-- instant visibility change: `set.state.ui.show...`
-- staged visibility change: `reveal` or `hide`
-
-## Camera Cues
-
-Camera cues may be partial. Missing coordinates keep their current values.
-
-```json
-{
-  "at": "+500",
-  "action": "camera",
-  "duration": 1200,
-  "camera": {
-    "position": { "x": -147.464, "y": 73.504, "z": 234.757 },
-    "target": { "x": 0, "y": 0, "z": 0 }
-  }
-}
+camera pos -147.464,73.504,234.757 target 0,0,0 fov 45 over 900
+camera topDome over 1200
+cut topDome
 ```
 
-This is also valid when only one coordinate changes:
-
-```json
-{
-  "at": "+500",
-  "action": "camera",
-  "duration": 800,
-  "camera": {
-    "position": { "x": 10 }
-  }
-}
-```
-
-For tolerance while tuning, `camera` cues also accept `state.camera`, but prefer the direct `camera` shape above.
+`cut <preset>` is sugar for `camera <preset> over 0`. Unsupported preset names must warn.
 
 ## Captions
-
-```json
-{
-  "at": 300,
-  "action": "caption",
-  "text": "Visualize Precession",
-  "duration": 1200,
-  "fadeIn": 250,
-  "fadeOut": 350
-}
-```
 
 Keep captions short. They should support the visual, not narrate everything.
 
 `fadeIn` and `fadeOut` set the actual opacity-transition duration in milliseconds. `duration` is the total caption lifetime from cue start; fade-out begins at `duration - fadeOut`.
 
-VyomaSutra captions accept color names/hex colors and `size NUMBER`, for example `caption "Thuban era" gold size 4 1500:300:300`.
+VyomaSutra captions accept color names/hex colors and `size NUMBER`. Prefer explicit duration and fade syntax:
+
+```text
+caption "Thuban era" gold size 4 over 1500 fadeIn 300 fadeOut 300
+caption "Thuban era" gold size 4 over 1500 fade 300:300
+```
+
+The legacy tuple form `1500:300:300` is still accepted for compatibility. For non-caption commands, tuple values beyond duration should warn or be ignored.
+
+Persistent labels use separate syntax:
+
+```text
+label title "Visualize Precession" at screen 8 dy 24
+label pole "Moving pole" at target NP dx 12 dy -8
+clear label pole
+clear labels
+```
 
 ## Epoch Travel
 
-```json
-{
-  "at": "+500",
-  "action": "epochTravel",
-  "from": -1800,
-  "to": -800,
-  "step": 100,
-  "duration": 5000
-}
-```
-
 Use epoch values available in the explorer range. `step` should usually match the page epoch step.
+
+In VyomaSutra, `over` controls total travel animation duration, `rate` controls epoch speed, and `step` controls sampling granularity:
+
+```text
+travel year -1800 to -800 over 5000 step 100y
+travel year -4000 to -2800 rate 200y/s step 50y
+```
 
 ## Authoring Rules
 
-- Start with a small `initial` state if the scene needs a clean stage.
-- Use relative `at` values after the first cue to make timing edits cheap.
+- Start with `stage blank ...` if the scene needs a clean stage.
+- Use timed blocks for scene setup when several commands share a local time origin.
 - Prefer a sequence of simple cues over one large patch.
-- Use `set` for instant state changes; use `reveal`/`hide` for staged visibility changes.
-- `set.duration` is accepted but currently discrete; do not rely on it for smooth layer visibility.
-- Test in the 3D Stories dock, then copy tuned JSON back into the story file.
+- Prefer target lists over repeated identical commands when the same command applies to multiple targets.
+- Do not use `foreach` or bespoke macros such as `tour naks`; generated canned stories should emit ordinary readable `.vysu`.
+- Use `stage` for scene setup, `style` for visual tuning, and `reveal`/`hide` for staged visibility changes.
+- Test in the 3D Stories dock, then keep the `.vysu` source as the authoring truth.
+
+> Should the story authoring skill even worry about the story JSON ?
+>
+> I think the skill should just output the VyomaSutra. This will make the skill more focused and easier to maintain. It will also make it easier to test the skill.
+>
+> **State: accepted.** This skill should focus on VyomaSutra authoring. JSON is an internal runner/debug format and belongs in the PRD/compiler implementation notes, not as the main skill surface.
+
+> The JSON layer is an implementation detail. The skill should not need to know about it. It should just output VyomaSutra. The design and implementation of JSON should be done by the story runner ( 3D stories dock) or some such. The story runner will be responsible for converting the VyomaSutra to JSON and then running the story.
+>
+> **State: accepted.** New stories authored through this skill should be `.vysu`; direct JSON should only be used when explicitly requested for debugging or legacy compatibility.

@@ -1,272 +1,71 @@
 {
   "id": "precession-explorer",
   "title": "Precession Explorer",
-  "version": 2,
-  "vysu": "# title: Precession Explorer\n# version: 2\n# featured: true\n# group: Precession\n# tags: pole-track, top-view, thuban, polaris\n# order: 30\n# Top-down review of precession against the fixed nakshatra ring.\n\n# --- SECTION 1: Initialization & Staging ---\n# Transition to immersive mode and set the starting era.\ntheater\nstage blank night year -4000\ncamera pos 0,325,0.1 target 0,0,0 fov 42\n\ncaption \"Precession and Pole Star\" 2000:300:450\n\n# --- SECTION 2: Celestial Landscape Build-up ---\n# Gradually reveal the stars and the nakshatra (asterism) line art.\nrollout stars 5000:\nrollout naks 5000:\nhide stars\nhide naks\n\n# Highlight the Ecliptic Band with its 27 segments.\nrollout eclipticNakSegments 5000:\nrollout stars 1000:\nrollout naks 1000:\n\n# Reveal mythical polar constellations (Shishumara and Matsya Dhruva).\nrollout sisumara 3000:\nrollout matsya 3000:\n\n# Set up polar reference markers.\nshow northPolarItems \nhide southPolarItems\nshow poleTrack # The circle traced by the Earth's axis over ~26,000 years.\n\nshow NP; # Current North Pole marker.\nshow seasonalFrame # The Equator and Equinox/Solstice markers.\n\nflash precessionCircle 1500:\n\n# --- SECTION 3: The Drift of Time (Pole Star Transition) ---\ncaption \"The pole marker drifts as centuries pass\" 3000:350:500\n\nflash NP 2000:\nflash seasonalFrame 2000:\n\nshow overlay # Show the time/coordinate HUD.\n\n# Animation: 4000 BCE to 2800 BCE.\ntravel -4000 to -2800 7000: step 100\ncaption \"Thuban becomes the north-pole marker near 2800 BCE\" 5000:1000:500\nflash NP 2000:; hide NP; wait 1000; flash NP 2000:\n\n# Animation: 2800 BCE to 2100 CE.\ntravel -2800 to 2100 15000: step 100\ncaption \"Polaris becomes the north-pole marker near 2100 CE\" 5000:1000:500\nflash NP 2000:; hide NP; wait 1000; flash NP 2000:\n\nwait 5000\n\n# --- SECTION 4: Perspective View Exploration ---\n# Reset camera to a 3D perspective to see the tilt of the axis.\nstage blank night year -4000\ncamera pos -147.464,73.504,234.757 target 0,0,0 fov 45\n\ncaption \"Visualize Precession\" 1200:250:350\n \nrollout stars 5000:\nrollout naks 5000:\nhide eclipticGrid\ngrid equatorial 10 red\nrollout equatorialGrid 5000:\nstyle nsAxis yellow\nrollout nsAxis 2000: # North-South physical axis of Earth.\nflash nsAxis\nwait 500\nshow eclipticNakSegments 3000:\nshow seasonalFrame\nflash seasonalFrame\nflash AE; hide AE; show AE; flash AE # Autumnal Equinox.\nflash SS; hide SS; show SS; flash SS # Summer Solstice.\nflash VE; hide VE; show VE; flash VE # Vernal Equinox.\nflash WS; hide WS; show WS; flash WS # Winter Solstice.\nshow poleTrack\n\nshow overlay\n# Repeat time drift in perspective view.\ntravel -4000 to -2800 7000: step 100\ncaption \"Thuban becomes the north-pole marker near 2800 BCE\" 5000:1000:500\nflash NP 2000:; hide NP; wait 1000; flash NP 2000:\n\ntravel -2800 to 2100 15000: step 100\ncaption \"Polaris becomes the north-pole marker near 2100 CE\" 5000:1000:500\nflash NP 2000:; hide NP; wait 1000; flash NP 2000:\n\nwait 5000\n\n# Exit theater mode and return to interactive canvas.\ncanvas\n",
+  "version": 1,
+  "vysu": "# title   : Precession Explorer  \n# version : 1\n# featured: true\n# group   : Precession\n# tags    : intro, precession, seasonal-frame\n# order   : 10\n# Visualize axial precession and seasonal naks against the fixed nakshatra sky\n\nseq 1000   # main sequence start\n\n\nat 0 {\n    # blank stage at -4000 BCE\n    stage blank year -4000\n    show overlay\n\n    camera pos -86.895,77.787,262.026 target 0,0,0 fov 45 over 900\n    grid equatorial 10   # show equatorial grid\n\n    style nsAxis color yellow\n    show nsAxis   # show north-south axis\n\n    camera pos -16.157,280.502,57.591 target 0,0,0 fov 45 over 900\n\n    style precessionCircle color yellow\n    show precessionCircle   # show precession circle path\n\n    seq 2000\n    show sisumara\n    show thuban\n    show matsya\n    show polaris\n    show NP   # show pole markers\n\n    travel -4000 to -2800 3000: step 100\n    #camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900\n     camera pos -0.306,262.855,1.306 target 0,0,0 fov 45 over 900\n      label tNp \"2800 BCE - Abhaya Dhruva/Thuban is North Pole\" color gold size 1.3\n     style thuban lbl(10 gold 50%) \n     flash thuban\n     style thuban lbl(5 gold 100%) \n}\n\n\n+3000 {\n    # transition to Polaris era\n    clear label tNp\n\n    camera pos -16.157,280.502,57.591 target 0,0,0 fov 45 over 900\n    travel -2800 to 2100 6000: step 100\n    wait 4000\n    camera pos -0.306,262.855,1.306 target 0,0,0 fov 45 over 900\n    label pNp \"2100 CE - Matsya Dhruva/Polaris is North Pole\" color gold size 1.3\n     style polaris lbl(10 gold 50%) \n     flash polaris\n     style polaris lbl(5 gold 100%) \n}\n\n\n+4000 {\n    # clear Polaris label and adjust camera\n    clear label pNp\n    camera pos -167.086,194.865,143.526 target 0,0,0 fov 45 over 900\n}\n\n\n+1000 {\n    # show nakshatra and ecliptic labels\n    camera pos -34.897,173.674,234.754 target 0,0,0 fov 45 over 900\n\n    show *nak\n    show $nak\n    show @naks\n\n    #show nakshatralabels \n    flash nakshatralabels\n\n    show eclipticSegments\n    flash eclipticLabels\n\n    flash equator\n    show equator\n\n    flash NP\n    show NP \n\n    show equatorialPlane \n    stage year -4000\n    camera pos 6.327,47.448,290.17 target 0,0,0 fov 45 over 900\n}\n\n\n+2000 {\n    # flash seasonal markers again\n    flash VE, SS, AE, WS\n    show VE, SS, AE, WS\n}\n\n+2000 {\n    # repeat initial setup for emphasis\n    camera pos -0.131,293.589,0.405 target 0,0,0 fov 45 over 900\n\n    hide equator \n    hide equatorialPlane\n    flash eclipticLabels\n\n     style naks lbl(30%)\n     style eclipticSegments lbl(8 70%)\n     style AE, SS, WS, VE  lbl(14 100%)\n     flash VE, SS, AE, WS\n}\n\n+2000 {\n    travel -4000 to -2800 3000: step 100\n    # camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900\n    label  lblx \"2800 BCE - Abhaya Dhruva/Thuban is North Pole\" color gold size 1.3\n    flash thuban\n}\n\n+2000 {\n     label clear lblx\n    travel -2800 to -1800 2000: step 100\n    label lblx \"1800 BCE - Maghadi Era - Magha and SS\" color gold size 1.3\n#    flash @magha 1000:\n    flash @mag , sector.mag 1000:\n    flash SS 1000:\n}\n\n+4000 {\n     label clear lblx\n    travel -1800 to 2100 4000: step 100\n     wait 2000\n    # camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900\n    label lblx \"2100 CE - Matsya Dhruva/Polaris  is North Pole\" color gold size 1.3\n    flash polaris\n}\n",
   "cues": [
     {
-      "at": 0,
-      "action": "fullscreen"
-    },
-    {
-      "at": "+0",
-      "action": "camera",
-      "camera": {
-        "position": {
-          "x": 0.0,
-          "y": 325.0,
-          "z": 0.1
+      "at": 1000,
+      "action": "set",
+      "state": {
+        "ui": {
+          "showGrid": false,
+          "showEquatorialGrid": false,
+          "showReferencePlanes": false,
+          "showEclipticPlane": false,
+          "showEquatorialPlane": false,
+          "showNsAxis": false,
+          "showEclipticBand": false,
+          "showEclipticDividers": false,
+          "showEclipticLabels": false,
+          "showEclipticPoles": false,
+          "showStars": false,
+          "showNakshatraStars": false,
+          "showNakshatraLines": false,
+          "showNakshatraLabels": false,
+          "showPolarItems": false,
+          "showNorthPolarItems": false,
+          "showSouthPolarItems": false,
+          "showNEP": false,
+          "showSEP": false,
+          "showNP": false,
+          "showSP": false,
+          "showPoleTrack": false,
+          "showSeasonalFrame": false,
+          "showOverlay": false
         },
-        "target": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        },
-        "fov": 42.0
-      },
-      "duration": 1000
+        "epochYear": -4000
+      }
     },
     {
-      "at": "+0",
-      "action": "caption",
-      "duration": 2000,
-      "fadeIn": 300,
-      "fadeOut": 450,
-      "text": "Precession and Pole Star"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "stars",
-      "mode": "rollout",
-      "duration": 5000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "nakshatras",
-      "mode": "rollout",
-      "duration": 5000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "stars"
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "nakshatras"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "eclipticNakSegments",
-      "mode": "rollout",
-      "duration": 5000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "stars",
-      "mode": "rollout",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "nakshatras",
-      "mode": "rollout",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "sisumara",
-      "mode": "rollout",
-      "duration": 3000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "matsya",
-      "mode": "rollout",
-      "duration": 3000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "northPolarItems"
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "southPolarItems"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "poleTrack"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "NP"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "seasonalFrame"
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "precessionCircle",
-      "duration": 1500
-    },
-    {
-      "at": "+0",
-      "action": "caption",
-      "duration": 3000,
-      "fadeIn": 350,
-      "fadeOut": 500,
-      "text": "The pole marker drifts as centuries pass"
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "seasonalFrame",
-      "duration": 2000
-    },
-    {
-      "at": "+0",
+      "at": 2000,
       "action": "reveal",
       "target": "overlay"
     },
     {
-      "at": "+0",
-      "action": "epochTravel",
-      "from": -4000,
-      "to": -2800,
-      "duration": 7000,
-      "step": 100
-    },
-    {
-      "at": "+0",
-      "action": "caption",
-      "duration": 5000,
-      "fadeIn": 1000,
-      "fadeOut": 500,
-      "text": "Thuban becomes the north-pole marker near 2800 BCE"
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "NP"
-    },
-    {
-      "at": "+1000",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
-    },
-    {
-      "at": "+0",
-      "action": "epochTravel",
-      "from": -2800,
-      "to": 2100,
-      "duration": 15000,
-      "step": 100
-    },
-    {
-      "at": "+0",
-      "action": "caption",
-      "duration": 5000,
-      "fadeIn": 1000,
-      "fadeOut": 500,
-      "text": "Polaris becomes the north-pole marker near 2100 CE"
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "NP"
-    },
-    {
-      "at": "+1000",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
-    },
-    {
-      "at": "+5000",
+      "at": 3000,
       "action": "camera",
       "camera": {
         "position": {
-          "x": -147.464,
-          "y": 73.504,
-          "z": 234.757
+          "x": -86.895,
+          "y": 77.787,
+          "z": 262.026
         },
         "target": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
+          "x": 0,
+          "y": 0,
+          "z": 0
         },
-        "fov": 45.0
+        "fov": 45
       },
-      "duration": 1000
+      "duration": 900
     },
     {
-      "at": "+0",
-      "action": "caption",
-      "duration": 1200,
-      "fadeIn": 250,
-      "fadeOut": 350,
-      "text": "Visualize Precession"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "stars",
-      "mode": "rollout",
-      "duration": 5000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "nakshatras",
-      "mode": "rollout",
-      "duration": 5000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "eclipticGrid"
-    },
-    {
-      "at": "+0",
+      "at": 4000,
       "action": "set",
       "state": {
         "grid": {
-          "equatorialStepDeg": 10.0,
-          "equatorialColor": "red"
+          "equatorialStepDeg": 10
         },
         "ui": {
           "showEquatorialGrid": true
@@ -274,250 +73,568 @@
       }
     },
     {
-      "at": "+0",
+      "at": 5000,
+      "action": "set",
+      "state": {
+        "reference": {
+          "nsAxisColor": "yellow"
+        }
+      }
+    },
+    {
+      "at": 6000,
       "action": "reveal",
-      "target": "equatorialGrid",
-      "mode": "rollout",
-      "duration": 5000
+      "target": "nsAxis"
     },
     {
-      "at": "+0",
+      "at": 7000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -16.157,
+          "y": 280.502,
+          "z": 57.591
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 8000,
+      "action": "set",
+      "state": {
+        "poleTrack": {
+          "color": "yellow"
+        }
+      }
+    },
+    {
+      "at": 9000,
       "action": "reveal",
-      "target": "nsAxis",
-      "mode": "rollout",
-      "duration": 2000
+      "target": "precessionCircle"
     },
     {
-      "at": "+0",
-      "action": "flash",
-      "target": "nsAxis",
-      "duration": 1000
-    },
-    {
-      "at": "+500",
+      "at": 11000,
       "action": "reveal",
-      "target": "eclipticNakSegments",
-      "duration": 3000
+      "target": "sisumara"
     },
     {
-      "at": "+0",
+      "at": 13000,
       "action": "reveal",
-      "target": "seasonalFrame"
+      "target": "thuban"
     },
     {
-      "at": "+0",
-      "action": "flash",
-      "target": "seasonalFrame",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "AE",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "AE"
-    },
-    {
-      "at": "+0",
+      "at": 15000,
       "action": "reveal",
-      "target": "AE"
+      "target": "matsya"
     },
     {
-      "at": "+0",
-      "action": "flash",
-      "target": "AE",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "SS",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "SS"
-    },
-    {
-      "at": "+0",
+      "at": 17000,
       "action": "reveal",
-      "target": "SS"
+      "target": "polaris"
     },
     {
-      "at": "+0",
-      "action": "flash",
-      "target": "SS",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "VE",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "VE"
-    },
-    {
-      "at": "+0",
+      "at": 19000,
       "action": "reveal",
-      "target": "VE"
+      "target": "NP"
     },
     {
-      "at": "+0",
-      "action": "flash",
-      "target": "VE",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "WS",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "hide",
-      "target": "WS"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "WS"
-    },
-    {
-      "at": "+0",
-      "action": "flash",
-      "target": "WS",
-      "duration": 1000
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "poleTrack"
-    },
-    {
-      "at": "+0",
-      "action": "reveal",
-      "target": "overlay"
-    },
-    {
-      "at": "+0",
+      "at": 21000,
       "action": "epochTravel",
       "from": -4000,
       "to": -2800,
-      "duration": 7000,
+      "duration": 3000,
       "step": 100
     },
     {
-      "at": "+0",
-      "action": "caption",
-      "duration": 5000,
-      "fadeIn": 1000,
-      "fadeOut": 500,
-      "text": "Thuban becomes the north-pole marker near 2800 BCE"
+      "at": 23000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -0.306,
+          "y": 262.855,
+          "z": 1.306
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
     },
     {
-      "at": "+0",
+      "at": 25000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "tNp": {
+            "id": "tNp",
+            "text": "2800 BCE - Abhaya Dhruva/Thuban is North Pole",
+            "color": "gold",
+            "sizeRem": 1.3
+          }
+        }
+      }
+    },
+    {
+      "at": 27000,
       "action": "flash",
-      "target": "NP",
-      "duration": 2000
+      "duration": 900,
+      "target": "thuban"
     },
     {
-      "at": "+0",
-      "action": "hide",
-      "target": "NP"
+      "at": 31000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "tNp": null
+        }
+      }
     },
     {
-      "at": "+1000",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
+      "at": 32000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -16.157,
+          "y": 280.502,
+          "z": 57.591
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
     },
     {
-      "at": "+0",
+      "at": 33000,
       "action": "epochTravel",
       "from": -2800,
       "to": 2100,
-      "duration": 15000,
+      "duration": 6000,
       "step": 100
     },
     {
-      "at": "+0",
-      "action": "caption",
-      "duration": 5000,
-      "fadeIn": 1000,
-      "fadeOut": 500,
-      "text": "Polaris becomes the north-pole marker near 2100 CE"
+      "at": 38000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -0.306,
+          "y": 262.855,
+          "z": 1.306
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
     },
     {
-      "at": "+0",
+      "at": 39000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "pNp": {
+            "id": "pNp",
+            "text": "2100 CE - Matsya Dhruva/Polaris is North Pole",
+            "color": "gold",
+            "sizeRem": 1.3
+          }
+        }
+      }
+    },
+    {
+      "at": 40000,
       "action": "flash",
-      "target": "NP",
-      "duration": 2000
+      "duration": 900,
+      "target": "polaris"
     },
     {
-      "at": "+0",
-      "action": "hide",
+      "at": 45000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "pNp": null
+        }
+      }
+    },
+    {
+      "at": 46000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -167.086,
+          "y": 194.865,
+          "z": 143.526
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 48000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -34.897,
+          "y": 173.674,
+          "z": 234.754
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 49000,
+      "action": "reveal",
+      "target": "nakshatraStars"
+    },
+    {
+      "at": 50000,
+      "action": "reveal",
+      "target": "nakshatraLines"
+    },
+    {
+      "at": 51000,
+      "action": "reveal",
+      "target": "nakshatraStars"
+    },
+    {
+      "at": 51000,
+      "action": "reveal",
+      "target": "nakshatraLines"
+    },
+    {
+      "at": 52000,
+      "action": "flash",
+      "duration": 900,
+      "target": "nakshatraLabels"
+    },
+    {
+      "at": 53000,
+      "action": "reveal",
+      "target": "eclipticNakSegments"
+    },
+    {
+      "at": 54000,
+      "action": "flash",
+      "duration": 900,
+      "target": "eclipticLabels"
+    },
+    {
+      "at": 55000,
+      "action": "flash",
+      "duration": 900,
+      "target": "equator"
+    },
+    {
+      "at": 56000,
+      "action": "reveal",
+      "target": "equator"
+    },
+    {
+      "at": 57000,
+      "action": "flash",
+      "duration": 900,
       "target": "NP"
     },
     {
-      "at": "+1000",
-      "action": "flash",
-      "target": "NP",
-      "duration": 2000
+      "at": 58000,
+      "action": "reveal",
+      "target": "NP"
     },
     {
-      "at": "+5000",
-      "action": "exitFullscreen"
+      "at": 59000,
+      "action": "reveal",
+      "target": "equatorialPlane"
+    },
+    {
+      "at": 60000,
+      "action": "set",
+      "state": {
+        "epochYear": -4000
+      }
+    },
+    {
+      "at": 61000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": 6.327,
+          "y": 47.448,
+          "z": 290.17
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 64000,
+      "action": "flash",
+      "duration": 900,
+      "target": "VE"
+    },
+    {
+      "at": 64000,
+      "action": "flash",
+      "duration": 900,
+      "target": "SS"
+    },
+    {
+      "at": 64000,
+      "action": "flash",
+      "duration": 900,
+      "target": "AE"
+    },
+    {
+      "at": 64000,
+      "action": "flash",
+      "duration": 900,
+      "target": "WS"
+    },
+    {
+      "at": 65000,
+      "action": "reveal",
+      "target": "VE"
+    },
+    {
+      "at": 65000,
+      "action": "reveal",
+      "target": "SS"
+    },
+    {
+      "at": 65000,
+      "action": "reveal",
+      "target": "AE"
+    },
+    {
+      "at": 65000,
+      "action": "reveal",
+      "target": "WS"
+    },
+    {
+      "at": 68000,
+      "action": "camera",
+      "camera": {
+        "position": {
+          "x": -0.131,
+          "y": 293.589,
+          "z": 0.405
+        },
+        "target": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "fov": 45
+      },
+      "duration": 900
+    },
+    {
+      "at": 69000,
+      "action": "hide",
+      "target": "equator"
+    },
+    {
+      "at": 70000,
+      "action": "hide",
+      "target": "equatorialPlane"
+    },
+    {
+      "at": 71000,
+      "action": "flash",
+      "duration": 900,
+      "target": "eclipticLabels"
+    },
+    {
+      "at": 72000,
+      "action": "flash",
+      "duration": 900,
+      "target": "VE"
+    },
+    {
+      "at": 72000,
+      "action": "flash",
+      "duration": 900,
+      "target": "SS"
+    },
+    {
+      "at": 72000,
+      "action": "flash",
+      "duration": 900,
+      "target": "AE"
+    },
+    {
+      "at": 72000,
+      "action": "flash",
+      "duration": 900,
+      "target": "WS"
+    },
+    {
+      "at": 75000,
+      "action": "epochTravel",
+      "from": -4000,
+      "to": -2800,
+      "duration": 3000,
+      "step": 100
+    },
+    {
+      "at": 76000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "lblx": {
+            "id": "lblx",
+            "text": "2800 BCE - Abhaya Dhruva/Thuban is North Pole",
+            "color": "gold",
+            "sizeRem": 1.3
+          }
+        }
+      }
+    },
+    {
+      "at": 77000,
+      "action": "flash",
+      "duration": 900,
+      "target": "thuban"
+    },
+    {
+      "at": 80000,
+      "action": "epochTravel",
+      "from": -2800,
+      "to": -1800,
+      "duration": 2000,
+      "step": 100
+    },
+    {
+      "at": 81000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "lblx": {
+            "id": "lblx",
+            "text": "1800 BCE - Maghadi Era - Magha and SS",
+            "color": "gold",
+            "sizeRem": 1.3
+          }
+        }
+      }
+    },
+    {
+      "at": 82000,
+      "action": "flash",
+      "duration": 1000,
+      "target": "@mag"
+    },
+    {
+      "at": 83000,
+      "action": "flash",
+      "duration": 1000,
+      "target": "SS"
+    },
+    {
+      "at": 88000,
+      "action": "epochTravel",
+      "from": -1800,
+      "to": 2100,
+      "duration": 4000,
+      "step": 100
+    },
+    {
+      "at": 91000,
+      "action": "set",
+      "state": {
+        "labels": {
+          "lblx": {
+            "id": "lblx",
+            "text": "2100 CE - Matsya Dhruva/Polaris  is North Pole",
+            "color": "gold",
+            "sizeRem": 1.3
+          }
+        }
+      }
+    },
+    {
+      "at": 92000,
+      "action": "flash",
+      "duration": 900,
+      "target": "polaris"
     }
   ],
   "featured": true,
   "group": "Precession",
   "tags": [
-    "pole-track",
-    "top-view",
-    "thuban",
-    "polaris"
+    "intro",
+    "precession",
+    "seasonal-frame"
   ],
-  "order": 30.0,
-  "initial": {
-    "ui": {
-      "showGrid": false,
-      "showEquatorialGrid": false,
-      "showReferencePlanes": false,
-      "showEclipticPlane": false,
-      "showEquatorialPlane": false,
-      "showNsAxis": false,
-      "showEclipticBand": false,
-      "showEclipticDividers": false,
-      "showEclipticLabels": false,
-      "showEclipticPoles": false,
-      "showStars": false,
-      "showNakshatraLines": false,
-      "showNakshatraLabels": false,
-      "showPolarItems": false,
-      "showNorthPolarItems": false,
-      "showSouthPolarItems": false,
-      "showNEP": false,
-      "showSEP": false,
-      "showNP": false,
-      "showSP": false,
-      "showPoleTrack": false,
-      "showSeasonalFrame": false,
-      "showOverlay": false
-    },
-    "lightPreset": "night",
-    "epochYear": -4000
-  },
+  "order": 10,
   "warnings": [
-    "Line 75: unknown directive \"style\"."
+    "Line 12: unsupported label token \"color\".",
+    "Line 12: target lists need commas or \"and\"; stopped before \"lbl(10\".",
+    "Line 12: unsupported style token \"lbl(10\".",
+    "Line 12: unsupported style token \"50%)\".",
+    "Line 12: no supported style knobs for thuban.",
+    "Line 12: target lists need commas or \"and\"; stopped before \"lbl(5\".",
+    "Line 12: unsupported style token \"lbl(5\".",
+    "Line 12: unsupported style token \"100%)\".",
+    "Line 12: no supported style knobs for thuban.",
+    "Line 45: unsupported label token \"color\".",
+    "Line 45: target lists need commas or \"and\"; stopped before \"lbl(10\".",
+    "Line 45: unsupported style token \"lbl(10\".",
+    "Line 45: unsupported style token \"50%)\".",
+    "Line 45: no supported style knobs for polaris.",
+    "Line 45: target lists need commas or \"and\"; stopped before \"lbl(5\".",
+    "Line 45: unsupported style token \"lbl(5\".",
+    "Line 45: unsupported style token \"100%)\".",
+    "Line 45: no supported style knobs for polaris.",
+    "Line 99: target lists need commas or \"and\"; stopped before \"lbl(30%)\".",
+    "Line 99: unsupported style token \"lbl(30%)\".",
+    "Line 99: no supported style knobs for nakshatras.",
+    "Line 99: target lists need commas or \"and\"; stopped before \"lbl(8\".",
+    "Line 99: unsupported style token \"lbl(8\".",
+    "Line 99: unsupported style token \"70%)\".",
+    "Line 99: no supported style knobs for eclipticNakSegments.",
+    "Line 99: target lists need commas or \"and\"; stopped before \"lbl(14\".",
+    "Line 99: unsupported style token \"lbl(14\".",
+    "Line 99: unsupported style token \"100%)\".",
+    "Line 99: no supported style knobs for AE.",
+    "Line 99: no supported style knobs for SS.",
+    "Line 99: no supported style knobs for WS.",
+    "Line 99: no supported style knobs for VE.",
+    "Line 113: unsupported label token \"color\".",
+    "Line 120: label needs an id and quoted text.",
+    "Line 120: unsupported label token \"color\".",
+    "Line 120: unsupported target \"sector.mag\".",
+    "Line 129: label needs an id and quoted text.",
+    "Line 129: unsupported label token \"color\"."
   ]
 }

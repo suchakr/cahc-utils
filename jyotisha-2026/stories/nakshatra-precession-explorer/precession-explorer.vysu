@@ -1,101 +1,136 @@
-# title: Precession Explorer
-# version: 2
+# title   : Precession Explorer
+# version : 1
 # featured: true
-# group: Precession
-# tags: pole-track, top-view, thuban, polaris
-# order: 30
-# Top-down review of precession against the fixed nakshatra ring.
+# group   : Precession
+# tags    : intro, precession, seasonal-frame
+# order   : 10
+# Visualize axial precession and seasonal naks against the fixed nakshatra sky
 
-# --- SECTION 1: Initialization & Staging ---
-# Transition to immersive mode and set the starting era.
-theater
-stage blank night year -4000
-camera pos 0,325,0.1 target 0,0,0 fov 42
+seq 1000   # main sequence start
 
-caption "Precession and Pole Star" 2000:300:450
 
-# --- SECTION 2: Celestial Landscape Build-up ---
-# Gradually reveal the stars and the nakshatra (asterism) line art.
-rollout stars 5000:
-rollout naks 5000:
-hide stars
-hide naks
+at 0 {
+    # blank stage at -4000 BCE
+    stage blank year -4000
+    show overlay
 
-# Highlight the Ecliptic Band with its 27 segments.
-rollout eclipticNakSegments 5000:
-rollout stars 1000:
-rollout naks 1000:
+    camera pos -86.895,77.787,262.026 target 0,0,0 fov 45 over 900
+    grid equatorial 10   # show equatorial grid
 
-# Reveal mythical polar constellations (Shishumara and Matsya Dhruva).
-rollout sisumara 3000:
-rollout matsya 3000:
+    style nsAxis color yellow
+    show nsAxis   # show north-south axis
 
-# Set up polar reference markers.
-show northPolarItems 
-hide southPolarItems
-show poleTrack # The circle traced by the Earth's axis over ~26,000 years.
+    camera pos -16.157,280.502,57.591 target 0,0,0 fov 45 over 900
 
-show NP; # Current North Pole marker.
-show seasonalFrame # The Equator and Equinox/Solstice markers.
+    style precessionCircle color yellow
+    show precessionCircle   # show precession circle path
 
-flash precessionCircle 1500:
+    seq 2000
+    show sisumara
+    show thuban
+    show matsya
+    show polaris
+    show NP   # show pole markers
 
-# --- SECTION 3: The Drift of Time (Pole Star Transition) ---
-caption "The pole marker drifts as centuries pass" 3000:350:500
+    travel -4000 to -2800 3000: step 100
+    #camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900
+     camera pos -0.306,262.855,1.306 target 0,0,0 fov 45 over 900
+      label tNp "2800 BCE - Abhaya Dhruva/Thuban is North Pole" color gold size 1.3
+     style thuban lbl(10 gold 50%)
+     flash thuban
+     style thuban lbl(5 gold 100%)
+}
 
-flash NP 2000:
-flash seasonalFrame 2000:
 
-show overlay # Show the time/coordinate HUD.
++3000 {
+    # transition to Polaris era
+    clear label tNp
 
-# Animation: 4000 BCE to 2800 BCE.
-travel -4000 to -2800 7000: step 100
-caption "Thuban becomes the north-pole marker near 2800 BCE" 5000:1000:500
-flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+    camera pos -16.157,280.502,57.591 target 0,0,0 fov 45 over 900
+    travel -2800 to 2100 6000: step 100
+    wait 4000
+    camera pos -0.306,262.855,1.306 target 0,0,0 fov 45 over 900
+    label pNp "2100 CE - Matsya Dhruva/Polaris is North Pole" color gold size 1.3
+     style polaris lbl(10 gold 50%)
+     flash polaris
+     style polaris lbl(5 gold 100%)
+}
 
-# Animation: 2800 BCE to 2100 CE.
-travel -2800 to 2100 15000: step 100
-caption "Polaris becomes the north-pole marker near 2100 CE" 5000:1000:500
-flash NP 2000:; hide NP; wait 1000; flash NP 2000:
 
-wait 5000
++4000 {
+    # clear Polaris label and adjust camera
+    clear label pNp
+    camera pos -167.086,194.865,143.526 target 0,0,0 fov 45 over 900
+}
 
-# --- SECTION 4: Perspective View Exploration ---
-# Reset camera to a 3D perspective to see the tilt of the axis.
-stage blank night year -4000
-camera pos -147.464,73.504,234.757 target 0,0,0 fov 45
 
-caption "Visualize Precession" 1200:250:350
- 
-rollout stars 5000:
-rollout naks 5000:
-hide eclipticGrid
-grid equatorial 10 red
-rollout equatorialGrid 5000:
-style nsAxis yellow
-rollout nsAxis 2000: # North-South physical axis of Earth.
-flash nsAxis
-wait 500
-show eclipticNakSegments 3000:
-show seasonalFrame
-flash seasonalFrame
-flash AE; hide AE; show AE; flash AE # Autumnal Equinox.
-flash SS; hide SS; show SS; flash SS # Summer Solstice.
-flash VE; hide VE; show VE; flash VE # Vernal Equinox.
-flash WS; hide WS; show WS; flash WS # Winter Solstice.
-show poleTrack
++1000 {
+    # show nakshatra and ecliptic labels
+    camera pos -34.897,173.674,234.754 target 0,0,0 fov 45 over 900
 
-show overlay
-# Repeat time drift in perspective view.
-travel -4000 to -2800 7000: step 100
-caption "Thuban becomes the north-pole marker near 2800 BCE" 5000:1000:500
-flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+    show *nak
+    show $nak
+    show @naks
 
-travel -2800 to 2100 15000: step 100
-caption "Polaris becomes the north-pole marker near 2100 CE" 5000:1000:500
-flash NP 2000:; hide NP; wait 1000; flash NP 2000:
+    #show nakshatralabels
+    flash nakshatralabels
 
-wait 5000
+    show eclipticSegments
+    flash eclipticLabels
 
-# Exit theater mode and return to interactive canvas.
-canvas
+    flash equator
+    show equator
+
+    flash NP
+    show NP
+
+    show equatorialPlane
+    stage year -4000
+    camera pos 6.327,47.448,290.17 target 0,0,0 fov 45 over 900
+}
+
+
++2000 {
+    # flash seasonal markers again
+    flash VE, SS, AE, WS
+    show VE, SS, AE, WS
+}
+
++2000 {
+    # repeat initial setup for emphasis
+    camera pos -0.131,293.589,0.405 target 0,0,0 fov 45 over 900
+
+    hide equator
+    hide equatorialPlane
+    flash eclipticLabels
+
+     style naks lbl(30%)
+     style eclipticSegments lbl(8 70%)
+     style AE, SS, WS, VE  lbl(14 100%)
+     flash VE, SS, AE, WS
+}
+
++2000 {
+    travel -4000 to -2800 3000: step 100
+    # camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900
+    label  lblx "2800 BCE - Abhaya Dhruva/Thuban is North Pole" color gold size 1.3
+    flash thuban
+}
+
++2000 {
+     label clear lblx
+    travel -2800 to -1800 2000: step 100
+    label lblx "1800 BCE - Maghadi Era - Magha and SS" color gold size 1.3
+#    flash @magha 1000:
+    flash @mag , sector.mag 1000:
+    flash SS 1000:
+}
+
++4000 {
+     label clear lblx
+    travel -1800 to 2100 4000: step 100
+     wait 2000
+    # camera pos -10.64,184.717,37.925 target 0,0,0 fov 45 over 900
+    label lblx "2100 CE - Matsya Dhruva/Polaris  is North Pole" color gold size 1.3
+    flash polaris
+}

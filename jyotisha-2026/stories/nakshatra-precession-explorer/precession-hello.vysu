@@ -1,19 +1,30 @@
 # title: Hello Precession
 # version: 1
-# featured: false
+# featured: true
 # group: Precession
 # tags: intro, precession, seasonal-frame
 # order: 10
 # Visualize axial precession against the fixed nakshatra sky
-stage blank night year -1800
+stage blank night year -2800
 camera pos -147.464,73.504,234.757 target 0,0,0
 
+seq 1000
 caption "Visualize Precession" 1200:250:350
-show eclipticGrid ; wait 200 ; show eclipticNakSegments
-wait 200 ; fade stars
-wait 100 ; rollout naks
-wait 200 ; show seasonalFrame
-wait 100 ; show poleTrack
-wait 100 ; show overlay
-wait 300 ; caption "1800 BCE" 1000:200:300
-wait 200 ; travel -1800 to -800 5000: step 100
+
+at 2000 {
+	show eclipticGrid ;
+	show eclipticNakSegments
+	fade stars
+	rollout naks
+	show seasonalFrame
+	show poleTrack
+	show overlay
+	show thuban
+	show polaris
+	caption "2800 BCE" 1000:200:300
+	travel -2800 to 2100 15000: step 100
+	wait 8000
+	camera pos -0,286.809,0 target 0,0,0 fov 45 over 900
+	wait 8000
+	camera pos -147.464,73.504,234.757 target 0,0,0 fov 45 over 900
+}

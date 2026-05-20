@@ -352,6 +352,17 @@ h1 {
   font-size: 1.08rem;
 }
 
+.supporting-chart-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.supporting-chart h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.08rem;
+}
+
 .table-wrap {
   overflow: auto;
   border: 1px solid var(--line);

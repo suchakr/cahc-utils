@@ -269,7 +269,7 @@ export default function App() {
         <div className="topbar">
           <div>
             <div className="t-title" style={{ fontSize:21,fontWeight:"normal",letterSpacing:2,color:th.text }}>
-              Jyotiṣa Bodha
+              Phalita Jyotiṣa Bodha
             </div>
             <div className="t-sub" style={{ fontSize:11,color:th.textFaint,letterSpacing:3,marginTop:1 }}>
               ALGORITHMIC FRAMEWORK · PEDAGOGIC YANTRA

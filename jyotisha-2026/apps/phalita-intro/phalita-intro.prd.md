@@ -1,4 +1,4 @@
-# Jyotiṣa Bodha — PRD & Implementation Notes
+# Phalita Jyotiṣa Bodha — PRD & Implementation Notes
 **Version:** Iteration 5 (chat-built)  
 **Handoff target:** Claude Code (local Vite/React project)  
 **Last updated:** May 2026

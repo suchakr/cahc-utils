@@ -190,6 +190,7 @@ export default function App() {
 
   const showChart = ["rasicakra","jataka","loyaks","vislesana"].includes(stage);
   const chartMode = stage==="rasicakra"?"rasicakra":"jataka";
+  const isRasicakra = stage==="rasicakra";
   const showGrahas = animDone && stage!=="rasicakra";
   const loyaksSpeedMs = 2000*speedMult;
   const vislesanaSpeedMs = 2500*speedMult;
@@ -326,14 +327,16 @@ export default function App() {
 
         {/* MAIN GRID */}
         <div className="main-grid" style={{
-          gridTemplateColumns:showChart?"minmax(0,305px) minmax(0,1fr)":"1fr",
+          gridTemplateColumns:showChart
+            ? isRasicakra ? "minmax(0,1fr) minmax(0,1fr)" : "minmax(0,305px) minmax(0,1fr)"
+            : "1fr",
         }}>
 
           {/* CHART COLUMN */}
           {showChart&&(
             <div className="chart-col">
               <div style={{ display:"flex",gap:6,marginBottom:5,fontSize:12,color:th.textFaint,flexWrap:"wrap" }}>
-                <span>↑ Ucca</span><span>↓ Nīca</span><span>◆ Svak</span>
+                <span>↑ Ucca</span><span>↓ Nīca</span><span>◆ Svak</span><span>△ Mū</span>
                 {animDone&&<>
                   <span style={{ display:"inline-flex",alignItems:"center",gap:2 }}><KendraIcon size={11}/> Ke</span>
                   <span style={{ display:"inline-flex",alignItems:"center",gap:2 }}><TrikonaIcon size={11}/> Tri</span>
@@ -366,12 +369,12 @@ export default function App() {
                 <div style={{ fontSize:13,color:th.textDim,letterSpacing:2,marginBottom:10 }}>RĀŚICAKRA · The Universal Grid</div>
                 <div className="static-narrator" style={{ fontSize:15,color:th.textFaint,marginBottom:16,lineHeight:1.8,
                   borderLeft:`2px solid ${th.panelBorder}`,paddingLeft:10 }}>
-                  The Rāśicakra is the birth-independent template. All twelve rāśis hold fixed positions — Meṣa always second from left on the top row, proceeding clockwise. What you see in each cell is from the Sandarbha: svāmī, ucca, nīca, svakṣetra. No birth event alters these.
+                  The Rāśicakra is the birth-independent template. All twelve rāśis hold fixed positions — Meṣa always second from left on the top row, proceeding clockwise. What you see in each cell is from the Sandarbha: ucca, nīca, svakṣetra, and mūlatrikoṇa. No birth event alters these.
                 </div>
                 {[["↑ Ucca","Exaltation — the rāśi where a graha reaches maximum strength."],
                   ["↓ Nīca","Debilitation — always the 7th rāśi from the ucca. The graha is at its weakest."],
                   ["◆ Svakṣetra","Own sign — comfortable and effective, though not as potent as ucca."],
-                  ["Svāmī","The natural lord of each rāśi — shown in colour. A birth-independent relationship."],
+                  ["△ Mūlatrikoṇa","Root-trine sign — a special strength domain shown here by teaching convention, including the node assignments used in this app."],
                 ].map(([t,d])=>(
                   <div key={t} style={{ marginBottom:12,borderLeft:`2px solid ${th.panelBorder}`,paddingLeft:10 }}>
                     <div style={{ fontSize:16,color:th.text,marginBottom:3 }}>{t}</div>

@@ -15,7 +15,8 @@ export function staticAnnotations(rāśiId) {
   const ucca = Object.entries(GRAHAS).filter(([,g])=>g.ucca===rāśiId).map(([id])=>id);
   const nīca  = Object.entries(GRAHAS).filter(([,g])=>g.nīca===rāśiId).map(([id])=>id);
   const svak  = Object.entries(GRAHAS).filter(([,g])=>g.svakṣetra.includes(rāśiId)).map(([id])=>id);
-  return { ucca, nīca, svak };
+  const mtk   = Object.entries(GRAHAS).filter(([,g])=>g.mūlatrikoṇa===rāśiId).map(([id])=>id);
+  return { ucca, nīca, svak, mtk };
 }
 
 export function buildMap(event) {

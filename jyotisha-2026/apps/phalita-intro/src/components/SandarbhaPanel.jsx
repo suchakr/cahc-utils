@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RASIS, GRAHAS, BHAVA_TYPES, BHAVA_THEMES, VIMSHOTTARI } from "../data/static.js";
+import { RASIS, GRAHAS, GRAHA_SIGNIFICATIONS, BHAVA_TYPES, BHAVA_THEMES, VIMSHOTTARI } from "../data/static.js";
 import { KendraIcon, TrikonaIcon, DusthanaIcon, BhavaTypeIcons } from "./icons.jsx";
 
 export function SandarbhaPanel({ th }) {
@@ -32,12 +32,13 @@ export function SandarbhaPanel({ th }) {
         <div style={{ overflowX:"auto" }}>
           <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:"Georgia,serif" }}>
             <thead><tr>
-              {["#","Rāśi","En","Svāmī","Tattva","Guṇa","Ucca","Nīca"].map(h=><th key={h} style={thS}>{h}</th>)}
+              {["#","Rāśi","En","Svāmī","Tattva","Guṇa","Ucca","Nīca","MTK"].map(h=><th key={h} style={thS}>{h}</th>)}
             </tr></thead>
             <tbody>{RASIS.map(r=>{
               const lord=GRAHAS[r.lordId];
               const uccaE=Object.entries(GRAHAS).find(([,g])=>g.ucca===r.id);
               const nīcaE=Object.entries(GRAHAS).find(([,g])=>g.nīca===r.id);
+              const mtk=Object.entries(GRAHAS).filter(([,g])=>g.mūlatrikoṇa===r.id);
               return (<tr key={r.id}>
                 <td style={tdS({color:th.textFaint})}>{r.id}</td>
                 <td style={tdS({color:th.text,fontWeight:"bold"})}>{r.iast}</td>
@@ -47,6 +48,7 @@ export function SandarbhaPanel({ th }) {
                 <td style={tdS({color:th.textFaint})}>{r.quality}</td>
                 <td style={tdS({color:"#e8c040"})}>{uccaE?`${GRAHAS[uccaE[0]].iast} ${GRAHAS[uccaE[0]].uccaDeg}`:"—"}</td>
                 <td style={tdS({color:"#d04040"})}>{nīcaE?`${GRAHAS[nīcaE[0]].iast} ${GRAHAS[nīcaE[0]].nīcaDeg}`:"—"}</td>
+                <td style={tdS({color:"#50c078"})}>{mtk.length?mtk.map(([id])=>`${GRAHAS[id].iast} (${GRAHAS[id].sa})`).join(", "):"—"}</td>
               </tr>);
             })}</tbody>
           </table>
@@ -55,19 +57,37 @@ export function SandarbhaPanel({ th }) {
 
       {sec==="graha"&&(
         <div style={{ overflowX:"auto" }}>
+          <div className="sandarbha-note" style={{ fontSize:15, color:th.textFaint, marginBottom:12, lineHeight:1.7 }}>
+            Natural graha properties qualify interpretation text. They do not change the current dignity score.
+          </div>
           <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:"Georgia,serif" }}>
             <thead><tr>
-              {["Graha","En","Ucca","Nīca","Svakṣetra"].map(h=><th key={h} style={thS}>{h}</th>)}
+              {["Graha","En","Dignity","Transit","Nature","Guṇa","Role","People","Qualities","Friends","Enemies","Neutral"].map(h=><th key={h} style={thS}>{h}</th>)}
             </tr></thead>
-            <tbody>{Object.entries(GRAHAS).map(([id,g])=>(
-              <tr key={id}>
-                <td style={tdS({color:g.color,fontWeight:"bold"})}>{g.iast}</td>
-                <td style={tdS({color:th.textDim})}>{g.en}</td>
-                <td style={tdS({color:"#e8c040"})}>{RASIS[g.ucca-1]?.iast} {g.uccaDeg}</td>
-                <td style={tdS({color:"#d04040"})}>{RASIS[g.nīca-1]?.iast} {g.nīcaDeg}</td>
-                <td style={tdS({color:"#40b070"})}>{g.svakṣetra.map(r=>RASIS[r-1].iast).join(", ")||"—"}</td>
-              </tr>
-            ))}</tbody>
+            <tbody>{Object.entries(GRAHAS).map(([id,g])=>{
+              const sig=GRAHA_SIGNIFICATIONS[id];
+              return (
+                <tr key={id}>
+                  <td style={tdS({color:g.color,fontWeight:"bold"})}>{g.iast}<br/><span style={{ color:th.textFaint, fontWeight:"normal" }}>{g.sa}</span></td>
+                  <td style={tdS({color:th.textDim})}>{g.en}</td>
+                  <td style={tdS({color:th.textDim, minWidth:145})}>
+                    <span style={{ color:"#e8c040" }}>↑ {RASIS[g.ucca-1]?.iast} {g.uccaDeg}</span><br/>
+                    <span style={{ color:"#d04040" }}>↓ {RASIS[g.nīca-1]?.iast} {g.nīcaDeg}</span><br/>
+                    <span style={{ color:"#40b070" }}>◆ {g.svakṣetra.map(r=>RASIS[r-1].iast).join(", ")||"—"}</span><br/>
+                    <span style={{ color:"#50c078" }}>△ {RASIS[g.mūlatrikoṇa-1]?.iast}</span>
+                  </td>
+                  <td style={tdS({color:th.textDim})}>{sig.transit}</td>
+                  <td style={tdS({color:th.text})}>{sig.nature}</td>
+                  <td style={tdS({color:th.textDim})}>{sig.guṇa}</td>
+                  <td style={tdS({color:th.text})}>{sig.role}</td>
+                  <td style={tdS({color:th.textDim})}>{sig.people.join(", ")||"—"}</td>
+                  <td style={tdS({color:th.textDim, minWidth:160})}>{sig.qualities.join(", ")}</td>
+                  <td style={tdS({color:"#50c080"})}>{sig.friends.join(", ")}</td>
+                  <td style={tdS({color:"#d07060"})}>{sig.enemies.join(", ")||"—"}</td>
+                  <td style={tdS({color:th.textFaint})}>{sig.neutral.join(", ")}</td>
+                </tr>
+              );
+            })}</tbody>
           </table>
         </div>
       )}
@@ -96,7 +116,7 @@ export function SandarbhaPanel({ th }) {
           </div>
           <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:"Georgia,serif" }}>
             <thead><tr>
-              {["B","Nāma","Viṣaya","Kāraka","Prakāra"].map(h=><th key={h} style={thS}>{h}</th>)}
+              {["B","Nāma","Viṣaya","Kāraka","Prakāra","Significations"].map(h=><th key={h} style={thS}>{h}</th>)}
             </tr></thead>
             <tbody>{Object.entries(BHAVA_THEMES).map(([n,t])=>(
               <tr key={n}>
@@ -110,6 +130,7 @@ export function SandarbhaPanel({ th }) {
                     {(BHAVA_TYPES[n]||[]).join(", ")||"—"}
                   </span>
                 </td>
+                <td style={tdS({color:th.textDim,fontSize:14,minWidth:240})}>{t.significations.join(", ")}</td>
               </tr>
             ))}</tbody>
           </table>
@@ -140,7 +161,7 @@ export function SandarbhaPanel({ th }) {
           <div style={{ fontSize:17, color:th.text, fontWeight:"bold", marginBottom:12 }}>Paddhati — The Algorithmic Framework</div>
           {[
             { layer:"Layer 0 · Sthira Kośa", title:"The Universal Schema",
-              body:"The foundation is a set of pure static relationships — rāśi lords, ucca/nīca/svakṣetra positions, kārakas, bhāva themes. These are compile-time constants: no birth event can alter them. They form the relational database from which every chart is computed. The Sandarbha tables in this panel are Layer 0 rendered in tabular form." },
+              body:"The foundation is a set of pure static relationships — rāśi lords, ucca/nīca/svakṣetra/mūlatrikoṇa positions, natural graha significations, kārakas, and bhāva themes. These are compile-time constants: no birth event can alter them. They form the relational database from which every chart is computed." },
             { layer:"Layer 1 · Janma Snapshot", title:"The Birth Transformation",
               body:"The single input is the Lagna — the ascending rāśi at the moment of birth. This acts as a coordinate origin, triggering a modular-arithmetic transformation: bhāva = (rāśiId − lagnaId + 12) mod 12 + 1. Every rāśi receives a bhāva number. Graha positions from the ephemeris are then projected onto this numbered grid. The result is the Jātaka." },
             { layer:"Layer 2 · LOYAKS", title:"The Evaluation Algorithm",

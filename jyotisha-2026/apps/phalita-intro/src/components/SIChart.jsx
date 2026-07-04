@@ -4,6 +4,7 @@ import { bhavaOf, dignity, staticAnnotations } from "../utils/jyotisha.js";
 
 export function SIChart({ event, map, selected, onSelect, highlighted, chartMode, animStep, th, showGrahas }) {
   const S=300, C=75;
+  const chartMaxWidth = chartMode==="rasicakra" ? 440 : S;
   const isHL = useCallback((b)=>Array.isArray(highlighted)?highlighted.includes(b):highlighted===b,[highlighted]);
 
   function cellFill(b) {
@@ -24,7 +25,7 @@ export function SIChart({ event, map, selected, onSelect, highlighted, chartMode
   }
 
   return (
-    <svg viewBox={`0 0 ${S} ${S}`} style={{ display:"block", width:"100%", maxWidth:S, height:"auto" }}>
+    <svg viewBox={`0 0 ${S} ${S}`} style={{ display:"block", width:"100%", maxWidth:chartMaxWidth, height:"auto" }}>
       <rect x={0} y={0} width={S} height={S} fill={th.cellBg}/>
 
       {Object.entries(SI_POS).map(([rIdStr,[row,col]])=>{
@@ -34,7 +35,6 @@ export function SIChart({ event, map, selected, onSelect, highlighted, chartMode
         const x=col*C, y=row*C;
         const ann=staticAnnotations(rId);
         const rāśi=RASIS[rId-1];
-        const lord=GRAHAS[rāśi.lordId];
         const bhāvaRevealed=chartMode==="jataka"&&(animStep>=b);
         const grahasRevealed=showGrahas&&chartMode==="jataka";
         const lagnaRevealed=chartMode==="jataka"&&animStep>=1;
@@ -100,28 +100,36 @@ export function SIChart({ event, map, selected, onSelect, highlighted, chartMode
               {rāśi.iast}
             </text>
 
-            {/* Lord */}
-            <text x={x+5} y={y+29} fontSize={11} fill={lord.color} fontFamily="Georgia,serif">
-              {lord.iast.slice(0,4)}
-            </text>
+            {/* Lord: useful in Jātaka mode, redundant in static Rāśicakra mode. */}
+            {chartMode!=="rasicakra"&&(
+              <text x={x+5} y={y+29} fontSize={11} fill={GRAHAS[rāśi.lordId].color} fontFamily="Georgia,serif">
+                {GRAHAS[rāśi.lordId].iast.slice(0,4)}
+              </text>
+            )}
 
             {/* Static annotations */}
             {ann.ucca.map((gId,i)=>(
-              <text key={`u${gId}`} x={x+5} y={y+42+i*11}
+              <text key={`u${gId}`} x={x+5} y={y+32+i*11}
                 fontSize={10.5} fill="#e8c040" fontFamily="Georgia,serif">
                 ↑{GRAHAS[gId].iast.slice(0,3)}
               </text>
             ))}
             {ann.nīca.map((gId,i)=>(
-              <text key={`n${gId}`} x={x+5} y={y+42+ann.ucca.length*11+i*11}
+              <text key={`n${gId}`} x={x+5} y={y+32+ann.ucca.length*11+i*11}
                 fontSize={10.5} fill="#d04040" fontFamily="Georgia,serif">
                 ↓{GRAHAS[gId].iast.slice(0,3)}
               </text>
             ))}
             {ann.svak.map((gId,i)=>(
-              <text key={`s${gId}`} x={x+C/2+2} y={y+42+i*11}
+              <text key={`s${gId}`} x={x+C/2+2} y={y+32+i*11}
                 fontSize={10.5} fill="#40b070" fontFamily="Georgia,serif">
                 ◆{GRAHAS[gId].iast.slice(0,3)}
+              </text>
+            ))}
+            {ann.mtk.map((gId,i)=>(
+              <text key={`m${gId}`} x={x+C/2+2} y={y+32+ann.svak.length*11+i*11}
+                fontSize={10.5} fill="#50c078" fontFamily="Georgia,serif">
+                △{GRAHAS[gId].iast.slice(0,3)}
               </text>
             ))}
 
@@ -191,8 +199,9 @@ export function SIChart({ event, map, selected, onSelect, highlighted, chartMode
               <text x={cx+16} y={cy+62} fontSize={12} fill={th.text} fontFamily="Georgia,serif">↑ Ucca</text>
               <text x={cx+16} y={cy+78} fontSize={12} fill={th.text} fontFamily="Georgia,serif">↓ Nīca</text>
               <text x={cx+16} y={cy+94} fontSize={12} fill={th.text} fontFamily="Georgia,serif">◆ Svakṣetra</text>
-              <line x1={cx+16} y1={cy+104} x2={cx+w-16} y2={cy+104} stroke={th.cellBorder}/>
-              <text x={cx+w/2} y={cy+120} textAnchor="middle" fontSize={10.5} fill={th.textFaint} fontFamily="Georgia,serif" fontStyle="italic">Proceed to Jātaka →</text>
+              <text x={cx+16} y={cy+110} fontSize={12} fill={th.text} fontFamily="Georgia,serif">△ Mūlatrikoṇa</text>
+              <line x1={cx+16} y1={cy+120} x2={cx+w-16} y2={cy+120} stroke={th.cellBorder}/>
+              <text x={cx+w/2} y={cy+132} textAnchor="middle" fontSize={10.5} fill={th.textFaint} fontFamily="Georgia,serif" fontStyle="italic">Proceed to Jātaka →</text>
             </g>
           );
         }

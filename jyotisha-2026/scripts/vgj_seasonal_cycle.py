@@ -454,21 +454,53 @@ def plot_fig3_n83_lon_lat(
     label_actual_longitudes: bool = True,
     guide_origin: str = "actual",
     show_fitted_line: bool = True,
+    show_nakshatra_connection: bool = False,
     show_astrographs: bool = False,
     show_moon_path_band: bool = False,
+    highlight_single_stars: bool = False,
+    longitude_label_x: float = 3.5,
+    longitude_label_y: float = -36.8,
+    month_label_y_offset: float = 0.0,
+    civil_month_label_y_offset: float = 0.0,
+    season_guide_y_offset: float = 0.0,
     ylim: tuple[float, float] = (-38.0, 38.0),
     yticks: np.ndarray | None = None,
+    figsize: tuple[float, float] = (25.0, 10.0),
+    nak_label_fontsize: float = 20.0,
+    month_label_fontsize: float = 16.0,
+    season_label_fontsize: float = 18.0,
+    tick_label_fontsize: float = 22.0,
+    axis_label_fontsize: float = 21.0,
+    latitude_label_fontsize: float = 22.0,
 ) -> None:
     frame = n83[n83["year"] == epoch].copy()
     frame = frame[frame["nid"] != "N23-Srvs"].copy()
     frame["plot_lon"] = (frame["lon"] - start_lon) % 360.0
     frame = frame.sort_values(["order", "plot_lon", "lat"])
-    fig, axis = plt.subplots(figsize=(25, 10), facecolor="white")
+    fig, axis = plt.subplots(figsize=figsize, facecolor="white")
     if show_moon_path_band:
         axis.axhspan(-5, 5, color="#7a7a7a", alpha=0.12, zorder=0)
     colors = plt.colormaps["tab20"](np.linspace(0, 1, 20))
-    point_colors = [colors[int(order) % len(colors)] for order in frame["order"]]
-    axis.scatter(frame["plot_lon"], frame["lat"], c=point_colors, s=100, alpha=0.82)
+    single_star_nids: set[str] = set()
+    if highlight_single_stars:
+        single_star_nids = set(frame.groupby("nid")["gname"].count().loc[lambda counts: counts == 1].index)
+    dot_frame = frame[~frame["nid"].isin(single_star_nids)]
+    point_colors = [colors[int(order) % len(colors)] for order in dot_frame["order"]]
+    axis.scatter(dot_frame["plot_lon"], dot_frame["lat"], c=point_colors, s=100, alpha=0.82)
+    if highlight_single_stars:
+        single_stars = frame[frame["nid"].isin(single_star_nids)]
+        single_star_colors = [colors[int(order) % len(colors)] for order in single_stars["order"]]
+        axis.scatter(
+            single_stars["plot_lon"],
+            single_stars["lat"],
+            c=single_star_colors,
+            edgecolor="#2c261d",
+            marker="*",
+            s=187,
+            linewidth=0.35,
+            alpha=0.82,
+            zorder=5,
+        )
 
     if show_astrographs:
         asterism_lines_by_nid = load_asterism_lines_by_nid()
@@ -513,6 +545,27 @@ def plot_fig3_n83_lon_lat(
         .agg(plot_lon=("plot_lon", "median"), lat=("lat", "median"), cnt=("gname", "count"))
         .sort_values("plot_lon")
     )
+    if show_nakshatra_connection:
+        connection = n27_mean.sort_values("plot_lon")
+        connection_lon_series = connection["plot_lon"].copy()
+        if 14 in connection_lon_series.index:
+            connection_lon_series.loc[14] = connection_lon_series.loc[14] + 10
+        connection_lat_series = connection["lat"].copy()
+        connection_order = np.argsort(connection_lon_series.to_numpy())
+        connection_lon = connection_lon_series.to_numpy()[connection_order]
+        connection_lat = connection_lat_series.to_numpy()[connection_order]
+        connection_x = np.arange(connection_lon.min(), connection_lon.max(), 1)
+        connection_y = interp1d(connection_lon, connection_lat, kind="cubic")(connection_x)
+        axis.plot(
+            connection_x,
+            connection_y,
+            color="#5c5c5c",
+            linewidth=2.0,
+            linestyle=(0, (2, 5)),
+            alpha=0.48,
+            zorder=1,
+        )
+
     lon_lat_label_adjustments = {
         "N15-Swa": {"x": 0.0, "y": -13.0},
         "N22-Shr": {"x": -3.0, "y": -13.0},
@@ -526,7 +579,7 @@ def plot_fig3_n83_lon_lat(
         axis.annotate(
             label,
             (row.plot_lon + x_offset, row.lat + y_offset),
-            fontsize=20,
+            fontsize=nak_label_fontsize,
             color="purple",
             va="center",
             ha="center",
@@ -539,8 +592,8 @@ def plot_fig3_n83_lon_lat(
         guide_shift = start_lon if guide_origin == "actual" else 0.0
         for lon, vedic, civil in zip(np.linspace(0, 330, 12), vedic_months, civil_months):
             text_x = (lon + 345 - guide_shift) % 360
-            axis.annotate(vedic.upper(), (text_x, -31.2), fontsize=16, color="blue", ha="center", va="top")
-            axis.annotate(civil.upper(), (text_x, -34.0), fontsize=16, color="black", ha="center", va="top")
+            axis.annotate(vedic.upper(), (text_x, -31.2 + month_label_y_offset), fontsize=month_label_fontsize, color="blue", ha="center", va="top")
+            axis.annotate(civil.upper(), (text_x, -34.0 + month_label_y_offset + civil_month_label_y_offset), fontsize=month_label_fontsize, color="black", ha="center", va="top")
 
         rtu_spans = [
             ("vasanta", 330.0, 30.0),
@@ -554,18 +607,30 @@ def plot_fig3_n83_lon_lat(
             start_x = (start - guide_shift) % 360
             end_x = (end - guide_shift) % 360
             mid_x = ((start + ((end - start) % 360) / 2.0) - guide_shift) % 360
-            text_y = 32.0 if guide_origin == "display" else 30.0
+            text_y = (32.0 if guide_origin == "display" else 30.0) + season_guide_y_offset
             if guide_origin == "display" and end < start:
                 mid_x = ((start + 15.0) - guide_shift) % 360
-            axis.plot([start_x, start_x], [20, 38], linestyle="-.", linewidth=3, color="#4c4c4c")
-            axis.plot([end_x, end_x], [20, 38], linestyle="-.", linewidth=3, color="#4c4c4c")
-            axis.annotate(label.upper(), (mid_x, text_y), fontsize=18, color="black", ha="center", va="center")
+            axis.plot(
+                [start_x, start_x],
+                [20 + season_guide_y_offset, 38 + season_guide_y_offset],
+                linestyle="-.",
+                linewidth=3,
+                color="#4c4c4c",
+            )
+            axis.plot(
+                [end_x, end_x],
+                [20 + season_guide_y_offset, 38 + season_guide_y_offset],
+                linestyle="-.",
+                linewidth=3,
+                color="#4c4c4c",
+            )
+            axis.annotate(label.upper(), (mid_x, text_y), fontsize=season_label_fontsize, color="black", ha="center", va="center")
             if guide_origin == "display" and end < start:
                 wrapped_mid_x = (((end - start) % 360) / 4.0 - guide_shift) % 360
                 axis.annotate(
                     label.upper(),
                     (wrapped_mid_x, text_y),
-                    fontsize=18,
+                    fontsize=season_label_fontsize,
                     color="black",
                     ha="center",
                     va="center",
@@ -595,11 +660,11 @@ def plot_fig3_n83_lon_lat(
         xtick_labels = [f"{int((x + start_lon) % 360)}°" for x in xspan]
     else:
         xtick_labels = [f"{int(x)}°" for x in xspan]
-    axis.set_xticklabels(xtick_labels, fontsize=22)
+    axis.set_xticklabels(xtick_labels, fontsize=tick_label_fontsize)
     axis.set_yticks(yspan)
-    axis.set_yticklabels([f"{int(y)}°" for y in yspan], fontsize=22)
-    axis.annotate("LONGITUDE", (3.5, -36.8), fontsize=21, color="black", va="center", ha="left")
-    axis.annotate("LATITUDE", (4.6, -15), fontsize=22, color="black", va="bottom", ha="center", rotation=90)
+    axis.set_yticklabels([f"{int(y)}°" for y in yspan], fontsize=tick_label_fontsize)
+    axis.annotate("LONGITUDE", (longitude_label_x, longitude_label_y), fontsize=axis_label_fontsize, color="black", va="center", ha="center")
+    axis.annotate("LATITUDE", (4.6, -15), fontsize=latitude_label_fontsize, color="black", va="bottom", ha="center", rotation=90)
     if show_rtusvabhava_label:
         axis.annotate(f"ṚTUSVABHĀVA\n({epoch})", (220, 20), fontsize=30, color="red", ha="left")
     axis.set_xlabel("")
@@ -898,6 +963,18 @@ def image_html(src: str, alt: str) -> str:
     return f'<p><img class="asset-preview" src="{src}" alt="{html.escape(alt)}"></p>'
 
 
+def section_image_html(src_item: str | tuple[str, str, str], alt: str) -> str:
+    if isinstance(src_item, tuple):
+        label, src, note = src_item
+        note_html = f'<p class="small-note">{html.escape(note)}</p>' if note else ""
+        return f"""<div class="chart-item">
+          <h3>{html.escape(label)}</h3>
+          {note_html}
+          {image_html(src, f"{alt} {label}")}
+        </div>"""
+    return image_html(src_item, alt)
+
+
 def build_summary(minima: pd.DataFrame, windows: pd.DataFrame, source_files: pd.DataFrame) -> str:
     base = minima[(minima["series"] == "Base") & (minima["frame"] == "Ādityacāra/equal")].iloc[0]
     seasonal = minima[(minima["series"] == "Seasonal 9") & (minima["frame"] == "Ādityacāra/equal")].iloc[0]
@@ -968,17 +1045,24 @@ def write_page(summary_html: str, tables: dict[str, pd.DataFrame]) -> None:
         (
             "Fig.3. Twelve month (madhu-tapasya) or (caitra-phālguna) sun’s transit in 500 BCE as per the Ṛtusvabhāva (59th aṅga) of VGJ.",
             [
-                "plots/fig3-rtusvabhava-500-lon-lat.png",
-                "plots/fig3-lon-lat-zero-clean.png",
-                "plots/fig3-lon-lat-zero-astrographs.png",
+                ("Chart 1", "plots/fig3-rtusvabhava-500-lon-lat.png", "Original reproduction with the older longitude origin and the smooth visualization curve."),
+                ("Chart 2", "plots/fig3-lon-lat-zero-clean.png", "Bharaṇī-relative longitude origin with the seasonal and month guides retained."),
+                ("Chart 3", "plots/fig3-lon-lat-zero-astrographs.png", "Bharaṇī-relative astrograph version preserving the earlier dotted nakshatra-connection guide."),
+                ("Chart 3A", "plots/fig3-lon-lat-zero-astrographs-readable.png", "Readable older-style aspect variant of Chart 3: no smooth or dotted curve; astrographs and labels are enlarged."),
+                ("Chart 4", "plots/fig3-lon-lat-zero-astrographs-prof-variant.png", "Presentation variant with no dotted guide and star markers for single-star nakshatras."),
+                ("Chart 4A", "plots/fig3-lon-lat-zero-astrographs-prof-readable.png", "Readable older-style aspect variant of Chart 4, retaining the single-star marker convention."),
+                ("Chart 4B", "plots/fig3-lon-lat-zero-astrographs-prof-readable-ash360.png", "Chart 4A styling in the source longitude frame: Aśvinī sits just before 360° and Bharaṇī falls naturally between 0° and 15°."),
             ],
             [
-                "The points are joined smoothly for better visualization with markings for the seasons and the months.",
+                "Chart 1 preserves the older smooth visualization curve for comparison with the original ṛtusvabhāva-style figure.",
                 "It can be verified that all the twelve nakshatra named in the VGJ text would have been visible sometime in the specified months.",
                 "The second chart below uses the same longitude/latitude field with the x-axis shifted so the first Bharaṇī star sits near 0.5°, while keeping the Madhu/Caitra and season guide lines but omitting the red -500 Ṛtusvabhāva label.",
-                "The third chart is the same Bharaṇī-relative field without the fitted line; nakshatra astrographs use the same HIP-defined asterism line geometry as the Nakshatra Precession Explorer where those stars are present in the VGJ N83 table, and the latitude axis is framed from -40° to 40° with labelled ticks from -30° to 30°.",
+                "The third chart is the same Bharaṇī-relative field without the fitted line; nakshatra astrographs use the same HIP-defined asterism line geometry as the Nakshatra Precession Explorer where those stars are present in the VGJ N83 table.",
+                "The fourth chart is a presentation variant of the third: the dotted nakshatra-connection line is removed, single-star nakshatras including Citrā and Svātī use small star markers, and the latitude scale is modestly compressed.",
+                "Charts 3A and 4A respond to the older ṛtusvabhāva comparison: broader lettering, shorter aspect, Bharaṇī-relative zero point, and no smooth or dotted curve.",
+                "Chart 4B keeps the Chart 4A styling but uses the source longitude frame so Aśvinī sits just before 360° and Bharaṇī falls naturally between 0° and 15°.",
             ],
-            "Process note: Fig. 3 images are reproduced from the local N83 longitude/latitude seed for -500; the second and third images use a Bharaṇī-relative longitude origin.",
+            "Process note: Fig. 3 images are reproduced from the local N83 longitude/latitude seed for -500; Charts 2 through 4A use a Bharaṇī-relative longitude origin, while Chart 4B uses the source longitude frame.",
         ),
         (
             "Fig. 3A. RA/Dec view of the same 500 BCE Ṛtusvabhāva star field.",
@@ -1018,7 +1102,7 @@ def write_page(summary_html: str, tables: dict[str, pd.DataFrame]) -> None:
         <ul class="small-note">
           {"".join(f"<li>{html.escape(item)}</li>" for item in notes)}
         </ul>
-        {"".join(image_html(src_item, title) for src_item in ([src] if isinstance(src, str) else src))}
+        {"".join(section_image_html(src_item, title) for src_item in ([src] if isinstance(src, str) else src))}
         <p class="small-note">{html.escape(process_note)}</p>
       </section>"""
         for title, src, notes, process_note in sections
@@ -1163,10 +1247,115 @@ def main() -> None:
         label_actual_longitudes=False,
         guide_origin="display",
         show_fitted_line=False,
+        show_nakshatra_connection=True,
         show_astrographs=True,
         show_moon_path_band=True,
-        ylim=(-40, 40),
+        longitude_label_x=180.0,
+        longitude_label_y=-50.8,
+        month_label_y_offset=-8.0,
+        civil_month_label_y_offset=-2.0,
+        season_guide_y_offset=10.0,
+        ylim=(-55, 55),
         yticks=np.arange(-30, 31, 10),
+    )
+    readable_fig3_kwargs = {
+        "figsize": (22.5, 7.3),
+        "nak_label_fontsize": 24.0,
+        "month_label_fontsize": 18.0,
+        "season_label_fontsize": 21.0,
+        "tick_label_fontsize": 24.0,
+        "axis_label_fontsize": 24.0,
+        "latitude_label_fontsize": 24.0,
+    }
+    plot_fig3_n83_lon_lat(
+        n83,
+        -500,
+        PLOTS_DIR / "fig3-lon-lat-zero-astrographs-readable.png",
+        start_lon=bharani_first_lon - 0.5,
+        show_month_season_guides=True,
+        show_rtusvabhava_label=False,
+        label_actual_longitudes=False,
+        guide_origin="display",
+        show_fitted_line=False,
+        show_nakshatra_connection=False,
+        show_astrographs=True,
+        show_moon_path_band=True,
+        longitude_label_x=180.0,
+        longitude_label_y=-50.8,
+        month_label_y_offset=-8.0,
+        civil_month_label_y_offset=-2.0,
+        season_guide_y_offset=10.0,
+        ylim=(-55, 55),
+        yticks=np.arange(-30, 31, 10),
+        **readable_fig3_kwargs,
+    )
+    plot_fig3_n83_lon_lat(
+        n83,
+        -500,
+        PLOTS_DIR / "fig3-lon-lat-zero-astrographs-prof-variant.png",
+        start_lon=bharani_first_lon - 0.5,
+        show_month_season_guides=True,
+        show_rtusvabhava_label=False,
+        label_actual_longitudes=False,
+        guide_origin="display",
+        show_fitted_line=False,
+        show_nakshatra_connection=False,
+        show_astrographs=True,
+        show_moon_path_band=True,
+        highlight_single_stars=True,
+        longitude_label_x=180.0,
+        longitude_label_y=-46.8,
+        month_label_y_offset=-2.8,
+        civil_month_label_y_offset=-2.0,
+        season_guide_y_offset=9.0,
+        ylim=(-50, 50),
+        yticks=np.arange(-30, 31, 10),
+    )
+    plot_fig3_n83_lon_lat(
+        n83,
+        -500,
+        PLOTS_DIR / "fig3-lon-lat-zero-astrographs-prof-readable.png",
+        start_lon=bharani_first_lon - 0.5,
+        show_month_season_guides=True,
+        show_rtusvabhava_label=False,
+        label_actual_longitudes=False,
+        guide_origin="display",
+        show_fitted_line=False,
+        show_nakshatra_connection=False,
+        show_astrographs=True,
+        show_moon_path_band=True,
+        highlight_single_stars=True,
+        longitude_label_x=180.0,
+        longitude_label_y=-46.8,
+        month_label_y_offset=-2.8,
+        civil_month_label_y_offset=-2.0,
+        season_guide_y_offset=9.0,
+        ylim=(-50, 50),
+        yticks=np.arange(-30, 31, 10),
+        **readable_fig3_kwargs,
+    )
+    plot_fig3_n83_lon_lat(
+        n83,
+        -500,
+        PLOTS_DIR / "fig3-lon-lat-zero-astrographs-prof-readable-ash360.png",
+        start_lon=0.0,
+        show_month_season_guides=True,
+        show_rtusvabhava_label=False,
+        label_actual_longitudes=False,
+        guide_origin="display",
+        show_fitted_line=False,
+        show_nakshatra_connection=False,
+        show_astrographs=True,
+        show_moon_path_band=True,
+        highlight_single_stars=True,
+        longitude_label_x=180.0,
+        longitude_label_y=-46.8,
+        month_label_y_offset=-2.8,
+        civil_month_label_y_offset=-2.0,
+        season_guide_y_offset=9.0,
+        ylim=(-50, 50),
+        yticks=np.arange(-30, 31, 10),
+        **readable_fig3_kwargs,
     )
     plot_fig3a_n83_ra_dec(n83, -500, PLOTS_DIR / "fig3a-rtusvabhava-500-ra-dec.png")
     plot_fig3a_n83_ra_dec(

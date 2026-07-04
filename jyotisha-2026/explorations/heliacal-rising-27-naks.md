@@ -31,6 +31,18 @@ For an ordered 27-nakshatra sequence, how do heliacal-rising and heliacal-settin
 - plot: ordered nakshatras on x, rising declination on y, one series per epoch, with contiguous `veethi` bands annotated and subtly color-filled
 - plot: ordered nakshatras on x, setting declination on y, one series per epoch
 - plot: ordered nakshatras on x, setting declination on y, one series per epoch, with contiguous `veethi` bands annotated and subtly color-filled
+- A-variant plot: rising azimuth for epoch `-500` only, with each nakshatra rendered as a VGJ-style constituent-star cluster centered on its computed point, without trend or fitted lines
+- A-variant plot: setting azimuth for epoch `-500` only, with the same cluster convention and the source plot's axis range
+- A-variant plot: rising declination for epoch `-500` only, with the same cluster convention and the source plot's axis range
+- A-variant plot: setting declination for epoch `-500` only, with the same cluster convention and the source plot's axis range
+- B-variant plot: rising and setting azimuth for epoch `-500`, with reduced star-dot diameter, Stellarium skyculture stick figures, no inline cluster labels, and bottom labels formatted as `<nakshatra:count>`
+- B-variant plot: rising and setting declination for epoch `-500`, with the same bounded star-span scaling for dots and stick figures
+- B-variant line art uses the Stellarium skyculture topology where enough plotted HIP endpoints are present; otherwise it falls back to a best-fit ordered line and connects remaining isolated stars to their nearest plotted neighbor
+- B-variant orientation guides mark rising east at `90°`, setting west at `270°`, and the declination equator at `0°`, with compact north/south side cues on the y-axis
+- C-variant plot: B-style rising and setting azimuth with a smooth Bharani-zero ecliptic ±5° latitude band projected into horizon azimuth at `30°N`
+- C-variant plot: B-style rising and setting declination with a smooth Bharani-zero ecliptic declination curve and ±5° ecliptic-latitude band
+- D-variant plot: measured rising and setting azimuth, positioning individual stars by their `-500` ecliptic longitude and declination-derived horizon azimuth against the same Bharani-zero ecliptic band
+- D-variant plot: measured rising and setting declination, positioning individual stars by their `-500` ecliptic longitude and true declination so distance from the ecliptic band is directly readable
 - export table for all computed values
 - short written narration highlighting visible shifts and outliers
 - side-by-side presentation of rise/set plain plots, followed by side-by-side rise/set veethi-annotated plots

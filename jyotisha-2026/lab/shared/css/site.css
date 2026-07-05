@@ -196,7 +196,7 @@ a {
 
 .viewer-canvas iframe {
   width: 100%;
-  height: calc(100vh - 82px);
+  height: 100%;
   border: 0;
   background: transparent;
 }

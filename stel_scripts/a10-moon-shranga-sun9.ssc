@@ -1,0 +1,195 @@
+// a10-moon-shranga-sun9.ssc
+// Variant of a9-moon-shranga.ssc: capture each shukla-pratipada event
+// at the moment the SUN is at -9 deg altitude (uniform twilight background).
+// Moon rides at its natural altitude (encodes arc-of-vision; below-horizon
+// frames deliberately illustrate nasta-candra).
+//
+// MUST be run via `stelrc.py run-script a10-moon-shranga-sun9.ssc` (the
+// native named-script loader, /scripts/run), NOT `run-file`/`script-direct`
+// (/scripts/direct) -- the latter sends raw code with no file identity, so
+// include() below cannot resolve. run-script requires this file (and the
+// .inc it includes) to live under Stellarium's scripts directory, which is
+// symlinked to stel_scripts/ (see chandra-marga/README.md one-time setup).
+//
+// JDS (via include(), below) are FINAL, precomputed via chandra-marga
+// (astropy seed, then Newton-refined against live Stellarium Sun altitude
+// -- astropy's Sun ephemeris alone is extrapolated too far outside its
+// 1900-2100 AD validity range for -527 to be trusted to better than
+// ~0.1-0.4 deg). All 51 events verified to converge to sun alt = -9.0000
+// +/- 0.0003 deg. No live solving happens in this script anymore.
+//
+// Framing: camera centers on (az=moon.azimuth, alt=0) every event -- the
+// horizon at the moon's azimuth sits at the exact center of the frame,
+// independent of the moon's actual altitude. This makes tile cropping a
+// fixed pixel rectangle (see chandra-marga notes), and FOV is left exactly
+// as primed live in Stellarium (no zoomTo() override here).
+//
+// Ground: OFF (LandscapeMgr.setFlagLandscape(false)) so below-horizon
+// Sun/Moon remain visible (not occluded) -- needed to actually see how far
+// below the horizon nasta-candra frames are, rather than having them hidden.
+//
+// Observer: Kurukshetra lat=29.9697 lon=76.8786 elev=0 (same as a9 / a9-inc).
+// Moon scale: 20x (set explicitly; a9 relied on GUI config).
+// Output: moon-shranga~/set-sun9/-527/shukla_pratipada/  (parallel tree; a9 outputs untouched)
+
+MODE = "set-sun9"
+YEAR = -527
+TITHI = "shukla_pratipada"
+PILOT = null  // full run (51 events); set to e.g. [0,5,10,20,30,40] to spot-check
+SUN_TARGET_ALT = -9.0      // deg (for title display only; JDS already solved)
+
+// Binding: this filename must match whatever `01_compute_events.py` wrote
+// for this (target-body, target-altitude, year) combination -- regenerate
+// with e.g.:
+//   uv run python scripts/01_compute_events.py --paksha shukla --thithi 1 \\
+//     --target-body sun --target-altitude -9.0 --year-tag 0527
+include("sun-alt-minus9-events--0527.inc");
+JDS = SUN_ALT_MINUS9_JDS[TITHI];
+
+// ---- minimal helpers (subset of nakshatras.inc, inlined) ----
+function say(x) { core.debug('' + x) }
+function W(x) { if (!x) x = 0.1; core.wait(x) }
+function JD(x) { if (x) { core.setJDay(x); W() } return core.getJDay() }
+function DT() { return core.getDate("utc") }
+getOI = core.getObjectInfo
+function RND(n, d) { return Math.round(n * Math.pow(10, d)) / Math.pow(10, d) }
+function R2(n) { return RND(n, 2) }
+var $TITLE_X = 200; var $TITLE_Y = 60;
+var $TITLE_IDS = [];
+// cls() deletes ONLY the title labels we created (tracked by id), so the
+// horizon compass labels drawn at setup survive the whole run.
+// (LabelMgr.deleteAllLabels() would wipe them too -- known gotcha.)
+function cls() {
+  for (var k = 0; k < $TITLE_IDS.length; k += 1) { LabelMgr.deleteLabel($TITLE_IDS[k]) }
+  $TITLE_IDS = [];
+  $TITLE_Y = 60
+}
+function titles(t) {
+  var id = LabelMgr.labelScreen('' + t, $TITLE_X, $TITLE_Y, false, 25, "#ABCDDD");
+  LabelMgr.setLabelShow(id, true);
+  $TITLE_IDS.push(id);
+  $TITLE_Y += 27
+  core.wait(.5)
+}
+
+// Horizon compass azimuth labels: native SpecialMarkersMgr compass marks only
+// print numeric labels every 15 deg (hard-coded); overlay our own every
+// AZ_STEP deg via LabelMgr.labelHorizon (azimuth: 0=N 90=E 180=S 270=W).
+// Session-only labels; redrawn each run. Skips the natively-labeled azimuths.
+AZ_STEP = 5; AZ_NATIVE_STEP = 15;
+AZ_LABEL_ALT = 1.0;          // deg above horizon line
+AZ_FONT = 10; AZ_COLOR = "#ff40ff";  // match native magenta compass labels
+function drawCompassLabels() {
+  for (var az = 0; az < 360; az += AZ_STEP) {
+    if (az % AZ_NATIVE_STEP === 0) continue;
+    LabelMgr.labelHorizon(az + "\u00B0", az, AZ_LABEL_ALT, true, AZ_FONT, AZ_COLOR);
+  }
+}
+function screenshot(dir, fn) {
+  var filename = fn || '000-zap0';
+  say(filename)
+  core.screenshot(
+    filename,
+    false, // invert
+    "/Users/sunder/projects/cahc/cahc-utils/stel_scripts/moon-shranga~/" + MODE + "/" + YEAR + (dir ? "/" + dir : ''),
+    true,  // overwrite
+    "jpg"
+  )
+}
+
+// ---- setup ----
+LabelMgr.deleteAllLabels()   // fresh slate once, before drawing our overlays
+core.setTimeRate(0)          // freeze clock
+core.setObserverLocation(  // kuru lat=29.9697 lon=76.8786
+  76.8786, // longitude
+  29.9697, // latitude
+  0        // elevation
+)
+// Moon scale
+SolarSystem.setFlagMoonScale(true);
+SolarSystem.setMoonScale(20);
+// Labels: off -- multiple paths for robustness (Indian sky-culture uses localized names)
+SolarSystem.setFlagLabels(false);
+StarMgr.setFlagLabels(false);
+SolarSystem.setFlagHints(false);
+// Property path (Stellarium SSC core.setPropertyValue available in 0.21+)
+try { core.setPropertyValue("SolarSystem.labelsDisplayed", false); } catch(e) { say("no core.setPropertyValue") }
+// Atmospheric refraction squashes discs near the horizon into an oblong/egg
+// shape (differential refraction across the disc). This was previously only
+// ever set live/ad hoc during development (not persisted across Stellarium
+// restarts) -- embedding it here makes the fix reproducible.
+// NOTE: core.setPropertyValue is NOT a function in this Stellarium build
+// (confirmed: it throws an uncaught TypeError and aborts the whole script,
+// unlike the SolarSystem.labelsDisplayed call below which is defensively
+// try/catch-wrapped) -- StelSkyDrawer.setAtmospherePressure() is the real,
+// working scriptable setter, verified directly against the running instance.
+StelSkyDrawer.setAtmospherePressure(0);
+// Ground: OFF -- below-horizon Sun/Moon stay visible (not occluded), so
+// nasta-candra frames show the true sub-horizon position instead of hiding it.
+LandscapeMgr.setCurrentLandscapeName("Zero Horizon");
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(true);   // twilight sky comes from atmosphere, not landscape
+GridLinesMgr.setFlagHorizonLine(true);
+SpecialMarkersMgr.setFlagCompassMarks(true);
+// Azimuthal grid: off (keeps frame clean)
+GridLinesMgr.setFlagAzimuthalGrid(false);
+StelMovementMgr.setFlagTracking(false);
+// No zoomTo() -- FOV is left exactly as primed live in Stellarium.
+drawCompassLabels()
+
+titles("Moon Shranga - " + TITHI + " - sun@" + SUN_TARGET_ALT + " - " + YEAR)
+W(2)
+core.wait(3)   // settle after setup burst, before first event
+
+cls()
+
+// ---- main loop ----
+// No live solving: JDS[] are already precomputed sun-alt-9 crossings.
+for (i = 0; i < JDS.length; i += 1) {
+  if (PILOT && PILOT.indexOf(i) < 0) { continue }
+
+  JD(JDS[i]); core.wait(1)
+  sun = getOI("Sun")
+
+  // Self-verifying settle: getObjectInfo() can return a STALE value for a
+  // few seconds after setJDay() (confirmed empirically this session -- a
+  // genuine, non-deterministic render/update-thread race, NOT a fixed
+  // offset fixable with a tuned wait duration; a fixed priming sequence
+  // gave a DIFFERENT wrong answer on each retry). Since every JDS[] value
+  // is precomputed to sun altitude = SUN_TARGET_ALT, re-querying until the
+  // readback actually matches is self-correcting regardless of cause.
+  for (retry = 0; retry < 8 && Math.abs(sun['altitude'] - SUN_TARGET_ALT) > 0.3; retry += 1) {
+    core.wait(1.5)
+    sun = getOI("Sun")
+  }
+  if (Math.abs(sun['altitude'] - SUN_TARGET_ALT) > 0.3) {
+    say("WARN i=" + i + " sun did not settle: sun_alt=" + R2(sun['altitude']))
+  }
+
+  moon = getOI("Moon")   // queried fresh AFTER sun settles, so it benefits too
+  moon_alt = moon['altitude']
+  moon_az = moon['azimuth']
+
+  // frame: camera centered at (az=moon_az, alt=0) -- the horizon at the
+  // moon's azimuth sits at the exact center of the frame, regardless of
+  // the moon's actual altitude that night.
+  core.moveToAltAzi(0, moon_az, 0); W(1)
+
+  if (moon_alt < 0) { say("NASTA-CANDRA i=" + i + " moon_alt=" + R2(moon_alt)) }
+
+  ssname = ((i + 100 + '').match(/.(..)/)[1]);
+  cls()
+  titles(TITHI + " #" + ssname + (moon_alt < 0 ? "  [nasta-candra]" : ""))
+  titles([DT(), 'jd ' + R2(JD()), 'sun ' + R2(sun['altitude']) + 'd', 'moon ' + R2(moon_alt) + 'd @' + R2(moon_az) + 'd',
+          R2(moon['illumination']) + '%', R2(moon['elong']) + 'd'].join("  ~  "))
+  // Force a real wall-clock pause so at least one fresh frame paints before capture.
+  core.wait(2)
+  screenshot(TITHI, ssname)
+  cls()
+}
+
+core.setTimeRate(1)  // restore normal clock
+
+// sentinel: signals run completion to the caller polling the filesystem
+screenshot(null, 'zzz-done')
+say("a10 done")

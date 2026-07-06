@@ -1206,29 +1206,153 @@ def page_html(dataset: dict[str, object]) -> str:
         white-space: nowrap;
       }}
 
-      .three-fullscreen-button {{
+      .three-view-toolbar {{
         position: absolute;
         right: 0.75rem;
         top: 0.75rem;
-        z-index: 3;
-        border: 1px solid rgba(255,255,255,0.26);
+        z-index: 4;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.22rem;
+        padding: 0.24rem;
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 999px;
-        background: rgba(8,8,16,0.56);
+        background: rgba(8,8,16,0.58);
+        color: rgba(255,255,255,0.86);
+        opacity: 0.16;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+        backdrop-filter: blur(10px);
+        transition: opacity 220ms ease, background 220ms ease;
+      }}
+
+      .three-container:hover .three-view-toolbar {{
+        opacity: 0.32;
+      }}
+
+      .three-view-toolbar:hover,
+      .three-view-toolbar.pinned {{
+        opacity: 0.95;
+        background: rgba(8,8,16,0.72);
+      }}
+
+      .three-view-toolbar-divider {{
+        width: 1px;
+        height: 1.25rem;
+        background: rgba(255,255,255,0.18);
+        margin: 0 0.08rem;
+      }}
+
+      .three-tool-button {{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.25rem;
+        height: 1.75rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: 700 0.72rem/1 var(--font-sans);
+        padding: 0 0.5rem;
+        white-space: nowrap;
+      }}
+
+      .three-tool-button.icon-only {{
+        width: 1.75rem;
+        min-width: 1.75rem;
+        padding: 0;
+      }}
+
+      .three-tool-button svg {{
+        width: 0.95rem;
+        height: 0.95rem;
+        stroke: currentColor;
+      }}
+
+      .three-tool-button:hover,
+      .three-tool-button:focus-visible {{
+        border-color: rgba(255,255,255,0.24);
+        background: rgba(255,255,255,0.12);
+        outline: none;
+      }}
+
+      .three-tool-button.active {{
+        border-color: rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.18);
+        color: #fff;
+      }}
+
+      .three-tool-popover {{
+        position: absolute;
+        top: calc(100% + 0.45rem);
+        right: 0.25rem;
+        display: none;
+        min-width: 18rem;
+        max-width: min(24rem, calc(100vw - 2rem));
+        padding: 0.65rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 8px;
+        background: rgba(8,8,16,0.86);
+        box-shadow: 0 16px 42px rgba(0,0,0,0.34);
+        backdrop-filter: blur(14px);
+      }}
+
+      .three-tool-popover.open {{
+        display: block;
+      }}
+
+      .three-popover-section + .three-popover-section {{
+        margin-top: 0.65rem;
+        padding-top: 0.55rem;
+        border-top: 1px solid rgba(255,255,255,0.12);
+      }}
+
+      .three-popover-heading {{
+        margin-bottom: 0.4rem;
+        color: rgba(255,255,255,0.64);
+        font: 700 0.66rem/1 var(--font-sans);
+        text-transform: uppercase;
+      }}
+
+      .three-popover-grid {{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.32rem;
+      }}
+
+      .three-popover-grid.two-col {{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }}
+
+      .three-popover-button {{
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
         color: rgba(255,255,255,0.86);
         cursor: pointer;
-        font: 0.78rem/1 var(--font-mono);
-        padding: 0.35rem 0.55rem;
-        opacity: 0.88;
-        transition: opacity 700ms ease;
+        font: 700 0.72rem/1 var(--font-sans);
+        padding: 0.45rem 0.55rem;
+        white-space: nowrap;
       }}
 
-      .three-container.theater-mode .three-fullscreen-button {{
-        opacity: 0;
+      .three-popover-button:hover,
+      .three-popover-button:focus-visible {{
+        background: rgba(255,255,255,0.12);
+        outline: none;
       }}
 
-      .three-container.theater-mode:hover .three-fullscreen-button,
-      .three-container.theater-mode .three-fullscreen-button:focus-visible {{
-        opacity: 0.86;
+      .three-popover-button.active {{
+        border-color: rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.20);
+        color: #fff;
+      }}
+
+      .three-time-status {{
+        margin-bottom: 0.45rem;
+        color: rgba(255,255,255,0.72);
+        font: 0.76rem/1.2 var(--font-mono);
+        white-space: nowrap;
       }}
 
       .three-container.theater-mode {{
@@ -1402,7 +1526,78 @@ def page_html(dataset: dict[str, object]) -> str:
         <div class="three-workspace">
           <div class="three-canvas-column">
             <div class="three-container" id="three-container" style="width:100%; height:600px; background:#111; border-radius:12px; overflow:hidden; position:relative;">
-              <button class="three-fullscreen-button" type="button" id="three-fullscreen-toggle">Fullscreen</button>
+              <div class="three-view-toolbar" id="three-view-toolbar" aria-label="3D view controls">
+                <button class="three-tool-button icon-only" type="button" id="three-fullscreen-toggle" title="Fullscreen" aria-label="Fullscreen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                    <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                    <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                    <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                  </svg>
+                </button>
+                <span class="three-view-toolbar-divider" aria-hidden="true"></span>
+                <button class="three-tool-button active" type="button" id="three-orbit-toggle" title="Click to lock rotation" aria-label="Click to lock rotation" aria-pressed="false">Free</button>
+                <button class="three-tool-button" type="button" id="three-more-toggle" title="Show more controls" aria-label="Show more controls" aria-expanded="false">More</button>
+                <span class="three-view-toolbar-divider" aria-hidden="true"></span>
+                <button class="three-tool-button icon-only" type="button" id="three-toolbar-pin" title="Keep toolbar visible" aria-label="Keep toolbar visible" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 17v5"></path>
+                    <path d="M5 17h14"></path>
+                    <path d="M7 10h10l-2-7H9z"></path>
+                    <path d="M12 10v7"></path>
+                  </svg>
+                </button>
+                <div class="three-tool-popover" id="three-more-drawer" aria-label="More 3D controls">
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">Orbit</div>
+                    <div class="three-popover-grid">
+                      <button class="three-popover-button active" type="button" data-orbit-mode="free" title="Free orbit">Free</button>
+                      <button class="three-popover-button" type="button" data-orbit-mode="xy" title="XY plane spin">XY</button>
+                      <button class="three-popover-button" type="button" data-orbit-mode="lock" title="Rotation locked">Lock</button>
+                    </div>
+                  </div>
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">View</div>
+                    <div class="three-popover-grid">
+                      <button class="three-popover-button" type="button" data-view-anchor="home" title="Default composed view">Home</button>
+                      <button class="three-popover-button" type="button" data-view-anchor="top" title="Ecliptic north view">Top</button>
+                      <button class="three-popover-button" type="button" data-view-anchor="side" title="Ecliptic side view">Side</button>
+                      <button class="three-popover-button" type="button" data-view-anchor="pole" title="Current celestial pole view">Pole</button>
+                      <button class="three-popover-button" type="button" data-view-anchor="equator" title="Seasonal equator view">Equator</button>
+                    </div>
+                  </div>
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">Layers</div>
+                    <div class="three-popover-grid">
+                      <button class="three-popover-button" type="button" data-layer-toggle="stars" title="Stars">Stars</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="nakshatras" title="Nakshatra stars and lines">Naks</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="labels" title="Labels">Labels</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="grid" title="Reference grids">Grid</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="sectors" title="Ecliptic sectors">Sectors</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="seasonal" title="Seasonal frame">Seasonal</button>
+                      <button class="three-popover-button" type="button" data-layer-toggle="poles" title="Poles and pole path">Poles</button>
+                    </div>
+                  </div>
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">Time</div>
+                    <div class="three-time-status" id="three-time-status"></div>
+                    <div class="three-popover-grid">
+                      <button class="three-popover-button" type="button" data-time-action="step-back" title="Step back">-1</button>
+                      <button class="three-popover-button" type="button" data-time-action="reverse" title="Reverse play">Back</button>
+                      <button class="three-popover-button" type="button" data-time-action="pause" title="Pause">Pause</button>
+                      <button class="three-popover-button" type="button" data-time-action="play" title="Forward play">Play</button>
+                      <button class="three-popover-button" type="button" data-time-action="step-forward" title="Step forward">+1</button>
+                      <button class="three-popover-button active" type="button" data-time-action="loop" title="Loop at ends">Loop</button>
+                    </div>
+                    <div class="three-popover-grid" style="margin-top:0.4rem;">
+                      <button class="three-popover-button" type="button" data-time-speed="0.25" title="Quarter speed">0.25x</button>
+                      <button class="three-popover-button active" type="button" data-time-speed="1" title="Normal speed">1x</button>
+                      <button class="three-popover-button" type="button" data-time-speed="4" title="Fast">4x</button>
+                      <button class="three-popover-button" type="button" data-time-speed="16" title="Very fast">16x</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div id="three-overlay" style="position:absolute; top:1rem; left:1rem; pointer-events:none; color:#eee; font-family:var(--font-mono); font-size:0.8rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
                 <span id="three-epoch-label"></span>
               </div>
@@ -2374,13 +2569,25 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const data = JSON.parse(document.getElementById("explorer-data").textContent);
       const stories = JSON.parse(document.getElementById("story-data").textContent);
       const container = document.getElementById("three-container");
+      const threeViewToolbar = document.getElementById("three-view-toolbar");
       const threeFullscreenToggle = document.getElementById("three-fullscreen-toggle");
+      const threeOrbitToggle = document.getElementById("three-orbit-toggle");
+      const threeMoreToggle = document.getElementById("three-more-toggle");
+      const threeMoreDrawer = document.getElementById("three-more-drawer");
+      const threeToolbarPin = document.getElementById("three-toolbar-pin");
+      const threeOrbitButtons = Array.from(document.querySelectorAll("[data-orbit-mode]"));
+      const threeViewAnchorButtons = Array.from(document.querySelectorAll("[data-view-anchor]"));
+      const threeLayerButtons = Array.from(document.querySelectorAll("[data-layer-toggle]"));
+      const threeTimeButtons = Array.from(document.querySelectorAll("[data-time-action]"));
+      const threeTimeSpeedButtons = Array.from(document.querySelectorAll("[data-time-speed]"));
+      const threeTimeStatus = document.getElementById("three-time-status");
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
       const storyLabelLayer = document.getElementById("three-label-layer");
       const threeDock = document.getElementById("three-dock");
       const threeDockToggle = document.getElementById("three-dock-toggle");
+      const threeDockResizer = document.getElementById("three-dock-resizer");
       const threeDockTabs = Array.from(document.querySelectorAll(".three-dock-tab"));
       const threeDockPanels = {{
         static: document.getElementById("three-dock-static"),
@@ -2395,6 +2602,8 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const threeStoryReset = document.getElementById("three-story-reset");
       const threeStoryCopy = document.getElementById("three-story-copy");
       const threeVysuEditor = document.getElementById("three-vysu-editor");
+      const threeVysuLines = document.getElementById("three-vysu-lines");
+      const threeVysuFontSize = document.getElementById("three-vysu-font-size");
       const threeVysuRun = document.getElementById("three-vysu-run");
       const threeVysuStatus = document.getElementById("three-vysu-status");
       const threeCameraDirective = document.getElementById("three-camera-directive");
@@ -2438,6 +2647,8 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const targetVisibilityOverrides = new Map();
       const focusedPolarTargets = {{ north: new Set(), south: new Set() }};
       const focusedSeasonalTargets = new Set();
+      let orbitMode = "free";
+      const timeFlow = {{ direction: 0, speed: 1, loop: true, timer: null }};
       const threeDebugUiFields = [
         ["showGrid", "Ecliptic grid"],
         ["showEquatorialGrid", "Equatorial grid"],
@@ -2687,6 +2898,226 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
 
       function cloneSettings(settings) {{
         return JSON.parse(JSON.stringify(settings));
+      }}
+
+      function fullscreenIcon(expanded) {{
+        return expanded
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M16 3v3a2 2 0 0 0 2 2h3"></path><path d="M8 21v-3a2 2 0 0 0-2-2H3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>';
+      }}
+
+      function syncFullscreenButton(expanded) {{
+        if (!threeFullscreenToggle) return;
+        threeFullscreenToggle.innerHTML = fullscreenIcon(expanded);
+        threeFullscreenToggle.title = expanded ? "Exit fullscreen" : "Fullscreen";
+        threeFullscreenToggle.setAttribute("aria-label", expanded ? "Exit fullscreen" : "Fullscreen");
+      }}
+
+      function applyOrbitMode(mode = orbitMode) {{
+        orbitMode = mode;
+        threeOrbitButtons.forEach((button) => {{
+          const active = button.dataset.orbitMode === orbitMode;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+        if (threeOrbitToggle) {{
+          const locked = orbitMode === "lock";
+          threeOrbitToggle.textContent = locked ? "Lock" : "Free";
+          threeOrbitToggle.classList.toggle("active", !locked);
+          threeOrbitToggle.setAttribute("aria-pressed", locked ? "true" : "false");
+          threeOrbitToggle.title = locked ? "Click to allow free orbit" : "Click to lock rotation";
+          threeOrbitToggle.setAttribute("aria-label", locked ? "Click to allow free orbit" : "Click to lock rotation");
+        }}
+        if (!controls) return;
+        controls.enableRotate = orbitMode !== "lock";
+        controls.minAzimuthAngle = -Infinity;
+        controls.maxAzimuthAngle = Infinity;
+        if (orbitMode === "xy") {{
+          const polar = THREE.MathUtils.clamp(controls.getPolarAngle(), 0.001, Math.PI - 0.001);
+          controls.minPolarAngle = polar;
+          controls.maxPolarAngle = polar;
+        }} else {{
+          controls.minPolarAngle = 0;
+          controls.maxPolarAngle = Math.PI;
+        }}
+        controls.update();
+      }}
+
+      function setMoreDrawer(open) {{
+        if (!threeMoreDrawer || !threeMoreToggle) return;
+        threeMoreDrawer.classList.toggle("open", open);
+        threeMoreToggle.classList.toggle("active", open);
+        threeMoreToggle.textContent = open ? "Less" : "More";
+        threeMoreToggle.title = open ? "Hide more controls" : "Show more controls";
+        threeMoreToggle.setAttribute("aria-label", open ? "Hide more controls" : "Show more controls");
+        threeMoreToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }}
+
+      function closeMoreDrawer(force = false) {{
+        if (!force && threeViewToolbar?.classList.contains("pinned")) return;
+        setMoreDrawer(false);
+      }}
+
+      function toggleMoreDrawer() {{
+        setMoreDrawer(!threeMoreDrawer?.classList.contains("open"));
+      }}
+
+      function layerFlagGroups() {{
+        return {{
+          stars: ["showStars"],
+          nakshatras: ["showNakshatraStars", "showNakshatraLines"],
+          labels: ["showNakshatraLabels", "showEclipticLabels"],
+          grid: ["showGrid", "showEquatorialGrid"],
+          sectors: ["showEclipticBand", "showEclipticDividers", "showEclipticLabels"],
+          seasonal: ["showSeasonalFrame"],
+          poles: ["showEclipticPoles", "showPolarItems", "showPoleTrack", "showNP", "showSP"],
+        }};
+      }}
+
+      function syncLayerButtons() {{
+        const groups = layerFlagGroups();
+        threeLayerButtons.forEach((button) => {{
+          const flags = groups[button.dataset.layerToggle] || [];
+          const active = flags.length > 0 && flags.every((flag) => threeSettings.ui[flag] !== false);
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+      }}
+
+      function setLayerGroup(name) {{
+        const flags = layerFlagGroups()[name] || [];
+        if (!flags.length) return;
+        const active = flags.every((flag) => threeSettings.ui[flag] !== false);
+        flags.forEach((flag) => {{
+          threeSettings.ui[flag] = !active;
+        }});
+        applyThreeSettings({{ preserveEpoch: true, preserveCamera: true }});
+        syncThreeDebugTogglesFromSettings();
+        syncDebugTextareaFromLive();
+        syncLayerButtons();
+      }}
+
+      function cameraAnchor(anchor) {{
+        const target = {{ x: 0, y: 0, z: 0 }};
+        const home = cloneSettings(defaultThreeSettings).camera;
+        if (anchor === "home") return home;
+        if (anchor === "top") return {{ position: {{ x: 0, y: 325, z: 0.1 }}, target, fov: 42 }};
+        if (anchor === "side") return {{ position: {{ x: 325, y: 0, z: 0 }}, target, fov: 42 }};
+        if (anchor === "pole") {{
+          const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+          const pole = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 325);
+          return {{ position: {{ x: pole.x, y: pole.y, z: pole.z }}, target, fov: 42 }};
+        }}
+        if (anchor === "equator") {{
+          const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+          const point = toCart(epoch.vernal_equinox_lon_deg + 90, 0, 325);
+          return {{ position: {{ x: point.x, y: point.y, z: point.z }}, target, fov: 42 }};
+        }}
+        return home;
+      }}
+
+      function flyToCamera(cueCamera, duration = 700) {{
+        if (!camera || !controls || !cueCamera) return;
+        const startTime = performance.now();
+        const startPos = camera.position.clone();
+        const startTarget = controls.target.clone();
+        const endPos = new THREE.Vector3(
+          cueCamera.position?.x ?? camera.position.x,
+          cueCamera.position?.y ?? camera.position.y,
+          cueCamera.position?.z ?? camera.position.z
+        );
+        const endTarget = new THREE.Vector3(
+          cueCamera.target?.x ?? controls.target.x,
+          cueCamera.target?.y ?? controls.target.y,
+          cueCamera.target?.z ?? controls.target.z
+        );
+        const startFov = camera.fov;
+        const endFov = cueCamera.fov ?? camera.fov;
+        const restoreOrbitMode = orbitMode;
+        controls.minPolarAngle = 0;
+        controls.maxPolarAngle = Math.PI;
+        const tick = (now) => {{
+          const t = Math.min(1, (now - startTime) / duration);
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          camera.position.lerpVectors(startPos, endPos, eased);
+          controls.target.lerpVectors(startTarget, endTarget, eased);
+          camera.fov = startFov + (endFov - startFov) * eased;
+          camera.updateProjectionMatrix();
+          controls.update();
+          if (t < 1) {{
+            window.requestAnimationFrame(tick);
+          }} else {{
+            threeSettings.camera.position = {{
+              x: Number(camera.position.x.toFixed(3)),
+              y: Number(camera.position.y.toFixed(3)),
+              z: Number(camera.position.z.toFixed(3)),
+            }};
+            threeSettings.camera.target = {{
+              x: Number(controls.target.x.toFixed(3)),
+              y: Number(controls.target.y.toFixed(3)),
+              z: Number(controls.target.z.toFixed(3)),
+            }};
+            threeSettings.camera.fov = Number(camera.fov.toFixed(3));
+            applyOrbitMode(restoreOrbitMode);
+            syncDebugTextareaFromLive();
+          }}
+        }};
+        window.requestAnimationFrame(tick);
+      }}
+
+      function syncTimeControls() {{
+        threeTimeSpeedButtons.forEach((button) => {{
+          const active = Number(button.dataset.timeSpeed) === timeFlow.speed;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+        threeTimeButtons.forEach((button) => {{
+          const action = button.dataset.timeAction;
+          const active = action === "loop" ? timeFlow.loop : (action === "play" && timeFlow.direction > 0) || (action === "reverse" && timeFlow.direction < 0) || (action === "pause" && timeFlow.direction === 0);
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+        const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+        const direction = timeFlow.direction > 0 ? "forward" : timeFlow.direction < 0 ? "backward" : "paused";
+        if (threeTimeStatus && epoch) {{
+          threeTimeStatus.textContent = `${{epoch.label}} · ${{timeFlow.speed}}x ${{direction}}`;
+        }}
+      }}
+
+      function stopToolbarTime() {{
+        if (timeFlow.timer !== null) {{
+          window.clearInterval(timeFlow.timer);
+          timeFlow.timer = null;
+        }}
+        timeFlow.direction = 0;
+        syncTimeControls();
+      }}
+
+      function stepToolbarTime(delta) {{
+        const st = window.explorerState;
+        if (!st || typeof window.explorerRender !== "function") return;
+        let next = st.epochIndex + delta;
+        if (next < 0 || next >= data.epochs.length) {{
+          if (!timeFlow.loop) {{
+            stopToolbarTime();
+            return;
+          }}
+          next = next < 0 ? data.epochs.length - 1 : 0;
+        }}
+        st.epochIndex = next;
+        window.explorerRender();
+        syncTimeControls();
+      }}
+
+      function startToolbarTime(direction) {{
+        if (timeFlow.timer !== null) {{
+          window.clearInterval(timeFlow.timer);
+          timeFlow.timer = null;
+        }}
+        timeFlow.direction = direction;
+        const interval = Math.max(60, 480 / timeFlow.speed);
+        timeFlow.timer = window.setInterval(() => stepToolbarTime(timeFlow.direction), interval);
+        syncTimeControls();
       }}
 
       const defaultVyomaSutra = `# Visualize axial precession against the fixed nakshatra sky
@@ -3354,6 +3785,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         focusedPolarTargets.south.clear();
         focusedSeasonalTargets.clear();
         clearStoryLabels();
+        applyOrbitMode();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {{
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {{
@@ -3375,9 +3807,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }} else {{
           container.classList.remove("theater-mode");
         }}
-        if (threeFullscreenToggle) {{
-          threeFullscreenToggle.textContent = enabled ? "Esc to Minimize" : "Fullscreen";
-        }}
+        syncFullscreenButton(enabled);
         window.setTimeout(onResize, 80);
       }}
 
@@ -3429,6 +3859,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         }}
         if (typeof cueCamera.minDistance === "number") controls.minDistance = cueCamera.minDistance;
         if (typeof cueCamera.maxDistance === "number") controls.maxDistance = cueCamera.maxDistance;
+        const restoreOrbitMode = orbitMode;
+        controls.minPolarAngle = 0;
+        controls.maxPolarAngle = Math.PI;
         const tick = (now) => {{
           const t = Math.min(1, (now - startTime) / duration);
           const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -3449,6 +3882,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
               y: Number(controls.target.y.toFixed(3)),
               z: Number(controls.target.z.toFixed(3)),
             }};
+            applyOrbitMode(restoreOrbitMode);
             syncDebugTextareaFromLive();
           }}
         }};
@@ -4345,6 +4779,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           controls.minDistance = threeSettings.camera.minDistance;
           controls.maxDistance = threeSettings.camera.maxDistance;
         }}
+        applyOrbitMode();
         applyLightPreset();
         if (siderealGroup && builtEclipticGridStep !== gridStep(threeSettings.grid.eclipticStepDeg)) {{
           buildSphereGrid();
@@ -4542,6 +4977,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             }}
           }}
         }});
+        syncLayerButtons();
       }}
 
       /* ── init ────────────────────────────────────────────── */
@@ -4574,6 +5010,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         controls.minDistance = threeSettings.camera.minDistance;
         controls.maxDistance = threeSettings.camera.maxDistance;
         controls.enablePan = false;
+        applyOrbitMode();
 
         siderealGroup = new THREE.Group();
         scene.add(siderealGroup);
@@ -5047,7 +5484,9 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
         const st = window.explorerState;
         if (!st) return;
         const epoch = data.epochs[st.epochIndex];
-        overlayLabel.textContent = epoch.label;
+        const flowText = timeFlow.direction > 0 ? ` · ${{timeFlow.speed}}x forward` : timeFlow.direction < 0 ? ` · ${{timeFlow.speed}}x backward` : "";
+        overlayLabel.textContent = `${{epoch.label}}${{flowText}}`;
+        syncTimeControls();
         const xAxis = toCart(epoch.vernal_equinox_lon_deg, 0, 1).normalize();
         const zAxis = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 1).normalize();
         const yAxis = new THREE.Vector3().crossVectors(zAxis, xAxis).normalize();
@@ -5164,14 +5603,105 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }}
 
       if (threeFullscreenToggle) {{
+        syncFullscreenButton(false);
         threeFullscreenToggle.addEventListener("click", () => {{
           const entering = !(document.fullscreenElement === container || container.classList.contains("theater-mode"));
           setThreeFullscreen(entering);
         }});
         document.addEventListener("fullscreenchange", () => {{
           container.classList.toggle("theater-mode", document.fullscreenElement === container);
-          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Esc to Minimize" : "Fullscreen";
+          syncFullscreenButton(document.fullscreenElement === container);
           onResize();
+        }});
+      }}
+
+      threeOrbitButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          applyOrbitMode(button.dataset.orbitMode || "free");
+        }});
+      }});
+
+      if (threeOrbitToggle) {{
+        threeOrbitToggle.addEventListener("click", () => {{
+          applyOrbitMode(orbitMode === "lock" ? "free" : "lock");
+        }});
+      }}
+
+      if (threeMoreToggle) {{
+        threeMoreToggle.addEventListener("click", (event) => {{
+          event.stopPropagation();
+          toggleMoreDrawer();
+        }});
+      }}
+
+      if (threeMoreDrawer) {{
+        threeMoreDrawer.addEventListener("click", (event) => event.stopPropagation());
+      }}
+
+      document.addEventListener("click", (event) => {{
+        if (threeViewToolbar && !threeViewToolbar.contains(event.target)) {{
+          closeMoreDrawer(false);
+        }}
+      }});
+
+      document.addEventListener("keydown", (event) => {{
+        if (event.key === "Escape") closeMoreDrawer(false);
+      }});
+
+      threeViewAnchorButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          if (!scene) initThree();
+          threeViewAnchorButtons.forEach((entry) => entry.classList.toggle("active", entry === button));
+          flyToCamera(cameraAnchor(button.dataset.viewAnchor));
+        }});
+      }});
+
+      threeLayerButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          setLayerGroup(button.dataset.layerToggle);
+        }});
+      }});
+
+      threeTimeSpeedButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          timeFlow.speed = Number(button.dataset.timeSpeed) || 1;
+          if (timeFlow.direction !== 0) startToolbarTime(timeFlow.direction);
+          syncTimeControls();
+        }});
+      }});
+
+      threeTimeButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          const action = button.dataset.timeAction;
+          if (action === "step-back") {{
+            stopToolbarTime();
+            stepToolbarTime(-1);
+          }} else if (action === "step-forward") {{
+            stopToolbarTime();
+            stepToolbarTime(1);
+          }} else if (action === "reverse") {{
+            startToolbarTime(-1);
+          }} else if (action === "play") {{
+            startToolbarTime(1);
+          }} else if (action === "pause") {{
+            stopToolbarTime();
+          }} else if (action === "loop") {{
+            timeFlow.loop = !timeFlow.loop;
+            syncTimeControls();
+          }}
+        }});
+      }});
+
+      syncTimeControls();
+
+      if (threeToolbarPin && threeViewToolbar) {{
+        threeToolbarPin.addEventListener("click", () => {{
+          const pinned = !threeViewToolbar.classList.contains("pinned");
+          threeViewToolbar.classList.toggle("pinned", pinned);
+          threeToolbarPin.classList.toggle("active", pinned);
+          threeToolbarPin.setAttribute("aria-pressed", pinned ? "true" : "false");
+          threeToolbarPin.title = pinned ? "Allow toolbar to fade" : "Keep toolbar visible";
+          threeToolbarPin.setAttribute("aria-label", pinned ? "Allow toolbar to fade" : "Keep toolbar visible");
         }});
       }}
 

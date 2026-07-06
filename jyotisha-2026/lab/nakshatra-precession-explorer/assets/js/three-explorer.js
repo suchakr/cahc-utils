@@ -4,7 +4,18 @@
       const data = JSON.parse(document.getElementById("explorer-data").textContent);
       const stories = JSON.parse(document.getElementById("story-data").textContent);
       const container = document.getElementById("three-container");
+      const threeViewToolbar = document.getElementById("three-view-toolbar");
       const threeFullscreenToggle = document.getElementById("three-fullscreen-toggle");
+      const threeOrbitToggle = document.getElementById("three-orbit-toggle");
+      const threeMoreToggle = document.getElementById("three-more-toggle");
+      const threeMoreDrawer = document.getElementById("three-more-drawer");
+      const threeToolbarPin = document.getElementById("three-toolbar-pin");
+      const threeOrbitButtons = Array.from(document.querySelectorAll("[data-orbit-mode]"));
+      const threeViewAnchorButtons = Array.from(document.querySelectorAll("[data-view-anchor]"));
+      const threeLayerButtons = Array.from(document.querySelectorAll("[data-layer-toggle]"));
+      const threeTimeButtons = Array.from(document.querySelectorAll("[data-time-action]"));
+      const threeTimeSpeedButtons = Array.from(document.querySelectorAll("[data-time-speed]"));
+      const threeTimeStatus = document.getElementById("three-time-status");
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
@@ -41,6 +52,7 @@
       const threeDebugReset = document.getElementById("three-debug-reset");
       const threeDebugToggles = document.getElementById("three-debug-toggles");
 
+
       const R = 100;
       const BAND_HALF = data.meta.ecliptic_band_half_width_deg;
       let scene, camera, renderer, controls;
@@ -71,6 +83,8 @@
       const targetVisibilityOverrides = new Map();
       const focusedPolarTargets = { north: new Set(), south: new Set() };
       const focusedSeasonalTargets = new Set();
+      let orbitMode = "free";
+      const timeFlow = { direction: 0, speed: 1, loop: true, timer: null };
       const threeDebugUiFields = [
         ["showGrid", "Ecliptic grid"],
         ["showEquatorialGrid", "Equatorial grid"],
@@ -431,6 +445,227 @@
       function cloneSettings(settings) {
         return JSON.parse(JSON.stringify(settings));
       }
+
+      function fullscreenIcon(expanded) {
+        return expanded
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M16 3v3a2 2 0 0 0 2 2h3"></path><path d="M8 21v-3a2 2 0 0 0-2-2H3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>';
+      }
+
+      function syncFullscreenButton(expanded) {
+        if (!threeFullscreenToggle) return;
+        threeFullscreenToggle.innerHTML = fullscreenIcon(expanded);
+        threeFullscreenToggle.title = expanded ? "Exit fullscreen" : "Fullscreen";
+        threeFullscreenToggle.setAttribute("aria-label", expanded ? "Exit fullscreen" : "Fullscreen");
+      }
+
+      function applyOrbitMode(mode = orbitMode) {
+        orbitMode = mode;
+        threeOrbitButtons.forEach((button) => {
+          const active = button.dataset.orbitMode === orbitMode;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        if (threeOrbitToggle) {
+          const locked = orbitMode === "lock";
+          threeOrbitToggle.textContent = locked ? "Lock" : "Free";
+          threeOrbitToggle.classList.toggle("active", !locked);
+          threeOrbitToggle.setAttribute("aria-pressed", locked ? "true" : "false");
+          threeOrbitToggle.title = locked ? "Click to allow free orbit" : "Click to lock rotation";
+          threeOrbitToggle.setAttribute("aria-label", locked ? "Click to allow free orbit" : "Click to lock rotation");
+        }
+        if (!controls) return;
+        controls.enableRotate = orbitMode !== "lock";
+        controls.minAzimuthAngle = -Infinity;
+        controls.maxAzimuthAngle = Infinity;
+        if (orbitMode === "xy") {
+          const polar = THREE.MathUtils.clamp(controls.getPolarAngle(), 0.001, Math.PI - 0.001);
+          controls.minPolarAngle = polar;
+          controls.maxPolarAngle = polar;
+        } else {
+          controls.minPolarAngle = 0;
+          controls.maxPolarAngle = Math.PI;
+        }
+        controls.update();
+      }
+
+      function setMoreDrawer(open) {
+        if (!threeMoreDrawer || !threeMoreToggle) return;
+        threeMoreDrawer.classList.toggle("open", open);
+        threeMoreToggle.classList.toggle("active", open);
+        threeMoreToggle.textContent = open ? "Less" : "More";
+        threeMoreToggle.title = open ? "Hide more controls" : "Show more controls";
+        threeMoreToggle.setAttribute("aria-label", open ? "Hide more controls" : "Show more controls");
+        threeMoreToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function closeMoreDrawer(force = false) {
+        if (!force && threeViewToolbar?.classList.contains("pinned")) return;
+        setMoreDrawer(false);
+      }
+
+      function toggleMoreDrawer() {
+        setMoreDrawer(!threeMoreDrawer?.classList.contains("open"));
+      }
+
+      function layerFlagGroups() {
+        return {
+          stars: ["showStars"],
+          nakshatras: ["showNakshatraStars", "showNakshatraLines"],
+          labels: ["showNakshatraLabels", "showEclipticLabels"],
+          grid: ["showGrid", "showEquatorialGrid"],
+          sectors: ["showEclipticBand", "showEclipticDividers", "showEclipticLabels"],
+          seasonal: ["showSeasonalFrame"],
+          poles: ["showEclipticPoles", "showPolarItems", "showPoleTrack", "showNP", "showSP"],
+        };
+      }
+
+      function syncLayerButtons() {
+        const groups = layerFlagGroups();
+        threeLayerButtons.forEach((button) => {
+          const flags = groups[button.dataset.layerToggle] || [];
+          const active = flags.length > 0 && flags.every((flag) => threeSettings.ui[flag] !== false);
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      function setLayerGroup(name) {
+        const flags = layerFlagGroups()[name] || [];
+        if (!flags.length) return;
+        const active = flags.every((flag) => threeSettings.ui[flag] !== false);
+        flags.forEach((flag) => {
+          threeSettings.ui[flag] = !active;
+        });
+        applyThreeSettings({ preserveEpoch: true, preserveCamera: true });
+        syncThreeDebugTogglesFromSettings();
+        syncDebugTextareaFromLive();
+        syncLayerButtons();
+      }
+
+      function cameraAnchor(anchor) {
+        const target = { x: 0, y: 0, z: 0 };
+        const home = cloneSettings(defaultThreeSettings).camera;
+        if (anchor === "home") return home;
+        if (anchor === "top") return { position: { x: 0, y: 325, z: 0.1 }, target, fov: 42 };
+        if (anchor === "side") return { position: { x: 325, y: 0, z: 0 }, target, fov: 42 };
+        if (anchor === "pole") {
+          const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+          const pole = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 325);
+          return { position: { x: pole.x, y: pole.y, z: pole.z }, target, fov: 42 };
+        }
+        if (anchor === "equator") {
+          const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+          const point = toCart(epoch.vernal_equinox_lon_deg + 90, 0, 325);
+          return { position: { x: point.x, y: point.y, z: point.z }, target, fov: 42 };
+        }
+        return home;
+      }
+
+      function flyToCamera(cueCamera, duration = 700) {
+        if (!camera || !controls || !cueCamera) return;
+        const startTime = performance.now();
+        const startPos = camera.position.clone();
+        const startTarget = controls.target.clone();
+        const endPos = new THREE.Vector3(
+          cueCamera.position?.x ?? camera.position.x,
+          cueCamera.position?.y ?? camera.position.y,
+          cueCamera.position?.z ?? camera.position.z
+        );
+        const endTarget = new THREE.Vector3(
+          cueCamera.target?.x ?? controls.target.x,
+          cueCamera.target?.y ?? controls.target.y,
+          cueCamera.target?.z ?? controls.target.z
+        );
+        const startFov = camera.fov;
+        const endFov = cueCamera.fov ?? camera.fov;
+        const restoreOrbitMode = orbitMode;
+        controls.minPolarAngle = 0;
+        controls.maxPolarAngle = Math.PI;
+        const tick = (now) => {
+          const t = Math.min(1, (now - startTime) / duration);
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          camera.position.lerpVectors(startPos, endPos, eased);
+          controls.target.lerpVectors(startTarget, endTarget, eased);
+          camera.fov = startFov + (endFov - startFov) * eased;
+          camera.updateProjectionMatrix();
+          controls.update();
+          if (t < 1) {
+            window.requestAnimationFrame(tick);
+          } else {
+            threeSettings.camera.position = {
+              x: Number(camera.position.x.toFixed(3)),
+              y: Number(camera.position.y.toFixed(3)),
+              z: Number(camera.position.z.toFixed(3)),
+            };
+            threeSettings.camera.target = {
+              x: Number(controls.target.x.toFixed(3)),
+              y: Number(controls.target.y.toFixed(3)),
+              z: Number(controls.target.z.toFixed(3)),
+            };
+            threeSettings.camera.fov = Number(camera.fov.toFixed(3));
+            applyOrbitMode(restoreOrbitMode);
+            syncDebugTextareaFromLive();
+          }
+        };
+        window.requestAnimationFrame(tick);
+      }
+
+      function syncTimeControls() {
+        threeTimeSpeedButtons.forEach((button) => {
+          const active = Number(button.dataset.timeSpeed) === timeFlow.speed;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        threeTimeButtons.forEach((button) => {
+          const action = button.dataset.timeAction;
+          const active = action === "loop" ? timeFlow.loop : (action === "play" && timeFlow.direction > 0) || (action === "reverse" && timeFlow.direction < 0) || (action === "pause" && timeFlow.direction === 0);
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        const epoch = data.epochs[window.explorerState?.epochIndex ?? 0] || data.epochs[0];
+        const direction = timeFlow.direction > 0 ? "forward" : timeFlow.direction < 0 ? "backward" : "paused";
+        if (threeTimeStatus && epoch) {
+          threeTimeStatus.textContent = `${epoch.label} · ${timeFlow.speed}x ${direction}`;
+        }
+      }
+
+      function stopToolbarTime() {
+        if (timeFlow.timer !== null) {
+          window.clearInterval(timeFlow.timer);
+          timeFlow.timer = null;
+        }
+        timeFlow.direction = 0;
+        syncTimeControls();
+      }
+
+      function stepToolbarTime(delta) {
+        const st = window.explorerState;
+        if (!st || typeof window.explorerRender !== "function") return;
+        let next = st.epochIndex + delta;
+        if (next < 0 || next >= data.epochs.length) {
+          if (!timeFlow.loop) {
+            stopToolbarTime();
+            return;
+          }
+          next = next < 0 ? data.epochs.length - 1 : 0;
+        }
+        st.epochIndex = next;
+        window.explorerRender();
+        syncTimeControls();
+      }
+
+      function startToolbarTime(direction) {
+        if (timeFlow.timer !== null) {
+          window.clearInterval(timeFlow.timer);
+          timeFlow.timer = null;
+        }
+        timeFlow.direction = direction;
+        const interval = Math.max(60, 480 / timeFlow.speed);
+        timeFlow.timer = window.setInterval(() => stepToolbarTime(timeFlow.direction), interval);
+        syncTimeControls();
+      }
+
 
       const defaultVyomaSutra = `# Visualize axial precession against the fixed nakshatra sky
 stage blank night year -1800
@@ -2140,6 +2375,7 @@ function compileVyomaSutraFile(source, storyId) {
         focusedPolarTargets.south.clear();
         focusedSeasonalTargets.clear();
         clearStoryLabels();
+        applyOrbitMode();
         if (clearCaption) setStoryCaption("", false);
         if (storyStrip) {
           storyStrip.querySelectorAll(".three-story-pill").forEach((button) => {
@@ -2161,9 +2397,7 @@ function compileVyomaSutraFile(source, storyId) {
         } else {
           container.classList.remove("theater-mode");
         }
-        if (threeFullscreenToggle) {
-          threeFullscreenToggle.textContent = enabled ? "Esc to Minimize" : "Fullscreen";
-        }
+        syncFullscreenButton(enabled);
         window.setTimeout(onResize, 80);
       }
 
@@ -2215,6 +2449,9 @@ function compileVyomaSutraFile(source, storyId) {
         }
         if (typeof cueCamera.minDistance === "number") controls.minDistance = cueCamera.minDistance;
         if (typeof cueCamera.maxDistance === "number") controls.maxDistance = cueCamera.maxDistance;
+        const restoreOrbitMode = orbitMode;
+        controls.minPolarAngle = 0;
+        controls.maxPolarAngle = Math.PI;
         const tick = (now) => {
           const t = Math.min(1, (now - startTime) / duration);
           const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -2235,6 +2472,7 @@ function compileVyomaSutraFile(source, storyId) {
               y: Number(controls.target.y.toFixed(3)),
               z: Number(controls.target.z.toFixed(3)),
             };
+            applyOrbitMode(restoreOrbitMode);
             syncDebugTextareaFromLive();
           }
         };
@@ -3292,6 +3530,7 @@ function compileVyomaSutraFile(source, storyId) {
           controls.minDistance = threeSettings.camera.minDistance;
           controls.maxDistance = threeSettings.camera.maxDistance;
         }
+        applyOrbitMode();
         applyLightPreset();
         if (siderealGroup && builtEclipticGridStep !== gridStep(threeSettings.grid.eclipticStepDeg)) {
           buildSphereGrid();
@@ -3479,6 +3718,7 @@ function compileVyomaSutraFile(source, storyId) {
             }
           }
         });
+        syncLayerButtons();
       }
 
       /* ── init ────────────────────────────────────────────── */
@@ -3511,6 +3751,7 @@ function compileVyomaSutraFile(source, storyId) {
         controls.minDistance = threeSettings.camera.minDistance;
         controls.maxDistance = threeSettings.camera.maxDistance;
         controls.enablePan = false;
+        applyOrbitMode();
 
         siderealGroup = new THREE.Group();
         scene.add(siderealGroup);
@@ -3986,7 +4227,9 @@ function compileVyomaSutraFile(source, storyId) {
         const st = window.explorerState;
         if (!st) return;
         const epoch = data.epochs[st.epochIndex];
-        overlayLabel.textContent = epoch.label;
+        const flowText = timeFlow.direction > 0 ? ` · ${timeFlow.speed}x forward` : timeFlow.direction < 0 ? ` · ${timeFlow.speed}x backward` : "";
+        overlayLabel.textContent = `${epoch.label}${flowText}`;
+        syncTimeControls();
         const xAxis = toCart(epoch.vernal_equinox_lon_deg, 0, 1).normalize();
         const zAxis = toCart(epoch.north_pole_lon_deg, epoch.north_pole_lat_deg, 1).normalize();
         const yAxis = new THREE.Vector3().crossVectors(zAxis, xAxis).normalize();
@@ -4103,16 +4346,108 @@ function compileVyomaSutraFile(source, storyId) {
       }
 
       if (threeFullscreenToggle) {
+        syncFullscreenButton(false);
         threeFullscreenToggle.addEventListener("click", () => {
           const entering = !(document.fullscreenElement === container || container.classList.contains("theater-mode"));
           setThreeFullscreen(entering);
         });
         document.addEventListener("fullscreenchange", () => {
           container.classList.toggle("theater-mode", document.fullscreenElement === container);
-          threeFullscreenToggle.textContent = document.fullscreenElement === container ? "Esc to Minimize" : "Fullscreen";
+          syncFullscreenButton(document.fullscreenElement === container);
           onResize();
         });
       }
+
+      threeOrbitButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          applyOrbitMode(button.dataset.orbitMode || "free");
+        });
+      });
+
+      if (threeOrbitToggle) {
+        threeOrbitToggle.addEventListener("click", () => {
+          applyOrbitMode(orbitMode === "lock" ? "free" : "lock");
+        });
+      }
+
+      if (threeMoreToggle) {
+        threeMoreToggle.addEventListener("click", (event) => {
+          event.stopPropagation();
+          toggleMoreDrawer();
+        });
+      }
+
+      if (threeMoreDrawer) {
+        threeMoreDrawer.addEventListener("click", (event) => event.stopPropagation());
+      }
+
+      document.addEventListener("click", (event) => {
+        if (threeViewToolbar && !threeViewToolbar.contains(event.target)) {
+          closeMoreDrawer(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMoreDrawer(false);
+      });
+
+      threeViewAnchorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (!scene) initThree();
+          threeViewAnchorButtons.forEach((entry) => entry.classList.toggle("active", entry === button));
+          flyToCamera(cameraAnchor(button.dataset.viewAnchor));
+        });
+      });
+
+      threeLayerButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setLayerGroup(button.dataset.layerToggle);
+        });
+      });
+
+      threeTimeSpeedButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          timeFlow.speed = Number(button.dataset.timeSpeed) || 1;
+          if (timeFlow.direction !== 0) startToolbarTime(timeFlow.direction);
+          syncTimeControls();
+        });
+      });
+
+      threeTimeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.dataset.timeAction;
+          if (action === "step-back") {
+            stopToolbarTime();
+            stepToolbarTime(-1);
+          } else if (action === "step-forward") {
+            stopToolbarTime();
+            stepToolbarTime(1);
+          } else if (action === "reverse") {
+            startToolbarTime(-1);
+          } else if (action === "play") {
+            startToolbarTime(1);
+          } else if (action === "pause") {
+            stopToolbarTime();
+          } else if (action === "loop") {
+            timeFlow.loop = !timeFlow.loop;
+            syncTimeControls();
+          }
+        });
+      });
+
+      syncTimeControls();
+
+      if (threeToolbarPin && threeViewToolbar) {
+        threeToolbarPin.addEventListener("click", () => {
+          const pinned = !threeViewToolbar.classList.contains("pinned");
+          threeViewToolbar.classList.toggle("pinned", pinned);
+          threeToolbarPin.classList.toggle("active", pinned);
+          threeToolbarPin.setAttribute("aria-pressed", pinned ? "true" : "false");
+          threeToolbarPin.title = pinned ? "Allow toolbar to fade" : "Keep toolbar visible";
+          threeToolbarPin.setAttribute("aria-label", pinned ? "Allow toolbar to fade" : "Keep toolbar visible");
+        });
+      }
+
 
       if (threeDebugCapture) {
         threeDebugCapture.addEventListener('click', () => {

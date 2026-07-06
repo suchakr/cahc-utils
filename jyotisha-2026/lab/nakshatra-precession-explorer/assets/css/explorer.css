@@ -781,30 +781,155 @@
         white-space: nowrap;
       }
 
-      .three-fullscreen-button {
+      .three-view-toolbar {
         position: absolute;
         right: 0.75rem;
         top: 0.75rem;
-        z-index: 3;
-        border: 1px solid rgba(255,255,255,0.26);
+        z-index: 4;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.22rem;
+        padding: 0.24rem;
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 999px;
-        background: rgba(8,8,16,0.56);
+        background: rgba(8,8,16,0.58);
+        color: rgba(255,255,255,0.86);
+        opacity: 0.16;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+        backdrop-filter: blur(10px);
+        transition: opacity 220ms ease, background 220ms ease;
+      }
+
+      .three-container:hover .three-view-toolbar {
+        opacity: 0.32;
+      }
+
+      .three-view-toolbar:hover,
+      .three-view-toolbar.pinned {
+        opacity: 0.95;
+        background: rgba(8,8,16,0.72);
+      }
+
+      .three-view-toolbar-divider {
+        width: 1px;
+        height: 1.25rem;
+        background: rgba(255,255,255,0.18);
+        margin: 0 0.08rem;
+      }
+
+      .three-tool-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.25rem;
+        height: 1.75rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: 700 0.72rem/1 var(--font-sans);
+        padding: 0 0.5rem;
+        white-space: nowrap;
+      }
+
+      .three-tool-button.icon-only {
+        width: 1.75rem;
+        min-width: 1.75rem;
+        padding: 0;
+      }
+
+      .three-tool-button svg {
+        width: 0.95rem;
+        height: 0.95rem;
+        stroke: currentColor;
+      }
+
+      .three-tool-button:hover,
+      .three-tool-button:focus-visible {
+        border-color: rgba(255,255,255,0.24);
+        background: rgba(255,255,255,0.12);
+        outline: none;
+      }
+
+      .three-tool-button.active {
+        border-color: rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.18);
+        color: #fff;
+      }
+
+      .three-tool-popover {
+        position: absolute;
+        top: calc(100% + 0.45rem);
+        right: 0.25rem;
+        display: none;
+        min-width: 18rem;
+        max-width: min(24rem, calc(100vw - 2rem));
+        padding: 0.65rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 8px;
+        background: rgba(8,8,16,0.86);
+        box-shadow: 0 16px 42px rgba(0,0,0,0.34);
+        backdrop-filter: blur(14px);
+      }
+
+      .three-tool-popover.open {
+        display: block;
+      }
+
+      .three-popover-section + .three-popover-section {
+        margin-top: 0.65rem;
+        padding-top: 0.55rem;
+        border-top: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .three-popover-heading {
+        margin-bottom: 0.4rem;
+        color: rgba(255,255,255,0.64);
+        font: 700 0.66rem/1 var(--font-sans);
+        text-transform: uppercase;
+      }
+
+      .three-popover-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.32rem;
+      }
+
+      .three-popover-grid.two-col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .three-popover-button {
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
         color: rgba(255,255,255,0.86);
         cursor: pointer;
-        font: 0.78rem/1 var(--font-mono);
-        padding: 0.35rem 0.55rem;
-        opacity: 0.88;
-        transition: opacity 700ms ease;
+        font: 700 0.72rem/1 var(--font-sans);
+        padding: 0.45rem 0.55rem;
+        white-space: nowrap;
       }
 
-      .three-container.theater-mode .three-fullscreen-button {
-        opacity: 0;
+      .three-popover-button:hover,
+      .three-popover-button:focus-visible {
+        background: rgba(255,255,255,0.12);
+        outline: none;
       }
 
-      .three-container.theater-mode:hover .three-fullscreen-button,
-      .three-container.theater-mode .three-fullscreen-button:focus-visible {
-        opacity: 0.86;
+      .three-popover-button.active {
+        border-color: rgba(255,255,255,0.34);
+        background: rgba(255,255,255,0.20);
+        color: #fff;
       }
+
+      .three-time-status {
+        margin-bottom: 0.45rem;
+        color: rgba(255,255,255,0.72);
+        font: 0.76rem/1.2 var(--font-mono);
+        white-space: nowrap;
+      }
+
 
       .three-container.theater-mode {
         position: fixed !important;

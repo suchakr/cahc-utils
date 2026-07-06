@@ -1,0 +1,31 @@
+[project]
+name = "chandra-marga"
+version = "0.1.0"
+description = "Precomputed lunar/solar event solver and Stellarium export pipeline for the crescent-moon series (chandra-shranga / moon-shranga)."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "astropy",
+  "astroplan",
+  "numpy",
+  "pandas",
+  "scipy",
+  "pillow",
+  "joblib",
+]
+
+[dependency-groups]
+dev = [
+  "ruff",
+]
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

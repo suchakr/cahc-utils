@@ -8,26 +8,43 @@
     <style>
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 4rem;
+        scroll-padding-top: 4.4rem;
+      }
+      .content {
+        max-width: 1160px;
+      }
+      .intro {
+        padding-bottom: 0.55rem;
+      }
+      .intro h1 {
+        margin-bottom: 0.35rem;
+      }
+      .intro .lede {
+        max-width: 58rem;
+        font-size: 1rem;
+        line-height: 1.5;
       }
       .chandra-strip-nav {
         position: sticky;
         top: 0;
         z-index: 5;
-        margin: 0.7rem calc(50% - 50vw) 0;
+        margin: 0 calc(50% - 50vw) 0.75rem;
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 251, 244, 0.96);
+        background: rgba(255, 251, 244, 0.97);
         backdrop-filter: blur(8px);
       }
       .chandra-strip-nav-inner {
-        max-width: 1120px;
+        max-width: 1160px;
         margin: 0 auto;
-        padding: 0.58rem 1.25rem 0.52rem;
+        padding: 0.42rem 1.25rem;
+      }
+      .nav-topline {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 1rem;
-        min-width: 0;
+        min-height: 2.2rem;
       }
       .chandra-brand {
         color: var(--ink);
@@ -35,386 +52,377 @@
         text-decoration: none;
         white-space: nowrap;
       }
-      .tithi-nav {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        overflow-x: auto;
+      .current-strip-label {
         min-width: 0;
         flex: 1;
-        padding-bottom: 0.08rem;
-      }
-      .tithi-nav-group {
-        display: inline-flex;
-        align-items: baseline;
-        gap: 0.32rem;
-        white-space: nowrap;
         color: var(--muted);
         font-size: 0.95rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-      .tithi-nav-group span {
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        white-space: nowrap;
+      }
+      .nav-toggle {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
         color: var(--ink);
+        padding: 0.24rem 0.62rem;
+        font: inherit;
+        font-size: 0.9rem;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .current-strip-label.label-changing {
+        animation: label-change 360ms ease-out;
+      }
+      @keyframes label-change {
+        0% {
+          color: var(--accent);
+          opacity: 0.48;
+          transform: translateY(0.28rem);
+        }
+        70% {
+          color: var(--accent);
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          color: var(--muted);
+        }
+      }
+      .nav-matrix {
+        display: none;
+        gap: 0.18rem;
+        min-width: min(720px, 100%);
+        overflow-x: auto;
+        padding-top: 0.34rem;
+      }
+      .nav-expanded .nav-matrix {
+        display: grid;
+      }
+      .matrix-row {
+        display: grid;
+        grid-template-columns: minmax(92px, 0.8fr) repeat(var(--matrix-columns), minmax(118px, 1fr));
+        gap: 0.18rem;
+        align-items: stretch;
+      }
+      .matrix-phase,
+      .matrix-cell {
+        min-height: 2rem;
+        padding: 0.32rem 0.38rem;
+        border-bottom: 1px solid rgba(73, 61, 36, 0.12);
+      }
+      .matrix-phase {
         font-weight: 700;
       }
-      .tithi-nav-group a,
-      .manifest-link {
+      .matrix-head {
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+      .matrix-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.28rem;
+        flex-wrap: wrap;
+      }
+      .year-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.8rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.18rem 0.48rem;
+        background: rgba(255, 255, 255, 0.64);
         text-decoration: none;
+        font-size: 0.88rem;
+        transition:
+          background 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease,
+          color 180ms ease,
+          transform 180ms ease;
       }
-      .strip-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      .year-chip:hover {
+        background: rgba(255, 255, 255, 0.96);
       }
-      .strip-group {
-        scroll-margin-top: 4rem;
-        padding: 0.3rem 0 1rem;
+      .year-chip.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+        box-shadow: 0 0 0 3px rgba(151, 92, 35, 0.16);
+        transform: translateY(-1px);
       }
-      .strip-group + .strip-group {
+      .empty-cell {
+        color: var(--muted);
+      }
+      .phase-section {
+        padding: 0.4rem 0 0.65rem;
+      }
+      .phase-section + .phase-section {
         border-top: 1px solid var(--line);
-        padding-top: 1rem;
       }
-      .strip-group h3 {
-        margin: 0 0 0.75rem;
-        font-size: 1.12rem;
+      .phase-section h2 {
+        margin: 0 0 0.55rem;
+        font-size: 1.32rem;
       }
       .strip-item {
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 4.6rem;
+        margin: 0 0 1.05rem;
       }
-      .strip-title-row {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 1rem;
-      }
-      .strip-title-row h3 {
-        margin: 0;
-        font-size: 1.12rem;
+      .strip-item h3 {
+        margin: 0 0 0.32rem;
+        font-size: 1rem;
+        color: var(--muted);
+        font-weight: 700;
       }
       .strip-preview {
         background: #111;
         border: 1px solid var(--line);
       }
-      code {
-        overflow-wrap: anywhere;
+      .caption {
+        margin: 0.32rem 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.45;
+      }
+      .page-footer {
+        border-top: 1px solid var(--line);
+        padding-top: 0.75rem;
+      }
+      @media (max-width: 760px) {
+        html {
+          scroll-padding-top: 5rem;
+        }
+        .chandra-strip-nav-inner {
+          padding: 0.36rem 0.75rem;
+        }
+        .nav-topline {
+          gap: 0.55rem;
+        }
+        .chandra-brand {
+          display: none;
+        }
+        .current-strip-label {
+          font-size: 0.88rem;
+        }
+        .matrix-row {
+          grid-template-columns: minmax(78px, 0.7fr) repeat(var(--matrix-columns), minmax(104px, 1fr));
+        }
+        .matrix-phase,
+        .matrix-cell {
+          padding: 0.26rem 0.28rem;
+        }
+        .strip-item {
+          scroll-margin-top: 5.2rem;
+        }
       }
     </style>
   </head>
   <body class="exploration-body">
     <main class="content" id="top">
-      <section class="flat-section">
+      <section class="flat-section intro">
         <p class="eyebrow">Exploration</p>
         <h1>Chandra Marga</h1>
-        <p class="lede">
-          A self-contained gallery for lunar crescent strip images generated by the
-          chandra-marga event pipeline and rendered through Stellarium.
-        </p>
-      </section>
-
-      <section class="flat-section">
-        <h2>Reading Notes</h2>
-        <ul>
-          <li>Moon-altitude strips fix the Moon near +8 degrees and compare crescent visibility across selected tithis.</li>
-          <li>The Sun-altitude strip fixes twilight at Sun altitude -9 degrees for the Shukla pratipada series.</li>
-        </ul>
+        <p class="lede">Curated lunar strip views from the moon-shranga Stellarium workflow, organized by phase and observing condition.</p>
       </section>
 
       <nav class="chandra-strip-nav" aria-label="Chandra Marga strip jumps">
         <div class="chandra-strip-nav-inner">
-          <a class="chandra-brand" href="#top">Chandra Marga</a>
-          <div class="tithi-nav">
-            <div class="tithi-nav-group"><span>S1</span><a href="#s1-ce-2025">2025</a> <a href="#s1-bce-527">527</a> <a href="#s1-bce-509">509</a> <a href="#s1-bce-500">500</a></div><div class="tithi-nav-group"><span>S2</span><a href="#s2-ce-2025">2025</a> <a href="#s2-bce-527">527</a> <a href="#s2-bce-509">509</a> <a href="#s2-bce-500">500</a></div><div class="tithi-nav-group"><span>S15</span><a href="#s15-ce-2025">2025</a> <a href="#s15-bce-527">527</a> <a href="#s15-bce-509">509</a> <a href="#s15-bce-500">500</a></div><div class="tithi-nav-group"><span>K15</span><a href="#k15-ce-2025">2025</a> <a href="#k15-bce-527">527</a> <a href="#k15-bce-500">500</a></div>
+          <div class="nav-topline">
+            <a class="chandra-brand" href="#top">Chandra Marga</a>
+            <div class="current-strip-label" id="current-strip-label">Darsha · West · Sun -9 · 527 BCE</div>
+            <div class="nav-actions">
+              <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-matrix">Index</button>
+            </div>
           </div>
-          <a class="manifest-link" href="#manifest">Manifest</a>
+
+        <div class="nav-matrix" id="nav-matrix" style="--matrix-columns: 3">
+          <div class="matrix-row matrix-header">
+            <div class="matrix-phase matrix-head"></div>
+            <div class="matrix-cell matrix-head">West Sun -9</div><div class="matrix-cell matrix-head">West Moon +8</div><div class="matrix-cell matrix-head">East Sun -5</div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-phase">Darsha</div>
+            <div class="matrix-cell"><a class="year-chip" href="#darsha-west-sun9-527" data-target="darsha-west-sun9-527" title="Darsha · West · Sun -9 · 527 BCE">527</a></div><div class="matrix-cell"><a class="year-chip" href="#darsha-west-moon8-527" data-target="darsha-west-moon8-527" title="Darsha · West · Moon +8 · 527 BCE">527</a><a class="year-chip" href="#darsha-west-moon8-2025" data-target="darsha-west-moon8-2025" title="Darsha · West · Moon +8 · 2025 CE">2025</a></div><div class="matrix-cell"><span class="empty-cell">—</span></div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-phase">Shukla 2</div>
+            <div class="matrix-cell"><span class="empty-cell">—</span></div><div class="matrix-cell"><a class="year-chip" href="#s2-west-moon8-527" data-target="s2-west-moon8-527" title="Shukla 2 · West · Moon +8 · 527 BCE">527</a><a class="year-chip" href="#s2-west-moon8-2025" data-target="s2-west-moon8-2025" title="Shukla 2 · West · Moon +8 · 2025 CE">2025</a></div><div class="matrix-cell"><span class="empty-cell">—</span></div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-phase">Purnima</div>
+            <div class="matrix-cell"><span class="empty-cell">—</span></div><div class="matrix-cell"><a class="year-chip" href="#purnima-west-moon8-527" data-target="purnima-west-moon8-527" title="Purnima · West · Moon +8 · 527 BCE">527</a><a class="year-chip" href="#purnima-west-moon8-2025" data-target="purnima-west-moon8-2025" title="Purnima · West · Moon +8 · 2025 CE">2025</a></div><div class="matrix-cell"><a class="year-chip" href="#purnima-east-sun5-527" data-target="purnima-east-sun5-527" title="Purnima · East · Sun -5 · 527 BCE">527</a></div>
+          </div>
+        </div>
         </div>
       </nav>
 
-      <section class="flat-section">
-        <div class="section-title-row">
-          <h2>Lunar Strips</h2>
-          <a href="tables/strip-manifest.json">Manifest JSON</a>
-        </div>
 
-        <section class="strip-group" id="s1-ce-2025">
-          <h3>S1 · Shukla pratipada · 2025 CE</h3>
-          <div class="strip-grid">
+        <section class="phase-section" aria-labelledby="phase-darsha">
+          <h2 id="phase-darsha">Darsha</h2>
 
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>2025 - Shukla pratipada</h3>
-              <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_pratipada.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_pratipada.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_pratipada.webp" alt="2025 - Shukla pratipada lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set-2025-shukla_pratipada.webp - 94 KB</p>
+          <article class="strip-item" id="darsha-west-sun9-527">
+            <h3>Darsha · West · Sun -9 · 527 BCE</h3>
+            <span class="strip-label" hidden>Darsha · West · Sun -9 · 527 BCE</span>
+            <img class="asset-preview strip-preview" src="strips/darsha-west-sun9-527.webp" alt="Darsha · West · Sun -9 · 527 BCE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Twilight-fixed western view for Darsha / first visibility reference.</p>
           </article>
-          </div>
+
+          <article class="strip-item" id="darsha-west-moon8-527">
+            <h3>Darsha · West · Moon +8 · 527 BCE</h3>
+            <span class="strip-label" hidden>Darsha · West · Moon +8 · 527 BCE</span>
+            <img class="asset-preview strip-preview" src="strips/darsha-west-moon8-527.webp" alt="Darsha · West · Moon +8 · 527 BCE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Moon-altitude-fixed western view for Darsha.</p>
+          </article>
+
+          <article class="strip-item" id="darsha-west-moon8-2025">
+            <h3>Darsha · West · Moon +8 · 2025 CE</h3>
+            <span class="strip-label" hidden>Darsha · West · Moon +8 · 2025 CE</span>
+            <img class="asset-preview strip-preview" src="strips/darsha-west-moon8-2025.webp" alt="Darsha · West · Moon +8 · 2025 CE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Modern Moon-altitude-fixed western comparison.</p>
+          </article>
         </section>
-        <section class="strip-group" id="s1-bce-527">
-          <h3>S1 · Shukla pratipada · 527 BCE</h3>
-          <div class="strip-grid">
 
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-527 - Shukla pratipada</h3>
-              <a href="strips/set-sun-below-9/-527/strip-set-sun-below-9--527-shukla_pratipada.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset view at Sun altitude -9 - strip</p>
-            <a href="strips/set-sun-below-9/-527/strip-set-sun-below-9--527-shukla_pratipada.webp"><img class="asset-preview strip-preview" src="strips/set-sun-below-9/-527/strip-set-sun-below-9--527-shukla_pratipada.webp" alt="-527 - Shukla pratipada lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">strip-set-sun-below-9--527-shukla_pratipada.webp - 134 KB</p>
+        <section class="phase-section" aria-labelledby="phase-shukla-2">
+          <h2 id="phase-shukla-2">Shukla 2</h2>
+
+          <article class="strip-item" id="s2-west-moon8-527">
+            <h3>Shukla 2 · West · Moon +8 · 527 BCE</h3>
+            <span class="strip-label" hidden>Shukla 2 · West · Moon +8 · 527 BCE</span>
+            <img class="asset-preview strip-preview" src="strips/s2-west-moon8-527.webp" alt="Shukla 2 · West · Moon +8 · 527 BCE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Moon-altitude-fixed western view for second waxing tithi.</p>
           </article>
-          </div>
+
+          <article class="strip-item" id="s2-west-moon8-2025">
+            <h3>Shukla 2 · West · Moon +8 · 2025 CE</h3>
+            <span class="strip-label" hidden>Shukla 2 · West · Moon +8 · 2025 CE</span>
+            <img class="asset-preview strip-preview" src="strips/s2-west-moon8-2025.webp" alt="Shukla 2 · West · Moon +8 · 2025 CE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Modern Moon-altitude-fixed western comparison.</p>
+          </article>
         </section>
-        <section class="strip-group" id="s1-bce-509">
-          <h3>S1 · Shukla pratipada · 509 BCE</h3>
-          <div class="strip-grid">
 
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-509.v01 - Shukla pratipada</h3>
-              <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_pratipada.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_pratipada.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_pratipada.webp" alt="-509.v01 - Shukla pratipada lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--509-shukla_pratipada.webp - 78 KB</p>
+        <section class="phase-section" aria-labelledby="phase-purnima">
+          <h2 id="phase-purnima">Purnima</h2>
+
+          <article class="strip-item" id="purnima-west-moon8-527">
+            <h3>Purnima · West · Moon +8 · 527 BCE</h3>
+            <span class="strip-label" hidden>Purnima · West · Moon +8 · 527 BCE</span>
+            <img class="asset-preview strip-preview" src="strips/purnima-west-moon8-527.webp" alt="Purnima · West · Moon +8 · 527 BCE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Moon-altitude-fixed western full-moon view.</p>
           </article>
-          </div>
+
+          <article class="strip-item" id="purnima-west-moon8-2025">
+            <h3>Purnima · West · Moon +8 · 2025 CE</h3>
+            <span class="strip-label" hidden>Purnima · West · Moon +8 · 2025 CE</span>
+            <img class="asset-preview strip-preview" src="strips/purnima-west-moon8-2025.webp" alt="Purnima · West · Moon +8 · 2025 CE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Modern Moon-altitude-fixed western full-moon comparison.</p>
+          </article>
+
+          <article class="strip-item" id="purnima-east-sun5-527">
+            <h3>Purnima · East · Sun -5 · 527 BCE</h3>
+            <span class="strip-label" hidden>Purnima · East · Sun -5 · 527 BCE</span>
+            <img class="asset-preview strip-preview" src="strips/purnima-east-sun5-527.webp" alt="Purnima · East · Sun -5 · 527 BCE lunar strip" loading="lazy" decoding="async">
+            <p class="caption">Eastern moonrise view with western Sun at -5 degrees.</p>
+          </article>
         </section>
-        <section class="strip-group" id="s1-bce-500">
-          <h3>S1 · Shukla pratipada · 500 BCE</h3>
-          <div class="strip-grid">
 
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Shukla pratipada</h3>
-              <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - Moon +8 run</p>
-            <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp" alt="-500 - Shukla pratipada lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp - 72 KB</p>
-          </article>
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Shukla pratipada</h3>
-              <a href="strips/set-moon-above-8/-500/clip04-strip-set--500-shukla_pratipada.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-500/clip04-strip-set--500-shukla_pratipada.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/clip04-strip-set--500-shukla_pratipada.webp" alt="-500 - Shukla pratipada lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--500-shukla_pratipada.webp - 73 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s2-ce-2025">
-          <h3>S2 · Shukla dwitiya · 2025 CE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>2025 - Shukla dwitiya</h3>
-              <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_dwitiya.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_dwitiya.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_dwitiya.webp" alt="2025 - Shukla dwitiya lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set-2025-shukla_dwitiya.webp - 102 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s2-bce-527">
-          <h3>S2 · Shukla dwitiya · 527 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-527 - Shukla dwitiya</h3>
-              <a href="strips/set-moon-above-8/-527/clip04-strip-set--527-shukla_dwitiya.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-527/clip04-strip-set--527-shukla_dwitiya.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-527/clip04-strip-set--527-shukla_dwitiya.webp" alt="-527 - Shukla dwitiya lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--527-shukla_dwitiya.webp - 98 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s2-bce-509">
-          <h3>S2 · Shukla dwitiya · 509 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-509.v01 - Shukla dwitiya</h3>
-              <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_dwitiya.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_dwitiya.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_dwitiya.webp" alt="-509.v01 - Shukla dwitiya lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--509-shukla_dwitiya.webp - 78 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s2-bce-500">
-          <h3>S2 · Shukla dwitiya · 500 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Shukla dwitiya</h3>
-              <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - Moon +8 run</p>
-            <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp" alt="-500 - Shukla dwitiya lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp - 79 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s15-ce-2025">
-          <h3>S15 · Purnima · 2025 CE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>2025 - Purnima</h3>
-              <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-purnima.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-purnima.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/2025/clip04-strip-set-2025-purnima.webp" alt="2025 - Purnima lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set-2025-purnima.webp - 220 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s15-bce-527">
-          <h3>S15 · Purnima · 527 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-527 - Purnima</h3>
-              <a href="strips/set-moon-above-8/-527/clip04-strip-set--527-purnima.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-527/clip04-strip-set--527-purnima.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-527/clip04-strip-set--527-purnima.webp" alt="-527 - Purnima lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--527-purnima.webp - 218 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s15-bce-509">
-          <h3>S15 · Purnima · 509 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-509.v01 - Purnima</h3>
-              <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-purnima.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-purnima.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-purnima.webp" alt="-509.v01 - Purnima lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--509-purnima.webp - 151 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="s15-bce-500">
-          <h3>S15 · Purnima · 500 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Purnima</h3>
-              <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-purnima.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - Moon +8 run</p>
-            <a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-purnima.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-purnima.webp" alt="-500 - Purnima lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--500.moon-8-alt-purnima.webp - 157 KB</p>
-          </article>
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Purnima</h3>
-              <a href="strips/set-moon-above-8/-500/clip04-strip-set--500-purnima.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - clip04 crop</p>
-            <a href="strips/set-moon-above-8/-500/clip04-strip-set--500-purnima.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/clip04-strip-set--500-purnima.webp" alt="-500 - Purnima lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">clip04-strip-set--500-purnima.webp - 160 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="k15-ce-2025">
-          <h3>K15 · Darsha · 2025 CE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>2025 - Darsha</h3>
-              <a href="strips/set-moon-above-8/2025/ce-2025-darsha.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - strip</p>
-            <a href="strips/set-moon-above-8/2025/ce-2025-darsha.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/2025/ce-2025-darsha.webp" alt="2025 - Darsha lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">ce-2025-darsha.webp - 100 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="k15-bce-527">
-          <h3>K15 · Darsha · 527 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-527 - Darsha</h3>
-              <a href="strips/set-moon-above-8/-527/bce-527-darsha.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - strip</p>
-            <a href="strips/set-moon-above-8/-527/bce-527-darsha.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-527/bce-527-darsha.webp" alt="-527 - Darsha lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">bce-527-darsha.webp - 98 KB</p>
-          </article>
-          </div>
-        </section>
-        <section class="strip-group" id="k15-bce-500">
-          <h3>K15 · Darsha · 500 BCE</h3>
-          <div class="strip-grid">
-
-          <article class="strip-item">
-            <div class="strip-title-row">
-              <h3>-500 - Darsha</h3>
-              <a href="strips/set-moon-above-8/-500/darsha-moon-strip--500.webp">Open</a>
-            </div>
-            <p class="small-note">Moonset at Moon altitude +8 - strip</p>
-            <a href="strips/set-moon-above-8/-500/darsha-moon-strip--500.webp"><img class="asset-preview strip-preview" src="strips/set-moon-above-8/-500/darsha-moon-strip--500.webp" alt="-500 - Darsha lunar strip" loading="lazy" decoding="async"></a>
-            <p class="small-note">darsha-moon-strip--500.webp - 82 KB</p>
-          </article>
-          </div>
-        </section>
-      </section>
-
-      <section class="flat-section" id="manifest">
-        <h2>Manifest Preview</h2>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Mode</th>
-                <th>Year Tag</th>
-                <th>Event</th>
-                <th>Variant</th>
-                <th>File</th>
-              </tr>
-            </thead>
-            <tbody>
-    <tr><td>Moonset at Moon altitude +8</td><td>2025</td><td>Shukla pratipada</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_pratipada.webp">clip04-strip-set-2025-shukla_pratipada.webp</a></td></tr>
-    <tr><td>Moonset view at Sun altitude -9</td><td>-527</td><td>Shukla pratipada</td><td>strip</td><td><a href="strips/set-sun-below-9/-527/strip-set-sun-below-9--527-shukla_pratipada.webp">strip-set-sun-below-9--527-shukla_pratipada.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-509.v01</td><td>Shukla pratipada</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_pratipada.webp">clip04-strip-set--509-shukla_pratipada.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Shukla pratipada</td><td>Moon +8 run</td><td><a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp">clip04-strip-set--500.moon-8-alt-shukla_pratipada.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Shukla pratipada</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-500/clip04-strip-set--500-shukla_pratipada.webp">clip04-strip-set--500-shukla_pratipada.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>2025</td><td>Shukla dwitiya</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-shukla_dwitiya.webp">clip04-strip-set-2025-shukla_dwitiya.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-527</td><td>Shukla dwitiya</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-527/clip04-strip-set--527-shukla_dwitiya.webp">clip04-strip-set--527-shukla_dwitiya.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-509.v01</td><td>Shukla dwitiya</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-shukla_dwitiya.webp">clip04-strip-set--509-shukla_dwitiya.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Shukla dwitiya</td><td>Moon +8 run</td><td><a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp">clip04-strip-set--500.moon-8-alt-shukla_dwitiya.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>2025</td><td>Purnima</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/2025/clip04-strip-set-2025-purnima.webp">clip04-strip-set-2025-purnima.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-527</td><td>Purnima</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-527/clip04-strip-set--527-purnima.webp">clip04-strip-set--527-purnima.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-509.v01</td><td>Purnima</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-509.v01/clip04-strip-set--509-purnima.webp">clip04-strip-set--509-purnima.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Purnima</td><td>Moon +8 run</td><td><a href="strips/set-moon-above-8/-500/clip04-strip-set--500.moon-8-alt-purnima.webp">clip04-strip-set--500.moon-8-alt-purnima.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Purnima</td><td>clip04 crop</td><td><a href="strips/set-moon-above-8/-500/clip04-strip-set--500-purnima.webp">clip04-strip-set--500-purnima.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>2025</td><td>Darsha</td><td>strip</td><td><a href="strips/set-moon-above-8/2025/ce-2025-darsha.webp">ce-2025-darsha.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-527</td><td>Darsha</td><td>strip</td><td><a href="strips/set-moon-above-8/-527/bce-527-darsha.webp">bce-527-darsha.webp</a></td></tr>
-    <tr><td>Moonset at Moon altitude +8</td><td>-500</td><td>Darsha</td><td>strip</td><td><a href="strips/set-moon-above-8/-500/darsha-moon-strip--500.webp">darsha-moon-strip--500.webp</a></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <footer class="flat-section page-footer">
+        <p class="small-note">Source curation is managed in <code>explorations/chandra-marga-sources.tsv</code>.</p>
+      </footer>
     </main>
+    <script>
+      const nav = document.querySelector(".chandra-strip-nav");
+      const navToggle = document.getElementById("nav-toggle");
+      const currentLabel = document.getElementById("current-strip-label");
+      const chips = Array.from(document.querySelectorAll(".year-chip"));
+      const sectionsById = new Map(
+        Array.from(document.querySelectorAll(".strip-item")).map((section) => [section.id, section])
+      );
+
+      function setExpanded(expanded) {
+        nav.classList.toggle("nav-expanded", expanded);
+        navToggle.setAttribute("aria-expanded", String(expanded));
+        navToggle.textContent = expanded ? "Close" : "Index";
+      }
+
+      function setCurrent(section) {
+        if (!section || section.dataset.current === "true") return;
+        sectionsById.forEach((candidate) => {
+          candidate.dataset.current = candidate === section ? "true" : "false";
+        });
+        const label = section.querySelector(".strip-label")?.textContent || section.querySelector("h3")?.textContent || "Chandra Marga";
+        if (currentLabel.textContent !== label) {
+          currentLabel.classList.remove("label-changing");
+          void currentLabel.offsetWidth;
+          currentLabel.textContent = label;
+          currentLabel.classList.add("label-changing");
+        }
+        chips.forEach((chip) => chip.classList.toggle("active", chip.dataset.target === section.id));
+      }
+
+      currentLabel.addEventListener("animationend", () => {
+        currentLabel.classList.remove("label-changing");
+      });
+
+      function currentSectionFromViewport() {
+        const sections = Array.from(sectionsById.values());
+        const navBottom = nav.getBoundingClientRect().bottom;
+        const probeY = Math.min(window.innerHeight * 0.42, navBottom + 180);
+        const containing = sections.find((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= probeY && rect.bottom > probeY;
+        });
+        if (containing) return containing;
+
+        return sections
+          .map((section) => {
+            const rect = section.getBoundingClientRect();
+            return { section, distance: Math.abs(rect.top - probeY) };
+          })
+          .sort((a, b) => a.distance - b.distance)[0]?.section;
+      }
+
+      let pendingCurrentUpdate = false;
+      function queueCurrentUpdate() {
+        if (pendingCurrentUpdate) return;
+        pendingCurrentUpdate = true;
+        requestAnimationFrame(() => {
+          pendingCurrentUpdate = false;
+          setCurrent(currentSectionFromViewport());
+        });
+      }
+
+      navToggle.addEventListener("click", () => {
+        setExpanded(!nav.classList.contains("nav-expanded"));
+        queueCurrentUpdate();
+      });
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", (event) => {
+          event.preventDefault();
+          const section = sectionsById.get(chip.dataset.target);
+          if (!section) return;
+          setExpanded(false);
+          window.history.pushState(null, "", `#${section.id}`);
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+          setCurrent(section);
+        });
+      });
+
+      const initialSection = sectionsById.get(window.location.hash.replace("#", "")) || sectionsById.values().next().value;
+      if (initialSection) setCurrent(initialSection);
+      window.addEventListener("scroll", queueCurrentUpdate, { passive: true });
+      window.addEventListener("resize", queueCurrentUpdate);
+      window.addEventListener("load", queueCurrentUpdate);
+    </script>
   </body>
 </html>

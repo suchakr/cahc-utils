@@ -1,0 +1,9 @@
+id	phase_order	phase_label	view_order	view	condition	year	source_rel	caption
+darsha-west-sun9-527	1	Darsha	1	West	Sun -9	-527	set-sun-below-9/-527/strip-set-sun-below-9--527-shukla_pratipada.jpg	Twilight-fixed western view for Darsha / first visibility reference.
+darsha-west-moon8-527	1	Darsha	2	West	Moon +8	-527	set-moon-above-8/-527/clip04-strip-set--527-shukla_pratipada.jpg	Moon-altitude-fixed western view for Darsha.
+darsha-west-moon8-2025	1	Darsha	2	West	Moon +8	2025	set-moon-above-8/2025/clip04-strip-set-2025-shukla_pratipada.jpg	Modern Moon-altitude-fixed western comparison.
+s2-west-moon8-527	2	Shukla 2	2	West	Moon +8	-527	set-moon-above-8/-527/clip04-strip-set--527-shukla_dwitiya.jpg	Moon-altitude-fixed western view for second waxing tithi.
+s2-west-moon8-2025	2	Shukla 2	2	West	Moon +8	2025	set-moon-above-8/2025/clip04-strip-set-2025-shukla_dwitiya.jpg	Modern Moon-altitude-fixed western comparison.
+purnima-west-moon8-527	15	Purnima	2	West	Moon +8	-527	set-moon-above-8/-527/clip04-strip-set--527-purnima.jpg	Moon-altitude-fixed western full-moon view.
+purnima-west-moon8-2025	15	Purnima	2	West	Moon +8	2025	set-moon-above-8/2025/clip04-strip-set-2025-purnima.jpg	Modern Moon-altitude-fixed western full-moon comparison.
+purnima-east-sun5-527	15	Purnima	3	East	Sun -5	-527	rise-sun-below-west-5/-527/strip-rise-sun-below-west-5--527-purnima.jpg	Eastern moonrise view with western Sun at -5 degrees.

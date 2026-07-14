@@ -94,8 +94,9 @@ run_command() {
 port_listener() {
   local check_port="$1"
   if command -v lsof >/dev/null 2>&1; then
-    lsof -nP -iTCP:"$check_port" -sTCP:LISTEN 2>/dev/null | sed -n '2p'
+    lsof -nP -iTCP:"$check_port" -sTCP:LISTEN 2>/dev/null | sed -n '2p' || true
   fi
+  return 0
 }
 
 port_is_busy() {
@@ -125,7 +126,7 @@ case "$mode" in
       run_command netlify dev --dir "$PUBLISH_DIR" --port "$port" "${passthrough[@]}"
       exit 0
     fi
-    listener="$(port_is_busy "$port")"
+    listener="$(port_listener "$port")"
     if [[ -n "$listener" ]]; then
       echo "A local server is already listening at $local_url"
       echo "$listener"

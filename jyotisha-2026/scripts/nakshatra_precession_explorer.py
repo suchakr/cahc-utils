@@ -1317,8 +1317,12 @@ def page_html(dataset: dict[str, object]) -> str:
 
       .three-popover-grid {{
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 0.32rem;
+      }}
+
+      .three-popover-grid.three-col {{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }}
 
       .three-popover-grid.two-col {{
@@ -1332,7 +1336,9 @@ def page_html(dataset: dict[str, object]) -> str:
         color: rgba(255,255,255,0.86);
         cursor: pointer;
         font: 700 0.72rem/1 var(--font-sans);
-        padding: 0.45rem 0.55rem;
+        height: 1.75rem;
+        min-width: 2.25rem;
+        padding: 0 0.5rem;
         white-space: nowrap;
       }}
 
@@ -1348,10 +1354,28 @@ def page_html(dataset: dict[str, object]) -> str:
         color: #fff;
       }}
 
+      .three-popover-button:disabled {{
+        cursor: default;
+        opacity: 0.42;
+      }}
+
       .three-time-status {{
         margin-bottom: 0.45rem;
         color: rgba(255,255,255,0.72);
         font: 0.76rem/1.2 var(--font-mono);
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }}
+
+      .three-story-status-line {{
+        margin-bottom: 0.45rem;
+        color: rgba(255,255,255,0.78);
+        font: 700 0.76rem/1.2 var(--font-sans);
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
       }}
 
@@ -1550,7 +1574,7 @@ def page_html(dataset: dict[str, object]) -> str:
                 <div class="three-tool-popover" id="three-more-drawer" aria-label="More 3D controls">
                   <div class="three-popover-section">
                     <div class="three-popover-heading">Orbit</div>
-                    <div class="three-popover-grid">
+                    <div class="three-popover-grid three-col">
                       <button class="three-popover-button active" type="button" data-orbit-mode="free" title="Free orbit">Free</button>
                       <button class="three-popover-button" type="button" data-orbit-mode="xy" title="XY plane spin">XY</button>
                       <button class="three-popover-button" type="button" data-orbit-mode="lock" title="Rotation locked">Lock</button>
@@ -1564,6 +1588,14 @@ def page_html(dataset: dict[str, object]) -> str:
                       <button class="three-popover-button" type="button" data-view-anchor="side" title="Ecliptic side view">Side</button>
                       <button class="three-popover-button" type="button" data-view-anchor="pole" title="Current celestial pole view">Pole</button>
                       <button class="three-popover-button" type="button" data-view-anchor="equator" title="Seasonal equator view">Equator</button>
+                    </div>
+                  </div>
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">Scene</div>
+                    <div class="three-popover-grid three-col">
+                      <button class="three-popover-button" type="button" data-scene-preset="day" title="Day lighting">Day</button>
+                      <button class="three-popover-button" type="button" data-scene-preset="twilight" title="Evening lighting">Even</button>
+                      <button class="three-popover-button active" type="button" data-scene-preset="night" title="Night lighting">Night</button>
                     </div>
                   </div>
                   <div class="three-popover-section">
@@ -1594,6 +1626,16 @@ def page_html(dataset: dict[str, object]) -> str:
                       <button class="three-popover-button active" type="button" data-time-speed="1" title="Normal speed">1x</button>
                       <button class="three-popover-button" type="button" data-time-speed="4" title="Fast">4x</button>
                       <button class="three-popover-button" type="button" data-time-speed="16" title="Very fast">16x</button>
+                    </div>
+                  </div>
+                  <div class="three-popover-section">
+                    <div class="three-popover-heading">Story</div>
+                    <div class="three-story-status-line" id="three-toolbar-story-title" title="No story">No story</div>
+                    <div class="three-popover-grid">
+                      <button class="three-popover-button" type="button" data-story-action="prev" title="Previous story">Prev</button>
+                      <button class="three-popover-button" type="button" data-story-action="run" title="Run selected story">Run</button>
+                      <button class="three-popover-button" type="button" data-story-action="stop" title="Stop story">Stop</button>
+                      <button class="three-popover-button" type="button" data-story-action="next" title="Next story">Next</button>
                     </div>
                   </div>
                 </div>
@@ -2580,7 +2622,10 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
       const threeLayerButtons = Array.from(document.querySelectorAll("[data-layer-toggle]"));
       const threeTimeButtons = Array.from(document.querySelectorAll("[data-time-action]"));
       const threeTimeSpeedButtons = Array.from(document.querySelectorAll("[data-time-speed]"));
+      const threeSceneButtons = Array.from(document.querySelectorAll("[data-scene-preset]"));
+      const threeStoryToolbarButtons = Array.from(document.querySelectorAll("[data-story-action]"));
       const threeTimeStatus = document.getElementById("three-time-status");
+      const threeToolbarStoryTitle = document.getElementById("three-toolbar-story-title");
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
@@ -2708,7 +2753,7 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
           nsAxisOpacity: 0.32,
         }},
         stars: {{
-          size: 2.8,
+          size: 1.4,
           opacity: 0.88,
         }},
         nakshatras: {{
@@ -3118,6 +3163,74 @@ fullscreen ; wait 500 ; exitFullscreen</pre>
         const interval = Math.max(60, 480 / timeFlow.speed);
         timeFlow.timer = window.setInterval(() => stepToolbarTime(timeFlow.direction), interval);
         syncTimeControls();
+      }}
+
+      function syncSceneButtons() {{
+        const preset = threeSettings.lightPreset || "night";
+        threeSceneButtons.forEach((button) => {{
+          const active = button.dataset.scenePreset === preset;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        }});
+      }}
+
+      function applyScenePreset(preset) {{
+        if (!preset) return;
+        stopStory();
+        threeSettings.lightPreset = preset;
+        if (threeLightPreset) threeLightPreset.value = preset;
+        applyLightPreset();
+        syncSceneButtons();
+        syncDebugTextareaFromLive();
+        setDebugStatus(`Light preset: ${{preset}}`);
+      }}
+
+      function selectedStoryContext() {{
+        const list = filteredStories();
+        const selectedId = threeStorySelect?.value || activeStoryId;
+        let index = list.findIndex((story) => story.id === selectedId);
+        if (index < 0 && list.length) index = 0;
+        return {{ list, index }};
+      }}
+
+      function syncStoryControls() {{
+        const story = selectedStoryOriginal();
+        if (threeToolbarStoryTitle) {{
+          const title = story?.title || "No story";
+          threeToolbarStoryTitle.textContent = title;
+          threeToolbarStoryTitle.title = title;
+        }}
+        const {{ list }} = selectedStoryContext();
+        threeStoryToolbarButtons.forEach((button) => {{
+          const action = button.dataset.storyAction;
+          button.disabled = !story || (list.length < 2 && (action === "prev" || action === "next"));
+          button.classList.toggle("active", Boolean(story && activeStoryId === story.id && action === "run"));
+          button.setAttribute("aria-pressed", story && activeStoryId === story.id && action === "run" ? "true" : "false");
+        }});
+      }}
+
+      function selectToolbarStory(delta) {{
+        const {{ list, index }} = selectedStoryContext();
+        if (!list.length) {{
+          syncStoryControls();
+          return null;
+        }}
+        const next = list[(index + delta + list.length) % list.length];
+        if (threeStorySelect) threeStorySelect.value = next.id;
+        loadStoryIntoEditors(next);
+        setStoryStatus(`Selected ${{next.title}}.`);
+        syncStoryControls();
+        return next;
+      }}
+
+      function runToolbarStory() {{
+        try {{
+          const story = storyFromEditor();
+          runStory(story);
+          setStoryStatus(`Running ${{story.title}}.`);
+        }} catch (error) {{
+          setStoryStatus(`Invalid story: ${{error.message}}`);
+        }}
       }}
 
       const defaultVyomaSutra = `# Visualize axial precession against the fixed nakshatra sky
@@ -3792,6 +3905,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             button.classList.remove("active");
           }});
         }}
+        syncStoryControls();
       }}
 
       function setThreeFullscreen(enabled) {{
@@ -4537,6 +4651,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           }}, cue._scheduledAt);
           activeStoryTimers.push(timer);
         }});
+        syncStoryControls();
       }}
 
       function storySearchText(story) {{
@@ -4575,6 +4690,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             if (story && threeStorySelect) threeStorySelect.value = story.id;
             loadStoryIntoEditors(story);
             runStory(story);
+            syncStoryControls();
           }});
         }});
       }}
@@ -4607,6 +4723,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           if (threeVysuEditor && !threeVysuEditor.value.trim()) threeVysuEditor.value = defaultVyomaSutra;
           setStoryStatus("No build-time stories found.");
         }}
+        syncStoryControls();
       }}
 
       function selectedStoryOriginal() {{
@@ -4978,6 +5095,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           }}
         }});
         syncLayerButtons();
+        syncSceneButtons();
       }}
 
       /* ── init ────────────────────────────────────────────── */
@@ -5237,7 +5355,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
           geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
           const mat = new THREE.PointsMaterial({{
-            size: threeSettings.stars.size, vertexColors: true, transparent: true, opacity: threeSettings.stars.opacity, sizeAttenuation: true
+            size: threeSettings.stars.size, vertexColors: true, transparent: true, opacity: threeSettings.stars.opacity, sizeAttenuation: false
           }});
           const points = new THREE.Points(geom, mat);
           starGroupRefs.push({{ nid: naks.nid, metaIndex: naks.meta_index_28, points }});
@@ -5598,6 +5716,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           threeSettings.lightPreset = threeLightPreset.value;
           applyLightPreset();
           syncDebugTextareaFromLive();
+          syncSceneButtons();
           setDebugStatus(`Light preset: ${{threeSettings.lightPreset}}`);
         }});
       }}
@@ -5693,6 +5812,30 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
       }});
 
       syncTimeControls();
+      syncSceneButtons();
+
+      threeSceneButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          applyScenePreset(button.dataset.scenePreset);
+        }});
+      }});
+
+      threeStoryToolbarButtons.forEach((button) => {{
+        button.addEventListener("click", () => {{
+          const action = button.dataset.storyAction;
+          if (action === "prev") {{
+            selectToolbarStory(-1);
+          }} else if (action === "next") {{
+            selectToolbarStory(1);
+          }} else if (action === "run") {{
+            runToolbarStory();
+          }} else if (action === "stop") {{
+            stopStory();
+            setStoryStatus("Stopped.");
+            setVysuStatus("Stopped.");
+          }}
+        }});
+      }});
 
       if (threeToolbarPin && threeViewToolbar) {{
         threeToolbarPin.addEventListener("click", () => {{
@@ -5765,6 +5908,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           if (story && threeStoryEditor) {{
             loadStoryIntoEditors(story);
             setStoryStatus("Loaded build-time story.");
+            syncStoryControls();
           }}
         }});
       }}
@@ -5782,6 +5926,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             const story = storyFromEditor();
             runStory(story);
             setStoryStatus(`Running ${{story.title}}.`);
+            syncStoryControls();
           }} catch (error) {{
             setStoryStatus(`Invalid story: ${{error.message}}`);
           }}
@@ -5798,6 +5943,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             const warningText = compiled.warnings.length ? ` Warnings: ${{compiled.warnings.join(" | ")}}` : "";
             setVysuStatus(`Running VyomaSutra.${{warningText}}`);
             setStoryStatus("JSON updated from VyomaSutra.");
+            syncStoryControls();
           }} catch (error) {{
             setVysuStatus(`Invalid VyomaSutra: ${{error.message}}`);
           }}
@@ -5816,6 +5962,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
           stopStory();
           setStoryStatus("Stopped.");
           setVysuStatus("Stopped.");
+          syncStoryControls();
         }});
       }}
 
@@ -5827,6 +5974,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
             loadStoryIntoEditors(story);
             setStoryStatus("Reloaded original.");
             setVysuStatus("Reloaded story VyomaSutra.");
+            syncStoryControls();
           }}
         }});
       }}
@@ -5844,6 +5992,7 @@ wait 200 ; travel -1800 to -800 5000: step 100`;
 
       renderStoryPills();
       renderStoryEditorOptions();
+      syncStoryControls();
       renderThreeDebugToggles();
       syncThreeDebugTogglesFromSettings();
       syncDebugTextareaFromLive();

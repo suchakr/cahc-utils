@@ -15,7 +15,10 @@
       const threeLayerButtons = Array.from(document.querySelectorAll("[data-layer-toggle]"));
       const threeTimeButtons = Array.from(document.querySelectorAll("[data-time-action]"));
       const threeTimeSpeedButtons = Array.from(document.querySelectorAll("[data-time-speed]"));
+      const threeSceneButtons = Array.from(document.querySelectorAll("[data-scene-preset]"));
+      const threeStoryToolbarButtons = Array.from(document.querySelectorAll("[data-story-action]"));
       const threeTimeStatus = document.getElementById("three-time-status");
+      const threeToolbarStoryTitle = document.getElementById("three-toolbar-story-title");
       const overlayLabel = document.getElementById("three-epoch-label");
       const storyStrip = document.getElementById("three-story-strip");
       const storyCaption = document.getElementById("three-story-caption");
@@ -144,7 +147,7 @@
           nsAxisOpacity: 0.32,
         },
         stars: {
-          size: 2.8,
+          size: 1.4,
           opacity: 0.88,
         },
         nakshatras: {
@@ -664,6 +667,74 @@
         const interval = Math.max(60, 480 / timeFlow.speed);
         timeFlow.timer = window.setInterval(() => stepToolbarTime(timeFlow.direction), interval);
         syncTimeControls();
+      }
+
+      function syncSceneButtons() {
+        const preset = threeSettings.lightPreset || "night";
+        threeSceneButtons.forEach((button) => {
+          const active = button.dataset.scenePreset === preset;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      }
+
+      function applyScenePreset(preset) {
+        if (!preset) return;
+        stopStory();
+        threeSettings.lightPreset = preset;
+        if (threeLightPreset) threeLightPreset.value = preset;
+        applyLightPreset();
+        syncSceneButtons();
+        syncDebugTextareaFromLive();
+        setDebugStatus(`Light preset: ${preset}`);
+      }
+
+      function selectedStoryContext() {
+        const list = filteredStories();
+        const selectedId = threeStorySelect?.value || activeStoryId;
+        let index = list.findIndex((story) => story.id === selectedId);
+        if (index < 0 && list.length) index = 0;
+        return { list, index };
+      }
+
+      function syncStoryControls() {
+        const story = selectedStoryOriginal();
+        if (threeToolbarStoryTitle) {
+          const title = story?.title || "No story";
+          threeToolbarStoryTitle.textContent = title;
+          threeToolbarStoryTitle.title = title;
+        }
+        const { list } = selectedStoryContext();
+        threeStoryToolbarButtons.forEach((button) => {
+          const action = button.dataset.storyAction;
+          button.disabled = !story || (list.length < 2 && (action === "prev" || action === "next"));
+          button.classList.toggle("active", Boolean(story && activeStoryId === story.id && action === "run"));
+          button.setAttribute("aria-pressed", story && activeStoryId === story.id && action === "run" ? "true" : "false");
+        });
+      }
+
+      function selectToolbarStory(delta) {
+        const { list, index } = selectedStoryContext();
+        if (!list.length) {
+          syncStoryControls();
+          return null;
+        }
+        const next = list[(index + delta + list.length) % list.length];
+        if (threeStorySelect) threeStorySelect.value = next.id;
+        loadStoryIntoEditors(next);
+        setStoryStatus(`Selected ${next.title}.`);
+        syncStoryControls();
+        return next;
+      }
+
+      function runToolbarStory() {
+        try {
+          const story = storyFromEditor();
+          runStory(story);
+          setStoryStatus(`Running ${story.title}.`);
+        } catch (error) {
+          setStoryStatus(`Invalid story: ${error.message}`);
+        }
       }
 
 
@@ -2382,6 +2453,7 @@ function compileVyomaSutraFile(source, storyId) {
             button.classList.remove("active");
           });
         }
+        syncStoryControls();
       }
 
       function setThreeFullscreen(enabled) {
@@ -3286,6 +3358,7 @@ function compileVyomaSutraFile(source, storyId) {
           }, cue._scheduledAt);
           activeStoryTimers.push(timer);
         });
+        syncStoryControls();
       }
 
       function storySearchText(story) {
@@ -3324,6 +3397,7 @@ function compileVyomaSutraFile(source, storyId) {
             if (story && threeStorySelect) threeStorySelect.value = story.id;
             loadStoryIntoEditors(story);
             runStory(story);
+            syncStoryControls();
           });
         });
       }
@@ -3358,6 +3432,7 @@ function compileVyomaSutraFile(source, storyId) {
           syncVysuLineNumbers();
           setStoryStatus("No build-time stories found.");
         }
+        syncStoryControls();
       }
 
       function selectedStoryOriginal() {
@@ -3719,6 +3794,7 @@ function compileVyomaSutraFile(source, storyId) {
           }
         });
         syncLayerButtons();
+        syncSceneButtons();
       }
 
       /* ── init ────────────────────────────────────────────── */
@@ -3980,7 +4056,7 @@ function compileVyomaSutraFile(source, storyId) {
           geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
           geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
           const mat = new THREE.PointsMaterial({
-            size: threeSettings.stars.size, vertexColors: true, transparent: true, opacity: threeSettings.stars.opacity, sizeAttenuation: true
+            size: threeSettings.stars.size, vertexColors: true, transparent: true, opacity: threeSettings.stars.opacity, sizeAttenuation: false
           });
           const points = new THREE.Points(geom, mat);
           starGroupRefs.push({ nid: naks.nid, metaIndex: naks.meta_index_28, points });
@@ -4341,6 +4417,7 @@ function compileVyomaSutraFile(source, storyId) {
           threeSettings.lightPreset = threeLightPreset.value;
           applyLightPreset();
           syncDebugTextareaFromLive();
+          syncSceneButtons();
           setDebugStatus(`Light preset: ${threeSettings.lightPreset}`);
         });
       }
@@ -4436,6 +4513,30 @@ function compileVyomaSutraFile(source, storyId) {
       });
 
       syncTimeControls();
+      syncSceneButtons();
+
+      threeSceneButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          applyScenePreset(button.dataset.scenePreset);
+        });
+      });
+
+      threeStoryToolbarButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.dataset.storyAction;
+          if (action === "prev") {
+            selectToolbarStory(-1);
+          } else if (action === "next") {
+            selectToolbarStory(1);
+          } else if (action === "run") {
+            runToolbarStory();
+          } else if (action === "stop") {
+            stopStory();
+            setStoryStatus("Stopped.");
+            setVysuStatus("Stopped.");
+          }
+        });
+      });
 
       if (threeToolbarPin && threeViewToolbar) {
         threeToolbarPin.addEventListener("click", () => {
@@ -4519,6 +4620,7 @@ function compileVyomaSutraFile(source, storyId) {
           if (story && threeStoryEditor) {
             loadStoryIntoEditors(story);
             setStoryStatus("Loaded build-time story.");
+            syncStoryControls();
           }
         });
       }
@@ -4536,6 +4638,7 @@ function compileVyomaSutraFile(source, storyId) {
             const story = storyFromEditor();
             runStory(story);
             setStoryStatus(`Running ${story.title}.`);
+            syncStoryControls();
           } catch (error) {
             setStoryStatus(`Invalid story: ${error.message}`);
           }
@@ -4552,6 +4655,7 @@ function compileVyomaSutraFile(source, storyId) {
             const warningText = compiled.warnings.length ? ` Warnings: ${compiled.warnings.join(" | ")}` : "";
             setVysuStatus(`Running VyomaSutra.${warningText}`);
             setStoryStatus("JSON updated from VyomaSutra.");
+            syncStoryControls();
           } catch (error) {
             setVysuStatus(`Invalid VyomaSutra: ${error.message}`);
           }
@@ -4570,6 +4674,7 @@ function compileVyomaSutraFile(source, storyId) {
           stopStory();
           setStoryStatus("Stopped.");
           setVysuStatus("Stopped.");
+          syncStoryControls();
         });
       }
 
@@ -4581,6 +4686,7 @@ function compileVyomaSutraFile(source, storyId) {
             loadStoryIntoEditors(story);
             setStoryStatus("Reloaded original.");
             setVysuStatus("Reloaded story VyomaSutra.");
+            syncStoryControls();
           }
         });
       }
@@ -4598,6 +4704,7 @@ function compileVyomaSutraFile(source, storyId) {
 
       renderStoryPills();
       renderStoryEditorOptions();
+      syncStoryControls();
       renderThreeDebugToggles();
       syncThreeDebugTogglesFromSettings();
       syncDebugTextareaFromLive();

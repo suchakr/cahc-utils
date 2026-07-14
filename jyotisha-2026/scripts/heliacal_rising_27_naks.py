@@ -32,6 +32,11 @@ ECLIPTIC_OBLIQUITY_DEG_BCE500 = 23.75
 SLUG = "heliacal-rising-27-naks"
 VGJ_N83_PATH = REPO_ROOT / "data" / "vgj-seasonal-cycle" / "n83_lat_lon_ra_dec_bce2500_ce1000.tsv"
 SKY_CULTURE_ROOT = (REPO_ROOT.parent / "nakshatra_sky_culture" / "vedic_25_codex").resolve()
+PRESENTATION_FIGSIZE = (18, 6.4)
+PRESENTATION_TYPE_SCALE = 1.2
+PRESENTATION_GLYPH_SCALE = 1.2
+PRESENTATION_LINE_SCALE = 1.2
+PRESENTATION_MARKER_AREA_SCALE = PRESENTATION_GLYPH_SCALE**2
 
 ASTERISM_LINE_OVERRIDE = {
     "N03-Kri": [["HIP 17499", "HIP 17608", "HIP 17847", "HIP 17702", "HIP 17573", "HIP 17531", "HIP 17499"]],
@@ -257,7 +262,11 @@ def plot_metric(
     output_path: Path,
     annotate_veethi: bool = False,
 ) -> None:
-    plt.figure(figsize=(18, 8))
+    display_ylabel = ylabel.replace("Rising Azimuth (deg from north)", "Azimuth (deg from N)").replace(
+        "Setting Azimuth (deg from north)",
+        "Azimuth (deg from N)",
+    )
+    plt.figure(figsize=PRESENTATION_FIGSIZE)
     axis = plt.gca()
     if annotate_veethi:
         y_top = 0.965
@@ -270,7 +279,7 @@ def plot_metric(
                 transform=axis.get_xaxis_transform(),
                 ha="center",
                 va="top",
-                fontsize=12,
+                fontsize=12 * PRESENTATION_TYPE_SCALE,
                 color="#3f372b",
                 zorder=1,
             )
@@ -280,24 +289,26 @@ def plot_metric(
             subset["enaks"],
             subset[metric],
             marker="o",
-            linewidth=2.2,
-            markersize=5.5,
+            linewidth=2.2 * PRESENTATION_LINE_SCALE,
+            markersize=5.5 * PRESENTATION_GLYPH_SCALE,
             label=f"{epoch}",
             zorder=3,
         )
 
     if metric == "rising_azimuth_deg":
-        axis.axhline(90, color="#8f4a21", linewidth=1.2, alpha=0.25, linestyle="--")
+        axis.axhline(90, color="#8f4a21", linewidth=1.2 * PRESENTATION_LINE_SCALE, alpha=0.25, linestyle="--")
     if metric == "declination_deg":
-        axis.axhline(0, color="#8f4a21", linewidth=1.2, alpha=0.25, linestyle="--")
+        axis.axhline(0, color="#8f4a21", linewidth=1.2 * PRESENTATION_LINE_SCALE, alpha=0.25, linestyle="--")
 
-    plt.title(title, fontsize=22)
-    plt.xlabel("Nakṣatra", fontsize=20)
-    plt.ylabel(ylabel, fontsize=20)
-    plt.xticks(rotation=65, ha="right", fontsize=15)
-    plt.yticks(fontsize=17)
+    plt.title(title, fontsize=22 * PRESENTATION_TYPE_SCALE)
+    plt.xlabel("Nakṣatra", fontsize=20 * PRESENTATION_TYPE_SCALE)
+    plt.ylabel(display_ylabel, fontsize=20 * PRESENTATION_TYPE_SCALE)
+    plt.xticks(rotation=65, ha="right", fontsize=15 * PRESENTATION_TYPE_SCALE)
+    plt.yticks(fontsize=17 * PRESENTATION_TYPE_SCALE)
     plt.grid(True, alpha=0.25)
-    plt.legend(title="Epoch", fontsize=16, title_fontsize=16)
+    plt.legend(title="Epoch", fontsize=16 * PRESENTATION_TYPE_SCALE, title_fontsize=16 * PRESENTATION_TYPE_SCALE)
+    if is_declination_metric(metric):
+        axis.invert_yaxis()
     plt.tight_layout()
     plt.savefig(output_path, dpi=180)
     plt.close()
@@ -352,6 +363,24 @@ def metric_ylim(frame: pd.DataFrame, metric: str) -> tuple[float, float]:
     return lower - pad, upper + pad
 
 
+def is_declination_metric(metric: str) -> bool:
+    return metric in {"declination_deg", "setting_declination_deg"}
+
+
+def apply_metric_ylim(axis: plt.Axes, metric: str, y_limits: tuple[float, float]) -> None:
+    if is_declination_metric(metric):
+        axis.set_ylim(y_limits[1], y_limits[0])
+    else:
+        axis.set_ylim(*y_limits)
+
+
+def should_place_inline_label_below(metric: str, y_value: float, display_ylim: tuple[float, float]) -> bool:
+    span = display_ylim[1] - display_ylim[0]
+    if is_declination_metric(metric):
+        return y_value < display_ylim[0] + 0.22 * span
+    return y_value > display_ylim[0] + 0.78 * span
+
+
 def plot_metric_a_variant(
     frame: pd.DataFrame,
     metric: str,
@@ -367,13 +396,12 @@ def plot_metric_a_variant(
     epoch_frame = epoch_frame.sort_values("variant_order").reset_index(drop=True)
     colors = plt.colormaps["tab20"](np.linspace(0, 1, 20))
 
-    fig, axis = plt.subplots(figsize=(18, 8), facecolor="white")
+    fig, axis = plt.subplots(figsize=PRESENTATION_FIGSIZE, facecolor="white")
     source_ylim = metric_ylim(frame, metric)
     y_span = source_ylim[1] - source_ylim[0]
     display_ylim = (source_ylim[0] - 0.25 * y_span, source_ylim[1])
-    glyph_width = 0.8
-    glyph_height = 9.0
-    label_y = display_ylim[0] + 0.04 * (display_ylim[1] - display_ylim[0])
+    glyph_width = 0.8 * PRESENTATION_GLYPH_SCALE
+    glyph_height = 9.0 * PRESENTATION_GLYPH_SCALE
 
     if span_shading_alpha > 0:
         for index in range(len(epoch_frame)):
@@ -382,9 +410,17 @@ def plot_metric_a_variant(
 
     for index, row in enumerate(epoch_frame.itertuples()):
         x_center = index + 0.5
+        y_center = getattr(row, metric)
         nak_glyph = glyphs[glyphs["nid"] == row.nid].copy()
         if nak_glyph.empty:
-            axis.scatter(x_center, getattr(row, metric), c=[colors[int(row.nnid) % len(colors)]], s=100, alpha=0.95, zorder=4)
+            axis.scatter(
+                x_center,
+                y_center,
+                c=[colors[int(row.nnid) % len(colors)]],
+                s=100 * PRESENTATION_MARKER_AREA_SCALE,
+                alpha=0.95,
+                zorder=4,
+            )
             continue
 
         center_lon = float(nak_glyph["lon"].median())
@@ -398,12 +434,12 @@ def plot_metric_a_variant(
         else:
             nak_glyph["x_plot"] = x_center
         if lat_span > 0:
-            nak_glyph["y_plot"] = getattr(row, metric) + (lat_delta - (lat_delta.max() + lat_delta.min()) / 2.0) / lat_span * glyph_height
+            nak_glyph["y_plot"] = y_center + (lat_delta - (lat_delta.max() + lat_delta.min()) / 2.0) / lat_span * glyph_height
         else:
-            nak_glyph["y_plot"] = getattr(row, metric)
+            nak_glyph["y_plot"] = y_center
         color = colors[int(row.nnid) % len(colors)]
         marker = "*" if len(nak_glyph) == 1 else "o"
-        size = 187 if len(nak_glyph) == 1 else 100
+        size = (187 if len(nak_glyph) == 1 else 100) * PRESENTATION_MARKER_AREA_SCALE
         axis.scatter(
             nak_glyph["x_plot"],
             nak_glyph["y_plot"],
@@ -412,45 +448,47 @@ def plot_metric_a_variant(
             s=size,
             alpha=0.95,
             edgecolor="#2c261d",
-            linewidth=0.35,
+            linewidth=0.35 * PRESENTATION_LINE_SCALE,
             zorder=4,
         )
+        label_below = should_place_inline_label_below(metric, y_center, display_ylim) or row.nid == "N19-Mul"
         axis.annotate(
             f"{NID_SHORT_LABELS.get(row.nid, row.enaks)}:{len(nak_glyph)}",
-            (x_center, getattr(row, metric)),
-            xytext=(0, -19 if row.nid == "N19-Mul" else 11),
+            (x_center, y_center),
+            xytext=(0, -23 if label_below else 13),
             textcoords="offset points",
             ha="center",
-            va="bottom",
+            va="top" if label_below else "bottom",
             rotation=90,
-            fontsize=15,
+            fontsize=15 * PRESENTATION_TYPE_SCALE,
             color="purple",
             zorder=5,
         )
 
-    axis.set_title(title, fontsize=22, alpha=0.0)
-    axis.set_xlabel("Nakṣatra", fontsize=20)
-    axis.set_ylabel(ylabel, fontsize=20)
+    axis.set_title(title, fontsize=22 * PRESENTATION_TYPE_SCALE, alpha=0.0)
+    axis.set_xlabel("Nakṣatra", fontsize=20 * PRESENTATION_TYPE_SCALE)
+    axis.set_ylabel(ylabel, fontsize=20 * PRESENTATION_TYPE_SCALE)
     axis.set_xlim(0, len(epoch_frame))
     axis.set_ylim(*source_ylim)
     source_yticks = axis.get_yticks()
-    axis.set_ylim(*display_ylim)
+    apply_metric_ylim(axis, metric, display_ylim)
     axis.set_xticks(range(len(epoch_frame) + 1))
     axis.set_xticklabels([])
     axis.tick_params(axis="x", length=0)
     for index, row in enumerate(epoch_frame.itertuples()):
         axis.text(
             index + 0.5,
-            label_y,
+            0.04,
             NID_SHORT_LABELS.get(row.nid, row.enaks),
+            transform=axis.get_xaxis_transform(),
             ha="center",
             va="bottom",
             rotation=90,
-            fontsize=22,
+            fontsize=22 * PRESENTATION_TYPE_SCALE,
             color="#3f372b",
             zorder=5,
         )
-    axis.tick_params(axis="y", labelsize=17)
+    axis.tick_params(axis="y", labelsize=17 * PRESENTATION_TYPE_SCALE)
     axis.set_yticks(source_yticks)
     axis.grid(True, alpha=0.25)
     plt.tight_layout()
@@ -558,7 +596,14 @@ def add_b_reference_guides(axis: plt.Axes, metric: str, display_ylim: tuple[floa
     if not (display_ylim[0] <= reference_y <= display_ylim[1]):
         return
 
-    axis.axhline(reference_y, color="#5e4c34", linewidth=1.25, alpha=0.58, linestyle=(0, (2, 3)), zorder=2)
+    axis.axhline(
+        reference_y,
+        color="#5e4c34",
+        linewidth=1.25 * PRESENTATION_LINE_SCALE,
+        alpha=0.58,
+        linestyle=(0, (2, 3)),
+        zorder=2,
+    )
     axis.annotate(
         reference_label,
         xy=(0, reference_y),
@@ -566,7 +611,7 @@ def add_b_reference_guides(axis: plt.Axes, metric: str, display_ylim: tuple[floa
         textcoords="offset points",
         ha="left",
         va="center",
-        fontsize=14,
+        fontsize=14 * PRESENTATION_TYPE_SCALE,
         fontweight="bold",
         color="#4c3f2d",
         zorder=6,
@@ -582,7 +627,7 @@ def add_b_reference_guides(axis: plt.Axes, metric: str, display_ylim: tuple[floa
             transform=axis.get_yaxis_transform(),
             ha="left",
             va="center",
-            fontsize=14,
+            fontsize=14 * PRESENTATION_TYPE_SCALE,
             fontweight="bold",
             color="#5e4c34",
             clip_on=True,
@@ -651,7 +696,7 @@ def add_c_ecliptic_overlay(
         x_curve,
         y_mid,
         color="#2e7771",
-        linewidth=1.55,
+        linewidth=1.55 * PRESENTATION_LINE_SCALE,
         alpha=0.78,
         linestyle=(0, (5, 4)),
         zorder=2.2,
@@ -662,7 +707,7 @@ def add_c_ecliptic_overlay(
         band_label,
         ha="right",
         va="center",
-        fontsize=10,
+        fontsize=10 * PRESENTATION_TYPE_SCALE,
         color="#2e7771",
         clip_on=True,
         zorder=6,
@@ -725,12 +770,11 @@ def plot_metric_stick_variant(
     epoch_frame = epoch_frame.sort_values("variant_order").reset_index(drop=True)
     colors = plt.colormaps["tab20"](np.linspace(0, 1, 20))
 
-    fig, axis = plt.subplots(figsize=(18, 8), facecolor="white")
+    fig, axis = plt.subplots(figsize=PRESENTATION_FIGSIZE, facecolor="white")
     y_span = source_ylim[1] - source_ylim[0]
     display_ylim = (source_ylim[0] - 0.25 * y_span, source_ylim[1])
-    glyph_width = 0.82
-    glyph_height = 9.2
-    label_y = display_ylim[0] + 0.04 * (display_ylim[1] - display_ylim[0])
+    glyph_width = 0.82 * PRESENTATION_GLYPH_SCALE
+    glyph_height = 9.2 * PRESENTATION_GLYPH_SCALE
 
     if span_shading_alpha > 0:
         for index in range(len(epoch_frame)):
@@ -767,7 +811,7 @@ def plot_metric_stick_variant(
                 [point[0] for point in points],
                 [point[1] for point in points],
                 color="#3f372b",
-                linewidth=1.15,
+                linewidth=1.15 * PRESENTATION_LINE_SCALE,
                 alpha=0.72,
                 solid_capstyle="round",
                 solid_joinstyle="round",
@@ -775,7 +819,7 @@ def plot_metric_stick_variant(
             )
 
         marker = "*" if len(nak_glyph) == 1 else "o"
-        size = 67 if len(nak_glyph) == 1 else 36
+        size = (67 if len(nak_glyph) == 1 else 36) * PRESENTATION_MARKER_AREA_SCALE
         axis.scatter(
             nak_glyph["x_plot"],
             nak_glyph["y_plot"],
@@ -784,17 +828,17 @@ def plot_metric_stick_variant(
             s=size,
             alpha=0.95,
             edgecolor="#2c261d",
-            linewidth=0.35,
+            linewidth=0.35 * PRESENTATION_LINE_SCALE,
             zorder=4,
         )
 
-    axis.set_title(title, fontsize=22, alpha=0.0)
-    axis.set_xlabel("Nakṣatra", fontsize=20)
-    axis.set_ylabel(ylabel, fontsize=20)
+    axis.set_title(title, fontsize=22 * PRESENTATION_TYPE_SCALE, alpha=0.0)
+    axis.set_xlabel("Nakṣatra", fontsize=20 * PRESENTATION_TYPE_SCALE)
+    axis.set_ylabel(ylabel, fontsize=20 * PRESENTATION_TYPE_SCALE)
     axis.set_xlim(0, len(epoch_frame))
     axis.set_ylim(*source_ylim)
     source_yticks = axis.get_yticks()
-    axis.set_ylim(*display_ylim)
+    apply_metric_ylim(axis, metric, display_ylim)
     add_b_reference_guides(axis, metric, display_ylim)
     axis.set_xticks(range(len(epoch_frame) + 1))
     axis.set_xticklabels([])
@@ -803,16 +847,17 @@ def plot_metric_stick_variant(
         nak_glyph = glyphs[glyphs["nid"] == row.nid]
         axis.text(
             index + 0.5,
-            label_y,
+            0.04,
             f"{NID_SHORT_LABELS.get(row.nid, row.enaks)}:{len(nak_glyph)}",
+            transform=axis.get_xaxis_transform(),
             ha="center",
             va="bottom",
             rotation=90,
-            fontsize=18,
+            fontsize=18 * PRESENTATION_TYPE_SCALE,
             color="#3f372b",
             zorder=5,
         )
-    axis.tick_params(axis="y", labelsize=17)
+    axis.tick_params(axis="y", labelsize=17 * PRESENTATION_TYPE_SCALE)
     axis.set_yticks(source_yticks)
     axis.grid(True, alpha=0.25)
     plt.tight_layout()
@@ -882,10 +927,9 @@ def plot_metric_d_variant(
     epoch_frame = epoch_frame.sort_values("variant_order").reset_index(drop=True)
     colors = plt.colormaps["tab20"](np.linspace(0, 1, 20))
 
-    fig, axis = plt.subplots(figsize=(18, 8), facecolor="white")
+    fig, axis = plt.subplots(figsize=PRESENTATION_FIGSIZE, facecolor="white")
     y_span = source_ylim[1] - source_ylim[0]
     display_ylim = (source_ylim[0] - 0.25 * y_span, source_ylim[1])
-    label_y = display_ylim[0] + 0.04 * (display_ylim[1] - display_ylim[0])
     zero_lon = bharani_zero_lon(glyphs)
 
     if span_shading_alpha > 0:
@@ -895,8 +939,8 @@ def plot_metric_d_variant(
 
     add_c_ecliptic_overlay(axis, metric, epoch_frame, glyphs)
 
-    glyph_width = 0.82
-    glyph_height = 9.2
+    glyph_width = 0.82 * PRESENTATION_GLYPH_SCALE
+    glyph_height = 9.2 * PRESENTATION_GLYPH_SCALE
     for index, row in enumerate(epoch_frame.itertuples()):
         nak_glyph = glyphs[glyphs["nid"] == row.nid].copy()
         color = colors[int(row.nnid) % len(colors)]
@@ -938,7 +982,7 @@ def plot_metric_d_variant(
                 [point[0] for point in points],
                 [point[1] for point in points],
                 color="#3f372b",
-                linewidth=1.0,
+                linewidth=1.0 * PRESENTATION_LINE_SCALE,
                 alpha=0.62,
                 solid_capstyle="round",
                 solid_joinstyle="round",
@@ -946,7 +990,7 @@ def plot_metric_d_variant(
             )
 
         marker = "*" if len(visible_glyph) == 1 else "o"
-        size = 58 if len(visible_glyph) == 1 else 28
+        size = (58 if len(visible_glyph) == 1 else 28) * PRESENTATION_MARKER_AREA_SCALE
         axis.scatter(
             visible_glyph["x_plot"],
             visible_glyph["y_plot"],
@@ -955,17 +999,17 @@ def plot_metric_d_variant(
             s=size,
             alpha=0.95,
             edgecolor="#2c261d",
-            linewidth=0.32,
+            linewidth=0.32 * PRESENTATION_LINE_SCALE,
             zorder=4,
         )
 
-    axis.set_title(title, fontsize=22, alpha=0.0)
-    axis.set_xlabel("Nakṣatra", fontsize=20)
-    axis.set_ylabel(ylabel, fontsize=20)
+    axis.set_title(title, fontsize=22 * PRESENTATION_TYPE_SCALE, alpha=0.0)
+    axis.set_xlabel("Nakṣatra", fontsize=20 * PRESENTATION_TYPE_SCALE)
+    axis.set_ylabel(ylabel, fontsize=20 * PRESENTATION_TYPE_SCALE)
     axis.set_xlim(0, len(epoch_frame))
     axis.set_ylim(*source_ylim)
     source_yticks = axis.get_yticks()
-    axis.set_ylim(*display_ylim)
+    apply_metric_ylim(axis, metric, display_ylim)
     add_b_reference_guides(axis, metric, display_ylim)
     axis.set_xticks(range(len(epoch_frame) + 1))
     axis.set_xticklabels([])
@@ -974,16 +1018,17 @@ def plot_metric_d_variant(
         nak_glyph = glyphs[glyphs["nid"] == row.nid]
         axis.text(
             index + 0.5,
-            label_y,
+            0.04,
             f"{NID_SHORT_LABELS.get(row.nid, row.enaks)}:{len(nak_glyph)}",
+            transform=axis.get_xaxis_transform(),
             ha="center",
             va="bottom",
             rotation=90,
-            fontsize=18,
+            fontsize=18 * PRESENTATION_TYPE_SCALE,
             color="#3f372b",
             zorder=5,
         )
-    axis.tick_params(axis="y", labelsize=17)
+    axis.tick_params(axis="y", labelsize=17 * PRESENTATION_TYPE_SCALE)
     axis.set_yticks(source_yticks)
     axis.grid(True, alpha=0.25)
     plt.tight_layout()

@@ -381,6 +381,12 @@ def should_place_inline_label_below(metric: str, y_value: float, display_ylim: t
     return y_value > display_ylim[0] + 0.78 * span
 
 
+def variant_count_label_anchor(metric: str) -> tuple[float, str]:
+    if is_declination_metric(metric):
+        return 0.96, "top"
+    return 0.04, "bottom"
+
+
 def plot_metric_a_variant(
     frame: pd.DataFrame,
     metric: str,
@@ -843,15 +849,16 @@ def plot_metric_stick_variant(
     axis.set_xticks(range(len(epoch_frame) + 1))
     axis.set_xticklabels([])
     axis.tick_params(axis="x", length=0)
+    count_label_y, count_label_va = variant_count_label_anchor(metric)
     for index, row in enumerate(epoch_frame.itertuples()):
         nak_glyph = glyphs[glyphs["nid"] == row.nid]
         axis.text(
             index + 0.5,
-            0.04,
+            count_label_y,
             f"{NID_SHORT_LABELS.get(row.nid, row.enaks)}:{len(nak_glyph)}",
             transform=axis.get_xaxis_transform(),
             ha="center",
-            va="bottom",
+            va=count_label_va,
             rotation=90,
             fontsize=18 * PRESENTATION_TYPE_SCALE,
             color="#3f372b",
@@ -1014,15 +1021,16 @@ def plot_metric_d_variant(
     axis.set_xticks(range(len(epoch_frame) + 1))
     axis.set_xticklabels([])
     axis.tick_params(axis="x", length=0)
+    count_label_y, count_label_va = variant_count_label_anchor(metric)
     for index, row in enumerate(epoch_frame.itertuples()):
         nak_glyph = glyphs[glyphs["nid"] == row.nid]
         axis.text(
             index + 0.5,
-            0.04,
+            count_label_y,
             f"{NID_SHORT_LABELS.get(row.nid, row.enaks)}:{len(nak_glyph)}",
             transform=axis.get_xaxis_transform(),
             ha="center",
-            va="bottom",
+            va=count_label_va,
             rotation=90,
             fontsize=18 * PRESENTATION_TYPE_SCALE,
             color="#3f372b",
